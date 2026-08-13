@@ -1,9 +1,13 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Model Definitions
+4b99f11aa5e3cd0618fc1287d91504e8330d5941 assets/minecraft-the-stories-mod/blockstates/deepslate_amethyst_ore.json
+eda11c42f52bbe4d5a77bf81096ace83405497d2 assets/minecraft-the-stories-mod/blockstates/stone_amethyst_ore.json
+c6bc8dd933f3f43f0a51cd2f47927d5bf9204206 assets/minecraft-the-stories-mod/items/deepslate_amethyst_ore.json
 33e6cacf1aa9f0f586cc15690f8b55228e750cbc assets/minecraft-the-stories-mod/items/raw_amethyst.json
 38722d71fb8a759581aa80b31f8db7a0ccc9e8fe assets/minecraft-the-stories-mod/items/raw_diamond.json
 b70b88a5fe6714e9a4d6a9ccfd6621a0ea925939 assets/minecraft-the-stories-mod/items/raw_emerald.json
 2aa3fd5bdfce437aa1d409e6685010d8fe27a2c6 assets/minecraft-the-stories-mod/items/raw_ruby.json
 9f4d31f20cbe07a45117fd8d2a569fc11719b34b assets/minecraft-the-stories-mod/items/raw_topaz.json
+50b6aefce931830c15556c989178358bb516654a assets/minecraft-the-stories-mod/items/stone_amethyst_ore.json
 648781bd88fba25ed4fb04ec1826c6db979335da assets/minecraft-the-stories-mod/items/strong_amethyst.json
 fc2239490df9f0ebed0fc494749634f67b8074e4 assets/minecraft-the-stories-mod/items/strong_amethyst_ingot.json
 ca35945b34b0c6f999c5a9f4bd44c6721f68c0fd assets/minecraft-the-stories-mod/items/strong_diamond.json
@@ -18,6 +22,8 @@ a20811aff4a9ba2be12e6cc4c625392f7640f055 assets/minecraft-the-stories-mod/items/
 722defb1b42ea3e7ff3d22291655d9dbeddd1f9d assets/minecraft-the-stories-mod/items/strong_ruby_ingot.json
 8b27701ca2b5eb6c292ef04a30460b415743bdad assets/minecraft-the-stories-mod/items/strong_topaz.json
 901200b37584d0e24a39b072874952afca246649 assets/minecraft-the-stories-mod/items/strong_topaz_ingot.json
+49b8531aa937ba12ae071e26ee2ca316cd98bcaf assets/minecraft-the-stories-mod/models/block/deepslate_amethyst_ore.json
+0547af1d53c8de4da0f7bdd430fdf8a7a250a695 assets/minecraft-the-stories-mod/models/block/stone_amethyst_ore.json
 ad3f164ddaa2c0c88027b25757a0648512bf0c35 assets/minecraft-the-stories-mod/models/item/raw_amethyst.json
 8d2c9a9336160fda07413d383d7257fb8b4ebdae assets/minecraft-the-stories-mod/models/item/raw_diamond.json
 3038d70f8356a71a6e2bd92eaa4bfcd50884513e assets/minecraft-the-stories-mod/models/item/raw_emerald.json

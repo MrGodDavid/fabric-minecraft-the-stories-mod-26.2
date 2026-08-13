@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
 import net.mrgoddavid.minecraftthestoriesmod.item.ModItems;
 import org.slf4j.Logger;
@@ -30,5 +31,6 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         CreativeModeTabs.registerModCreativeModeTabs();
 
         ModItems.registerModItems();
+        ModBlocks.registerModBlocks();
     }
 }

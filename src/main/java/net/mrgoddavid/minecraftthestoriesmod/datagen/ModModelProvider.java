@@ -7,6 +7,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 
+import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
 
 /**
@@ -23,7 +24,8 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-
+        blockModelGenerators.createTrivialCube(STONE_AMETHYST_ORE);
+        blockModelGenerators.createTrivialCube(DEEPSLATE_AMETHYST_ORE);
     }
 
     @Override

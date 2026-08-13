@@ -3,15 +3,15 @@
 	"id": "minecraft-the-stories-mod",
 	"version": "${version}",
 	"name": "Minecraft The Stories Mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This is a Minecraft: The Stories (MTS) based on the fiction Minecraft: The Stories series",
 	"authors": [
-		"Me!"
+		"Mr. GodDavid"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT-License",
 	"icon": "assets/minecraft-the-stories-mod/icon.png",
 	"environment": "*",
 	"entrypoints": {

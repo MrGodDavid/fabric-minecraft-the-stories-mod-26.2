@@ -10,6 +10,9 @@ import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.ModItems;
 
+import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
+import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
+
 /**
  * Custom creative mode tabs.
  *
@@ -26,23 +29,41 @@ public class CreativeModeTabs {
             BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "mts_overworld_items"),
             FabricCreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.STRONG_DIAMOND))
+                    .icon(() -> new ItemStack(ModItems.STRONG_AMETHYST))
                     .title(Component.translatable("creative_mode_tab.mts.strong_diamond_items"))
                     .displayItems((parameters, output) -> {
-                        output.accept(ModItems.STRONG_DIAMOND);
-                        output.accept(ModItems.RAW_DIAMOND);
+                        output.accept(RAW_AMETHYST);
+                        output.accept(STRONG_AMETHYST);
+                        output.accept(STRONG_AMETHYST_INGOT);
+                        output.accept(RAW_DIAMOND);
+                        output.accept(STRONG_DIAMOND);
+                        output.accept(STRONG_DIAMOND_INGOT);
+                        output.accept(RAW_EMERALD);
+                        output.accept(STRONG_EMERALD);
+                        output.accept(STRONG_EMERALD_INGOT);
+                        output.accept(RAW_RUBY);
+                        output.accept(STRONG_RUBY);
+                        output.accept(STRONG_RUBY_INGOT);
+                        output.accept(RAW_TOPAZ);
+                        output.accept(STRONG_TOPAZ);
+                        output.accept(STRONG_TOPAZ_INGOT);
+                        output.accept(STRONG_IRON);
+                        output.accept(STRONG_IRON_INGOT);
+                        output.accept(STRONG_GOLD);
+                        output.accept(STRONG_GOLD_INGOT);
                     })
                     .build()
     );
 
     public static final CreativeModeTab MTS_OVERWORLD_BLOCKS_TAB = Registry.register(
-            BuiltInRegistries.CREATIVE_MODE_TAB, 
+            BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "mts_overworld_blocks"),
             FabricCreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.RAW_DIAMOND))
+                    .icon(() -> new ItemStack(STONE_AMETHYST_ORE))
                     .title(Component.translatable("creative_mode_tab.mts.strong_diamond_blocks"))
                     .displayItems((parameters, output) -> {
-                        output.accept(ModItems.RAW_DIAMOND);
+                        output.accept(STONE_AMETHYST_ORE);
+                        output.accept(DEEPSLATE_AMETHYST_ORE);
                     })
                     .build()
     );
