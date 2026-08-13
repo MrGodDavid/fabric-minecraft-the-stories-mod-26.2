@@ -62,8 +62,24 @@ public class CreativeModeTabs {
                     .icon(() -> new ItemStack(STONE_AMETHYST_ORE))
                     .title(Component.translatable("creative_mode_tab.mts.strong_diamond_blocks"))
                     .displayItems((parameters, output) -> {
-                        output.accept(STONE_AMETHYST_ORE);
                         output.accept(DEEPSLATE_AMETHYST_ORE);
+                        output.accept(DEEPSLATE_RUBY_ORE);
+                        output.accept(DEEPSLATE_TOPAZ_ORE);
+                        output.accept(STONE_AMETHYST_ORE);
+                        output.accept(STONE_RUBY_ORE);
+                        output.accept(STONE_TOPAZ_ORE);
+                        output.accept(RAW_AMETHYST_BLOCK);
+                        output.accept(RAW_DIAMOND_BLOCK);
+                        output.accept(RAW_EMERALD_BLOCK);
+                        output.accept(RAW_RUBY_BLOCK);
+                        output.accept(RAW_TOPAZ_BLOCK);
+                        output.accept(STRONG_AMETHYST_BLOCK);
+                        output.accept(STRONG_DIAMOND_BLOCK);
+                        output.accept(STRONG_EMERALD_BLOCK);
+                        output.accept(STRONG_RUBY_BLOCK);
+                        output.accept(STRONG_TOPAZ_BLOCK);
+                        output.accept(STRONG_IRON_BLOCK);
+                        output.accept(STRONG_GOLD_BLOCK);
                     })
                     .build()
     );
