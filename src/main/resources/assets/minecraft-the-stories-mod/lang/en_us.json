@@ -1,8 +1,24 @@
 {
-  "item.minecraft-the-stories-mod.raw_amythst": "Raw Amethyst",
-  "item.minecraft-the-stories-mod.strong_iron": "Strong Iron",
-  "item.minecraft-the-stories-mod.strong_diamond": "Strong Diamond",
+  "item.minecraft-the-stories-mod.raw_ameythst": "Raw Amethyst",
   "item.minecraft-the-stories-mod.raw_diamond": "Raw Diamond",
+  "item.minecraft-the-stories-mod.raw_emerald": "Raw Emerald",
+  "item.minecraft-the-stories-mod.raw_ruby": "Raw Ruby",
+  "item.minecraft-the-stories-mod.raw_topaz": "Raw Topaz",
+
+  "item.minecraft-the-stories-mod.strong_amethyst": "Strong Amethyst",
+  "item.minecraft-the-stories-mod.strong_amethyst_ingot": "Strong Amethyst Ingot",
+  "item.minecraft-the-stories-mod.strong_diamond": "Strong Diamond",
+  "item.minecraft-the-stories-mod.strong_diamond_ingot": "Strong Diamond Ingot",
+  "item.minecraft-the-stories-mod.strong_emerald": "Strong Emerald",
+  "item.minecraft-the-stories-mod.strong_emerald_ingot": "Strong Emerald Ingot",
+  "item.minecraft-the-stories-mod.strong_gold": "Strong Gold",
+  "item.minecraft-the-stories-mod.strong_gold_ingot": "Strong Gold Ingot",
+  "item.minecraft-the-stories-mod.strong_iron": "Strong Iron",
+  "item.minecraft-the-stories-mod.strong_iron_ingot": "Strong Iron Ingot",
+  "item.minecraft-the-stories-mod.strong_ruby": "Strong Ruby",
+  "item.minecraft-the-stories-mod.strong_ruby_ingot": "Strong Ruby Ingot",
+  "item.minecraft-the-stories-mod.strong_topaz": "Strong Topaz",
+  "item.minecraft-the-stories-mod.strong_topaz_ingot": "Strong Topaz Ingot",
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",
   "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blaocks"
