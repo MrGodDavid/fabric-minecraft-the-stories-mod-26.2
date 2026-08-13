@@ -25,8 +25,26 @@ public class ModItems {
         throw new IllegalStateException("You can't instantiate ModItems class!");
     }
 
-    public static final Item STRONG_DIAMOND = registerItem("strong_diamond", Item::new);
+    // Custom mod items go here.
+    public static final Item RAW_AMETHYST = registerItem("raw_amethyst", Item::new);
     public static final Item RAW_DIAMOND = registerItem("raw_diamond", Item::new);
+    public static final Item RAW_EMERALD = registerItem("raw_emerald", Item::new);
+    public static final Item RAW_RUBY = registerItem("raw_ruby", Item::new);
+    public static final Item RAW_TOPAZ = registerItem("raw_topaz", Item::new);
+    public static final Item STRONG_AMETHYST = registerItem("strong_amethyst", Item::new);
+    public static final Item STRONG_AMETHYST_INGOT = registerItem("strong_amethyst_ingot", Item::new);
+    public static final Item STRONG_DIAMOND = registerItem("strong_diamond", Item::new);
+    public static final Item STRONG_DIAMOND_INGOT = registerItem("strong_diamond_ingot", Item::new);
+    public static final Item STRONG_EMERALD = registerItem("strong_emerald", Item::new);
+    public static final Item STRONG_EMERALD_INGOT = registerItem("strong_emerald_ingot", Item::new);
+    public static final Item STRONG_GOLD = registerItem("strong_gold", Item::new);
+    public static final Item STRONG_GOLD_INGOT = registerItem("strong_gold_ingot", Item::new);
+    public static final Item STRONG_IRON_INGOT = registerItem("strong_iron_ingot", Item::new);
+    public static final Item STRONG_IRON = registerItem("strong_iron", Item::new);
+    public static final Item STRONG_RUBY = registerItem("strong_ruby", Item::new);
+    public static final Item STRONG_RUBY_INGOT = registerItem("strong_ruby_ingot", Item::new);
+    public static final Item STRONG_TOPAZ = registerItem("strong_topaz", Item::new);
+    public static final Item STRONG_TOPAZ_INGOT = registerItem("strong_topaz_ingot", Item::new);
 
     /**
      * Helper method when we register every new mod item to vanilla Minecraft. Obviously, this method returns an
@@ -70,8 +88,25 @@ public class ModItems {
 
         // put the items to the creative mode tab -> ingredients tab.
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(fabricCreativeModeTabOutput -> {
-            fabricCreativeModeTabOutput.accept(STRONG_DIAMOND);
+            fabricCreativeModeTabOutput.accept(RAW_AMETHYST);
             fabricCreativeModeTabOutput.accept(RAW_DIAMOND);
+            fabricCreativeModeTabOutput.accept(RAW_EMERALD);
+            fabricCreativeModeTabOutput.accept(RAW_RUBY);
+            fabricCreativeModeTabOutput.accept(RAW_TOPAZ);
+            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST);
+            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_INGOT);
+            fabricCreativeModeTabOutput.accept(STRONG_DIAMOND);
+            fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_INGOT);
+            fabricCreativeModeTabOutput.accept(STRONG_EMERALD);
+            fabricCreativeModeTabOutput.accept(STRONG_EMERALD_INGOT);
+            fabricCreativeModeTabOutput.accept(STRONG_GOLD);
+            fabricCreativeModeTabOutput.accept(STRONG_GOLD_INGOT);
+            fabricCreativeModeTabOutput.accept(STRONG_IRON);
+            fabricCreativeModeTabOutput.accept(STRONG_IRON_INGOT);
+            fabricCreativeModeTabOutput.accept(STRONG_RUBY);
+            fabricCreativeModeTabOutput.accept(STRONG_RUBY_INGOT);
+            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ);
+            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_INGOT);
         });
     }
 }

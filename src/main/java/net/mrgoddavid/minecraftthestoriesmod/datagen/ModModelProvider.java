@@ -4,8 +4,10 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
-import net.mrgoddavid.minecraftthestoriesmod.item.ModItems;
+
+import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
 
 /**
  * Adapts the {@link FabricModelProvider} class. Generates the JSON files for mod items/blocks.
@@ -26,7 +28,26 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        itemModelGenerators.generateFlatItem(ModItems.STRONG_DIAMOND, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.RAW_DIAMOND, ModelTemplates.FLAT_ITEM);
+        final ModelTemplate template = ModelTemplates.FLAT_ITEM;
+
+        itemModelGenerators.generateFlatItem(RAW_AMETHYST, template);
+        itemModelGenerators.generateFlatItem(RAW_DIAMOND, template);
+        itemModelGenerators.generateFlatItem(RAW_EMERALD, template);
+        itemModelGenerators.generateFlatItem(RAW_RUBY, template);
+        itemModelGenerators.generateFlatItem(RAW_TOPAZ, template);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST, template);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_INGOT, template);
+        itemModelGenerators.generateFlatItem(STRONG_DIAMOND, template);
+        itemModelGenerators.generateFlatItem(STRONG_DIAMOND_INGOT, template);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD, template);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD_INGOT, template);
+        itemModelGenerators.generateFlatItem(STRONG_GOLD, template);
+        itemModelGenerators.generateFlatItem(STRONG_GOLD_INGOT, template);
+        itemModelGenerators.generateFlatItem(STRONG_IRON, template);
+        itemModelGenerators.generateFlatItem(STRONG_IRON_INGOT, template);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY, template);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_INGOT, template);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ, template);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, template);
     }
 }

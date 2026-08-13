@@ -1,6 +1,9 @@
 {
+  "item.minecraft-the-stories-mod.raw_amythst": "Raw Amethyst",
+  "item.minecraft-the-stories-mod.strong_iron": "Strong Iron",
   "item.minecraft-the-stories-mod.strong_diamond": "Strong Diamond",
   "item.minecraft-the-stories-mod.raw_diamond": "Raw Diamond",
+
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",
-  "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks"
+  "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blaocks"
 }
