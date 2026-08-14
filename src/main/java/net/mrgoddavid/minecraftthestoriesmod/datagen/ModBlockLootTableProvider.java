@@ -1,21 +1,20 @@
 package net.mrgoddavid.minecraftthestoriesmod.datagen;
 
-import net.fabricmc.fabric.api.block.v1.FabricBlock;
-import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -45,7 +44,18 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
 
+        dropSelf(RAW_EMERALD_BLOCK);
+        dropSelf(RAW_DIAMOND_BLOCK);
         dropSelf(RAW_TOPAZ_BLOCK);
+        dropSelf(RAW_RUBY_BLOCK);
+        dropSelf(RAW_AMETHYST_BLOCK);
+        dropSelf(STRONG_GOLD_BLOCK);
+        dropSelf(STRONG_IRON_BLOCK);
+        dropSelf(STRONG_EMERALD_BLOCK);
+        dropSelf(STRONG_DIAMOND_BLOCK);
+        dropSelf(STRONG_TOPAZ_BLOCK);
+        dropSelf(STRONG_RUBY_BLOCK);
+        dropSelf(STRONG_AMETHYST_BLOCK);
 
         // ores
         add(STONE_TOPAZ_ORE, createMultipleOreDrops(STONE_TOPAZ_ORE, RAW_TOPAZ, 1.0f, 2.0f));

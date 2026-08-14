@@ -58,7 +58,24 @@ public class CreativeModeTabs {
                         output.accept(AMETHYST_SHOVEL);
                         output.accept(AMETHYST_SPEAR);
                         output.accept(AMETHYST_SWORD);
+                        output.accept(EMERALD_AXE);
+                        output.accept(EMERALD_HOE);
+                        output.accept(EMERALD_PICKAXE);
+                        output.accept(EMERALD_SHOVEL);
+                        output.accept(EMERALD_SPEAR);
                         output.accept(EMERALD_SWORD);
+                        output.accept(RUBY_AXE);
+                        output.accept(RUBY_HOE);
+                        output.accept(RUBY_PICKAXE);
+                        output.accept(RUBY_SHOVEL);
+                        output.accept(RUBY_SPEAR);
+                        output.accept(RUBY_SWORD);
+                        output.accept(TOPAZ_AXE);
+                        output.accept(TOPAZ_HOE);
+                        output.accept(TOPAZ_PICKAXE);
+                        output.accept(TOPAZ_SHOVEL);
+                        output.accept(TOPAZ_SPEAR);
+                        output.accept(TOPAZ_SWORD);
                     })
                     .build()
     );

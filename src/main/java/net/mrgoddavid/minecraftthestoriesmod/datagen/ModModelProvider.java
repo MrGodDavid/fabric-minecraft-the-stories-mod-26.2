@@ -6,8 +6,6 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.world.level.block.Block;
-import net.mrgoddavid.minecraftthestoriesmod.item.ModItems;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
@@ -77,6 +75,23 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(AMETHYST_SHOVEL, flatItemTemplate);
         itemModelGenerators.generateSpear(AMETHYST_SPEAR);
         itemModelGenerators.generateFlatItem(AMETHYST_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(EMERALD_SPEAR);
         itemModelGenerators.generateFlatItem(EMERALD_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RUBY_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RUBY_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RUBY_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RUBY_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(RUBY_SPEAR);
+        itemModelGenerators.generateFlatItem(RUBY_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(TOPAZ_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(TOPAZ_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(TOPAZ_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(TOPAZ_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(TOPAZ_SPEAR);
+        itemModelGenerators.generateFlatItem(TOPAZ_SWORD, flatItemTemplate);
     }
 }
