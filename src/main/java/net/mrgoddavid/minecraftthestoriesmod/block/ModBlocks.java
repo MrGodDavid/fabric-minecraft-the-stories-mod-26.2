@@ -62,7 +62,23 @@ public class ModBlocks {
         STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     }
 
-
+    /**
+     * Registers the block (3d object/model) into vanilla Minecraft. This method first create the {@link Identifier} by
+     * utilizing the id of this mod and the name of the block. We have seen many usages. Then, we create a resource
+     * key,  with the type parameter of {@link Block}, by calling the
+     * {@link ResourceKey#create(ResourceKey, Identifier)}  method. {@link ResourceKey#create(ResourceKey, Identifier)}
+     * has two parameters. The first one is the built-in registries called {@link Registries#BLOCK}, and the second one
+     * is the identifier, which is the same we created in the first step. Next, we create an instance of {@link Block}.
+     * We first use the {@link Function} API to apply the property of the {@link BlockBehaviour} to the block. We then
+     * call the {@link ModBlocks#registerModBlockItem(String, Block)} method to finish the block-item registration.
+     * Finally, we return the registered block by calling {@link Registry#register(Registry, Identifier, Object)}, which
+     * we have seen in {@link ModBlocks#registerModBlockItem(String, Block)} method. The only difference is we pass
+     * {@code BuiltInRegistries.BLOCK} as the register of block registration.
+     *
+     * @param name     of the block.
+     * @param function from functional API in Java. Makes code more readable.
+     * @return the registered block, after finished registered the block item.
+     */
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
         Identifier blockId = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
         ResourceKey<Block> blockResourceKey = ResourceKey.create(Registries.BLOCK, blockId);
@@ -72,10 +88,19 @@ public class ModBlocks {
     }
 
     /**
-     * Registers the mod block item into vanilla Minecraft.
+     * Registers the mod block item into vanilla Minecraft. This method first creates an {@link Identifier} by calling
+     * the {@link Identifier#fromNamespaceAndPath(String, String)}, which combines the mod id and the name of the block
+     * that is registered. We then call the {@link Registry#register(Registry, Identifier, Object)}. The type parameter
+     * of the {@link Registry} is {@link Item}, and the type parameter of the value is the subclass of the type
+     * parameter of the registry. In this case, the type parameter of the value is {@link BlockItem}, which is a
+     * subclass of {@link Item}. For the {@link BlockItem}, we call the constructor by sending the block that we want
+     * to register and the property of the block. The property of the block is initialized by calling the
+     * {@link Item.Properties#useBlockDescriptionPrefix()}, which set the initial "block", and then the set the id by
+     * using a resource key which is similar to when we register mod items. The prefix of the block will be used when
+     * reading JSON files of block's model and texture files.
      *
-     * @param name
-     * @param block
+     * @param name  of the mod block item, which is the same as the block's name.
+     * @param block the instance of mod block.
      */
     private static void registerModBlockItem(String name, Block block) {
         Identifier id = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
