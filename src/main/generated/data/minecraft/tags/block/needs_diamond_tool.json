@@ -2,6 +2,8 @@
   "values": [
     "minecraft-the-stories-mod:stone_topaz_ore",
     "minecraft-the-stories-mod:deepslate_topaz_ore",
+    "minecraft-the-stories-mod:raw_diamond_block",
+    "minecraft-the-stories-mod:strong_diamond_block",
     "#minecraft-the-stories-mod:needs_emerald_tool"
   ]
 }

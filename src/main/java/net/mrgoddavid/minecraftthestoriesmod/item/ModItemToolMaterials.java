@@ -11,11 +11,15 @@ import net.mrgoddavid.minecraftthestoriesmod.tags.ModTags;
  */
 public class ModItemToolMaterials {
 
+    public static final ToolMaterial AMETHYST;
     public static final ToolMaterial EMERALD;
+    public static final ToolMaterial RUBY;
+    public static final ToolMaterial TOPAZ;
 
     static {
-        EMERALD  = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_EMERALD_TOOL, 1200, 5f, 4f, 20, ModTags.Items.EMERALD_REPAIR);
+        AMETHYST  = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_EMERALD_TOOL, 1200, 5f, 4f, 20, ModTags.Items.EMERALD_REPAIR);
+        EMERALD  = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_EMERALD_TOOL, 751, 5f, 4f, 20, ModTags.Items.EMERALD_REPAIR);
+        RUBY  = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_EMERALD_TOOL, 1200, 5f, 4f, 20, ModTags.Items.EMERALD_REPAIR);
+        TOPAZ  = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_EMERALD_TOOL, 1200, 5f, 4f, 20, ModTags.Items.EMERALD_REPAIR);
     }
-
-
 }

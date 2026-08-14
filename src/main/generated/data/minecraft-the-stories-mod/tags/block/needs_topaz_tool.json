@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft-the-stories-mod:stone_ruby_ore",
+    "minecraft-the-stories-mod:deepslate_ruby_ore",
+    "minecraft-the-stories-mod:raw_topaz_block",
+    "minecraft-the-stories-mod:strong_topaz_block",
+    "#minecraft:needs_diamond_tool"
+  ]
+}

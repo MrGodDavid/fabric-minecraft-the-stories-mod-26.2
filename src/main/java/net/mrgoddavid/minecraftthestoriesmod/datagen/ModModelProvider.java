@@ -7,6 +7,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.world.level.block.Block;
+import net.mrgoddavid.minecraftthestoriesmod.item.ModItems;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
@@ -70,6 +71,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, flatItemTemplate);
 
+        itemModelGenerators.generateFlatItem(AMETHYST_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(AMETHYST_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(AMETHYST_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(AMETHYST_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(AMETHYST_SPEAR);
+        itemModelGenerators.generateFlatItem(AMETHYST_SWORD, flatItemTemplate);
         itemModelGenerators.generateFlatItem(EMERALD_SWORD, flatItemTemplate);
     }
 }

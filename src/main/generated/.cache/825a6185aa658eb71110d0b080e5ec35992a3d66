@@ -17,6 +17,12 @@ fc2bbd2e7ada501782af87e7655f569a197d2abf assets/minecraft-the-stories-mod/blocks
 d9745a0751789964238c9000e86aec44fbdc0ceb assets/minecraft-the-stories-mod/blockstates/strong_iron_block.json
 a82c34b1ff8b34ab3d2a982792b2f61c57f3bcf8 assets/minecraft-the-stories-mod/blockstates/strong_ruby_block.json
 ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blockstates/strong_topaz_block.json
+c674002008696ee8149bf16ebb589b98f48aff67 assets/minecraft-the-stories-mod/items/amethyst_axe.json
+5ea01d83593d0c60ab57f7fd3e6f578574254bae assets/minecraft-the-stories-mod/items/amethyst_hoe.json
+ec4055de9e05b8baabfdf7988060a231ef6f45f8 assets/minecraft-the-stories-mod/items/amethyst_pickaxe.json
+cb5feb18409d995f3a237593df94c3b26d8ce4a0 assets/minecraft-the-stories-mod/items/amethyst_shovel.json
+5ceb9e028e0f79a68b63961bbeeca426a72d55f7 assets/minecraft-the-stories-mod/items/amethyst_spear.json
+51c146a551e45aabfa782ce9561cfd13126c215b assets/minecraft-the-stories-mod/items/amethyst_sword.json
 c6bc8dd933f3f43f0a51cd2f47927d5bf9204206 assets/minecraft-the-stories-mod/items/deepslate_amethyst_ore.json
 f3e0f9f719cd6e65708bb767d0d698b8f84a7645 assets/minecraft-the-stories-mod/items/deepslate_ruby_ore.json
 bad9ce571de92ae01ffad325d176412291671526 assets/minecraft-the-stories-mod/items/deepslate_topaz_ore.json
@@ -73,6 +79,13 @@ d8d4d6451ba82b8ced10746e7cc003d0bcbc170f assets/minecraft-the-stories-mod/models
 701c75ab01fc71c4bc33b9b4937f23bd4c1333d5 assets/minecraft-the-stories-mod/models/block/strong_iron_block.json
 42146ec8a2372e6e8de4c380ffbd1a91c76ce1f4 assets/minecraft-the-stories-mod/models/block/strong_ruby_block.json
 938d6e80edb6d9e326df03ab1b83d6d5ed13edbf assets/minecraft-the-stories-mod/models/block/strong_topaz_block.json
+947dddffa6919c83ffd2443d5792d2b555998982 assets/minecraft-the-stories-mod/models/item/amethyst_axe.json
+d0d33537a45f157d5f76ca9fa88e99e97cd258bc assets/minecraft-the-stories-mod/models/item/amethyst_hoe.json
+7b853dc469e8f8869a085328517edb252487cbf3 assets/minecraft-the-stories-mod/models/item/amethyst_pickaxe.json
+2b69484b8fbf392b205cc51335cc943414a10bf2 assets/minecraft-the-stories-mod/models/item/amethyst_shovel.json
+13401878afc2502f3a2aa1fd717ee78044ac6734 assets/minecraft-the-stories-mod/models/item/amethyst_spear.json
+5de502a35ae86a02df2262e5c55c95267effc05b assets/minecraft-the-stories-mod/models/item/amethyst_spear_in_hand.json
+4c0ce60975bfa96fdf403de40af17182a629dd78 assets/minecraft-the-stories-mod/models/item/amethyst_sword.json
 c747c73549054540d2b1c243aa229b82b76b2d5f assets/minecraft-the-stories-mod/models/item/emerald_sword.json
 ad3f164ddaa2c0c88027b25757a0648512bf0c35 assets/minecraft-the-stories-mod/models/item/raw_amethyst.json
 8d2c9a9336160fda07413d383d7257fb8b4ebdae assets/minecraft-the-stories-mod/models/item/raw_diamond.json

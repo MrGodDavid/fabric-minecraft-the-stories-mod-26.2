@@ -56,6 +56,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(RAW_AMETHYST_BLOCK))
                 .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK));
 
+        /* =============================================================================================
+        Ranking tier:
+        (Low)                                                                                (High)
+        Wooden -> Stone -> Gold -> Iron -> Copper -> Emerald -> Diamond -> Topaz -> Ruby -> Amethyst
+        ============================================================================================= */
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .remove(ModBlocks.getResourceKey(Blocks.DIAMOND_ORE))
                 .remove(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
@@ -70,10 +75,30 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
                 .addTag(BlockTags.NEEDS_IRON_TOOL);
 
-        tag(BlockTags.NEEDS_DIAMOND_TOOL, true)
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE))
                 .add(ModBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE))
+                .add(ModBlocks.getResourceKey(RAW_DIAMOND_BLOCK))
+                .add(ModBlocks.getResourceKey(STRONG_DIAMOND_BLOCK))
                 .addTag(ModTags.Blocks.NEEDS_EMERALD_TOOL);
 
+        tag(ModTags.Blocks.NEEDS_TOPAZ_TOOL)
+                .add(ModBlocks.getResourceKey(STONE_RUBY_ORE))
+                .add(ModBlocks.getResourceKey(DEEPSLATE_RUBY_ORE))
+                .add(ModBlocks.getResourceKey(RAW_TOPAZ_BLOCK))
+                .add(ModBlocks.getResourceKey(STRONG_TOPAZ_BLOCK))
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(ModTags.Blocks.NEEDS_RUBY_TOOL)
+                .add(ModBlocks.getResourceKey(RAW_RUBY_BLOCK))
+                .add(ModBlocks.getResourceKey(STRONG_RUBY_BLOCK))
+                .add(ModBlocks.getResourceKey(STONE_AMETHYST_ORE))
+                .add(ModBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE))
+                .addTag(ModTags.Blocks.NEEDS_TOPAZ_TOOL);
+
+        tag(ModTags.Blocks.NEEDS_AMETHYST_TOOL)
+                .add(ModBlocks.getResourceKey(RAW_AMETHYST_BLOCK))
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK))
+                .addTag(ModTags.Blocks.NEEDS_RUBY_TOOL);
     }
 }

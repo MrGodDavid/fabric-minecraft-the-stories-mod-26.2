@@ -52,6 +52,12 @@ public class CreativeModeTabs {
                         output.accept(STRONG_GOLD);
                         output.accept(STRONG_GOLD_INGOT);
 
+                        output.accept(AMETHYST_AXE);
+                        output.accept(AMETHYST_HOE);
+                        output.accept(AMETHYST_PICKAXE);
+                        output.accept(AMETHYST_SHOVEL);
+                        output.accept(AMETHYST_SPEAR);
+                        output.accept(AMETHYST_SWORD);
                         output.accept(EMERALD_SWORD);
                     })
                     .build()

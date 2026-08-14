@@ -6,8 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 
 import java.util.function.Function;
@@ -46,9 +45,26 @@ public class ModItems {
     public static final Item STRONG_TOPAZ = registerItem("strong_topaz", Item::new);
     public static final Item STRONG_TOPAZ_INGOT = registerItem("strong_topaz_ingot", Item::new);
 
-    // #######################################################
-    // #                     EMERALD TOOLS                   #
-    // #######################################################
+    // #################################################################################################################
+    // #                                                AMETHYST TOOLS                                                #
+    // #################################################################################################################
+    public static final Item AMETHYST_AXE = registerItem("amethyst_axe", properties ->
+            new AxeItem(ModItemToolMaterials.AMETHYST, 6f, -3.2f, properties));
+    public static final Item AMETHYST_HOE = registerItem("amethyst_hoe", properties ->
+            new HoeItem(ModItemToolMaterials.AMETHYST, 0f, -3.0f, properties));
+    public static final Item AMETHYST_PICKAXE = registerItem("amethyst_pickaxe", properties ->
+            new Item(properties.pickaxe(ModItemToolMaterials.AMETHYST, 1f, -2.8f)));
+    public static final Item AMETHYST_SHOVEL = registerItem("amethyst_shovel", properties ->
+            new ShovelItem(ModItemToolMaterials.AMETHYST, 1.5f, -3.0f, properties));
+    public static final Item AMETHYST_SPEAR = registerItem("amethyst_spear", properties ->
+            new Item(properties.spear(ModItemToolMaterials.AMETHYST,
+                    0.95f, 0.95f, 0.6f, 2.5f, 11.0f, 6.75f, 5.1f, 11.25f, 4.6f)));
+    public static final Item AMETHYST_SWORD = registerItem("amethyst_sword", properties ->
+            new Item(properties.sword(ModItemToolMaterials.AMETHYST, 3.0f, -2.4f)));
+
+    // #################################################################################################################
+    // #                                                EMERALD TOOLS                                                  #
+    // #################################################################################################################
     public static final Item EMERALD_SWORD = registerItem("emerald_sword", properties ->
             new Item(properties.sword(ModItemToolMaterials.EMERALD, 3.0f, -2.4f)));
 
