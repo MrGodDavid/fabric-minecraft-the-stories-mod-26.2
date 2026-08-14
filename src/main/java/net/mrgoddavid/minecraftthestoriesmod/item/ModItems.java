@@ -47,6 +47,16 @@ public class ModItems {
     public static final Item STRONG_TOPAZ_INGOT = registerItem("strong_topaz_ingot", Item::new);
 
     /**
+     * Gets the resource key of the mod item.
+     *
+     * @param item mod item.
+     * @return the resource key of the mod item.
+     */
+    public static ResourceKey<Item> getResourceKey(Item item) {
+        return BuiltInRegistries.ITEM.getResourceKey(item).get();
+    }
+
+    /**
      * Helper method when we register every new mod item to vanilla Minecraft. Obviously, this method returns an
      * {@link Item}. We first calls the {@link Registry#register(Registry, Identifier, Object)} to register our item
      * into core project, so Fabric can add this item into Minecraft.

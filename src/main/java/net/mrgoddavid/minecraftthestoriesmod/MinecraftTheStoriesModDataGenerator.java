@@ -2,6 +2,8 @@ package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.ModBlockLootTableProvider;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.ModBlockTagsProvider;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.ModModelProvider;
 
 /**
@@ -18,5 +20,7 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
         pack.addProvider(ModModelProvider::new);
+        pack.addProvider(ModBlockTagsProvider::new);
+        pack.addProvider(ModBlockLootTableProvider::new);
     }
 }

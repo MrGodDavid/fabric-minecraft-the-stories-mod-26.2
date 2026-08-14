@@ -1,0 +1,64 @@
+package net.mrgoddavid.minecraftthestoriesmod.datagen;
+
+import net.fabricmc.fabric.api.block.v1.FabricBlock;
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+
+import java.util.concurrent.CompletableFuture;
+
+import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
+import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
+
+/**
+ * Defines the loot table of the mod blocks.
+ *
+ * @author Mr. GodDavid
+ * @since 8/14/2026
+ */
+public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
+
+    public ModBlockLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(packOutput, registriesFuture);
+    }
+
+    /**
+     * Implement this method to add block drops.
+     *
+     * <p>Use the range of {@link BlockLootSubProvider#add} methods to generate block drops.
+     */
+    @Override
+    public void generate() {
+
+        dropSelf(RAW_TOPAZ_BLOCK);
+
+        // ores
+        add(STONE_TOPAZ_ORE, createMultipleOreDrops(STONE_TOPAZ_ORE, RAW_TOPAZ, 1.0f, 2.0f));
+        add(DEEPSLATE_TOPAZ_ORE, createMultipleOreDrops(DEEPSLATE_TOPAZ_ORE, RAW_TOPAZ, 1.0f, 3.0f));
+    }
+
+    public LootTable.Builder createMultipleOreDrops(final Block block, Item item, float minDrops, float maxDrops) {
+        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchDispatchTable(block, this.applyExplosionDecay(
+                        block, LootItem.lootTableItem(item)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
+                                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
+    }
+}
