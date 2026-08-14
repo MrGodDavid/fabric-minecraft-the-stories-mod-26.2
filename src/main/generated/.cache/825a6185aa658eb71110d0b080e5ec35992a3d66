@@ -20,6 +20,7 @@ ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blocks
 c6bc8dd933f3f43f0a51cd2f47927d5bf9204206 assets/minecraft-the-stories-mod/items/deepslate_amethyst_ore.json
 f3e0f9f719cd6e65708bb767d0d698b8f84a7645 assets/minecraft-the-stories-mod/items/deepslate_ruby_ore.json
 bad9ce571de92ae01ffad325d176412291671526 assets/minecraft-the-stories-mod/items/deepslate_topaz_ore.json
+b7afb766ab9803b61f56213b39b751cc663a9cb7 assets/minecraft-the-stories-mod/items/emerald_sword.json
 33e6cacf1aa9f0f586cc15690f8b55228e750cbc assets/minecraft-the-stories-mod/items/raw_amethyst.json
 d4aec1e7402b3bd34b93ed6bc6469f2f91245d36 assets/minecraft-the-stories-mod/items/raw_amethyst_block.json
 38722d71fb8a759581aa80b31f8db7a0ccc9e8fe assets/minecraft-the-stories-mod/items/raw_diamond.json
@@ -72,6 +73,7 @@ d8d4d6451ba82b8ced10746e7cc003d0bcbc170f assets/minecraft-the-stories-mod/models
 701c75ab01fc71c4bc33b9b4937f23bd4c1333d5 assets/minecraft-the-stories-mod/models/block/strong_iron_block.json
 42146ec8a2372e6e8de4c380ffbd1a91c76ce1f4 assets/minecraft-the-stories-mod/models/block/strong_ruby_block.json
 938d6e80edb6d9e326df03ab1b83d6d5ed13edbf assets/minecraft-the-stories-mod/models/block/strong_topaz_block.json
+c747c73549054540d2b1c243aa229b82b76b2d5f assets/minecraft-the-stories-mod/models/item/emerald_sword.json
 ad3f164ddaa2c0c88027b25757a0648512bf0c35 assets/minecraft-the-stories-mod/models/item/raw_amethyst.json
 8d2c9a9336160fda07413d383d7257fb8b4ebdae assets/minecraft-the-stories-mod/models/item/raw_diamond.json
 3038d70f8356a71a6e2bd92eaa4bfcd50884513e assets/minecraft-the-stories-mod/models/item/raw_emerald.json

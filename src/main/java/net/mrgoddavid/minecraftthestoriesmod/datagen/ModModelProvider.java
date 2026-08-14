@@ -48,26 +48,28 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        final ModelTemplate template = ModelTemplates.FLAT_ITEM;
+        final ModelTemplate flatItemTemplate = ModelTemplates.FLAT_ITEM;
 
-        itemModelGenerators.generateFlatItem(RAW_AMETHYST, template);
-        itemModelGenerators.generateFlatItem(RAW_DIAMOND, template);
-        itemModelGenerators.generateFlatItem(RAW_EMERALD, template);
-        itemModelGenerators.generateFlatItem(RAW_RUBY, template);
-        itemModelGenerators.generateFlatItem(RAW_TOPAZ, template);
-        itemModelGenerators.generateFlatItem(STRONG_AMETHYST, template);
-        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_INGOT, template);
-        itemModelGenerators.generateFlatItem(STRONG_DIAMOND, template);
-        itemModelGenerators.generateFlatItem(STRONG_DIAMOND_INGOT, template);
-        itemModelGenerators.generateFlatItem(STRONG_EMERALD, template);
-        itemModelGenerators.generateFlatItem(STRONG_EMERALD_INGOT, template);
-        itemModelGenerators.generateFlatItem(STRONG_GOLD, template);
-        itemModelGenerators.generateFlatItem(STRONG_GOLD_INGOT, template);
-        itemModelGenerators.generateFlatItem(STRONG_IRON, template);
-        itemModelGenerators.generateFlatItem(STRONG_IRON_INGOT, template);
-        itemModelGenerators.generateFlatItem(STRONG_RUBY, template);
-        itemModelGenerators.generateFlatItem(STRONG_RUBY_INGOT, template);
-        itemModelGenerators.generateFlatItem(STRONG_TOPAZ, template);
-        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, template);
+        itemModelGenerators.generateFlatItem(RAW_AMETHYST, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_DIAMOND, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_EMERALD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_RUBY, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_TOPAZ, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_INGOT, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_DIAMOND, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_DIAMOND_INGOT, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD_INGOT, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_GOLD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_GOLD_INGOT, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_IRON, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_IRON_INGOT, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_INGOT, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, flatItemTemplate);
+
+        itemModelGenerators.generateFlatItem(EMERALD_SWORD, flatItemTemplate);
     }
 }

@@ -89,7 +89,6 @@ public class ModItems {
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         Identifier id = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
         ResourceKey<Item> resourceKey = ResourceKey.create(Registries.ITEM, id);
-
         return Registry.register(
                 BuiltInRegistries.ITEM, id,
                 function.apply(new Item.Properties().setId(resourceKey))
