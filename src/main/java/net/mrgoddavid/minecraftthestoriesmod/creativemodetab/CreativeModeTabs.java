@@ -51,6 +51,8 @@ public class CreativeModeTabs {
                         output.accept(STRONG_IRON_INGOT);
                         output.accept(STRONG_GOLD);
                         output.accept(STRONG_GOLD_INGOT);
+
+                        output.accept(EMERALD_SWORD);
                     })
                     .build()
     );

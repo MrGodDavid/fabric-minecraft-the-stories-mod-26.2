@@ -46,6 +46,12 @@ public class ModItems {
     public static final Item STRONG_TOPAZ = registerItem("strong_topaz", Item::new);
     public static final Item STRONG_TOPAZ_INGOT = registerItem("strong_topaz_ingot", Item::new);
 
+    // #######################################################
+    // #                     EMERALD TOOLS                   #
+    // #######################################################
+    public static final Item EMERALD_SWORD = registerItem("emerald_sword", properties ->
+            new Item(properties.sword(ModItemToolMaterials.EMERALD, 3.0f, -2.4f)));
+
     /**
      * Gets the resource key of the mod item.
      *

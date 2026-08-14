@@ -1,7 +1,24 @@
 {
   "values": [
+    "minecraft-the-stories-mod:stone_amethyst_ore",
     "minecraft-the-stories-mod:deepslate_amethyst_ore",
+    "minecraft-the-stories-mod:raw_amethyst_block",
+    "minecraft-the-stories-mod:strong_amethyst_block",
+    "minecraft-the-stories-mod:raw_diamond_block",
+    "minecraft-the-stories-mod:strong_diamond_block",
+    "minecraft-the-stories-mod:raw_emerald_block",
+    "minecraft-the-stories-mod:strong_emerald_block",
     "minecraft-the-stories-mod:stone_topaz_ore",
-    "minecraft-the-stories-mod:deepslate_topaz_ore"
+    "minecraft-the-stories-mod:deepslate_topaz_ore",
+    "minecraft-the-stories-mod:raw_topaz_block",
+    "minecraft-the-stories-mod:strong_topaz_block",
+    "minecraft-the-stories-mod:stone_ruby_ore",
+    "minecraft-the-stories-mod:deepslate_ruby_ore",
+    "minecraft-the-stories-mod:raw_ruby_block",
+    "minecraft-the-stories-mod:strong_ruby_block",
+    "minecraft-the-stories-mod:stone_amethyst_ore",
+    "minecraft-the-stories-mod:deepslate_amethyst_ore",
+    "minecraft-the-stories-mod:raw_amethyst_block",
+    "minecraft-the-stories-mod:strong_amethyst_block"
   ]
 }

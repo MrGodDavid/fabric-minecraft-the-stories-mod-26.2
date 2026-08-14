@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.tags.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -56,12 +57,23 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK));
 
         tag(BlockTags.NEEDS_IRON_TOOL)
+                .remove(ModBlocks.getResourceKey(Blocks.DIAMOND_ORE))
+                .remove(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
+                .add(ModBlocks.getResourceKey(STRONG_IRON_BLOCK))
                 .add(ModBlocks.getResourceKey(RAW_EMERALD_BLOCK))
                 .add(ModBlocks.getResourceKey(STRONG_EMERALD_BLOCK));
 
-        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+        tag(ModTags.Blocks.NEEDS_EMERALD_TOOL)
+                .add(ModBlocks.getResourceKey(RAW_EMERALD_BLOCK))
+                .add(ModBlocks.getResourceKey(STRONG_EMERALD_BLOCK))
+                .add(ModBlocks.getResourceKey(Blocks.DIAMOND_ORE))
+                .add(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
+                .addTag(BlockTags.NEEDS_IRON_TOOL);
+
+        tag(BlockTags.NEEDS_DIAMOND_TOOL, true)
                 .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE))
-                .add(ModBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE));
+                .add(ModBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE))
+                .addTag(ModTags.Blocks.NEEDS_EMERALD_TOOL);
 
     }
 }

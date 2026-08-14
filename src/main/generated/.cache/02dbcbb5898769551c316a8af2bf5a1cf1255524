@@ -1,3 +1,5 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Tags for minecraft:block
-9b3fbbf9d7e6c9a0f185622da50b580209bb2317 data/minecraft/tags/block/mineable/pickaxe.json
-4928ab4b5cec33b5ba1d42b51cfb41152421f883 data/minecraft/tags/block/needs_diamond_tool.json
+5acc446025015e1c8363852db03fcf804b742ec1 data/minecraft-the-stories-mod/tags/block/needs_emerald_tool.json
+f1e0bc53e19492e8750851c790242d3898325c29 data/minecraft/tags/block/mineable/pickaxe.json
+0f16b0725f527eeaa188a12ae518d6efcb659efa data/minecraft/tags/block/needs_diamond_tool.json
+9ae1d37f5fad629ef82696ab177a252f66ebcde6 data/minecraft/tags/block/needs_iron_tool.json
