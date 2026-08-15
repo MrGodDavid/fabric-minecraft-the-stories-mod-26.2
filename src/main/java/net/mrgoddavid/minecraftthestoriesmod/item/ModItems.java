@@ -12,6 +12,8 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import java.util.function.Function;
 
 /**
+ * Holds all mod items.
+ *
  * @author Mr. GodDavid
  * @since 8/12/2026
  */
@@ -90,10 +92,10 @@ public class ModItems {
             new Item(properties.pickaxe(ModItemToolMaterials.RUBY, 1f, -2.8f).fireResistant()));
     public static final Item RUBY_SHOVEL = registerItem("ruby_shovel", properties ->
             new ShovelItem(ModItemToolMaterials.RUBY, 1.5f, -3.0f, properties.fireResistant()));
-    public static final Item RUBY_SPEAR = registerItem("ruby_spear", properties->
+    public static final Item RUBY_SPEAR = registerItem("ruby_spear", properties ->
             new Item(properties.spear(ModItemToolMaterials.RUBY,
                     1.15f, 1.05f, 0.55f, 2.75f, 10.0f, 6.75f, 5.1f, 9.25f, 4.6f).fireResistant()));
-    public static final Item RUBY_SWORD = registerItem("ruby_sword", properties->
+    public static final Item RUBY_SWORD = registerItem("ruby_sword", properties ->
             new Item(properties.sword(ModItemToolMaterials.RUBY, 3.0f, -2.4f).fireResistant()));
 
     // #################################################################################################################
