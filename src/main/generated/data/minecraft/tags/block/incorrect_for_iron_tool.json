@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:diamond_ore",
+    "minecraft:deepslate_diamond_ore",
+    "#minecraft:needs_diamond_tool",
+    "#minecraft-the-stories-mod:needs_topaz_tool",
+    "#minecraft-the-stories-mod:needs_ruby_tool",
+    "#minecraft-the-stories-mod:needs_amethyst_tool"
+  ]
+}

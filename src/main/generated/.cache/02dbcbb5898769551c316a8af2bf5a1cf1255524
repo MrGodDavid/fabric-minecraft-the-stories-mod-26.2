@@ -1,8 +1,14 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Tags for minecraft:block
-8b5d76a926de06351271fb195e2e9aeb6a29c018 data/minecraft-the-stories-mod/tags/block/needs_amethyst_tool.json
-5acc446025015e1c8363852db03fcf804b742ec1 data/minecraft-the-stories-mod/tags/block/needs_emerald_tool.json
-f06c76079ee01d1ba0df8d8a5ca5ec5ce788685d data/minecraft-the-stories-mod/tags/block/needs_ruby_tool.json
-79c63e7ecc800b10e4b3808a29bc90f07fed9662 data/minecraft-the-stories-mod/tags/block/needs_topaz_tool.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft-the-stories-mod/tags/block/incorrect_for_amethyst_tool.json
+306c006bb36a0fea4139522fceb8593510a3a3c2 data/minecraft-the-stories-mod/tags/block/incorrect_for_emerald_tool.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft-the-stories-mod/tags/block/incorrect_for_ruby_tool.json
+ef835cb469c0e2e1e22af566a36f3ce2f346fd45 data/minecraft-the-stories-mod/tags/block/incorrect_for_topaz_tool.json
+819e3a43e90f520bd064c06d489512fd200d34b1 data/minecraft-the-stories-mod/tags/block/needs_amethyst_tool.json
+8d65e88f25c72ab846f316f39d02b381d241a856 data/minecraft-the-stories-mod/tags/block/needs_emerald_tool.json
+1ee017761ca07ef33e32cf9fb6400268af14ebb7 data/minecraft-the-stories-mod/tags/block/needs_ruby_tool.json
+4b32ebee3952247e3cfd2d47c35435d922d40564 data/minecraft-the-stories-mod/tags/block/needs_topaz_tool.json
+5455dd7ec9aeaeb02f7a0346fb94b272a9bdb928 data/minecraft/tags/block/incorrect_for_diamond_tool.json
+47d228326bc0455c0aa404419149f38e26aad7f0 data/minecraft/tags/block/incorrect_for_iron_tool.json
 f1e0bc53e19492e8750851c790242d3898325c29 data/minecraft/tags/block/mineable/pickaxe.json
-92de6ee7990b851432df378494577217950e96b8 data/minecraft/tags/block/needs_diamond_tool.json
-9ae1d37f5fad629ef82696ab177a252f66ebcde6 data/minecraft/tags/block/needs_iron_tool.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/needs_diamond_tool.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/needs_iron_tool.json

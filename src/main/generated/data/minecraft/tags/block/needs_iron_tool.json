@@ -1,11 +1,3 @@
 {
-  "fabric:remove": [
-    "minecraft:diamond_ore",
-    "minecraft:deepslate_diamond_ore"
-  ],
-  "values": [
-    "minecraft-the-stories-mod:strong_iron_block",
-    "minecraft-the-stories-mod:raw_emerald_block",
-    "minecraft-the-stories-mod:strong_emerald_block"
-  ]
+  "values": []
 }

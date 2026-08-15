@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.item;
 
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ToolMaterial;
 import net.mrgoddavid.minecraftthestoriesmod.tags.ModTags;
 

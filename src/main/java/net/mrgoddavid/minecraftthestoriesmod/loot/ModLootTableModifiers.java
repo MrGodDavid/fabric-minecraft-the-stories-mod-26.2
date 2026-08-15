@@ -30,38 +30,80 @@ import org.jspecify.annotations.NonNull;
  */
 public class ModLootTableModifiers {
 
+    private ModLootTableModifiers() {
+        throw new IllegalAccessError("Utility class");
+    }
+
     public static void modifyLootTables(ResourceKey<LootTable> key, FabricLootTableBuilder builder,
                                         LootTableSource tableSource, HolderLookup.Provider provider) {
-        if (key.identifier().equals(Identifier.withDefaultNamespace(VanillaPaths.DIAMOND_ORE))
-                || key.identifier().equals(Identifier.withDefaultNamespace(VanillaPaths.DEEPSLATE_DIAMOND_ORE))) {
-            LootPool.Builder poolBuilder = LootPool.lootPool()
-                    .setRolls(constantOf(1.0f))
-                    .when(chanceOfDroppingIs(1.0f))
-                    .add(lootTableItem(ModItems.STRONG_DIAMOND))
-                    .apply(dropCount(1.0f, 2.0f));
-            builder.pool(poolBuilder.build());
-        }
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DIAMOND_ORE, ModItems.RAW_DIAMOND, 1.0f, 0.001f, 1.0f, 2.0f);
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DEEPSLATE_DIAMOND_ORE, ModItems.RAW_DIAMOND, 1.0f, 0.00001f, 1.0f, 2.0f);
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.EMERALD_ORE, ModItems.RAW_EMERALD, 1.0f, 0.001f, 1.0f, 2.0f);
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DEEPSLATE_EMERALD_ORE, ModItems.RAW_EMERALD, 1.0f, 0.00001f, 1.0f, 2.0f);
 
-        // This targets all ancient city chest loot tables!
-        if (BuiltInLootTables.ANCIENT_CITY.equals(key)) {
-            LootPool.Builder poolBuilder = LootPool.lootPool()
-                    .setRolls(constantOf(1.0f))
-                    .when(chanceOfDroppingIs(1.0f))
-                    .add(lootTableItem(ModItems.STRONG_AMETHYST))
-                    .apply(dropCount(1.0f, 2.0f));
-            builder.pool(poolBuilder.build());
-        }
+        modifiesVanillaStructureLootTable(key, builder, BuiltInLootTables.ANCIENT_CITY, ModItems.RAW_AMETHYST, 1.0f, 0.01f, 1.0f, 5.0f);
 
-        // This targets creeper's loot table.
-        if (key.identifier().equals(Identifier.withDefaultNamespace(VanillaPaths.CREEPER))) {
+        modifiesVanillaMobLootTable(key, builder, VanillaPaths.CREEPER, ModItems.RAW_RUBY, 1.0f, 1.0f, 1.0f, 2.0f);
+    }
+
+    private static void modifiesVanillaMobLootTable(ResourceKey<LootTable> key,
+                                                    FabricLootTableBuilder builder,
+                                                    final String targetMobPath,
+                                                    Item addedLoot,
+                                                    final float maxNumOfItems,
+                                                    final float probability,
+                                                    final float minimumCountOfDropping,
+                                                    final float maximumCountOfDropping
+    ) {
+        if (addedLoot != null && key.identifier().equals(Identifier.withDefaultNamespace(targetMobPath))) {
             LootPool.Builder poolBuilder = LootPool.lootPool()
-                    .setRolls(constantOf(1.0f))
-                    .when(chanceOfDroppingIs(1.0f))
-                    .add(lootTableItem(ModItems.RAW_RUBY))
-                    .apply(dropCount(2.0f, 10.0f));
+                    .setRolls(constantOf(maxNumOfItems))
+                    .when(chanceOfDroppingIs(probability))
+                    .add(lootTableItem(addedLoot))
+                    .apply(dropCount(minimumCountOfDropping, maximumCountOfDropping));
             builder.pool(poolBuilder.build());
         }
     }
+
+    private static void modifiesVanillaStructureLootTable(ResourceKey<LootTable> key,
+                                                          FabricLootTableBuilder builder,
+                                                          ResourceKey<LootTable> targetStructure,
+                                                          Item addedLoot,
+                                                          final float maxNumOfItems,
+                                                          final float probability,
+                                                          final float minimumCountOfDropping,
+                                                          final float maximumCountOfDropping
+    ) {
+        // This targets all ancient city chest loot tables!
+        if (targetStructure.equals(key)) {
+            LootPool.Builder poolBuilder = LootPool.lootPool()
+                    .setRolls(constantOf(maxNumOfItems))
+                    .when(chanceOfDroppingIs(probability))
+                    .add(lootTableItem(addedLoot))
+                    .apply(dropCount(minimumCountOfDropping, maximumCountOfDropping));
+            builder.pool(poolBuilder.build());
+        }
+    }
+
+    private static void modifiesVanillaBlockLootTable(ResourceKey<LootTable> key,
+                                                      FabricLootTableBuilder builder,
+                                                      final String targetBlockPath,
+                                                      Item addedLoot,
+                                                      final float maxNumOfItems,
+                                                      final float probability,
+                                                      final float minimumCountOfDropping,
+                                                      final float maximumCountOfDropping
+    ) {
+        if (addedLoot != null && key.identifier().equals(Identifier.withDefaultNamespace(targetBlockPath))) {
+            LootPool.Builder poolBuilder = LootPool.lootPool()
+                    .setRolls(constantOf(maxNumOfItems))
+                    .when(chanceOfDroppingIs(probability))
+                    .add(lootTableItem(addedLoot))
+                    .apply(dropCount(minimumCountOfDropping, maximumCountOfDropping));
+            builder.pool(poolBuilder.build());
+        }
+    }
+
 
     private static LootItemFunction dropCount(final float minimumCount, final float maximumCount) {
         return SetItemCountFunction.setCount(UniformGenerator.between(minimumCount, maximumCount)).build();

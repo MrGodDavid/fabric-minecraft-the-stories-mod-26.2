@@ -56,49 +56,74 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(RAW_AMETHYST_BLOCK))
                 .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK));
 
+        // ######################################### NO TOUCHING ZONE START ##############################################
+
         /* =============================================================================================
         Ranking tier:
         (Low)                                                                                (High)
         Wooden -> Stone -> Gold -> Iron -> Copper -> Emerald -> Diamond -> Topaz -> Ruby -> Amethyst
         ============================================================================================= */
-        tag(BlockTags.NEEDS_IRON_TOOL)
-                .remove(ModBlocks.getResourceKey(Blocks.DIAMOND_ORE))
-                .remove(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
-                .add(ModBlocks.getResourceKey(STRONG_IRON_BLOCK))
-                .add(ModBlocks.getResourceKey(RAW_EMERALD_BLOCK))
-                .add(ModBlocks.getResourceKey(STRONG_EMERALD_BLOCK));
+
+        // This bastard took me 4 hours. 4 hours of painfully debugging.
+        // Even ChatGPT was confused of my code, LMFAO.
+        // No matter how curious you are, do not touch these code and the all the JSON files in data/minecraft/block/ and
+        // data/minecraft-the-stories-mod/tag/block/.
+        // May my lord protect any person from touching these lines of code.
+        // I wrote the mechanism on my notebook, so I won't forget the logic behind it. Hopefully I will still be able to
+        // figure out my notes in the future.
+        tag(BlockTags.NEEDS_IRON_TOOL);
 
         tag(ModTags.Blocks.NEEDS_EMERALD_TOOL)
-                .add(ModBlocks.getResourceKey(RAW_EMERALD_BLOCK))
-                .add(ModBlocks.getResourceKey(STRONG_EMERALD_BLOCK))
                 .add(ModBlocks.getResourceKey(Blocks.DIAMOND_ORE))
                 .add(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
                 .addTag(BlockTags.NEEDS_IRON_TOOL);
 
-        tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE))
-                .add(ModBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE))
-                .add(ModBlocks.getResourceKey(RAW_DIAMOND_BLOCK))
-                .add(ModBlocks.getResourceKey(STRONG_DIAMOND_BLOCK))
-                .addTag(ModTags.Blocks.NEEDS_EMERALD_TOOL);
+        tag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.NEEDS_TOPAZ_TOOL)
+                .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE))
+                .add(ModBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE))
                 .add(ModBlocks.getResourceKey(STONE_RUBY_ORE))
                 .add(ModBlocks.getResourceKey(DEEPSLATE_RUBY_ORE))
-                .add(ModBlocks.getResourceKey(RAW_TOPAZ_BLOCK))
-                .add(ModBlocks.getResourceKey(STRONG_TOPAZ_BLOCK))
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.NEEDS_RUBY_TOOL)
-                .add(ModBlocks.getResourceKey(RAW_RUBY_BLOCK))
-                .add(ModBlocks.getResourceKey(STRONG_RUBY_BLOCK))
+                .add(ModBlocks.getResourceKey(STONE_RUBY_ORE))
+                .add(ModBlocks.getResourceKey(DEEPSLATE_RUBY_ORE))
                 .add(ModBlocks.getResourceKey(STONE_AMETHYST_ORE))
                 .add(ModBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE))
-                .addTag(ModTags.Blocks.NEEDS_TOPAZ_TOOL);
+                .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE));
 
         tag(ModTags.Blocks.NEEDS_AMETHYST_TOOL)
-                .add(ModBlocks.getResourceKey(RAW_AMETHYST_BLOCK))
-                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK))
-                .addTag(ModTags.Blocks.NEEDS_RUBY_TOOL);
+                .add(ModBlocks.getResourceKey(STONE_AMETHYST_ORE))
+                .add(ModBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE))
+                .add(ModBlocks.getResourceKey(STONE_RUBY_ORE));
+
+        tag(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .add(ModBlocks.getResourceKey(Blocks.DIAMOND_ORE))
+                .add(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_TOPAZ_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_RUBY_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_EMERALD_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_TOPAZ_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_RUBY_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
+
+        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_RUBY_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_TOPAZ_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_RUBY_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_AMETHYST_TOOL);
+
+        // ######################################### NO TOUCHING ZONE END ################################################
+
     }
 }

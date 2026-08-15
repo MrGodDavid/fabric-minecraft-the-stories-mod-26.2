@@ -17,6 +17,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
@@ -57,17 +58,21 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(STRONG_RUBY_BLOCK);
         dropSelf(STRONG_AMETHYST_BLOCK);
 
-        // ores
+        // ores - custom mod blocks ONLY.
+        add(STONE_AMETHYST_ORE, createMultipleOreDrops(STONE_AMETHYST_ORE, RAW_AMETHYST, 1.0f, 2.0f));
+        add(STONE_RUBY_ORE, createMultipleOreDrops(STONE_RUBY_ORE, RAW_RUBY, 1.0f, 2.0f));
         add(STONE_TOPAZ_ORE, createMultipleOreDrops(STONE_TOPAZ_ORE, RAW_TOPAZ, 1.0f, 2.0f));
-        add(DEEPSLATE_TOPAZ_ORE, createMultipleOreDrops(DEEPSLATE_TOPAZ_ORE, RAW_TOPAZ, 1.0f, 3.0f));
+        add(DEEPSLATE_TOPAZ_ORE, createMultipleOreDrops(DEEPSLATE_AMETHYST_ORE, RAW_TOPAZ, 1.0f, 3.0f));
+        add(DEEPSLATE_RUBY_ORE, createMultipleOreDrops(DEEPSLATE_RUBY_ORE, RAW_TOPAZ, 1.0f, 3.0f));
+        add(DEEPSLATE_AMETHYST_ORE, createMultipleOreDrops(DEEPSLATE_TOPAZ_ORE, RAW_AMETHYST, 1.0f, 3.0f));
     }
 
     public LootTable.Builder createMultipleOreDrops(final Block block, Item item, float minDrops, float maxDrops) {
         HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         return this.createSilkTouchDispatchTable(block, this.applyExplosionDecay(
-                        block, LootItem.lootTableItem(item)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-                                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                block, LootItem.lootTableItem(item)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
+                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
                 )
         );
     }

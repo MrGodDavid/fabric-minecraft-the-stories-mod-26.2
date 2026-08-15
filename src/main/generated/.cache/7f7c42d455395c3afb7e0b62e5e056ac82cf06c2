@@ -1,4 +1,19 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Block Loot Tables
-0402adc3bb2555df17d8c799fb06c37b945c3799 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_topaz_ore.json
+1c72b980ada967fec28385905b1ac8546691fe6e data/minecraft-the-stories-mod/loot_table/blocks/deepslate_amethyst_ore.json
+27760f15a61f7b7940bf13f7ad9eb47ad379149d data/minecraft-the-stories-mod/loot_table/blocks/deepslate_ruby_ore.json
+2a48fcf9e6267151703192fd3ff27edfac8f7ff5 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_topaz_ore.json
+5ca9cbe4bb67cc745c483871b818d3e0aab35442 data/minecraft-the-stories-mod/loot_table/blocks/raw_amethyst_block.json
+a332b06dfa2c1828ebb42f4a9095d5a2a6d27531 data/minecraft-the-stories-mod/loot_table/blocks/raw_diamond_block.json
+b80df17f07d941e161079205daa56c034d6a7a6c data/minecraft-the-stories-mod/loot_table/blocks/raw_emerald_block.json
+a114ba1ca7e9268b25df96e3bb15b4ce7217c8b5 data/minecraft-the-stories-mod/loot_table/blocks/raw_ruby_block.json
 9a0b56555b88c5b1baf8c2d79e6add803b211059 data/minecraft-the-stories-mod/loot_table/blocks/raw_topaz_block.json
+2cf078fd20990966769d7435721bb3521e30fdc3 data/minecraft-the-stories-mod/loot_table/blocks/stone_amethyst_ore.json
+823edf215d053acb460d96063949dc650f7a7e4d data/minecraft-the-stories-mod/loot_table/blocks/stone_ruby_ore.json
 b13d9213c8b651d20b9c728b5c9ba5ea2af33f30 data/minecraft-the-stories-mod/loot_table/blocks/stone_topaz_ore.json
+a0c837b40a8b6f2535587d2716c206392c1f835b data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_block.json
+171c8ac6414372cef09debffda7af0aaebfa4e7e data/minecraft-the-stories-mod/loot_table/blocks/strong_diamond_block.json
+67cb9512fb5452827047b838ea62fd67b97e9cbb data/minecraft-the-stories-mod/loot_table/blocks/strong_emerald_block.json
+d0bf403b39045d0115c12c4a0077b957cb68579b data/minecraft-the-stories-mod/loot_table/blocks/strong_gold_block.json
+5efb2506223552d5204acfddbf133e18a2db7405 data/minecraft-the-stories-mod/loot_table/blocks/strong_iron_block.json
+8a34afc50ea520ef148a4abcb6473924cc51c0da data/minecraft-the-stories-mod/loot_table/blocks/strong_ruby_block.json
+011b8262cff2bf1d10628cc7a4d7b732952ed731 data/minecraft-the-stories-mod/loot_table/blocks/strong_topaz_block.json
