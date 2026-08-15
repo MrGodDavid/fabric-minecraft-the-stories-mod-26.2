@@ -60,11 +60,11 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
 
         // ores - custom mod blocks ONLY.
         add(STONE_AMETHYST_ORE, createMultipleOreDrops(STONE_AMETHYST_ORE, RAW_AMETHYST, 1.0f, 2.0f));
+        add(DEEPSLATE_AMETHYST_ORE, createMultipleOreDrops(DEEPSLATE_TOPAZ_ORE, RAW_AMETHYST, 1.0f, 3.0f));
         add(STONE_RUBY_ORE, createMultipleOreDrops(STONE_RUBY_ORE, RAW_RUBY, 1.0f, 2.0f));
+        add(DEEPSLATE_RUBY_ORE, createMultipleOreDrops(DEEPSLATE_RUBY_ORE, RAW_RUBY, 1.0f, 3.0f));
         add(STONE_TOPAZ_ORE, createMultipleOreDrops(STONE_TOPAZ_ORE, RAW_TOPAZ, 1.0f, 2.0f));
         add(DEEPSLATE_TOPAZ_ORE, createMultipleOreDrops(DEEPSLATE_AMETHYST_ORE, RAW_TOPAZ, 1.0f, 3.0f));
-        add(DEEPSLATE_RUBY_ORE, createMultipleOreDrops(DEEPSLATE_RUBY_ORE, RAW_TOPAZ, 1.0f, 3.0f));
-        add(DEEPSLATE_AMETHYST_ORE, createMultipleOreDrops(DEEPSLATE_TOPAZ_ORE, RAW_AMETHYST, 1.0f, 3.0f));
     }
 
     public LootTable.Builder createMultipleOreDrops(final Block block, Item item, float minDrops, float maxDrops) {

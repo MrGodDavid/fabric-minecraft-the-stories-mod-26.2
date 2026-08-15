@@ -39,7 +39,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
     protected void addTags(HolderLookup.@NonNull Provider registries) {
 
         tag(ItemTags.AXES)
-                .add(ModItems.getResourceKey(AMETHYST_AXE))
+                .add(ModItems.getResourceKey(STRONG_AMETHYST_AXE))
                 .add(ModItems.getResourceKey(EMERALD_AXE))
                 .add(ModItems.getResourceKey(RUBY_AXE))
                 .add(ModItems.getResourceKey(TOPAZ_AXE));

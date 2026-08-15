@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.ModBlockLootTableProvider;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.ModBlockTagsProvider;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.ModModelProvider;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.ModRecipeProvider;
 
 /**
  * Generates all JSON files for mod that can be used in vanilla Minecraft.
@@ -21,6 +22,7 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
 
         pack.addProvider(ModModelProvider::new);
         pack.addProvider(ModBlockTagsProvider::new);
+        pack.addProvider(ModRecipeProvider::new);
         pack.addProvider(ModBlockLootTableProvider::new);
     }
 }

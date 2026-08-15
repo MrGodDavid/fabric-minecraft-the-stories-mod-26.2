@@ -69,7 +69,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, flatItemTemplate);
 
-        itemModelGenerators.generateFlatItem(AMETHYST_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_AXE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(AMETHYST_HOE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(AMETHYST_PICKAXE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(AMETHYST_SHOVEL, flatItemTemplate);

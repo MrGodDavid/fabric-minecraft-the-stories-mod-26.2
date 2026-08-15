@@ -1,6 +1,6 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Block Loot Tables
 1c72b980ada967fec28385905b1ac8546691fe6e data/minecraft-the-stories-mod/loot_table/blocks/deepslate_amethyst_ore.json
-27760f15a61f7b7940bf13f7ad9eb47ad379149d data/minecraft-the-stories-mod/loot_table/blocks/deepslate_ruby_ore.json
+d902a89a998755b17614d4d535fa454c28971c10 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_ruby_ore.json
 2a48fcf9e6267151703192fd3ff27edfac8f7ff5 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_topaz_ore.json
 5ca9cbe4bb67cc745c483871b818d3e0aab35442 data/minecraft-the-stories-mod/loot_table/blocks/raw_amethyst_block.json
 a332b06dfa2c1828ebb42f4a9095d5a2a6d27531 data/minecraft-the-stories-mod/loot_table/blocks/raw_diamond_block.json
