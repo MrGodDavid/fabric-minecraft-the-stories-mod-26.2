@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 150,
+  "experience": 0.5,
+  "group": "amethyst",
+  "ingredient": "minecraft-the-stories-mod:stone_amethyst_ore",
+  "result": {
+    "id": "minecraft-the-stories-mod:raw_strong_amethyst"
+  }
+}

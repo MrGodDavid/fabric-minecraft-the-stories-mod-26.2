@@ -51,152 +51,152 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .requires(STRONG_IRON_BLOCK)
                         .unlockedBy(getHasName(STRONG_IRON_INGOT), has(STRONG_IRON_BLOCK))
                         .group("strong_iron")
-                        .save(output);
+                        .save(output, "strong_iron_ingot_from_strong_iron_block");
 
                 // #################################################################################################################
                 // #                                        TOPAZ MATERIAL RECIPES                                                 #
                 // #################################################################################################################
                 List<ItemLike> TOPAZ_SMELTABLE = List.of(STONE_TOPAZ_ORE, DEEPSLATE_TOPAZ_ORE);
-                oreSmelting(TOPAZ_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_TOPAZ, 0.25f, 200, "topaz");
-                oreBlasting(TOPAZ_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_TOPAZ, 0.25f, 100, "topaz");
-                nineBlockStorageRecipes(RecipeCategory.MISC, RAW_TOPAZ, RecipeCategory.BUILDING_BLOCKS, RAW_TOPAZ_BLOCK);
+                oreSmelting(TOPAZ_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_STRONG_TOPAZ, 0.25f, 200, "topaz");
+                oreBlasting(TOPAZ_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_STRONG_TOPAZ, 0.25f, 100, "topaz");
+                nineBlockStorageRecipes(RecipeCategory.MISC, RAW_STRONG_TOPAZ, RecipeCategory.BUILDING_BLOCKS, RAW_STRONG_TOPAZ_BLOCK);
                 nineBlockStorageRecipes(RecipeCategory.MISC, STRONG_TOPAZ_INGOT, RecipeCategory.BUILDING_BLOCKS, STRONG_TOPAZ_BLOCK);
-                shapeless(RecipeCategory.MISC, RAW_TOPAZ, 9)
-                        .requires(RAW_TOPAZ_BLOCK)
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
+                shapeless(RecipeCategory.MISC, RAW_STRONG_TOPAZ, 9)
+                        .requires(RAW_STRONG_TOPAZ_BLOCK)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
                         .group("topaz")
-                        .save(output);
+                        .save(output, "raw_strong_topaz_from_raw_strong_topaz_block");
                 shapeless(RecipeCategory.MISC, STRONG_TOPAZ_INGOT, 9)
                         .requires(STRONG_TOPAZ_BLOCK)
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
                         .group("topaz")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, TOPAZ_AXE)
+                        .save(output, "strong_topaz_ingot_from_strong_iron_block");
+                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_AXE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_TOPAZ_INGOT)
                         .pattern("XX")
                         .pattern("X#")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .group("topaz")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, TOPAZ_HOE)
+                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_HOE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_TOPAZ_INGOT)
                         .pattern("XX")
                         .pattern(" #")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .group("topaz")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, TOPAZ_PICKAXE)
+                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_PICKAXE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_TOPAZ_INGOT)
                         .pattern("XXX")
                         .pattern(" # ")
                         .pattern(" # ")
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .group("topaz")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, TOPAZ_SHOVEL)
+                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_SHOVEL)
                         .define('#', Items.STICK)
                         .define('X', STRONG_TOPAZ_INGOT)
                         .pattern("X")
                         .pattern("#")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .group("topaz")
                         .save(output);
-                shaped(RecipeCategory.COMBAT, TOPAZ_SPEAR)
+                shaped(RecipeCategory.COMBAT, STRONG_TOPAZ_SPEAR)
                         .define('#', Items.STICK)
                         .define('X', STRONG_TOPAZ_INGOT)
                         .pattern("  X")
                         .pattern(" # ")
                         .pattern("#  ")
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .group("topaz")
                         .save(output);
-                shaped(RecipeCategory.COMBAT, TOPAZ_SWORD)
+                shaped(RecipeCategory.COMBAT, STRONG_TOPAZ_SWORD)
                         .define('#', Items.STICK)
                         .define('X', STRONG_TOPAZ_INGOT)
                         .pattern("X")
                         .pattern("X")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_TOPAZ), has(RAW_TOPAZ))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .group("topaz")
                         .save(output);
 
                 // #################################################################################################################
                 // #                                           RUBY MATERIAL RECIPES                                               #
                 // #################################################################################################################
                 List<ItemLike> RUBY_SMELTABLE = List.of(STONE_RUBY_ORE, DEEPSLATE_RUBY_ORE);
-                oreSmelting(RUBY_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_RUBY, 0.25f, 200, "topaz");
-                oreBlasting(RUBY_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_RUBY, 0.25f, 100, "topaz");
-                nineBlockStorageRecipes(RecipeCategory.MISC, RAW_RUBY, RecipeCategory.BUILDING_BLOCKS, RAW_RUBY_BLOCK);
-                nineBlockStorageRecipes(RecipeCategory.MISC, STRONG_RUBY_INGOT, RecipeCategory.BUILDING_BLOCKS, STRONG_TOPAZ_BLOCK);
-                shapeless(RecipeCategory.MISC, RAW_RUBY, 9)
-                        .requires(RAW_RUBY_BLOCK)
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_RUBY))
-                        .group("topaz")
-                        .save(output);
+                oreSmelting(RUBY_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_STRONG_RUBY, 0.25f, 200, "topaz");
+                oreBlasting(RUBY_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_STRONG_RUBY, 0.25f, 100, "topaz");
+                nineBlockStorageRecipes(RecipeCategory.MISC, RAW_STRONG_RUBY, RecipeCategory.BUILDING_BLOCKS, RAW_STRONG_RUBY_BLOCK);
+                nineBlockStorageRecipes(RecipeCategory.MISC, STRONG_RUBY_INGOT, RecipeCategory.BUILDING_BLOCKS, STRONG_RUBY_BLOCK);
+                shapeless(RecipeCategory.MISC, RAW_STRONG_RUBY, 9)
+                        .requires(RAW_STRONG_RUBY_BLOCK)
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
+                        .group("ruby")
+                        .save(output, "raw_strong_ruby_from_strong_raw_ruby_block");
                 shapeless(RecipeCategory.MISC, STRONG_RUBY_INGOT, 9)
                         .requires(STRONG_RUBY_BLOCK)
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_RUBY))
-                        .group("topaz")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, RUBY_AXE)
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
+                        .group("ruby")
+                        .save(output, "strong_ruby_ingot_from_strong_raw_ruby_block");
+                shaped(RecipeCategory.TOOLS, STRONG_RUBY_AXE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_RUBY_INGOT)
                         .pattern("XX")
                         .pattern("X#")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_RUBY))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
+                        .group("ruby")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, RUBY_HOE)
+                shaped(RecipeCategory.TOOLS, STRONG_RUBY_HOE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_RUBY_INGOT)
                         .pattern("XX")
                         .pattern(" #")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_RUBY))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
+                        .group("ruby")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, RUBY_PICKAXE)
+                shaped(RecipeCategory.TOOLS, STRONG_RUBY_PICKAXE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_RUBY_INGOT)
                         .pattern("XXX")
                         .pattern(" # ")
                         .pattern(" # ")
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_RUBY))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
+                        .group("ruby")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, RUBY_SHOVEL)
+                shaped(RecipeCategory.TOOLS, STRONG_RUBY_SHOVEL)
                         .define('#', Items.STICK)
                         .define('X', STRONG_RUBY_INGOT)
                         .pattern("X")
                         .pattern("#")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_RUBY))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
+                        .group("ruby")
                         .save(output);
-                shaped(RecipeCategory.COMBAT, RUBY_SPEAR)
+                shaped(RecipeCategory.COMBAT, STRONG_RUBY_SPEAR)
                         .define('#', Items.STICK)
                         .define('X', STRONG_RUBY_INGOT)
                         .pattern("  X")
                         .pattern(" # ")
                         .pattern("#  ")
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_TOPAZ))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_TOPAZ))
+                        .group("ruby")
                         .save(output);
-                shaped(RecipeCategory.COMBAT, RUBY_SWORD)
+                shaped(RecipeCategory.COMBAT, STRONG_RUBY_SWORD)
                         .define('#', Items.STICK)
                         .define('X', STRONG_RUBY_INGOT)
                         .pattern("X")
                         .pattern("X")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_RUBY), has(RAW_RUBY))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
+                        .group("ruby")
                         .save(output);
 
                 // #################################################################################################################
@@ -204,20 +204,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 // #################################################################################################################
                 List<ItemLike> AMETHYST_SMELTABLE = List.of(STONE_AMETHYST_ORE, DEEPSLATE_AMETHYST_ORE);
                 // smelting amethyst ores -> raw amethyst
-                oreSmelting(AMETHYST_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_AMETHYST, 0.5f, 300, "amethyst");
-                oreBlasting(AMETHYST_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_AMETHYST, 0.5f, 150, "amethyst");
+                oreSmelting(AMETHYST_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_STRONG_AMETHYST, 0.5f, 300, "amethyst");
+                oreBlasting(AMETHYST_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, RAW_STRONG_AMETHYST, 0.5f, 150, "amethyst");
                 // 9 x RAW_AMETHYST => RAW_AMETHYST_BLOCK
                 // The first ItemLike parameter is the ingredient, and the second ItemLike parameter is the crafted item.
-                nineBlockStorageRecipes(RecipeCategory.MISC, RAW_AMETHYST, RecipeCategory.BUILDING_BLOCKS, RAW_AMETHYST_BLOCK);
+                nineBlockStorageRecipes(RecipeCategory.MISC, RAW_STRONG_AMETHYST, RecipeCategory.BUILDING_BLOCKS, RAW_STRONG_AMETHYST_BLOCK);
                 nineBlockStorageRecipes(RecipeCategory.MISC, STRONG_AMETHYST_INGOT, RecipeCategory.BUILDING_BLOCKS, STRONG_AMETHYST_BLOCK);
-                shapeless(RecipeCategory.MISC, RAW_AMETHYST, 9)
-                        .requires(RAW_AMETHYST_BLOCK)
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                shapeless(RecipeCategory.MISC, RAW_STRONG_AMETHYST, 9)
+                        .requires(RAW_STRONG_AMETHYST_BLOCK)
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output, "raw_amethyst_from_raw_amethyst_block");
                 shapeless(RecipeCategory.MISC, STRONG_AMETHYST_INGOT, 9)
                         .requires(STRONG_AMETHYST_BLOCK)
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output, "strong_amethyst_ingot_from_strong_amethyst_block");
                 shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_AXE)
@@ -226,52 +226,52 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("XX")
                         .pattern("X#")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, AMETHYST_HOE)
+                shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_HOE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_AMETHYST_INGOT)
                         .pattern("XX")
                         .pattern(" #")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, AMETHYST_PICKAXE)
+                shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_PICKAXE)
                         .define('#', Items.STICK)
                         .define('X', STRONG_AMETHYST_INGOT)
                         .pattern("XXX")
                         .pattern(" # ")
                         .pattern(" # ")
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output);
-                shaped(RecipeCategory.TOOLS, AMETHYST_SHOVEL)
+                shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_SHOVEL)
                         .define('#', Items.STICK)
                         .define('X', STRONG_AMETHYST_INGOT)
                         .pattern("X")
                         .pattern("#")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output);
-                shaped(RecipeCategory.COMBAT, AMETHYST_SPEAR)
+                shaped(RecipeCategory.COMBAT, STRONG_AMETHYST_SPEAR)
                         .define('#', Items.STICK)
                         .define('X', STRONG_AMETHYST_INGOT)
                         .pattern("  X")
                         .pattern(" # ")
                         .pattern("#  ")
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output);
-                shaped(RecipeCategory.COMBAT, AMETHYST_SWORD)
+                shaped(RecipeCategory.COMBAT, STRONG_AMETHYST_SWORD)
                         .define('#', Items.STICK)
                         .define('X', STRONG_AMETHYST_INGOT)
                         .pattern("X")
                         .pattern("X")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_AMETHYST), has(RAW_AMETHYST))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output);
             }

@@ -25,11 +25,11 @@ public class ModBlocks {
     public static final Block DEEPSLATE_AMETHYST_ORE;
     public static final Block DEEPSLATE_RUBY_ORE;
     public static final Block DEEPSLATE_TOPAZ_ORE;
-    public static final Block RAW_AMETHYST_BLOCK;
-    public static final Block RAW_DIAMOND_BLOCK;
-    public static final Block RAW_EMERALD_BLOCK;
-    public static final Block RAW_RUBY_BLOCK;
-    public static final Block RAW_TOPAZ_BLOCK;
+    public static final Block RAW_STRONG_AMETHYST_BLOCK;
+    public static final Block RAW_STRONG_DIAMOND_BLOCK;
+    public static final Block RAW_STRONG_EMERALD_BLOCK;
+    public static final Block RAW_STRONG_RUBY_BLOCK;
+    public static final Block RAW_STRONG_TOPAZ_BLOCK;
     public static final Block STONE_AMETHYST_ORE;
     public static final Block STONE_RUBY_ORE;
     public static final Block STONE_TOPAZ_ORE;
@@ -45,11 +45,11 @@ public class ModBlocks {
         DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
         DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
         DEEPSLATE_TOPAZ_ORE = registerBlock("deepslate_topaz_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
-        RAW_AMETHYST_BLOCK = registerBlock("raw_amethyst_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
-        RAW_DIAMOND_BLOCK = registerBlock("raw_diamond_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        RAW_EMERALD_BLOCK = registerBlock("raw_emerald_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        RAW_RUBY_BLOCK = registerBlock("raw_ruby_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        RAW_TOPAZ_BLOCK = registerBlock("raw_topaz_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_AMETHYST_BLOCK = registerBlock("raw_strong_amethyst_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+        RAW_STRONG_DIAMOND_BLOCK = registerBlock("raw_strong_diamond_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_EMERALD_BLOCK = registerBlock("raw_strong_emerald_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_RUBY_BLOCK = registerBlock("raw_strong_ruby_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_TOPAZ_BLOCK = registerBlock("raw_strong_topaz_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
         STONE_AMETHYST_ORE = registerBlock("stone_amethyst_ore", properties -> new Block(properties.strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
         STONE_RUBY_ORE = registerBlock("stone_ruby_ore", properties -> new Block(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));

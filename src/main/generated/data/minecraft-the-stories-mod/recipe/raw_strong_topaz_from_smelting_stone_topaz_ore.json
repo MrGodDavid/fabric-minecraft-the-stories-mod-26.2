@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "experience": 0.25,
+  "group": "topaz",
+  "ingredient": "minecraft-the-stories-mod:stone_topaz_ore",
+  "result": {
+    "id": "minecraft-the-stories-mod:raw_strong_topaz"
+  }
+}

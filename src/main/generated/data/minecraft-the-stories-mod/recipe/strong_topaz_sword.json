@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "topaz",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "minecraft-the-stories-mod:strong_topaz_ingot"
+  },
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:strong_topaz_sword"
+  }
+}

@@ -32,19 +32,19 @@ public class CreativeModeTabs {
                     .icon(() -> new ItemStack(ModItems.STRONG_AMETHYST))
                     .title(Component.translatable("creative_mode_tab.mts.strong_diamond_items"))
                     .displayItems((parameters, output) -> {
-                        output.accept(RAW_AMETHYST);
+                        output.accept(RAW_STRONG_AMETHYST);
                         output.accept(STRONG_AMETHYST);
                         output.accept(STRONG_AMETHYST_INGOT);
-                        output.accept(RAW_DIAMOND);
+                        output.accept(RAW_STRONG_DIAMOND);
                         output.accept(STRONG_DIAMOND);
                         output.accept(STRONG_DIAMOND_INGOT);
-                        output.accept(RAW_EMERALD);
+                        output.accept(RAW_STRONG_EMERALD);
                         output.accept(STRONG_EMERALD);
                         output.accept(STRONG_EMERALD_INGOT);
-                        output.accept(RAW_RUBY);
+                        output.accept(RAW_STRONG_RUBY);
                         output.accept(STRONG_RUBY);
                         output.accept(STRONG_RUBY_INGOT);
-                        output.accept(RAW_TOPAZ);
+                        output.accept(RAW_STRONG_TOPAZ);
                         output.accept(STRONG_TOPAZ);
                         output.accept(STRONG_TOPAZ_INGOT);
                         output.accept(STRONG_IRON);
@@ -53,29 +53,29 @@ public class CreativeModeTabs {
                         output.accept(STRONG_GOLD_INGOT);
 
                         output.accept(STRONG_AMETHYST_AXE);
-                        output.accept(AMETHYST_HOE);
-                        output.accept(AMETHYST_PICKAXE);
-                        output.accept(AMETHYST_SHOVEL);
-                        output.accept(AMETHYST_SPEAR);
-                        output.accept(AMETHYST_SWORD);
-                        output.accept(EMERALD_AXE);
-                        output.accept(EMERALD_HOE);
-                        output.accept(EMERALD_PICKAXE);
-                        output.accept(EMERALD_SHOVEL);
-                        output.accept(EMERALD_SPEAR);
-                        output.accept(EMERALD_SWORD);
-                        output.accept(RUBY_AXE);
-                        output.accept(RUBY_HOE);
-                        output.accept(RUBY_PICKAXE);
-                        output.accept(RUBY_SHOVEL);
-                        output.accept(RUBY_SPEAR);
-                        output.accept(RUBY_SWORD);
-                        output.accept(TOPAZ_AXE);
-                        output.accept(TOPAZ_HOE);
-                        output.accept(TOPAZ_PICKAXE);
-                        output.accept(TOPAZ_SHOVEL);
-                        output.accept(TOPAZ_SPEAR);
-                        output.accept(TOPAZ_SWORD);
+                        output.accept(STRONG_AMETHYST_HOE);
+                        output.accept(STRONG_AMETHYST_PICKAXE);
+                        output.accept(STRONG_AMETHYST_SHOVEL);
+                        output.accept(STRONG_AMETHYST_SPEAR);
+                        output.accept(STRONG_AMETHYST_SWORD);
+                        output.accept(STRONG_EMERALD_AXE);
+                        output.accept(STRONG_EMERALD_HOE);
+                        output.accept(STRONG_EMERALD_PICKAXE);
+                        output.accept(STRONG_EMERALD_SHOVEL);
+                        output.accept(STRONG_EMERALD_SPEAR);
+                        output.accept(STRONG_EMERALD_SWORD);
+                        output.accept(STRONG_RUBY_AXE);
+                        output.accept(STRONG_RUBY_HOE);
+                        output.accept(STRONG_RUBY_PICKAXE);
+                        output.accept(STRONG_RUBY_SHOVEL);
+                        output.accept(STRONG_RUBY_SPEAR);
+                        output.accept(STRONG_RUBY_SWORD);
+                        output.accept(STRONG_TOPAZ_AXE);
+                        output.accept(STRONG_TOPAZ_HOE);
+                        output.accept(STRONG_TOPAZ_PICKAXE);
+                        output.accept(STRONG_TOPAZ_SHOVEL);
+                        output.accept(STRONG_TOPAZ_SPEAR);
+                        output.accept(STRONG_TOPAZ_SWORD);
                     })
                     .build()
     );
@@ -93,11 +93,11 @@ public class CreativeModeTabs {
                         output.accept(STONE_AMETHYST_ORE);
                         output.accept(STONE_RUBY_ORE);
                         output.accept(STONE_TOPAZ_ORE);
-                        output.accept(RAW_AMETHYST_BLOCK);
-                        output.accept(RAW_DIAMOND_BLOCK);
-                        output.accept(RAW_EMERALD_BLOCK);
-                        output.accept(RAW_RUBY_BLOCK);
-                        output.accept(RAW_TOPAZ_BLOCK);
+                        output.accept(RAW_STRONG_AMETHYST_BLOCK);
+                        output.accept(RAW_STRONG_DIAMOND_BLOCK);
+                        output.accept(RAW_STRONG_EMERALD_BLOCK);
+                        output.accept(RAW_STRONG_RUBY_BLOCK);
+                        output.accept(RAW_STRONG_TOPAZ_BLOCK);
                         output.accept(STRONG_AMETHYST_BLOCK);
                         output.accept(STRONG_DIAMOND_BLOCK);
                         output.accept(STRONG_EMERALD_BLOCK);

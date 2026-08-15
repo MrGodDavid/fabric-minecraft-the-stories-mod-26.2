@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_strong_ruby": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:raw_strong_ruby"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft-the-stories-mod:strong_ruby_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_strong_ruby"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft-the-stories-mod:strong_ruby_sword"
+    ]
+  }
+}

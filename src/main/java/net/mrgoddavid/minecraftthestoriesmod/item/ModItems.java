@@ -27,11 +27,11 @@ public class ModItems {
     }
 
     // Custom mod items go here.
-    public static final Item RAW_AMETHYST = registerItem("raw_strong_amethyst", Item::new);
-    public static final Item RAW_DIAMOND = registerItem("raw_strong_diamond", Item::new);
-    public static final Item RAW_EMERALD = registerItem("raw_strong_emerald", Item::new);
-    public static final Item RAW_RUBY = registerItem("raw_strong_ruby", Item::new);
-    public static final Item RAW_TOPAZ = registerItem("raw_strong_topaz", Item::new);
+    public static final Item RAW_STRONG_AMETHYST = registerItem("raw_strong_amethyst", Item::new);
+    public static final Item RAW_STRONG_DIAMOND = registerItem("raw_strong_diamond", Item::new);
+    public static final Item RAW_STRONG_EMERALD = registerItem("raw_strong_emerald", Item::new);
+    public static final Item RAW_STRONG_RUBY = registerItem("raw_strong_ruby", Item::new);
+    public static final Item RAW_STRONG_TOPAZ = registerItem("raw_strong_topaz", Item::new);
     public static final Item STRONG_AMETHYST = registerItem("strong_amethyst", Item::new);
     public static final Item STRONG_AMETHYST_INGOT = registerItem("strong_amethyst_ingot", Item::new);
     public static final Item STRONG_DIAMOND = registerItem("strong_diamond", Item::new);
@@ -52,67 +52,67 @@ public class ModItems {
     // #################################################################################################################
     public static final Item STRONG_AMETHYST_AXE = registerItem("strong_amethyst_axe", properties ->
             new AxeItem(ModItemToolMaterials.AMETHYST, 6f, -3.2f, properties.fireResistant()));
-    public static final Item AMETHYST_HOE = registerItem("strong_amethyst_hoe", properties ->
+    public static final Item STRONG_AMETHYST_HOE = registerItem("strong_amethyst_hoe", properties ->
             new HoeItem(ModItemToolMaterials.AMETHYST, 0f, -3.0f, properties.fireResistant()));
-    public static final Item AMETHYST_PICKAXE = registerItem("strong_amethyst_pickaxe", properties ->
+    public static final Item STRONG_AMETHYST_PICKAXE = registerItem("strong_amethyst_pickaxe", properties ->
             new Item(properties.pickaxe(ModItemToolMaterials.AMETHYST, 1f, -2.8f).fireResistant()));
-    public static final Item AMETHYST_SHOVEL = registerItem("strong_amethyst_shovel", properties ->
+    public static final Item STRONG_AMETHYST_SHOVEL = registerItem("strong_amethyst_shovel", properties ->
             new ShovelItem(ModItemToolMaterials.AMETHYST, 1.5f, -3.0f, properties.fireResistant()));
-    public static final Item AMETHYST_SPEAR = registerItem("strong_amethyst_spear", properties ->
+    public static final Item STRONG_AMETHYST_SPEAR = registerItem("strong_amethyst_spear", properties ->
             new Item(properties.spear(ModItemToolMaterials.AMETHYST,
                     0.95f, 0.95f, 0.6f, 2.5f, 11.0f, 6.75f, 5.1f, 8.25f, 4.6f).fireResistant()));
-    public static final Item AMETHYST_SWORD = registerItem("strong_amethyst_sword", properties ->
+    public static final Item STRONG_AMETHYST_SWORD = registerItem("strong_amethyst_sword", properties ->
             new Item(properties.sword(ModItemToolMaterials.AMETHYST, 3.0f, -2.4f).fireResistant()));
 
     // #################################################################################################################
     // #                                                EMERALD TOOLS                                                  #
     // #################################################################################################################
-    public static final Item EMERALD_AXE = registerItem("strong_emerald_axe", properties ->
+    public static final Item STRONG_EMERALD_AXE = registerItem("strong_emerald_axe", properties ->
             new AxeItem(ModItemToolMaterials.EMERALD, 6f, -3.2f, properties));
-    public static final Item EMERALD_HOE = registerItem("strong_emerald_hoe", properties ->
+    public static final Item STRONG_EMERALD_HOE = registerItem("strong_emerald_hoe", properties ->
             new HoeItem(ModItemToolMaterials.EMERALD, 0f, -3.0f, properties));
-    public static final Item EMERALD_PICKAXE = registerItem("strong_emerald_pickaxe", properties ->
+    public static final Item STRONG_EMERALD_PICKAXE = registerItem("strong_emerald_pickaxe", properties ->
             new Item(properties.pickaxe(ModItemToolMaterials.EMERALD, 1f, -2.8f)));
-    public static final Item EMERALD_SHOVEL = registerItem("strong_emerald_shovel", properties ->
+    public static final Item STRONG_EMERALD_SHOVEL = registerItem("strong_emerald_shovel", properties ->
             new ShovelItem(ModItemToolMaterials.EMERALD, 1.5f, -3.0f, properties));
-    public static final Item EMERALD_SPEAR = registerItem("strong_emerald_spear", properties ->
+    public static final Item STRONG_EMERALD_SPEAR = registerItem("strong_emerald_spear", properties ->
             new Item(properties.spear(ModItemToolMaterials.EMERALD,
                     1.0f, 1.0f, 1.0f, 2.75f, 11.5f, 6.75f, 5.1f, 11.0f, 4.6f)));
-    public static final Item EMERALD_SWORD = registerItem("strong_emerald_sword", properties ->
+    public static final Item STRONG_EMERALD_SWORD = registerItem("strong_emerald_sword", properties ->
             new Item(properties.sword(ModItemToolMaterials.EMERALD, 3.0f, -2.4f)));
 
     // #################################################################################################################
     // #                                                RUBY TOOLS                                                     #
     // #################################################################################################################
-    public static final Item RUBY_AXE = registerItem("strong_ruby_axe", properties ->
+    public static final Item STRONG_RUBY_AXE = registerItem("strong_ruby_axe", properties ->
             new AxeItem(ModItemToolMaterials.RUBY, 6f, -3.2f, properties.fireResistant()));
-    public static final Item RUBY_HOE = registerItem("strong_ruby_hoe", properties ->
+    public static final Item STRONG_RUBY_HOE = registerItem("strong_ruby_hoe", properties ->
             new HoeItem(ModItemToolMaterials.RUBY, 0f, -3.0f, properties.fireResistant()));
-    public static final Item RUBY_PICKAXE = registerItem("strong_ruby_pickaxe", properties ->
+    public static final Item STRONG_RUBY_PICKAXE = registerItem("strong_ruby_pickaxe", properties ->
             new Item(properties.pickaxe(ModItemToolMaterials.RUBY, 1f, -2.8f).fireResistant()));
-    public static final Item RUBY_SHOVEL = registerItem("strong_ruby_shovel", properties ->
+    public static final Item STRONG_RUBY_SHOVEL = registerItem("strong_ruby_shovel", properties ->
             new ShovelItem(ModItemToolMaterials.RUBY, 1.5f, -3.0f, properties.fireResistant()));
-    public static final Item RUBY_SPEAR = registerItem("strong_ruby_spear", properties ->
+    public static final Item STRONG_RUBY_SPEAR = registerItem("strong_ruby_spear", properties ->
             new Item(properties.spear(ModItemToolMaterials.RUBY,
                     1.15f, 1.05f, 0.55f, 2.75f, 10.0f, 6.75f, 5.1f, 9.25f, 4.6f).fireResistant()));
-    public static final Item RUBY_SWORD = registerItem("strong_ruby_sword", properties ->
+    public static final Item STRONG_RUBY_SWORD = registerItem("strong_ruby_sword", properties ->
             new Item(properties.sword(ModItemToolMaterials.RUBY, 3.0f, -2.4f).fireResistant()));
 
     // #################################################################################################################
     // #                                                TOPAZ TOOLS                                                    #
     // #################################################################################################################
-    public static final Item TOPAZ_AXE = registerItem("strong_topaz_axe", properties ->
+    public static final Item STRONG_TOPAZ_AXE = registerItem("strong_topaz_axe", properties ->
             new AxeItem(ModItemToolMaterials.TOPAZ, 6f, -3.2f, properties));
-    public static final Item TOPAZ_HOE = registerItem("strong_topaz_hoe", properties ->
+    public static final Item STRONG_TOPAZ_HOE = registerItem("strong_topaz_hoe", properties ->
             new HoeItem(ModItemToolMaterials.TOPAZ, 0f, -3.0f, properties));
-    public static final Item TOPAZ_PICKAXE = registerItem("strong_topaz_pickaxe", properties ->
+    public static final Item STRONG_TOPAZ_PICKAXE = registerItem("strong_topaz_pickaxe", properties ->
             new Item(properties.pickaxe(ModItemToolMaterials.TOPAZ, 1f, -2.8f)));
-    public static final Item TOPAZ_SHOVEL = registerItem("strong_topaz_shovel", properties ->
+    public static final Item STRONG_TOPAZ_SHOVEL = registerItem("strong_topaz_shovel", properties ->
             new ShovelItem(ModItemToolMaterials.TOPAZ, 1.5f, -3.0f, properties));
-    public static final Item TOPAZ_SPEAR = registerItem("strong_topaz_spear", properties ->
+    public static final Item STRONG_TOPAZ_SPEAR = registerItem("strong_topaz_spear", properties ->
             new Item(properties.spear(ModItemToolMaterials.TOPAZ,
                     1.11f, 0.85f, 0.75f, 3.0f, 11.0f, 7.0f, 3.3f, 9.75f, 4.6f)));
-    public static final Item TOPAZ_SWORD = registerItem("strong_topaz_sword", properties ->
+    public static final Item STRONG_TOPAZ_SWORD = registerItem("strong_topaz_sword", properties ->
             new Item(properties.sword(ModItemToolMaterials.TOPAZ, 3.0f, -2.4f)));
 
     /**
@@ -166,11 +166,11 @@ public class ModItems {
 
         // put the items to the creative mode tab -> ingredients tab.
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(fabricCreativeModeTabOutput -> {
-            fabricCreativeModeTabOutput.accept(RAW_AMETHYST);
-            fabricCreativeModeTabOutput.accept(RAW_DIAMOND);
-            fabricCreativeModeTabOutput.accept(RAW_EMERALD);
-            fabricCreativeModeTabOutput.accept(RAW_RUBY);
-            fabricCreativeModeTabOutput.accept(RAW_TOPAZ);
+            fabricCreativeModeTabOutput.accept(RAW_STRONG_AMETHYST);
+            fabricCreativeModeTabOutput.accept(RAW_STRONG_DIAMOND);
+            fabricCreativeModeTabOutput.accept(RAW_STRONG_EMERALD);
+            fabricCreativeModeTabOutput.accept(RAW_STRONG_RUBY);
+            fabricCreativeModeTabOutput.accept(RAW_STRONG_TOPAZ);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_INGOT);
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND);

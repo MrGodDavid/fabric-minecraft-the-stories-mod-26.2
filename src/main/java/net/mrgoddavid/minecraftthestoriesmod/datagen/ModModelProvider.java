@@ -28,11 +28,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(DEEPSLATE_AMETHYST_ORE);
         blockModelGenerators.createTrivialCube(DEEPSLATE_RUBY_ORE);
         blockModelGenerators.createTrivialCube(DEEPSLATE_TOPAZ_ORE);
-        blockModelGenerators.createTrivialCube(RAW_AMETHYST_BLOCK);
-        blockModelGenerators.createTrivialCube(RAW_DIAMOND_BLOCK);
-        blockModelGenerators.createTrivialCube(RAW_EMERALD_BLOCK);
-        blockModelGenerators.createTrivialCube(RAW_RUBY_BLOCK);
-        blockModelGenerators.createTrivialCube(RAW_TOPAZ_BLOCK);
+        blockModelGenerators.createTrivialCube(RAW_STRONG_AMETHYST_BLOCK);
+        blockModelGenerators.createTrivialCube(RAW_STRONG_DIAMOND_BLOCK);
+        blockModelGenerators.createTrivialCube(RAW_STRONG_EMERALD_BLOCK);
+        blockModelGenerators.createTrivialCube(RAW_STRONG_RUBY_BLOCK);
+        blockModelGenerators.createTrivialCube(RAW_STRONG_TOPAZ_BLOCK);
         blockModelGenerators.createTrivialCube(STONE_AMETHYST_ORE);
         blockModelGenerators.createTrivialCube(STONE_RUBY_ORE);
         blockModelGenerators.createTrivialCube(STONE_TOPAZ_ORE);
@@ -49,11 +49,11 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         final ModelTemplate flatItemTemplate = ModelTemplates.FLAT_ITEM;
 
-        itemModelGenerators.generateFlatItem(RAW_AMETHYST, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RAW_DIAMOND, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RAW_EMERALD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RAW_RUBY, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RAW_TOPAZ, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_STRONG_AMETHYST, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_STRONG_DIAMOND, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_STRONG_EMERALD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_STRONG_RUBY, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_STRONG_TOPAZ, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST_INGOT, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_DIAMOND, flatItemTemplate);
@@ -70,28 +70,28 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, flatItemTemplate);
 
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(AMETHYST_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(AMETHYST_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(AMETHYST_SHOVEL, flatItemTemplate);
-        itemModelGenerators.generateSpear(AMETHYST_SPEAR);
-        itemModelGenerators.generateFlatItem(AMETHYST_SWORD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_SHOVEL, flatItemTemplate);
-        itemModelGenerators.generateSpear(EMERALD_SPEAR);
-        itemModelGenerators.generateFlatItem(EMERALD_SWORD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RUBY_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RUBY_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RUBY_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(RUBY_SHOVEL, flatItemTemplate);
-        itemModelGenerators.generateSpear(RUBY_SPEAR);
-        itemModelGenerators.generateFlatItem(RUBY_SWORD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(TOPAZ_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(TOPAZ_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(TOPAZ_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(TOPAZ_SHOVEL, flatItemTemplate);
-        itemModelGenerators.generateSpear(TOPAZ_SPEAR);
-        itemModelGenerators.generateFlatItem(TOPAZ_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(STRONG_AMETHYST_SPEAR);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(STRONG_EMERALD_SPEAR);
+        itemModelGenerators.generateFlatItem(STRONG_EMERALD_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(STRONG_RUBY_SPEAR);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(STRONG_TOPAZ_SPEAR);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SWORD, flatItemTemplate);
     }
 }

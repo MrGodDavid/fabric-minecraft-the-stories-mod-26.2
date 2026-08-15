@@ -36,14 +36,14 @@ public class ModLootTableModifiers {
 
     public static void modifyLootTables(ResourceKey<LootTable> key, FabricLootTableBuilder builder,
                                         LootTableSource tableSource, HolderLookup.Provider provider) {
-        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DIAMOND_ORE, ModItems.RAW_DIAMOND, 1.0f, 0.01f, 1.0f, 3.0f);
-        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DEEPSLATE_DIAMOND_ORE, ModItems.RAW_DIAMOND, 1.0f, 0.001f, 1.0f, 3.0f);
-        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.EMERALD_ORE, ModItems.RAW_EMERALD, 1.0f, 0.01f, 1.0f, 3.0f);
-        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DEEPSLATE_EMERALD_ORE, ModItems.RAW_EMERALD, 1.0f, 0.001f, 1.0f, 3.0f);
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DIAMOND_ORE, ModItems.RAW_STRONG_DIAMOND, 1.0f, 0.01f, 1.0f, 3.0f);
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DEEPSLATE_DIAMOND_ORE, ModItems.RAW_STRONG_DIAMOND, 1.0f, 0.001f, 1.0f, 3.0f);
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.EMERALD_ORE, ModItems.RAW_STRONG_EMERALD, 1.0f, 0.01f, 1.0f, 3.0f);
+        modifiesVanillaBlockLootTable(key, builder, VanillaPaths.DEEPSLATE_EMERALD_ORE, ModItems.RAW_STRONG_EMERALD, 1.0f, 0.001f, 1.0f, 3.0f);
 
-        modifiesVanillaStructureLootTable(key, builder, BuiltInLootTables.ANCIENT_CITY, ModItems.RAW_AMETHYST, 1.0f, 0.01f, 1.0f, 5.0f);
+        modifiesVanillaStructureLootTable(key, builder, BuiltInLootTables.ANCIENT_CITY, ModItems.RAW_STRONG_AMETHYST, 1.0f, 0.01f, 1.0f, 5.0f);
 
-        modifiesVanillaMobLootTable(key, builder, VanillaPaths.CREEPER, ModItems.RAW_RUBY, 1.0f, 1.0f, 1.0f, 2.0f);
+        modifiesVanillaMobLootTable(key, builder, VanillaPaths.CREEPER, ModItems.RAW_STRONG_RUBY, 1.0f, 1.0f, 1.0f, 2.0f);
     }
 
     private static void modifiesVanillaMobLootTable(ResourceKey<LootTable> key,

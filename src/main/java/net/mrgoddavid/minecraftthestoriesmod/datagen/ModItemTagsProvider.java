@@ -40,38 +40,38 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(ItemTags.AXES)
                 .add(ModItems.getResourceKey(STRONG_AMETHYST_AXE))
-                .add(ModItems.getResourceKey(EMERALD_AXE))
-                .add(ModItems.getResourceKey(RUBY_AXE))
-                .add(ModItems.getResourceKey(TOPAZ_AXE));
+                .add(ModItems.getResourceKey(STRONG_EMERALD_AXE))
+                .add(ModItems.getResourceKey(STRONG_RUBY_AXE))
+                .add(ModItems.getResourceKey(STRONG_TOPAZ_AXE));
 
         tag(ItemTags.HOES)
-                .add(ModItems.getResourceKey(AMETHYST_HOE))
-                .add(ModItems.getResourceKey(EMERALD_HOE))
-                .add(ModItems.getResourceKey(RUBY_HOE))
-                .add(ModItems.getResourceKey(TOPAZ_HOE));
+                .add(ModItems.getResourceKey(STRONG_AMETHYST_HOE))
+                .add(ModItems.getResourceKey(STRONG_EMERALD_HOE))
+                .add(ModItems.getResourceKey(STRONG_RUBY_HOE))
+                .add(ModItems.getResourceKey(STRONG_TOPAZ_HOE));
 
         tag(ItemTags.PICKAXES)
-                .add(ModItems.getResourceKey(AMETHYST_PICKAXE))
-                .add(ModItems.getResourceKey(EMERALD_PICKAXE))
-                .add(ModItems.getResourceKey(RUBY_PICKAXE))
-                .add(ModItems.getResourceKey(TOPAZ_PICKAXE));
+                .add(ModItems.getResourceKey(STRONG_AMETHYST_PICKAXE))
+                .add(ModItems.getResourceKey(STRONG_EMERALD_PICKAXE))
+                .add(ModItems.getResourceKey(STRONG_RUBY_PICKAXE))
+                .add(ModItems.getResourceKey(STRONG_TOPAZ_PICKAXE));
 
         tag(ItemTags.SHOVELS)
-                .add(ModItems.getResourceKey(AMETHYST_SHOVEL))
-                .add(ModItems.getResourceKey(EMERALD_SHOVEL))
-                .add(ModItems.getResourceKey(RUBY_SHOVEL))
-                .add(ModItems.getResourceKey(TOPAZ_SHOVEL));
+                .add(ModItems.getResourceKey(STRONG_AMETHYST_SHOVEL))
+                .add(ModItems.getResourceKey(STRONG_EMERALD_SHOVEL))
+                .add(ModItems.getResourceKey(STRONG_RUBY_SHOVEL))
+                .add(ModItems.getResourceKey(STRONG_TOPAZ_SHOVEL));
 
         tag(ItemTags.SPEARS)
-                .add(ModItems.getResourceKey(AMETHYST_SPEAR))
-                .add(ModItems.getResourceKey(EMERALD_SPEAR))
-                .add(ModItems.getResourceKey(RUBY_SPEAR))
-                .add(ModItems.getResourceKey(TOPAZ_SPEAR));
+                .add(ModItems.getResourceKey(STRONG_AMETHYST_SPEAR))
+                .add(ModItems.getResourceKey(STRONG_EMERALD_SPEAR))
+                .add(ModItems.getResourceKey(STRONG_RUBY_SPEAR))
+                .add(ModItems.getResourceKey(STRONG_TOPAZ_SPEAR));
 
         tag(ItemTags.SWORDS)
-                .add(ModItems.getResourceKey(AMETHYST_SWORD))
-                .add(ModItems.getResourceKey(EMERALD_SWORD))
-                .add(ModItems.getResourceKey(RUBY_SWORD))
-                .add(ModItems.getResourceKey(TOPAZ_SWORD));
+                .add(ModItems.getResourceKey(STRONG_AMETHYST_SWORD))
+                .add(ModItems.getResourceKey(STRONG_EMERALD_SWORD))
+                .add(ModItems.getResourceKey(STRONG_RUBY_SWORD))
+                .add(ModItems.getResourceKey(STRONG_TOPAZ_SWORD));
     }
 }
