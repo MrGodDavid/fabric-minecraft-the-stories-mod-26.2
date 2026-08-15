@@ -58,11 +58,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         // ######################################### NO TOUCHING ZONE START ##############################################
 
-        /* =============================================================================================
+        /* ========================================================================================================
         Ranking tier:
-        (Low)                                                                                (High)
-        Wooden -> Stone -> Gold -> Iron -> Copper -> Emerald -> Diamond -> Topaz -> Ruby -> Amethyst
-        ============================================================================================= */
+        (Low)                                                                                             (High)
+        Wooden -> Stone -> Gold -> Iron -> Copper -> Emerald -> Diamond -> Topaz -> Ruby -> Netherite -> Amethyst
+        ======================================================================================================== */
 
         // This bastard took me 4 hours. 4 hours of painfully debugging.
         // Even ChatGPT was confused of my code, LMFAO.
@@ -71,6 +71,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // May my lord protect any person from touching these lines of code.
         // I wrote the mechanism on my notebook, so I won't forget the logic behind it. Hopefully I will still be able to
         // figure out my notes in the future.
+        // ===============================
+        // Number of time wasted: 2h.
+        // ===============================
         tag(BlockTags.NEEDS_IRON_TOOL);
 
         tag(ModTags.Blocks.NEEDS_EMERALD_TOOL)
@@ -78,26 +81,26 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
                 .addTag(BlockTags.NEEDS_IRON_TOOL);
 
-        tag(BlockTags.NEEDS_DIAMOND_TOOL);
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE))
+                .add(ModBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE));
 
         tag(ModTags.Blocks.NEEDS_TOPAZ_TOOL)
                 .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE))
                 .add(ModBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE))
                 .add(ModBlocks.getResourceKey(STONE_RUBY_ORE))
-                .add(ModBlocks.getResourceKey(DEEPSLATE_RUBY_ORE))
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+                .add(ModBlocks.getResourceKey(DEEPSLATE_RUBY_ORE));
 
         tag(ModTags.Blocks.NEEDS_RUBY_TOOL)
+                .add(ModBlocks.getResourceKey(Blocks.ANCIENT_DEBRIS))
+                .add(ModBlocks.getResourceKey(Blocks.NETHERITE_BLOCK))
+                .add(ModBlocks.getResourceKey(Blocks.OBSIDIAN))
                 .add(ModBlocks.getResourceKey(STONE_RUBY_ORE))
-                .add(ModBlocks.getResourceKey(DEEPSLATE_RUBY_ORE))
-                .add(ModBlocks.getResourceKey(STONE_AMETHYST_ORE))
-                .add(ModBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE))
-                .add(ModBlocks.getResourceKey(STONE_TOPAZ_ORE));
+                .add(ModBlocks.getResourceKey(DEEPSLATE_RUBY_ORE));
 
         tag(ModTags.Blocks.NEEDS_AMETHYST_TOOL)
                 .add(ModBlocks.getResourceKey(STONE_AMETHYST_ORE))
-                .add(ModBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE))
-                .add(ModBlocks.getResourceKey(STONE_RUBY_ORE));
+                .add(ModBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE));
 
         tag(BlockTags.INCORRECT_FOR_IRON_TOOL)
                 .add(ModBlocks.getResourceKey(Blocks.DIAMOND_ORE))
@@ -113,13 +116,19 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
 
         tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+                .add(ModBlocks.getResourceKey(Blocks.ANCIENT_DEBRIS))
+                .add(ModBlocks.getResourceKey(Blocks.NETHERITE_BLOCK))
+                .add(ModBlocks.getResourceKey(Blocks.OBSIDIAN))
                 .addTag(ModTags.Blocks.NEEDS_RUBY_TOOL)
                 .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_TOPAZ_TOOL)
                 .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
 
-        tag(ModTags.Blocks.INCORRECT_FOR_RUBY_TOOL);
+        tag(ModTags.Blocks.INCORRECT_FOR_RUBY_TOOL)
+                .addTag(ModTags.Blocks.NEEDS_AMETHYST_TOOL);
+
+        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_AMETHYST_TOOL);
 

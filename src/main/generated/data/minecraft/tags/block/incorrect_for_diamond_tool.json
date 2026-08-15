@@ -1,5 +1,8 @@
 {
   "values": [
+    "minecraft:ancient_debris",
+    "minecraft:netherite_block",
+    "minecraft:obsidian",
     "#minecraft-the-stories-mod:needs_ruby_tool",
     "#minecraft-the-stories-mod:needs_amethyst_tool"
   ]
