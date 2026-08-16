@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "compressed_wood",
+  "key": {
+    "L": "minecraft-the-stories-mod:compressed_wood_log"
+  },
+  "pattern": [
+    "LL",
+    "LL"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:compressed_wood"
+  }
+}

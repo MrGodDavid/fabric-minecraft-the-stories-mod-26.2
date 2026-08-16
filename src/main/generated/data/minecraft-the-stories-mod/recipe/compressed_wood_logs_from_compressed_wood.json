@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "compressed_wood",
+  "ingredients": [
+    "minecraft-the-stories-mod:compressed_wood"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft-the-stories-mod:compressed_wood_log"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "emerald",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "minecraft:emerald"
+  },
+  "pattern": [
+    "X",
+    "#",
+    "#"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:emerald_shovel"
+  }
+}
