@@ -36,7 +36,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
      * @param output     output.
      */
     @Override
-    protected @NonNull RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+    protected @NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider registries, @NonNull RecipeOutput output) {
         return new RecipeProvider(registries, output) {
 
             /**
