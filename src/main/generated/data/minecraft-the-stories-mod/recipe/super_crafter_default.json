@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "super_crafter",
+  "key": {
+    "A": "minecraft-the-stories-mod:strong_amethyst_ingot",
+    "C": "minecraft:chest",
+    "E": "minecraft:enchanting_table",
+    "F": "minecraft-the-stories-mod:compressed_wood_fence",
+    "W": "minecraft-the-stories-mod:compressed_wood"
+  },
+  "pattern": [
+    "CE ",
+    "WWW",
+    "FAF"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:super_crafter_default"
+  }
+}

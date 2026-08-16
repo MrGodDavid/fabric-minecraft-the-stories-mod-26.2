@@ -7,7 +7,7 @@ a89890181fa12e5a51c46a016545b0b5a9282308 data/minecraft-the-stories-mod/tags/blo
 8d65e88f25c72ab846f316f39d02b381d241a856 data/minecraft-the-stories-mod/tags/block/needs_emerald_tool.json
 386fe5fa7e9fa5340895cddd48f0b7a4d1c48dcf data/minecraft-the-stories-mod/tags/block/needs_ruby_tool.json
 3886dba3aa2209d730fa29dacc21362721cce52f data/minecraft-the-stories-mod/tags/block/needs_topaz_tool.json
-1c2f8f8b15b0bc6f53573d15ebe8084ecd9a3f7e data/minecraft/tags/block/fence_gates.json
+e191f826b5fccd329d6514842b01f5cc4a361d13 data/minecraft/tags/block/fence_gates.json
 da361f7bc314490f4cdc122516b9032f7fd7f04c data/minecraft/tags/block/fences.json
 60a6475108d45d608b527b5914628bfc15a05f97 data/minecraft/tags/block/incorrect_for_diamond_tool.json
 47d228326bc0455c0aa404419149f38e26aad7f0 data/minecraft/tags/block/incorrect_for_iron_tool.json
@@ -17,3 +17,4 @@ b42d3d1ac61532b7f05c87e0c81cfe05613d1131 data/minecraft/tags/block/mineable/pick
 4928ab4b5cec33b5ba1d42b51cfb41152421f883 data/minecraft/tags/block/needs_diamond_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/needs_iron_tool.json
 c02564d2471bf8137399a5c22230a9bf8d04fcf1 data/minecraft/tags/block/walls.json
+0749bdcd9e0fbaf3327d35192fab7932b1c3eb4b data/minecraft/tags/block/wooden_fences.json

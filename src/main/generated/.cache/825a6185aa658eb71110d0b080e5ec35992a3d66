@@ -1,5 +1,7 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Model Definitions
 327d68d31005d9590dd7753f95a37eff3e19f5af assets/minecraft-the-stories-mod/blockstates/compressed_wood.json
+f5a3b4d4bca53bc2fdb04f444fa4677dbcc1c8b9 assets/minecraft-the-stories-mod/blockstates/compressed_wood_fence.json
+09f0bc18a9ea8ae39fb90b741b881c32809ad2c7 assets/minecraft-the-stories-mod/blockstates/compressed_wood_fence_gate.json
 686ce66f4d38215cd6cd67ec490430f77b0c268b assets/minecraft-the-stories-mod/blockstates/compressed_wood_log.json
 e77106bafd1b672da53d7c3a80783455704c46b5 assets/minecraft-the-stories-mod/blockstates/compressed_wood_planks.json
 4b99f11aa5e3cd0618fc1287d91504e8330d5941 assets/minecraft-the-stories-mod/blockstates/deepslate_amethyst_ore.json
@@ -28,6 +30,8 @@ a82c34b1ff8b34ab3d2a982792b2f61c57f3bcf8 assets/minecraft-the-stories-mod/blocks
 ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blockstates/strong_topaz_block.json
 36144a1f252bc829a495642157eae0ec3399159c assets/minecraft-the-stories-mod/blockstates/super_crafter_default.json
 a6e54e891d4d93c225fd437bc7e3c9f6668be9cf assets/minecraft-the-stories-mod/items/compressed_wood.json
+8b7e369d6193496a3340c7d206fdfa4a94fe716a assets/minecraft-the-stories-mod/items/compressed_wood_fence.json
+6738c1fdd4361b14da19acbea4b900924df0a187 assets/minecraft-the-stories-mod/items/compressed_wood_fence_gate.json
 3a1a6d7573c2458692b487c6cf32dc94c2e9f1a9 assets/minecraft-the-stories-mod/items/compressed_wood_log.json
 35e46567e7e45f3e55e59d392c6153b803adc688 assets/minecraft-the-stories-mod/items/compressed_wood_planks.json
 c6bc8dd933f3f43f0a51cd2f47927d5bf9204206 assets/minecraft-the-stories-mod/items/deepslate_amethyst_ore.json
@@ -99,6 +103,13 @@ c53e5219bebeb830e010944c0940442d68122e25 assets/minecraft-the-stories-mod/items/
 7f7024a0d9134e936fb6e9697fcdd79b565d51a1 assets/minecraft-the-stories-mod/items/strong_topaz_sword.json
 0d1d00729aca7eef6d19631eb0ee8670beb33c3b assets/minecraft-the-stories-mod/items/super_crafter_default.json
 02fdb8bc2ff6c180cef4a09692a867ce09df74b6 assets/minecraft-the-stories-mod/models/block/compressed_wood.json
+05ad784fe187b9761dec0dd9b6ac2b20c5a15079 assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate.json
+1cc0451293bf50c751f6515e4b279aa5b2580d4b assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate_open.json
+8dbe112b95984a55936f3c41a850724d09a7ff76 assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate_wall.json
+db4468e46d2d3f2a8df9a235393b71759e4e3d61 assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate_wall_open.json
+efcf24021d10fa25f8b99f56626e9228ace78acb assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_inventory.json
+fadd704b95192087db405081822791bfe581a605 assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_post.json
+6addbdc880252f5fc103d7eecd2c50a6761f0b04 assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_side.json
 5dab2ec5e0e3492b6559d82fed3663c51cb9804f assets/minecraft-the-stories-mod/models/block/compressed_wood_log.json
 f0b591bd8b0a64c79a002a5080ab11cfe8c127c6 assets/minecraft-the-stories-mod/models/block/compressed_wood_planks.json
 49b8531aa937ba12ae071e26ee2ca316cd98bcaf assets/minecraft-the-stories-mod/models/block/deepslate_amethyst_ore.json

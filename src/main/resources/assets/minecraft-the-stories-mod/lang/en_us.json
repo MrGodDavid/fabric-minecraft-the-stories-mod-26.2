@@ -67,7 +67,9 @@
   "block.minecraft-the-stories-mod.stripped_compressed_wood": "Stripped Compressed Wood",
   "block.minecraft-the-stories-mod.compressed_wood_log": "Compressed Wood Log",
   "block.minecraft-the-stories-mod.stripped_compressed_wood_log": "Stripped Compressed Wood Log",
-  "block.minecraft-the-stories-mod.compressed_wood_planks": "Compressed Planks",
+  "block.minecraft-the-stories-mod.compressed_wood_planks": "Compressed Wood Planks",
+  "block.minecraft-the-stories-mod.compressed_wood_fence": "Compressed Wood Fence",
+  "block.minecraft-the-stories-mod.compressed_wood_fence_gate": "Compressed Wood Fence Gate",
 
   "block.minecraft-the-stories-mod.strong_amethyst_fence": "Strong Amethyst Fence",
   "block.minecraft-the-stories-mod.strong_amethyst_fence_gate": "Strong Amethyst Fence Gate",

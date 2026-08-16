@@ -47,6 +47,8 @@ public class ModBlocks {
     public static final Block COMPRESSED_WOOD_PLANKS;
     public static final Block STRIPPED_COMPRESSED_WOOD;
     public static final Block STRIPPED_COMPRESSED_WOOD_LOG;
+    public static final Block COMPRESSED_WOOD_FENCE;
+    public static final Block COMPRESSED_WOOD_FENCE_GATE;
 
     public static final Block STRONG_AMETHYST_FENCE;
     public static final Block STRONG_AMETHYST_FENCE_GATE;
@@ -85,6 +87,8 @@ public class ModBlocks {
         COMPRESSED_WOOD_PLANKS = registerBlock("compressed_wood_planks", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
         STRIPPED_COMPRESSED_WOOD = registerBlock("stripped_compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
         STRIPPED_COMPRESSED_WOOD_LOG = registerBlock("stripped_compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+        COMPRESSED_WOOD_FENCE = registerBlock("compressed_wood_fence", properties -> new FenceBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+        COMPRESSED_WOOD_FENCE_GATE = registerBlock("compressed_wood_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
 
         SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
     }

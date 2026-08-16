@@ -148,6 +148,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
                         .group("compressed_wood")
                         .save(output, "compressed_wood_logs_from_compressed_wood");
+                fenceBuilder(COMPRESSED_WOOD_FENCE, Ingredient.of(COMPRESSED_WOOD_PLANKS));
+                fenceGateBuilder(COMPRESSED_WOOD_FENCE_GATE, Ingredient.of(COMPRESSED_WOOD_PLANKS));
+
+                shaped(RecipeCategory.MISC, SUPER_CRAFTER_BLOCK)
+                        .define('E', Blocks.ENCHANTING_TABLE)
+                        .define('W', COMPRESSED_WOOD)
+                        .define('F', COMPRESSED_WOOD_FENCE)
+                        .define('A', STRONG_AMETHYST_INGOT)
+                        .define('C', Blocks.CHEST)
+                        .pattern("CE ")
+                        .pattern("WWW")
+                        .pattern("FAF")
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
+                        .unlockedBy(getHasName(COMPRESSED_WOOD), has(COMPRESSED_WOOD))
+                        .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                        .unlockedBy(getHasName(Blocks.OBSIDIAN), has(Blocks.OBSIDIAN))
+                        .group("super_crafter")
+                        .save(output);
 
                 // #################################################################################################################
                 // #                                        IRON MATERIAL RECIPES                                                  #

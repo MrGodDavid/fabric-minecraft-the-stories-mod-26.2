@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_compressed_wood": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:compressed_wood"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_diamond": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_obsidian": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:obsidian"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_raw_strong_amethyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:raw_strong_amethyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft-the-stories-mod:super_crafter_default"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_strong_amethyst",
+      "has_compressed_wood",
+      "has_diamond",
+      "has_obsidian"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft-the-stories-mod:super_crafter_default"
+    ]
+  }
+}

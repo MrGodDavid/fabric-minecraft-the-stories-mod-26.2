@@ -54,6 +54,7 @@ dff7b86e3a3101bd158c85da8303b09ba494a5f4 data/minecraft-the-stories-mod/advancem
 a3952511d7be19a71e30a533f80b5d8473d4f0f7 data/minecraft-the-stories-mod/advancement/recipes/misc/strong_ruby_ingot_from_strong_raw_ruby_block.json
 7669997173d76fbdb45faeb347939aca04d71fdf data/minecraft-the-stories-mod/advancement/recipes/misc/strong_topaz_from_strong_topaz_block.json
 0cd56695f31e7f3fcad04b7d0c3fdcd13dc5eb48 data/minecraft-the-stories-mod/advancement/recipes/misc/strong_topaz_ingot.json
+84c3bb785b5be915877e1e473113be5c0f8c5354 data/minecraft-the-stories-mod/advancement/recipes/misc/super_crafter_default.json
 8c18f44f32eab4021d89c8a9439f629867b7092b data/minecraft-the-stories-mod/advancement/recipes/redstone/strong_amethyst_fence_gate.json
 d4a4d5aab0a704288c3eb612286220ed04f0567e data/minecraft-the-stories-mod/advancement/recipes/tools/emerald_axe.json
 c0b953c2f93211a81dde9e8ca6a5d84377be920b data/minecraft-the-stories-mod/advancement/recipes/tools/emerald_hoe.json
@@ -143,3 +144,4 @@ e93683d051b7b321a758393174e3dafd9e89e76d data/minecraft-the-stories-mod/recipe/s
 423d50f4ba37889d528ee994cebb04dd02fdb5c7 data/minecraft-the-stories-mod/recipe/strong_topaz_shovel.json
 20b04ccb1071e050710054b776fa1253dd408565 data/minecraft-the-stories-mod/recipe/strong_topaz_spear.json
 3667f1b9a3dca6b92bf302701adfce912536e001 data/minecraft-the-stories-mod/recipe/strong_topaz_sword.json
+7491edce36a48180a131859fe00a678cb2c4c998 data/minecraft-the-stories-mod/recipe/super_crafter_default.json

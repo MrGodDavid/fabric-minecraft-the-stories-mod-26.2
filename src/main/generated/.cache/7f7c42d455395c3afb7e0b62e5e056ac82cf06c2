@@ -1,4 +1,9 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Block Loot Tables
+3d124264f4f47c96d348b8441f3ee0161271242e data/minecraft-the-stories-mod/loot_table/blocks/compressed_wood.json
+1ad984c04b20ee7854ccc03414aba906f158b074 data/minecraft-the-stories-mod/loot_table/blocks/compressed_wood_fence.json
+faa5d549161022582993d2009f419a3627413abe data/minecraft-the-stories-mod/loot_table/blocks/compressed_wood_fence_gate.json
+a26c9d8dc7a9c1261599ad534c9b7577b90de023 data/minecraft-the-stories-mod/loot_table/blocks/compressed_wood_log.json
+b2616f9f59e7b951f1f7d19b03f3d6716307f791 data/minecraft-the-stories-mod/loot_table/blocks/compressed_wood_planks.json
 9990609b99b968cf8d7da1cc258ea91914829370 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_amethyst_ore.json
 0d3c9a5afcc00beeef38bfa1908fb58ff08fff55 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_ruby_ore.json
 5b43445aedfac0939e3bad3141153320909f6f2e data/minecraft-the-stories-mod/loot_table/blocks/deepslate_topaz_ore.json
@@ -10,7 +15,12 @@ eff5c1670e155af87d7572093d4b8f6dba948733 data/minecraft-the-stories-mod/loot_tab
 3bbbbc10c6dfa8d42b3acb6f180d86b435d98025 data/minecraft-the-stories-mod/loot_table/blocks/stone_amethyst_ore.json
 2c6960c64a006588b8cb562b683a87c2de866f36 data/minecraft-the-stories-mod/loot_table/blocks/stone_ruby_ore.json
 5f5ae9e26b91241d7c7a646f31702b5dc114609f data/minecraft-the-stories-mod/loot_table/blocks/stone_topaz_ore.json
+24396e635df1fc13246fc1f23ab7d2b54150523a data/minecraft-the-stories-mod/loot_table/blocks/stripped_compressed_wood.json
+0998a3df7dfef567cd29cf7f5dfbc57abbc92e62 data/minecraft-the-stories-mod/loot_table/blocks/stripped_compressed_wood_log.json
 a0c837b40a8b6f2535587d2716c206392c1f835b data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_block.json
+6bda6f1e40e494c4181b418b8ad27f46351a8771 data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_fence.json
+065a2c3d314374db3338701f382e03665f5bc061 data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_fence_gate.json
+06b5048d8b9b0012a5fb6a5fa4c47cafd240791a data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_wall.json
 171c8ac6414372cef09debffda7af0aaebfa4e7e data/minecraft-the-stories-mod/loot_table/blocks/strong_diamond_block.json
 67cb9512fb5452827047b838ea62fd67b97e9cbb data/minecraft-the-stories-mod/loot_table/blocks/strong_emerald_block.json
 d0bf403b39045d0115c12c4a0077b957cb68579b data/minecraft-the-stories-mod/loot_table/blocks/strong_gold_block.json

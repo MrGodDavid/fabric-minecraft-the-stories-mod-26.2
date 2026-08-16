@@ -68,11 +68,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
                 .add(ModBlocks.getResourceKey(SUPER_CRAFTER_BLOCK));
 
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.getResourceKey(COMPRESSED_WOOD_FENCE));
         tag(BlockTags.FENCES)
                 .add(ModBlocks.getResourceKey(STRONG_AMETHYST_FENCE));
 
         tag(BlockTags.FENCE_GATES)
-                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_FENCE_GATE));
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_FENCE_GATE))
+                .add(ModBlocks.getResourceKey(COMPRESSED_WOOD_FENCE_GATE));
 
         tag(BlockTags.WALLS)
                 .add(ModBlocks.getResourceKey(STRONG_AMETHYST_WALL))

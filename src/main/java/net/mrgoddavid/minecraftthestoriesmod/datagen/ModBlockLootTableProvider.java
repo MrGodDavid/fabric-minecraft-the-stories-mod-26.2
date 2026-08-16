@@ -53,6 +53,18 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(STRONG_RUBY_BLOCK);
         dropSelf(STRONG_AMETHYST_BLOCK);
 
+        dropSelf(COMPRESSED_WOOD_LOG);
+        dropSelf(COMPRESSED_WOOD_FENCE);
+        dropSelf(COMPRESSED_WOOD_FENCE_GATE);
+        dropSelf(COMPRESSED_WOOD);
+        dropSelf(COMPRESSED_WOOD_PLANKS);
+        dropSelf(STRIPPED_COMPRESSED_WOOD_LOG);
+        dropSelf(STRIPPED_COMPRESSED_WOOD);
+
+        dropSelf(STRONG_AMETHYST_FENCE);
+        dropSelf(STRONG_AMETHYST_FENCE_GATE);
+        dropSelf(STRONG_AMETHYST_WALL);
+
         dropWhenSilkTouch(SUPER_CRAFTER_BLOCK);
 
         // ores - custom mod blocks ONLY.

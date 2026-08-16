@@ -69,7 +69,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createAxisAlignedPillarBlock(STRIPPED_COMPRESSED_WOOD, TexturedModel.CUBE);
         blockModelGenerators.woodProvider(COMPRESSED_WOOD_LOG).log(COMPRESSED_WOOD_LOG);
         blockModelGenerators.woodProvider(STRIPPED_COMPRESSED_WOOD_LOG).log(STRIPPED_COMPRESSED_WOOD_LOG);
-        blockModelGenerators.createTrivialCube(COMPRESSED_WOOD_PLANKS);
+        blockModelGenerators.family(COMPRESSED_WOOD_PLANKS)
+                .fence(COMPRESSED_WOOD_FENCE)
+                .fenceGate(COMPRESSED_WOOD_FENCE_GATE);
 
         this.generateFacingModels(blockModelGenerators, SUPER_CRAFTER_BLOCK,
                 SuperCrafterBlock.STATE, SuperCrafterBlock.FACING,
