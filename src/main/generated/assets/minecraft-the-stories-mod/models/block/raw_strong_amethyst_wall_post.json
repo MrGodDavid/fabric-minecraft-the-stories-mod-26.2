@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "minecraft-the-stories-mod:block/raw_strong_amethyst_block"
+  }
+}

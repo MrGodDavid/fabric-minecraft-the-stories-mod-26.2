@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "minecraft-the-stories-mod:block/raw_strong_amethyst_block"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "topaz",
+  "ingredients": [
+    "minecraft-the-stories-mod:raw_strong_topaz_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft-the-stories-mod:raw_strong_topaz"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "amethyst",
+  "key": {
+    "#": "minecraft:stick",
+    "W": "minecraft-the-stories-mod:strong_amethyst_ingot"
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:strong_amethyst_fence_gate"
+  }
+}

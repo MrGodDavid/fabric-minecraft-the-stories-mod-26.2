@@ -7,10 +7,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
 
@@ -49,6 +48,11 @@ public class ModBlocks {
     public static final Block STRIPPED_COMPRESSED_WOOD;
     public static final Block STRIPPED_COMPRESSED_WOOD_LOG;
 
+    public static final Block STRONG_AMETHYST_FENCE;
+    public static final Block STRONG_AMETHYST_FENCE_GATE;
+    public static final Block STRONG_AMETHYST_WALL;
+    public static final Block RAW_STRONG_AMETHYST_WALL;
+
     public static final Block SUPER_CRAFTER_BLOCK;
 
     static {
@@ -61,10 +65,8 @@ public class ModBlocks {
         RAW_STRONG_RUBY_BLOCK = registerBlock("raw_strong_ruby_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
         RAW_STRONG_TOPAZ_BLOCK = registerBlock("raw_strong_topaz_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
         STONE_AMETHYST_ORE = registerBlock("stone_amethyst_ore", properties -> new Block(properties.strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-
         STONE_RUBY_ORE = registerBlock("stone_ruby_ore", properties -> new Block(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
         STONE_TOPAZ_ORE = registerBlock("stone_topaz_ore", properties -> new Block(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-
         STRONG_AMETHYST_BLOCK = registerBlock("strong_amethyst_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
         STRONG_DIAMOND_BLOCK = registerBlock("strong_diamond_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
         STRONG_EMERALD_BLOCK = registerBlock("strong_emerald_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
@@ -72,6 +74,11 @@ public class ModBlocks {
         STRONG_TOPAZ_BLOCK = registerBlock("strong_topaz_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
         STRONG_IRON_BLOCK = registerBlock("strong_iron_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.IRON)));
         STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+        STRONG_AMETHYST_FENCE = registerBlock("strong_amethyst_fence", properties -> new FenceBlock(properties.strength(6.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        STRONG_AMETHYST_FENCE_GATE = registerBlock("strong_amethyst_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(6.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        STRONG_AMETHYST_WALL = registerBlock("strong_amethyst_wall", properties -> new WallBlock(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_AMETHYST_WALL = registerBlock("raw_strong_amethyst_wall", properties -> new WallBlock(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
         COMPRESSED_WOOD = registerBlock("compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
         COMPRESSED_WOOD_LOG = registerBlock("compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));

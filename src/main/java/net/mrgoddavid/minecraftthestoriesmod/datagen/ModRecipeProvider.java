@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
@@ -29,7 +30,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     /**
-     * Implement this method and then use the range of methods in {@link RecipeProvider} or from one of the recipe json
+     * Implement this method and then use the range of methods in {@link RecipeProvider} or from one of the recipe JSON
      * factories such as {@link ShapedRecipeBuilder} or {@link ShapelessRecipeBuilder}.
      *
      * @param registries registries
@@ -257,6 +258,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 this.shovelFromIngot(STRONG_AMETHYST_SHOVEL, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
                 this.spearFromIngot(STRONG_AMETHYST_SPEAR, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
                 this.swordFromIngot(STRONG_AMETHYST_SWORD, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+                fenceBuilder(STRONG_AMETHYST_FENCE, Ingredient.of(STRONG_AMETHYST_INGOT))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
+                        .group("amethyst")
+                        .save(output);
+                fenceGateBuilder(STRONG_AMETHYST_FENCE_GATE, Ingredient.of(STRONG_AMETHYST_INGOT))
+                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
+                        .group("amethyst")
+                        .save(output);
+                wall(RecipeCategory.BUILDING_BLOCKS, STRONG_AMETHYST_WALL, STRONG_AMETHYST_INGOT);
+                wall(RecipeCategory.BUILDING_BLOCKS, RAW_STRONG_AMETHYST_WALL, RAW_STRONG_AMETHYST);
             }
 
             private void axeFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {

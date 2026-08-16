@@ -69,6 +69,11 @@
   "block.minecraft-the-stories-mod.stripped_compressed_wood_log": "Stripped Compressed Wood Log",
   "block.minecraft-the-stories-mod.compressed_wood_planks": "Compressed Planks",
 
+  "block.minecraft-the-stories-mod.strong_amethyst_fence": "Strong Amethyst Fence",
+  "block.minecraft-the-stories-mod.strong_amethyst_fence_gate": "Strong Amethyst Fence Gate",
+  "block.minecraft-the-stories-mod.strong_amethyst_wall": "Strong Amethyst Wall",
+  "block.minecraft-the-stories-mod.raw_strong_amethyst_wall": "Strong Amethyst Wall",
+
   "block.minecraft-the-stories-mod.super_crafter_default": "Super Crafter",
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",

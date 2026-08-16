@@ -54,7 +54,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(STONE_AMETHYST_ORE))
                 .add(ModBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE))
                 .add(ModBlocks.getResourceKey(RAW_STRONG_AMETHYST_BLOCK))
-                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK));
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK))
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_FENCE))
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_FENCE_GATE))
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_WALL));
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.getResourceKey(COMPRESSED_WOOD))
@@ -64,6 +67,16 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG))
 
                 .add(ModBlocks.getResourceKey(SUPER_CRAFTER_BLOCK));
+
+        tag(BlockTags.FENCES)
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_FENCE));
+
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_FENCE_GATE));
+
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.getResourceKey(STRONG_AMETHYST_WALL))
+                .add(ModBlocks.getResourceKey(RAW_STRONG_AMETHYST_WALL));
 
         // ######################################### NO TOUCHING ZONE START ##############################################
 
