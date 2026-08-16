@@ -56,6 +56,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(RAW_STRONG_AMETHYST_BLOCK))
                 .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK));
 
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.getResourceKey(SUPER_CRAFTER_BLOCK));
+
         // ######################################### NO TOUCHING ZONE START ##############################################
 
         /* ========================================================================================================

@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
 
 import java.util.function.Function;
 
@@ -41,6 +42,8 @@ public class ModBlocks {
     public static final Block STRONG_IRON_BLOCK;
     public static final Block STRONG_GOLD_BLOCK;
 
+    public static final Block SUPER_CRAFTER_BLOCK;
+
     static {
         DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
         DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
@@ -62,6 +65,8 @@ public class ModBlocks {
         STRONG_TOPAZ_BLOCK = registerBlock("strong_topaz_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
         STRONG_IRON_BLOCK = registerBlock("strong_iron_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.IRON)));
         STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+        SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
     }
 
     /**

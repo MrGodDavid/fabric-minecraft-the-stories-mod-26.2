@@ -1,0 +1,97 @@
+package net.mrgoddavid.minecraftthestoriesmod.block.custom;
+
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+/**
+ * Super Crafter Block class.
+ *
+ * @author Mr. GodDavid
+ * @since 8/15/2026
+ */
+public class SuperCrafterBlock extends HorizontalDirectionalBlock {
+
+    public static final String NAME = "super_crafter";
+    public static final VoxelShape SHAPE = Block.box(0, 0.01, 0, 16, 14, 16);
+    public static final MapCodec<SuperCrafterBlock> CODEC = simpleCodec(SuperCrafterBlock::new);
+
+    /**
+     * Indicates the block state of Super Crafter Block.
+     *
+     * @author Mr. GodDavid
+     * @since 8/15/2026
+     */
+    public enum TYPE implements StringRepresentable {
+        WITH_BLUEPRINT("with_blueprint"),
+        WITH_HAMMER("with_hammer"),
+        WITH_HAMMER_WITH_BLUEPRINT("with_hammer_with_blueprint"),
+        DEFAULT("default");
+
+        private final String name;
+
+        TYPE(String name) {
+            this.name = name;
+        }
+
+        public String path() {
+            return "block/" + NAME + "_" + name;
+        }
+
+        @Override
+        public @NonNull String getSerializedName() {
+            return name;
+        }
+    }
+
+    public static final EnumProperty<TYPE> STATE = EnumProperty.create("state", TYPE.class);
+
+    public SuperCrafterBlock(Properties properties) {
+        super(properties);
+        registerDefaultState(this.defaultBlockState()
+                .setValue(STATE, TYPE.DEFAULT));
+    }
+
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection());
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.@NonNull Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(FACING, STATE);
+    }
+
+    @Override
+    protected @NonNull InteractionResult useWithoutItem(BlockState state, Level level, @NonNull BlockPos pos, @NonNull Player player, @NonNull BlockHitResult hitResult) {
+        level.setBlockAndUpdate(pos, state.cycle(STATE));
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    protected @NonNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    protected @NonNull VoxelShape getShape(@NonNull BlockState state, @NonNull BlockGetter level, @NonNull BlockPos pos, @NonNull CollisionContext context) {
+        return SHAPE;
+    }
+}

@@ -1,11 +1,20 @@
 package net.mrgoddavid.minecraftthestoriesmod.datagen;
 
+import com.mojang.math.Quadrant;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.renderer.block.dispatch.VariantMutator;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Rotation;
+import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
@@ -43,6 +52,32 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(STRONG_TOPAZ_BLOCK);
         blockModelGenerators.createTrivialCube(STRONG_IRON_BLOCK);
         blockModelGenerators.createTrivialCube(STRONG_GOLD_BLOCK);
+
+        Identifier defaultID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.DEFAULT.path());
+        Identifier withHammerID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.WITH_HAMMER.path());
+        Identifier withBlueprintID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.WITH_BLUEPRINT.path());
+        Identifier withHammerAndWithBlueprintID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.WITH_HAMMER_WITH_BLUEPRINT.path());
+        blockModelGenerators.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(SUPER_CRAFTER_BLOCK).with(
+                        PropertyDispatch.initial(SuperCrafterBlock.STATE, SuperCrafterBlock.FACING)
+                                .select(SuperCrafterBlock.TYPE.DEFAULT, Direction.NORTH, BlockModelGenerators.plainVariant(defaultID))
+                                .select(SuperCrafterBlock.TYPE.DEFAULT, Direction.EAST, BlockModelGenerators.plainVariant(defaultID).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)))
+                                .select(SuperCrafterBlock.TYPE.DEFAULT, Direction.SOUTH, BlockModelGenerators.plainVariant(defaultID).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)))
+                                .select(SuperCrafterBlock.TYPE.DEFAULT, Direction.WEST, BlockModelGenerators.plainVariant(defaultID).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER, Direction.NORTH, BlockModelGenerators.plainVariant(withHammerID))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER, Direction.EAST, BlockModelGenerators.plainVariant(withHammerID).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER, Direction.SOUTH, BlockModelGenerators.plainVariant(withHammerID).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER, Direction.WEST, BlockModelGenerators.plainVariant(withHammerID).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)))
+                                .select(SuperCrafterBlock.TYPE.WITH_BLUEPRINT, Direction.NORTH, BlockModelGenerators.plainVariant(withBlueprintID))
+                                .select(SuperCrafterBlock.TYPE.WITH_BLUEPRINT, Direction.EAST, BlockModelGenerators.plainVariant(withBlueprintID).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)))
+                                .select(SuperCrafterBlock.TYPE.WITH_BLUEPRINT, Direction.SOUTH, BlockModelGenerators.plainVariant(withBlueprintID).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)))
+                                .select(SuperCrafterBlock.TYPE.WITH_BLUEPRINT, Direction.WEST, BlockModelGenerators.plainVariant(withBlueprintID).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER_WITH_BLUEPRINT, Direction.NORTH, BlockModelGenerators.plainVariant(withHammerAndWithBlueprintID))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER_WITH_BLUEPRINT, Direction.EAST, BlockModelGenerators.plainVariant(withHammerAndWithBlueprintID).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER_WITH_BLUEPRINT, Direction.SOUTH, BlockModelGenerators.plainVariant(withHammerAndWithBlueprintID).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)))
+                                .select(SuperCrafterBlock.TYPE.WITH_HAMMER_WITH_BLUEPRINT, Direction.WEST, BlockModelGenerators.plainVariant(withHammerAndWithBlueprintID).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)))
+                )
+        );
     }
 
     @Override

@@ -17,6 +17,7 @@ fc2bbd2e7ada501782af87e7655f569a197d2abf assets/minecraft-the-stories-mod/blocks
 d9745a0751789964238c9000e86aec44fbdc0ceb assets/minecraft-the-stories-mod/blockstates/strong_iron_block.json
 a82c34b1ff8b34ab3d2a982792b2f61c57f3bcf8 assets/minecraft-the-stories-mod/blockstates/strong_ruby_block.json
 ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blockstates/strong_topaz_block.json
+36144a1f252bc829a495642157eae0ec3399159c assets/minecraft-the-stories-mod/blockstates/super_crafter_default.json
 c6bc8dd933f3f43f0a51cd2f47927d5bf9204206 assets/minecraft-the-stories-mod/items/deepslate_amethyst_ore.json
 f3e0f9f719cd6e65708bb767d0d698b8f84a7645 assets/minecraft-the-stories-mod/items/deepslate_ruby_ore.json
 bad9ce571de92ae01ffad325d176412291671526 assets/minecraft-the-stories-mod/items/deepslate_topaz_ore.json
@@ -78,6 +79,7 @@ df9c4101aa0eb20822ccd913fc250aea2a473ed6 assets/minecraft-the-stories-mod/items/
 4ebd792379f41d3032d6fb56de5acd94b5a5fc2e assets/minecraft-the-stories-mod/items/strong_topaz_shovel.json
 c53e5219bebeb830e010944c0940442d68122e25 assets/minecraft-the-stories-mod/items/strong_topaz_spear.json
 7f7024a0d9134e936fb6e9697fcdd79b565d51a1 assets/minecraft-the-stories-mod/items/strong_topaz_sword.json
+0d1d00729aca7eef6d19631eb0ee8670beb33c3b assets/minecraft-the-stories-mod/items/super_crafter_default.json
 49b8531aa937ba12ae071e26ee2ca316cd98bcaf assets/minecraft-the-stories-mod/models/block/deepslate_amethyst_ore.json
 5cd420a8bb5ce679f696e893b91dead28b4d209a assets/minecraft-the-stories-mod/models/block/deepslate_ruby_ore.json
 8b0a7bbe70638a909a990847ad1393a7e927678b assets/minecraft-the-stories-mod/models/block/deepslate_topaz_ore.json

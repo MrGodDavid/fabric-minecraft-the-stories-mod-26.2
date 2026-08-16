@@ -105,6 +105,8 @@ public class CreativeModeTabs {
                         output.accept(STRONG_TOPAZ_BLOCK);
                         output.accept(STRONG_IRON_BLOCK);
                         output.accept(STRONG_GOLD_BLOCK);
+
+                        output.accept(SUPER_CRAFTER_BLOCK);
                     })
                     .build()
     );
