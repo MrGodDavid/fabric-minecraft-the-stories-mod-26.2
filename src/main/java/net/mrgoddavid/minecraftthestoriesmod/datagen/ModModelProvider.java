@@ -13,7 +13,6 @@ import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Rotation;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
 
@@ -117,12 +116,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SHOVEL, flatItemTemplate);
         itemModelGenerators.generateSpear(STRONG_AMETHYST_SPEAR);
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SWORD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_EMERALD_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_EMERALD_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_EMERALD_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_EMERALD_SHOVEL, flatItemTemplate);
-        itemModelGenerators.generateSpear(STRONG_EMERALD_SPEAR);
-        itemModelGenerators.generateFlatItem(STRONG_EMERALD_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_AXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_HOE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateSpear(EMERALD_SPEAR);
+        itemModelGenerators.generateFlatItem(EMERALD_SWORD, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_RUBY_AXE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_RUBY_HOE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_RUBY_PICKAXE, flatItemTemplate);

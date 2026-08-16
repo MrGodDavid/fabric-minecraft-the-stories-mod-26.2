@@ -67,18 +67,18 @@ public class ModItems {
     // #################################################################################################################
     // #                                                EMERALD TOOLS                                                  #
     // #################################################################################################################
-    public static final Item STRONG_EMERALD_AXE = registerItem("strong_emerald_axe", properties ->
+    public static final Item EMERALD_AXE = registerItem("emerald_axe", properties ->
             new AxeItem(ModItemToolMaterials.EMERALD, 6f, -3.2f, properties));
-    public static final Item STRONG_EMERALD_HOE = registerItem("strong_emerald_hoe", properties ->
+    public static final Item EMERALD_HOE = registerItem("emerald_hoe", properties ->
             new HoeItem(ModItemToolMaterials.EMERALD, 0f, -3.0f, properties));
-    public static final Item STRONG_EMERALD_PICKAXE = registerItem("strong_emerald_pickaxe", properties ->
+    public static final Item EMERALD_PICKAXE = registerItem("emerald_pickaxe", properties ->
             new Item(properties.pickaxe(ModItemToolMaterials.EMERALD, 1f, -2.8f)));
-    public static final Item STRONG_EMERALD_SHOVEL = registerItem("strong_emerald_shovel", properties ->
+    public static final Item EMERALD_SHOVEL = registerItem("emerald_shovel", properties ->
             new ShovelItem(ModItemToolMaterials.EMERALD, 1.5f, -3.0f, properties));
-    public static final Item STRONG_EMERALD_SPEAR = registerItem("strong_emerald_spear", properties ->
+    public static final Item EMERALD_SPEAR = registerItem("emerald_spear", properties ->
             new Item(properties.spear(ModItemToolMaterials.EMERALD,
                     1.0f, 1.0f, 1.0f, 2.75f, 11.5f, 6.75f, 5.1f, 11.0f, 4.6f)));
-    public static final Item STRONG_EMERALD_SWORD = registerItem("strong_emerald_sword", properties ->
+    public static final Item EMERALD_SWORD = registerItem("emerald_sword", properties ->
             new Item(properties.sword(ModItemToolMaterials.EMERALD, 3.0f, -2.4f)));
 
     // #################################################################################################################

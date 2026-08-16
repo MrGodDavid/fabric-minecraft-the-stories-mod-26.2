@@ -7,6 +7,7 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
@@ -44,6 +45,110 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             @Override
             public void buildRecipes() {
                 // #################################################################################################################
+                // #                                        COMPRESSED TOOLS RECIPES                                               #
+                // #################################################################################################################
+                shaped(RecipeCategory.MISC, COMPRESSED_WOOD_PLANKS)
+                        .define('A', Blocks.OAK_PLANKS)
+                        .define('B', Blocks.SPRUCE_PLANKS)
+                        .define('C', Blocks.JUNGLE_PLANKS)
+                        .define('D', Blocks.BIRCH_PLANKS)
+                        .define('E', Blocks.DARK_OAK_PLANKS)
+                        .define('F', Blocks.ACACIA_PLANKS)
+                        .define('G', Blocks.MANGROVE_PLANKS)
+                        .define('H', Blocks.PALE_OAK_PLANKS)
+                        .define('I', Blocks.CHERRY_PLANKS)
+                        .pattern("ABC")
+                        .pattern("DEF")
+                        .pattern("GHI")
+                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
+                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
+                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
+                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
+                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
+                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .group("compressed_wood")
+                        .save(output);
+                shaped(RecipeCategory.MISC, COMPRESSED_WOOD_LOG)
+                        .define('A', Blocks.OAK_LOG)
+                        .define('B', Blocks.SPRUCE_LOG)
+                        .define('C', Blocks.JUNGLE_LOG)
+                        .define('D', Blocks.BIRCH_LOG)
+                        .define('E', Blocks.DARK_OAK_LOG)
+                        .define('F', Blocks.ACACIA_LOG)
+                        .define('G', Blocks.MANGROVE_LOG)
+                        .define('H', Blocks.PALE_OAK_LOG)
+                        .define('I', Blocks.CHERRY_LOG)
+                        .pattern("ABC")
+                        .pattern("DEF")
+                        .pattern("GHI")
+                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
+                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
+                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
+                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
+                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
+                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .group("compressed_wood")
+                        .save(output);
+                shaped(RecipeCategory.MISC, COMPRESSED_WOOD)
+                        .define('A', Blocks.OAK_WOOD)
+                        .define('B', Blocks.SPRUCE_WOOD)
+                        .define('C', Blocks.JUNGLE_WOOD)
+                        .define('D', Blocks.BIRCH_WOOD)
+                        .define('E', Blocks.DARK_OAK_WOOD)
+                        .define('F', Blocks.ACACIA_WOOD)
+                        .define('G', Blocks.MANGROVE_WOOD)
+                        .define('H', Blocks.PALE_OAK_WOOD)
+                        .define('I', Blocks.CHERRY_WOOD)
+                        .pattern("ABC")
+                        .pattern("DEF")
+                        .pattern("GHI")
+                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
+                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
+                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
+                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
+                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
+                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .group("compressed_wood")
+                        .save(output);
+                shaped(RecipeCategory.MISC, COMPRESSED_WOOD)
+                        .define('L', COMPRESSED_WOOD_LOG)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
+                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
+                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
+                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
+                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
+                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .group("compressed_wood")
+                        .save(output, "compressed_wood_from_compressed_wood_logs");
+                shapeless(RecipeCategory.MISC, COMPRESSED_WOOD_LOG, 4)
+                        .requires(COMPRESSED_WOOD)
+                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
+                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
+                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
+                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
+                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
+                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .group("compressed_wood")
+                        .save(output, "compressed_wood_logs_from_compressed_wood");
+
+                // #################################################################################################################
                 // #                                        IRON MATERIAL RECIPES                                                  #
                 // #################################################################################################################
                 nineBlockStorageRecipes(RecipeCategory.MISC, STRONG_IRON_INGOT, RecipeCategory.BUILDING_BLOCKS, STRONG_IRON_BLOCK);
@@ -52,6 +157,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(STRONG_IRON_INGOT), has(STRONG_IRON_BLOCK))
                         .group("strong_iron")
                         .save(output, "strong_iron_ingot_from_strong_iron_block");
+
+                // #################################################################################################################
+                // #                                        EMERALD MATERIAL RECIPES                                               #
+                // #################################################################################################################
+                nineBlockStorageRecipes(RecipeCategory.MISC, RAW_STRONG_EMERALD, RecipeCategory.BUILDING_BLOCKS, RAW_STRONG_EMERALD_BLOCK);
+                nineBlockStorageRecipes(RecipeCategory.MISC, STRONG_EMERALD, RecipeCategory.BUILDING_BLOCKS, STRONG_EMERALD_BLOCK);
+                shapeless(RecipeCategory.MISC, RAW_STRONG_EMERALD, 9)
+                        .requires(RAW_STRONG_EMERALD_BLOCK)
+                        .unlockedBy(getHasName(RAW_STRONG_EMERALD), has(RAW_STRONG_EMERALD))
+                        .group("emerald")
+                        .save(output, "raw_strong_emerald_from_raw_strong_emerald_block");
+                shapeless(RecipeCategory.MISC, STRONG_EMERALD, 9)
+                        .requires(STRONG_EMERALD_BLOCK)
+                        .unlockedBy(getHasName(RAW_STRONG_EMERALD), has(RAW_STRONG_EMERALD))
+                        .group("emerald")
+                        .save(output, "strong_emerald_from_strong_emerald_block");
+                this.axeFromIngot(EMERALD_AXE, Items.EMERALD, Items.EMERALD, "emerald");
+                this.hoeFromIngot(EMERALD_HOE, Items.EMERALD, Items.EMERALD, "emerald");
+                this.pickaxeFromIngot(EMERALD_PICKAXE, Items.EMERALD, Items.EMERALD, "emerald");
+                this.shovelFromIngot(EMERALD_SHOVEL, Items.EMERALD, Items.EMERALD, "emerald");
+                this.spearFromIngot(EMERALD_SPEAR, Items.EMERALD, Items.EMERALD, "emerald");
+                this.swordFromIngot(EMERALD_SWORD, Items.EMERALD, Items.EMERALD, "emerald");
 
                 // #################################################################################################################
                 // #                                        TOPAZ MATERIAL RECIPES                                                 #
@@ -66,65 +193,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
                         .group("topaz")
                         .save(output, "raw_strong_topaz_from_raw_strong_topaz_block");
-                shapeless(RecipeCategory.MISC, STRONG_TOPAZ_INGOT, 9)
+                shapeless(RecipeCategory.MISC, STRONG_TOPAZ, 9)
                         .requires(STRONG_TOPAZ_BLOCK)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
                         .group("topaz")
-                        .save(output, "strong_topaz_ingot_from_strong_iron_block");
-                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_AXE)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_TOPAZ_INGOT)
-                        .pattern("XX")
-                        .pattern("X#")
-                        .pattern(" #")
-                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .group("topaz")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_HOE)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_TOPAZ_INGOT)
-                        .pattern("XX")
-                        .pattern(" #")
-                        .pattern(" #")
-                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .group("topaz")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_PICKAXE)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_TOPAZ_INGOT)
-                        .pattern("XXX")
-                        .pattern(" # ")
-                        .pattern(" # ")
-                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .group("topaz")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_TOPAZ_SHOVEL)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_TOPAZ_INGOT)
-                        .pattern("X")
-                        .pattern("#")
-                        .pattern("#")
-                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .group("topaz")
-                        .save(output);
-                shaped(RecipeCategory.COMBAT, STRONG_TOPAZ_SPEAR)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_TOPAZ_INGOT)
-                        .pattern("  X")
-                        .pattern(" # ")
-                        .pattern("#  ")
-                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .group("topaz")
-                        .save(output);
-                shaped(RecipeCategory.COMBAT, STRONG_TOPAZ_SWORD)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_TOPAZ_INGOT)
-                        .pattern("X")
-                        .pattern("X")
-                        .pattern("#")
-                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .group("topaz")
-                        .save(output);
+                        .save(output, "strong_topaz_from_strong_topaz_block");
+                this.axeFromIngot(STRONG_TOPAZ_AXE, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
+                this.hoeFromIngot(STRONG_TOPAZ_HOE, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
+                this.pickaxeFromIngot(STRONG_TOPAZ_PICKAXE, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
+                this.shovelFromIngot(STRONG_TOPAZ_SHOVEL, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
+                this.spearFromIngot(STRONG_TOPAZ_SPEAR, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
+                this.swordFromIngot(STRONG_TOPAZ_SWORD, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
 
                 // #################################################################################################################
                 // #                                           RUBY MATERIAL RECIPES                                               #
@@ -144,60 +223,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
                         .group("ruby")
                         .save(output, "strong_ruby_ingot_from_strong_raw_ruby_block");
-                shaped(RecipeCategory.TOOLS, STRONG_RUBY_AXE)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_RUBY_INGOT)
-                        .pattern("XX")
-                        .pattern("X#")
-                        .pattern(" #")
-                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
-                        .group("ruby")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_RUBY_HOE)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_RUBY_INGOT)
-                        .pattern("XX")
-                        .pattern(" #")
-                        .pattern(" #")
-                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
-                        .group("ruby")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_RUBY_PICKAXE)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_RUBY_INGOT)
-                        .pattern("XXX")
-                        .pattern(" # ")
-                        .pattern(" # ")
-                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
-                        .group("ruby")
-                        .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_RUBY_SHOVEL)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_RUBY_INGOT)
-                        .pattern("X")
-                        .pattern("#")
-                        .pattern("#")
-                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
-                        .group("ruby")
-                        .save(output);
-                shaped(RecipeCategory.COMBAT, STRONG_RUBY_SPEAR)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_RUBY_INGOT)
-                        .pattern("  X")
-                        .pattern(" # ")
-                        .pattern("#  ")
-                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_TOPAZ))
-                        .group("ruby")
-                        .save(output);
-                shaped(RecipeCategory.COMBAT, STRONG_RUBY_SWORD)
-                        .define('#', Items.STICK)
-                        .define('X', STRONG_RUBY_INGOT)
-                        .pattern("X")
-                        .pattern("X")
-                        .pattern("#")
-                        .unlockedBy(getHasName(RAW_STRONG_RUBY), has(RAW_STRONG_RUBY))
-                        .group("ruby")
-                        .save(output);
+                this.axeFromIngot(STRONG_RUBY_AXE, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
+                this.hoeFromIngot(STRONG_RUBY_HOE, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
+                this.pickaxeFromIngot(STRONG_RUBY_PICKAXE, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
+                this.shovelFromIngot(STRONG_RUBY_SHOVEL, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
+                this.spearFromIngot(STRONG_RUBY_SPEAR, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
+                this.swordFromIngot(STRONG_RUBY_SWORD, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
 
                 // #################################################################################################################
                 // #                                        AMETHYST MATERIAL RECIPES                                              #
@@ -220,59 +251,83 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
                         .save(output, "strong_amethyst_ingot_from_strong_amethyst_block");
-                shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_AXE)
+                this.axeFromIngot(STRONG_AMETHYST_AXE, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+                this.hoeFromIngot(STRONG_AMETHYST_HOE, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+                this.pickaxeFromIngot(STRONG_AMETHYST_PICKAXE, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+                this.shovelFromIngot(STRONG_AMETHYST_SHOVEL, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+                this.spearFromIngot(STRONG_AMETHYST_SPEAR, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+                this.swordFromIngot(STRONG_AMETHYST_SWORD, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+            }
+
+            private void axeFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
                         .define('#', Items.STICK)
-                        .define('X', STRONG_AMETHYST_INGOT)
+                        .define('X', ingot)
                         .pattern("XX")
                         .pattern("X#")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
                         .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_HOE)
+            }
+
+            private void hoeFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
                         .define('#', Items.STICK)
-                        .define('X', STRONG_AMETHYST_INGOT)
+                        .define('X', ingot)
                         .pattern("XX")
                         .pattern(" #")
                         .pattern(" #")
-                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
                         .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_PICKAXE)
+            }
+
+            private void pickaxeFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
                         .define('#', Items.STICK)
-                        .define('X', STRONG_AMETHYST_INGOT)
+                        .define('X', ingot)
                         .pattern("XXX")
                         .pattern(" # ")
                         .pattern(" # ")
-                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
                         .save(output);
-                shaped(RecipeCategory.TOOLS, STRONG_AMETHYST_SHOVEL)
+            }
+
+            private void shovelFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
                         .define('#', Items.STICK)
-                        .define('X', STRONG_AMETHYST_INGOT)
+                        .define('X', ingot)
                         .pattern("X")
                         .pattern("#")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
                         .save(output);
-                shaped(RecipeCategory.COMBAT, STRONG_AMETHYST_SPEAR)
+            }
+
+            private void spearFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
                         .define('#', Items.STICK)
-                        .define('X', STRONG_AMETHYST_INGOT)
+                        .define('X', ingot)
                         .pattern("  X")
                         .pattern(" # ")
                         .pattern("#  ")
-                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
                         .save(output);
-                shaped(RecipeCategory.COMBAT, STRONG_AMETHYST_SWORD)
+            }
+
+            private void swordFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
                         .define('#', Items.STICK)
-                        .define('X', STRONG_AMETHYST_INGOT)
+                        .define('X', ingot)
                         .pattern("X")
                         .pattern("X")
                         .pattern("#")
-                        .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
-                        .group("amethyst")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
                         .save(output);
             }
         };

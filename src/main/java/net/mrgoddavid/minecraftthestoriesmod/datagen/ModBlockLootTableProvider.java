@@ -53,7 +53,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(STRONG_RUBY_BLOCK);
         dropSelf(STRONG_AMETHYST_BLOCK);
 
-        dropSelf(SUPER_CRAFTER_BLOCK);
+        dropWhenSilkTouch(SUPER_CRAFTER_BLOCK);
 
         // ores - custom mod blocks ONLY.
         add(STONE_AMETHYST_ORE, createMultipleOreDrops(STONE_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 2.0f));
