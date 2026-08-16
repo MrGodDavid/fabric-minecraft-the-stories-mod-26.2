@@ -1,5 +1,10 @@
 {
   "values": [
+    "minecraft-the-stories-mod:compressed_wood",
+    "minecraft-the-stories-mod:compressed_wood_log",
+    "minecraft-the-stories-mod:compressed_wood_planks",
+    "minecraft-the-stories-mod:stripped_compressed_wood",
+    "minecraft-the-stories-mod:stripped_compressed_wood_log",
     "minecraft-the-stories-mod:super_crafter_default"
   ]
 }

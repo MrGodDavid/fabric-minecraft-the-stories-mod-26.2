@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "minecraft-the-stories-mod:block/compressed_wood_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "minecraft-the-stories-mod:block/compressed_wood_log"
+    },
+    "axis=z": {
+      "model": "minecraft-the-stories-mod:block/compressed_wood_log",
+      "x": 90
+    }
+  }
+}

@@ -57,6 +57,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getResourceKey(STRONG_AMETHYST_BLOCK));
 
         tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.getResourceKey(COMPRESSED_WOOD))
+                .add(ModBlocks.getResourceKey(COMPRESSED_WOOD_LOG))
+                .add(ModBlocks.getResourceKey(COMPRESSED_WOOD_PLANKS))
+                .add(ModBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD))
+                .add(ModBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG))
+
                 .add(ModBlocks.getResourceKey(SUPER_CRAFTER_BLOCK));
 
         // ######################################### NO TOUCHING ZONE START ##############################################

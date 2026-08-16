@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
@@ -42,6 +43,12 @@ public class ModBlocks {
     public static final Block STRONG_IRON_BLOCK;
     public static final Block STRONG_GOLD_BLOCK;
 
+    public static final Block COMPRESSED_WOOD;
+    public static final Block COMPRESSED_WOOD_LOG;
+    public static final Block COMPRESSED_WOOD_PLANKS;
+    public static final Block STRIPPED_COMPRESSED_WOOD;
+    public static final Block STRIPPED_COMPRESSED_WOOD_LOG;
+
     public static final Block SUPER_CRAFTER_BLOCK;
 
     static {
@@ -66,7 +73,13 @@ public class ModBlocks {
         STRONG_IRON_BLOCK = registerBlock("strong_iron_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.IRON)));
         STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
-        SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+        COMPRESSED_WOOD = registerBlock("compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+        COMPRESSED_WOOD_LOG = registerBlock("compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+        COMPRESSED_WOOD_PLANKS = registerBlock("compressed_wood_planks", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+        STRIPPED_COMPRESSED_WOOD = registerBlock("stripped_compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+        STRIPPED_COMPRESSED_WOOD_LOG = registerBlock("stripped_compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+
+        SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
     }
 
     /**

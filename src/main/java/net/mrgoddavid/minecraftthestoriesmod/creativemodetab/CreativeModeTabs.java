@@ -106,6 +106,12 @@ public class CreativeModeTabs {
                         output.accept(STRONG_IRON_BLOCK);
                         output.accept(STRONG_GOLD_BLOCK);
 
+                        output.accept(COMPRESSED_WOOD);
+                        output.accept(COMPRESSED_WOOD_LOG);
+                        output.accept(COMPRESSED_WOOD_PLANKS);
+                        output.accept(STRIPPED_COMPRESSED_WOOD);
+                        output.accept(STRIPPED_COMPRESSED_WOOD_LOG);
+
                         output.accept(SUPER_CRAFTER_BLOCK);
                     })
                     .build()
