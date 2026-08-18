@@ -2,6 +2,8 @@ package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.*;
 
 /**
@@ -22,5 +24,13 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
         pack.addProvider(MtsBlockTagsProvider::new);
         pack.addProvider(MtsRecipeProvider::new);
         pack.addProvider(MtsBlockLootTableProvider::new);
+        pack.addProvider(MtsWorldGenProvider::new);
+    }
+
+    @Override
+    public void buildRegistry(RegistrySetBuilder registryBuilder) {
+//        DataGeneratorEntrypoint.super.buildRegistry(registryBuilder);
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, MtsWorldGenBootstrapper::bootstrapConfiguredFeatures);
+        registryBuilder.add(Registries.PLACED_FEATURE, MtsWorldGenBootstrapper::bootstrapPlacedFeatures);
     }
 }

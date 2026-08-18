@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,state=default": {
+      "model": "minecraft-the-stories-mod:block/enricher_default",
+      "y": 90
+    },
+    "facing=east,state=with_molten": {
+      "model": "minecraft-the-stories-mod:block/enricher_with_molten",
+      "y": 90
+    },
+    "facing=north,state=default": {
+      "model": "minecraft-the-stories-mod:block/enricher_default"
+    },
+    "facing=north,state=with_molten": {
+      "model": "minecraft-the-stories-mod:block/enricher_with_molten"
+    },
+    "facing=south,state=default": {
+      "model": "minecraft-the-stories-mod:block/enricher_default",
+      "y": 180
+    },
+    "facing=south,state=with_molten": {
+      "model": "minecraft-the-stories-mod:block/enricher_with_molten",
+      "y": 180
+    },
+    "facing=west,state=default": {
+      "model": "minecraft-the-stories-mod:block/enricher_default",
+      "y": 270
+    },
+    "facing=west,state=with_molten": {
+      "model": "minecraft-the-stories-mod:block/enricher_with_molten",
+      "y": 270
+    }
+  }
+}

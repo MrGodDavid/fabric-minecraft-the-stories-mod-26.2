@@ -8,6 +8,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.ModLootTableModifiers;
+import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +37,7 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsItems.registerModItems();
         MtsBlocks.registerModBlocks();
         MtsBlockEntities.registerBlockEntities();
+        MtsWorldGen.registerWorldGen();
 
         LootTableEvents.MODIFY.register(ModLootTableModifiers::modifyLootTables);
     }

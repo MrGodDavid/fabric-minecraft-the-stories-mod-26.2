@@ -1,0 +1,31 @@
+{
+  "feature": "minecraft-the-stories-mod:stone_amethyst_overworld_ore",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 9,
+        "min_inclusive": 3
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "above_bottom": 84
+        },
+        "min_inclusive": {
+          "above_bottom": 64
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
