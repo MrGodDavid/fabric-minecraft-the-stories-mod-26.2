@@ -17,12 +17,12 @@ import java.util.function.Function;
  * @author Mr. GodDavid
  * @since 8/12/2026
  */
-public class ModItems {
+public class MtsItems {
 
     /**
      * Private constructor.
      */
-    private ModItems() {
+    private MtsItems() {
         throw new IllegalStateException("You can't instantiate ModItems class!");
     }
 

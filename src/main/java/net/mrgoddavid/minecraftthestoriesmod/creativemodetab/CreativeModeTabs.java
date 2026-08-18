@@ -8,10 +8,10 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.item.ModItems;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 
-import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
-import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
+import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
 
 /**
  * Custom creative mode tabs.
@@ -29,7 +29,7 @@ public class CreativeModeTabs {
             BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "mts_overworld_items"),
             FabricCreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.STRONG_AMETHYST))
+                    .icon(() -> new ItemStack(MtsItems.STRONG_AMETHYST))
                     .title(Component.translatable("creative_mode_tab.mts.strong_diamond_items"))
                     .displayItems((parameters, output) -> {
                         output.accept(RAW_STRONG_AMETHYST);
@@ -120,6 +120,7 @@ public class CreativeModeTabs {
                         output.accept(RAW_STRONG_AMETHYST_WALL);
 
                         output.accept(SUPER_CRAFTER_BLOCK);
+                        output.accept(ENRICHER);
                     })
                     .build()
     );

@@ -2,21 +2,26 @@ package net.mrgoddavid.minecraftthestoriesmod.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.mrgoddavid.minecraftthestoriesmod.block.entity.custom.SuperCrafterBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -26,7 +31,7 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 8/15/2026
  */
-public class SuperCrafterBlock extends HorizontalDirectionalBlock {
+public class SuperCrafterBlock extends HorizontalDirectionalBlock implements EntityBlock {
 
     public static final String NAME = "super_crafter";
     public static final VoxelShape SHAPE = Block.box(0, 0.01, 0, 16, 14, 16);
@@ -64,8 +69,7 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock {
 
     public SuperCrafterBlock(Properties properties) {
         super(properties);
-        registerDefaultState(this.defaultBlockState()
-                .setValue(STATE, TYPE.DEFAULT));
+        registerDefaultState(this.defaultBlockState().setValue(STATE, TYPE.DEFAULT));
     }
 
     @Override
@@ -80,9 +84,55 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    protected @NonNull InteractionResult useWithoutItem(BlockState state, Level level, @NonNull BlockPos pos, @NonNull Player player, @NonNull BlockHitResult hitResult) {
-        level.setBlockAndUpdate(pos, state.cycle(STATE));
-        return InteractionResult.SUCCESS;
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state,
+                              @Nullable BlockEntity blockEntity, ItemStack destroyedWith) {
+        if (level.getBlockEntity(pos) instanceof SuperCrafterBlockEntity superCrafterBlockEntity) {
+            superCrafterBlockEntity.drops();
+            level.updateNeighbourForOutputSignal(pos, this);
+        }
+        super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
+    }
+
+    @Override
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos,
+                                          Player player, InteractionHand hand, BlockHitResult hitResult) {
+        System.out.println("===============================");
+        System.out.println(
+                "useItemOn: " +
+                        "item=" + itemStack +
+                        ", hand=" + hand +
+                        ", client=" + level.isClientSide()
+        );
+
+        if (hand == InteractionHand.MAIN_HAND && itemStack.isEmpty()) {
+            System.out.println("EMPTY HAND");
+
+            if (!level.isClientSide()) {
+                level.setBlockAndUpdate(pos, state.cycle(STATE));
+            }
+
+            return InteractionResult.SUCCESS;
+        }
+
+        if (itemStack.is(MtsItems.STRONG_AMETHYST_INGOT)) {
+            System.out.println("STRONG AMETHYST INGOT");
+
+            if (!level.isClientSide()) {
+                level.setBlockAndUpdate(pos, state.cycle(STATE));
+            }
+
+            return InteractionResult.SUCCESS;
+        }
+
+        System.out.println("WRONG ITEM");
+
+        // Important: consume the block interaction.
+        return InteractionResult.FAIL;
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {
+        return new SuperCrafterBlockEntity(worldPosition, blockState);
     }
 
     @Override

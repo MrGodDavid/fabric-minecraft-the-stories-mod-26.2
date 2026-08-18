@@ -17,8 +17,8 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
-import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
+import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
 
 /**
  * Defines the loot table of the mod blocks.
@@ -26,9 +26,9 @@ import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
  * @author Mr. GodDavid
  * @since 8/14/2026
  */
-public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
+public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
 
-    public ModBlockLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public MtsBlockLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(packOutput, registriesFuture);
     }
 

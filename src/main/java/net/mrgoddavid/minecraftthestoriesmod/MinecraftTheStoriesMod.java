@@ -3,9 +3,10 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
-import net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
-import net.mrgoddavid.minecraftthestoriesmod.item.ModItems;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.ModLootTableModifiers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +33,9 @@ public class MinecraftTheStoriesMod implements ModInitializer {
     public void onInitialize() {
         CreativeModeTabs.registerModCreativeModeTabs();
 
-        ModItems.registerModItems();
-        ModBlocks.registerModBlocks();
+        MtsItems.registerModItems();
+        MtsBlocks.registerModBlocks();
+        MtsBlockEntities.registerBlockEntities();
 
         LootTableEvents.MODIFY.register(ModLootTableModifiers::modifyLootTables);
     }

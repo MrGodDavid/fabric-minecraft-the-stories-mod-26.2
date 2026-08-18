@@ -14,8 +14,8 @@ import org.jspecify.annotations.NonNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
-import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
+import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 
 /**
  * Provides custom crafting recipes of this mod.
@@ -23,9 +23,9 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
  * @author Mr. GodDavid
  * @since 8/15/2026
  */
-public class ModRecipeProvider extends FabricRecipeProvider {
+public class MtsRecipeProvider extends FabricRecipeProvider {
 
-    public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public MtsRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 

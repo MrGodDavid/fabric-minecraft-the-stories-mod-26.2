@@ -19,13 +19,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.Enricher;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
 import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
 
-import static net.mrgoddavid.minecraftthestoriesmod.block.ModBlocks.*;
-import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
+import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
 
 /**
  * Adapts the {@link FabricModelProvider} class. Generates the JSON files for mod items/blocks.
@@ -33,9 +34,9 @@ import static net.mrgoddavid.minecraftthestoriesmod.item.ModItems.*;
  * @author Mr. GodDavid
  * @since 8/12/2026
  */
-public class ModModelProvider extends FabricModelProvider {
+public class MtsModelProvider extends FabricModelProvider {
 
-    public ModModelProvider(FabricPackOutput output) {
+    public MtsModelProvider(FabricPackOutput output) {
         super(output);
     }
 
@@ -77,6 +78,10 @@ public class ModModelProvider extends FabricModelProvider {
                 SuperCrafterBlock.STATE, SuperCrafterBlock.FACING,
                 (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
         );
+        this.generateFacingModels(blockModelGenerators, ENRICHER,
+                Enricher.STATE, Enricher.FACING,
+                (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
+        );
 
 //        Identifier defaultID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.DEFAULT.path());
 //        Identifier withHammerID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.WITH_HAMMER.path());
@@ -105,7 +110,7 @@ public class ModModelProvider extends FabricModelProvider {
 //        );
     }
 
-    private <T extends Enum<T> & StringRepresentable> void generateFacingModels(
+    public <T extends Enum<T> & StringRepresentable> void generateFacingModels(
             BlockModelGenerators blockModelGenerators,
             Block block,
             EnumProperty<T> stateProperty,

@@ -9,11 +9,15 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.Enricher;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
 
 import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 /**
  * Holds all custom mod blocks.
@@ -21,7 +25,7 @@ import java.util.function.Function;
  * @author Mr. GodDavid
  * @since 8/13/2026
  */
-public class ModBlocks {
+public class MtsBlocks {
 
     public static final Block DEEPSLATE_AMETHYST_ORE;
     public static final Block DEEPSLATE_RUBY_ORE;
@@ -56,6 +60,7 @@ public class ModBlocks {
     public static final Block RAW_STRONG_AMETHYST_WALL;
 
     public static final Block SUPER_CRAFTER_BLOCK;
+    public static final Block ENRICHER;
 
     static {
         DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
@@ -91,6 +96,7 @@ public class ModBlocks {
         COMPRESSED_WOOD_FENCE_GATE = registerBlock("compressed_wood_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
 
         SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+        ENRICHER = registerBlock("enricher_default", properties -> new Enricher(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(Enricher.CLICKED) ? 15 : 0)));
     }
 
     /**
@@ -111,9 +117,9 @@ public class ModBlocks {
      * has two parameters. The first one is the built-in registries called {@link Registries#BLOCK}, and the second one
      * is the identifier, which is the same we created in the first step. Next, we create an instance of {@link Block}.
      * We first use the {@link Function} API to apply the property of the {@link BlockBehaviour} to the block. We then
-     * call the {@link ModBlocks#registerModBlockItem(String, Block)} method to finish the block-item registration.
+     * call the {@link MtsBlocks#registerModBlockItem(String, Block)} method to finish the block-item registration.
      * Finally, we return the registered block by calling {@link Registry#register(Registry, Identifier, Object)}, which
-     * we have seen in {@link ModBlocks#registerModBlockItem(String, Block)} method. The only difference is we pass
+     * we have seen in {@link MtsBlocks#registerModBlockItem(String, Block)} method. The only difference is we pass
      * {@code BuiltInRegistries.BLOCK} as the register of block registration.
      *
      * @param name     of the block.
@@ -160,7 +166,7 @@ public class ModBlocks {
     /**
      * Private constructor.
      */
-    private ModBlocks() {
+    private MtsBlocks() {
         throw new IllegalStateException("You can't instantiate ModItems class!");
     }
 }

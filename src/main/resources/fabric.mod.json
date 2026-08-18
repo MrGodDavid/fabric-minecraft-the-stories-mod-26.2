@@ -19,6 +19,9 @@
 		"main": [
 			"net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod"
 		],
+		"client": [
+			"net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesModClient"
+		],
 		"fabric-datagen": [
 			"net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesModDataGenerator"
 		]
