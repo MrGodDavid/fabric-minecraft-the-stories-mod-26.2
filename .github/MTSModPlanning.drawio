@@ -284,7 +284,7 @@
         <mxCell id="6vtk_a9r91DSLueJkOEs-88" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="leocxRFrzkHoD7p21b9G-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="6vtk_a9r91DSLueJkOEs-71" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#fad9d5;strokeColor=#ae4132;" value="Purified Voidness Bottle" vertex="1">
+        <mxCell id="6vtk_a9r91DSLueJkOEs-71" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#fad9d5;strokeColor=#ae4132;" value="Purified Voidness Bottle&lt;div&gt;(Potion)&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="3500" y="790" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-80" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-78">
