@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="xBtbFhSAIO169gTzjdz9">
-    <mxGraphModel dx="575" dy="367" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1437" dy="917" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -257,7 +257,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-66" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#fad9d5;strokeColor=#ae4132;" value="Enriched Voidness&lt;div&gt;Bottle&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="3180" y="660" as="geometry" />
+          <mxGeometry height="60" width="120" x="3250" y="660" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-73" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-71">
           <mxGeometry relative="1" as="geometry">
@@ -267,8 +267,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="6vtk_a9r91DSLueJkOEs-69" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Lavaia Table" vertex="1">
-          <mxGeometry height="60" width="120" x="3260" y="950" as="geometry" />
+        <mxCell id="6vtk_a9r91DSLueJkOEs-69" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Brewing Stand" vertex="1">
+          <mxGeometry height="60" width="120" x="3250" y="950" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-74" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-71">
           <mxGeometry relative="1" as="geometry">
@@ -278,14 +278,14 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="6vtk_a9r91DSLueJkOEs-70" parent="1" style="whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#36393d;rounded=0;labelBackgroundColor=none;" value="Finta Feather" vertex="1">
-          <mxGeometry height="60" width="120" x="3260" y="1230" as="geometry" />
+        <mxCell id="6vtk_a9r91DSLueJkOEs-70" parent="1" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;rounded=0;labelBackgroundColor=none;" value="Finta Powder" vertex="1">
+          <mxGeometry height="60" width="120" x="3250" y="1230" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-88" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="leocxRFrzkHoD7p21b9G-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-71" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#fad9d5;strokeColor=#ae4132;" value="Purified Voidness Bottle" vertex="1">
-          <mxGeometry height="60" width="120" x="3470" y="790" as="geometry" />
+          <mxGeometry height="60" width="120" x="3500" y="790" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-80" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-78">
           <mxGeometry relative="1" as="geometry" />
@@ -320,7 +320,7 @@
         <mxCell id="6vtk_a9r91DSLueJkOEs-89" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="leocxRFrzkHoD7p21b9G-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="6vtk_a9r91DSLueJkOEs-85" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Enderlen Table" vertex="1">
+        <mxCell id="6vtk_a9r91DSLueJkOEs-85" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Enderlen Cauldron" vertex="1">
           <mxGeometry height="60" width="120" x="3500" y="1100" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-94" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-91">
@@ -349,6 +349,12 @@
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-96" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#FAD9D5;strokeColor=#D0CEE2;fontColor=#1A1A1A;" value="Dragon Breath&lt;div&gt;Bottle&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="2860" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-102" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-101" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;rounded=0;labelBackgroundColor=none;" value="Finta Bone" vertex="1">
+          <mxGeometry height="60" width="120" x="3080" y="1230" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
