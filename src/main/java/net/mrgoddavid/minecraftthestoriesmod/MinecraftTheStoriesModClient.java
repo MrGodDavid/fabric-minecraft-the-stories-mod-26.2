@@ -4,13 +4,12 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.renderer.custom.EnricherBlockEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips;
 
 public class MinecraftTheStoriesModClient implements ClientModInitializer {
 
@@ -20,6 +19,7 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockEntityRenderers.register(MtsBlockEntities.ENRICHER_BE, EnricherBlockEntityRenderer::new);
+        MtsItemTooltips.register();
 
         ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
             if (stack.is(Items.DIAMOND_SWORD) ||  stack.is(Items.NETHERITE_SWORD)) {

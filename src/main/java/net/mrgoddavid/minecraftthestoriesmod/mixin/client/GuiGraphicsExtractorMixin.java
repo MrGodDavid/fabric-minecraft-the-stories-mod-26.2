@@ -1,41 +1,95 @@
 package net.mrgoddavid.minecraftthestoriesmod.mixin.client;
 
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemStack;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.mrgoddavid.minecraftthestoriesmod.client.CWTooltipComponent;
+import net.mrgoddavid.minecraftthestoriesmod.client.ClientItemHeaderTooltipComponent;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArgs;
-import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(AbstractContainerScreen.class)
-public abstract class GuiGraphicsExtractorMixin {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-    private static final Identifier COMMON_WEAPONS_TOOPTIP_STYLE = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "common_weapons_tooltip");
+@Mixin(GuiGraphicsExtractor.class)
+public class GuiGraphicsExtractorMixin {
 
-    @Redirect(
-            method = "extractTooltip",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/item/ItemStack;get(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;"
-            )
+    @Inject(
+            method = "setTooltipForNextFrame(Lnet/minecraft/client/gui/Font;Ljava/util/List;Ljava/util/Optional;IILnet/minecraft/resources/Identifier;)V",
+            at = @At("HEAD"),
+            cancellable = true
     )
-
-    private Object minecraftthestoriesmod$changeTooltipStyle(
-            ItemStack item, DataComponentType dataComponentType
+    private void modifyTooltipComponents(
+            Font font, List<Component> texts, Optional<TooltipComponent> optionalImage, int xo, int yo, @Nullable Identifier style, CallbackInfo ci
     ) {
-        if (dataComponentType == DataComponents.TOOLTIP_STYLE
-                && item.is(MtsTags.Items.MTS_COMMON_WEAPONS)) {
 
-            return COMMON_WEAPONS_TOOPTIP_STYLE;
+        /*
+         * We only modify tooltips that contain our
+         * custom CWTooltipComponent.
+         */
+        if (optionalImage.isEmpty()) {
+            return;
         }
 
-        return item.get(dataComponentType);
+        if (!(optionalImage.get() instanceof CWTooltipComponent cw)) {
+            return;
+        }
+
+        if (texts.isEmpty()) {
+            return;
+        }
+
+        System.out.println("CUSTOM TOOLTIP INTERCEPTED!");
+
+        /*
+         * Convert the tooltip text into ClientTooltipComponents.
+         */
+        List<ClientTooltipComponent> components = new ArrayList<>();
+
+        /*
+         * The first line is normally the item name.
+         *
+         * Instead of adding the item image as a separate
+         * tooltip component, combine the image and name
+         * into ONE component.
+         */
+        components.add(new ClientItemHeaderTooltipComponent(cw.item(), texts.getFirst().getVisualOrderText()));
+
+        /*
+         * Add the remaining vanilla tooltip lines.
+         */
+        for (int i = 1; i < texts.size(); i++) {
+            components.add(ClientTooltipComponent.create(texts.get(i).getVisualOrderText()));
+        }
+
+        /*
+         * Call the private Minecraft method through our
+         * Mixin accessor.
+         */
+        ((GuiGraphicsExtractorAccessor) (Object) this)
+                .invokeSetTooltipForNextFrameInternal(
+                        font,
+                        components,
+                        xo,
+                        yo,
+                        net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE,
+                        style,
+                        false
+                );
+
+        /*
+         * Prevent vanilla from continuing and creating
+         * the original separate image component.
+         */
+        ci.cancel();
     }
 }
