@@ -5,6 +5,9 @@
 	"mixins": [
 		"ExampleMixin"
 	],
+	"client": [
+		"client.GuiGraphicsExtractorMixin"
+	],
 	"injectors": {
 		"defaultRequire": 1
 	},

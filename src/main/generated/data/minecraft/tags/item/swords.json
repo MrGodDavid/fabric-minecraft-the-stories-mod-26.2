@@ -1,5 +1,16 @@
 {
+  "fabric:remove": [
+    "minecraft:wooden_sword",
+    "minecraft:stone_sword",
+    "minecraft:iron_sword",
+    "minecraft:golden_sword",
+    "minecraft:diamond_sword",
+    "minecraft:copper_sword",
+    "minecraft:netherite_sword"
+  ],
   "values": [
+    "#minecraft-the-stories-mod:mts_common_weapon_swords",
+    "#minecraft-the-stories-mod:mts_uncommon_swords",
     "minecraft-the-stories-mod:strong_amethyst_sword",
     "minecraft-the-stories-mod:emerald_sword",
     "minecraft-the-stories-mod:strong_ruby_sword",

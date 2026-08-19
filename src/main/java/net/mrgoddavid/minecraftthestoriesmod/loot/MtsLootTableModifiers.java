@@ -28,9 +28,9 @@ import org.jspecify.annotations.NonNull;
  * @author Mr. GodDavid
  * @since 8/14/2026
  */
-public class ModLootTableModifiers {
+public class MtsLootTableModifiers {
 
-    private ModLootTableModifiers() {
+    private MtsLootTableModifiers() {
         throw new IllegalAccessError("Utility class");
     }
 

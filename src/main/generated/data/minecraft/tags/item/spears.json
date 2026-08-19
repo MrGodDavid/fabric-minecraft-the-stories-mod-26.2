@@ -1,5 +1,16 @@
 {
+  "fabric:remove": [
+    "minecraft:wooden_spear",
+    "minecraft:stone_spear",
+    "minecraft:iron_spear",
+    "minecraft:golden_spear",
+    "minecraft:diamond_spear",
+    "minecraft:copper_spear",
+    "minecraft:netherite_spear"
+  ],
   "values": [
+    "#minecraft-the-stories-mod:mts_common_weapon_spears",
+    "#minecraft-the-stories-mod:mts_uncommon_spears",
     "minecraft-the-stories-mod:strong_amethyst_spear",
     "minecraft-the-stories-mod:emerald_spear",
     "minecraft-the-stories-mod:strong_ruby_spear",

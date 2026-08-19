@@ -13,7 +13,7 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
  * @author Mr. GodDavid
  * @since 8/14/2026
  */
-public final class ModTags {
+public final class MtsTags {
 
     /**
      * Mod tags for mod blocks.
@@ -53,6 +53,89 @@ public final class ModTags {
      * @since 8/14/2026
      */
     public static class Items {
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Vanilla Wooden Axe</li>
+         *     <li>Vanilla Stone Axe</li>
+         *     <li>Vanilla Golden Axe</li>
+         *     <li>Vanilla Iron Axe</li>
+         *     <li>Vanilla Diamond Axe</li>
+         *     <li>Vanilla Copper Axe</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_COMMON_WEAPONS_AXES = createTag("mts_common_weapon_axes");
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Vanilla Wooden Sword</li>
+         *     <li>Vanilla Stone Sword</li>
+         *     <li>Vanilla Golden Sword</li>
+         *     <li>Vanilla Iron Sword</li>
+         *     <li>Vanilla Diamond Sword</li>
+         *     <li>Vanilla Copper Sword</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_COMMON_WEAPONS_SWORDS = createTag("mts_common_weapon_swords");
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Vanilla Wooden Spear</li>
+         *     <li>Vanilla Stone Spear</li>
+         *     <li>Vanilla Golden Spear</li>
+         *     <li>Vanilla Iron Spear</li>
+         *     <li>Vanilla Diamond Spear</li>
+         *     <li>Vanilla Copper Spear</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_COMMON_WEAPONS_SPEARS = createTag("mts_common_weapon_spears");
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Vanilla Netherite Axe</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_UNCOMMON_WEAPONS_AXES = createTag("mts_uncommon_axes");
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Vanilla Netherite Sword</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_UNCOMMON_WEAPONS_SWORDS = createTag("mts_uncommon_swords");
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Vanilla Netherite Spear</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_UNCOMMON_WEAPONS_SPEARS = createTag("mts_uncommon_spears");
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Tag: MTS Common-Weapon Axes</li>
+         *     <li>Tag: MTS Common-Weapon Swords</li>
+         *     <li>Tag: MTS Common-Weapon Spears</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_COMMON_WEAPONS = createTag("mts_common_weapons");
+
+        /**
+         * <h3>Current Items</h3>
+         * <ul>
+         *     <li>Tag: MTS Uncommon-Weapon Axes</li>
+         *     <li>Tag: MTS Uncommon-Weapon Swords</li>
+         *     <li>Tag: MTS Uncommon-Weapon Spears</li>
+         * </ul>
+         */
+        public static final TagKey<Item> MTS_UNCOMMON_WEAPONS = createTag("mts_uncommon_weapons");
 
         public static final TagKey<Item> AMETHYST_REPAIR = createTag("amethyst_repair");
         public static final TagKey<Item> EMERALD_REPAIR = createTag("emerald_repair");
