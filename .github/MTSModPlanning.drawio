@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="xBtbFhSAIO169gTzjdz9">
-    <mxGraphModel dx="1437" dy="917" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="694" dy="443" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -111,10 +111,15 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-13" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-4">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="780" />
+              <mxPoint x="720" y="390" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-12" parent="1" style="whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;rounded=0;labelBackgroundColor=none;" value="Compressed Plank" vertex="1">
-          <mxGeometry height="60" width="120" x="660" y="360" as="geometry" />
+          <mxGeometry height="60" width="120" x="400" y="750" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-21" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-20">
           <mxGeometry relative="1" as="geometry" />
@@ -355,6 +360,15 @@
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-101" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;rounded=0;labelBackgroundColor=none;" value="Finta Bone" vertex="1">
           <mxGeometry height="60" width="120" x="3080" y="1230" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-103" parent="1" style="whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;rounded=0;labelBackgroundColor=none;" value="Oak Plank" vertex="1">
+          <mxGeometry height="60" width="120" x="40" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-104" parent="1" style="whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;rounded=0;labelBackgroundColor=none;" value="Birch Plank" vertex="1">
+          <mxGeometry height="60" width="120" x="40" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-105" parent="1" style="whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;rounded=0;labelBackgroundColor=none;" value="Jungle Plank" vertex="1">
+          <mxGeometry height="60" width="120" x="40" y="460" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
