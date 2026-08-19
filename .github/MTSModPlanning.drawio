@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="xBtbFhSAIO169gTzjdz9">
-    <mxGraphModel dx="1184" dy="755" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="694" dy="443" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -332,6 +332,18 @@
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-91" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#FAD9D5;strokeColor=#D0CEE2;fontColor=#1A1A1A;" value="Primordial Alloy&lt;div&gt;Pickaxe&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="3840" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-98" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-95" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Void" vertex="1">
+          <mxGeometry height="60" width="120" x="2860" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-97" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-96" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#FAD9D5;strokeColor=#D0CEE2;fontColor=#1A1A1A;" value="Dragon Breath&lt;div&gt;Bottle&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="2860" y="690" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
