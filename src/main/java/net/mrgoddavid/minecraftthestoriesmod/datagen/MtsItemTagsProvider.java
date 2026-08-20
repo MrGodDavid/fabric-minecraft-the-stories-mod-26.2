@@ -53,6 +53,15 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS);
 
+        tag(MtsTags.Items.MTS_RARE_WEAPONS)
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_SWORD));
+
+        tag(MtsTags.Items.MTS_EPIC_WEAPONS)
+                .add(MtsItems.getResourceKey(STRONG_RUBY_SWORD));
+
+        tag(MtsTags.Items.MTS_LEGENDARY_WEAPONS)
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_SWORD));
+
         tag(ItemTags.AXES)
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_AXE))
                 .add(MtsItems.getResourceKey(EMERALD_AXE))

@@ -5,10 +5,10 @@
       "width": 64,
       "height": 64,
       "border": {
-        "left": 31,
-        "top": 7,
-        "right": 31,
-        "bottom": 7
+        "left": 28,
+        "top": 8,
+        "right": 28,
+        "bottom": 8
       },
       "stretch_inner": true
     }

@@ -136,6 +136,9 @@ public final class MtsTags {
          * </ul>
          */
         public static final TagKey<Item> MTS_UNCOMMON_WEAPONS = createTag("mts_uncommon_weapons");
+        public static final TagKey<Item> MTS_RARE_WEAPONS = createTag("mts_rare_weapons");
+        public static final TagKey<Item> MTS_EPIC_WEAPONS = createTag("mts_epic_weapons");
+        public static final TagKey<Item> MTS_LEGENDARY_WEAPONS = createTag("mts_legendary_weapons");
 
         public static final TagKey<Item> AMETHYST_REPAIR = createTag("amethyst_repair");
         public static final TagKey<Item> EMERALD_REPAIR = createTag("emerald_repair");

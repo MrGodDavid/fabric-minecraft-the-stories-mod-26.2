@@ -11,9 +11,11 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
  */
 public class MtsItemTooltips {
 
-    public static final Identifier EMERALD_AXE_3D_ICON = icon("emerald_axe");
-
     public static final Identifier COMMON_WEAPONS_TOOLTIP_STYLE = tooltip("common_weapons_tooltip");
+    public static final Identifier UNCOMMON_WEAPONS_TOOLTIP_STYLE = tooltip("uncommon_weapons_tooltip");
+    public static final Identifier RARE_WEAPONS_TOOLTIP_STYLE = tooltip("rare_weapons_tooltip");
+    public static final Identifier EPIC_WEAPONS_TOOLTIP_STYLE = tooltip("epic_weapons_tooltip");
+    public static final Identifier LEGENDARY_WEAPONS_TOOLTIP_STYLE = tooltip("legendary_weapons_tooltip");
 
     private static Identifier tooltip(String path) {
         return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path);

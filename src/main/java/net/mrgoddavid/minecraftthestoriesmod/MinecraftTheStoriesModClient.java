@@ -30,11 +30,11 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
                 lines.add(Component.literal("A weapon forged in ancient times").withStyle(ChatFormatting.GOLD));
             }
 
-            if (stack.is(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)) {
-                lines.add(Component.literal("Common Weapons").withStyle(ChatFormatting.GRAY));
-            } else if (stack.is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)) {
-                lines.add(Component.literal("Uncommon Weapons").withStyle(ChatFormatting.DARK_GREEN));
-            }
+//            if (stack.is(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)) {
+//                lines.add(Component.literal("Common Weapons").withStyle(ChatFormatting.GRAY));
+//            } else if (stack.is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)) {
+//                lines.add(Component.literal("Uncommon Weapons").withStyle(ChatFormatting.DARK_GREEN));
+//            }
         });
     }
 }

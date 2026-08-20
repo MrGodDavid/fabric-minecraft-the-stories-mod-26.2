@@ -7,10 +7,9 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.mrgoddavid.minecraftthestoriesmod.client.CWTooltipComponent;
+import net.mrgoddavid.minecraftthestoriesmod.client.MtsTooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.client.ClientIconTextTooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
-import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -41,7 +40,7 @@ public class GuiGraphicsExtractorMixin {
             return;
         }
 
-        if (!(optionalImage.get() instanceof CWTooltipComponent cw)) {
+        if (!(optionalImage.get() instanceof MtsTooltipComponent tc)) {
             return;
         }
 
@@ -54,7 +53,7 @@ public class GuiGraphicsExtractorMixin {
          */
         List<ClientTooltipComponent> components = new ArrayList<>();
 
-        if (cw.item().is(MtsTags.Items.MTS_COMMON_WEAPONS)) {
+        if (tc.item().is(MtsTags.Items.MTS_COMMON_WEAPONS)) {
 
             /*
              * The first line is normally the item name.
@@ -64,8 +63,28 @@ public class GuiGraphicsExtractorMixin {
              * into ONE component.
              */
             components.add(ClientIconTextTooltipComponent.item(
-                    cw.item(),
+                    tc.item(),
                     Component.literal("Common Weapon").withStyle(ChatFormatting.GRAY).getVisualOrderText()
+            ));
+        } else if (tc.item().is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)) {
+            components.add(ClientIconTextTooltipComponent.item(
+                    tc.item(),
+                    Component.literal("Uncommon Weapon").withStyle(ChatFormatting.GREEN).getVisualOrderText()
+            ));
+        } else if (tc.item().is(MtsTags.Items.MTS_RARE_WEAPONS)) {
+            components.add(ClientIconTextTooltipComponent.item(
+                    tc.item(),
+                    Component.literal("Rare Weapon").withStyle(ChatFormatting.AQUA).getVisualOrderText()
+            ));
+        } else if (tc.item().is(MtsTags.Items.MTS_EPIC_WEAPONS)) {
+            components.add(ClientIconTextTooltipComponent.item(
+                    tc.item(),
+                    Component.literal("Epic Weapon").withStyle(ChatFormatting.DARK_PURPLE).getVisualOrderText()
+            ));
+        } else if (tc.item().is(MtsTags.Items.MTS_LEGENDARY_WEAPONS)) {
+            components.add(ClientIconTextTooltipComponent.item(
+                    tc.item(),
+                    Component.literal("Legendary Weapon").withStyle(ChatFormatting.YELLOW).getVisualOrderText()
             ));
         }
 
