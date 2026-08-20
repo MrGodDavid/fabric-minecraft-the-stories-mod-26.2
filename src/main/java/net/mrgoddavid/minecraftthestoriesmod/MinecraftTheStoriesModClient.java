@@ -3,9 +3,11 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.EnricherBlockEntityRenderer;
@@ -19,6 +21,7 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
      */
     @Override
     public void onInitializeClient() {
+
         BlockEntityRenderers.register(MtsBlockEntities.ENRICHER_BE, EnricherBlockEntityRenderer::new);
         MtsItemTooltips.register();
 
@@ -32,8 +35,6 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
             } else if (stack.is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)) {
                 lines.add(Component.literal("Uncommon Weapons").withStyle(ChatFormatting.DARK_GREEN));
             }
-
-
         });
     }
 }

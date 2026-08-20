@@ -36,16 +36,16 @@ public class ClientIconTextTooltipComponent implements ClientTooltipComponent {
 
     @Override
     public int getHeight(Font font) {
-        return Math.max(iconSize, font.lineHeight);
+        return iconSize;
     }
 
     @Override
     public int getWidth(Font font) {
-        int iconWidth = 0;
+        int iconWidth = font.width(Optional.ofNullable(text).orElse(FormattedCharSequence.EMPTY));
         if (item != null || icon != null) {
-            iconWidth = iconSize + iconTextGap;
+            iconWidth += iconSize + iconTextGap;
         }
-        return iconWidth + font.width(Optional.ofNullable(text).orElse(FormattedCharSequence.EMPTY));
+        return iconWidth;
     }
 
     @Override
@@ -59,11 +59,13 @@ public class ClientIconTextTooltipComponent implements ClientTooltipComponent {
 
     @Override
     public void extractImage(@NonNull Font font, int x, int y, int w, int h, @NonNull GuiGraphicsExtractor graphics) {
+
         if (item != null) {
             graphics.item(item, x, y, 0);
         }
         if (icon != null) {
-            graphics.blit(RenderPipelines.GUI_TEXTURED, icon, x, y, 0.0F, 0.0F, iconSize, iconSize, 64, 64);
+            System.out.println("RENDERING ICON: " + icon);
+            graphics.blit(RenderPipelines.GUI_TEXTURED, icon, x, y, 0.0F, 0.0F, iconSize, iconSize, 16, 16);
         }
     }
 

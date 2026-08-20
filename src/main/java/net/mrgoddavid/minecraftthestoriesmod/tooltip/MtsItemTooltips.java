@@ -20,7 +20,7 @@ public class MtsItemTooltips {
     }
 
     private static Identifier icon(String path) {
-        return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "gui/icons/" + path + "_3d_icon");
+        return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "textures/gui/icons/" + path + "_3d_icon.png");
     }
 
     public static void register() {
