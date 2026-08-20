@@ -19,8 +19,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.Enricher;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlock;
 import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
@@ -79,7 +79,7 @@ public class MtsModelProvider extends FabricModelProvider {
                 (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
         );
         this.generateFacingModels(blockModelGenerators, ENRICHER,
-                Enricher.STATE, Enricher.FACING,
+                EnricherBlock.STATE, EnricherBlock.FACING,
                 (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
         );
 

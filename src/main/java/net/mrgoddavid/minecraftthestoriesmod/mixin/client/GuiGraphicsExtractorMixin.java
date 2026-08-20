@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.mixin.client;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
@@ -9,7 +10,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.client.CWTooltipComponent;
+import net.mrgoddavid.minecraftthestoriesmod.client.ClientIconTextTooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.client.ClientItemHeaderTooltipComponent;
+import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -48,7 +51,7 @@ public class GuiGraphicsExtractorMixin {
             return;
         }
 
-        System.out.println("CUSTOM TOOLTIP INTERCEPTED!");
+//        System.out.println("CUSTOM TOOLTIP INTERCEPTED!");
 
         /*
          * Convert the tooltip text into ClientTooltipComponents.
@@ -62,7 +65,10 @@ public class GuiGraphicsExtractorMixin {
          * tooltip component, combine the image and name
          * into ONE component.
          */
-        components.add(new ClientItemHeaderTooltipComponent(cw.item(), texts.getFirst().getVisualOrderText()));
+        components.add(ClientIconTextTooltipComponent.icon(
+                MtsItemTooltips.EMERALD_AXE_3D_ICON,
+                Component.literal("Common Weapon").withStyle(ChatFormatting.GRAY).getVisualOrderText()
+        ));
 
         /*
          * Add the remaining vanilla tooltip lines.

@@ -11,9 +11,18 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
  */
 public class MtsItemTooltips {
 
-    public static final Identifier COMMON_WEAPONS_TOOLTIP_STYLE = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "common_weapons_tooltip");
+    public static final Identifier EMERALD_AXE_3D_ICON = icon("emerald_axe");
+
+    public static final Identifier COMMON_WEAPONS_TOOLTIP_STYLE = tooltip("common_weapons_tooltip");
+
+    private static Identifier tooltip(String path) {
+        return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path);
+    }
+
+    private static Identifier icon(String path) {
+        return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "gui/icons/" + path + "_3d_icon");
+    }
 
     public static void register() {
     }
-
 }

@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.entity.custom;
+package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;

@@ -1,18 +1,15 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.renderer.custom;
+package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.BlockModelResolver;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.mrgoddavid.minecraftthestoriesmod.block.entity.custom.EnricherBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlockEntity;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -42,7 +39,6 @@ public class EnricherBlockEntityRenderer implements BlockEntityRenderer<Enricher
 
     @Override
     public void submit(EnricherBlockEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
-        System.out.println("ENRICHER RENDERER CALLED");
         poseStack.pushPose();
         poseStack.scale(EnricherBlockEntityRenderState.SCALE, EnricherBlockEntityRenderState.SCALE, EnricherBlockEntityRenderState.SCALE);
         state.blockModelRenderState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);

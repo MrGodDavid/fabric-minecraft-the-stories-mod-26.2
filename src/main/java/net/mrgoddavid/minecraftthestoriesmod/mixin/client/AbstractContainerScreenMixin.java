@@ -45,13 +45,7 @@ public abstract class AbstractContainerScreenMixin {
             )
     )
     private Optional<TooltipComponent> minecraftthestoriesmod$customTooltipImage(ItemStack item) {
-        System.out.println(
-                "TOOLTIP IMAGE REDIRECT: " + item.getItem()
-        );
         if (item.is(MtsTags.Items.MTS_COMMON_WEAPONS)) {
-            System.out.println(
-                    ">>> RETURNING CWTooltipComponent"
-            );
             return Optional.of(new CWTooltipComponent(item));
         }
         return item.getTooltipImage();

@@ -3,11 +3,12 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
-import net.mrgoddavid.minecraftthestoriesmod.block.renderer.custom.EnricherBlockEntityRenderer;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.EnricherBlockEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips;
 

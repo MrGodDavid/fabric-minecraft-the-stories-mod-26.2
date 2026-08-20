@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.renderer.custom;
+package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
 
 import net.minecraft.client.renderer.block.BlockModelRenderState;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;

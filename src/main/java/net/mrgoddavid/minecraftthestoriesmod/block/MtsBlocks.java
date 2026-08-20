@@ -9,15 +9,12 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.Enricher;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlock;
 
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
 
 /**
  * Holds all custom mod blocks.
@@ -96,7 +93,7 @@ public class MtsBlocks {
         COMPRESSED_WOOD_FENCE_GATE = registerBlock("compressed_wood_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
 
         SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
-        ENRICHER = registerBlock("enricher_default", properties -> new Enricher(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(Enricher.CLICKED) ? 15 : 0)));
+        ENRICHER = registerBlock("enricher_default", properties -> new EnricherBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(EnricherBlock.LIT) ? 15 : 0)));
     }
 
     /**

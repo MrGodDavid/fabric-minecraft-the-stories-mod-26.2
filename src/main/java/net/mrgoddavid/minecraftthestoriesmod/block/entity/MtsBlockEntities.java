@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.entity.custom.EnricherBlockEntity;
-import net.mrgoddavid.minecraftthestoriesmod.block.entity.custom.SuperCrafterBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlockEntity;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 

@@ -6,15 +6,17 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 
+/**
+ * Put the image of the stack
+ * @author Mr. GodDavid
+ * @since 8/19/2026
+ */
 public class ClientItemHeaderTooltipComponent implements ClientTooltipComponent {
 
     private final ItemStack stack;
     private final FormattedCharSequence name;
 
-    public ClientItemHeaderTooltipComponent(
-            ItemStack stack,
-            FormattedCharSequence name
-    ) {
+    public ClientItemHeaderTooltipComponent(ItemStack stack, FormattedCharSequence name) {
         this.stack = stack;
         this.name = name;
     }

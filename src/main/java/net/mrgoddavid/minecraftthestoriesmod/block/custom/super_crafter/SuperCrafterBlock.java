@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom;
+package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.mrgoddavid.minecraftthestoriesmod.block.entity.custom.SuperCrafterBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -96,16 +95,16 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock implements Ent
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos,
                                           Player player, InteractionHand hand, BlockHitResult hitResult) {
-        System.out.println("===============================");
-        System.out.println(
-                "useItemOn: " +
-                        "item=" + itemStack +
-                        ", hand=" + hand +
-                        ", client=" + level.isClientSide()
-        );
+//        System.out.println("===============================");
+//        System.out.println(
+//                "useItemOn: " +
+//                        "item=" + itemStack +
+//                        ", hand=" + hand +
+//                        ", client=" + level.isClientSide()
+//        );
 
         if (hand == InteractionHand.MAIN_HAND && itemStack.isEmpty()) {
-            System.out.println("EMPTY HAND");
+//            System.out.println("EMPTY HAND");
 
             if (!level.isClientSide()) {
                 level.setBlockAndUpdate(pos, state.cycle(STATE));
@@ -115,7 +114,7 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock implements Ent
         }
 
         if (itemStack.is(MtsItems.STRONG_AMETHYST_INGOT)) {
-            System.out.println("STRONG AMETHYST INGOT");
+//            System.out.println("STRONG AMETHYST INGOT");
 
             if (!level.isClientSide()) {
                 level.setBlockAndUpdate(pos, state.cycle(STATE));
@@ -124,7 +123,7 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock implements Ent
             return InteractionResult.SUCCESS;
         }
 
-        System.out.println("WRONG ITEM");
+//        System.out.println("WRONG ITEM");
 
         // Important: consume the block interaction.
         return InteractionResult.FAIL;
