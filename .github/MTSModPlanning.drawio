@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="xBtbFhSAIO169gTzjdz9">
-    <mxGraphModel dx="694" dy="443" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2515" dy="1605" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -320,7 +320,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-85" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Enderlen Cauldron" vertex="1">
-          <mxGeometry height="60" width="120" x="3520" y="1100" as="geometry" />
+          <mxGeometry height="60" width="120" x="3500" y="1100" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-94" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-91">
           <mxGeometry relative="1" as="geometry" />
@@ -467,7 +467,7 @@
         <mxCell id="6vtk_a9r91DSLueJkOEs-147" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-136">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="6vtk_a9r91DSLueJkOEs-146" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Ender Compresser" vertex="1">
+        <mxCell id="6vtk_a9r91DSLueJkOEs-146" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Ender Ore Compresser" vertex="1">
           <mxGeometry height="60" width="120" x="2500" y="1585" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-151" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-132">
@@ -535,6 +535,36 @@
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-171" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Fuego Compresser" vertex="1">
           <mxGeometry height="60" width="120" x="2660" y="1300" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-180" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-173" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-173" parent="1" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;rounded=0;labelBackgroundColor=none;" value="Molten Enderlen Bucket" vertex="1">
+          <mxGeometry height="60" width="120" x="3660" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-175" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-174" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-173">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-174" parent="1" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;rounded=0;labelBackgroundColor=none;" value="Enderlen Ingot" vertex="1">
+          <mxGeometry height="60" width="120" x="3500" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-178" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-176" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-173">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-176" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Fuego Enricher" vertex="1">
+          <mxGeometry height="60" width="120" x="3500" y="1340" as="geometry" />
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-181" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-179" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-85">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3800.03" y="1370.03" />
+              <mxPoint x="3800.03" y="1200.03" />
+              <mxPoint x="3560.03" y="1200.03" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6vtk_a9r91DSLueJkOEs-179" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=0;labelBackgroundColor=none;" value="Super Crafter" vertex="1">
+          <mxGeometry height="60" width="120" x="3660" y="1340" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
