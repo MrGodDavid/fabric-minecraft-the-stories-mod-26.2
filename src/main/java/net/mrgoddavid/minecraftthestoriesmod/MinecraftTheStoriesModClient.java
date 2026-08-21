@@ -9,8 +9,11 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlockRenderer;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.EnricherBlockEntityRenderer;
+import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips;
 
@@ -23,18 +26,16 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
     public void onInitializeClient() {
 
         BlockEntityRenderers.register(MtsBlockEntities.ENRICHER_BE, EnricherBlockEntityRenderer::new);
+        BlockEntityRenderers.register(MtsBlockEntities.ENDER_EXALTER_BE, EnderExalterBlockRenderer::new);
+
+        MenuScreens.register(MtsMenuTypes.ENDER_EXALTER_MENU, EnderExalterScreen::new);
+
         MtsItemTooltips.register();
 
         ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
             if (stack.is(Items.DIAMOND_SWORD) ||  stack.is(Items.NETHERITE_SWORD)) {
                 lines.add(Component.literal("A weapon forged in ancient times").withStyle(ChatFormatting.GOLD));
             }
-
-//            if (stack.is(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)) {
-//                lines.add(Component.literal("Common Weapons").withStyle(ChatFormatting.GRAY));
-//            } else if (stack.is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)) {
-//                lines.add(Component.literal("Uncommon Weapons").withStyle(ChatFormatting.DARK_GREEN));
-//            }
         });
     }
 }

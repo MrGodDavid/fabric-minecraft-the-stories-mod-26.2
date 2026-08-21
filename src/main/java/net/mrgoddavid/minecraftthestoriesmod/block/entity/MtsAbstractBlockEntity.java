@@ -42,4 +42,9 @@ public abstract class MtsAbstractBlockEntity extends BlockEntity {
     public @NonNull CompoundTag getUpdateTag(HolderLookup.@NonNull Provider registries) {
         return saveWithoutMetadata(registries);
     }
+
+    /**
+     * Defines inventory drop logics here.
+     */
+    public abstract void drops();
 }

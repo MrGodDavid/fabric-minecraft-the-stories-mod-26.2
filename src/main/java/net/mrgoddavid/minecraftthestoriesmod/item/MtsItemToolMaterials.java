@@ -9,7 +9,7 @@ import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
  * @author Mr. GodDavid
  * @since 8/14/2026
  */
-public class ModItemToolMaterials {
+public class MtsItemToolMaterials {
 
     public static final ToolMaterial AMETHYST;
     public static final ToolMaterial EMERALD;

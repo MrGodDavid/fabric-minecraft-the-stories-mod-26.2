@@ -60,7 +60,8 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_FENCE_GATE))
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_WALL))
 
-                .add(MtsBlocks.getResourceKey(ENRICHER));
+                .add(MtsBlocks.getResourceKey(ENRICHER))
+                .add(MtsBlocks.getResourceKey(ENDER_EXALTER));
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD))

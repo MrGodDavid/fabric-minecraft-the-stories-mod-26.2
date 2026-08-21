@@ -4,12 +4,15 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.client.MtsTooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.client.ClientIconTextTooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemToolStyleHelper;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -53,6 +56,7 @@ public class GuiGraphicsExtractorMixin {
          */
         List<ClientTooltipComponent> components = new ArrayList<>();
 
+        String stackName = tc.item().getHoverName().getString();
         if (tc.item().is(MtsTags.Items.MTS_COMMON_WEAPONS)) {
 
             /*
@@ -62,36 +66,31 @@ public class GuiGraphicsExtractorMixin {
              * tooltip component, combine the image and name
              * into ONE component.
              */
-            components.add(ClientIconTextTooltipComponent.item(
-                    tc.item(),
-                    Component.literal("Common Weapon").withStyle(ChatFormatting.GRAY).getVisualOrderText()
-            ));
+            components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.GRAY).getVisualOrderText()));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Common Weapon", 0xA5A5A5)));
+
         } else if (tc.item().is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)) {
-            components.add(ClientIconTextTooltipComponent.item(
-                    tc.item(),
-                    Component.literal("Uncommon Weapon").withStyle(ChatFormatting.GREEN).getVisualOrderText()
-            ));
+            components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.GREEN).getVisualOrderText()));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Uncommon Weapon", 0x25A791)));
+
         } else if (tc.item().is(MtsTags.Items.MTS_RARE_WEAPONS)) {
-            components.add(ClientIconTextTooltipComponent.item(
-                    tc.item(),
-                    Component.literal("Rare Weapon").withStyle(ChatFormatting.AQUA).getVisualOrderText()
-            ));
+            components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.AQUA).getVisualOrderText()));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Rare Weapon",  0xA5BDFF)));
+
         } else if (tc.item().is(MtsTags.Items.MTS_EPIC_WEAPONS)) {
-            components.add(ClientIconTextTooltipComponent.item(
-                    tc.item(),
-                    Component.literal("Epic Weapon").withStyle(ChatFormatting.DARK_PURPLE).getVisualOrderText()
-            ));
+            components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.LIGHT_PURPLE).getVisualOrderText()));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Epic Weapon",  0x9141AC)));
+
         } else if (tc.item().is(MtsTags.Items.MTS_LEGENDARY_WEAPONS)) {
-            components.add(ClientIconTextTooltipComponent.item(
-                    tc.item(),
-                    Component.literal("Legendary Weapon").withStyle(ChatFormatting.YELLOW).getVisualOrderText()
-            ));
+            components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.YELLOW).getVisualOrderText()));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Legendary Weapon",  0xEC971E)));
+
         }
 
         /*
          * Add the remaining vanilla tooltip lines.
          */
-        for (int i = 1; i < texts.size(); i++) {
+        for (int i = 2; i < texts.size(); i++) {
             components.add(ClientTooltipComponent.create(texts.get(i).getVisualOrderText()));
         }
 
@@ -101,13 +100,8 @@ public class GuiGraphicsExtractorMixin {
          */
         ((GuiGraphicsExtractorAccessor) (Object) this)
                 .invokeSetTooltipForNextFrameInternal(
-                        font,
-                        components,
-                        xo,
-                        yo,
-                        net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE,
-                        style,
-                        false
+                        font, components, xo, yo,
+                        net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE, style, false
                 );
 
         /*

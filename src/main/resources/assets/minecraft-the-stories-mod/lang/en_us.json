@@ -44,6 +44,8 @@
   "item.minecraft-the-stories-mod.strong_topaz_spear": "Strong Topaz Spear",
   "item.minecraft-the-stories-mod.strong_topaz_sword": "Strong Topaz Sword",
 
+  "item.minecraft-the-stories-mod.diamond_battle_axe": "Diamond Battle Axe",
+
   "block.minecraft-the-stories-mod.deepslate_amethyst_ore": "Deepslate Amethyst Ore",
   "block.minecraft-the-stories-mod.deepslate_ruby_ore": "Deepslate Ruby Ore",
   "block.minecraft-the-stories-mod.deepslate_topaz_ore": "Deepslate Topaz Ore",
@@ -78,6 +80,7 @@
 
   "block.minecraft-the-stories-mod.super_crafter_default": "Super Crafter",
   "block.minecraft-the-stories-mod.enricher_default": "Enricher",
+  "block.minecraft-the-stories-mod.ender_exalter": "Ender Exalter",
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",
   "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks"

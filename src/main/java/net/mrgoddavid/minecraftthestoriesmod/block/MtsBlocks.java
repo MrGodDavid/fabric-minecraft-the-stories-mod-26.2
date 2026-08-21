@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlock;
 
@@ -58,6 +59,7 @@ public class MtsBlocks {
 
     public static final Block SUPER_CRAFTER_BLOCK;
     public static final Block ENRICHER;
+    public static final Block ENDER_EXALTER;
 
     static {
         DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
@@ -94,6 +96,7 @@ public class MtsBlocks {
 
         SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
         ENRICHER = registerBlock("enricher_default", properties -> new EnricherBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(EnricherBlock.LIT) ? 15 : 0)));
+        ENDER_EXALTER = registerBlock("ender_exalter", properties -> new EnderExalterBlock(properties.strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     }
 
     /**

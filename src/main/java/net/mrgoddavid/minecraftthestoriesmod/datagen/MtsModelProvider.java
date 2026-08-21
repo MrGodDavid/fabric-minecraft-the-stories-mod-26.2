@@ -8,19 +8,20 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
@@ -83,6 +84,8 @@ public class MtsModelProvider extends FabricModelProvider {
                 (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
         );
 
+        blockModelGenerators.createNonTemplateModelBlock(ENDER_EXALTER);
+
 //        Identifier defaultID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.DEFAULT.path());
 //        Identifier withHammerID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.WITH_HAMMER.path());
 //        Identifier withBlueprintID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.WITH_BLUEPRINT.path());
@@ -131,6 +134,7 @@ public class MtsModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         final ModelTemplate flatItemTemplate = ModelTemplates.FLAT_ITEM;
+        final ModelTemplate flatHandledItemTemplate = ModelTemplates.FLAT_HANDHELD_ITEM;
 
         itemModelGenerators.generateFlatItem(RAW_STRONG_AMETHYST, flatItemTemplate);
         itemModelGenerators.generateFlatItem(RAW_STRONG_DIAMOND, flatItemTemplate);
@@ -152,29 +156,38 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, flatItemTemplate);
 
-        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_HOE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_PICKAXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SHOVEL, flatHandledItemTemplate);
         itemModelGenerators.generateSpear(STRONG_AMETHYST_SPEAR);
-        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SWORD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(EMERALD_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_AMETHYST_SWORD, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_HOE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_PICKAXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_SHOVEL, flatHandledItemTemplate);
         itemModelGenerators.generateSpear(EMERALD_SPEAR);
-        itemModelGenerators.generateFlatItem(EMERALD_SWORD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_RUBY_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_RUBY_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_RUBY_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_RUBY_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EMERALD_SWORD, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_HOE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_PICKAXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_SHOVEL, flatHandledItemTemplate);
         itemModelGenerators.generateSpear(STRONG_RUBY_SPEAR);
-        itemModelGenerators.generateFlatItem(STRONG_RUBY_SWORD, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_AXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_HOE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_PICKAXE, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SHOVEL, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_RUBY_SWORD, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_HOE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_PICKAXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SHOVEL, flatHandledItemTemplate);
         itemModelGenerators.generateSpear(STRONG_TOPAZ_SPEAR);
-        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SWORD, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SWORD, flatHandledItemTemplate);
+
+        itemModelGenerators.itemModelOutput.accept(DIAMOND_BATTLE_AXE, ItemModelUtils.plainModel(getScale2xModelId(itemModelGenerators, DIAMOND_BATTLE_AXE)));
+    }
+
+    public Identifier getScale2xModelId(ItemModelGenerators itemModelGenerators, Item item) {
+        return MtsItemModelTemplates.SCALE_2X.create(
+                item, TextureMapping.singleSlot(TextureSlot.LAYER0, new Material(ModelLocationUtils.getModelLocation(item))),
+                itemModelGenerators.modelOutput
+        );
     }
 }

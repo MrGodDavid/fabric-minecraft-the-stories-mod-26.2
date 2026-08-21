@@ -59,7 +59,6 @@ public class ClientIconTextTooltipComponent implements ClientTooltipComponent {
 
     @Override
     public void extractImage(@NonNull Font font, int x, int y, int w, int h, @NonNull GuiGraphicsExtractor graphics) {
-
         if (item != null) {
             graphics.item(item, x, y, 0);
         }
@@ -75,5 +74,9 @@ public class ClientIconTextTooltipComponent implements ClientTooltipComponent {
 
     public static ClientIconTextTooltipComponent item(ItemStack item, FormattedCharSequence text) {
         return new ClientIconTextTooltipComponent(item, null, text);
+    }
+
+    public static ClientIconTextTooltipComponent text(FormattedCharSequence text) {
+        return new ClientIconTextTooltipComponent(null, null, text);
     }
 }

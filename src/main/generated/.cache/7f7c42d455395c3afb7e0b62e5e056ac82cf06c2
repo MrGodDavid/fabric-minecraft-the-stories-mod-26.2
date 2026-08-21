@@ -7,6 +7,8 @@ b2616f9f59e7b951f1f7d19b03f3d6716307f791 data/minecraft-the-stories-mod/loot_tab
 9990609b99b968cf8d7da1cc258ea91914829370 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_amethyst_ore.json
 0d3c9a5afcc00beeef38bfa1908fb58ff08fff55 data/minecraft-the-stories-mod/loot_table/blocks/deepslate_ruby_ore.json
 5b43445aedfac0939e3bad3141153320909f6f2e data/minecraft-the-stories-mod/loot_table/blocks/deepslate_topaz_ore.json
+be73340ec44db5c3fa4cfb9d892138ea62328ca6 data/minecraft-the-stories-mod/loot_table/blocks/ender_exalter.json
+16c00181fa3ce03f2af7f9cd30168d95a63c3dff data/minecraft-the-stories-mod/loot_table/blocks/enricher_default.json
 108c646b1e18bf0a3c7fd4dff4979a6e4b050b1a data/minecraft-the-stories-mod/loot_table/blocks/raw_strong_amethyst_block.json
 e66cd9eca4f1ec45fb97ec2e6b7e68eb7fbe188b data/minecraft-the-stories-mod/loot_table/blocks/raw_strong_diamond_block.json
 075d83353e4b22eebd911d29164feeee806400b0 data/minecraft-the-stories-mod/loot_table/blocks/raw_strong_emerald_block.json

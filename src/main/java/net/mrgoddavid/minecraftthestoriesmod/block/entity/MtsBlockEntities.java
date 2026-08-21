@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlockEntity;
 
@@ -23,6 +25,7 @@ public class MtsBlockEntities {
 
     public static final BlockEntityType<SuperCrafterBlockEntity> SUPER_CRAFTER_BE = register("super_crafter_be", SuperCrafterBlockEntity::new, SUPER_CRAFTER_BLOCK);
     public static final BlockEntityType<EnricherBlockEntity> ENRICHER_BE = register("enricher_be", EnricherBlockEntity::new, ENRICHER);
+    public static final BlockEntityType<EnderExalterBlockEntity> ENDER_EXALTER_BE = register("ender_exalter_be", EnderExalterBlockEntity::new, ENDER_EXALTER);
 
     public static void registerBlockEntities() {
         MinecraftTheStoriesMod.LOGGER.info("Registering Block Entities for " + MinecraftTheStoriesMod.MOD_ID);

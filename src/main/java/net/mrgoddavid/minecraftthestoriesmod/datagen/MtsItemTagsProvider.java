@@ -66,7 +66,8 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_AXE))
                 .add(MtsItems.getResourceKey(EMERALD_AXE))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_AXE))
-                .add(MtsItems.getResourceKey(STRONG_TOPAZ_AXE));
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_AXE))
+                .add(MtsItems.getResourceKey(DIAMOND_BATTLE_AXE));
 
         tag(ItemTags.HOES)
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_HOE))
@@ -131,6 +132,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      * Moves Wooden Sword, Stone Sword, Iron Sword, Golden Sword, Diamond Sword, and Copper Sword from {@code SWORDS} to
      * {@code MTS_COMMON_WEAPONS_SWORD}. Then adds {@code MTS_COMMON_WEAPONS_SWORD} to {@code SWORDS}.
      * <p>Moves Netherite Sword from {@code SWORDS} to {@code MTS_UNCOMMON_WEAPONS_SWORDS}</p>
+     * <p>Adds {@code DIAMOND_BATTLE_AXE} to {@code MTS_UNCOMMON_WEAPONS_SWORDS}.</p>
      */
     private void moveSwordsToTiers() {
         tag(ItemTags.SWORDS)
@@ -149,7 +151,8 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(Items.DIAMOND_SWORD))
                 .add(MtsItems.getResourceKey(Items.COPPER_SWORD));
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)
-                .add(MtsItems.getResourceKey(Items.NETHERITE_SWORD));
+                .add(MtsItems.getResourceKey(Items.NETHERITE_SWORD))
+                .add(MtsItems.getResourceKey(DIAMOND_BATTLE_AXE));
         tag(ItemTags.SWORDS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS);

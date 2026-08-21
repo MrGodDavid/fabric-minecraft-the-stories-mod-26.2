@@ -76,6 +76,8 @@ public class CreativeModeTabs {
                         output.accept(STRONG_TOPAZ_SHOVEL);
                         output.accept(STRONG_TOPAZ_SPEAR);
                         output.accept(STRONG_TOPAZ_SWORD);
+
+                        output.accept(DIAMOND_BATTLE_AXE);
                     })
                     .build()
     );
@@ -121,6 +123,7 @@ public class CreativeModeTabs {
 
                         output.accept(SUPER_CRAFTER_BLOCK);
                         output.accept(ENRICHER);
+                        output.accept(ENDER_EXALTER);
                     })
                     .build()
     );

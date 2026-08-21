@@ -13,7 +13,7 @@ da361f7bc314490f4cdc122516b9032f7fd7f04c data/minecraft/tags/block/fences.json
 47d228326bc0455c0aa404419149f38e26aad7f0 data/minecraft/tags/block/incorrect_for_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/incorrect_for_netherite_tool.json
 f06ff277b605df65c67e2d1424c3f4d444ccb9f3 data/minecraft/tags/block/mineable/axe.json
-cdcbed9e76c8933c2d7b53c3198f604dbcfae6fd data/minecraft/tags/block/mineable/pickaxe.json
+b129de097b2268b47f353d11267b803d5d3380ab data/minecraft/tags/block/mineable/pickaxe.json
 4928ab4b5cec33b5ba1d42b51cfb41152421f883 data/minecraft/tags/block/needs_diamond_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/needs_iron_tool.json
 c02564d2471bf8137399a5c22230a9bf8d04fcf1 data/minecraft/tags/block/walls.json

@@ -66,6 +66,8 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(STRONG_AMETHYST_WALL);
 
         dropWhenSilkTouch(SUPER_CRAFTER_BLOCK);
+        dropSelf(ENRICHER);
+        dropSelf(ENDER_EXALTER);
 
         // ores - custom mod blocks ONLY.
         add(STONE_AMETHYST_ORE, createMultipleOreDrops(STONE_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 2.0f));

@@ -5,7 +5,9 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
+import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.MtsLootTableModifiers;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
@@ -34,9 +36,13 @@ public class MinecraftTheStoriesMod implements ModInitializer {
     public void onInitialize() {
         CreativeModeTabs.registerModCreativeModeTabs();
 
+        MtsItemModelTemplates.registerTemplates();
+        MtsMenuTypes.registerMenuTypes();
+
         MtsItems.registerModItems();
         MtsBlocks.registerModBlocks();
         MtsBlockEntities.registerBlockEntities();
+
         MtsWorldGen.registerWorldGen();
 
         LootTableEvents.MODIFY.register(MtsLootTableModifiers::modifyLootTables);

@@ -51,69 +51,72 @@ public class MtsItems {
     // #                                                AMETHYST TOOLS                                                 #
     // #################################################################################################################
     public static final Item STRONG_AMETHYST_AXE = registerItem("strong_amethyst_axe", properties ->
-            new AxeItem(ModItemToolMaterials.AMETHYST, 6f, -3.2f, properties.fireResistant()));
+            new AxeItem(MtsItemToolMaterials.AMETHYST, 6f, -3.2f, properties.fireResistant()));
     public static final Item STRONG_AMETHYST_HOE = registerItem("strong_amethyst_hoe", properties ->
-            new HoeItem(ModItemToolMaterials.AMETHYST, 0f, -3.0f, properties.fireResistant()));
+            new HoeItem(MtsItemToolMaterials.AMETHYST, 0f, -3.0f, properties.fireResistant()));
     public static final Item STRONG_AMETHYST_PICKAXE = registerItem("strong_amethyst_pickaxe", properties ->
-            new Item(properties.pickaxe(ModItemToolMaterials.AMETHYST, 1f, -2.8f).fireResistant()));
+            new Item(properties.pickaxe(MtsItemToolMaterials.AMETHYST, 1f, -2.8f).fireResistant()));
     public static final Item STRONG_AMETHYST_SHOVEL = registerItem("strong_amethyst_shovel", properties ->
-            new ShovelItem(ModItemToolMaterials.AMETHYST, 1.5f, -3.0f, properties.fireResistant()));
+            new ShovelItem(MtsItemToolMaterials.AMETHYST, 1.5f, -3.0f, properties.fireResistant()));
     public static final Item STRONG_AMETHYST_SPEAR = registerItem("strong_amethyst_spear", properties ->
-            new Item(properties.spear(ModItemToolMaterials.AMETHYST,
+            new Item(properties.spear(MtsItemToolMaterials.AMETHYST,
                     0.95f, 0.95f, 0.6f, 2.5f, 11.0f, 6.75f, 5.1f, 8.25f, 4.6f).fireResistant()));
     public static final Item STRONG_AMETHYST_SWORD = registerItem("strong_amethyst_sword", properties ->
-            new Item(properties.sword(ModItemToolMaterials.AMETHYST, 3.0f, -2.4f).fireResistant()));
+            new Item(properties.sword(MtsItemToolMaterials.AMETHYST, 3.0f, -2.4f).fireResistant()));
 
     // #################################################################################################################
     // #                                                EMERALD TOOLS                                                  #
     // #################################################################################################################
     public static final Item EMERALD_AXE = registerItem("emerald_axe", properties ->
-            new AxeItem(ModItemToolMaterials.EMERALD, 6f, -3.2f, properties));
+            new AxeItem(MtsItemToolMaterials.EMERALD, 6f, -3.2f, properties));
     public static final Item EMERALD_HOE = registerItem("emerald_hoe", properties ->
-            new HoeItem(ModItemToolMaterials.EMERALD, 0f, -3.0f, properties));
+            new HoeItem(MtsItemToolMaterials.EMERALD, 0f, -3.0f, properties));
     public static final Item EMERALD_PICKAXE = registerItem("emerald_pickaxe", properties ->
-            new Item(properties.pickaxe(ModItemToolMaterials.EMERALD, 1f, -2.8f)));
+            new Item(properties.pickaxe(MtsItemToolMaterials.EMERALD, 1f, -2.8f)));
     public static final Item EMERALD_SHOVEL = registerItem("emerald_shovel", properties ->
-            new ShovelItem(ModItemToolMaterials.EMERALD, 1.5f, -3.0f, properties));
+            new ShovelItem(MtsItemToolMaterials.EMERALD, 1.5f, -3.0f, properties));
     public static final Item EMERALD_SPEAR = registerItem("emerald_spear", properties ->
-            new Item(properties.spear(ModItemToolMaterials.EMERALD,
+            new Item(properties.spear(MtsItemToolMaterials.EMERALD,
                     1.0f, 1.0f, 1.0f, 2.75f, 11.5f, 6.75f, 5.1f, 11.0f, 4.6f)));
     public static final Item EMERALD_SWORD = registerItem("emerald_sword", properties ->
-            new Item(properties.sword(ModItemToolMaterials.EMERALD, 3.0f, -2.4f)));
+            new Item(properties.sword(MtsItemToolMaterials.EMERALD, 3.0f, -2.4f)));
 
     // #################################################################################################################
     // #                                                RUBY TOOLS                                                     #
     // #################################################################################################################
     public static final Item STRONG_RUBY_AXE = registerItem("strong_ruby_axe", properties ->
-            new AxeItem(ModItemToolMaterials.RUBY, 6f, -3.2f, properties.fireResistant()));
+            new AxeItem(MtsItemToolMaterials.RUBY, 6f, -3.2f, properties.fireResistant()));
     public static final Item STRONG_RUBY_HOE = registerItem("strong_ruby_hoe", properties ->
-            new HoeItem(ModItemToolMaterials.RUBY, 0f, -3.0f, properties.fireResistant()));
+            new HoeItem(MtsItemToolMaterials.RUBY, 0f, -3.0f, properties.fireResistant()));
     public static final Item STRONG_RUBY_PICKAXE = registerItem("strong_ruby_pickaxe", properties ->
-            new Item(properties.pickaxe(ModItemToolMaterials.RUBY, 1f, -2.8f).fireResistant()));
+            new Item(properties.pickaxe(MtsItemToolMaterials.RUBY, 1f, -2.8f).fireResistant()));
     public static final Item STRONG_RUBY_SHOVEL = registerItem("strong_ruby_shovel", properties ->
-            new ShovelItem(ModItemToolMaterials.RUBY, 1.5f, -3.0f, properties.fireResistant()));
+            new ShovelItem(MtsItemToolMaterials.RUBY, 1.5f, -3.0f, properties.fireResistant()));
     public static final Item STRONG_RUBY_SPEAR = registerItem("strong_ruby_spear", properties ->
-            new Item(properties.spear(ModItemToolMaterials.RUBY,
+            new Item(properties.spear(MtsItemToolMaterials.RUBY,
                     1.15f, 1.05f, 0.55f, 2.75f, 10.0f, 6.75f, 5.1f, 9.25f, 4.6f).fireResistant()));
     public static final Item STRONG_RUBY_SWORD = registerItem("strong_ruby_sword", properties ->
-            new Item(properties.sword(ModItemToolMaterials.RUBY, 3.0f, -2.4f).fireResistant()));
+            new Item(properties.sword(MtsItemToolMaterials.RUBY, 3.0f, -2.4f).fireResistant()));
 
     // #################################################################################################################
     // #                                                TOPAZ TOOLS                                                    #
     // #################################################################################################################
     public static final Item STRONG_TOPAZ_AXE = registerItem("strong_topaz_axe", properties ->
-            new AxeItem(ModItemToolMaterials.TOPAZ, 6f, -3.2f, properties));
+            new AxeItem(MtsItemToolMaterials.TOPAZ, 6f, -3.2f, properties));
     public static final Item STRONG_TOPAZ_HOE = registerItem("strong_topaz_hoe", properties ->
-            new HoeItem(ModItemToolMaterials.TOPAZ, 0f, -3.0f, properties));
+            new HoeItem(MtsItemToolMaterials.TOPAZ, 0f, -3.0f, properties));
     public static final Item STRONG_TOPAZ_PICKAXE = registerItem("strong_topaz_pickaxe", properties ->
-            new Item(properties.pickaxe(ModItemToolMaterials.TOPAZ, 1f, -2.8f)));
+            new Item(properties.pickaxe(MtsItemToolMaterials.TOPAZ, 1f, -2.8f)));
     public static final Item STRONG_TOPAZ_SHOVEL = registerItem("strong_topaz_shovel", properties ->
-            new ShovelItem(ModItemToolMaterials.TOPAZ, 1.5f, -3.0f, properties));
+            new ShovelItem(MtsItemToolMaterials.TOPAZ, 1.5f, -3.0f, properties));
     public static final Item STRONG_TOPAZ_SPEAR = registerItem("strong_topaz_spear", properties ->
-            new Item(properties.spear(ModItemToolMaterials.TOPAZ,
+            new Item(properties.spear(MtsItemToolMaterials.TOPAZ,
                     1.11f, 0.85f, 0.75f, 3.0f, 11.0f, 7.0f, 3.3f, 9.75f, 4.6f)));
     public static final Item STRONG_TOPAZ_SWORD = registerItem("strong_topaz_sword", properties ->
-            new Item(properties.sword(ModItemToolMaterials.TOPAZ, 3.0f, -2.4f)));
+            new Item(properties.sword(MtsItemToolMaterials.TOPAZ, 3.0f, -2.4f)));
+
+    public static final Item DIAMOND_BATTLE_AXE = registerItem("diamond_battle_axe", properties ->
+            new Item(properties.sword(ToolMaterial.DIAMOND, 5.5f, -3.5f)));
 
     /**
      * Gets the resource key of the mod item.

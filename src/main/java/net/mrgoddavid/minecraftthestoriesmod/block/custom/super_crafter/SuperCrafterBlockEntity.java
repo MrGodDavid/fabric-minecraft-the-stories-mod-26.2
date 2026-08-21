@@ -73,6 +73,10 @@ public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements C
         setChanged();
     }
 
+    /**
+     * Defines inventory drop logics here.
+     */
+    @Override
     public void drops() {
         Containers.dropContents(this.level, this.worldPosition, this.inventory);
     }
