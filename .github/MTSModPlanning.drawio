@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="xBtbFhSAIO169gTzjdz9">
-    <mxGraphModel dx="2874" dy="1834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3353" dy="2140" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -347,7 +347,7 @@
         <mxCell id="6vtk_a9r91DSLueJkOEs-97" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-65">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="6vtk_a9r91DSLueJkOEs-96" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#FAD9D5;strokeColor=#D0CEE2;fontColor=#1A1A1A;" value="Dragon Breath&lt;div&gt;Bottle&lt;/div&gt;" vertex="1">
+        <mxCell id="6vtk_a9r91DSLueJkOEs-96" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#FAD9D5;strokeColor=#D0CEE2;fontColor=#1A1A1A;" value="Void Dragon Breath&lt;div&gt;Bottle&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="2860" y="660" as="geometry" />
         </mxCell>
         <mxCell id="6vtk_a9r91DSLueJkOEs-184" edge="1" parent="1" source="6vtk_a9r91DSLueJkOEs-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#09555B;fontColor=#1A1A1A;" target="6vtk_a9r91DSLueJkOEs-70">
@@ -658,6 +658,12 @@
         </mxCell>
         <mxCell id="PJ3kuVHE9oME2uQaqqDs-12" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#FAD9D5;strokeColor=#D0CEE2;fontColor=#1A1A1A;" value="Wood" vertex="1">
           <mxGeometry height="60" width="120" x="340" y="980" as="geometry" />
+        </mxCell>
+        <mxCell id="0TQfsx_E8GXpGB0Fg2_C-4" edge="1" parent="1" source="0TQfsx_E8GXpGB0Fg2_C-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="6vtk_a9r91DSLueJkOEs-96">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0TQfsx_E8GXpGB0Fg2_C-1" parent="1" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;fillColor=#FAD9D5;strokeColor=#D0CEE2;fontColor=#1A1A1A;" value="Dragon Breath&lt;div&gt;Bottle&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="2670" y="660" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
