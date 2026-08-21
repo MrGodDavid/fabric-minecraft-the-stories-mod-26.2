@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft-the-stories-mod:item/scale_2x",
+  "textures": {
+    "layer0": "minecraft-the-stories-mod:item/diamond_battle_axe"
+  }
+}
