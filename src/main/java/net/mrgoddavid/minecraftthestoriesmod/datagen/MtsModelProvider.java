@@ -84,6 +84,9 @@ public class MtsModelProvider extends FabricModelProvider {
                 (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
         );
 
+//        blockModelGenerators.createHorizontallyRotatedBlock(SUPER_CRAFTER_BLOCK, TexturedModel.ORIENTABLE);
+//        blockModelGenerators.createHorizontallyRotatedBlock(ENRICHER, TexturedModel.ORIENTABLE);
+
         blockModelGenerators.createNonTemplateModelBlock(ENDER_EXALTER);
 
 //        Identifier defaultID = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, SuperCrafterBlock.TYPE.DEFAULT.path());

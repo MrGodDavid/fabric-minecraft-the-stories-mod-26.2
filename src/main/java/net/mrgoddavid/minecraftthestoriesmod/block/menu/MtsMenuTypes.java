@@ -9,10 +9,12 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterMenu;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherMenu;
 
 public class MtsMenuTypes {
 
     public static final MenuType<EnderExalterMenu> ENDER_EXALTER_MENU = register("ender_exalter_menu", EnderExalterMenu::new);
+    public static final MenuType<EnricherMenu> ENRICHER_MENU = register("enricher_menu", EnricherMenu::new);
 
     private static <T extends AbstractContainerMenu> MenuType<T> register(final String path, ExtendedMenuType.ExtendedFactory<T, BlockPos> factory) {
         return Registry.register(BuiltInRegistries.MENU,

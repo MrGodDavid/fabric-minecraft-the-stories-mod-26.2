@@ -1,30 +1,25 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter;
+package net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
-import org.jspecify.annotations.Nullable;
-
-import static net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlockEntity.TOTAL_SLOTS;
 
 /**
- * A menu is the bridge that connects the Block Entity and the Screen. This has functionality of telling Minecraft how
- * to  open the menu of the block entity, which, in this case, is the Ender Exalter. For example where to put the slots
- * in menu.
+ * Menu of Enricher.
  *
  * @author Mr. GodDavid
- * @since 8/21/2026
+ * @since 8/22/2026
  */
-public class EnderExalterMenu extends AbstractContainerMenu {
+public class EnricherMenu extends AbstractContainerMenu {
 
     private final Container inventory;
+    private final ContainerData data;
+    public final EnricherBlockEntity blockEntity;
 
     // SLOT INDICES
     private static final int HOTBAR_SLOT_COUNT = 9;
@@ -35,33 +30,42 @@ public class EnderExalterMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int ENDER_EXALTER_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT; // 36
 
-    private static final int ENDER_EXALTER_SLOT_COUNT = TOTAL_SLOTS; // modify this to display how many slots you want.
+    private static final int ENDER_EXALTER_SLOT_COUNT = 3; // modify this to display how many slots you want.
 
-
-    public EnderExalterMenu(int containerId, Inventory inventory, BlockPos blockPos) {
-        this(containerId, inventory, inventory.player.level().getBlockEntity(blockPos));
+    public EnricherMenu(int containerId, Inventory inventory, BlockPos pos) {
+        this(containerId, inventory, inventory.player.level().getBlockEntity(pos), new SimpleContainerData(4));
     }
 
-    public EnderExalterMenu(int containerId, Inventory inventory, BlockEntity blockEntity) {
-        super(MtsMenuTypes.ENDER_EXALTER_MENU, containerId);
-        this.inventory = ((Container) blockEntity);
+    public EnricherMenu(int containerId, Inventory inventory, BlockEntity blockEntity, ContainerData data) {
+        super(MtsMenuTypes.ENRICHER_MENU, containerId);
+        this.blockEntity = ((EnricherBlockEntity) blockEntity);
+        this.data = data;
+        this.inventory = this.blockEntity;
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
 
-        // add slots.
-        addSlot(new Slot(this.inventory, 0, 62, 34) {
+        this.addSlot(new Slot(this.inventory, EnricherBlockEntity.INPUT_SLOT, 53, 10));
+        this.addSlot(new Slot(this.inventory, EnricherBlockEntity.FUEL_SLOT, 53, 46));
+        this.addSlot(new Slot(this.inventory, EnricherBlockEntity.OUTPUT_SLOT, 109, 29) {
             @Override
-            public int getMaxStackSize() {
-                return 1;
+            public boolean mayPlace(ItemStack itemStack) {
+                return false;
             }
         });
-        addSlot(new Slot(this.inventory, 1, 98, 34) {
-            @Override
-            public int getMaxStackSize() {
-                return 1;
-            }
-        });
+
+        addDataSlots(data);
+    }
+
+    public int getScaledArrowProgress() {
+        int progress = data.get(0);
+        int maxProgress = data.get(1);
+        int arrowPixelSize = 18;
+        return maxProgress != 0 && progress != 0 ? progress * arrowPixelSize / maxProgress : 0;
+    }
+
+    public boolean isCrafting() {
+        return data.get(0) > 0 && data.get(2) > 0;
     }
 
     @Override
@@ -108,14 +112,14 @@ public class EnderExalterMenu extends AbstractContainerMenu {
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 140));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
         for (int y = 0; y < 3; ++y) {
             for (int x = 0; x < 9; ++x) {
-                this.addSlot(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18, 82 + y * 18));
+                this.addSlot(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
             }
         }
     }

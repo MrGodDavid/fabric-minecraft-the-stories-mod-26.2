@@ -12,13 +12,11 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -39,11 +37,18 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 8/17/2026
  */
-public class EnricherBlock extends AbstractFurnaceBlock implements EntityBlock {
+public class EnricherBlock extends BaseEntityBlock implements EntityBlock {
 
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final MapCodec<EnricherBlock> CODEC = simpleCodec(EnricherBlock::new);
-    public static final String NAME = "enricher";
     public static final VoxelShape SHAPE = Block.box(0, 0.001, 0, 16, 29, 16);
+    public static final BooleanProperty LIT = BooleanProperty.create("lit");
+    public static final String NAME = "enricher";
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {
+        return new EnricherBlockEntity(worldPosition, blockState);
+    }
 
     /**
      * Indicates the block state of Enricher.
@@ -81,60 +86,49 @@ public class EnricherBlock extends AbstractFurnaceBlock implements EntityBlock {
                 .setValue(FACING, Direction.NORTH));
     }
 
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.@NonNull Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(STATE);
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        return new EnricherBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
-        return createFurnaceTicker(level, type, MtsBlockEntities.ENRICHER_BE);
-    }
-
-    @Override
-    protected void openContainer(Level level, BlockPos pos, Player player) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof EnricherBlockEntity) {
-            player.openMenu((MenuProvider) blockEntity);
-            player.awardStat(Stats.INTERACT_WITH_FURNACE);
-        }
-    }
-
+    /* FACING */
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection());
     }
 
     @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(LIT)) {
-            double x = pos.getX() + 0.5;
-            double y = pos.getY() + SHAPE.max(Direction.Axis.Y) - 0.5;
-            double z = pos.getZ() + 0.5;
-            if (random.nextDouble() < 0.1) {
-                level.playLocalSound(x, y, z, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-            }
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(FACING, LIT, STATE);
+    }
 
-            Direction direction = state.getValue(FACING);
-            Direction.Axis axis = direction.getAxis();
-            double r = 0.52;
-            double ss = random.nextDouble() * 0.6 - 0.3;
-            double dx = axis == Direction.Axis.X ? direction.getStepX() * r : ss;
-            double dy = random.nextDouble() * 6.0 / 16.0;
-            double dz = axis == Direction.Axis.Z ? direction.getStepZ() * r : ss;
-            level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy, z + dz, 0.0, 0.0, 0.0);
-            level.addParticle(ParticleTypes.FLAME, x + dx, y + dy, z + dz, 0.0, 0.0, 0.0);
+    /* BLOCK LOGIC */
+    @Override
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack destroyedWith) {
+        if (level.getBlockEntity(pos) instanceof EnricherBlockEntity enricherBlockEntity) {
+            enricherBlockEntity.drops();
         }
+        super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
     }
 
     @Override
-    protected MapCodec<? extends AbstractFurnaceBlock> codec() {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (!level.isClientSide()) {
+            if (level.getBlockEntity(pos) instanceof EnricherBlockEntity enricherBlockEntity) {
+                player.openMenu(enricherBlockEntity);
+                System.out.println("Jere");
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
+        if (level.isClientSide()) {
+            return null;
+        }
+        return createTickerHelper(type, MtsBlockEntities.ENRICHER_BE,
+                (level1, pos, state, entity) -> entity.tick(level1, pos, state));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
     }
 

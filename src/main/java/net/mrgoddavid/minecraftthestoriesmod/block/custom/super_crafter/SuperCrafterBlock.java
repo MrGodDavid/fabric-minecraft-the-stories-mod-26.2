@@ -95,37 +95,19 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock implements Ent
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos,
                                           Player player, InteractionHand hand, BlockHitResult hitResult) {
-//        System.out.println("===============================");
-//        System.out.println(
-//                "useItemOn: " +
-//                        "item=" + itemStack +
-//                        ", hand=" + hand +
-//                        ", client=" + level.isClientSide()
-//        );
-
         if (hand == InteractionHand.MAIN_HAND && itemStack.isEmpty()) {
-//            System.out.println("EMPTY HAND");
-
             if (!level.isClientSide()) {
                 level.setBlockAndUpdate(pos, state.cycle(STATE));
             }
-
             return InteractionResult.SUCCESS;
         }
 
         if (itemStack.is(MtsItems.STRONG_AMETHYST_INGOT)) {
-//            System.out.println("STRONG AMETHYST INGOT");
-
             if (!level.isClientSide()) {
                 level.setBlockAndUpdate(pos, state.cycle(STATE));
             }
-
             return InteractionResult.SUCCESS;
         }
-
-//        System.out.println("WRONG ITEM");
-
-        // Important: consume the block interaction.
         return InteractionResult.FAIL;
     }
 

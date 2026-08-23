@@ -3,18 +3,15 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.EnricherBlockEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
-import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips;
 
 public class MinecraftTheStoriesModClient implements ClientModInitializer {
@@ -25,10 +22,10 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        BlockEntityRenderers.register(MtsBlockEntities.ENRICHER_BE, EnricherBlockEntityRenderer::new);
         BlockEntityRenderers.register(MtsBlockEntities.ENDER_EXALTER_BE, EnderExalterBlockRenderer::new);
 
         MenuScreens.register(MtsMenuTypes.ENDER_EXALTER_MENU, EnderExalterScreen::new);
+        MenuScreens.register(MtsMenuTypes.ENRICHER_MENU, EnricherScreen::new);
 
         MtsItemTooltips.register();
 
