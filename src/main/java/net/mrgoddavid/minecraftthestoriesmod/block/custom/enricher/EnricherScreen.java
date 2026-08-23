@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 
 /**
- * Screen of Enricher.
+ * Screen of Enricher. Nice.
  *
  * @author Mr. GodDavid
  * @since 8/22/2026
