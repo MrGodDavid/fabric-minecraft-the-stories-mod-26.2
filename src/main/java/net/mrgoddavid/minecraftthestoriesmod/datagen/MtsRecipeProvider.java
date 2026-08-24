@@ -9,6 +9,7 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
@@ -198,6 +199,10 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.shovelFromIngot(EMERALD_SHOVEL, Items.EMERALD, Items.EMERALD, "emerald");
                 this.spearFromIngot(EMERALD_SPEAR, Items.EMERALD, Items.EMERALD, "emerald");
                 this.swordFromIngot(EMERALD_SWORD, Items.EMERALD, Items.EMERALD, "emerald");
+                this.helmetFromIngot(EMERALD_HELMET, Items.EMERALD, Items.EMERALD, "emerald");
+                this.chestplateFromIngot(EMERALD_CHESTPLATE, Items.EMERALD, Items.EMERALD, "emerald");
+                this.leggingsFromIngot(EMERALD_LEGGINGS, Items.EMERALD, Items.EMERALD, "emerald");
+                this.bootsFromIngot(EMERALD_BOOTS, Items.EMERALD, Items.EMERALD, "emerald");
 
                 // #################################################################################################################
                 // #                                        TOPAZ MATERIAL RECIPES                                                 #
@@ -223,6 +228,10 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.shovelFromIngot(STRONG_TOPAZ_SHOVEL, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
                 this.spearFromIngot(STRONG_TOPAZ_SPEAR, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
                 this.swordFromIngot(STRONG_TOPAZ_SWORD, STRONG_TOPAZ_INGOT, RAW_STRONG_TOPAZ, "topaz");
+                this.helmetFromIngot(STRONG_TOPAZ_HELMET, RAW_STRONG_TOPAZ, RAW_STRONG_TOPAZ, "topaz");
+                this.chestplateFromIngot(STRONG_TOPAZ_CHESTPLATE, RAW_STRONG_TOPAZ, RAW_STRONG_TOPAZ, "topaz");
+                this.leggingsFromIngot(STRONG_TOPAZ_LEGGINGS, RAW_STRONG_TOPAZ, RAW_STRONG_TOPAZ, "topaz");
+                this.bootsFromIngot(STRONG_TOPAZ_BOOTS, RAW_STRONG_TOPAZ, RAW_STRONG_TOPAZ, "topaz");
 
                 // #################################################################################################################
                 // #                                           RUBY MATERIAL RECIPES                                               #
@@ -248,6 +257,10 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.shovelFromIngot(STRONG_RUBY_SHOVEL, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
                 this.spearFromIngot(STRONG_RUBY_SPEAR, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
                 this.swordFromIngot(STRONG_RUBY_SWORD, STRONG_RUBY_INGOT, RAW_STRONG_RUBY, "ruby");
+                this.helmetFromIngot(STRONG_RUBY_HELMET, RAW_STRONG_RUBY, RAW_STRONG_RUBY, "ruby");
+                this.chestplateFromIngot(STRONG_RUBY_CHESTPLATE, RAW_STRONG_RUBY, RAW_STRONG_RUBY, "ruby");
+                this.leggingsFromIngot(STRONG_RUBY_LEGGINGS, RAW_STRONG_RUBY, RAW_STRONG_RUBY, "ruby");
+                this.bootsFromIngot(STRONG_RUBY_BOOTS, RAW_STRONG_RUBY, RAW_STRONG_RUBY, "ruby");
 
                 // #################################################################################################################
                 // #                                        AMETHYST MATERIAL RECIPES                                              #
@@ -276,6 +289,10 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.shovelFromIngot(STRONG_AMETHYST_SHOVEL, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
                 this.spearFromIngot(STRONG_AMETHYST_SPEAR, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
                 this.swordFromIngot(STRONG_AMETHYST_SWORD, STRONG_AMETHYST_INGOT, RAW_STRONG_AMETHYST, "amethyst");
+                this.helmetFromIngot(STRONG_AMETHYST_HELMET, RAW_STRONG_AMETHYST, RAW_STRONG_AMETHYST, "amethyst");
+                this.chestplateFromIngot(STRONG_AMETHYST_CHESTPLATE, RAW_STRONG_AMETHYST, RAW_STRONG_AMETHYST, "amethyst");
+                this.leggingsFromIngot(STRONG_AMETHYST_LEGGINGS, RAW_STRONG_AMETHYST, RAW_STRONG_AMETHYST, "amethyst");
+                this.bootsFromIngot(STRONG_AMETHYST_BOOTS, RAW_STRONG_AMETHYST, RAW_STRONG_AMETHYST, "amethyst");
                 fenceBuilder(STRONG_AMETHYST_FENCE, Ingredient.of(STRONG_AMETHYST_INGOT))
                         .unlockedBy(getHasName(RAW_STRONG_AMETHYST), has(RAW_STRONG_AMETHYST))
                         .group("amethyst")
@@ -355,6 +372,50 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .pattern("X")
                         .pattern("X")
                         .pattern("#")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void helmetFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
+                        .define('I', ingot)
+                        .pattern("III")
+                        .pattern("I I")
+                        .pattern("   ")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void chestplateFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
+                        .define('I', ingot)
+                        .pattern("I I")
+                        .pattern("III")
+                        .pattern("III")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void leggingsFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
+                        .define('I', ingot)
+                        .pattern("III")
+                        .pattern("I I")
+                        .pattern("I I")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void bootsFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
+                        .define('I', ingot)
+                        .pattern("   ")
+                        .pattern("I I")
+                        .pattern("I I")
                         .unlockedBy(getHasName(unlockItem), has(unlockItem))
                         .group(id)
                         .save(output);

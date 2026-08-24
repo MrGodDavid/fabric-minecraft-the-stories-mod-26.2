@@ -21,6 +21,7 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
 
         pack.addProvider(MtsModelProvider::new);
         pack.addProvider(MtsItemTagsProvider::new);
+        pack.addProvider(MtsEquipmentAssetProvider::new);
         pack.addProvider(MtsBlockTagsProvider::new);
         pack.addProvider(MtsRecipeProvider::new);
         pack.addProvider(MtsBlockLootTableProvider::new);

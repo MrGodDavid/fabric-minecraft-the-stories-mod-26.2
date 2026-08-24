@@ -78,6 +78,23 @@ public class CreativeModeTabs {
                         output.accept(STRONG_TOPAZ_SWORD);
 
                         output.accept(DIAMOND_BATTLE_AXE);
+
+                        output.accept(EMERALD_BOOTS);
+                        output.accept(EMERALD_HELMET);
+                        output.accept(EMERALD_CHESTPLATE);
+                        output.accept(EMERALD_LEGGINGS);
+                        output.accept(STRONG_TOPAZ_BOOTS);
+                        output.accept(STRONG_TOPAZ_HELMET);
+                        output.accept(STRONG_TOPAZ_CHESTPLATE);
+                        output.accept(STRONG_TOPAZ_LEGGINGS);
+                        output.accept(STRONG_RUBY_BOOTS);
+                        output.accept(STRONG_RUBY_HELMET);
+                        output.accept(STRONG_RUBY_CHESTPLATE);
+                        output.accept(STRONG_RUBY_LEGGINGS);
+                        output.accept(STRONG_AMETHYST_BOOTS);
+                        output.accept(STRONG_AMETHYST_HELMET);
+                        output.accept(STRONG_AMETHYST_CHESTPLATE);
+                        output.accept(STRONG_AMETHYST_LEGGINGS);
                     })
                     .build()
     );

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "emerald",
+  "key": {
+    "I": "minecraft:emerald"
+  },
+  "pattern": [
+    "I I",
+    "III",
+    "III"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:emerald_chestplate"
+  }
+}

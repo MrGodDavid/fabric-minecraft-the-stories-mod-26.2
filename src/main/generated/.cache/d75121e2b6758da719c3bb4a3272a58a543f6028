@@ -11,7 +11,11 @@ f7f4e990fc5d1f73761b260d7fb9d69959468a3a data/minecraft-the-stories-mod/tags/ite
 72085d42b714581f7dc34f3b1e3ed9a2333ec81e data/minecraft-the-stories-mod/tags/item/mts_uncommon_swords.json
 2fc19eb313de05667d1a8fa05bf587837a7df855 data/minecraft-the-stories-mod/tags/item/mts_uncommon_weapons.json
 56efdc8aeefdecc3d7224f685c6660fc1778b7d3 data/minecraft/tags/item/axes.json
+592261a88a4e8fa99484594a4034e08b85af5db8 data/minecraft/tags/item/chest_armor.json
+c10523c342fde9d2a43c32e25b3e310a8b5cd0f3 data/minecraft/tags/item/foot_armor.json
+489a56c285a4d19dc6eb42202787638d75961d4e data/minecraft/tags/item/head_armor.json
 6fe827e2f0ad08765349df711f4daccacf2c4ccf data/minecraft/tags/item/hoes.json
+9e09b1a3a63123b61755a9691f88e977322e0b3b data/minecraft/tags/item/leg_armor.json
 0e7147b79c684b09ac975baec020543592f5ea5f data/minecraft/tags/item/pickaxes.json
 594670bf1b5988cdf97d3cef4da1bd00d08ecda4 data/minecraft/tags/item/shovels.json
 acd82a0ae1b5e6cfdab0da5701b9f76a3f79a059 data/minecraft/tags/item/spears.json

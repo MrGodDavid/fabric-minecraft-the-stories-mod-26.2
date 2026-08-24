@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import org.jspecify.annotations.NonNull;
 
@@ -183,6 +184,23 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SHOVEL, flatHandledItemTemplate);
         itemModelGenerators.generateSpear(STRONG_TOPAZ_SPEAR);
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SWORD, flatHandledItemTemplate);
+
+        itemModelGenerators.generateTrimmableItem(EMERALD_HELMET, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModelGenerators.generateTrimmableItem(EMERALD_CHESTPLATE, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModelGenerators.generateTrimmableItem(EMERALD_LEGGINGS, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModelGenerators.generateTrimmableItem(EMERALD_BOOTS, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_TOPAZ_HELMET, MtsArmorMaterials.TOPAZ_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_TOPAZ_CHESTPLATE, MtsArmorMaterials.TOPAZ_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_TOPAZ_LEGGINGS, MtsArmorMaterials.TOPAZ_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_TOPAZ_BOOTS, MtsArmorMaterials.TOPAZ_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_RUBY_HELMET, MtsArmorMaterials.RUBY_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_RUBY_CHESTPLATE, MtsArmorMaterials.RUBY_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_RUBY_LEGGINGS, MtsArmorMaterials.RUBY_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_RUBY_BOOTS, MtsArmorMaterials.RUBY_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_HELMET, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_CHESTPLATE, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_LEGGINGS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_BOOTS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
         itemModelGenerators.itemModelOutput.accept(DIAMOND_BATTLE_AXE, ItemModelUtils.plainModel(getScale2xModelId(itemModelGenerators, DIAMOND_BATTLE_AXE)));
     }

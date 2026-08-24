@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "ruby",
+  "key": {
+    "I": "minecraft-the-stories-mod:raw_strong_ruby"
+  },
+  "pattern": [
+    "III",
+    "I I",
+    "   "
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:strong_ruby_helmet"
+  }
+}

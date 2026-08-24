@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft-the-stories-mod:emerald"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "minecraft-the-stories-mod:emerald"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "minecraft-the-stories-mod:emerald"
+      }
+    ]
+  }
+}

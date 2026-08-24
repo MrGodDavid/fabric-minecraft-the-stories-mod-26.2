@@ -98,6 +98,27 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(EMERALD_SWORD))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_SWORD))
                 .add(MtsItems.getResourceKey(STRONG_TOPAZ_SWORD));
+
+        tag(ItemTags.HEAD_ARMOR)
+                .add(MtsItems.getResourceKey(EMERALD_HELMET))
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_HELMET))
+                .add(MtsItems.getResourceKey(STRONG_RUBY_HELMET))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_HELMET));
+        tag(ItemTags.CHEST_ARMOR)
+                .add(MtsItems.getResourceKey(EMERALD_CHESTPLATE))
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_CHESTPLATE))
+                .add(MtsItems.getResourceKey(STRONG_RUBY_CHESTPLATE))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_CHESTPLATE));
+        tag(ItemTags.LEG_ARMOR)
+                .add(MtsItems.getResourceKey(EMERALD_LEGGINGS))
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_LEGGINGS))
+                .add(MtsItems.getResourceKey(STRONG_RUBY_LEGGINGS))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_LEGGINGS));
+        tag(ItemTags.FOOT_ARMOR)
+                .add(MtsItems.getResourceKey(EMERALD_BOOTS))
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_BOOTS))
+                .add(MtsItems.getResourceKey(STRONG_RUBY_BOOTS))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_BOOTS));
     }
 
     /**
