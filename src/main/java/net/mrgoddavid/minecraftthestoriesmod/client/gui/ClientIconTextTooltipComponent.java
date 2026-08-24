@@ -1,6 +1,5 @@
-package net.mrgoddavid.minecraftthestoriesmod.client;
+package net.mrgoddavid.minecraftthestoriesmod.client.gui;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
