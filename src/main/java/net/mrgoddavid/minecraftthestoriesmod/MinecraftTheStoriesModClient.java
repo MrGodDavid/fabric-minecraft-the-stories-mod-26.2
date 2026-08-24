@@ -12,6 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExa
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips;
 
 public class MinecraftTheStoriesModClient implements ClientModInitializer {
@@ -22,6 +23,8 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
+        MtsTestWorld.changeDevTitleScreen();
+
         BlockEntityRenderers.register(MtsBlockEntities.ENDER_EXALTER_BE, EnderExalterBlockRenderer::new);
 
         MenuScreens.register(MtsMenuTypes.ENDER_EXALTER_MENU, EnderExalterScreen::new);
@@ -30,7 +33,7 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
         MtsItemTooltips.register();
 
         ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
-            if (stack.is(Items.DIAMOND_SWORD) ||  stack.is(Items.NETHERITE_SWORD)) {
+            if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.NETHERITE_SWORD)) {
                 lines.add(Component.literal("A weapon forged in ancient times").withStyle(ChatFormatting.GOLD));
             }
         });

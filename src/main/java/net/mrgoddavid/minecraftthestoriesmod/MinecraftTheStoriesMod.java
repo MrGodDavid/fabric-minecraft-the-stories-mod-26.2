@@ -10,6 +10,7 @@ import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.MtsLootTableModifiers;
+import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,7 @@ public class MinecraftTheStoriesMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        MtsTestWorldServer.register();
         CreativeModeTabs.registerModCreativeModeTabs();
 
         MtsItemModelTemplates.registerTemplates();
