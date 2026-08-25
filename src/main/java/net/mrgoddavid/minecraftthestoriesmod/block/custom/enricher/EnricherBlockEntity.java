@@ -43,7 +43,13 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
     private int progress = 0;
     private int maxProgress = 72;
     private int coalEndurance = 0;
-    private int coalMaxEndurance = 100;
+    private int maxCoalEndurance = 36;
+    private int wasteFluid = 0;
+    private int maxWasteFluid = 200;
+
+    public boolean isEnriching() {
+        return progress > 0;
+    }
 
     public EnricherBlockEntity(BlockPos worldPosition, BlockState blockState) {
         super(MtsBlockEntities.ENRICHER_BE, worldPosition, blockState);
@@ -51,10 +57,12 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
             @Override
             public int get(int dataId) {
                 return switch (dataId) {
-                    case 0 -> EnricherBlockEntity.this.progress;
-                    case 1 -> EnricherBlockEntity.this.maxProgress;
-                    case 2 -> EnricherBlockEntity.this.coalEndurance;
-                    case 3 -> EnricherBlockEntity.this.coalMaxEndurance;
+                    case ContainerDataContext.PROGRESS_POSITION -> EnricherBlockEntity.this.progress;
+                    case ContainerDataContext.MAX_PROGRESS_POSITION -> EnricherBlockEntity.this.maxProgress;
+                    case ContainerDataContext.COAL_ENDURANCE_POSITION -> EnricherBlockEntity.this.coalEndurance;
+                    case ContainerDataContext.MAX_COAL_ENDURANCE_POSITION -> EnricherBlockEntity.this.maxCoalEndurance;
+                    case ContainerDataContext.WASTE_FLUID_POSITION -> EnricherBlockEntity.this.wasteFluid;
+                    case ContainerDataContext.MAX_WASTE_FLUID_POSITION -> EnricherBlockEntity.this.maxWasteFluid;
                     default -> 0;
                 };
             }
@@ -62,24 +70,30 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
             @Override
             public void set(int dataId, int value) {
                 switch (dataId) {
-                    case 0:
+                    case ContainerDataContext.PROGRESS_POSITION:
                         EnricherBlockEntity.this.progress = value;
                         break;
-                    case 1:
+                    case ContainerDataContext.MAX_PROGRESS_POSITION:
                         EnricherBlockEntity.this.maxProgress = value;
                         break;
-                    case 2:
+                    case ContainerDataContext.COAL_ENDURANCE_POSITION:
                         EnricherBlockEntity.this.coalEndurance = value;
                         break;
-                    case 3:
-                        EnricherBlockEntity.this.coalMaxEndurance = value;
+                    case ContainerDataContext.MAX_COAL_ENDURANCE_POSITION:
+                        EnricherBlockEntity.this.maxCoalEndurance = value;
+                        break;
+                    case ContainerDataContext.WASTE_FLUID_POSITION:
+                        EnricherBlockEntity.this.wasteFluid = value;
+                        break;
+                    case ContainerDataContext.MAX_WASTE_FLUID_POSITION:
+                        EnricherBlockEntity.this.maxWasteFluid = value;
                         break;
                 }
             }
 
             @Override
             public int getCount() {
-                return 4;
+                return ContainerDataContext.DATA_ARRAY_SIZE;
             }
         };
     }
@@ -123,7 +137,7 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
 
-        boolean shouldWork = hasRecipe() && isOutputSlotEmptyOrReceivable();
+        boolean shouldWork = hasRecipe() && isOutputSlotEmptyOrReceivable() && !hasWasteOverFlow();
         if (shouldWork) {
             increaseEnrichingProgress();
             setChanged(level, blockPos, blockState);
@@ -131,6 +145,7 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
             if (hasCraftingFinihsed()) {
                 craftItem();
                 resetProgress();
+                addWasteFluid();
             }
             if (hasCoalBurnedOut()) {
                 consumeCoal();
@@ -149,9 +164,22 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
         setChanged(level, blockPos, blockState);
     }
 
+    private boolean hasWasteOverFlow() {
+        return this.wasteFluid >= this.maxWasteFluid;
+    }
+
+    public void clearWasteFluid() {
+        this.wasteFluid = 0;
+        this.maxWasteFluid = 200;
+    }
+
+    private void addWasteFluid() {
+        this.wasteFluid += 50;
+    }
+
     private void burnNewCoal() {
         this.coalEndurance = 0;
-        this.coalMaxEndurance = 100;
+        this.maxCoalEndurance = 100;
     }
 
     private void consumeCoal() {
@@ -159,7 +187,7 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
     }
 
     private boolean hasCoalBurnedOut() {
-        return this.coalEndurance >= this.coalMaxEndurance;
+        return this.coalEndurance >= this.maxCoalEndurance;
     }
 
     private boolean hasRecipe() {
@@ -228,5 +256,16 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
     @Override
     public void drops() {
         Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
+
+    public static final class ContainerDataContext {
+        public static final int PROGRESS_POSITION = 0;
+        public static final int MAX_PROGRESS_POSITION = 1;
+        public static final int COAL_ENDURANCE_POSITION = 2;
+        public static final int MAX_COAL_ENDURANCE_POSITION = 3;
+        public static final int WASTE_FLUID_POSITION = 4;
+        public static final int MAX_WASTE_FLUID_POSITION = 5;
+
+        public static final int DATA_ARRAY_SIZE = 6;
     }
 }

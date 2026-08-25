@@ -95,6 +95,8 @@ public class CreativeModeTabs {
                         output.accept(STRONG_AMETHYST_HELMET);
                         output.accept(STRONG_AMETHYST_CHESTPLATE);
                         output.accept(STRONG_AMETHYST_LEGGINGS);
+
+                        output.accept(ENRICHER_WASTE_BUCKET);
                     })
                     .build()
     );

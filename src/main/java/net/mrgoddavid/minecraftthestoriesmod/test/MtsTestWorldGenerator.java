@@ -1,10 +1,11 @@
 package net.mrgoddavid.minecraftthestoriesmod.test;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+
+import java.util.function.Predicate;
 
 /**
  * MTS Test World generator.
@@ -20,6 +21,7 @@ public class MtsTestWorldGenerator {
 
     public static void generate() {
         Builder.setBlock(0, 0, 1, MtsBlocks.STRONG_AMETHYST_BLOCK);
+        Builder.fill(2, 2, 2, 5, 5, 5, MtsBlocks.STRONG_AMETHYST_BLOCK);
     }
 
     /**
@@ -52,6 +54,22 @@ public class MtsTestWorldGenerator {
 
         public static void fill(int minX, int minY, int minZ, int maxX, int maxY, int maxZ, BlockState blockState) {
             BlockPos.betweenClosedStream(pos(minX, minY, minZ), pos(maxX, maxY, maxZ)).forEach(pos -> MtsTestWorldContext.overworld().setBlockAndUpdate(pos, blockState));
+        }
+
+        public static void fillReplace(int minX, int minY, int minZ, int maxX, int maxY, int maxZ, BlockState blockState, Block replace) {
+            fillReplaceWhere(minX, minY, minZ, maxX, maxY, maxZ, blockState, blockState1 -> blockState1.equals(replace.defaultBlockState()));
+        }
+
+        public static void fillReplace(int minX, int minY, int minZ, int maxX, int maxY, int maxZ, BlockState blockState, BlockState replace) {
+            fillReplaceWhere(minX, minY, minZ, maxX, maxY, maxZ, blockState, blockState1 -> blockState1.equals(replace));
+        }
+
+        public static void fillReplaceWhere(int minX, int minY, int minZ, int maxX, int maxY, int maxZ, BlockState blockState, Predicate<BlockState> predicate) {
+            BlockPos.betweenClosedStream(pos(minX, minY, minZ), pos(maxX, maxY, maxZ)).forEach(pos -> {
+                if (predicate.test(MtsTestWorldContext.overworld().getBlockState(pos))) {
+                    MtsTestWorldContext.overworld().setBlockAndUpdate(pos, blockState);
+                }
+            });
         }
     }
 }

@@ -33,7 +33,7 @@ public class EnricherMenu extends AbstractContainerMenu {
     private static final int ENDER_EXALTER_SLOT_COUNT = 3; // modify this to display how many slots you want.
 
     public EnricherMenu(int containerId, Inventory inventory, BlockPos pos) {
-        this(containerId, inventory, inventory.player.level().getBlockEntity(pos), new SimpleContainerData(4));
+        this(containerId, inventory, inventory.player.level().getBlockEntity(pos), new SimpleContainerData(EnricherBlockEntity.ContainerDataContext.DATA_ARRAY_SIZE));
     }
 
     public EnricherMenu(int containerId, Inventory inventory, BlockEntity blockEntity, ContainerData data) {
@@ -58,14 +58,25 @@ public class EnricherMenu extends AbstractContainerMenu {
     }
 
     public int getScaledArrowProgress() {
-        int progress = data.get(0);
-        int maxProgress = data.get(1);
+        int progress = data.get(EnricherBlockEntity.ContainerDataContext.PROGRESS_POSITION);
+        int maxProgress = data.get(EnricherBlockEntity.ContainerDataContext.MAX_PROGRESS_POSITION);
         int arrowPixelSize = 18;
-        return maxProgress != 0 && progress != 0 ? progress * arrowPixelSize / maxProgress : 0;
+        return (maxProgress != 0 && progress != 0) ? progress * arrowPixelSize / maxProgress : 0;
     }
 
-    public boolean isCrafting() {
-        return data.get(0) > 0 && data.get(2) > 0;
+    public int getScaledWasteFluidProgress() {
+        int wasteFluid = data.get(EnricherBlockEntity.ContainerDataContext.WASTE_FLUID_POSITION);
+        int maxWasteFluid = data.get(EnricherBlockEntity.ContainerDataContext.MAX_WASTE_FLUID_POSITION);
+        int wastePixelSize = 53;
+        return (maxWasteFluid != 0 && wasteFluid != 0) ? wasteFluid * wastePixelSize / maxWasteFluid : 0;
+    }
+
+    public boolean isEnriching() {
+        return data.get(EnricherBlockEntity.ContainerDataContext.PROGRESS_POSITION) > 0;
+    }
+
+    public boolean a() {
+        return data.get(EnricherBlockEntity.ContainerDataContext.WASTE_FLUID_POSITION) > 0 || isEnriching();
     }
 
     @Override

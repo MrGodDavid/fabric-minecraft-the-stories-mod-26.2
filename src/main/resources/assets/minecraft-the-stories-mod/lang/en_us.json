@@ -96,6 +96,7 @@
 
   "block.minecraft-the-stories-mod.super_crafter_default": "Super Crafter",
   "block.minecraft-the-stories-mod.enricher_default": "Enricher",
+  "block.minecraft-the-stories-mod.enricher_waste_bucket": "Enricher Waste Bucket",
   "block.minecraft-the-stories-mod.ender_exalter": "Ender Exalter",
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",

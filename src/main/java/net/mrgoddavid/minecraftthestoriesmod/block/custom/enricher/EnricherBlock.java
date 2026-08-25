@@ -9,10 +9,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -28,6 +30,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -108,11 +111,39 @@ public class EnricherBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (!level.isClientSide()) {
+            if (hand == InteractionHand.MAIN_HAND && itemStack.isEmpty()) {
+                if (level.getBlockEntity(pos) instanceof EnricherBlockEntity enricherBlockEntity) {
+                    player.openMenu(enricherBlockEntity);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (itemStack.is(Items.BUCKET) && level.getBlockEntity(pos) instanceof EnricherBlockEntity enricherBlockEntity) {
+                if (!enricherBlockEntity.isEnriching()) {
+                    enricherBlockEntity.clearWasteFluid();
+                    if (!player.isCreative()) {
+                        itemStack.shrink(1);
+                    }
+
+                    ItemStack wasteFluidBucket = new ItemStack(MtsItems.ENRICHER_WASTE_BUCKET);
+                    if (!player.addItem(wasteFluidBucket)) {
+                        player.drop(wasteFluidBucket, false);
+                    }
+                    return InteractionResult.SUCCESS;
+                }
+            } else if (level.getBlockEntity(pos) instanceof EnricherBlockEntity enricherBlockEntity) {
+                player.openMenu(enricherBlockEntity);
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             if (level.getBlockEntity(pos) instanceof EnricherBlockEntity enricherBlockEntity) {
                 player.openMenu(enricherBlockEntity);
-                System.out.println("Jere");
             }
         }
         return InteractionResult.SUCCESS;

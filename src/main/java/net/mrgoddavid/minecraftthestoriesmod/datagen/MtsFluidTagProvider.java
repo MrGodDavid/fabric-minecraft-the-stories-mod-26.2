@@ -1,0 +1,34 @@
+package net.mrgoddavid.minecraftthestoriesmod.datagen;
+
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.FluidTags;
+import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluidTags;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+
+import java.util.concurrent.CompletableFuture;
+
+import static net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids.*;
+
+public class MtsFluidTagProvider extends FabricTagsProvider.FluidTagsProvider {
+
+    public MtsFluidTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
+        super(output, registryLookupFuture);
+        MinecraftTheStoriesMod.LOGGER.info("Registering fluid tags for: " + MinecraftTheStoriesMod.MOD_ID);
+    }
+
+    /**
+     * Implement this method and then use {@link FabricTagsProvider#builder} to get and register new tag builders.
+     *
+     * @param registries
+     */
+    @Override
+    protected void addTags(HolderLookup.Provider registries) {
+        builder(MtsFluidTags.ENRICHER_WASTE)
+                .add(MtsFluids.getResourceKey(ENRICHER_WASTE_STILL), MtsFluids.getResourceKey(ENRICHER_WASTE_FLOWING));
+        builder(FluidTags.WATER)
+                .addTag(MtsFluidTags.ENRICHER_WASTE);
+    }
+}

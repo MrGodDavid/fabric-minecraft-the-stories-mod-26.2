@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 
 import java.util.function.Function;
 
@@ -30,6 +31,9 @@ public class MtsItems {
     }
 
     // Custom mod items go here.
+    public static final Item ENRICHER_WASTE_BUCKET = registerItem("enricher_waste_bucket",
+            properties -> new BucketItem(MtsFluids.ENRICHER_WASTE_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)));
+
     public static final Item RAW_STRONG_AMETHYST = registerItem("raw_strong_amethyst", Item::new);
     public static final Item RAW_STRONG_DIAMOND = registerItem("raw_strong_diamond", Item::new);
     public static final Item RAW_STRONG_EMERALD = registerItem("raw_strong_emerald", Item::new);
