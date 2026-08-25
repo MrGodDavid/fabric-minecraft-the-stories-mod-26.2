@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -18,6 +19,7 @@ public class MtsWorldGenProvider extends FabricDynamicRegistryProvider {
 
     public MtsWorldGenProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
+        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS World Generation for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 
     @Override

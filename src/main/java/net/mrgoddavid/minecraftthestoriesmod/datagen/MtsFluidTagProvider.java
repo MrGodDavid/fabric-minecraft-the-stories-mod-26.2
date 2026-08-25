@@ -16,7 +16,7 @@ public class MtsFluidTagProvider extends FabricTagsProvider.FluidTagsProvider {
 
     public MtsFluidTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         super(output, registryLookupFuture);
-        MinecraftTheStoriesMod.LOGGER.info("Registering fluid tags for: " + MinecraftTheStoriesMod.MOD_ID);
+        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Fluid Tags for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 
     /**

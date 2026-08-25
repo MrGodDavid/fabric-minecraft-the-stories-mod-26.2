@@ -1,0 +1,98 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/make_emerald_pickaxe",
+  "criteria": {
+    "make_emerald_axes": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_hoes": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_pickaxes": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_shovels": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_spears": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_swords": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.make_more_emerald_tools.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:emerald_axe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.make_more_emerald_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "make_emerald_axes"
+    ],
+    [
+      "make_emerald_hoes"
+    ],
+    [
+      "make_emerald_pickaxes"
+    ],
+    [
+      "make_emerald_shovels"
+    ],
+    [
+      "make_emerald_spears"
+    ],
+    [
+      "make_emerald_swords"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

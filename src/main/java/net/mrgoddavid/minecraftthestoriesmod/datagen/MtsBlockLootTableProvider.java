@@ -14,6 +14,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -30,6 +31,7 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
 
     public MtsBlockLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(packOutput, registriesFuture);
+        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Blook LootTable for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 
     /**

@@ -28,6 +28,7 @@ public class MtsEquipmentAssetProvider implements DataProvider {
 
     public MtsEquipmentAssetProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
         this.pathProvider = packOutput.createPathProvider(PackOutput.Target.RESOURCE_PACK, "equipment");
+        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Equipment Assets for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 
     private static void bootstrap(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> consumer) {

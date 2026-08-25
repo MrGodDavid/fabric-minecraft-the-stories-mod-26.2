@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
@@ -30,6 +31,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      */
     public MtsItemTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         super(output, registryLookupFuture);
+        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Item Tags for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 
     /**

@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.mrgoddavid.minecraftthestoriesmod.advancement.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
@@ -44,6 +45,8 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsItems.registerModItems();
         MtsBlocks.registerModBlocks();
         MtsBlockEntities.registerBlockEntities();
+
+        MtsAdvancementTriggers.register();
 
         MtsWorldGen.registerWorldGen();
 

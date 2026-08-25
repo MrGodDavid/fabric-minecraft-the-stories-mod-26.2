@@ -1,0 +1,72 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/make_emerald_pickaxe",
+  "criteria": {
+    "make_emerald_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "make_emerald_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.show_off.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:emerald_chestplate"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.show_off.title"
+    }
+  },
+  "requirements": [
+    [
+      "make_emerald_helmet"
+    ],
+    [
+      "make_emerald_chestplate"
+    ],
+    [
+      "make_emerald_leggings"
+    ],
+    [
+      "make_emerald_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

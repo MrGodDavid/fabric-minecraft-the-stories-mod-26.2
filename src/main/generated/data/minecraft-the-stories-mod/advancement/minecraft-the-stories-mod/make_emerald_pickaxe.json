@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/use_iron_pic_mine_diamonds",
+  "criteria": {
+    "make_emerald_pickaxe_with_emeralds": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.make_emerald_pickaxe.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:emerald_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.make_emerald_pickaxe.title"
+    }
+  },
+  "requirements": [
+    [
+      "make_emerald_pickaxe_with_emeralds"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

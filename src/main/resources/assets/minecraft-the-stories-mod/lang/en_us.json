@@ -100,5 +100,18 @@
   "block.minecraft-the-stories-mod.ender_exalter": "Ender Exalter",
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",
-  "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks"
+  "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks",
+
+  "advancements.minecraft-the-stories-mod.root.title": "Minecraft: The Stories",
+  "advancements.minecraft-the-stories-mod.root.description": "How fast can you get a wooden pickaxe now?",
+  "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.title": "Isn't It Iron Pick?",
+  "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.description": "Something is wrong. My iron pick cannot mine diamonds...",
+  "advancements.minecraft-the-stories-mod.make_emerald_pickaxe.title": "Fancy Stuffs",
+  "advancements.minecraft-the-stories-mod.make_emerald_pickaxe.description": "Creating a pickaxe with emeralds.",
+  "advancements.minecraft-the-stories-mod.make_more_emerald_tools.title": "More Fancy Stuffs",
+  "advancements.minecraft-the-stories-mod.make_more_emerald_tools.description": "Use emeralds to make an emerald axe, an emerald hoe, an emerald pickaxe, an emerald shovel, an emerald spear, and an emerald sword.",
+  "advancements.minecraft-the-stories-mod.show_off.title": "Show Off",
+  "advancements.minecraft-the-stories-mod.show_off.description": "Create full emerald armor that makes Villagers think you are showing off.",
+  "advancements.minecraft-the-stories-mod.use_emerald_pic_mining_diamonds.title": "It's You Now!",
+  "advancements.minecraft-the-stories-mod.use_emerald_pic_mining_diamonds.description": "This is interesting. Emerald pick can now mine diamonds..."
 }

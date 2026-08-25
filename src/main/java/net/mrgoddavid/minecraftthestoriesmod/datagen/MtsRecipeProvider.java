@@ -9,6 +9,7 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 
@@ -28,6 +29,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
 
     public MtsRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
+        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Item/Block Recipe for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 
     /**

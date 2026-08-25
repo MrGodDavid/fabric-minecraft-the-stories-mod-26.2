@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/make_emerald_pickaxe",
+  "criteria": {
+    "use_emerald_pic_mine_deepslate_emerald_ores": {
+      "conditions": {
+        "blocks": "minecraft:deepslate_diamond_ore",
+        "tool": {
+          "items": "minecraft-the-stories-mod:emerald_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "use_emerald_pic_mine_stone_emerald_ores": {
+      "conditions": {
+        "blocks": "minecraft:diamond_block",
+        "tool": {
+          "items": "minecraft-the-stories-mod:emerald_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.use_emerald_pic_mining_diamonds.description"
+    },
+    "icon": {
+      "id": "minecraft:diamond_ore"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.use_emerald_pic_mining_diamonds.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_emerald_pic_mine_stone_emerald_ores",
+      "use_emerald_pic_mine_deepslate_emerald_ores"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

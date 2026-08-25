@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "has_wooden_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.root.description"
+    },
+    "icon": {
+      "id": "minecraft:wooden_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_wooden_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

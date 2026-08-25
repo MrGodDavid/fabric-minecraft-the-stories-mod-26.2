@@ -19,13 +19,14 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(MtsModelProvider::new);
         pack.addProvider(MtsItemTagsProvider::new);
-        pack.addProvider(MtsFluidTagProvider::new);
-        pack.addProvider(MtsEquipmentAssetProvider::new);
         pack.addProvider(MtsBlockTagsProvider::new);
+        pack.addProvider(MtsFluidTagProvider::new);
+        pack.addProvider(MtsModelProvider::new);
+        pack.addProvider(MtsEquipmentAssetProvider::new);
         pack.addProvider(MtsRecipeProvider::new);
         pack.addProvider(MtsBlockLootTableProvider::new);
+        pack.addProvider(MtsAdvancementsProvider::new);
         pack.addProvider(MtsWorldGenProvider::new);
     }
 

@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/root",
+  "criteria": {
+    "use_iron_pickaxe_mining_deepslate_diamonds_ores": {
+      "conditions": {
+        "blocks": "minecraft:deepslate_diamond_ore",
+        "tool": {
+          "items": "minecraft:iron_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "use_iron_pickaxe_mining_stone_diamonds_ores": {
+      "conditions": {
+        "blocks": "minecraft:diamond_ore",
+        "tool": {
+          "items": "minecraft:iron_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.description"
+    },
+    "icon": {
+      "id": "minecraft:iron_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_iron_pickaxe_mining_stone_diamonds_ores",
+      "use_iron_pickaxe_mining_deepslate_diamonds_ores"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

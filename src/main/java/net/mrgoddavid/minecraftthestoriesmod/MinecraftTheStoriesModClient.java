@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderingRegistry;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.block.FluidModel;
@@ -10,7 +11,10 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.mrgoddavid.minecraftthestoriesmod.advancement.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterScreen;
@@ -54,5 +58,16 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
                 )
         );
         FluidRenderingRegistry.setBlockTransparency(MtsBlocks.ENRICHER_WASTE_FLUID, true);
+
+        PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, hitResult) -> {
+            if (!(player instanceof ServerPlayer serverPlayer)) {
+                return;
+            }
+
+            ItemStack tool = player.getMainHandItem();
+            MtsAdvancementTriggers.MINE_BLOCK_WITH_TOOL_TRIGGER.trigger(
+                    serverPlayer, state, tool
+            );
+        });
     }
 }

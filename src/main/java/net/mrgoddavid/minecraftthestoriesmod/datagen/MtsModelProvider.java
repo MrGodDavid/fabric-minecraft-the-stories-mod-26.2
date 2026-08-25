@@ -40,6 +40,7 @@ public class MtsModelProvider extends FabricModelProvider {
 
     public MtsModelProvider(FabricPackOutput output) {
         super(output);
+        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Block/Item Models for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 
     @Override
