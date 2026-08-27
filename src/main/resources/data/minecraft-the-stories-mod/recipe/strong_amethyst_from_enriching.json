@@ -1,0 +1,9 @@
+{
+  "type": "minecraft-the-stories-mod:enriching",
+  "input": "minecraft-the-stories-mod:raw_amethyst",
+  "fuel": "minecraft:coal",
+  "result": {
+    "count": 1,
+    "id": "minecraft-the-stories-mod:amethyst"
+  }
+}

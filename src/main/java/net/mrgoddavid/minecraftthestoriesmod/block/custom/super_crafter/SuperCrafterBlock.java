@@ -16,14 +16,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -47,9 +48,9 @@ public class SuperCrafterBlock extends BaseEntityBlock implements EntityBlock {
      * @since 8/15/2026
      */
     public enum TYPE implements StringRepresentable {
-        WITH_BLUEPRINT("with_blueprint"),
+        WITH_TEMPLATE("with_blueprint"),
         WITH_HAMMER("with_hammer"),
-        WITH_HAMMER_WITH_BLUEPRINT("with_hammer_with_blueprint"),
+        WITH_HAMMER_WITH_TEMPLATE("with_hammer_with_blueprint"),
         DEFAULT("default");
 
         private final String name;
@@ -75,6 +76,12 @@ public class SuperCrafterBlock extends BaseEntityBlock implements EntityBlock {
         registerDefaultState(this.defaultBlockState()
                 .setValue(STATE, TYPE.DEFAULT)
                 .setValue(FACING, Direction.NORTH));
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
+        if (level.isClientSide()) return null;
+        return createTickerHelper(type, MtsBlockEntities.SUPER_CRAFTER_BE, (level1, pos, state, entity) -> entity.tick(level1, pos, state));
     }
 
     @Override

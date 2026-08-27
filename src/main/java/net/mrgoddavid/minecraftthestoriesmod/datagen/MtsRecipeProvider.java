@@ -151,6 +151,19 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
                         .group("compressed_wood")
                         .save(output, "compressed_wood_logs_from_compressed_wood");
+                shapeless(RecipeCategory.MISC, COMPRESSED_WOOD_PLANKS, 4)
+                        .requires(COMPRESSED_WOOD_LOG)
+                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
+                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
+                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
+                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
+                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
+                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
+                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .group("compressed_wood")
+                        .save(output, "compressed_wood_planks_from_compressed_wood_logs");
                 fenceBuilder(COMPRESSED_WOOD_FENCE, Ingredient.of(COMPRESSED_WOOD_PLANKS));
                 fenceGateBuilder(COMPRESSED_WOOD_FENCE_GATE, Ingredient.of(COMPRESSED_WOOD_PLANKS));
 

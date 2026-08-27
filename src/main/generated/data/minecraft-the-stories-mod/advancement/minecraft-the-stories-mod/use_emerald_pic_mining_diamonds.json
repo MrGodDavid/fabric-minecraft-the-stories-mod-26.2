@@ -12,7 +12,7 @@
     },
     "use_emerald_pic_mine_stone_emerald_ores": {
       "conditions": {
-        "blocks": "minecraft:diamond_block",
+        "blocks": "minecraft:diamond_ore",
         "tool": {
           "items": "minecraft-the-stories-mod:emerald_pickaxe"
         }

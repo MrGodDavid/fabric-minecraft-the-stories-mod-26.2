@@ -11,6 +11,7 @@ import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.MtsLootTableModifiers;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MinecraftTheStoriesMod implements ModInitializer {
 
+    // Do NOT touch this!
     public static final String MOD_ID = "minecraft-the-stories-mod";
 
     // This logger is used to write text to the console and the log file.
@@ -38,16 +40,13 @@ public class MinecraftTheStoriesMod implements ModInitializer {
     public void onInitialize() {
         MtsTestWorldServer.register();
         CreativeModeTabs.registerModCreativeModeTabs();
-
         MtsItemModelTemplates.registerTemplates();
         MtsMenuTypes.registerMenuTypes();
-
+        MtsRecipes.register();
         MtsItems.registerModItems();
         MtsBlocks.registerModBlocks();
         MtsBlockEntities.registerBlockEntities();
-
         MtsAdvancementTriggers.register();
-
         MtsWorldGen.registerWorldGen();
 
         LootTableEvents.MODIFY.register(MtsLootTableModifiers::modifyLootTables);

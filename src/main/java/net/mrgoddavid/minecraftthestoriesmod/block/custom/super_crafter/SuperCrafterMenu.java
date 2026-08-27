@@ -50,6 +50,12 @@ public class SuperCrafterMenu extends MtsAbstractNonDataComponentContainerMenu {
             public boolean mayPlace(ItemStack itemStack) {
                 return false;
             }
+
+            @Override
+            public void onTake(Player player, ItemStack carried) {
+                super.onTake(player, carried);
+                ((SuperCrafterBlockEntity) blockEntity).consumeIngredients();
+            }
         });
     }
 

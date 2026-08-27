@@ -11,12 +11,14 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.block.ImplementedContainer;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsAbstractBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -41,6 +43,77 @@ public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements E
     @Override
     public void registerDebugValues(ServerLevel level, Registration registration) {
         super.registerDebugValues(level, registration);
+    }
+
+    public void tick(Level level, BlockPos blockPos, BlockState blockState) {
+        if (level.isClientSide()) return;
+        if (!(level.getBlockEntity(blockPos) instanceof SuperCrafterBlockEntity)) return;
+
+        updateBlockModel(level, blockPos, blockState);
+        if (hasRecipe()) {
+            craftItem();
+            setChanged(level, blockPos, blockState);
+        } else {
+            clearResultSlot();
+        }
+    }
+
+    private void updateBlockModel(Level level, BlockPos blockPos, BlockState blockState) {
+        boolean template = shouldLoadTemplateModel();
+        boolean hammer = shouldLoadHammerModel();
+        if (template && hammer) {
+            level.setBlockAndUpdate(blockPos, blockState.setValue(SuperCrafterBlock.STATE, SuperCrafterBlock.TYPE.WITH_HAMMER_WITH_TEMPLATE));
+        } else if (template) {
+            level.setBlockAndUpdate(blockPos, blockState.setValue(SuperCrafterBlock.STATE, SuperCrafterBlock.TYPE.WITH_TEMPLATE));
+        } else if (hammer) {
+            level.setBlockAndUpdate(blockPos, blockState.setValue(SuperCrafterBlock.STATE, SuperCrafterBlock.TYPE.WITH_HAMMER));
+        } else {
+            level.setBlockAndUpdate(blockPos, blockState.setValue(SuperCrafterBlock.STATE, SuperCrafterBlock.TYPE.DEFAULT));
+        }
+    }
+
+    private boolean shouldLoadHammerModel() {
+        return isHammerIngredientCorrect() && !inventory.get(Context.CRAFTING_HAMMER_SLOT).isEmpty();
+    }
+
+    private boolean shouldLoadTemplateModel() {
+        return isTemplateIngredientCorrect() && !inventory.get(Context.TEMPLATE_CONSUMER_SLOT).isEmpty();
+    }
+
+    private void clearResultSlot() {
+        inventory.set(Context.RESULT_SLOT, ItemStack.EMPTY);
+    }
+
+    void craftItem() {
+        inventory.set(Context.RESULT_SLOT, new ItemStack(MtsItems.STRONG_AMETHYST_AXE));
+    }
+
+    void consumeIngredients() {
+        inventory.set(Context.TEMPLATE_CONSUMER_SLOT, inventory.get(Context.TEMPLATE_CONSUMER_SLOT).copyWithCount(inventory.get(Context.TEMPLATE_CONSUMER_SLOT).getCount() - 1));
+        inventory.set(Context.CRAFTING_HAMMER_SLOT, inventory.get(Context.CRAFTING_HAMMER_SLOT).copyWithCount(inventory.get(Context.CRAFTING_HAMMER_SLOT).getCount() - 1));
+        inventory.set(Context.ITEM_STAGE_SLOT, inventory.get(Context.ITEM_STAGE_SLOT).copyWithCount(inventory.get(Context.ITEM_STAGE_SLOT).getCount() - 1));
+    }
+
+    private boolean hasRecipe() {
+        boolean isTemplateCorrect = isTemplateIngredientCorrect();
+        boolean isHammerCorrect = isHammerIngredientCorrect();
+        boolean isStageCorrect = isStageItemIngredientCorrect();
+        return isTemplateCorrect && isHammerCorrect && isStageCorrect;
+    }
+
+    private boolean isStageItemIngredientCorrect() {
+        ItemStack stageItem = inventory.get(Context.ITEM_STAGE_SLOT);
+        return stageItem.is(MtsItems.STRONG_RUBY_AXE);
+    }
+
+    private boolean isHammerIngredientCorrect() {
+        ItemStack hammer = inventory.get(Context.CRAFTING_HAMMER_SLOT);
+        return hammer.is(MtsItems.STRONG_TOPAZ_INGOT);
+    }
+
+    private boolean isTemplateIngredientCorrect() {
+        ItemStack template = inventory.get(Context.TEMPLATE_CONSUMER_SLOT);
+        return template.is(MtsItems.STRONG_AMETHYST_INGOT);
     }
 
     /**

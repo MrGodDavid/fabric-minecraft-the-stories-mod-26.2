@@ -1,7 +1,14 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Advancements
+fb789b00c77422eed5d30f5ec30aaacccc51b2e6 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/compressed_wood_planks.json
 310931a34866cfd327efe9286531084b3d911d86 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/make_emerald_pickaxe.json
 73fbfa4798cea456dd14a24ec7142b426ab820bf data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/make_more_emerald_tools.json
+141bceb07aa23f026f95ca11629af9afc91889c5 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/obtain_topaz_ores.json
 2e9ca0316609f48f4c31a5368f317f14fbfdaad2 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/root.json
 d14d62b3892c6abdc8a9cd605cf9979abce36887 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/show_off_emerald_armors.json
-b21ba31013372a12ae8cf93df9fab07e39372277 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/use_emerald_pic_mining_diamonds.json
+c40fed80d3e9279b475cdd7f7670432de4078510 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/super_crafter.json
+b79f4101dc584e1ae1876d80c60d26f1a4e9db30 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/time_for_lumberjacking.json
+f594b5685dc344e6c78ad553f49eca84fdbde169 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/use_diamond_pic_mining_topaz_ores.json
+8da94e217da0c22b135bcf8fb512b3fc69be38b7 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/use_emerald_pic_mining_diamonds.json
 57818e9ea24bd2179c5537604a92a74b4c4c1fde data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/use_iron_pic_mine_diamonds.json
+ab25837466bdcd4bda80011219ca0fe5fd68a747 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/wood_collector.json
+fc0210a647a0053766a622c45459de57da477b8c data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/wood_master.json

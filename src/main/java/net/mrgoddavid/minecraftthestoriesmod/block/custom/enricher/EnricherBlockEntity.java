@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
@@ -14,6 +15,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
@@ -22,7 +24,12 @@ import net.mrgoddavid.minecraftthestoriesmod.block.ImplementedContainer;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsAbstractBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.custom.EnricherRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.custom.EnricherRecipeInput;
 import org.jspecify.annotations.Nullable;
+
+import java.util.Optional;
 
 /**
  * Block entity for Enricher.
@@ -190,15 +197,21 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
     }
 
     private boolean hasRecipe() {
-        ItemStack output = new ItemStack(MtsItems.STRONG_AMETHYST_INGOT);
-        Item input = MtsItems.RAW_STRONG_AMETHYST;
-        Item fuel = Items.COAL;
-        boolean hasCorrectInput = inventory.get(INPUT_SLOT).is(input);
-        boolean hasCorrectFuel = inventory.get(FUEL_SLOT).is(fuel);
+        Optional<RecipeHolder<EnricherRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) {
+            return false;
+        }
+        ItemStack output = recipe.get().value().assemble(new EnricherRecipeInput(inventory.get(INPUT_SLOT), inventory.get(FUEL_SLOT)));
+
         boolean isItemOutputRight = canInsertItemIntoOutputSlot(output);
         boolean isAmountRight = canInsertAmoundIntoOutputSlot(output.getCount());
         boolean hasFuel = hasRemainingFuels();
-        return hasFuel && hasCorrectFuel && hasCorrectInput && isItemOutputRight && isAmountRight;
+        return hasFuel && isItemOutputRight && isAmountRight;
+    }
+
+    private Optional<RecipeHolder<EnricherRecipe>> getCurrentRecipe() {
+        return ((ServerLevel) level).recipeAccess()
+                .getRecipeFor(MtsRecipes.ENRICHER_TYPE, new EnricherRecipeInput(inventory.get(INPUT_SLOT), inventory.get(FUEL_SLOT)), level);
     }
 
     private boolean hasRemainingFuels() {
@@ -216,7 +229,9 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(MtsItems.STRONG_AMETHYST_INGOT);
+        Optional<RecipeHolder<EnricherRecipe>> recipe = getCurrentRecipe();
+        ItemStack output = recipe.get().value().assemble(new EnricherRecipeInput(inventory.get(INPUT_SLOT), inventory.get(FUEL_SLOT)));
+
         inventory.set(INPUT_SLOT, inventory.get(INPUT_SLOT).copyWithCount(inventory.get(INPUT_SLOT).count() - 1));
         inventory.set(OUTPUT_SLOT, output.copyWithCount(inventory.get(OUTPUT_SLOT).count() + output.getCount()));
     }
@@ -254,7 +269,7 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
      */
     @Override
     public void drops() {
-        Containers.dropContents(this.level, this.worldPosition, inventory);
+        super.defaultDrops(this.inventory);
     }
 
     public static final class ContainerDataContext {
