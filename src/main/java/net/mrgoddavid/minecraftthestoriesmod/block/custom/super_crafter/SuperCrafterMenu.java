@@ -11,6 +11,8 @@ import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsAbstractNonDataCompon
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 
 /**
+ * Menu of Super Crafter.
+ *
  * @author Mr. GodDavid
  * @since 8/26/2026
  */

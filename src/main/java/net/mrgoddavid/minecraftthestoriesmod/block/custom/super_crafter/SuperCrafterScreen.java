@@ -8,6 +8,12 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 
+/**
+ * Screen of Super Crafter.
+ *
+ * @author Mr. GodDavid
+ * @since 8/26/2026
+ */
 public class SuperCrafterScreen extends AbstractContainerScreen<SuperCrafterMenu> {
 
     private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID,
