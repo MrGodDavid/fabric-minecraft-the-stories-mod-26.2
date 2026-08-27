@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -10,12 +11,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -30,11 +33,12 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 8/15/2026
  */
-public class SuperCrafterBlock extends HorizontalDirectionalBlock implements EntityBlock {
+public class SuperCrafterBlock extends BaseEntityBlock implements EntityBlock {
 
-    public static final String NAME = "super_crafter";
-    public static final VoxelShape SHAPE = Block.box(0, 0.01, 0, 16, 14, 16);
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final MapCodec<SuperCrafterBlock> CODEC = simpleCodec(SuperCrafterBlock::new);
+    public static final VoxelShape SHAPE = Block.box(0, 0.01, 0, 16, 14, 16);
+    public static final String NAME = "super_crafter";
 
     /**
      * Indicates the block state of Super Crafter Block.
@@ -68,7 +72,9 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock implements Ent
 
     public SuperCrafterBlock(Properties properties) {
         super(properties);
-        registerDefaultState(this.defaultBlockState().setValue(STATE, TYPE.DEFAULT));
+        registerDefaultState(this.defaultBlockState()
+                .setValue(STATE, TYPE.DEFAULT)
+                .setValue(FACING, Direction.NORTH));
     }
 
     @Override
@@ -95,16 +101,9 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock implements Ent
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos,
                                           Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (hand == InteractionHand.MAIN_HAND && itemStack.isEmpty()) {
-            if (!level.isClientSide()) {
-                level.setBlockAndUpdate(pos, state.cycle(STATE));
-            }
-            return InteractionResult.SUCCESS;
-        }
-
-        if (itemStack.is(MtsItems.STRONG_AMETHYST_INGOT)) {
-            if (!level.isClientSide()) {
-                level.setBlockAndUpdate(pos, state.cycle(STATE));
+        if (!level.isClientSide()) {
+            if (level.getBlockEntity(pos) instanceof SuperCrafterBlockEntity superCrafterBlockEntity) {
+                player.openMenu(superCrafterBlockEntity);
             }
             return InteractionResult.SUCCESS;
         }
@@ -117,7 +116,7 @@ public class SuperCrafterBlock extends HorizontalDirectionalBlock implements Ent
     }
 
     @Override
-    protected @NonNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
+    protected @NonNull MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
     }
 

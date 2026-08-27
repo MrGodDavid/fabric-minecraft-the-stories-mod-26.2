@@ -2,10 +2,14 @@ package net.mrgoddavid.minecraftthestoriesmod.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.Containers;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -47,4 +51,8 @@ public abstract class MtsAbstractBlockEntity extends BlockEntity {
      * Defines inventory drop logics here.
      */
     public abstract void drops();
+
+    public void defaultDrops(final NonNullList<ItemStack> inventory) {
+        Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
 }
