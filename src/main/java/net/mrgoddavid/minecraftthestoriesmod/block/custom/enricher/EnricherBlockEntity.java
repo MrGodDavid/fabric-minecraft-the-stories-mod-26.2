@@ -136,7 +136,6 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
-
         boolean shouldWork = hasRecipe() && isOutputSlotEmptyOrReceivable() && !hasWasteOverFlow();
         if (shouldWork) {
             increaseEnrichingProgress();

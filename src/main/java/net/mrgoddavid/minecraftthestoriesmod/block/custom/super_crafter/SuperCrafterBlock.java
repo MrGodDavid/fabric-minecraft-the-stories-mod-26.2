@@ -78,6 +78,11 @@ public class SuperCrafterBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
+    public Properties properties() {
+        return super.properties();
+    }
+
+    @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection());
     }
