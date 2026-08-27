@@ -1,0 +1,161 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/wood_collector",
+  "criteria": {
+    "obtain_full_stack_of_acacia_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:acacia_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_birch_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:birch_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_cherry_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:cherry_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_compressed_wood_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:compressed_wood_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_dark_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:dark_oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_jungle_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:jungle_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_mangrove_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:mangrove_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_pale_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:pale_oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_full_stack_of_spruce_log": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft:spruce_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.wood_master.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "minecraft-the-stories-mod:strong_amethyst_axe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.wood_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_full_stack_of_oak_log"
+    ],
+    [
+      "obtain_full_stack_of_dark_oak_log"
+    ],
+    [
+      "obtain_full_stack_of_pale_oak_log"
+    ],
+    [
+      "obtain_full_stack_of_spruce_log"
+    ],
+    [
+      "obtain_full_stack_of_birch_log"
+    ],
+    [
+      "obtain_full_stack_of_jungle_log"
+    ],
+    [
+      "obtain_full_stack_of_acacia_log"
+    ],
+    [
+      "obtain_full_stack_of_mangrove_log"
+    ],
+    [
+      "obtain_full_stack_of_cherry_log"
+    ],
+    [
+      "obtain_full_stack_of_compressed_wood_log"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

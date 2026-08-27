@@ -1,0 +1,137 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/time_for_lumberjacking",
+  "criteria": {
+    "obtain_acacia_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:acacia_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:birch_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cherry_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:dark_oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:jungle_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:mangrove_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:pale_oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:spruce_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.wood_collector.description"
+    },
+    "icon": {
+      "id": "minecraft:oak_log"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.wood_collector.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_oak_log"
+    ],
+    [
+      "obtain_dark_oak_log"
+    ],
+    [
+      "obtain_pale_oak_log"
+    ],
+    [
+      "obtain_spruce_log"
+    ],
+    [
+      "obtain_birch_log"
+    ],
+    [
+      "obtain_jungle_log"
+    ],
+    [
+      "obtain_acacia_log"
+    ],
+    [
+      "obtain_mangrove_log"
+    ],
+    [
+      "obtain_cherry_log"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

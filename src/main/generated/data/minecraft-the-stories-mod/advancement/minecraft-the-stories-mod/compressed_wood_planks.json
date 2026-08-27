@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/wood_collector",
+  "criteria": {
+    "obtain_compressed_wood_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:compressed_wood_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.compressed_wood_planks.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:compressed_wood_planks"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.compressed_wood_planks.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_compressed_wood_planks"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

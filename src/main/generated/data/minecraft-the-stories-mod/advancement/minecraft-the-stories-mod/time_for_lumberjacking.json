@@ -1,0 +1,132 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/root",
+  "criteria": {
+    "obtain_any_axes_amethyst_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_amethyst_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_diamond_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_emerald_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:emerald_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_golden_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_iron_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_netherite_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_ruby_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_ruby_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_stone_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stone_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_topaz_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_topaz_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_any_axes_wooden_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.time_for_lumberjacking.description"
+    },
+    "icon": {
+      "id": "minecraft:iron_axe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.time_for_lumberjacking.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_any_axes_wooden_axe",
+      "obtain_any_axes_stone_axe",
+      "obtain_any_axes_iron_axe",
+      "obtain_any_axes_golden_axe",
+      "obtain_any_axes_emerald_axe",
+      "obtain_any_axes_diamond_axe",
+      "obtain_any_axes_topaz_axe",
+      "obtain_any_axes_ruby_axe",
+      "obtain_any_axes_netherite_axe",
+      "obtain_any_axes_amethyst_axe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

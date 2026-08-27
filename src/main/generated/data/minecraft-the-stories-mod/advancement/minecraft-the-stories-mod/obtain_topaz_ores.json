@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/use_diamond_pic_mining_topaz_ores",
+  "criteria": {
+    "obtain_raw_strong_topaz_ore_from_stone_topaz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:raw_strong_topaz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.obtain_topaz_ores.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:raw_strong_topaz"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.obtain_topaz_ores.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_raw_strong_topaz_ore_from_stone_topaz"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
