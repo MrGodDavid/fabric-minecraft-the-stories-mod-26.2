@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsAbstractNonDataComponentContainerMenu;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 
-import static net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlockEntity.TOTAL_SLOTS;
+import static net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlockEntity.TOTAL_SLOTS;
 
 /**
  * A menu is the bridge that connects the Block Entity and the Screen. This has functionality of telling Minecraft how

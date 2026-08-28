@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter;
 
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.item.ItemStackRenderState;

@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter;
 
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
 import net.minecraft.core.BlockPos;
@@ -22,7 +22,7 @@ import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
-import static net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlockEntity.Context.TOTAL_SLOTS;
+import static net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlockEntity.Context.TOTAL_SLOTS;
 
 /**
  * Block entity for Super Crafter Block.

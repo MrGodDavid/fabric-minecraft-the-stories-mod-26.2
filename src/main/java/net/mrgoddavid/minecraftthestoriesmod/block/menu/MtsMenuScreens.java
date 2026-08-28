@@ -2,9 +2,9 @@ package net.mrgoddavid.minecraftthestoriesmod.block.menu;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterScreen;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherScreen;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterScreen;
 
 /**
  * Registers screens of menus.

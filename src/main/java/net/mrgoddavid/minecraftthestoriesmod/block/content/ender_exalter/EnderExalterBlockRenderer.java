@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

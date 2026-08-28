@@ -11,9 +11,10 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlock;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlock;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 
 import java.util.function.Function;
@@ -61,6 +62,7 @@ public class MtsBlocks {
     public static final Block SUPER_CRAFTER_BLOCK;
     public static final Block ENRICHER;
     public static final Block ENDER_EXALTER;
+    public static final Block ORE_COMPRESSOR;
 
     public static final Block ENRICHER_WASTE_FLUID;
 
@@ -100,6 +102,7 @@ public class MtsBlocks {
         SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
         ENRICHER = registerBlock("enricher_default", properties -> new EnricherBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(EnricherBlock.LIT) ? 15 : 0)));
         ENDER_EXALTER = registerBlock("ender_exalter", properties -> new EnderExalterBlock(properties.strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+        ORE_COMPRESSOR = registerBlock("ore_compressor_default", properties -> new OreCompressorBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
         ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
     }

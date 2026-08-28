@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

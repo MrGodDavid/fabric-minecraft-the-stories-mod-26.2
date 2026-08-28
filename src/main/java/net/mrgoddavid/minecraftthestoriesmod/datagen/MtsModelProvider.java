@@ -19,8 +19,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlock;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import org.jspecify.annotations.NonNull;
@@ -77,17 +78,9 @@ public class MtsModelProvider extends FabricModelProvider {
                 .fence(COMPRESSED_WOOD_FENCE)
                 .fenceGate(COMPRESSED_WOOD_FENCE_GATE);
 
-        this.generateFacingModels(blockModelGenerators, SUPER_CRAFTER_BLOCK,
-                SuperCrafterBlock.STATE, SuperCrafterBlock.FACING,
-                (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
-        );
-        this.generateFacingModels(blockModelGenerators, ENRICHER,
-                EnricherBlock.STATE, EnricherBlock.FACING,
-                (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path()))
-        );
-
-//        blockModelGenerators.createHorizontallyRotatedBlock(SUPER_CRAFTER_BLOCK, TexturedModel.ORIENTABLE);
-//        blockModelGenerators.createHorizontallyRotatedBlock(ENRICHER, TexturedModel.ORIENTABLE);
+        this.generateFacingModels(blockModelGenerators, SUPER_CRAFTER_BLOCK, SuperCrafterBlock.STATE, SuperCrafterBlock.FACING, (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path())));
+        this.generateFacingModels(blockModelGenerators, ENRICHER, EnricherBlock.STATE, EnricherBlock.FACING, (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path())));
+        this.generateFacingModels(blockModelGenerators, ORE_COMPRESSOR, OreCompressorBlock.STATE, OreCompressorBlock.FACING, (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path())));
 
         blockModelGenerators.createNonTemplateModelBlock(ENDER_EXALTER);
     }

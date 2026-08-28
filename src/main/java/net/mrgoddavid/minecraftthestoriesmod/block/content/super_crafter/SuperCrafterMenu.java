@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;

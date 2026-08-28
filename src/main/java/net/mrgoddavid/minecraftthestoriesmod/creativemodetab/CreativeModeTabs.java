@@ -143,6 +143,7 @@ public class CreativeModeTabs {
                         output.accept(SUPER_CRAFTER_BLOCK);
                         output.accept(ENRICHER);
                         output.accept(ENDER_EXALTER);
+                        output.accept(ORE_COMPRESSOR);
                     })
                     .build()
     );

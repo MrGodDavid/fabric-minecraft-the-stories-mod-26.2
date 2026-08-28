@@ -8,9 +8,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterMenu;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherMenu;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterMenu;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterMenu;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherMenu;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterMenu;
 
 public class MtsMenuTypes {
 

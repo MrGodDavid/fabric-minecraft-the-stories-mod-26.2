@@ -9,6 +9,7 @@ e77106bafd1b672da53d7c3a80783455704c46b5 assets/minecraft-the-stories-mod/blocks
 2860c59580da8abcc851c12386184b4049ba45fc assets/minecraft-the-stories-mod/blockstates/deepslate_topaz_ore.json
 eff5b0da6bd0ebdd61ec4a309e3d1bf60022b020 assets/minecraft-the-stories-mod/blockstates/ender_exalter.json
 1ed0af23fbfcc4340be0c8f9c56cb254d2ab1325 assets/minecraft-the-stories-mod/blockstates/enricher_default.json
+2e5cbed633e2f0074146f72b2cdf85f34c676128 assets/minecraft-the-stories-mod/blockstates/ore_compressor_default.json
 ea1bd56e840b0d5015851cf8122c886c688bac52 assets/minecraft-the-stories-mod/blockstates/raw_strong_amethyst_block.json
 2e08d6ce3639abd898eb600b70a36d312e916952 assets/minecraft-the-stories-mod/blockstates/raw_strong_amethyst_wall.json
 d6acd7a6f5e64c976f2b24ba080295836ae25032 assets/minecraft-the-stories-mod/blockstates/raw_strong_diamond_block.json
@@ -53,6 +54,7 @@ b7afb766ab9803b61f56213b39b751cc663a9cb7 assets/minecraft-the-stories-mod/items/
 f5f5224c3ad4b247e02be58afbe5dd653e8fe59f assets/minecraft-the-stories-mod/items/ender_exalter.json
 ba5df2339021623385361dda678bc2e129ff6779 assets/minecraft-the-stories-mod/items/enricher_default.json
 2e390698884521cdffb195f091ffebc1e7e30dd2 assets/minecraft-the-stories-mod/items/enricher_waste_bucket.json
+02640e39641c8897f0846d1e6bd1554f1d35d696 assets/minecraft-the-stories-mod/items/ore_compressor_default.json
 7a99705c1e438ccd3edb645f5d42a90c70b98ed7 assets/minecraft-the-stories-mod/items/raw_strong_amethyst.json
 1eb9d48e7734997accd40d000a8b187a7df21b7d assets/minecraft-the-stories-mod/items/raw_strong_amethyst_block.json
 cff267509d5cddab84ac39a86c5eaf78b77fb7f7 assets/minecraft-the-stories-mod/items/raw_strong_amethyst_wall.json

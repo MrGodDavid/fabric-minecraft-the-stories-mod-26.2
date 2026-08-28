@@ -8,10 +8,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlock;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.ender_exalter.EnderExalterBlockEntity;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.enricher.EnricherBlockEntity;
-import net.mrgoddavid.minecraftthestoriesmod.block.custom.super_crafter.SuperCrafterBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlockEntity;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 
@@ -26,6 +26,7 @@ public class MtsBlockEntities {
     public static final BlockEntityType<SuperCrafterBlockEntity> SUPER_CRAFTER_BE = register("super_crafter_be", SuperCrafterBlockEntity::new, SUPER_CRAFTER_BLOCK);
     public static final BlockEntityType<EnricherBlockEntity> ENRICHER_BE = register("enricher_be", EnricherBlockEntity::new, ENRICHER);
     public static final BlockEntityType<EnderExalterBlockEntity> ENDER_EXALTER_BE = register("ender_exalter_be", EnderExalterBlockEntity::new, ENDER_EXALTER);
+    public static final BlockEntityType<OreCompressorBlockEntity> ORE_COMPRESSOR_BE = register("ore_compressor_be", OreCompressorBlockEntity::new, ORE_COMPRESSOR);
 
     public static void registerBlockEntities() {
         MinecraftTheStoriesMod.LOGGER.info("Registering Block Entities for " + MinecraftTheStoriesMod.MOD_ID);
