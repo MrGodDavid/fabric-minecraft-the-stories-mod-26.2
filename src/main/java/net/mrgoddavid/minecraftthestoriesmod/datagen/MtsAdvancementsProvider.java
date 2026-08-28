@@ -70,7 +70,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
             AdvancementHolder useIronPicMinDiamonds = Advancement.Builder.advancement()
                     .parent(root)
                     .display(
-                            Items.IRON_PICKAXE,
+                            MtsItems.BROKEN_IRON_PICKAXE,
                             Component.translatable("advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.title"),
                             Component.translatable("advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.description"),
                             Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),

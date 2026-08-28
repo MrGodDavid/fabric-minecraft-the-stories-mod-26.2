@@ -19,6 +19,9 @@
   "item.minecraft-the-stories-mod.strong_ruby_ingot": "Strong Ruby Ingot",
   "item.minecraft-the-stories-mod.strong_topaz_ingot": "Strong Topaz Ingot",
 
+  "item.minecraft-the-stories-mod.broken_iron_pickaxe": "Broken Iron Pickaxe",
+  "item.minecraft-the-stories-mod.broken_diamond_pickaxe": "Broken Diamond Pickaxe",
+
   "item.minecraft-the-stories-mod.strong_amethyst_axe": "Strong Amethyst Axe",
   "item.minecraft-the-stories-mod.strong_amethyst_hoe": "Strong Amethyst Hoe",
   "item.minecraft-the-stories-mod.strong_amethyst_pickaxe": "Strong Amethyst Pickaxe",
@@ -98,6 +101,7 @@
   "block.minecraft-the-stories-mod.enricher_default": "Enricher",
   "block.minecraft-the-stories-mod.enricher_waste_bucket": "Enricher Waste Bucket",
   "block.minecraft-the-stories-mod.ender_exalter": "Ender Exalter",
+  "block.minecraft-the-stories-mod.ore_compressor_default": "Ore Compressor",
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",
   "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks",

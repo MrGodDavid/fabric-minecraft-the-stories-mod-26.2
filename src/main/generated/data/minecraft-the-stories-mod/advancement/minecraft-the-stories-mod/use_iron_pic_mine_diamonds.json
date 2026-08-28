@@ -26,7 +26,7 @@
       "translate": "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.description"
     },
     "icon": {
-      "id": "minecraft:iron_pickaxe"
+      "id": "minecraft-the-stories-mod:broken_iron_pickaxe"
     },
     "title": {
       "translate": "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.title"

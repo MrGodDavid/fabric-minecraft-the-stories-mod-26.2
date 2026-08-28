@@ -34,6 +34,9 @@ public class MtsItems {
     public static final Item ENRICHER_WASTE_BUCKET = registerItem("enricher_waste_bucket",
             properties -> new BucketItem(MtsFluids.ENRICHER_WASTE_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)));
 
+    public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", Item::new);
+    public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);
+
     public static final Item RAW_STRONG_AMETHYST = registerItem("raw_strong_amethyst", Item::new);
     public static final Item RAW_STRONG_DIAMOND = registerItem("raw_strong_diamond", Item::new);
     public static final Item RAW_STRONG_EMERALD = registerItem("raw_strong_emerald", Item::new);

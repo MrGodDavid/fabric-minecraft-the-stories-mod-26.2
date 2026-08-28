@@ -108,6 +108,9 @@ public class MtsModelProvider extends FabricModelProvider {
         final ModelTemplate flatItemTemplate = ModelTemplates.FLAT_ITEM;
         final ModelTemplate flatHandledItemTemplate = ModelTemplates.FLAT_HANDHELD_ITEM;
 
+        itemModelGenerators.generateFlatItem(BROKEN_IRON_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(BROKEN_DIAMOND_PICKAXE, flatItemTemplate);
+
         itemModelGenerators.generateFlatItem(RAW_STRONG_AMETHYST, flatItemTemplate);
         itemModelGenerators.generateFlatItem(RAW_STRONG_DIAMOND, flatItemTemplate);
         itemModelGenerators.generateFlatItem(RAW_STRONG_EMERALD, flatItemTemplate);
