@@ -27,8 +27,14 @@ public class MtsFluidTagProvider extends FabricTagsProvider.FluidTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         builder(MtsFluidTags.ENRICHER_WASTE)
-                .add(MtsFluids.getResourceKey(ENRICHER_WASTE_STILL), MtsFluids.getResourceKey(ENRICHER_WASTE_FLOWING));
-        builder(FluidTags.WATER)
-                .addTag(MtsFluidTags.ENRICHER_WASTE);
+                .add(MtsFluids.getResourceKey(ENRICHER_WASTE_STILL))
+                .add(MtsFluids.getResourceKey(ENRICHER_WASTE_FLOWING));
+        builder(MtsFluidTags.BLUE_FUEL)
+                .add(MtsFluids.getResourceKey(BLUE_FUEL_STILL))
+                .add(MtsFluids.getResourceKey(BLUE_FUEL_FLOWING));
+
+//        builder(FluidTags.WATER)
+//                .addTag(MtsFluidTags.ENRICHER_WASTE)
+//                .addTag(MtsFluidTags.BLUE_FUEL);
     }
 }

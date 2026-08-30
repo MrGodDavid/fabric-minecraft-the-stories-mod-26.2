@@ -33,6 +33,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluidTags;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
@@ -75,9 +76,9 @@ public abstract class EnricherWasteFluid extends FlowingFluid {
                         random.nextFloat() + 0.5f,
                         false);
             }
-        } else if (random.nextInt(10) == 0) {
+        } else if (random.nextInt(1) == 0) {
             level.addParticle(
-                    ParticleTypes.UNDERWATER,
+                    MtsParticleTypes.ENRICHER_WASTE_PARTICLE,
                     pos.getX() + random.nextDouble(),
                     pos.getY() + random.nextDouble(),
                     pos.getZ() + random.nextDouble(),

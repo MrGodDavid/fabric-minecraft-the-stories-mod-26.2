@@ -11,6 +11,10 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.custom.BlueFuelFluid;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.custom.EnricherWasteFluid;
 
+/**
+ * @author Mr. GodDavid
+ * @since 8/30/2026
+ */
 public class MtsFluids {
 
     public static final FlowingFluid ENRICHER_WASTE_STILL = createFluid("enricher_waste_still", new EnricherWasteFluid.Source());

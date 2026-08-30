@@ -6,6 +6,10 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 
+/**
+ * @author Mr. GodDavid
+ * @since 8/30/2026
+ */
 public class MtsFluidTags {
 
     public static final TagKey<Fluid> ENRICHER_WASTE = createTag("enricher_waste");

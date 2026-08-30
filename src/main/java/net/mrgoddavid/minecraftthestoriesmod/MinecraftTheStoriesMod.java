@@ -3,16 +3,28 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.fabricmc.fabric.api.registry.fluid.EntityFluidInteractionRegistry;
+import net.fabricmc.fabric.api.registry.fluid.FluidBehavior;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityFluidInteraction;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsEntityFluidInteractions;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluidTags;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.MtsLootTableModifiers;
+import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticles;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
@@ -42,7 +54,12 @@ public class MinecraftTheStoriesMod implements ModInitializer {
     public void onInitialize() {
         MtsTestWorldServer.register();
         MtsScreenTextures.register();
+
+        MtsParticleTypes.registerParticleTypes();
+        MtsParticles.registerParticles();
         MtsFluids.registerFluids();
+        MtsEntityFluidInteractions.registerInteractions();
+
         CreativeModeTabs.registerModCreativeModeTabs();
         MtsItemModelTemplates.registerTemplates();
         MtsMenuTypes.registerMenuTypes();
