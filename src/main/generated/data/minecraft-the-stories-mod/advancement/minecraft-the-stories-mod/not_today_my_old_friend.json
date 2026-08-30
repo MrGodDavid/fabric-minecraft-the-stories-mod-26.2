@@ -1,0 +1,81 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/obtain_topaz_ores",
+  "criteria": {
+    "use_diamond_pic_mining_ancient_debris": {
+      "conditions": {
+        "blocks": "minecraft:ancient_debris",
+        "tool": {
+          "items": "minecraft:diamond_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "use_diamond_pic_mining_deepslate_amethyst_ore": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:deepslate_amethyst_ore",
+        "tool": {
+          "items": "minecraft:diamond_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "use_diamond_pic_mining_deepslate_ruby_ore": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:deepslate_ruby_ore",
+        "tool": {
+          "items": "minecraft:diamond_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "use_diamond_pic_mining_stone_amethyst_ore": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:stone_amethyst_ore",
+        "tool": {
+          "items": "minecraft:diamond_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "use_diamond_pic_mining_stone_ruby_ore": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:stone_ruby_ore",
+        "tool": {
+          "items": "minecraft:diamond_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.not_today_my_old_friend.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "minecraft-the-stories-mod:broken_diamond_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.not_today_my_old_friend.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_diamond_pic_mining_stone_ruby_ore"
+    ],
+    [
+      "use_diamond_pic_mining_deepslate_ruby_ore"
+    ],
+    [
+      "use_diamond_pic_mining_ancient_debris"
+    ],
+    [
+      "use_diamond_pic_mining_stone_amethyst_ore"
+    ],
+    [
+      "use_diamond_pic_mining_deepslate_amethyst_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

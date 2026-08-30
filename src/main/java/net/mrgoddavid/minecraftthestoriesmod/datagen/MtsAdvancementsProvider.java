@@ -23,8 +23,9 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.advancement.MineBlockWithToolTrigger;
-import net.mrgoddavid.minecraftthestoriesmod.advancement.MtsAdvancementTriggers;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.custom.EnteredVillageWithFullEmeraldArmorTrigger;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.custom.MineBlockWithToolTrigger;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 
@@ -99,14 +100,15 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("make_emerald_pickaxe_with_emeralds", hasObtainItem(items, MtsItems.EMERALD_PICKAXE))
                     .save(output, generateSaveName("make_emerald_pickaxe"));
 
-            AdvancementHolder obtainMoreEmeraldTools = Advancement.Builder.advancement()
+            // Made all emerald tools
+            AdvancementHolder moneyPower = Advancement.Builder.advancement()
                     .parent(obtainEmeraldPickaxe)
                     .display(
                             MtsItems.EMERALD_AXE,
-                            Component.translatable("advancements.minecraft-the-stories-mod.make_more_emerald_tools.title"),
-                            Component.translatable("advancements.minecraft-the-stories-mod.make_more_emerald_tools.description"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.money_power.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.money_power.description"),
                             Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
-                            AdvancementType.TASK,
+                            AdvancementType.GOAL,
                             true,
                             true,
                             false
@@ -118,16 +120,16 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("make_emerald_shovels", hasObtainItem(items, MtsItems.EMERALD_SHOVEL))
                     .addCriterion("make_emerald_spears", hasObtainItem(items, MtsItems.EMERALD_SPEAR))
                     .addCriterion("make_emerald_swords", hasObtainItem(items, MtsItems.EMERALD_SWORD))
-                    .save(output, generateSaveName("make_more_emerald_tools"));
+                    .save(output, generateSaveName("money_power"));
 
-            AdvancementHolder showOff = Advancement.Builder.advancement()
+            AdvancementHolder moneyProtection = Advancement.Builder.advancement()
                     .parent(obtainEmeraldPickaxe)
                     .display(
                             MtsItems.EMERALD_CHESTPLATE,
-                            Component.translatable("advancements.minecraft-the-stories-mod.show_off.title"),
-                            Component.translatable("advancements.minecraft-the-stories-mod.show_off.description"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.money_protection.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.money_protection.description"),
                             Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
-                            AdvancementType.TASK,
+                            AdvancementType.GOAL,
                             true,
                             true,
                             false
@@ -137,7 +139,22 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("make_emerald_chestplate", hasObtainItem(items, MtsItems.EMERALD_CHESTPLATE))
                     .addCriterion("make_emerald_leggings", hasObtainItem(items, MtsItems.EMERALD_LEGGINGS))
                     .addCriterion("make_emerald_boots", hasObtainItem(items, MtsItems.EMERALD_BOOTS))
-                    .save(output, generateSaveName("show_off_emerald_armors"));
+                    .save(output, generateSaveName("money_protection_emerald_armor"));
+
+            AdvancementHolder showOff = Advancement.Builder.advancement()
+                    .parent(moneyProtection)
+                    .display(
+                            Items.EMERALD_BLOCK,
+                            Component.translatable("advancements.minecraft-the-stories-mod.show_off.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.show_off.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("wear_full_emerald_armor_in_villages", hasEnteredVillagesWithFullEmeraldArmor())
+                    .save(output, generateSaveName("show_off_emerald_armor"));
 
             // Use emerald pickaxe mining diamond ores.
             AdvancementHolder itsYouNow = Advancement.Builder.advancement()
@@ -299,6 +316,33 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("obtain_full_stack_of_cherry_log", hasObtainFullStackOf(items, Items.CHERRY_LOG))
                     .addCriterion("obtain_full_stack_of_compressed_wood_log", hasObtainFullStackOf(items, MtsBlocks.COMPRESSED_WOOD_LOG))
                     .save(output, generateSaveName("wood_master"));
+
+            // Use Diamond Pickaxe to mine (stone) ruby ore, (stone) amethyst ore, and netherite.
+            AdvancementHolder notTodayMyOldFriend = Advancement.Builder.advancement()
+                    .parent(orangeThings)
+                    .display(
+                            MtsItems.BROKEN_DIAMOND_PICKAXE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.not_today_my_old_friend.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.not_today_my_old_friend.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.GOAL,
+                            true,
+                            true,
+                            false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.AND)
+                    .addCriterion("use_diamond_pic_mining_stone_ruby_ore", specificItemMinesSpecificBlock(items, blocks, Items.DIAMOND_PICKAXE, MtsBlocks.STONE_RUBY_ORE))
+                    .addCriterion("use_diamond_pic_mining_deepslate_ruby_ore", specificItemMinesSpecificBlock(items, blocks, Items.DIAMOND_PICKAXE, MtsBlocks.DEEPSLATE_RUBY_ORE))
+                    .addCriterion("use_diamond_pic_mining_ancient_debris", specificItemMinesSpecificBlock(items, blocks, Items.DIAMOND_PICKAXE, Blocks.ANCIENT_DEBRIS))
+                    .addCriterion("use_diamond_pic_mining_stone_amethyst_ore", specificItemMinesSpecificBlock(items, blocks, Items.DIAMOND_PICKAXE, MtsBlocks.STONE_AMETHYST_ORE))
+                    .addCriterion("use_diamond_pic_mining_deepslate_amethyst_ore", specificItemMinesSpecificBlock(items, blocks, Items.DIAMOND_PICKAXE, MtsBlocks.DEEPSLATE_AMETHYST_ORE))
+                    .save(output, generateSaveName("not_today_my_old_friend"));
+        }
+
+        // TODO.
+        public Criterion<?> hasEnteredVillagesWithFullEmeraldArmor() {
+            return MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.createCriterion(
+                    new EnteredVillageWithFullEmeraldArmorTrigger.TriggerInstance(Optional.empty()));
         }
 
         public Criterion<?> hasObtainFullStackOf(final HolderGetter<Item> currentTime, final ItemLike requiredItem) {

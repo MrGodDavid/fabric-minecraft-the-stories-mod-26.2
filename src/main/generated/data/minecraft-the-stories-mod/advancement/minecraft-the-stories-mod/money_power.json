@@ -65,13 +65,14 @@
   "display": {
     "background": "minecraft:gui/advancements/backgrounds/adventure",
     "description": {
-      "translate": "advancements.minecraft-the-stories-mod.make_more_emerald_tools.description"
+      "translate": "advancements.minecraft-the-stories-mod.money_power.description"
     },
+    "frame": "goal",
     "icon": {
       "id": "minecraft-the-stories-mod:emerald_axe"
     },
     "title": {
-      "translate": "advancements.minecraft-the-stories-mod.make_more_emerald_tools.title"
+      "translate": "advancements.minecraft-the-stories-mod.money_power.title"
     }
   },
   "requirements": [

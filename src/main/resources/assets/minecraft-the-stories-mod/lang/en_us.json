@@ -114,10 +114,10 @@
   "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.description": "Something is wrong. My iron pick cannot mine diamonds...",
   "advancements.minecraft-the-stories-mod.make_emerald_pickaxe.title": "Fancy Stuffs",
   "advancements.minecraft-the-stories-mod.make_emerald_pickaxe.description": "Create pickaxe with emeralds.",
-  "advancements.minecraft-the-stories-mod.make_more_emerald_tools.title": "More Fancy Stuffs",
-  "advancements.minecraft-the-stories-mod.make_more_emerald_tools.description": "Use emeralds to make an emerald axe, an emerald hoe, an emerald pickaxe, an emerald shovel, an emerald spear, and an emerald sword.",
-  "advancements.minecraft-the-stories-mod.show_off.title": "Show Off",
-  "advancements.minecraft-the-stories-mod.show_off.description": "Create full emerald armor that makes Villagers think you are showing off.",
+  "advancements.minecraft-the-stories-mod.money_power.title": "Money Power",
+  "advancements.minecraft-the-stories-mod.money_power.description": "Use emeralds to make an emerald axe, an emerald hoe, an emerald pickaxe, an emerald shovel, an emerald spear, and an emerald sword.",
+  "advancements.minecraft-the-stories-mod.money_protection.title": "Money Protection",
+  "advancements.minecraft-the-stories-mod.money_protection.description": "Create full emerald armor that makes Villagers think you are showing off.",
   "advancements.minecraft-the-stories-mod.use_emerald_pic_mining_diamonds.title": "It's You Now!",
   "advancements.minecraft-the-stories-mod.use_emerald_pic_mining_diamonds.description": "This is interesting. Emerald pick can now mine diamonds...",
   "advancements.minecraft-the-stories-mod.use_diamond_pic_mining_topaz_ores.title": "New Ores!",
@@ -133,5 +133,9 @@
   "advancements.minecraft-the-stories-mod.super_crafter.title": "Super Crafting!",
   "advancements.minecraft-the-stories-mod.super_crafter.description": "Craft a Super Crafter.",
   "advancements.minecraft-the-stories-mod.wood_master.title": "Wood Master",
-  "advancements.minecraft-the-stories-mod.wood_master.description": "Obtain all full-stack of tree types of log except crimson logs, warped logs, and bamboo logs. Don't forget about the compressed wood logs! :)"
+  "advancements.minecraft-the-stories-mod.wood_master.description": "Obtain all full-stack of tree types of log except crimson logs, warped logs, and bamboo logs. Don't forget about the compressed wood logs! :)",
+  "advancements.minecraft-the-stories-mod.show_off.title": "Show Off",
+  "advancements.minecraft-the-stories-mod.show_off.description": "Wear full emerald armor inside a village.",
+  "advancements.minecraft-the-stories-mod.not_today_my_old_friend.title": "Not Today, My Old Friend",
+  "advancements.minecraft-the-stories-mod.not_today_my_old_friend.description": "Mine stone/deepslate ruby ore, ancient debris, and stone/deepslate amethyst ore with diamond pickaxe."
 }

@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/money_protection_emerald_armor",
+  "criteria": {
+    "wear_full_emerald_armor_in_villages": {
+      "trigger": "minecraft-the-stories-mod:enter_village_with_full_emerald_armor"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.show_off.description"
+    },
+    "icon": {
+      "id": "minecraft:emerald_block"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.show_off.title"
+    }
+  },
+  "requirements": [
+    [
+      "wear_full_emerald_armor_in_villages"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

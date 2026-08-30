@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -10,7 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.mrgoddavid.minecraftthestoriesmod.advancement.MtsAdvancementTriggers;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
@@ -53,6 +54,12 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
             MtsAdvancementTriggers.MINE_BLOCK_WITH_TOOL_TRIGGER.trigger(
                     serverPlayer, state, tool
             );
+        });
+
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+            for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.trigger(player);
+            }
         });
     }
 }

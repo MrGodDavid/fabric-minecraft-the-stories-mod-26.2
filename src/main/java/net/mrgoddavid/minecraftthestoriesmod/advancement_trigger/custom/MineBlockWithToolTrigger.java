@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.advancement;
+package net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.custom;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -15,6 +15,10 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Optional;
 
+/**
+ * @author Mr. GodDavid
+ * @since unknown date in August 2026.
+ */
 public class MineBlockWithToolTrigger extends SimpleCriterionTrigger<MineBlockWithToolTrigger.TriggerInstance> {
 
     @Override

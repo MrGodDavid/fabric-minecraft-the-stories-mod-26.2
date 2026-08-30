@@ -3,7 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
-import net.mrgoddavid.minecraftthestoriesmod.advancement.MtsAdvancementTriggers;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;

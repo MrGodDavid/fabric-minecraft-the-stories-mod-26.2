@@ -45,13 +45,14 @@
   "display": {
     "background": "minecraft:gui/advancements/backgrounds/adventure",
     "description": {
-      "translate": "advancements.minecraft-the-stories-mod.show_off.description"
+      "translate": "advancements.minecraft-the-stories-mod.money_protection.description"
     },
+    "frame": "goal",
     "icon": {
       "id": "minecraft-the-stories-mod:emerald_chestplate"
     },
     "title": {
-      "translate": "advancements.minecraft-the-stories-mod.show_off.title"
+      "translate": "advancements.minecraft-the-stories-mod.money_protection.title"
     }
   },
   "requirements": [
