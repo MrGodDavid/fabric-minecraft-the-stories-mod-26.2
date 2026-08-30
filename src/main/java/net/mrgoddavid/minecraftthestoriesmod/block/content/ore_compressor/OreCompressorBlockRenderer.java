@@ -45,7 +45,7 @@ public class OreCompressorBlockRenderer implements BlockEntityRenderer<OreCompre
     public void extractRenderState(OreCompressorBlockEntity blockEntity, OreCompressorBlockRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
         BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
 
-        state.isCompressing = true;
+        state.isCompressing = blockEntity.isCompressing();
         state.animationTime = ((blockEntity.getLevel().getGameTime() + partialTicks) % 20.0f) / 20.0f;
         state.angleCorrection = blockEntity.getBlockState().getValue(OreCompressorBlock.FREEWHEEL_MODEL_CORRECTION).angleCorrection();
         state.translationCorrection = blockEntity.getBlockState().getValue(OreCompressorBlock.FREEWHEEL_MODEL_CORRECTION).translation();

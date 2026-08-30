@@ -4,18 +4,26 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -114,9 +122,34 @@ public class OreCompressorBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof OreCompressorBlockEntity oreCompressorBlockEntity) {
+            player.openMenu(oreCompressorBlockEntity);
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(FACING, STATE, FREEWHEEL_MODEL_CORRECTION);
+    }
+
+    @Override
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack destroyedWith) {
+        if (level.getBlockEntity(pos) instanceof OreCompressorBlockEntity oreCompressorBlockEntity) {
+            oreCompressorBlockEntity.drops();
+        }
+        super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
+        if (level.isClientSide()) {
+            return null;
+        }
+        return createTickerHelper(type, MtsBlockEntities.ORE_COMPRESSOR_BE,
+                ((level1, pos, state, entity) -> entity.tick(level1, pos, state)));
     }
 
     @Override

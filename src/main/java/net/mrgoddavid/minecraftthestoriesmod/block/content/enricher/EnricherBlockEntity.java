@@ -106,6 +106,10 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
         super.saveAdditional(output);
         output.putInt("enricher.progress", this.progress);
         output.putInt("enricher.maxProgress", this.maxProgress);
+        output.putInt("enricher.coalEndurance", this.coalEndurance);
+        output.putInt("enricher.maxCoalEndurance", this.maxCoalEndurance);
+        output.putInt("enricher.wasteFluid", this.wasteFluid);
+        output.putInt("enricher.maxWasteFluid", this.maxWasteFluid);
         ContainerHelper.saveAllItems(output, inventory);
     }
 
@@ -114,6 +118,10 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
         super.loadAdditional(input);
         input.getInt("enricher.progress");
         input.getInt("enricher.maxProgress");
+        input.getInt("enricher.coalEndurance");
+        input.getInt("enricher.maxCoalEndurance");
+        input.getInt("enricher.wasteFluid");
+        input.getInt("enricher.maxWasteFluid");
         ContainerHelper.loadAllItems(input, inventory);
     }
 

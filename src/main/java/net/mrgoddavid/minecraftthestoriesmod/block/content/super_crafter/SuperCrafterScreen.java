@@ -4,9 +4,9 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+
+import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
 
 /**
  * Screen of Super Crafter.
@@ -15,9 +15,6 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
  * @since 8/26/2026
  */
 public class SuperCrafterScreen extends AbstractContainerScreen<SuperCrafterMenu> {
-
-    private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID,
-            "textures/gui/menu/super_crafter/super_crafter_gui.png");
 
     public SuperCrafterScreen(SuperCrafterMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title, 176, 181);
@@ -28,7 +25,7 @@ public class SuperCrafterScreen extends AbstractContainerScreen<SuperCrafterMenu
         super.extractBackground(graphics, mouseX, mouseY, a);
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, SUPER_CRAFTER_GUI, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
     }
 
     @Override

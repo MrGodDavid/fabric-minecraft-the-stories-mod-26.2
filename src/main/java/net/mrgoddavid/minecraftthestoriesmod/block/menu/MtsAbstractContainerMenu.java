@@ -8,6 +8,10 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.Nullable;
 
+/**
+ * This is the abstract container menu of MTS mod. This class defines the slot position of player's hotbar and player's
+ * inventory.
+ */
 public abstract class MtsAbstractContainerMenu extends AbstractContainerMenu {
 
     // SLOT INDICES
@@ -87,6 +91,14 @@ public abstract class MtsAbstractContainerMenu extends AbstractContainerMenu {
         return copyOfSourceStack;
     }
 
+    /**
+     * This record class defines the top-left coordinate of player's hotbar and player's inventory.
+     *
+     * @param hotBarX    the top-left x coordinate of player's hotbar.
+     * @param hotBarY    the top-left y coordinate of player's hotbar.
+     * @param inventoryX the top-left x coordinate of player's inventory.
+     * @param inventoryY the top-left y coordinate of player's inventory.
+     */
     public record PlayerInventoryMenuCoordsContext(int hotBarX, int hotBarY, int inventoryX, int inventoryY) {
     }
 }

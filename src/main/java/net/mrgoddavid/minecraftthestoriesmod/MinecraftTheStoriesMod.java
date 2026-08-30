@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.mrgoddavid.minecraftthestoriesmod.advancement.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
@@ -39,6 +40,7 @@ public class MinecraftTheStoriesMod implements ModInitializer {
     @Override
     public void onInitialize() {
         MtsTestWorldServer.register();
+        MtsScreenTextures.register();
         CreativeModeTabs.registerModCreativeModeTabs();
         MtsItemModelTemplates.registerTemplates();
         MtsMenuTypes.registerMenuTypes();
