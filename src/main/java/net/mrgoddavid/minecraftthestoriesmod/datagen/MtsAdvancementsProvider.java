@@ -65,7 +65,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             false,
                             false
                     )
-                    .addCriterion("has_wooden_pickaxe", hasObtainItem(items, Items.WOODEN_PICKAXE))
+                    .addCriterion("has_wooden_pickaxe", hasObtainedItem(items, Items.WOODEN_PICKAXE))
                     .save(output, generateSaveName("root"));
 
             AdvancementHolder useIronPicMinDiamonds = Advancement.Builder.advancement()
@@ -97,7 +97,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             true,
                             false
                     )
-                    .addCriterion("make_emerald_pickaxe_with_emeralds", hasObtainItem(items, MtsItems.EMERALD_PICKAXE))
+                    .addCriterion("make_emerald_pickaxe_with_emeralds", hasObtainedItem(items, MtsItems.EMERALD_PICKAXE))
                     .save(output, generateSaveName("make_emerald_pickaxe"));
 
             // Made all emerald tools
@@ -114,12 +114,12 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             false
                     )
                     .requirements(AdvancementRequirements.Strategy.AND)
-                    .addCriterion("make_emerald_axes", hasObtainItem(items, MtsItems.EMERALD_AXE))
-                    .addCriterion("make_emerald_hoes", hasObtainItem(items, MtsItems.EMERALD_HOE))
-                    .addCriterion("make_emerald_pickaxes", hasObtainItem(items, MtsItems.EMERALD_PICKAXE))
-                    .addCriterion("make_emerald_shovels", hasObtainItem(items, MtsItems.EMERALD_SHOVEL))
-                    .addCriterion("make_emerald_spears", hasObtainItem(items, MtsItems.EMERALD_SPEAR))
-                    .addCriterion("make_emerald_swords", hasObtainItem(items, MtsItems.EMERALD_SWORD))
+                    .addCriterion("make_emerald_axes", hasObtainedItem(items, MtsItems.EMERALD_AXE))
+                    .addCriterion("make_emerald_hoes", hasObtainedItem(items, MtsItems.EMERALD_HOE))
+                    .addCriterion("make_emerald_pickaxes", hasObtainedItem(items, MtsItems.EMERALD_PICKAXE))
+                    .addCriterion("make_emerald_shovels", hasObtainedItem(items, MtsItems.EMERALD_SHOVEL))
+                    .addCriterion("make_emerald_spears", hasObtainedItem(items, MtsItems.EMERALD_SPEAR))
+                    .addCriterion("make_emerald_swords", hasObtainedItem(items, MtsItems.EMERALD_SWORD))
                     .save(output, generateSaveName("money_power"));
 
             AdvancementHolder moneyProtection = Advancement.Builder.advancement()
@@ -135,10 +135,10 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             false
                     )
                     .requirements(AdvancementRequirements.Strategy.AND)
-                    .addCriterion("make_emerald_helmet", hasObtainItem(items, MtsItems.EMERALD_HELMET))
-                    .addCriterion("make_emerald_chestplate", hasObtainItem(items, MtsItems.EMERALD_CHESTPLATE))
-                    .addCriterion("make_emerald_leggings", hasObtainItem(items, MtsItems.EMERALD_LEGGINGS))
-                    .addCriterion("make_emerald_boots", hasObtainItem(items, MtsItems.EMERALD_BOOTS))
+                    .addCriterion("make_emerald_helmet", hasObtainedItem(items, MtsItems.EMERALD_HELMET))
+                    .addCriterion("make_emerald_chestplate", hasObtainedItem(items, MtsItems.EMERALD_CHESTPLATE))
+                    .addCriterion("make_emerald_leggings", hasObtainedItem(items, MtsItems.EMERALD_LEGGINGS))
+                    .addCriterion("make_emerald_boots", hasObtainedItem(items, MtsItems.EMERALD_BOOTS))
                     .save(output, generateSaveName("money_protection_emerald_armor"));
 
             AdvancementHolder showOff = Advancement.Builder.advancement()
@@ -205,8 +205,124 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             true,
                             false
                     )
-                    .addCriterion("obtain_raw_strong_topaz_ore_from_stone_topaz", hasObtainItem(items, MtsItems.RAW_STRONG_TOPAZ))
+                    .addCriterion("obtain_raw_strong_topaz_ore_from_stone_topaz", hasObtainedItem(items, MtsItems.RAW_STRONG_TOPAZ))
                     .save(output, generateSaveName("obtain_topaz_ores"));
+
+            // Use Super Crafter to make a Strong Topaz Pickaxe.
+            AdvancementHolder fasterGoldenPickaxe = Advancement.Builder.advancement()
+                    .parent(orangeThings)
+                    .display(
+                            MtsItems.STRONG_TOPAZ_PICKAXE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.faster_golden_pickaxe.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.faster_golden_pickaxe.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("obtain_strong_topaz_pickaxe", hasObtainedItem(items, MtsItems.STRONG_TOPAZ_PICKAXE))
+                    .save(output, generateSaveName("faster_golden_pickaxe"));
+
+            // Mine stone/deepslate ruby ore with Strong Topaz Pickaxe.
+            AdvancementHolder redstone = Advancement.Builder.advancement()
+                    .parent(fasterGoldenPickaxe)
+                    .display(
+                            MtsItems.RAW_STRONG_RUBY,
+                            Component.translatable("advancements.minecraft-the-stories-mod.redstone.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.redstone.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.OR)
+                    .addCriterion("mine_stone_ruby_ore_with_strong_topaz_pickaxe", specificItemMinesSpecificBlock(items, blocks, MtsItems.STRONG_TOPAZ_PICKAXE, MtsBlocks.STONE_RUBY_ORE))
+                    .addCriterion("mine_deepslate_ruby_ore_with_strong_topaz_pickaxe", specificItemMinesSpecificBlock(items, blocks, MtsItems.STRONG_TOPAZ_PICKAXE, MtsBlocks.DEEPSLATE_RUBY_ORE))
+                    .save(output, generateSaveName("redstone"));
+
+            // Use Super Crafter to make Strong Ruby Pickaxe.
+            AdvancementHolder firePickaxe = Advancement.Builder.advancement()
+                    .parent(redstone)
+                    .display(
+                            MtsItems.STRONG_RUBY_PICKAXE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.fire_pickaxe.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.fire_pickaxe.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("craft_strong_ruby_pickaxe", hasObtainedItem(items, MtsItems.STRONG_RUBY_PICKAXE))
+                    .save(output, generateSaveName("fire_pickaxe"));
+
+            // Mine ancient debris with Strong Ruby Pickaxe
+            AdvancementHolder backOnTrack = Advancement.Builder.advancement()
+                    .parent(firePickaxe)
+                    .display(
+                            Blocks.ANCIENT_DEBRIS,
+                            Component.translatable("advancements.minecraft-the-stories-mod.back_on_track.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.back_on_track.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.GOAL,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("mine_ancient_debris_with_strong_ruby_pickaxe", specificItemMinesSpecificBlock(items, blocks, MtsItems.STRONG_RUBY_PICKAXE, Blocks.ANCIENT_DEBRIS))
+                    .save(output, generateSaveName("back_on_track"));
+
+            // Make Netherite Pickaxe
+            AdvancementHolder goodToSeeYouOldFriend = Advancement.Builder.advancement()
+                    .parent(backOnTrack)
+                    .display(
+                            Items.NETHERITE_PICKAXE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.good_to_see_you_old_friend.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.good_to_see_you_old_friend.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("upgrade a diamond pickaxe to netherite pickaxe", hasObtainedItem(items, Items.NETHERITE_PICKAXE))
+                    .save(output, generateSaveName("good_to_see_you_old_friend"));
+
+            // Mine stone/deepslate amethyst ore with netherite pickaxe
+            AdvancementHolder newAmethyst = Advancement.Builder.advancement()
+                    .parent(goodToSeeYouOldFriend)
+                    .display(
+                            MtsItems.RAW_STRONG_AMETHYST,
+                            Component.translatable("advancements.minecraft-the-stories-mod.new_amethyst.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.new_amethyst.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.OR)
+                    .addCriterion("mine_stone_amethyst_ore_with_netherite_pickaxe", specificItemMinesSpecificBlock(items, blocks, Items.NETHERITE_PICKAXE, MtsBlocks.STONE_AMETHYST_ORE))
+                    .addCriterion("mine_deepslate_amethyst_ore_with_netherite_pickaxe", specificItemMinesSpecificBlock(items, blocks, Items.NETHERITE_PICKAXE, MtsBlocks.DEEPSLATE_AMETHYST_ORE))
+                    .save(output, generateSaveName("new_amethyst"));
+
+            // Craft Strong Amethyst Pickaxe with Super Crafter
+            AdvancementHolder purplePickaxe = Advancement.Builder.advancement()
+                    .parent(newAmethyst)
+                    .display(
+                            MtsItems.STRONG_AMETHYST_PICKAXE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.purple_pickaxe.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.purple_pickaxe.description"),
+                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.GOAL,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("craft_strong_amethyst_pickaxe", hasObtainedItem(items, MtsItems.STRONG_AMETHYST_PICKAXE))
+                    .save(output, generateSaveName("purple_pickaxe"));
 
             // Create any axes for the first time.
             AdvancementHolder timeForLumberjacking = Advancement.Builder.advancement()
@@ -222,16 +338,16 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             false
                     )
                     .requirements(AdvancementRequirements.Strategy.OR)
-                    .addCriterion("obtain_any_axes_wooden_axe", hasObtainItem(items, Items.WOODEN_AXE))
-                    .addCriterion("obtain_any_axes_stone_axe", hasObtainItem(items, Items.STONE_AXE))
-                    .addCriterion("obtain_any_axes_iron_axe", hasObtainItem(items, Items.IRON_AXE))
-                    .addCriterion("obtain_any_axes_golden_axe", hasObtainItem(items, Items.GOLDEN_AXE))
-                    .addCriterion("obtain_any_axes_emerald_axe", hasObtainItem(items, MtsItems.EMERALD_AXE))
-                    .addCriterion("obtain_any_axes_diamond_axe", hasObtainItem(items, Items.DIAMOND_AXE))
-                    .addCriterion("obtain_any_axes_topaz_axe", hasObtainItem(items, MtsItems.STRONG_TOPAZ_AXE))
-                    .addCriterion("obtain_any_axes_ruby_axe", hasObtainItem(items, MtsItems.STRONG_RUBY_AXE))
-                    .addCriterion("obtain_any_axes_netherite_axe", hasObtainItem(items, Items.NETHERITE_AXE))
-                    .addCriterion("obtain_any_axes_amethyst_axe", hasObtainItem(items, MtsItems.STRONG_AMETHYST_AXE))
+                    .addCriterion("obtain_any_axes_wooden_axe", hasObtainedItem(items, Items.WOODEN_AXE))
+                    .addCriterion("obtain_any_axes_stone_axe", hasObtainedItem(items, Items.STONE_AXE))
+                    .addCriterion("obtain_any_axes_iron_axe", hasObtainedItem(items, Items.IRON_AXE))
+                    .addCriterion("obtain_any_axes_golden_axe", hasObtainedItem(items, Items.GOLDEN_AXE))
+                    .addCriterion("obtain_any_axes_emerald_axe", hasObtainedItem(items, MtsItems.EMERALD_AXE))
+                    .addCriterion("obtain_any_axes_diamond_axe", hasObtainedItem(items, Items.DIAMOND_AXE))
+                    .addCriterion("obtain_any_axes_topaz_axe", hasObtainedItem(items, MtsItems.STRONG_TOPAZ_AXE))
+                    .addCriterion("obtain_any_axes_ruby_axe", hasObtainedItem(items, MtsItems.STRONG_RUBY_AXE))
+                    .addCriterion("obtain_any_axes_netherite_axe", hasObtainedItem(items, Items.NETHERITE_AXE))
+                    .addCriterion("obtain_any_axes_amethyst_axe", hasObtainedItem(items, MtsItems.STRONG_AMETHYST_AXE))
                     .save(output, generateSaveName("time_for_lumberjacking"));
 
             // Obtain all tree types in minecraft.
@@ -248,15 +364,15 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             false
                     )
                     .requirements(AdvancementRequirements.Strategy.AND)
-                    .addCriterion("obtain_oak_log", hasObtainItem(items, Items.OAK_LOG))
-                    .addCriterion("obtain_dark_oak_log", hasObtainItem(items, Items.DARK_OAK_LOG))
-                    .addCriterion("obtain_pale_oak_log", hasObtainItem(items, Items.PALE_OAK_LOG))
-                    .addCriterion("obtain_spruce_log", hasObtainItem(items, Items.SPRUCE_LOG))
-                    .addCriterion("obtain_birch_log", hasObtainItem(items, Items.BIRCH_LOG))
-                    .addCriterion("obtain_jungle_log", hasObtainItem(items, Items.JUNGLE_LOG))
-                    .addCriterion("obtain_acacia_log", hasObtainItem(items, Items.ACACIA_LOG))
-                    .addCriterion("obtain_mangrove_log", hasObtainItem(items, Items.MANGROVE_LOG))
-                    .addCriterion("obtain_cherry_log", hasObtainItem(items, Items.CHERRY_LOG))
+                    .addCriterion("obtain_oak_log", hasObtainedItem(items, Items.OAK_LOG))
+                    .addCriterion("obtain_dark_oak_log", hasObtainedItem(items, Items.DARK_OAK_LOG))
+                    .addCriterion("obtain_pale_oak_log", hasObtainedItem(items, Items.PALE_OAK_LOG))
+                    .addCriterion("obtain_spruce_log", hasObtainedItem(items, Items.SPRUCE_LOG))
+                    .addCriterion("obtain_birch_log", hasObtainedItem(items, Items.BIRCH_LOG))
+                    .addCriterion("obtain_jungle_log", hasObtainedItem(items, Items.JUNGLE_LOG))
+                    .addCriterion("obtain_acacia_log", hasObtainedItem(items, Items.ACACIA_LOG))
+                    .addCriterion("obtain_mangrove_log", hasObtainedItem(items, Items.MANGROVE_LOG))
+                    .addCriterion("obtain_cherry_log", hasObtainedItem(items, Items.CHERRY_LOG))
                     .save(output, generateSaveName("wood_collector"));
 
             // Obtain a compressed wood.
@@ -272,7 +388,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             true,
                             false
                     )
-                    .addCriterion("obtain_compressed_wood_planks", hasObtainItem(items, MtsBlocks.COMPRESSED_WOOD_PLANKS))
+                    .addCriterion("obtain_compressed_wood_planks", hasObtainedItem(items, MtsBlocks.COMPRESSED_WOOD_PLANKS))
                     .save(output, generateSaveName("compressed_wood_planks"));
 
             // Craft a super crafter.
@@ -288,7 +404,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             true,
                             false
                     )
-                    .addCriterion("obtain_super_crafter", hasObtainItem(items, MtsBlocks.SUPER_CRAFTER_BLOCK))
+                    .addCriterion("obtain_super_crafter", hasObtainedItem(items, MtsBlocks.SUPER_CRAFTER_BLOCK))
                     .save(output, generateSaveName("super_crafter"));
 
             // Obtain full stack of oak, dark oak, pale oak, spruce, birch, acacia. mangrove, and cherry log.
@@ -319,7 +435,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
 
             // Use Diamond Pickaxe to mine (stone) ruby ore, (stone) amethyst ore, and netherite.
             AdvancementHolder notTodayMyOldFriend = Advancement.Builder.advancement()
-                    .parent(orangeThings)
+                    .parent(fasterGoldenPickaxe)
                     .display(
                             MtsItems.BROKEN_DIAMOND_PICKAXE,
                             Component.translatable("advancements.minecraft-the-stories-mod.not_today_my_old_friend.title"),
@@ -339,7 +455,6 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .save(output, generateSaveName("not_today_my_old_friend"));
         }
 
-        // TODO.
         public Criterion<?> hasEnteredVillagesWithFullEmeraldArmor() {
             return MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.createCriterion(
                     new EnteredVillageWithFullEmeraldArmorTrigger.TriggerInstance(Optional.empty()));
@@ -361,7 +476,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
             );
         }
 
-        public Criterion<?> hasObtainItem(final HolderGetter<Item> current, final ItemLike require) {
+        public Criterion<?> hasObtainedItem(final HolderGetter<Item> current, final ItemLike require) {
             return InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(current, require));
         }
 

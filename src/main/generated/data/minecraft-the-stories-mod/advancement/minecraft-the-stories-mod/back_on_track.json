@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/fire_pickaxe",
+  "criteria": {
+    "mine_ancient_debris_with_strong_ruby_pickaxe": {
+      "conditions": {
+        "blocks": "minecraft:ancient_debris",
+        "tool": {
+          "items": "minecraft-the-stories-mod:strong_ruby_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.back_on_track.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "minecraft:ancient_debris"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.back_on_track.title"
+    }
+  },
+  "requirements": [
+    [
+      "mine_ancient_debris_with_strong_ruby_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

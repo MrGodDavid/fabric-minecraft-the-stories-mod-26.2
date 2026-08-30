@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/good_to_see_you_old_friend",
+  "criteria": {
+    "mine_deepslate_amethyst_ore_with_netherite_pickaxe": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:deepslate_amethyst_ore",
+        "tool": {
+          "items": "minecraft:netherite_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "mine_stone_amethyst_ore_with_netherite_pickaxe": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:stone_amethyst_ore",
+        "tool": {
+          "items": "minecraft:netherite_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.new_amethyst.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:raw_strong_amethyst"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.new_amethyst.title"
+    }
+  },
+  "requirements": [
+    [
+      "mine_stone_amethyst_ore_with_netherite_pickaxe",
+      "mine_deepslate_amethyst_ore_with_netherite_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

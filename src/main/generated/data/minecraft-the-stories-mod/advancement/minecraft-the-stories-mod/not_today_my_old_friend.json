@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/obtain_topaz_ores",
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/faster_golden_pickaxe",
   "criteria": {
     "use_diamond_pic_mining_ancient_debris": {
       "conditions": {

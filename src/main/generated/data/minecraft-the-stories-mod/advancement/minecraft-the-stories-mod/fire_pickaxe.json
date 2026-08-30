@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/redstone",
+  "criteria": {
+    "craft_strong_ruby_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_ruby_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.fire_pickaxe.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:strong_ruby_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.fire_pickaxe.title"
+    }
+  },
+  "requirements": [
+    [
+      "craft_strong_ruby_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

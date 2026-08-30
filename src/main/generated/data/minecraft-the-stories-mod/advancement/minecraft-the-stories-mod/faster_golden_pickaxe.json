@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/obtain_topaz_ores",
+  "criteria": {
+    "obtain_strong_topaz_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_topaz_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.faster_golden_pickaxe.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:strong_topaz_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.faster_golden_pickaxe.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_strong_topaz_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

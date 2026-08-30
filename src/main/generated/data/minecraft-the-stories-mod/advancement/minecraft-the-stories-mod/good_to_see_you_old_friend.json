@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/back_on_track",
+  "criteria": {
+    "upgrade a diamond pickaxe to netherite pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.good_to_see_you_old_friend.description"
+    },
+    "icon": {
+      "id": "minecraft:netherite_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.good_to_see_you_old_friend.title"
+    }
+  },
+  "requirements": [
+    [
+      "upgrade a diamond pickaxe to netherite pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

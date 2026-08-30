@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/faster_golden_pickaxe",
+  "criteria": {
+    "mine_deepslate_ruby_ore_with_strong_topaz_pickaxe": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:deepslate_ruby_ore",
+        "tool": {
+          "items": "minecraft-the-stories-mod:strong_topaz_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    },
+    "mine_stone_ruby_ore_with_strong_topaz_pickaxe": {
+      "conditions": {
+        "blocks": "minecraft-the-stories-mod:stone_ruby_ore",
+        "tool": {
+          "items": "minecraft-the-stories-mod:strong_topaz_pickaxe"
+        }
+      },
+      "trigger": "minecraft-the-stories-mod:mine_block_with_tool"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.redstone.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:raw_strong_ruby"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.redstone.title"
+    }
+  },
+  "requirements": [
+    [
+      "mine_stone_ruby_ore_with_strong_topaz_pickaxe",
+      "mine_deepslate_ruby_ore_with_strong_topaz_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

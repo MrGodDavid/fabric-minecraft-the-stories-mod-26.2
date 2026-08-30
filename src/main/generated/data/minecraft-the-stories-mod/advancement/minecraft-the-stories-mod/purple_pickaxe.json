@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/new_amethyst",
+  "criteria": {
+    "craft_strong_amethyst_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_amethyst_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.purple_pickaxe.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "minecraft-the-stories-mod:strong_amethyst_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.purple_pickaxe.title"
+    }
+  },
+  "requirements": [
+    [
+      "craft_strong_amethyst_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
