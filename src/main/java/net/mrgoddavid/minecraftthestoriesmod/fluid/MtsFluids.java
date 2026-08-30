@@ -8,12 +8,15 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.custom.BlueFuelFluid;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.custom.EnricherWasteFluid;
 
 public class MtsFluids {
 
     public static final FlowingFluid ENRICHER_WASTE_STILL = createFluid("enricher_waste_still", new EnricherWasteFluid.Source());
     public static final FlowingFluid ENRICHER_WASTE_FLOWING = createFluid("enricher_waste_flowing", new EnricherWasteFluid.Flowing());
+    public static final FlowingFluid BLUE_FUEL_STILL = createFluid("blue_fuel_still", new BlueFuelFluid.Source());
+    public static final FlowingFluid BLUE_FUEL_FLOWING = createFluid("blue_fuel_flowing", new BlueFuelFluid.Flowing());
 
     private static FlowingFluid createFluid(String name, FlowingFluid fluid) {
         return Registry.register(BuiltInRegistries.FLUID, ResourceKey.create(

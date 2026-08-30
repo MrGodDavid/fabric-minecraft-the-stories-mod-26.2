@@ -65,6 +65,7 @@ public class MtsBlocks {
     public static final Block ORE_COMPRESSOR;
 
     public static final Block ENRICHER_WASTE_FLUID;
+    public static final Block BLUE_FUEL_FLUID;
 
     static {
         DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
@@ -105,6 +106,7 @@ public class MtsBlocks {
         ORE_COMPRESSOR = registerBlock("ore_compressor_default", properties -> new OreCompressorBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
         ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
+        BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
     }
 
     /**

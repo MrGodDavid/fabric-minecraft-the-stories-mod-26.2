@@ -29,6 +29,16 @@ public class MtsFluidRenderingRegistries {
                 )
         );
         FluidRenderingRegistry.setBlockTransparency(MtsBlocks.ENRICHER_WASTE_FLUID, true);
+
+        FluidRenderingRegistry.register(
+                MtsFluids.BLUE_FUEL_STILL,
+                MtsFluids.BLUE_FUEL_FLOWING,
+                new FluidModel.Unbaked(
+                        new Material(Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "block/blue_fuel_still")),
+                        new Material(Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "block/blue_fuel_flow")),
+                        null, null
+                )
+        );
     }
 
     private MtsFluidRenderingRegistries() throws IllegalAccessException {

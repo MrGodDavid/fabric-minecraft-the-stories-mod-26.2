@@ -97,6 +97,7 @@ public class CreativeModeTabs {
                         output.accept(STRONG_AMETHYST_LEGGINGS);
 
                         output.accept(ENRICHER_WASTE_BUCKET);
+                        output.accept(BLUE_FUEL_BUCKET);
                     })
                     .build()
     );

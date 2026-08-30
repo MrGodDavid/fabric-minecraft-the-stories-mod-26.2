@@ -33,6 +33,8 @@ public class MtsItems {
     // Custom mod items go here.
     public static final Item ENRICHER_WASTE_BUCKET = registerItem("enricher_waste_bucket",
             properties -> new BucketItem(MtsFluids.ENRICHER_WASTE_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final Item BLUE_FUEL_BUCKET = registerItem("blue_fuel_bucket",
+            properties -> new BucketItem(MtsFluids.BLUE_FUEL_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", Item::new);
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);

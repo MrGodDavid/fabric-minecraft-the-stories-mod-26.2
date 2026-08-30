@@ -157,6 +157,7 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SWORD, flatHandledItemTemplate);
 
         itemModelGenerators.generateFlatItem(ENRICHER_WASTE_BUCKET, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(BLUE_FUEL_BUCKET, flatItemTemplate);
 
         itemModelGenerators.generateTrimmableItem(EMERALD_HELMET, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerators.generateTrimmableItem(EMERALD_CHESTPLATE, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);

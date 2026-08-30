@@ -9,6 +9,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.MtsLootTableModifiers;
@@ -41,6 +42,7 @@ public class MinecraftTheStoriesMod implements ModInitializer {
     public void onInitialize() {
         MtsTestWorldServer.register();
         MtsScreenTextures.register();
+        MtsFluids.registerFluids();
         CreativeModeTabs.registerModCreativeModeTabs();
         MtsItemModelTemplates.registerTemplates();
         MtsMenuTypes.registerMenuTypes();

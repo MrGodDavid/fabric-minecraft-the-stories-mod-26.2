@@ -32,6 +32,7 @@ d9745a0751789964238c9000e86aec44fbdc0ceb assets/minecraft-the-stories-mod/blocks
 a82c34b1ff8b34ab3d2a982792b2f61c57f3bcf8 assets/minecraft-the-stories-mod/blockstates/strong_ruby_block.json
 ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blockstates/strong_topaz_block.json
 36144a1f252bc829a495642157eae0ec3399159c assets/minecraft-the-stories-mod/blockstates/super_crafter_default.json
+a7b567cf6a7e1c716ac83b498bab677eac8e31bc assets/minecraft-the-stories-mod/items/blue_fuel_bucket.json
 9ca25cf9c568c5dc0c17570662f49dfb1eb439bb assets/minecraft-the-stories-mod/items/broken_diamond_pickaxe.json
 957c0f85a34af3e02b5b6bbf9036b6207e1337c6 assets/minecraft-the-stories-mod/items/broken_iron_pickaxe.json
 a6e54e891d4d93c225fd437bc7e3c9f6668be9cf assets/minecraft-the-stories-mod/items/compressed_wood.json
@@ -173,6 +174,7 @@ d8d4d6451ba82b8ced10746e7cc003d0bcbc170f assets/minecraft-the-stories-mod/models
 701c75ab01fc71c4bc33b9b4937f23bd4c1333d5 assets/minecraft-the-stories-mod/models/block/strong_iron_block.json
 42146ec8a2372e6e8de4c380ffbd1a91c76ce1f4 assets/minecraft-the-stories-mod/models/block/strong_ruby_block.json
 938d6e80edb6d9e326df03ab1b83d6d5ed13edbf assets/minecraft-the-stories-mod/models/block/strong_topaz_block.json
+6fdae9a86eea3879cb891f321c8726f81d58ae93 assets/minecraft-the-stories-mod/models/item/blue_fuel_bucket.json
 afb0c14cba4c7d426680ad821e73d818fb82d69d assets/minecraft-the-stories-mod/models/item/broken_diamond_pickaxe.json
 3fe39e3c95f1eded45fb178ee6b88d6af2e16e4b assets/minecraft-the-stories-mod/models/item/broken_iron_pickaxe.json
 4832ba55bb19f08356fee7dcb82a6ce45e5ef9e7 assets/minecraft-the-stories-mod/models/item/diamond_battle_axe.json
