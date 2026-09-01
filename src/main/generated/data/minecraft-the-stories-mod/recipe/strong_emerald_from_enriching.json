@@ -1,0 +1,9 @@
+{
+  "type": "minecraft-the-stories-mod:enriching",
+  "fuel": "minecraft:coal",
+  "input": "minecraft-the-stories-mod:raw_strong_emerald",
+  "result": {
+    "id": "minecraft-the-stories-mod:strong_emerald"
+  },
+  "waste_amount": 10
+}

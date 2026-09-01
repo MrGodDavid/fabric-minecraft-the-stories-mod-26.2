@@ -1,8 +1,10 @@
 package net.mrgoddavid.minecraftthestoriesmod.recipe.custom;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
@@ -14,7 +16,7 @@ import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
  * @author Mr. GodDavid
  * @since 8/27/2026
  */
-public record EnricherRecipe(Ingredient input, Ingredient fuel, ItemStackTemplate output) implements Recipe<EnricherRecipeInput> {
+public record EnricherRecipe(Ingredient input, Ingredient fuel, ItemStackTemplate output, int wasteAmount) implements Recipe<EnricherRecipeInput> {
 
     // CODEC ---> Codec & StreamCodec
     // Codec ==> Create a Java Object Instance from JSON File and write to JSON.
@@ -22,7 +24,8 @@ public record EnricherRecipe(Ingredient input, Ingredient fuel, ItemStackTemplat
             instance.group(
                     Ingredient.CODEC.fieldOf("input").forGetter(EnricherRecipe::input),
                     Ingredient.CODEC.fieldOf("fuel").forGetter(EnricherRecipe::fuel),
-                    ItemStackTemplate.CODEC.fieldOf("result").forGetter(EnricherRecipe::output)
+                    ItemStackTemplate.CODEC.fieldOf("result").forGetter(EnricherRecipe::output),
+                    Codec.INT.fieldOf("waste_amount").forGetter(EnricherRecipe::wasteAmount)
             ).apply(instance, EnricherRecipe::new));
     // StreamCodec
     // Java Object ==> Turn in into Bytes for Network traffic.
@@ -31,6 +34,7 @@ public record EnricherRecipe(Ingredient input, Ingredient fuel, ItemStackTemplat
             Ingredient.CONTENTS_STREAM_CODEC, EnricherRecipe::input,
             Ingredient.CONTENTS_STREAM_CODEC, EnricherRecipe::fuel,
             ItemStackTemplate.STREAM_CODEC, EnricherRecipe::output,
+            ByteBufCodecs.VAR_INT, EnricherRecipe::wasteAmount,
             EnricherRecipe::new
     );
 

@@ -20,7 +20,7 @@ public class MtsRecipes {
     public static final RecipeSerializer<EnricherRecipe> ENRICHER_SERIALIZER =
             registerRecipeSerializer("enriching", new RecipeSerializer<>(EnricherRecipe.CODEC, EnricherRecipe.STREAM_CODEC));
     public static final RecipeType<EnricherRecipe> ENRICHER_TYPE = registerRecipeType("enriching",
-            new RecipeType<>() {
+            new RecipeType<EnricherRecipe>() {
                 @Override
                 public String toString() {
                     return "enriching";

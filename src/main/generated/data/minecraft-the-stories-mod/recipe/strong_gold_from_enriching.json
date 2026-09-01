@@ -1,0 +1,9 @@
+{
+  "type": "minecraft-the-stories-mod:enriching",
+  "fuel": "minecraft:coal",
+  "input": "minecraft:raw_gold",
+  "result": {
+    "id": "minecraft-the-stories-mod:strong_gold"
+  },
+  "waste_amount": 2
+}

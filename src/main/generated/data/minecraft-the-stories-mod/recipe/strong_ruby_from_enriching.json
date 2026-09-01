@@ -1,0 +1,9 @@
+{
+  "type": "minecraft-the-stories-mod:enriching",
+  "fuel": "minecraft:coal",
+  "input": "minecraft-the-stories-mod:raw_strong_ruby",
+  "result": {
+    "id": "minecraft-the-stories-mod:strong_ruby"
+  },
+  "waste_amount": 25
+}

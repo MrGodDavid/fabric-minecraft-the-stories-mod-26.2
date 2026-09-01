@@ -44,11 +44,11 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
 
     private final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 72;
+    private int maxProgress = ContainerDataContext.MAX_ENRICHING_PROGRESS;
     private int coalEndurance = 0;
-    private int maxCoalEndurance = 36;
+    private int maxCoalEndurance = ContainerDataContext.MAX_ENRICHING_COAL_ENDURANCE;
     private int wasteFluid = 0;
-    private int maxWasteFluid = 200;
+    private int maxWasteFluid = ContainerDataContext.MAX_WASTE_FLUID;
 
     public boolean isEnriching() {
         return progress > 0;
@@ -180,11 +180,11 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
 
     public void clearWasteFluid() {
         this.wasteFluid = 0;
-        this.maxWasteFluid = 200;
+        this.maxWasteFluid = ContainerDataContext.MAX_WASTE_FLUID;
     }
 
     private void addWasteFluid() {
-        this.wasteFluid += 50;
+        getCurrentRecipe().ifPresent(recipe -> this.wasteFluid += recipe.value().wasteAmount());
     }
 
     private void burnNewCoal() {
@@ -285,5 +285,10 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
         public static final int MAX_WASTE_FLUID_POSITION = 5;
 
         public static final int DATA_ARRAY_SIZE = 6;
+
+        public static final int MAX_ENRICHING_PROGRESS = 72;
+        public static final int MAX_ENRICHING_COAL_ENDURANCE = 36;
+        public static final int MAX_WASTE_FLUID = 500;
+
     }
 }

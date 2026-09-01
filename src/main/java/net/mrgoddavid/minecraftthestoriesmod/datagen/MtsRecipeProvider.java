@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.EnricherRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 
@@ -48,6 +49,31 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
              */
             @Override
             public void buildRecipes() {
+                // #################################################################################################################
+                // #                                              ENRICHER RECIPES                                                 #
+                // #################################################################################################################
+                EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(Items.RAW_GOLD), Ingredient.of(Items.COAL), STRONG_GOLD, 2, 1)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_gold_from_enriching");
+                EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.COAL), STRONG_IRON, 5, 1)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_from_enriching");
+                EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_EMERALD), Ingredient.of(Items.COAL), STRONG_EMERALD, 10, 1)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_emerald_from_enriching");
+                EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_DIAMOND), Ingredient.of(Items.COAL), STRONG_DIAMOND, 15, 1)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_diamond_from_enriching");
+                EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_TOPAZ), Ingredient.of(Items.COAL), STRONG_TOPAZ, 20, 1)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_topaz_from_enriching");
+                EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_RUBY), Ingredient.of(Items.COAL), STRONG_RUBY, 25, 1)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_ruby_from_enriching");
+                EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_AMETHYST), Ingredient.of(Items.COAL), STRONG_AMETHYST, 35, 1)
+                        .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_amethyst_from_enriching");
+
                 // #################################################################################################################
                 // #                                        COMPRESSED TOOLS RECIPES                                               #
                 // #################################################################################################################
