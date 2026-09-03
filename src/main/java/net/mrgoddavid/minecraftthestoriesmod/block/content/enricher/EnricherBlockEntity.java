@@ -21,8 +21,8 @@ import net.mrgoddavid.minecraftthestoriesmod.block.ImplementedContainer;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsAbstractBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
-import net.mrgoddavid.minecraftthestoriesmod.recipe.custom.EnricherRecipe;
-import net.mrgoddavid.minecraftthestoriesmod.recipe.custom.EnricherRecipeInput;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher.EnricherRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher.EnricherRecipeInput;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;

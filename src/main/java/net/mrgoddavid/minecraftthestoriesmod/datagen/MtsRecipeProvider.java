@@ -11,6 +11,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.EnricherRecipeBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.SuperCrafterRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.NonNull;
 
@@ -73,6 +74,11 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_AMETHYST), Ingredient.of(Items.COAL), STRONG_AMETHYST, 35, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
                         .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_amethyst_from_enriching");
+
+                // #################################################################################################################
+                // #                                         SUPER CRAFTER RECIPES                                                 #
+                // #################################################################################################################
+//                SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of())
 
                 // #################################################################################################################
                 // #                                        COMPRESSED TOOLS RECIPES                                               #

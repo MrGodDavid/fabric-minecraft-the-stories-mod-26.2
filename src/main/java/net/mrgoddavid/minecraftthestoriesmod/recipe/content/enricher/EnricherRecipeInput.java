@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.recipe.custom;
+package net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;

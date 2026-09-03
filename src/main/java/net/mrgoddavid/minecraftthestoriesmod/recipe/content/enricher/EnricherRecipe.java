@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.recipe.custom;
+package net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -77,6 +77,6 @@ public record EnricherRecipe(Ingredient input, Ingredient fuel, ItemStackTemplat
 
     @Override
     public RecipeBookCategory recipeBookCategory() {
-        return RecipeBookCategories.CRAFTING_MISC;
+        return RecipeBookCategories.BLAST_FURNACE_MISC;
     }
 }

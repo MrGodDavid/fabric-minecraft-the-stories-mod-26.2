@@ -39,6 +39,25 @@ public class MtsItems {
     public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", Item::new);
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);
 
+    // #################################################################################################################
+    // #                                               UPGRADE SCROLLS                                                 #
+    // #################################################################################################################
+    public static final Item RARE_UPGRADE_SCROLL_STAGE_ONE = registerItem("rare_upgrade_scroll_stage_one", Item::new);
+    public static final Item RARE_UPGRADE_SCROLL_STAGE_TWO = registerItem("rare_upgrade_scroll_stage_two", Item::new);
+    public static final Item RARE_UPGRADE_SCROLL_STAGE_THREE = registerItem("rare_upgrade_scroll_stage_three", Item::new);
+    public static final Item EPIC_UPGRADE_SCROLL_STAGE_ONE = registerItem("epic_upgrade_scroll_stage_one", Item::new);
+    public static final Item EPIC_UPGRADE_SCROLL_STAGE_TWO = registerItem("epic_upgrade_scroll_stage_two", Item::new);
+    public static final Item EPIC_UPGRADE_SCROLL_STAGE_THREE = registerItem("epic_upgrade_scroll_stage_three", Item::new);
+    public static final Item EPIC_UPGRADE_SCROLL_STAGE_FOUR = registerItem("epic_upgrade_scroll_stage_four", Item::new);
+    public static final Item LEGENDARY_UPGRADE_SCROLL_STAGE_ONE = registerItem("legendary_upgrade_scroll_stage_one", Item::new);
+    public static final Item LEGENDARY_UPGRADE_SCROLL_STAGE_TWO = registerItem("legendary_upgrade_scroll_stage_two", Item::new);
+    public static final Item LEGENDARY_UPGRADE_SCROLL_STAGE_THREE = registerItem("legendary_upgrade_scroll_stage_three", Item::new);
+    public static final Item LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR = registerItem("legendary_upgrade_scroll_stage_four", Item::new);
+    public static final Item LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE = registerItem("legendary_upgrade_scroll_stage_five", Item::new);
+
+    // #################################################################################################################
+    // #                                                NEW ORES ITEMS                                                 #
+    // #################################################################################################################
     public static final Item RAW_STRONG_AMETHYST = registerItem("raw_strong_amethyst", Item::new);
     public static final Item RAW_STRONG_DIAMOND = registerItem("raw_strong_diamond", Item::new);
     public static final Item RAW_STRONG_EMERALD = registerItem("raw_strong_emerald", Item::new);
@@ -236,6 +255,18 @@ public class MtsItems {
             fabricCreativeModeTabOutput.accept(STRONG_RUBY_INGOT);
             fabricCreativeModeTabOutput.accept(STRONG_TOPAZ);
             fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_INGOT);
+            fabricCreativeModeTabOutput.accept(RARE_UPGRADE_SCROLL_STAGE_ONE);
+            fabricCreativeModeTabOutput.accept(RARE_UPGRADE_SCROLL_STAGE_TWO);
+            fabricCreativeModeTabOutput.accept(RARE_UPGRADE_SCROLL_STAGE_THREE);
+            fabricCreativeModeTabOutput.accept(EPIC_UPGRADE_SCROLL_STAGE_ONE);
+            fabricCreativeModeTabOutput.accept(EPIC_UPGRADE_SCROLL_STAGE_TWO);
+            fabricCreativeModeTabOutput.accept(EPIC_UPGRADE_SCROLL_STAGE_THREE);
+            fabricCreativeModeTabOutput.accept(EPIC_UPGRADE_SCROLL_STAGE_FOUR);
+            fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_ONE);
+            fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_TWO);
+            fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_THREE);
+            fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR);
+            fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(fabricCreativeModeTabOutput -> {

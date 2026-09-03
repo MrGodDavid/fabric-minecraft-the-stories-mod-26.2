@@ -2,14 +2,13 @@ package net.mrgoddavid.minecraftthestoriesmod.recipe;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.recipe.custom.EnricherRecipe;
-import net.mrgoddavid.minecraftthestoriesmod.recipe.custom.EnricherRecipeInput;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher.EnricherRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.super_crafter.SuperCrafterRecipe;
 
 /**
  * @author Mr. GodDavid
@@ -17,8 +16,9 @@ import net.mrgoddavid.minecraftthestoriesmod.recipe.custom.EnricherRecipeInput;
  */
 public class MtsRecipes {
 
-    public static final RecipeSerializer<EnricherRecipe> ENRICHER_SERIALIZER =
-            registerRecipeSerializer("enriching", new RecipeSerializer<>(EnricherRecipe.CODEC, EnricherRecipe.STREAM_CODEC));
+    public static final RecipeSerializer<EnricherRecipe> ENRICHER_SERIALIZER = registerRecipeSerializer("enriching", new RecipeSerializer<>(EnricherRecipe.CODEC, EnricherRecipe.STREAM_CODEC));
+    public static final RecipeSerializer<SuperCrafterRecipe> SUPER_CRAFTER_SERIALIZER = registerRecipeSerializer("super_crafting", new RecipeSerializer<>(SuperCrafterRecipe.CODEC, SuperCrafterRecipe.STREAM_CODEC));
+
     public static final RecipeType<EnricherRecipe> ENRICHER_TYPE = registerRecipeType("enriching",
             new RecipeType<EnricherRecipe>() {
                 @Override
@@ -26,6 +26,12 @@ public class MtsRecipes {
                     return "enriching";
                 }
             });
+    public static final RecipeType<SuperCrafterRecipe> SUPER_CRAFTER_TYPE = registerRecipeType("super_crafting", new RecipeType<SuperCrafterRecipe>() {
+        @Override
+        public String toString() {
+            return "super_crafting";
+        }
+    });
 
     private static <T extends Recipe<?>> RecipeType<T> registerRecipeType(String path, RecipeType<T> recipeType) {
         return Registry.register(BuiltInRegistries.RECIPE_TYPE, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path), recipeType);

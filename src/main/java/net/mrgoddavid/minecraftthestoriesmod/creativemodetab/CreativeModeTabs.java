@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -95,6 +96,19 @@ public class CreativeModeTabs {
                         output.accept(STRONG_AMETHYST_HELMET);
                         output.accept(STRONG_AMETHYST_CHESTPLATE);
                         output.accept(STRONG_AMETHYST_LEGGINGS);
+
+                        output.accept(RARE_UPGRADE_SCROLL_STAGE_ONE);
+                        output.accept(RARE_UPGRADE_SCROLL_STAGE_TWO);
+                        output.accept(RARE_UPGRADE_SCROLL_STAGE_THREE);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_ONE);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_TWO);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_THREE);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_FOUR);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_ONE);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_TWO);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_THREE);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE);
 
                         output.accept(ENRICHER_WASTE_BUCKET);
                         output.accept(BLUE_FUEL_BUCKET);

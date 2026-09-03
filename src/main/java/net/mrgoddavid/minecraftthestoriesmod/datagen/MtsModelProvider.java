@@ -131,6 +131,22 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_INGOT, flatItemTemplate);
 
+        itemModelGenerators.generateFlatItem(ENRICHER_WASTE_BUCKET, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(BLUE_FUEL_BUCKET, flatItemTemplate);
+
+        itemModelGenerators.generateFlatItem(RARE_UPGRADE_SCROLL_STAGE_ONE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RARE_UPGRADE_SCROLL_STAGE_TWO, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RARE_UPGRADE_SCROLL_STAGE_THREE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EPIC_UPGRADE_SCROLL_STAGE_ONE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EPIC_UPGRADE_SCROLL_STAGE_TWO, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EPIC_UPGRADE_SCROLL_STAGE_THREE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(EPIC_UPGRADE_SCROLL_STAGE_FOUR, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(LEGENDARY_UPGRADE_SCROLL_STAGE_ONE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(LEGENDARY_UPGRADE_SCROLL_STAGE_TWO, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(LEGENDARY_UPGRADE_SCROLL_STAGE_THREE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE, flatItemTemplate);
+
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST_AXE, flatHandledItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST_HOE, flatHandledItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_AMETHYST_PICKAXE, flatHandledItemTemplate);
@@ -155,9 +171,6 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SHOVEL, flatHandledItemTemplate);
         itemModelGenerators.generateSpear(STRONG_TOPAZ_SPEAR);
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SWORD, flatHandledItemTemplate);
-
-        itemModelGenerators.generateFlatItem(ENRICHER_WASTE_BUCKET, flatItemTemplate);
-        itemModelGenerators.generateFlatItem(BLUE_FUEL_BUCKET, flatItemTemplate);
 
         itemModelGenerators.generateTrimmableItem(EMERALD_HELMET, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerators.generateTrimmableItem(EMERALD_CHESTPLATE, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
