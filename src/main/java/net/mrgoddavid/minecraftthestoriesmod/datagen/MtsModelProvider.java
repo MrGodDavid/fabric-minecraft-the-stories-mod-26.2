@@ -189,7 +189,12 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_LEGGINGS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_BOOTS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        itemModelGenerators.itemModelOutput.accept(DIAMOND_BATTLE_AXE, ItemModelUtils.plainModel(getScale2xModelId(itemModelGenerators, DIAMOND_BATTLE_AXE)));
+        itemModelGenerators.declareCustomModelItem(HAMMER_OF_CRAFTER);
+        itemModelGenerators.declareCustomModelItem(STRONG_IRON_LONG_KNIFE);
+        itemModelGenerators.declareCustomModelItem(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
+        itemModelGenerators.declareCustomModelItem(STRONG_AMETHYST_LONG_KNIFE);
+
+        itemModelGenerators.itemModelOutput.accept(STRONG_DIAMOND_BATTLE_AXE, ItemModelUtils.plainModel(getScale2xModelId(itemModelGenerators, STRONG_DIAMOND_BATTLE_AXE)));
     }
 
     public Identifier getScale2xModelId(ItemModelGenerators itemModelGenerators, Item item) {

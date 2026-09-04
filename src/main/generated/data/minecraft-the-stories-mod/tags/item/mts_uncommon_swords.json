@@ -1,6 +1,9 @@
 {
   "values": [
     "minecraft:netherite_sword",
-    "minecraft-the-stories-mod:diamond_battle_axe"
+    "minecraft-the-stories-mod:emerald_sword",
+    "minecraft-the-stories-mod:strong_topaz_sword",
+    "minecraft-the-stories-mod:strong_ruby_sword",
+    "minecraft-the-stories-mod:strong_amethyst_sword"
   ]
 }

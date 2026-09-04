@@ -39,6 +39,9 @@ public class MtsItems {
     public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", Item::new);
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);
 
+    public static final Item HAMMER_OF_CRAFTER = registerItem("hammer_of_crafter", properties -> new AxeItem(MtsItemToolMaterials.RUBY,
+            5.8f, -3.3f, properties));
+
     // #################################################################################################################
     // #                                               UPGRADE SCROLLS                                                 #
     // #################################################################################################################
@@ -173,8 +176,6 @@ public class MtsItems {
                     1.11f, 0.85f, 0.75f, 3.0f, 11.0f, 7.0f, 3.3f, 9.75f, 4.6f)));
     public static final Item STRONG_TOPAZ_SWORD = registerItem("strong_topaz_sword", properties ->
             new Item(properties.sword(MtsItemToolMaterials.TOPAZ, 3.0f, -2.4f)));
-    public static final Item DIAMOND_BATTLE_AXE = registerItem("diamond_battle_axe", properties ->
-            new Item(properties.sword(ToolMaterial.DIAMOND, 5.5f, -3.5f)));
 
     public static final Item STRONG_TOPAZ_HELMET = registerItem("strong_topaz_helmet", properties ->
             new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.HELMET)));
@@ -184,6 +185,18 @@ public class MtsItems {
             new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
     public static final Item STRONG_TOPAZ_BOOTS = registerItem("strong_topaz_boots", properties ->
             new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.BOOTS)));
+
+    // #################################################################################################################
+    // #                                             CUSTOM WEAPONS                                                    #
+    // #################################################################################################################
+    public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties ->
+            new Item(properties.sword(ToolMaterial.IRON, 3.5f, -2.2f)));
+    public static final Item STRONG_AMETHYST_LONG_KNIFE = registerItem("amethyst_long_knife", properties ->
+            new Item(properties.sword(MtsItemToolMaterials.AMETHYST, 3.5f, -2.2f)));
+    public static final Item STRONG_DIAMOND_BATTLE_AXE = registerItem("diamond_battle_axe", properties ->
+            new Item(properties.sword(ToolMaterial.DIAMOND, 5.5f, -3.5f)));
+    public static final Item STRONG_DIAMOND_VILLAGER_SOLIDER_AXE = registerItem("strong_diamond_villager_soldier_axe", properties ->
+            new AxeItem(ToolMaterial.IRON, 5.5f, -3.5f, properties));
 
     /**
      * Gets the resource key of the mod item.

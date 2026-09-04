@@ -32,6 +32,7 @@ d9745a0751789964238c9000e86aec44fbdc0ceb assets/minecraft-the-stories-mod/blocks
 a82c34b1ff8b34ab3d2a982792b2f61c57f3bcf8 assets/minecraft-the-stories-mod/blockstates/strong_ruby_block.json
 ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blockstates/strong_topaz_block.json
 36144a1f252bc829a495642157eae0ec3399159c assets/minecraft-the-stories-mod/blockstates/super_crafter_default.json
+e1e74db5144ec0bcc820aa2785812769de7b713a assets/minecraft-the-stories-mod/items/amethyst_long_knife.json
 a7b567cf6a7e1c716ac83b498bab677eac8e31bc assets/minecraft-the-stories-mod/items/blue_fuel_bucket.json
 9ca25cf9c568c5dc0c17570662f49dfb1eb439bb assets/minecraft-the-stories-mod/items/broken_diamond_pickaxe.json
 957c0f85a34af3e02b5b6bbf9036b6207e1337c6 assets/minecraft-the-stories-mod/items/broken_iron_pickaxe.json
@@ -61,6 +62,8 @@ ba5df2339021623385361dda678bc2e129ff6779 assets/minecraft-the-stories-mod/items/
 1fd81cce3cf70b7f0025af8dcf510b605d3056f9 assets/minecraft-the-stories-mod/items/epic_upgrade_scroll_stage_one.json
 69640f5651b05161debab7c462a1e690948fdd38 assets/minecraft-the-stories-mod/items/epic_upgrade_scroll_stage_three.json
 f9a91bb7f833c627531ff958e7a7fd3048fe51ff assets/minecraft-the-stories-mod/items/epic_upgrade_scroll_stage_two.json
+9016cc6239528163d23457c95ba3699b39d93552 assets/minecraft-the-stories-mod/items/hammer_of_crafter.json
+0748aeed9d7a6aa4f98527cf01479f95cdf59792 assets/minecraft-the-stories-mod/items/iron_long_knife.json
 1c50988d9be17f67963092517a00b5ca38a017e0 assets/minecraft-the-stories-mod/items/legendary_upgrade_scroll_stage_five.json
 79497e3484d20d847c02213cffc7b83d68345827 assets/minecraft-the-stories-mod/items/legendary_upgrade_scroll_stage_four.json
 d0aa118378520b5fa0ece776bf639fe4d8fe82f8 assets/minecraft-the-stories-mod/items/legendary_upgrade_scroll_stage_one.json
@@ -105,6 +108,7 @@ e422fb653665573985da7df6891a73386895ebc2 assets/minecraft-the-stories-mod/items/
 ca35945b34b0c6f999c5a9f4bd44c6721f68c0fd assets/minecraft-the-stories-mod/items/strong_diamond.json
 f0d805b9a26478edcfa02ccd6c13be50f76e84b0 assets/minecraft-the-stories-mod/items/strong_diamond_block.json
 4108c4e18dd0f9f90975da7e217891059fe22a8b assets/minecraft-the-stories-mod/items/strong_diamond_ingot.json
+9ad48b02b852db7e39af69764d1c8b456c8312bd assets/minecraft-the-stories-mod/items/strong_diamond_villager_soldier_axe.json
 7ea17f7a7c2928c0aef9ad1a4ab266a4d1750625 assets/minecraft-the-stories-mod/items/strong_emerald.json
 65ced7389e7649b499261cabeedfe9bfcea34114 assets/minecraft-the-stories-mod/items/strong_emerald_block.json
 a7ff27efaf63a78cb6c5c4e180b0e9fa89a896dd assets/minecraft-the-stories-mod/items/strong_emerald_ingot.json

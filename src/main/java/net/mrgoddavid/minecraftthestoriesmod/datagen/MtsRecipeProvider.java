@@ -78,7 +78,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 // #################################################################################################################
                 // #                                         SUPER CRAFTER RECIPES                                                 #
                 // #################################################################################################################
-//                SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of())
+//                SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(EPIC_UPGRADE_SCROLL_STAGE_ONE), Ingredient.of())
 
                 // #################################################################################################################
                 // #                                        COMPRESSED TOOLS RECIPES                                               #

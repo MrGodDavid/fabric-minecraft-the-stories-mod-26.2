@@ -1,5 +1,7 @@
 {
   "values": [
-    "minecraft-the-stories-mod:strong_topaz_sword"
+    "#minecraft-the-stories-mod:mts_rare_weapons_axes",
+    "#minecraft-the-stories-mod:mts_rare_weapons_swords",
+    "minecraft-the-stories-mod:hammer_of_crafter"
   ]
 }

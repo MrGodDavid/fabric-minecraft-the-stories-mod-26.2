@@ -6,7 +6,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -78,7 +77,10 @@ public class CreativeModeTabs {
                         output.accept(STRONG_TOPAZ_SPEAR);
                         output.accept(STRONG_TOPAZ_SWORD);
 
-                        output.accept(DIAMOND_BATTLE_AXE);
+                        output.accept(STRONG_DIAMOND_BATTLE_AXE);
+                        output.accept(STRONG_AMETHYST_LONG_KNIFE);
+                        output.accept(STRONG_IRON_LONG_KNIFE);
+                        output.accept(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
 
                         output.accept(EMERALD_BOOTS);
                         output.accept(EMERALD_HELMET);
@@ -112,6 +114,8 @@ public class CreativeModeTabs {
 
                         output.accept(ENRICHER_WASTE_BUCKET);
                         output.accept(BLUE_FUEL_BUCKET);
+
+                        output.accept(HAMMER_OF_CRAFTER);
                     })
                     .build()
     );

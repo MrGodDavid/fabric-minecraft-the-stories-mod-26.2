@@ -42,7 +42,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NonNull Provider registries) {
 
-        // if you are confused which method's functionality, read the javadoc of the method.
+        // if you are confused by which method's functionality, read the javadoc of the method.
         moveAxesToTiers();
         moveSwordsToTiers();
         moveSpearsToTiers();
@@ -54,22 +54,17 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_AXES)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS);
-
         tag(MtsTags.Items.MTS_RARE_WEAPONS)
-                .add(MtsItems.getResourceKey(STRONG_TOPAZ_SWORD));
+                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_AXES)
+//                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_SPEARS)
+                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_SWORDS)
+                .add(MtsItems.getResourceKey(HAMMER_OF_CRAFTER));
 
         tag(MtsTags.Items.MTS_EPIC_WEAPONS)
                 .add(MtsItems.getResourceKey(STRONG_RUBY_SWORD));
 
         tag(MtsTags.Items.MTS_LEGENDARY_WEAPONS)
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_SWORD));
-
-        tag(ItemTags.AXES)
-                .add(MtsItems.getResourceKey(STRONG_AMETHYST_AXE))
-                .add(MtsItems.getResourceKey(EMERALD_AXE))
-                .add(MtsItems.getResourceKey(STRONG_RUBY_AXE))
-                .add(MtsItems.getResourceKey(STRONG_TOPAZ_AXE))
-                .add(MtsItems.getResourceKey(DIAMOND_BATTLE_AXE));
 
         tag(ItemTags.HOES)
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_HOE))
@@ -88,18 +83,6 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(EMERALD_SHOVEL))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_SHOVEL))
                 .add(MtsItems.getResourceKey(STRONG_TOPAZ_SHOVEL));
-
-        tag(ItemTags.SPEARS)
-                .add(MtsItems.getResourceKey(STRONG_AMETHYST_SPEAR))
-                .add(MtsItems.getResourceKey(EMERALD_SPEAR))
-                .add(MtsItems.getResourceKey(STRONG_RUBY_SPEAR))
-                .add(MtsItems.getResourceKey(STRONG_TOPAZ_SPEAR));
-
-        tag(ItemTags.SWORDS)
-                .add(MtsItems.getResourceKey(STRONG_AMETHYST_SWORD))
-                .add(MtsItems.getResourceKey(EMERALD_SWORD))
-                .add(MtsItems.getResourceKey(STRONG_RUBY_SWORD))
-                .add(MtsItems.getResourceKey(STRONG_TOPAZ_SWORD));
 
         tag(ItemTags.HEAD_ARMOR)
                 .add(MtsItems.getResourceKey(EMERALD_HELMET))
@@ -137,6 +120,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .remove(MtsItems.getResourceKey(Items.DIAMOND_SPEAR))
                 .remove(MtsItems.getResourceKey(Items.COPPER_SPEAR))
                 .remove(MtsItems.getResourceKey(Items.NETHERITE_SPEAR));
+
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)
                 .add(MtsItems.getResourceKey(Items.WOODEN_SPEAR))
                 .add(MtsItems.getResourceKey(Items.STONE_SPEAR))
@@ -145,10 +129,16 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(Items.DIAMOND_SPEAR))
                 .add(MtsItems.getResourceKey(Items.COPPER_SPEAR));
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS)
-                .add(MtsItems.getResourceKey(Items.NETHERITE_SPEAR));
+                .add(MtsItems.getResourceKey(Items.NETHERITE_SPEAR))
+                .add(MtsItems.getResourceKey(EMERALD_SPEAR))
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_SPEAR))
+                .add(MtsItems.getResourceKey(STRONG_RUBY_SPEAR))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_SPEAR));
+
         tag(ItemTags.SPEARS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS);
+//                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_SPEARS);
     }
 
     /**
@@ -166,6 +156,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .remove(MtsItems.getResourceKey(Items.DIAMOND_SWORD))
                 .remove(MtsItems.getResourceKey(Items.COPPER_SWORD))
                 .remove(MtsItems.getResourceKey(Items.NETHERITE_SWORD));
+
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)
                 .add(MtsItems.getResourceKey(Items.WOODEN_SWORD))
                 .add(MtsItems.getResourceKey(Items.STONE_SWORD))
@@ -175,10 +166,18 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(Items.COPPER_SWORD));
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)
                 .add(MtsItems.getResourceKey(Items.NETHERITE_SWORD))
-                .add(MtsItems.getResourceKey(DIAMOND_BATTLE_AXE));
+                .add(MtsItems.getResourceKey(EMERALD_SWORD))
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_SWORD))
+                .add(MtsItems.getResourceKey(STRONG_RUBY_SWORD))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_SWORD));
+        tag(MtsTags.Items.MTS_RARE_WEAPONS_SWORDS)
+                .add(MtsItems.getResourceKey(STRONG_IRON_LONG_KNIFE))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_LONG_KNIFE));
+
         tag(ItemTags.SWORDS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)
-                .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS);
+                .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)
+                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_SWORDS);
     }
 
     /**
@@ -186,6 +185,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      * tag. These axes are added into {@code MTS_COMMON_WEAPONS_AXES}, and {@code MTS_COMMON_WEAPONS_AXES} is added into
      * Minecraft's {@code AXES} tag.
      * <p>Moves Netherite Axe from {@code AXES} to {@code MTS_UNCOMMON_WEAPONS_AXES}</p>
+     * <p>Adds Diamond Battle Axe to Uncommon Weapon Axes</p>
      */
     private void moveAxesToTiers() {
         tag(ItemTags.AXES)
@@ -196,6 +196,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .remove(MtsItems.getResourceKey(Items.DIAMOND_AXE))
                 .remove(MtsItems.getResourceKey(Items.COPPER_AXE))
                 .remove(MtsItems.getResourceKey(Items.NETHERITE_AXE));
+
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)
                 .add(MtsItems.getResourceKey(Items.WOODEN_AXE))
                 .add(MtsItems.getResourceKey(Items.STONE_AXE))
@@ -204,10 +205,19 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(Items.DIAMOND_AXE))
                 .add(MtsItems.getResourceKey(Items.COPPER_AXE));
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_AXES)
-                .add(MtsItems.getResourceKey(Items.NETHERITE_AXE));
+                .add(MtsItems.getResourceKey(Items.NETHERITE_AXE))
+                .add(MtsItems.getResourceKey(EMERALD_AXE))
+                .add(MtsItems.getResourceKey(STRONG_TOPAZ_AXE))
+                .add(MtsItems.getResourceKey(STRONG_RUBY_AXE))
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_AXE));
+        tag(MtsTags.Items.MTS_RARE_WEAPONS_AXES)
+                .add(MtsItems.getResourceKey(STRONG_DIAMOND_BATTLE_AXE))
+                .add(MtsItems.getResourceKey(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE));
+
         tag(ItemTags.AXES)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)
-                .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_AXES);
+                .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_AXES)
+                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_AXES);
 
     }
 }

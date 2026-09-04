@@ -1,5 +1,9 @@
 {
   "values": [
-    "minecraft:netherite_axe"
+    "minecraft:netherite_axe",
+    "minecraft-the-stories-mod:emerald_axe",
+    "minecraft-the-stories-mod:strong_topaz_axe",
+    "minecraft-the-stories-mod:strong_ruby_axe",
+    "minecraft-the-stories-mod:strong_amethyst_axe"
   ]
 }
