@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "minecraft-the-stories-mod:item/pale_oak_bow_pulling_0"
+  }
+}

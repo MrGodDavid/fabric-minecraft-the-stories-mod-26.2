@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -46,6 +47,21 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         moveAxesToTiers();
         moveSwordsToTiers();
         moveSpearsToTiers();
+
+        tag(ItemTags.BOW_ENCHANTABLE)
+                .add(MtsItems.getResourceKey(ACACIA_BOW));
+
+        tag(MtsTags.Recipes.MTS_UNIVERSAL_STICK)
+                .add(MtsItems.getResourceKey(Items.STICK))
+                .add(MtsItems.getResourceKey(ACACIA_STICK))
+                .add(MtsItems.getResourceKey(BIRCH_STICK))
+                .add(MtsItems.getResourceKey(CHERRY_STICK))
+                .add(MtsItems.getResourceKey(DARK_OAK_STICK))
+                .add(MtsItems.getResourceKey(JUNGLE_STICK))
+                .add(MtsItems.getResourceKey(MANGROVE_STICK))
+                .add(MtsItems.getResourceKey(PALE_OAK_STICK))
+                .add(MtsItems.getResourceKey(SPRUCE_STICK));
+
         tag(MtsTags.Items.MTS_COMMON_WEAPONS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)

@@ -17,7 +17,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 public class MtsMenuScreens {
 
     public static void register() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering menus of screens for " + MinecraftTheStoriesMod.MOD_ID);
+        MinecraftTheStoriesMod.LOGGER.info("Registering menus of screens for: " + MinecraftTheStoriesMod.MOD_ID);
 
         MenuScreens.register(MtsMenuTypes.ENDER_EXALTER_MENU, EnderExalterScreen::new);
         MenuScreens.register(MtsMenuTypes.ENRICHER_MENU, EnricherScreen::new);

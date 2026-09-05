@@ -34,7 +34,6 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
     public void onInitializeClient() {
 
         MtsTestWorld.changeDevTitleScreen();
-//        ModelLayerRegistry.registerModelLayer(OreCompressorBlockRenderer.MODEL_LAYER, OreCompressorModel::getTexturedModelData);
         ModelLayerRegistry.registerModelLayer(OreCompressorBlockRenderer.MODEL_LAYER, OreCompressorFreewheelModel::getTexturedModelData);
         BlockEntityRenderers.register(MtsBlockEntities.ORE_COMPRESSOR_BE, OreCompressorBlockRenderer::new);
         BlockEntityRenderers.register(MtsBlockEntities.ENDER_EXALTER_BE, EnderExalterBlockRenderer::new);
@@ -44,11 +43,11 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
 
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.ENRICHER_WASTE_PARTICLE, BubbleParticle.Provider::new);
 
-        ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
-            if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.NETHERITE_SWORD)) {
-                lines.add(Component.literal("A weapon forged in ancient times").withStyle(ChatFormatting.GOLD));
-            }
-        });
+//        ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
+//            if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.NETHERITE_SWORD)) {
+//                lines.add(Component.literal("A weapon forged in ancient times").withStyle(ChatFormatting.GOLD));
+//            }
+//        });
 
         PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, hitResult) -> {
             if (!(player instanceof ServerPlayer serverPlayer)) {

@@ -6,6 +6,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 
 /**
  * @author Mr. GodDavid
@@ -16,7 +17,7 @@ public class MtsEntityFluidInteractions {
     public static void registerInteractions() {
         MinecraftTheStoriesMod.LOGGER.info("Registering custom entity fluid interactions for " + MinecraftTheStoriesMod.MOD_ID);
 
-        EntityFluidInteractionRegistry.register(MtsFluidTags.ENRICHER_WASTE,
+        EntityFluidInteractionRegistry.register(MtsTags.Fluids.ENRICHER_WASTE,
                 FluidBehavior.simple().onEnteredFluid((
                                         (entity, firstTick) -> {
                                             if (entity.level().isClientSide()) {
@@ -53,7 +54,7 @@ public class MtsEntityFluidInteractions {
                         .build()
         );
 
-        EntityFluidInteractionRegistry.register(MtsFluidTags.BLUE_FUEL, FluidBehavior.simple()
+        EntityFluidInteractionRegistry.register(MtsTags.Fluids.BLUE_FUEL, FluidBehavior.simple()
                 .movementSpeed(0.015F)
                 .movementSlowdown(0.4F, 0.6F)
                 .gravityMultiplier(1.0f / 10.0f)

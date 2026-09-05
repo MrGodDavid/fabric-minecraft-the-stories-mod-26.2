@@ -21,10 +21,12 @@ public class MtsItemTooltips {
         return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path);
     }
 
+    @Deprecated
     private static Identifier icon(String path) {
         return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "textures/gui/icons/" + path + "_3d_icon.png");
     }
 
     public static void register() {
+        MinecraftTheStoriesMod.LOGGER.info("Registering tooltips for: " + MinecraftTheStoriesMod.MOD_ID);
     }
 }

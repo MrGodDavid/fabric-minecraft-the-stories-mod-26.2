@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "topaz",
   "key": {
-    "#": "minecraft:stick",
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
     "X": "minecraft-the-stories-mod:strong_topaz_ingot"
   },
   "pattern": [

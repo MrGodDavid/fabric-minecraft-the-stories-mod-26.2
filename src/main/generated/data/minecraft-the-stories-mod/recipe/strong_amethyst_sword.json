@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "amethyst",
   "key": {
-    "#": "minecraft:stick",
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
     "X": "minecraft-the-stories-mod:strong_amethyst_ingot"
   },
   "pattern": [

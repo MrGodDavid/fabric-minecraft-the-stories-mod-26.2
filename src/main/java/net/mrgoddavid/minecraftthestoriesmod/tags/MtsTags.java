@@ -5,6 +5,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 
 /**
@@ -14,6 +15,38 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
  * @since 8/14/2026
  */
 public final class MtsTags {
+
+    /**
+     * Mod tags for recipes.
+     *
+     * @author Mr. GodDavid
+     * @since 9/4/2026
+     */
+    public static class Recipes {
+
+        public static final TagKey<Item> MTS_UNIVERSAL_STICK = createTag("mts_universal_stick");
+
+        private static TagKey<Item> createTag(final String name) {
+            Identifier identifier = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+            return TagKey.create(Registries.ITEM, identifier);
+        }
+    }
+
+    /**
+     * Mod tags for mod fluids.
+     *
+     * @author Mr. GodDavid
+     * @since 9/4/2026
+     */
+    public static class Fluids {
+
+        public static final TagKey<Fluid> ENRICHER_WASTE = createTag("enricher_waste");
+        public static final TagKey<Fluid> BLUE_FUEL = createTag("blue_fuel");
+
+        private static TagKey<Fluid> createTag(final String name) {
+            return TagKey.create(Registries.FLUID, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name));
+        }
+    }
 
     /**
      * Mod tags for mod blocks.
@@ -40,7 +73,7 @@ public final class MtsTags {
         public static final TagKey<Block> INCORRECT_FOR_RUBY_TOOL = createTag("incorrect_for_ruby_tool");
         public static final TagKey<Block> INCORRECT_FOR_TOPAZ_TOOL = createTag("incorrect_for_topaz_tool");
 
-        private static TagKey<Block> createTag(String name) {
+        private static TagKey<Block> createTag(final String name) {
             Identifier identifier = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
             return TagKey.create(Registries.BLOCK, identifier);
         }
@@ -75,7 +108,7 @@ public final class MtsTags {
         public static final TagKey<Item> RUBY_REPAIR = createTag("ruby_repair");
         public static final TagKey<Item> TOPAZ_REPAIR = createTag("topaz_repair");
 
-        private static TagKey<Item> createTag(String name) {
+        private static TagKey<Item> createTag(final String name) {
             Identifier identifier = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
             return TagKey.create(Registries.ITEM, identifier);
         }

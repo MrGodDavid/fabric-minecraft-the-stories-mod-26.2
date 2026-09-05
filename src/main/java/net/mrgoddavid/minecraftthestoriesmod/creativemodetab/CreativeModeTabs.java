@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -112,10 +113,28 @@ public class CreativeModeTabs {
                         output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR);
                         output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE);
 
+                        output.accept(ACACIA_BOW);
+                        output.accept(BIRCH_BOW);
+                        output.accept(CHERRY_BOW);
+                        output.accept(DARK_OAK_BOW);
+                        output.accept(JUNGLE_BOW);
+                        output.accept(MANGROVE_BOW);
+                        output.accept(PALE_OAK_BOW);
+                        output.accept(SPRUCE_BOW);
+
                         output.accept(ENRICHER_WASTE_BUCKET);
                         output.accept(BLUE_FUEL_BUCKET);
 
                         output.accept(HAMMER_OF_CRAFTER);
+
+                        output.accept(ACACIA_STICK);
+                        output.accept(BIRCH_STICK);
+                        output.accept(CHERRY_STICK);
+                        output.accept(DARK_OAK_STICK);
+                        output.accept(JUNGLE_STICK);
+                        output.accept(MANGROVE_STICK);
+                        output.accept(PALE_OAK_STICK);
+                        output.accept(SPRUCE_STICK);
                     })
                     .build()
     );

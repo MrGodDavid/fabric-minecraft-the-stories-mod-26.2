@@ -17,7 +17,7 @@ import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 public class MtsFluidRenderingRegistries {
 
     public static void register() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering Fluid Rendering Registries for " + MinecraftTheStoriesMod.MOD_ID);
+        MinecraftTheStoriesMod.LOGGER.info("Registering fluid rendering registries for: " + MinecraftTheStoriesMod.MOD_ID);
 
         FluidRenderingRegistry.register(
                 MtsFluids.ENRICHER_WASTE_STILL,

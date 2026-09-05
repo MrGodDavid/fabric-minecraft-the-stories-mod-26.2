@@ -3,10 +3,9 @@ package net.mrgoddavid.minecraftthestoriesmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.tags.FluidTags;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluidTags;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -26,10 +25,10 @@ public class MtsFluidTagProvider extends FabricTagsProvider.FluidTagsProvider {
      */
     @Override
     protected void addTags(HolderLookup.Provider registries) {
-        builder(MtsFluidTags.ENRICHER_WASTE)
+        builder(MtsTags.Fluids.ENRICHER_WASTE)
                 .add(MtsFluids.getResourceKey(ENRICHER_WASTE_STILL))
                 .add(MtsFluids.getResourceKey(ENRICHER_WASTE_FLOWING));
-        builder(MtsFluidTags.BLUE_FUEL)
+        builder(MtsTags.Fluids.BLUE_FUEL)
                 .add(MtsFluids.getResourceKey(BLUE_FUEL_STILL))
                 .add(MtsFluids.getResourceKey(BLUE_FUEL_FLOWING));
 

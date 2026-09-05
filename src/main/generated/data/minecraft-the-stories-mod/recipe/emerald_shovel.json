@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "emerald",
   "key": {
-    "#": "minecraft:stick",
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
     "X": "minecraft:emerald"
   },
   "pattern": [

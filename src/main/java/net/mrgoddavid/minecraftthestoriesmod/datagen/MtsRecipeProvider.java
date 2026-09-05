@@ -13,6 +13,7 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.EnricherRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.SuperCrafterRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
@@ -354,7 +355,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
 
             private void axeFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.TOOLS, crafted)
-                        .define('#', Items.STICK)
+                        .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                         .define('X', ingot)
                         .pattern("XX")
                         .pattern("X#")
@@ -366,7 +367,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
 
             private void hoeFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.TOOLS, crafted)
-                        .define('#', Items.STICK)
+                        .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                         .define('X', ingot)
                         .pattern("XX")
                         .pattern(" #")
@@ -378,7 +379,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
 
             private void pickaxeFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.TOOLS, crafted)
-                        .define('#', Items.STICK)
+                        .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                         .define('X', ingot)
                         .pattern("XXX")
                         .pattern(" # ")
@@ -390,7 +391,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
 
             private void shovelFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.TOOLS, crafted)
-                        .define('#', Items.STICK)
+                        .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                         .define('X', ingot)
                         .pattern("X")
                         .pattern("#")
@@ -402,7 +403,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
 
             private void spearFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.COMBAT, crafted)
-                        .define('#', Items.STICK)
+                        .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                         .define('X', ingot)
                         .pattern("  X")
                         .pattern(" # ")
@@ -414,7 +415,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
 
             private void swordFromIngot(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.COMBAT, crafted)
-                        .define('#', Items.STICK)
+                        .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                         .define('X', ingot)
                         .pattern("X")
                         .pattern("X")

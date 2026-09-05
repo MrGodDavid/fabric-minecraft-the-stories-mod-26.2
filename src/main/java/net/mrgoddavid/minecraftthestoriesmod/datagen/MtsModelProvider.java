@@ -10,6 +10,8 @@ import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
@@ -24,6 +26,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCom
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
+import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
@@ -195,6 +198,48 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.declareCustomModelItem(STRONG_AMETHYST_LONG_KNIFE);
 
         itemModelGenerators.itemModelOutput.accept(STRONG_DIAMOND_BATTLE_AXE, ItemModelUtils.plainModel(getScale2xModelId(itemModelGenerators, STRONG_DIAMOND_BATTLE_AXE)));
+
+        itemModelGenerators.generateFlatItem(ACACIA_STICK, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(BIRCH_STICK, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(CHERRY_STICK, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(DARK_OAK_STICK, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(JUNGLE_STICK, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(MANGROVE_STICK, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(PALE_OAK_STICK, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(SPRUCE_STICK, flatItemTemplate);
+
+        this.generateMtsBow(itemModelGenerators, ACACIA_BOW);
+        this.generateMtsBow(itemModelGenerators, BIRCH_BOW);
+        this.generateMtsBow(itemModelGenerators, CHERRY_BOW);
+        this.generateMtsBow(itemModelGenerators, DARK_OAK_BOW);
+        this.generateMtsBow(itemModelGenerators, JUNGLE_BOW);
+        this.generateMtsBow(itemModelGenerators, MANGROVE_BOW);
+        this.generateMtsBow(itemModelGenerators, PALE_OAK_BOW);
+        this.generateMtsBow(itemModelGenerators, SPRUCE_BOW);
+    }
+
+    public void generateMtsBow(final ItemModelGenerators itemModelGenerators, final Item mtsBowItem) {
+        if (!(mtsBowItem instanceof MtsBowItem)) {
+            return;
+        }
+        itemModelGenerators.createFlatItemModel(mtsBowItem, ModelTemplates.BOW);
+        this.generateMtsBowInner(itemModelGenerators, (MtsBowItem) mtsBowItem);
+    }
+
+    private void generateMtsBowInner(final ItemModelGenerators generators, final MtsBowItem bowItem) {
+        ItemModel.Unbaked bowModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(bowItem));
+        ItemModel.Unbaked pulling0 = ItemModelUtils.plainModel(generators.createFlatItemModel(bowItem, "_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked pulling1 = ItemModelUtils.plainModel(generators.createFlatItemModel(bowItem, "_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked pulling2 = ItemModelUtils.plainModel(generators.createFlatItemModel(bowItem, "_pulling_2", ModelTemplates.BOW));
+        generators.itemModelOutput
+                .accept(
+                        bowItem,
+                        ItemModelUtils.conditional(
+                                ItemModelUtils.isUsingItem(),
+                                ItemModelUtils.rangeSelect(new UseDuration(false), 1F / bowItem.getChargeDuration(), pulling0, ItemModelUtils.override(pulling1, 0.65F), ItemModelUtils.override(pulling2, 0.9F)),
+                                bowModel
+                        )
+                );
     }
 
     public Identifier getScale2xModelId(ItemModelGenerators itemModelGenerators, Item item) {

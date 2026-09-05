@@ -10,6 +10,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 
 import java.util.function.Function;
 
@@ -41,6 +42,18 @@ public class MtsItems {
 
     public static final Item HAMMER_OF_CRAFTER = registerItem("hammer_of_crafter", properties -> new AxeItem(MtsItemToolMaterials.RUBY,
             5.8f, -3.3f, properties));
+
+    // #################################################################################################################
+    // #                                                NATURAL ITEMS                                                  #
+    // #################################################################################################################
+    public static final Item ACACIA_STICK = registerItem("acacia_stick", Item::new);
+    public static final Item BIRCH_STICK = registerItem("birch_stick", Item::new);
+    public static final Item CHERRY_STICK = registerItem("cherry_stick", Item::new);
+    public static final Item DARK_OAK_STICK = registerItem("dark_oak_stick", Item::new);
+    public static final Item JUNGLE_STICK = registerItem("jungle_stick", Item::new);
+    public static final Item MANGROVE_STICK = registerItem("mangrove_stick", Item::new);
+    public static final Item PALE_OAK_STICK = registerItem("pale_oak_stick", Item::new);
+    public static final Item SPRUCE_STICK = registerItem("spruce_stick", Item::new);
 
     // #################################################################################################################
     // #                                               UPGRADE SCROLLS                                                 #
@@ -187,6 +200,38 @@ public class MtsItems {
             new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.BOOTS)));
 
     // #################################################################################################################
+    // #                                             CUSTOM BOWS                                                       #
+    // #################################################################################################################
+    // # O (0) = Neutral buff, N (-1) = Negative buff, P (+1) = Positive buff.                                         #
+    // # Oak Bow:         durability: 378,    arrow_damage: 2.0F,    charging_speed: 20.0F,  uncertainty: 1.0F  (OOOO) #
+    // # Acacia Bow:      durability: 1.5x,   arrow_damage: 1.5x,    charging_speed: 0.5x ,  uncertainty: 1.5x  (PPNN) #
+    // # Birch Bow:       durability: 1.0x,   arrow_damage: 0.75x,   charging_speed: 1.25x,  uncertainty: 1.0x  (ONPN) #
+    // # Cherry Bow:      durability: 0.5x,   arrow_damage: 0.75x,   charging_speed: 2.0x,   uncertainty: 0.75x (NNPP) #
+    // # Dark Oak Bow:    durability: 1.0x,   arrow_damage: 1.0x,    charging_speed: 1.0x,   uncertainty: 1.0x  (OOOO) #
+    // # Jungle Bow:      durability: 2.0x,   arrow_damage: 1.5x,    charging_speed: 0.5x,   uncertainty: 2.0x  (PPNN) #
+    // # Mangrove Bow:    durability: 0.75x,  arrow_damage: 1.25x,   charging_speed: 1.25x,  uncertainty: 1.25x (NPNP) #
+    // # Pale Oak Bow:    durability: 1.0x,   arrow_damage: 1.0x,    charging_speed: 1.0x,   uncertainty: 1.0x  (OOOO) #
+    // # Spruce Bow:      durability: 0.5x,   arrow_damage: 0.75x,   charging_speed: 2.5x,   uncertainty: 1.25x (NNPP) #
+    // # charge_duration = 20.0F / ratio                                                                               #
+    // #################################################################################################################
+    public static final Item ACACIA_BOW = registerItem("acacia_bow", properties -> new MtsBowItem(
+            properties.durability(576), new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(1.5F).build()));
+    public static final Item BIRCH_BOW = registerItem("birch_bow", properties -> new MtsBowItem(
+            properties.durability(378), new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(16.0F).uncertainty(1.0F).build()));
+    public static final Item CHERRY_BOW = registerItem("cherry_bow", properties -> new MtsBowItem(
+            properties.durability(189), new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(10.0F).uncertainty(0.75F).build()));
+    public static final Item DARK_OAK_BOW = registerItem("dark_oak_bow", properties -> new MtsBowItem(
+            properties.durability(378), new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
+    public static final Item JUNGLE_BOW = registerItem("jungle_bow", properties -> new MtsBowItem(
+            properties.durability(756), new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(2.0F).build()));
+    public static final Item MANGROVE_BOW = registerItem("mangrove_bow", properties -> new MtsBowItem(
+            properties.durability(283), new MtsBowItem.Attribute.Builder().damage(2.5F).chargeDuration(16.0F).uncertainty(1.25F).build()));
+    public static final Item PALE_OAK_BOW = registerItem("pale_oak_bow", properties -> new MtsBowItem(
+            properties.durability(378), new MtsBowItem.Attribute.Builder().damage(1.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
+    public static final Item SPRUCE_BOW = registerItem("spruce_bow", properties -> new MtsBowItem(
+            properties.durability(189), new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(8.0F).uncertainty(1.25F).build()));
+
+    // #################################################################################################################
     // #                                             CUSTOM WEAPONS                                                    #
     // #################################################################################################################
     public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties ->
@@ -311,6 +356,15 @@ public class MtsItems {
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_CHESTPLATE);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_LEGGINGS);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_BOOTS);
+
+            fabricCreativeModeTabOutput.accept(ACACIA_BOW);
+            fabricCreativeModeTabOutput.accept(BIRCH_BOW);
+            fabricCreativeModeTabOutput.accept(CHERRY_BOW);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_BOW);
+            fabricCreativeModeTabOutput.accept(JUNGLE_BOW);
+            fabricCreativeModeTabOutput.accept(MANGROVE_BOW);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_BOW);
+            fabricCreativeModeTabOutput.accept(SPRUCE_BOW);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(fabricCreativeModeTabOutput -> {
@@ -358,6 +412,15 @@ public class MtsItems {
             fabricCreativeModeTabOutput.accept(STRIPPED_COMPRESSED_WOOD);
             fabricCreativeModeTabOutput.accept(COMPRESSED_WOOD_LOG);
             fabricCreativeModeTabOutput.accept(STRIPPED_COMPRESSED_WOOD_LOG);
+
+            fabricCreativeModeTabOutput.accept(ACACIA_STICK);
+            fabricCreativeModeTabOutput.accept(BIRCH_STICK);
+            fabricCreativeModeTabOutput.accept(CHERRY_STICK);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_STICK);
+            fabricCreativeModeTabOutput.accept(JUNGLE_STICK);
+            fabricCreativeModeTabOutput.accept(MANGROVE_STICK);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_STICK);
+            fabricCreativeModeTabOutput.accept(SPRUCE_STICK);
         });
     }
 }

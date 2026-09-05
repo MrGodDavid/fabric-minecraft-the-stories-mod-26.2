@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "minecraft-the-stories-mod:item/acacia_bow_pulling_2"
+  }
+}

@@ -30,10 +30,10 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
-import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluidTags;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
@@ -136,7 +136,7 @@ public abstract class EnricherWasteFluid extends FlowingFluid {
 
     @Override
     protected boolean canBeReplacedWith(FluidState state, BlockGetter level, BlockPos pos, Fluid other, Direction direction) {
-        return direction == Direction.DOWN && !other.is(MtsFluidTags.ENRICHER_WASTE);
+        return direction == Direction.DOWN && !other.is(MtsTags.Fluids.ENRICHER_WASTE);
     }
 
     @Override
