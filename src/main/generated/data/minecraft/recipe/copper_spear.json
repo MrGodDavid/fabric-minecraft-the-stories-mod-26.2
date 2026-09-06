@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "copper_spear",
+  "key": {
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
+    "X": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "  X",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "id": "minecraft:copper_spear"
+  }
+}

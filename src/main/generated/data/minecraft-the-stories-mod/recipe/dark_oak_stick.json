@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dark_oak_stick",
+  "key": {
+    "P": "minecraft:dark_oak_planks"
+  },
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft-the-stories-mod:dark_oak_stick"
+  }
+}

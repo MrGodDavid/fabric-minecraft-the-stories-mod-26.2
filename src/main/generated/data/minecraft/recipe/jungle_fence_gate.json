@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jungle_fence_gate",
+  "key": {
+    "P": "minecraft:jungle_planks",
+    "S": "minecraft-the-stories-mod:jungle_stick"
+  },
+  "pattern": [
+    "SPS",
+    "SPS"
+  ],
+  "result": {
+    "id": "minecraft:jungle_fence_gate"
+  }
+}

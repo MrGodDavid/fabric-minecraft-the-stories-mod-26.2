@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "spruce_fence_gate",
+  "key": {
+    "P": "minecraft:spruce_planks",
+    "S": "minecraft-the-stories-mod:spruce_stick"
+  },
+  "pattern": [
+    "SPS",
+    "SPS"
+  ],
+  "result": {
+    "id": "minecraft:spruce_fence_gate"
+  }
+}

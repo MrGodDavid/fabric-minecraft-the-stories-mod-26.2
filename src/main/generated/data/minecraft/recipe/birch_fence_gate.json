@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "birch_fence_gate",
+  "key": {
+    "P": "minecraft:birch_planks",
+    "S": "minecraft-the-stories-mod:birch_stick"
+  },
+  "pattern": [
+    "SPS",
+    "SPS"
+  ],
+  "result": {
+    "id": "minecraft:birch_fence_gate"
+  }
+}

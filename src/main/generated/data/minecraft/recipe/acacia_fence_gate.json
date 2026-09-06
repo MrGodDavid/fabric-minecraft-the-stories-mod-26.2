@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "acacia_fence_gate",
+  "key": {
+    "P": "minecraft:acacia_planks",
+    "S": "minecraft-the-stories-mod:acacia_stick"
+  },
+  "pattern": [
+    "SPS",
+    "SPS"
+  ],
+  "result": {
+    "id": "minecraft:acacia_fence_gate"
+  }
+}

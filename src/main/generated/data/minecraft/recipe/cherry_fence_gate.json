@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cherry_fence_gate",
+  "key": {
+    "P": "minecraft:cherry_planks",
+    "S": "minecraft-the-stories-mod:cherry_stick"
+  },
+  "pattern": [
+    "SPS",
+    "SPS"
+  ],
+  "result": {
+    "id": "minecraft:cherry_fence_gate"
+  }
+}

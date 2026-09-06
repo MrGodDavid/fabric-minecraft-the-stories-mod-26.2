@@ -33,8 +33,16 @@ public class MtsBowItem extends BowItem {
         this.attribute = attribute;
     }
 
-    public float getChargeDuration() {
+    public float chargeDuration() {
         return this.attribute.chargeDuration();
+    }
+
+    public float damage() {
+        return this.attribute.damage();
+    }
+
+    public float uncertainty() {
+        return this.attribute.uncertainty();
     }
 
     @Override

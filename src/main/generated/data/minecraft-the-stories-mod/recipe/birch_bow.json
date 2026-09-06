@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "birch_bow",
+  "key": {
+    "I": "minecraft:string",
+    "S": "minecraft-the-stories-mod:birch_stick"
+  },
+  "pattern": [
+    " SI",
+    "S I",
+    " SI"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:birch_bow"
+  }
+}

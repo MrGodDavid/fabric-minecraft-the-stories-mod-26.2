@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "pale_oak_stick",
+  "key": {
+    "P": "minecraft:pale_oak_planks"
+  },
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft-the-stories-mod:pale_oak_stick"
+  }
+}

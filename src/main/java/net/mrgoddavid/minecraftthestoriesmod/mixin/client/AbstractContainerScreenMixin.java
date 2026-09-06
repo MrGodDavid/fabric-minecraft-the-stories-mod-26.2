@@ -3,9 +3,10 @@ package net.mrgoddavid.minecraftthestoriesmod.mixin.client;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
-import net.mrgoddavid.minecraftthestoriesmod.client.gui.MtsTooltipComponent;
+import net.mrgoddavid.minecraftthestoriesmod.client.tooltip.MtsTooltipComponent;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Optional;
 
-import static net.mrgoddavid.minecraftthestoriesmod.tooltip.MtsItemTooltips.*;
+import static net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips.*;
 
 @Mixin(AbstractContainerScreen.class)
 public abstract class AbstractContainerScreenMixin {
@@ -48,15 +49,16 @@ public abstract class AbstractContainerScreenMixin {
                     target = "Lnet/minecraft/world/item/ItemStack;getTooltipImage()Ljava/util/Optional;"
             )
     )
-    private Optional<TooltipComponent> minecraftthestoriesmod$customTooltipImage(ItemStack item) {
-        if (item.is(MtsTags.Items.MTS_COMMON_WEAPONS)
-                || item.is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)
-                || item.is(MtsTags.Items.MTS_RARE_WEAPONS)
-                || item.is(MtsTags.Items.MTS_EPIC_WEAPONS)
-                || item.is(MtsTags.Items.MTS_LEGENDARY_WEAPONS)
+    private Optional<TooltipComponent> minecraftthestoriesmod$customTooltipImage(ItemStack itemStack) {
+        if (itemStack.is(MtsTags.Items.MTS_COMMON_WEAPONS)
+                || itemStack.is(MtsTags.Items.MTS_UNCOMMON_WEAPONS)
+                || itemStack.is(MtsTags.Items.MTS_RARE_WEAPONS)
+                || itemStack.is(MtsTags.Items.MTS_EPIC_WEAPONS)
+                || itemStack.is(MtsTags.Items.MTS_LEGENDARY_WEAPONS)
+                || itemStack.is(ItemTags.BOW_ENCHANTABLE)
         ) {
-            return Optional.of(new MtsTooltipComponent(item));
+            return Optional.of(new MtsTooltipComponent(itemStack));
         }
-        return item.getTooltipImage();
+        return itemStack.getTooltipImage();
     }
 }

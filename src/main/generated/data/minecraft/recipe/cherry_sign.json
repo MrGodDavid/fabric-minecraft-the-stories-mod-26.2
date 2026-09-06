@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cherry_sign",
+  "key": {
+    "P": "minecraft:cherry_planks",
+    "S": "minecraft-the-stories-mod:cherry_stick"
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    " S "
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:cherry_sign"
+  }
+}

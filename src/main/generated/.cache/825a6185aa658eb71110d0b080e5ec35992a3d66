@@ -123,6 +123,7 @@ c99e48f705ef621a6061defa37404efd9f30f80b assets/minecraft-the-stories-mod/items/
 e422fb653665573985da7df6891a73386895ebc2 assets/minecraft-the-stories-mod/items/strong_amethyst_wall.json
 ca35945b34b0c6f999c5a9f4bd44c6721f68c0fd assets/minecraft-the-stories-mod/items/strong_diamond.json
 f0d805b9a26478edcfa02ccd6c13be50f76e84b0 assets/minecraft-the-stories-mod/items/strong_diamond_block.json
+dc3a6d0be9e6fbe876324e01ff1ba1d5779c3aaf assets/minecraft-the-stories-mod/items/strong_diamond_chop.json
 4108c4e18dd0f9f90975da7e217891059fe22a8b assets/minecraft-the-stories-mod/items/strong_diamond_ingot.json
 9ad48b02b852db7e39af69764d1c8b456c8312bd assets/minecraft-the-stories-mod/items/strong_diamond_villager_soldier_axe.json
 7ea17f7a7c2928c0aef9ad1a4ab266a4d1750625 assets/minecraft-the-stories-mod/items/strong_emerald.json
@@ -134,6 +135,7 @@ cb48f396f7587b275a9fd37e01763d7cf39aee26 assets/minecraft-the-stories-mod/items/
 1e42e4ba7273c044eea61242cf843006589a964f assets/minecraft-the-stories-mod/items/strong_iron.json
 aada0ae3a858939a152b92d8b8d11904c8908432 assets/minecraft-the-stories-mod/items/strong_iron_block.json
 96d274a435bb5e3a57a2b0c0bcf87f36d4157a5b assets/minecraft-the-stories-mod/items/strong_iron_ingot.json
+0799b11f94981c350bd3c451f1107147f27d2cb2 assets/minecraft-the-stories-mod/items/strong_iron_zen_staff.json
 a20811aff4a9ba2be12e6cc4c625392f7640f055 assets/minecraft-the-stories-mod/items/strong_ruby.json
 e8667d74170e150d941262916018dc5a0a31ca91 assets/minecraft-the-stories-mod/items/strong_ruby_axe.json
 4d971b66a30cde7965ee290a623cbdb465bfb823 assets/minecraft-the-stories-mod/items/strong_ruby_block.json

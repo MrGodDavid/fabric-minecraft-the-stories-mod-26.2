@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cherry_stick",
+  "key": {
+    "P": "minecraft:cherry_planks"
+  },
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft-the-stories-mod:cherry_stick"
+  }
+}

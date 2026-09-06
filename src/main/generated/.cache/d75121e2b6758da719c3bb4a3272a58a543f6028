@@ -1,10 +1,11 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Tags for minecraft:item
 05e32f57b083a782a0ff6e0f3dbc2b3133dfad37 data/minecraft-the-stories-mod/tags/item/mts_common_weapon_axes.json
+3f813e747d39b2cec1cfee47743b5b52df87cc16 data/minecraft-the-stories-mod/tags/item/mts_common_weapon_bows.json
 e707bed9930427ddc144b172c0d8267814aa0fbb data/minecraft-the-stories-mod/tags/item/mts_common_weapon_spears.json
 f19e92df100aa5cf7bd365258a33a8d50e5334a9 data/minecraft-the-stories-mod/tags/item/mts_common_weapon_swords.json
-f178872d9563ff094f46139e88acf37f96f6b0dd data/minecraft-the-stories-mod/tags/item/mts_common_weapons.json
-01cfc5ab48bbc5fbb56240ad226c5d8d8a52b0a0 data/minecraft-the-stories-mod/tags/item/mts_epic_weapons.json
-503f63785713c9d861a10b50db0ad9c2d2d5b68a data/minecraft-the-stories-mod/tags/item/mts_legendary_weapons.json
+04191625dd9929f7c852103c32bd15fa6b44dfeb data/minecraft-the-stories-mod/tags/item/mts_common_weapons.json
+92a0a7b1006d2834f243e7bd355b41ffd186b3ef data/minecraft-the-stories-mod/tags/item/mts_epic_weapons.json
+2430e0234c76d23cc898aa8e6b2762c22b7d985a data/minecraft-the-stories-mod/tags/item/mts_legendary_weapons.json
 1325f6e9e02f3b5a61e5da8ad30c987af1ae42ee data/minecraft-the-stories-mod/tags/item/mts_rare_weapons.json
 216746b1ecab1cae6c3116dba6f4fb2fc3f6cd1c data/minecraft-the-stories-mod/tags/item/mts_rare_weapons_axes.json
 36fd4dff1240ae969e9c6420f6eb59c256c52e00 data/minecraft-the-stories-mod/tags/item/mts_rare_weapons_swords.json
@@ -13,14 +14,14 @@ ea37f68fb0b1675efaf89d389203e02d05a4367c data/minecraft-the-stories-mod/tags/ite
 d2fdb1ad17a7e493dbe8d30cf2957927d82380a1 data/minecraft-the-stories-mod/tags/item/mts_uncommon_swords.json
 2fc19eb313de05667d1a8fa05bf587837a7df855 data/minecraft-the-stories-mod/tags/item/mts_uncommon_weapons.json
 fec2c49dbf0212dd3f62d59f5a7d7307954460ea data/minecraft-the-stories-mod/tags/item/mts_universal_stick.json
-689be69a986cea978aec51d9b82c600f483a78c9 data/minecraft/tags/item/axes.json
+65fcfd367d3b1148fa666ff24f08b5b481ae4406 data/minecraft/tags/item/axes.json
 592261a88a4e8fa99484594a4034e08b85af5db8 data/minecraft/tags/item/chest_armor.json
-9ebea988cc0099d99fc9b92a7533603176685bda data/minecraft/tags/item/enchantable/bow.json
+83b01cec73e24fa0a2aad77ff412127c323d442c data/minecraft/tags/item/enchantable/bow.json
 c10523c342fde9d2a43c32e25b3e310a8b5cd0f3 data/minecraft/tags/item/foot_armor.json
 489a56c285a4d19dc6eb42202787638d75961d4e data/minecraft/tags/item/head_armor.json
 6fe827e2f0ad08765349df711f4daccacf2c4ccf data/minecraft/tags/item/hoes.json
 9e09b1a3a63123b61755a9691f88e977322e0b3b data/minecraft/tags/item/leg_armor.json
 0e7147b79c684b09ac975baec020543592f5ea5f data/minecraft/tags/item/pickaxes.json
 594670bf1b5988cdf97d3cef4da1bd00d08ecda4 data/minecraft/tags/item/shovels.json
-d60111df2b3d99fdb4c83cb36cbd794acf1325b8 data/minecraft/tags/item/spears.json
-357edd28030dc2b056fd671161391ded8a95b08a data/minecraft/tags/item/swords.json
+ede155c1a31b2fffc331133f0a726e12cc348b67 data/minecraft/tags/item/spears.json
+43919afbcdabcb3c6ab6d01c6dd3c8fb4eb9398e data/minecraft/tags/item/swords.json

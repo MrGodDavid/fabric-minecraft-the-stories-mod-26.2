@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
@@ -104,7 +105,7 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // I wrote the mechanism on my notebook, so I won't forget the logic behind it. Hopefully I will still be able to
         // figure out my notes in the future.
         // ===============================
-        // Number of time wasted: 2h.
+        // Total time has wasted: 2h.
         // ===============================
         tag(BlockTags.NEEDS_IRON_TOOL);
 
@@ -117,20 +118,20 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(STONE_TOPAZ_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE));
 
-        tag(MtsTags.Blocks.NEEDS_TOPAZ_TOOL)
+        tag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL)
                 .add(MtsBlocks.getResourceKey(STONE_TOPAZ_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE))
                 .add(MtsBlocks.getResourceKey(STONE_RUBY_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_RUBY_ORE));
 
-        tag(MtsTags.Blocks.NEEDS_RUBY_TOOL)
+        tag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL)
                 .add(MtsBlocks.getResourceKey(Blocks.ANCIENT_DEBRIS))
                 .add(MtsBlocks.getResourceKey(Blocks.NETHERITE_BLOCK))
                 .add(MtsBlocks.getResourceKey(Blocks.OBSIDIAN))
                 .add(MtsBlocks.getResourceKey(STONE_RUBY_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_RUBY_ORE));
 
-        tag(MtsTags.Blocks.NEEDS_AMETHYST_TOOL)
+        tag(MtsTags.Blocks.NEEDS_STRONG_AMETHYST_TOOL)
                 .add(MtsBlocks.getResourceKey(STONE_AMETHYST_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE));
 
@@ -138,33 +139,57 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(Blocks.DIAMOND_ORE))
                 .add(MtsBlocks.getResourceKey(Blocks.DEEPSLATE_DIAMOND_ORE))
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_TOPAZ_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_RUBY_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_AMETHYST_TOOL);
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_AMETHYST_TOOL);
 
         tag(MtsTags.Blocks.INCORRECT_FOR_EMERALD_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_TOPAZ_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_RUBY_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_AMETHYST_TOOL);
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_AMETHYST_TOOL);
 
         tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
                 .add(MtsBlocks.getResourceKey(Blocks.ANCIENT_DEBRIS))
                 .add(MtsBlocks.getResourceKey(Blocks.NETHERITE_BLOCK))
                 .add(MtsBlocks.getResourceKey(Blocks.OBSIDIAN))
-                .addTag(MtsTags.Blocks.NEEDS_RUBY_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_AMETHYST_TOOL);
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_AMETHYST_TOOL);
 
-        tag(MtsTags.Blocks.INCORRECT_FOR_TOPAZ_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_AMETHYST_TOOL);
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_TOPAZ_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_AMETHYST_TOOL);
 
-        tag(MtsTags.Blocks.INCORRECT_FOR_RUBY_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_AMETHYST_TOOL);
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_RUBY_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_AMETHYST_TOOL);
 
         tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
 
-        tag(MtsTags.Blocks.INCORRECT_FOR_AMETHYST_TOOL);
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_AMETHYST_TOOL);
 
         // ######################################### NO TOUCHING ZONE END ################################################
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_DIAMOND_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL);
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_EMERALD_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL);
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_IRON_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_GOLD_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_DIAMOND_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_EMERALD_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_IRON_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_GOLD_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
     }
 }

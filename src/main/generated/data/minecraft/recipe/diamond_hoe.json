@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "diamond_hoe",
+  "key": {
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
+    "X": "minecraft:diamond"
+  },
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft:diamond_hoe"
+  }
+}

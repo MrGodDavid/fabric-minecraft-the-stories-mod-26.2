@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "golden_sword",
+  "key": {
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
+    "X": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "result": {
+    "id": "minecraft:golden_sword"
+  }
+}

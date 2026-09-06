@@ -3,14 +3,18 @@ package net.mrgoddavid.minecraftthestoriesmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 
+import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
 import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
@@ -47,9 +51,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         moveAxesToTiers();
         moveSwordsToTiers();
         moveSpearsToTiers();
-
-        tag(ItemTags.BOW_ENCHANTABLE)
-                .add(MtsItems.getResourceKey(ACACIA_BOW));
+        moveBowsToTiers();
 
         tag(MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                 .add(MtsItems.getResourceKey(Items.STICK))
@@ -64,8 +66,9 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(MtsTags.Items.MTS_COMMON_WEAPONS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)
-                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)
-                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS);
+                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_BOWS)
+                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)
+                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS);
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_AXES)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)
@@ -77,10 +80,10 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(HAMMER_OF_CRAFTER));
 
         tag(MtsTags.Items.MTS_EPIC_WEAPONS)
-                .add(MtsItems.getResourceKey(STRONG_RUBY_SWORD));
+                .add(MtsItems.getResourceKey(BROKEN_IRON_PICKAXE));
 
         tag(MtsTags.Items.MTS_LEGENDARY_WEAPONS)
-                .add(MtsItems.getResourceKey(STRONG_AMETHYST_SWORD));
+                .add(MtsItems.getResourceKey(BROKEN_DIAMOND_PICKAXE));
 
         tag(ItemTags.HOES)
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_HOE))
@@ -123,20 +126,32 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
     }
 
     /**
+     * Removes Bow from tag {@code BOW_ENCHANTABLE}.
+     * <p>Adds Acacia Bow, Birch Bow, Cherry Bow, Dark Oak Bow, Jungle Bow, Mangrove Bow, (Oak) Bow, Pale Oak Bow, and
+     * Spruce Bow to tag {@code MTS_COMMON_WEAPONS_BOWS}.</p>
+     * <p>Adds tag {@code MTS_COMMON_WEAPONS_BOWS} to tag {@code BOW_ENCHANTABLE}.</p>
+     */
+    private void moveBowsToTiers() {
+        tag(MtsTags.Items.MTS_COMMON_WEAPONS_BOWS)
+                .add(MtsItems.getResourceKey(Items.BOW))
+                .add(MtsItems.getResourceKey(ACACIA_BOW))
+                .add(MtsItems.getResourceKey(BIRCH_BOW))
+                .add(MtsItems.getResourceKey(CHERRY_BOW))
+                .add(MtsItems.getResourceKey(DARK_OAK_BOW))
+                .add(MtsItems.getResourceKey(JUNGLE_BOW))
+                .add(MtsItems.getResourceKey(MANGROVE_BOW))
+                .add(MtsItems.getResourceKey(PALE_OAK_BOW))
+                .add(MtsItems.getResourceKey(SPRUCE_BOW));
+        tag(ItemTags.BOW_ENCHANTABLE)
+                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_BOWS);
+    }
+
+    /**
      * Moves Wooden Spear, Stone Spear, Iron Spear, Golden Spear, Diamond Spear, and Copper Spear from {@code SPEARS} to
      * {@code MTS_COMMON_WEAPONS_SPEARS}. Then adds {@code MTS_COMMON_WEAPONS_SPEARS} to {@code SPEARS}.
      * <p>Moves Netherite Spear from {@code SPEARS} to {@code MTS_UNCOMMON_WEAPONS_SPEARS}</p>
      */
     private void moveSpearsToTiers() {
-        tag(ItemTags.SPEARS)
-                .remove(MtsItems.getResourceKey(Items.WOODEN_SPEAR))
-                .remove(MtsItems.getResourceKey(Items.STONE_SPEAR))
-                .remove(MtsItems.getResourceKey(Items.IRON_SPEAR))
-                .remove(MtsItems.getResourceKey(Items.GOLDEN_SPEAR))
-                .remove(MtsItems.getResourceKey(Items.DIAMOND_SPEAR))
-                .remove(MtsItems.getResourceKey(Items.COPPER_SPEAR))
-                .remove(MtsItems.getResourceKey(Items.NETHERITE_SPEAR));
-
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)
                 .add(MtsItems.getResourceKey(Items.WOODEN_SPEAR))
                 .add(MtsItems.getResourceKey(Items.STONE_SPEAR))
@@ -164,15 +179,6 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      * <p>Adds {@code DIAMOND_BATTLE_AXE} to {@code MTS_UNCOMMON_WEAPONS_SWORDS}.</p>
      */
     private void moveSwordsToTiers() {
-        tag(ItemTags.SWORDS)
-                .remove(MtsItems.getResourceKey(Items.WOODEN_SWORD))
-                .remove(MtsItems.getResourceKey(Items.STONE_SWORD))
-                .remove(MtsItems.getResourceKey(Items.IRON_SWORD))
-                .remove(MtsItems.getResourceKey(Items.GOLDEN_SWORD))
-                .remove(MtsItems.getResourceKey(Items.DIAMOND_SWORD))
-                .remove(MtsItems.getResourceKey(Items.COPPER_SWORD))
-                .remove(MtsItems.getResourceKey(Items.NETHERITE_SWORD));
-
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)
                 .add(MtsItems.getResourceKey(Items.WOODEN_SWORD))
                 .add(MtsItems.getResourceKey(Items.STONE_SWORD))
@@ -180,12 +186,14 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(Items.GOLDEN_SWORD))
                 .add(MtsItems.getResourceKey(Items.DIAMOND_SWORD))
                 .add(MtsItems.getResourceKey(Items.COPPER_SWORD));
+
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)
                 .add(MtsItems.getResourceKey(Items.NETHERITE_SWORD))
                 .add(MtsItems.getResourceKey(EMERALD_SWORD))
                 .add(MtsItems.getResourceKey(STRONG_TOPAZ_SWORD))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_SWORD))
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_SWORD));
+
         tag(MtsTags.Items.MTS_RARE_WEAPONS_SWORDS)
                 .add(MtsItems.getResourceKey(STRONG_IRON_LONG_KNIFE))
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_LONG_KNIFE));
@@ -204,15 +212,6 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      * <p>Adds Diamond Battle Axe to Uncommon Weapon Axes</p>
      */
     private void moveAxesToTiers() {
-        tag(ItemTags.AXES)
-                .remove(MtsItems.getResourceKey(Items.WOODEN_AXE))
-                .remove(MtsItems.getResourceKey(Items.STONE_AXE))
-                .remove(MtsItems.getResourceKey(Items.IRON_AXE))
-                .remove(MtsItems.getResourceKey(Items.GOLDEN_AXE))
-                .remove(MtsItems.getResourceKey(Items.DIAMOND_AXE))
-                .remove(MtsItems.getResourceKey(Items.COPPER_AXE))
-                .remove(MtsItems.getResourceKey(Items.NETHERITE_AXE));
-
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)
                 .add(MtsItems.getResourceKey(Items.WOODEN_AXE))
                 .add(MtsItems.getResourceKey(Items.STONE_AXE))

@@ -193,11 +193,16 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_BOOTS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
         itemModelGenerators.declareCustomModelItem(HAMMER_OF_CRAFTER);
+
         itemModelGenerators.declareCustomModelItem(STRONG_IRON_LONG_KNIFE);
-        itemModelGenerators.declareCustomModelItem(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
-        itemModelGenerators.declareCustomModelItem(STRONG_AMETHYST_LONG_KNIFE);
+        itemModelGenerators.declareCustomModelItem(STRONG_IRON_ZEN_STAFF);
 
         itemModelGenerators.itemModelOutput.accept(STRONG_DIAMOND_BATTLE_AXE, ItemModelUtils.plainModel(getScale2xModelId(itemModelGenerators, STRONG_DIAMOND_BATTLE_AXE)));
+        itemModelGenerators.declareCustomModelItem(STRONG_DIAMOND_CROP);
+        itemModelGenerators.declareCustomModelItem(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
+
+        itemModelGenerators.declareCustomModelItem(STRONG_AMETHYST_LONG_KNIFE);
+
 
         itemModelGenerators.generateFlatItem(ACACIA_STICK, flatItemTemplate);
         itemModelGenerators.generateFlatItem(BIRCH_STICK, flatItemTemplate);
@@ -236,7 +241,7 @@ public class MtsModelProvider extends FabricModelProvider {
                         bowItem,
                         ItemModelUtils.conditional(
                                 ItemModelUtils.isUsingItem(),
-                                ItemModelUtils.rangeSelect(new UseDuration(false), 1F / bowItem.getChargeDuration(), pulling0, ItemModelUtils.override(pulling1, 0.65F), ItemModelUtils.override(pulling2, 0.9F)),
+                                ItemModelUtils.rangeSelect(new UseDuration(false), 1F / bowItem.chargeDuration(), pulling0, ItemModelUtils.override(pulling1, 0.65F), ItemModelUtils.override(pulling2, 0.9F)),
                                 bowModel
                         )
                 );

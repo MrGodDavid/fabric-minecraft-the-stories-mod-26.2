@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "diamond_shovel",
+  "key": {
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
+    "X": "minecraft:diamond"
+  },
+  "pattern": [
+    "X",
+    "#",
+    "#"
+  ],
+  "result": {
+    "id": "minecraft:diamond_shovel"
+  }
+}

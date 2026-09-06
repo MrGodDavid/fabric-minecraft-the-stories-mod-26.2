@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "copper_pickaxe",
+  "key": {
+    "#": "#minecraft-the-stories-mod:mts_universal_stick",
+    "X": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "id": "minecraft:copper_pickaxe"
+  }
+}

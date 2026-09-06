@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "mangrove_sign",
+  "key": {
+    "P": "minecraft:mangrove_planks",
+    "S": "minecraft-the-stories-mod:mangrove_stick"
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    " S "
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:mangrove_sign"
+  }
+}

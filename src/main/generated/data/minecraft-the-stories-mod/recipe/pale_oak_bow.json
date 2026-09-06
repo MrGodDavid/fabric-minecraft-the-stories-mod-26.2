@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "pale_oak_bow",
+  "key": {
+    "I": "minecraft:string",
+    "S": "minecraft-the-stories-mod:pale_oak_stick"
+  },
+  "pattern": [
+    " SI",
+    "S I",
+    " SI"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:pale_oak_bow"
+  }
+}

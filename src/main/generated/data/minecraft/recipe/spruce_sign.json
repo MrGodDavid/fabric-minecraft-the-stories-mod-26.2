@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "spruce_sign",
+  "key": {
+    "P": "minecraft:spruce_planks",
+    "S": "minecraft-the-stories-mod:spruce_stick"
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    " S "
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:spruce_sign"
+  }
+}
