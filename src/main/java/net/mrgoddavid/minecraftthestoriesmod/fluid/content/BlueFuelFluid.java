@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.fluid.custom;
+package net.mrgoddavid.minecraftthestoriesmod.fluid.content;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,12 +9,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,38 +29,46 @@ import net.minecraft.world.level.material.FluidState;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
-import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
 
-public abstract class EnricherWasteFluid extends FlowingFluid {
+/**
+ * Blue Fluid.
+ *
+ * @author Mr. GodDavid
+ * @since 8/29/2026
+ */
+public abstract class BlueFuelFluid extends FlowingFluid {
+
+    @Override
+    protected BlockState createLegacyBlock(FluidState fluidState) {
+        return MtsBlocks.BLUE_FUEL_FLUID.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
+    }
 
     @Override
     public Fluid getFlowing() {
-        return MtsFluids.ENRICHER_WASTE_FLOWING;
+        return MtsFluids.BLUE_FUEL_FLOWING;
     }
 
+    @Override
     public Fluid getSource() {
-        return MtsFluids.ENRICHER_WASTE_STILL;
+        return MtsFluids.BLUE_FUEL_STILL;
     }
 
+    @Override
     public Item getBucket() {
-        return MtsItems.ENRICHER_WASTE_BUCKET;
+        return MtsItems.BLUE_FUEL_BUCKET;
     }
 
     @Override
     public boolean isSame(Fluid other) {
-        return other == MtsFluids.ENRICHER_WASTE_FLOWING || other == MtsFluids.ENRICHER_WASTE_STILL;
-    }
-
-    public BlockState createLegacyBlock(final FluidState fluidState) {
-        return MtsBlocks.ENRICHER_WASTE_FLUID.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
+        return other == MtsFluids.BLUE_FUEL_FLOWING || other == MtsFluids.BLUE_FUEL_STILL;
     }
 
     @Override
-    public void animateTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
+    protected void animateTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
         if (!fluidState.isSource() && !(Boolean) fluidState.getValue(FALLING)) {
             if (random.nextInt(64) == 0) {
                 level.playLocalSound(
@@ -76,9 +81,9 @@ public abstract class EnricherWasteFluid extends FlowingFluid {
                         random.nextFloat() + 0.5f,
                         false);
             }
-        } else if (random.nextInt(1) == 0) {
+        } else if (random.nextInt(10) == 0) {
             level.addParticle(
-                    MtsParticleTypes.ENRICHER_WASTE_PARTICLE,
+                    ParticleTypes.UNDERWATER,
                     pos.getX() + random.nextDouble(),
                     pos.getY() + random.nextDouble(),
                     pos.getZ() + random.nextDouble(),
@@ -106,21 +111,10 @@ public abstract class EnricherWasteFluid extends FlowingFluid {
     @Override
     protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
         effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
-
-        if (!(level instanceof ServerLevel server) || !(entity instanceof LivingEntity livingEntity)) {
-            return;
-        }
-
-        if (level.getGameTime() % 20 == 0) {
-            // Hurt and wither entities inside this fluid.
-            livingEntity.hurtServer(server, level.damageSources().magic(), 2.0f); // 1 heart / sec
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 450, -3));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 300, -3));
-        }
     }
 
     @Override
-    protected int getSlopeFindDistance(LevelReader world) {
+    protected int getSlopeFindDistance(LevelReader level) {
         return 4;
     }
 
@@ -131,17 +125,17 @@ public abstract class EnricherWasteFluid extends FlowingFluid {
 
     @Override
     public int getTickDelay(LevelReader level) {
-        return 10;
+        return 15;
     }
 
     @Override
     protected boolean canBeReplacedWith(FluidState state, BlockGetter level, BlockPos pos, Fluid other, Direction direction) {
-        return direction == Direction.DOWN && !other.is(MtsTags.Fluids.ENRICHER_WASTE);
+        return direction == Direction.DOWN && !other.is(MtsTags.Fluids.BLUE_FUEL);
     }
 
     @Override
     protected float getExplosionResistance() {
-        return 150.0f;
+        return 125.0f;
     }
 
     @Override
@@ -149,7 +143,7 @@ public abstract class EnricherWasteFluid extends FlowingFluid {
         return Optional.of(SoundEvents.BUCKET_FILL);
     }
 
-    public static class Flowing extends EnricherWasteFluid {
+    public static class Flowing extends BlueFuelFluid {
 
         @Override
         protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
@@ -168,7 +162,7 @@ public abstract class EnricherWasteFluid extends FlowingFluid {
         }
     }
 
-    public static class Source extends EnricherWasteFluid {
+    public static class Source extends BlueFuelFluid {
 
         @Override
         public boolean isSource(FluidState fluidState) {

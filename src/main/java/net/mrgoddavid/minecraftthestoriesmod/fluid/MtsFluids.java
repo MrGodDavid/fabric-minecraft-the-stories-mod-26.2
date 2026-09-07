@@ -8,8 +8,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.fluid.custom.BlueFuelFluid;
-import net.mrgoddavid.minecraftthestoriesmod.fluid.custom.EnricherWasteFluid;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.content.BlueFuelFluid;
+import net.mrgoddavid.minecraftthestoriesmod.fluid.content.EnricherWasteFluid;
 
 /**
  * @author Mr. GodDavid

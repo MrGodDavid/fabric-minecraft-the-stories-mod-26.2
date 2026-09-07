@@ -1,13 +1,11 @@
-package net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.custom;
+package net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.advancements.triggers.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 
 import java.util.Optional;
