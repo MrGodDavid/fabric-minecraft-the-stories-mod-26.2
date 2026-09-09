@@ -4,14 +4,14 @@ import net.fabricmc.fabric.api.menu.v1.ExtendedMenuType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterMenu;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherMenu;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorMenu;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterMenu;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 public class MtsMenuTypes {
 
@@ -22,12 +22,12 @@ public class MtsMenuTypes {
 
     private static <T extends AbstractContainerMenu> MenuType<T> register(final String path, ExtendedMenuType.ExtendedFactory<T, BlockPos> factory) {
         return Registry.register(BuiltInRegistries.MENU,
-                Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path),
+                Constants.modId(path),
                 new ExtendedMenuType<>(factory, BlockPos.STREAM_CODEC)
         );
     }
 
-    public static void registerMenuTypes() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering Menu Types for " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("MTS Menu Types");
     }
 }

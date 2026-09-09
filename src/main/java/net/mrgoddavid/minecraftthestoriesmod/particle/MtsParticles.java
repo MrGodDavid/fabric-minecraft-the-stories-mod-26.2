@@ -4,8 +4,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * @author Mr. GodDavid
@@ -13,14 +13,14 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
  */
 public class MtsParticles {
 
-    public static void registerParticles() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering custom particles for " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("MTS Particles");
 
         registerParticle("enricher_waste_particle", MtsParticleTypes.ENRICHER_WASTE_PARTICLE);
     }
 
     private static <T extends ParticleType<SimpleParticleType>> void registerParticle(final String name, final T particle) {
-        Registry.register(BuiltInRegistries.PARTICLE_TYPE, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name), particle);
+        Registry.register(BuiltInRegistries.PARTICLE_TYPE, Constants.modId(name), particle);
     }
 
     private MtsParticles() throws IllegalAccessException {

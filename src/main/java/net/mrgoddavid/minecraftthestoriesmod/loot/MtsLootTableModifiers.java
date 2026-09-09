@@ -21,6 +21,7 @@ import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -78,7 +79,7 @@ public class MtsLootTableModifiers {
     }
 
     private static boolean matches(ResourceKey<LootTable> key, final String targetBlockPath) {
-        return key.identifier().equals(Identifier.withDefaultNamespace(targetBlockPath));
+        return key.identifier().equals(Constants.defaultId(targetBlockPath));
     }
 
     public static void modifyLootTables(ResourceKey<LootTable> key, FabricLootTableBuilder builder, LootTableSource tableSource, HolderLookup.Provider provider) {
@@ -103,7 +104,7 @@ public class MtsLootTableModifiers {
                                                     final float minimumCountOfDropping,
                                                     final float maximumCountOfDropping
     ) {
-        if (addedLoot != null && key.identifier().equals(Identifier.withDefaultNamespace(targetMobPath))) {
+        if (addedLoot != null && key.identifier().equals(Constants.defaultId(targetMobPath))) {
             LootPool.Builder poolBuilder = LootPool.lootPool()
                     .setRolls(constantOf(maxNumOfItems))
                     .when(chanceOfDroppingIs(probability))
@@ -142,7 +143,7 @@ public class MtsLootTableModifiers {
                                                       final float minimumCountOfDropping,
                                                       final float maximumCountOfDropping
     ) {
-        if (addedLoot != null && key.identifier().equals(Identifier.withDefaultNamespace(targetBlockPath))) {
+        if (addedLoot != null && key.identifier().equals(Constants.defaultId(targetBlockPath))) {
             LootPool.Builder poolBuilder = LootPool.lootPool()
                     .setRolls(constantOf(maxNumOfItems))
                     .when(chanceOfDroppingIs(probability))

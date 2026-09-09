@@ -9,6 +9,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
@@ -189,7 +190,7 @@ public class CreativeModeTabs {
                     .build()
     );
 
-    public static void registerModCreativeModeTabs() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering Creative Mode Tabs for " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("Creative Mode Tabs");
     }
 }

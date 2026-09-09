@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.LevelData;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * Server of Mts Test World.
@@ -21,6 +22,7 @@ public class MtsTestWorldServer {
     }
 
     public static void register() {
+        MtsLogger.info("Test World Server");
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {
             if (!server.getWorldData().getLevelName().equals(MtsTestWorldContext.WORLD_NAME)) {
                 return;

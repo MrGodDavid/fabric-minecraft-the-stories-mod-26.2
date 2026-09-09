@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 /**
  * Custom mod tags for grouping blocks, items, or entities. It just makes our life easier.
@@ -15,6 +16,17 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
  * @since 8/14/2026
  */
 public final class MtsTags {
+
+    public static class Entities {
+
+        public static final TagKey<Item> AGRO_BROWN_BEAR_ITEMS = createTag("agro_brown_bear_items");
+        public static final TagKey<Item> BREED_BROWN_BEAR_ITEMS = createTag("breed_brown_bear_items");
+
+        private static TagKey<Item> createTag(final String name) {
+            Identifier identifier = Constants.modId(name);
+            return TagKey.create(Registries.ITEM, identifier);
+        }
+    }
 
     /**
      * Mod tags for recipes.
@@ -27,7 +39,7 @@ public final class MtsTags {
         public static final TagKey<Item> MTS_UNIVERSAL_STICK = createTag("mts_universal_stick");
 
         private static TagKey<Item> createTag(final String name) {
-            Identifier identifier = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+            Identifier identifier = Constants.modId(name);
             return TagKey.create(Registries.ITEM, identifier);
         }
     }
@@ -44,7 +56,7 @@ public final class MtsTags {
         public static final TagKey<Fluid> BLUE_FUEL = createTag("blue_fuel");
 
         private static TagKey<Fluid> createTag(final String name) {
-            return TagKey.create(Registries.FLUID, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name));
+            return TagKey.create(Registries.FLUID, Constants.modId(name));
         }
     }
 
@@ -84,7 +96,7 @@ public final class MtsTags {
         public static final TagKey<Block> INCORRECT_FOR_STRONG_EMERALD_TOOL = createTag("incorrect_for_strong_emerald_tool");
 
         private static TagKey<Block> createTag(final String name) {
-            Identifier identifier = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+            Identifier identifier = Constants.modId(name);
             return TagKey.create(Registries.BLOCK, identifier);
         }
     }
@@ -125,7 +137,7 @@ public final class MtsTags {
         public static final TagKey<Item> STRONG_EMERALD_REPAIR = createTag("strong_emerald_repair");
 
         private static TagKey<Item> createTag(final String name) {
-            Identifier identifier = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+            Identifier identifier = Constants.modId(name);
             return TagKey.create(Registries.ITEM, identifier);
         }
     }

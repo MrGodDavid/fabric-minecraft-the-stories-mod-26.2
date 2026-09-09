@@ -2,13 +2,13 @@ package net.mrgoddavid.minecraftthestoriesmod.recipe;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher.EnricherRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.super_crafter.SuperCrafterRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * @author Mr. GodDavid
@@ -34,14 +34,14 @@ public class MtsRecipes {
     });
 
     private static <T extends Recipe<?>> RecipeType<T> registerRecipeType(String path, RecipeType<T> recipeType) {
-        return Registry.register(BuiltInRegistries.RECIPE_TYPE, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path), recipeType);
+        return Registry.register(BuiltInRegistries.RECIPE_TYPE, Constants.modId(path), recipeType);
     }
 
     private static <T extends Recipe<?>> RecipeSerializer<T> registerRecipeSerializer(final String name, RecipeSerializer<T> recipeSerializer) {
-        return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name), recipeSerializer);
+        return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Constants.modId(name), recipeSerializer);
     }
 
     public static void register() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering custom recipes for " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("MTS Recipes");
     }
 }

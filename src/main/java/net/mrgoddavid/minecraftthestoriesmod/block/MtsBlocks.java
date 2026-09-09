@@ -16,6 +16,8 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 import java.util.function.Function;
 
@@ -160,7 +162,7 @@ public class MtsBlocks {
      * @param block the instance of mod block.
      */
     private static void registerModBlockItem(String name, Block block) {
-        Identifier id = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+        Identifier id = Constants.modId(name);
         Registry.register(BuiltInRegistries.ITEM, id,
                 new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
                         .setId(ResourceKey.create(Registries.ITEM, id))));
@@ -169,8 +171,8 @@ public class MtsBlocks {
     /**
      * The initializer method of this class.
      */
-    public static void registerModBlocks() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering Mod Blocks for: " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("MTS Blocks");
     }
 
     /**

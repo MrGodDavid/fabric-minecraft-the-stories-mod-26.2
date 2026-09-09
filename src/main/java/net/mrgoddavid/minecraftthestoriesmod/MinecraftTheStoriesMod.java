@@ -9,6 +9,9 @@ import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
+import net.mrgoddavid.minecraftthestoriesmod.entity.MtsEntityTypes;
+import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityModelLayers;
+import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityRenderers;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsEntityFluidInteractions;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
@@ -46,20 +49,25 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsTestWorldServer.register();
         MtsScreenTextures.register();
 
-        MtsParticleTypes.registerParticleTypes();
-        MtsParticles.registerParticles();
-        MtsFluids.registerFluids();
-        MtsEntityFluidInteractions.registerInteractions();
+        MtsParticleTypes.register();
+        MtsParticles.register();
+        MtsFluids.register();
+        MtsEntityFluidInteractions.register();
 
-        CreativeModeTabs.registerModCreativeModeTabs();
-        MtsItemModelTemplates.registerTemplates();
-        MtsMenuTypes.registerMenuTypes();
+        MtsEntityTypes.register();
+        MtsEntityTypes.registerAttributes();
+        MtsEntityModelLayers.register();
+        MtsEntityRenderers.register();
+
+        CreativeModeTabs.register();
+        MtsItemModelTemplates.register();
+        MtsMenuTypes.register();
         MtsRecipes.register();
-        MtsItems.registerModItems();
-        MtsBlocks.registerModBlocks();
-        MtsBlockEntities.registerBlockEntities();
+        MtsItems.register();
+        MtsBlocks.register();
+        MtsBlockEntities.register();
         MtsAdvancementTriggers.register();
-        MtsWorldGen.registerWorldGen();
+        MtsWorldGen.register();
 
         LootTableEvents.REPLACE.register(MtsLootTableModifiers::replaceLootTables);
         LootTableEvents.MODIFY.register(MtsLootTableModifiers::modifyLootTables);

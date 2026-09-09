@@ -1,7 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.block.screen;
 
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * This class holds a collection of texture paths of MTS mod.
@@ -23,7 +24,7 @@ public class MtsScreenTextures {
     public static final Identifier ORE_COMPRESSOR_BLUE_FUEL_BAR = registerTexturePath("ore_compressor", "ore_compressor_blue_fuel_bar");
 
     private static Identifier registerTexturePath(final String block, final String name) {
-        return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path(block, name));
+        return Constants.modId(path(block, name));
     }
 
     private static String path(final String block, final String name) {
@@ -31,7 +32,7 @@ public class MtsScreenTextures {
     }
 
     public static void register() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering Mts Screen Textures for " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Screen Textures");
     }
 
     private MtsScreenTextures() throws IllegalAccessException {

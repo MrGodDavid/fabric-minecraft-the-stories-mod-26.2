@@ -3,13 +3,13 @@ package net.mrgoddavid.minecraftthestoriesmod.fluid;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.content.BlueFuelFluid;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.content.EnricherWasteFluid;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * @author Mr. GodDavid
@@ -24,7 +24,7 @@ public class MtsFluids {
 
     private static FlowingFluid createFluid(String name, FlowingFluid fluid) {
         return Registry.register(BuiltInRegistries.FLUID, ResourceKey.create(
-                Registries.FLUID, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name)
+                Registries.FLUID, Constants.modId(name)
         ), fluid);
     }
 
@@ -32,8 +32,8 @@ public class MtsFluids {
         throw new IllegalAccessException("You can't instantiate MtsFluids!");
     }
 
-    public static void registerFluids() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering MtsFluids for: " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("MTS Fluids");
     }
 
     public static ResourceKey<Fluid> getResourceKey(Fluid fluid) {

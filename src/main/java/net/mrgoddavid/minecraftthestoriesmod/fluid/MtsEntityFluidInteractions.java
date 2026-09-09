@@ -2,11 +2,9 @@ package net.mrgoddavid.minecraftthestoriesmod.fluid;
 
 import net.fabricmc.fabric.api.registry.fluid.EntityFluidInteractionRegistry;
 import net.fabricmc.fabric.api.registry.fluid.FluidBehavior;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * @author Mr. GodDavid
@@ -14,8 +12,8 @@ import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
  */
 public class MtsEntityFluidInteractions {
 
-    public static void registerInteractions() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering custom entity fluid interactions for " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("MTS Entity Fluid Interactions");
 
         EntityFluidInteractionRegistry.register(MtsTags.Fluids.ENRICHER_WASTE,
                 FluidBehavior.simple().onEnteredFluid((

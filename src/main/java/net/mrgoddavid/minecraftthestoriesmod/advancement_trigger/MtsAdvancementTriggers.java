@@ -3,10 +3,10 @@ package net.mrgoddavid.minecraftthestoriesmod.advancement_trigger;
 import net.minecraft.advancements.triggers.CriterionTrigger;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.EnteredVillageWithFullEmeraldArmorTrigger;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.MineBlockWithToolTrigger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * Triggers of MTS advancements.
@@ -20,10 +20,10 @@ public class MtsAdvancementTriggers {
     public static final EnteredVillageWithFullEmeraldArmorTrigger ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER = register("enter_village_with_full_emerald_armor", new EnteredVillageWithFullEmeraldArmorTrigger());
 
     private static <T extends CriterionTrigger<?>> T register(final String name, T trigger) {
-        return Registry.register(BuiltInRegistries.TRIGGER_TYPES, Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name), trigger);
+        return Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.modId( name), trigger);
     }
 
     public static void register(){
-        MinecraftTheStoriesMod.LOGGER.info("Registering MtsAdvancementTriggers for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("MTS Advancement Triggers");
     }
 }

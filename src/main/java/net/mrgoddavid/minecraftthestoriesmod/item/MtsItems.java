@@ -8,9 +8,10 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 import java.util.function.Function;
 
@@ -284,7 +285,7 @@ public class MtsItems {
      * @return the registered Item.
      */
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
-        Identifier id = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+        Identifier id = Constants.modId( name);
         ResourceKey<Item> resourceKey = ResourceKey.create(Registries.ITEM, id);
         return Registry.register(
                 BuiltInRegistries.ITEM, id,
@@ -295,8 +296,8 @@ public class MtsItems {
     /**
      * Registers all mod items to vanilla Minecraft.
      */
-    public static void registerModItems() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering Mod Items for " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("MTS Items");
 
         // put the items to the creative mode tab -> ingredients tab.
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(fabricCreativeModeTabOutput -> {

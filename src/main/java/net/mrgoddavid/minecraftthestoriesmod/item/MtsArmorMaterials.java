@@ -1,14 +1,13 @@
 package net.mrgoddavid.minecraftthestoriesmod.item;
 
 import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 /**
  * Mts Armor materials.
@@ -19,7 +18,7 @@ import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 public class MtsArmorMaterials {
 
     public static final ResourceKey<? extends Registry<EquipmentAsset>> ARMOR_MATERIAL_REGISTRY_KEY =
-            ResourceKey.createRegistryKey(Identifier.withDefaultNamespace("equipment_asset"));
+            ResourceKey.createRegistryKey(Constants.defaultId("equipment_asset"));
 
     public static final ResourceKey<EquipmentAsset> EMERALD_KEY = createArmorMaterialKey("emerald");
     public static final ResourceKey<EquipmentAsset> TOPAZ_KEY = createArmorMaterialKey("topaz");
@@ -44,8 +43,6 @@ public class MtsArmorMaterials {
     );
 
     private static ResourceKey<EquipmentAsset> createArmorMaterialKey(final String path) {
-        return ResourceKey.create(ARMOR_MATERIAL_REGISTRY_KEY, Identifier.fromNamespaceAndPath(
-                MinecraftTheStoriesMod.MOD_ID, path
-        ));
+        return ResourceKey.create(ARMOR_MATERIAL_REGISTRY_KEY, Constants.modId(path));
     }
 }

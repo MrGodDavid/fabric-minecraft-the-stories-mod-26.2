@@ -2,14 +2,14 @@ package net.mrgoddavid.minecraftthestoriesmod.worldgen;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * World generation for Minecraft: The Stories mod.
@@ -34,17 +34,17 @@ public class MtsWorldGen {
     public static final ResourceKey<PlacedFeature> STONE_RUBY_OVERWORLD_ORE_PLACED = placedFeatureRK("stone_ruby_overworld_ore_placed");
 
     private static ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureRK(String name) {
-        Identifier id = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+        Identifier id = Constants.modId(name);
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, id);
     }
 
     private static ResourceKey<PlacedFeature> placedFeatureRK(String name) {
-        Identifier id = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+        Identifier id = Constants.modId(name);
         return ResourceKey.create(Registries.PLACED_FEATURE, id);
     }
 
-    public static void registerWorldGen() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering World Gen for " + MinecraftTheStoriesMod.MOD_ID);
+    public static void register() {
+        MtsLogger.info("World Gen");
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.STONE_AMETHYST_OVERWORLD_ORE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.DEEPSLATE_AMETHYST_OVERWORLD_ORE_PLACED);
