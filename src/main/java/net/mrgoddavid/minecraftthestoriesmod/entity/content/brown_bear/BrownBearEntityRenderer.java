@@ -38,5 +38,6 @@ public class BrownBearEntityRenderer extends MobRenderer<BrownBearEntity, BrownB
         state.tameAnimationState.copyFrom(entity.tameAnimationState);
         state.sitAnimationState.copyFrom(entity.sitAnimationState);
         state.standAnimationState.copyFrom(entity.standAnimationState);
+        state.animateWalkingAnimationWhenRiding = entity.animateWalkingAnimationWhenRiding;
     }
 }

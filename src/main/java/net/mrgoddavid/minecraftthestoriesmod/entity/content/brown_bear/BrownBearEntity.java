@@ -5,6 +5,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
@@ -21,12 +22,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.entity.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-
-import java.util.Optional;
 
 /**
  * @author Mr. GodDavid
@@ -48,9 +49,18 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     public final AnimationState standAnimationState = new AnimationState();
     private boolean pendingSitAnimation;
     private static final byte ATTACK_EVENT = 100;
+    private static final byte STAND_EVENT = 99;
+    private static final EntityDataAccessor<Boolean> DATA_CHARGING = SynchedEntityData.defineId(BrownBearEntity.class, EntityDataSerializers.BOOLEAN);
+    public boolean animateWalkingAnimationWhenRiding;
 
     public BrownBearEntity(EntityType<? extends BrownBearEntity> type, Level level) {
         super(type, level);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder entityData) {
+        super.defineSynchedData(entityData);
+        entityData.define(DATA_CHARGING, false);
     }
 
     @Override
@@ -60,7 +70,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         this.goalSelector.addGoal(1, new TamableAnimalPanicGoal(1.25, DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES));
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
-        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(4, new BrownBearEntity.BrownBearAttackGoal(this, this.chargeSpeedModifier(), true));
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.0, 10.0F, 2.0F));
         this.goalSelector.addGoal(6, new BreedGoal(this, 1.0));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
@@ -90,14 +100,19 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         if (!this.level().isClientSide()) {
             if (!isTame() && !isBaby() && isItemCorrect) {
                 itemStack.consume(1, player);
-
-                tame(player);
-                setOrderedToSit(true);
-                level().broadcastEntityEvent(this, EntityEvent.TAMING_SUCCEEDED);
+                tryToTame(player);
                 return InteractionResult.SUCCESS;
-            } else if (isTame()) {
+
+            }
+            if (isTame() && isOwnedBy(player)) {
+                if (this.getPassengers().isEmpty()) {
+                    this.setOrderedToSit(false);
+                    player.startRiding(this);
+                    return InteractionResult.SUCCESS;
+                }
+
                 InteractionResult result = super.mobInteract(player, hand);
-                if (result.consumesAction() || !isOwnedBy(player)) {
+                if (result.consumesAction()) {
                     return result;
                 }
 
@@ -110,6 +125,75 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     }
 
     @Override
+    protected boolean isLocalClientAuthoritative() {
+        return this.getControllingPassenger() instanceof Player;
+    }
+
+    @Override
+    public @Nullable LivingEntity getControllingPassenger() {
+        return this.getFirstPassenger() instanceof Player player ? player : null;
+    }
+
+    @Override
+    protected void tickRidden(Player controller, Vec3 riddenInput) {
+        super.tickRidden(controller, riddenInput);
+
+        Vec2 rotation = this.getRiddenRotation(controller);
+        this.setRot(rotation.y, rotation.x);
+        this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
+    }
+
+    @Override
+    protected void positionRider(Entity passenger, MoveFunction moveFunction) {
+        super.positionRider(passenger, moveFunction);
+        double backwardsOffset = 0.25d;
+        double radians = Math.toRadians(this.getYRot());
+
+        double x = passenger.getX() + Math.sin(radians) * backwardsOffset;
+        double z = passenger.getZ() - Math.cos(radians) * backwardsOffset;
+
+        passenger.setPos(x, this.getY() + this.getBbHeight() * 0.9D, z);
+    }
+
+    @Override
+    protected Vec3 getRiddenInput(Player controller, Vec3 selfInput) {
+        float sideways = controller.xxa * 0.5F;
+        float forward = controller.zza;
+        if (forward <= 0.0F) {
+            forward *= 0.25F;
+        }
+        return new Vec3(sideways, 0.0, forward);
+    }
+
+    @Override
+    protected float getRiddenSpeed(Player controller) {
+        return (float) this.getAttribute(Attributes.MOVEMENT_SPEED).getValue();
+    }
+
+    private Vec2 getRiddenRotation(LivingEntity controller) {
+        return new Vec2(controller.getXRot() * 0.5F, controller.getYRot());
+    }
+
+    @Override
+    public void travel(Vec3 input) {
+        if (this.isAlive() && this.isVehicle() && this.getControllingPassenger() instanceof Player player) {
+            Vec3 riddenInput = this.getRiddenInput(player, input);
+            this.setSpeed(this.getRiddenSpeed(player));
+            super.travel(riddenInput);
+        } else {
+            super.travel(input);
+        }
+    }
+
+    private void tryToTame(Player player) {
+        if (this.random.nextInt(5) == 0) {
+            tame(player);
+            setOrderedToSit(true);
+            level().broadcastEntityEvent(this, EntityEvent.TAMING_SUCCEEDED);
+        }
+    }
+
+    @Override
     public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean success = super.doHurtTarget(level, target);
         if (success) {
@@ -119,10 +203,28 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     }
 
     @Override
+    public float chargeSpeedModifier() {
+        return 2.0F;
+    }
+
+    @Override
     public void tick() {
+        super.tick();
+
+        if (!level().isClientSide()) {
+            entityData.set(DATA_CHARGING, isCharging());
+        }
+
         if (level().isClientSide()) {
             this.idleAnimationState.animateWhen(!isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
-            this.runAnimationState.animateWhen(!isInWater() && this.walkAnimation.isMoving() && this.getTarget() != null && this.getTarget().isAlive() && this.navigation.isInProgress(), this.tickCount);
+
+            animateWalkingAnimationWhenRiding = this.isVehicle() && this.getDeltaMovement().horizontalDistanceSqr() > 0.0001;
+
+            if (this.entityData.get(DATA_CHARGING) || animateWalkingAnimationWhenRiding) {
+                this.runAnimationState.startIfStopped(this.tickCount);
+            } else {
+                this.runAnimationState.stop();
+            }
 
             if (this.attackAnimationState.isStarted() && this.attackAnimationState.getTimeInMillis(this.tickCount) > 999L) {
                 LivingEntity target = this.getTarget();
@@ -138,9 +240,15 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
                     this.pendingSitAnimation = false;
                 }
             }
-        }
 
-        super.tick();
+            if (this.standAnimationState.isStarted() && this.standAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
+                this.standAnimationState.stop();
+            }
+        }
+    }
+
+    private boolean isCharging() {
+        return !this.isVehicle() && this.getTarget() != null && this.getTarget().isAlive();
     }
 
     @Override
@@ -153,6 +261,11 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         if (id == EntityEvent.TAMING_SUCCEEDED) {
             this.tameAnimationState.start(this.tickCount);
         }
+
+        if (id == STAND_EVENT) {
+            System.out.println("here");
+            this.standAnimationState.start(this.tickCount);
+        }
     }
 
     @Override
@@ -163,6 +276,10 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         this.jumping = false;
         this.navigation.stop();
         setTarget(null);
+
+        if (!orderedToSit && !this.level().isClientSide()) {
+            this.level().broadcastEntityEvent(this, STAND_EVENT);
+        }
     }
 
     @Override
@@ -240,5 +357,22 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     private static TargetingConditions.@NonNull Selector selectPrey() {
         return (target, level) -> target.is(EntityTypes.SHEEP)
                 || target.is(EntityTypes.COW) || target.is(EntityTypes.PIG) || target.is(EntityTypes.CHICKEN) || target.is(EntityTypes.FOX) || target.is(EntityTypes.WOLF);
+    }
+
+    private class BrownBearAttackGoal extends MeleeAttackGoal {
+
+        public BrownBearAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+            super(mob, speedModifier, followingTargetEvenIfNotSeen);
+        }
+
+        @Override
+        public boolean canUse() {
+            return this.mob.getPassengers().isEmpty() && super.canUse();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return this.mob.getPassengers().isEmpty() && super.canContinueToUse();
+        }
     }
 }

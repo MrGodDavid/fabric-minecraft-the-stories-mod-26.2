@@ -87,16 +87,22 @@ public class BrownBearEntityModel extends EntityModel<BrownBearEntityRenderState
 
         this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
         this.tameAnimation.apply(state.tameAnimationState, state.ageInTicks);
-//        this.standAnimation.apply(state.standAnimationState, state.ageInTicks);
-        this.runAnimation.apply(state.runAnimationState, state.ageInTicks);
+        if (!state.tameAnimationState.isStarted() && !state.sitAnimationState.isStarted()) {
+            this.standAnimation.apply(state.standAnimationState, state.ageInTicks);
+        }
         if (!state.tameAnimationState.isStarted()) {
             this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
         }
         if (!state.tameAnimationState.isStarted()) {
             this.sitAnimation.apply(state.sitAnimationState, state.ageInTicks);
         }
-        if (!state.tameAnimationState.isStarted() && !state.sitAnimationState.isStarted()) {
-            this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 5.0F, 10.0F);
+
+        if (!state.tameAnimationState.isStarted() && !state.sitAnimationState.isStarted() && state.animateWalkingAnimationWhenRiding) {
+            if (state.runAnimationState.isStarted()) {
+                this.runAnimation.apply(state.runAnimationState, state.ageInTicks);
+            } else {
+                this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 5.0F, 10.0F);
+            }
         }
     }
 }
