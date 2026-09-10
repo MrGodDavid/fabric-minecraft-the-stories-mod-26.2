@@ -5,7 +5,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
@@ -33,14 +32,13 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 9/7/2026
  */
-@SuppressWarnings("resource")
+@SuppressWarnings({"resource", "NotNullFieldNotInitialized", "NullableProblems", "unused", "DataFlowIssue"})
 public class BrownBearEntity extends TamableAnimal implements NeutralMob {
 
     public static final TargetingConditions.Selector PREY_SELECTOR = selectPrey();
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(15, 29);
     private long persistentAngerEndTime;
     private @NonNull EntityReference<LivingEntity> persistentAngerTarget;
-    private @Nullable EntityReference<LivingEntity> owner;
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState attackAnimationState = new AnimationState();
     public final AnimationState runAnimationState = new AnimationState();
@@ -70,7 +68,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         this.goalSelector.addGoal(1, new TamableAnimalPanicGoal(1.25, DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES));
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
-        this.goalSelector.addGoal(4, new BrownBearEntity.BrownBearAttackGoal(this, this.chargeSpeedModifier(), true));
+        this.goalSelector.addGoal(4, new BrownBearAttackGoal(this, this.chargeSpeedModifier(), true));
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.0, 10.0F, 2.0F));
         this.goalSelector.addGoal(6, new BreedGoal(this, 1.0));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
@@ -359,7 +357,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
                 || target.is(EntityTypes.COW) || target.is(EntityTypes.PIG) || target.is(EntityTypes.CHICKEN) || target.is(EntityTypes.FOX) || target.is(EntityTypes.WOLF);
     }
 
-    private class BrownBearAttackGoal extends MeleeAttackGoal {
+    private static class BrownBearAttackGoal extends MeleeAttackGoal {
 
         public BrownBearAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
             super(mob, speedModifier, followingTargetEvenIfNotSeen);
