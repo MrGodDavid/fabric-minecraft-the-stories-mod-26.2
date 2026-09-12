@@ -5,11 +5,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
@@ -53,6 +57,16 @@ public final class MtsWorldGenBootstrapper {
                 Feature.ORE, new OreConfiguration(List.of(
                 OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), MtsBlocks.DEEPSLATE_RUBY_ORE.defaultBlockState())
         ), 8, 0.5f)));
+
+        context.register(MtsWorldGen.STRONG_RUBY_NETHER_ORE, new ConfiguredFeature<>(
+                Feature.ORE, new OreConfiguration(List.of(
+                        OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), MtsBlocks.NETHER_STRONG_RUBY_ORE.defaultBlockState())
+        ), 10, 0.25f)));
+
+        context.register(MtsWorldGen.STRONG_AMETHYST_END_ORE, new ConfiguredFeature<>(
+                Feature.ORE, new OreConfiguration(List.of(
+                        OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), MtsBlocks.END_STRONG_AMETHYST_ORE.defaultBlockState())
+        ), 10, 0.25f)));
     }
 
     public static void bootstrapPlacedFeatures(BootstrapContext<PlacedFeature> context) {
@@ -112,6 +126,22 @@ public final class MtsWorldGenBootstrapper {
                         BiomeFilter.biome()
                 )
         ));
+
+        context.register(MtsWorldGen.STRONG_RUBY_NETHER_ORE_PLACED, new PlacedFeature(
+                configuredFeatures.getOrThrow(MtsWorldGen.STRONG_RUBY_NETHER_ORE),
+                List.of(
+                        CountPlacement.of(UniformInt.of(5, 20)),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(128)),
+                        BiomeFilter.biome())));
+
+        context.register(MtsWorldGen.STRONG_AMETHYST_END_ORE_PLACED, new PlacedFeature(
+                configuredFeatures.getOrThrow(MtsWorldGen.STRONG_AMETHYST_END_ORE),
+                List.of(
+                        CountPlacement.of(UniformInt.of(6, 21)),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(30), VerticalAnchor.absolute(128))
+                )));
     }
 
     private MtsWorldGenBootstrapper() throws IllegalAccessException {

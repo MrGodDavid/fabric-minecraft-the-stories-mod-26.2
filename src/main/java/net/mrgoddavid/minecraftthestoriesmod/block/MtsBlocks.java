@@ -5,6 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -19,6 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
+import java.util.Properties;
 import java.util.function.Function;
 
 /**
@@ -48,6 +50,9 @@ public class MtsBlocks {
     public static final Block STRONG_IRON_BLOCK;
     public static final Block STRONG_GOLD_BLOCK;
 
+    public static final Block NETHER_STRONG_RUBY_ORE;
+    public static final Block END_STRONG_AMETHYST_ORE;
+
     public static final Block COMPRESSED_WOOD;
     public static final Block COMPRESSED_WOOD_LOG;
     public static final Block COMPRESSED_WOOD_PLANKS;
@@ -70,24 +75,27 @@ public class MtsBlocks {
     public static final Block BLUE_FUEL_FLUID;
 
     static {
-        DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
-        DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
-        DEEPSLATE_TOPAZ_ORE = registerBlock("deepslate_topaz_ore", properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
-        RAW_STRONG_AMETHYST_BLOCK = registerBlock("raw_strong_amethyst_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
-        RAW_STRONG_DIAMOND_BLOCK = registerBlock("raw_strong_diamond_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        RAW_STRONG_EMERALD_BLOCK = registerBlock("raw_strong_emerald_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        RAW_STRONG_RUBY_BLOCK = registerBlock("raw_strong_ruby_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        RAW_STRONG_TOPAZ_BLOCK = registerBlock("raw_strong_topaz_block", properties -> new Block(properties.strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        STONE_AMETHYST_ORE = registerBlock("stone_amethyst_ore", properties -> new Block(properties.strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-        STONE_RUBY_ORE = registerBlock("stone_ruby_ore", properties -> new Block(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-        STONE_TOPAZ_ORE = registerBlock("stone_topaz_ore", properties -> new Block(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-        STRONG_AMETHYST_BLOCK = registerBlock("strong_amethyst_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
-        STRONG_DIAMOND_BLOCK = registerBlock("strong_diamond_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        STRONG_EMERALD_BLOCK = registerBlock("strong_emerald_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        STRONG_RUBY_BLOCK = registerBlock("strong_ruby_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        STRONG_TOPAZ_BLOCK = registerBlock("strong_topaz_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-        STRONG_IRON_BLOCK = registerBlock("strong_iron_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.IRON)));
-        STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties), BlockBehaviour.Properties.of().strength(6f, 6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
+        DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(4, 6), properties), BlockBehaviour.Properties.of().strength(6f, 7f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
+        DEEPSLATE_TOPAZ_ORE = registerBlock("deepslate_topaz_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 5), properties), BlockBehaviour.Properties.of().strength(6f, 7f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
+        STONE_AMETHYST_ORE = registerBlock("stone_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties), BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE));
+        STONE_RUBY_ORE = registerBlock("stone_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(4, 6), properties), BlockBehaviour.Properties.of().strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
+        STONE_TOPAZ_ORE = registerBlock("stone_topaz_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 5), properties), BlockBehaviour.Properties.of().strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
+        RAW_STRONG_AMETHYST_BLOCK = registerBlock("raw_strong_amethyst_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+        RAW_STRONG_DIAMOND_BLOCK = registerBlock("raw_strong_diamond_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_EMERALD_BLOCK = registerBlock("raw_strong_emerald_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_RUBY_BLOCK = registerBlock("raw_strong_ruby_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        RAW_STRONG_TOPAZ_BLOCK = registerBlock("raw_strong_topaz_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        STRONG_AMETHYST_BLOCK = registerBlock("strong_amethyst_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+        STRONG_DIAMOND_BLOCK = registerBlock("strong_diamond_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        STRONG_EMERALD_BLOCK = registerBlock("strong_emerald_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        STRONG_RUBY_BLOCK = registerBlock("strong_ruby_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        STRONG_TOPAZ_BLOCK = registerBlock("strong_topaz_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+        STRONG_IRON_BLOCK = registerBlock("strong_iron_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.IRON)));
+        STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+        NETHER_STRONG_RUBY_ORE = registerBlock("nether_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 6), properties), BlockBehaviour.Properties.of().strength(3.2F, 3.2F).requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE));
+        END_STRONG_AMETHYST_ORE = registerBlock("end_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(6, 9), properties), BlockBehaviour.Properties.of().strength(3.5F, 10.0F).requiresCorrectToolForDrops().sound(SoundType.STONE));
 
         STRONG_AMETHYST_FENCE = registerBlock("strong_amethyst_fence", properties -> new FenceBlock(properties.strength(6.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
         STRONG_AMETHYST_FENCE_GATE = registerBlock("strong_amethyst_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(6.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
@@ -139,9 +147,17 @@ public class MtsBlocks {
      * @return the registered block, after finished registered the block item.
      */
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
-        Identifier blockId = Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, name);
+        Identifier blockId = Constants.modId(name);
         ResourceKey<Block> blockResourceKey = ResourceKey.create(Registries.BLOCK, blockId);
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(blockResourceKey));
+        registerModBlockItem(name, toRegister);
+        return Registry.register(BuiltInRegistries.BLOCK, blockId, toRegister);
+    }
+
+    private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
+        Identifier blockId = Constants.modId(name);
+        ResourceKey<Block> blockResourceKey = ResourceKey.create(Registries.BLOCK, blockId);
+        Block toRegister = function.apply(properties.setId(blockResourceKey));
         registerModBlockItem(name, toRegister);
         return Registry.register(BuiltInRegistries.BLOCK, blockId, toRegister);
     }
@@ -163,9 +179,7 @@ public class MtsBlocks {
      */
     private static void registerModBlockItem(String name, Block block) {
         Identifier id = Constants.modId(name);
-        Registry.register(BuiltInRegistries.ITEM, id,
-                new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
-                        .setId(ResourceKey.create(Registries.ITEM, id))));
+        Registry.register(BuiltInRegistries.ITEM, id, new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM, id))));
     }
 
     /**

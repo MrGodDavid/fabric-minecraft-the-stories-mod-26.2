@@ -160,6 +160,9 @@ public class CreativeModeTabs {
                         output.accept(STONE_AMETHYST_ORE);
                         output.accept(STONE_RUBY_ORE);
                         output.accept(STONE_TOPAZ_ORE);
+                        output.accept(NETHER_STRONG_RUBY_ORE);
+                        output.accept(END_STRONG_AMETHYST_ORE);
+
                         output.accept(RAW_STRONG_AMETHYST_BLOCK);
                         output.accept(RAW_STRONG_DIAMOND_BLOCK);
                         output.accept(RAW_STRONG_EMERALD_BLOCK);

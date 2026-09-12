@@ -26,12 +26,20 @@ public class MtsWorldGen {
     public static final ResourceKey<ConfiguredFeature<?, ?>> STONE_TOPAZ_OVERWORLD_ORE = configuredFeatureRK("stone_topaz_overworld_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> STONE_RUBY_OVERWORLD_ORE = configuredFeatureRK("stone_ruby_overworld_ore");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> STRONG_RUBY_NETHER_ORE = configuredFeatureRK("ruby_nether_ore");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> STRONG_AMETHYST_END_ORE = configuredFeatureRK("amethyst_amethyst_ore");
+
     public static final ResourceKey<PlacedFeature> DEEPSLATE_AMETHYST_OVERWORLD_ORE_PLACED = placedFeatureRK("deepslate_amethyst_overworld_ore_placed");
     public static final ResourceKey<PlacedFeature> DEEPSLATE_TOPAZ_OVERWORLD_ORE_PLACED = placedFeatureRK("deepslate_topaz_overworld_ore_placed");
     public static final ResourceKey<PlacedFeature> DEEPSLATE_RUBY_OVERWORLD_ORE_PLACED = placedFeatureRK("deepslate_ruby_overworld_ore_placed");
     public static final ResourceKey<PlacedFeature> STONE_AMETHYST_OVERWORLD_ORE_PLACED = placedFeatureRK("stone_amethyst_overworld_ore_placed");
     public static final ResourceKey<PlacedFeature> STONE_TOPAZ_OVERWORLD_ORE_PLACED = placedFeatureRK("stone_topaz_overworld_ore_placed");
     public static final ResourceKey<PlacedFeature> STONE_RUBY_OVERWORLD_ORE_PLACED = placedFeatureRK("stone_ruby_overworld_ore_placed");
+
+    public static final ResourceKey<PlacedFeature> STRONG_RUBY_NETHER_ORE_PLACED = placedFeatureRK("ruby_nether_ore_placed");
+
+    public static final ResourceKey<PlacedFeature> STRONG_AMETHYST_END_ORE_PLACED = placedFeatureRK("amethyst_end_ore_placed");
 
     private static ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureRK(String name) {
         Identifier id = Constants.modId(name);
@@ -52,6 +60,10 @@ public class MtsWorldGen {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.DEEPSLATE_TOPAZ_OVERWORLD_ORE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.STONE_RUBY_OVERWORLD_ORE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.DEEPSLATE_RUBY_OVERWORLD_ORE_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.STRONG_RUBY_NETHER_ORE_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.STRONG_AMETHYST_END_ORE_PLACED);
     }
 
     private MtsWorldGen() throws IllegalAccessException {

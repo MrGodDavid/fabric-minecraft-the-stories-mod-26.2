@@ -53,6 +53,8 @@ public class MtsModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(DEEPSLATE_AMETHYST_ORE);
         blockModelGenerators.createTrivialCube(DEEPSLATE_RUBY_ORE);
         blockModelGenerators.createTrivialCube(DEEPSLATE_TOPAZ_ORE);
+        blockModelGenerators.createTrivialCube(NETHER_STRONG_RUBY_ORE);
+        blockModelGenerators.createTrivialCube(END_STRONG_AMETHYST_ORE);
         blockModelGenerators.family(RAW_STRONG_AMETHYST_BLOCK)
                 .wall(RAW_STRONG_AMETHYST_WALL);
         blockModelGenerators.createTrivialCube(RAW_STRONG_DIAMOND_BLOCK);

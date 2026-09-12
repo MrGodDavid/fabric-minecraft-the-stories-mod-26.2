@@ -55,13 +55,11 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_RUBY_ORE))
                 .add(MtsBlocks.getResourceKey(RAW_STRONG_RUBY_BLOCK))
                 .add(MtsBlocks.getResourceKey(STRONG_RUBY_BLOCK))
-                .add(MtsBlocks.getResourceKey(STONE_AMETHYST_ORE))
-                .add(MtsBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE))
-                .add(MtsBlocks.getResourceKey(RAW_STRONG_AMETHYST_BLOCK))
-                .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_BLOCK))
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_FENCE))
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_FENCE_GATE))
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_WALL))
+                .add(MtsBlocks.getResourceKey(NETHER_STRONG_RUBY_ORE))
+                .add(MtsBlocks.getResourceKey(END_STRONG_AMETHYST_ORE))
 
                 .add(MtsBlocks.getResourceKey(ENRICHER))
                 .add(MtsBlocks.getResourceKey(ENDER_EXALTER))
@@ -121,6 +119,7 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL)
                 .add(MtsBlocks.getResourceKey(STONE_TOPAZ_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_TOPAZ_ORE))
+                .add(MtsBlocks.getResourceKey(NETHER_STRONG_RUBY_ORE))
                 .add(MtsBlocks.getResourceKey(STONE_RUBY_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_RUBY_ORE));
 
@@ -128,10 +127,12 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(Blocks.ANCIENT_DEBRIS))
                 .add(MtsBlocks.getResourceKey(Blocks.NETHERITE_BLOCK))
                 .add(MtsBlocks.getResourceKey(Blocks.OBSIDIAN))
+                .add(MtsBlocks.getResourceKey(NETHER_STRONG_RUBY_ORE))
                 .add(MtsBlocks.getResourceKey(STONE_RUBY_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_RUBY_ORE));
 
         tag(MtsTags.Blocks.NEEDS_STRONG_AMETHYST_TOOL)
+                .add(MtsBlocks.getResourceKey(END_STRONG_AMETHYST_ORE))
                 .add(MtsBlocks.getResourceKey(STONE_AMETHYST_ORE))
                 .add(MtsBlocks.getResourceKey(DEEPSLATE_AMETHYST_ORE));
 
