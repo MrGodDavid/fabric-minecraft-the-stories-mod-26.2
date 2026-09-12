@@ -49,7 +49,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     private static final byte ATTACK_EVENT = 100;
     private static final byte STAND_EVENT = 99;
     private static final EntityDataAccessor<Boolean> DATA_CHARGING = SynchedEntityData.defineId(BrownBearEntity.class, EntityDataSerializers.BOOLEAN);
-    public boolean animateWalkingAnimationWhenRiding;
+    public boolean animateRunningAnimationWhenRiding;
 
     public BrownBearEntity(EntityType<? extends BrownBearEntity> type, Level level) {
         super(type, level);
@@ -216,9 +216,9 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         if (level().isClientSide()) {
             this.idleAnimationState.animateWhen(!isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
 
-            animateWalkingAnimationWhenRiding = this.isVehicle() && this.getDeltaMovement().horizontalDistanceSqr() > 0.0001;
+            animateRunningAnimationWhenRiding = this.isVehicle() && this.getDeltaMovement().horizontalDistanceSqr() > 0.0001;
 
-            if (this.entityData.get(DATA_CHARGING) || animateWalkingAnimationWhenRiding) {
+            if (this.entityData.get(DATA_CHARGING) || animateRunningAnimationWhenRiding) {
                 this.runAnimationState.startIfStopped(this.tickCount);
             } else {
                 this.runAnimationState.stop();

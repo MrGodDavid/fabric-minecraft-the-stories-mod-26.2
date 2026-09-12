@@ -1,0 +1,8 @@
+{
+  "type": "minecraft-the-stories-mod:ore_compressing",
+  "blue_fuel": "minecraft:coal",
+  "compressed_ore": "minecraft-the-stories-mod:strong_iron",
+  "result": {
+    "id": "minecraft-the-stories-mod:strong_iron_ingot"
+  }
+}

@@ -42,7 +42,14 @@ public class MtsItems {
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);
 
     public static final Item HAMMER_OF_CRAFTER = registerItem("hammer_of_crafter", properties -> new AxeItem(MtsItemToolMaterials.STRONG_RUBY,
-            5.8f, -3.3f, properties));
+            5.8f, -3.3f, properties.durability(1200)));
+
+    // #################################################################################################################
+    // #                                        SUPER CRAFTER INGREDIENTS                                              #
+    // #################################################################################################################
+    public static final Item STRONG_IRON_PRESSED_PLATE = registerItem("strong_iron_pressed_plate", Item::new);
+    public static final Item STRONG_IRON_ZEN_STAFF_STAGE_TWO = registerItem("zen_staff_iron_head_stage_two", Item::new);
+    public static final Item STRONG_IRON_ZEN_STAFF_STAGE_THREE = registerItem("zen_staff_iron_head_stage_three", Item::new);
 
     // #################################################################################################################
     // #                                                NATURAL ITEMS                                                  #

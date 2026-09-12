@@ -139,6 +139,10 @@ public class CreativeModeTabs {
                         output.accept(MANGROVE_STICK);
                         output.accept(PALE_OAK_STICK);
                         output.accept(SPRUCE_STICK);
+
+                        output.accept(STRONG_IRON_PRESSED_PLATE);
+                        output.accept(STRONG_IRON_ZEN_STAFF_STAGE_TWO);
+                        output.accept(STRONG_IRON_ZEN_STAFF_STAGE_THREE);
                     })
                     .build()
     );

@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.datagen.recipe;
+package net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content;
 
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.MtsAbstractRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher.EnricherRecipe;
 import org.jspecify.annotations.NonNull;
 

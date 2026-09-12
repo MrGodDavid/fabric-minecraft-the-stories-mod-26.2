@@ -2,12 +2,9 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.AnimationState;
 import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityTextures;
-import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
@@ -38,6 +35,6 @@ public class BrownBearEntityRenderer extends MobRenderer<BrownBearEntity, BrownB
         state.tameAnimationState.copyFrom(entity.tameAnimationState);
         state.sitAnimationState.copyFrom(entity.sitAnimationState);
         state.standAnimationState.copyFrom(entity.standAnimationState);
-        state.animateWalkingAnimationWhenRiding = entity.animateWalkingAnimationWhenRiding;
+        state.animateWalkingAnimationWhenRiding = entity.animateRunningAnimationWhenRiding;
     }
 }

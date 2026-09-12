@@ -2,8 +2,14 @@ package net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor;
 
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
@@ -12,16 +18,24 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.block.ImplementedContainer;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsAbstractBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
+import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsCraftableBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.ore_compressor.OreCompressorRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.ore_compressor.OreCompressorRecipeInput;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
+
+import java.util.Optional;
 
 /**
  * Ore Compressor block entity.
@@ -29,7 +43,7 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 8/28/2026
  */
-public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedContainer {
+public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedContainer, MtsCraftableBlockEntity<OreCompressorRecipe> {
 
     private static final Component DEFAULT_NAME = Component.translatable("block.minecraft-the-stories-mod.ore_compressor_default");
     public static final int INPUT_SLOT = 0;
@@ -112,8 +126,8 @@ public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements 
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
+        boolean shouldWork = hasRecipe() && isOutputSlotEmptyOrReceivable();
         if (hasRemainingFuel()) {
-            boolean shouldWork = hasRecipe() && isOutputSlotEmptyOrReceivable();
             if (shouldWork) {
                 increaseCompressingProgress();
                 setChanged(level, blockPos, blockState);
@@ -137,6 +151,10 @@ public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements 
                 setChanged(level, blockPos, blockState);
             }
         }
+
+        if (blockState.getValue(OreCompressorBlock.COMPRESSING) != shouldWork) {
+            level.setBlockAndUpdate(blockPos, blockState.setValue(OreCompressorBlock.COMPRESSING, shouldWork));
+        }
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -151,7 +169,9 @@ public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements 
     }
 
     private boolean hasCorrectFuelBottle() {
-        return !inventory.get(FUEL_SLOT).isEmpty() && inventory.get(FUEL_SLOT).is(Items.COAL);
+        Optional<RecipeHolder<OreCompressorRecipe>> recipe = this.getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
+        return !inventory.get(FUEL_SLOT).isEmpty() && recipe.get().value().blueFuel().test(inventory.get(FUEL_SLOT));
     }
 
     private void consumeFuelBottle() {
@@ -163,7 +183,7 @@ public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements 
     }
 
     public boolean isCompressing() {
-        return this.progress > 0;
+        return this.getBlockState().getValue(OreCompressorBlock.COMPRESSING);
     }
 
     private void refillFuel() {
@@ -178,7 +198,10 @@ public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements 
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(MtsItems.STRONG_TOPAZ_INGOT);
+        Optional<RecipeHolder<OreCompressorRecipe>> recipe = this.getCurrentRecipe();
+        if (recipe.isEmpty()) return;
+        ItemStack output = recipe.get().value().assemble(new OreCompressorRecipeInput(inventory.get(INPUT_SLOT), inventory.get(FUEL_SLOT)));
+
         this.inventory.set(INPUT_SLOT, inventory.get(INPUT_SLOT).copyWithCount(inventory.get(INPUT_SLOT).getCount() - 4));
         this.inventory.set(OUTPUT_SLOT, output.copyWithCount(inventory.get(OUTPUT_SLOT).getCount() + output.getCount()));
     }
@@ -200,9 +223,12 @@ public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements 
     }
 
     private boolean hasRecipe() {
-        boolean isInputCorrect = inventory.get(INPUT_SLOT).is(MtsItems.STRONG_TOPAZ);
+        Optional<RecipeHolder<OreCompressorRecipe>> recipe = this.getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
 
-        ItemStack output = new ItemStack(MtsItems.STRONG_TOPAZ_INGOT);
+        boolean isInputCorrect = recipe.get().value().compressedOre().test(inventory.get(INPUT_SLOT));
+
+        ItemStack output = recipe.get().value().assemble(new OreCompressorRecipeInput(inventory.get(INPUT_SLOT), inventory.get(FUEL_SLOT)));
         boolean isItemOutputRight = canInsertItemIntoOutputSlot(output);
         boolean isAmountCorrect = canInsertAmountIntoOutputSlot(output.getCount());
         boolean hasEnoughInput = inventory.get(INPUT_SLOT).getCount() >= 4;
@@ -259,6 +285,15 @@ public class OreCompressorBlockEntity extends MtsAbstractBlockEntity implements 
     @Override
     public NonNullList<ItemStack> getItems() {
         return this.inventory;
+    }
+
+    @Override
+    public Optional<RecipeHolder<OreCompressorRecipe>> getCurrentRecipe() {
+        return ((ServerLevel) level).recipeAccess()
+                .getRecipeFor(MtsRecipes.ORE_COMPRESSOR_TYPE, new OreCompressorRecipeInput(
+                        inventory.get(INPUT_SLOT),
+                        inventory.get(FUEL_SLOT)
+                ), level);
     }
 
     public static final class ContainerDataContext {

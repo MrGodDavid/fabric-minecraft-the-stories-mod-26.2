@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -16,7 +15,9 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.EnricherRecipeBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.EnricherRecipeBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.OreCompressorRecipeBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SuperCrafterRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -198,9 +199,24 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_amethyst_from_enriching");
 
                 // #################################################################################################################
+                // #                                        ORE COMPRESSOR RECIPES                                                 #
+                // #################################################################################################################
+                OreCompressorRecipeBuilder.oreCompressorRecipe(RecipeCategory.MISC, Ingredient.of(STRONG_IRON), Ingredient.of(Items.COAL), STRONG_IRON_INGOT)
+                        .unlockedBy(getHasName(Items.RAW_IRON), has(Items.RAW_IRON))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_ingot_from_ore_compressing");
+
+                // #################################################################################################################
                 // #                                         SUPER CRAFTER RECIPES                                                 #
                 // #################################################################################################################
-//                SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(EPIC_UPGRADE_SCROLL_STAGE_ONE), Ingredient.of())
+                SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(RARE_UPGRADE_SCROLL_STAGE_ONE), Ingredient.of(HAMMER_OF_CRAFTER), Ingredient.of(STRONG_IRON_INGOT), STRONG_IRON_PRESSED_PLATE, 10)
+                        .unlockedBy(getHasName(HAMMER_OF_CRAFTER), has(HAMMER_OF_CRAFTER))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_pressed_plate_from_super_crafting");
+                SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(RARE_UPGRADE_SCROLL_STAGE_TWO), Ingredient.of(HAMMER_OF_CRAFTER), Ingredient.of(STRONG_IRON_PRESSED_PLATE), STRONG_IRON_ZEN_STAFF_STAGE_TWO, 30)
+                        .unlockedBy(getHasName(HAMMER_OF_CRAFTER), has(HAMMER_OF_CRAFTER))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_zen_staff_stage_two_from_super_crafting");
+                SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(RARE_UPGRADE_SCROLL_STAGE_THREE), Ingredient.of(HAMMER_OF_CRAFTER), Ingredient.of(STRONG_IRON_ZEN_STAFF_STAGE_TWO), STRONG_IRON_ZEN_STAFF_STAGE_THREE, 50)
+                        .unlockedBy(getHasName(HAMMER_OF_CRAFTER), has(HAMMER_OF_CRAFTER))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_zen_staff_stage_three_from_super_crafting");
 
                 // #################################################################################################################
                 // #                                        COMPRESSED TOOLS RECIPES                                               #

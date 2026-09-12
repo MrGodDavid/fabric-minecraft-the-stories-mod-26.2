@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -38,6 +39,7 @@ public class OreCompressorBlock extends BaseEntityBlock implements EntityBlock {
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final VoxelShape SHAPE = Block.box(0, 0.001, 0, 16, 30, 16);
     public static final String NAME = "ore_compressor";
+    public static final BooleanProperty COMPRESSING = BooleanProperty.create("compressing");
 
     public enum TYPE implements StringRepresentable {
         WITHOUT_FREEWHEEL("without_freewheel"), // use this when placing the ore compressor. Default block state of ore compressor.
@@ -100,7 +102,8 @@ public class OreCompressorBlock extends BaseEntityBlock implements EntityBlock {
         registerDefaultState(this.defaultBlockState()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(STATE, TYPE.DEFAULT)
-                .setValue(FREEWHEEL_MODEL_CORRECTION, ANGLE_CORRECTION.NORTH));
+                .setValue(FREEWHEEL_MODEL_CORRECTION, ANGLE_CORRECTION.NORTH)
+                .setValue(COMPRESSING, false));
     }
 
     @Override
@@ -108,7 +111,8 @@ public class OreCompressorBlock extends BaseEntityBlock implements EntityBlock {
         return this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection())
                 .setValue(STATE, TYPE.WITHOUT_FREEWHEEL)
-                .setValue(FREEWHEEL_MODEL_CORRECTION, correctAngle(context));
+                .setValue(FREEWHEEL_MODEL_CORRECTION, correctAngle(context))
+                .setValue(COMPRESSING, false);
     }
 
     private ANGLE_CORRECTION correctAngle(BlockPlaceContext context) {
@@ -132,7 +136,7 @@ public class OreCompressorBlock extends BaseEntityBlock implements EntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, STATE, FREEWHEEL_MODEL_CORRECTION);
+        builder.add(FACING, STATE, FREEWHEEL_MODEL_CORRECTION,  COMPRESSING);
     }
 
     @Override

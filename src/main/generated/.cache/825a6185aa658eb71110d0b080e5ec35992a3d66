@@ -135,6 +135,7 @@ cb48f396f7587b275a9fd37e01763d7cf39aee26 assets/minecraft-the-stories-mod/items/
 1e42e4ba7273c044eea61242cf843006589a964f assets/minecraft-the-stories-mod/items/strong_iron.json
 aada0ae3a858939a152b92d8b8d11904c8908432 assets/minecraft-the-stories-mod/items/strong_iron_block.json
 96d274a435bb5e3a57a2b0c0bcf87f36d4157a5b assets/minecraft-the-stories-mod/items/strong_iron_ingot.json
+3618772c33a9c4a23734aa4842ee3152a07a1682 assets/minecraft-the-stories-mod/items/strong_iron_pressed_plate.json
 0799b11f94981c350bd3c451f1107147f27d2cb2 assets/minecraft-the-stories-mod/items/strong_iron_zen_staff.json
 a20811aff4a9ba2be12e6cc4c625392f7640f055 assets/minecraft-the-stories-mod/items/strong_ruby.json
 e8667d74170e150d941262916018dc5a0a31ca91 assets/minecraft-the-stories-mod/items/strong_ruby_axe.json
@@ -163,6 +164,8 @@ e41aeb4031d13a2b1714554ad9468f9193ef25d1 assets/minecraft-the-stories-mod/items/
 c53e5219bebeb830e010944c0940442d68122e25 assets/minecraft-the-stories-mod/items/strong_topaz_spear.json
 7f7024a0d9134e936fb6e9697fcdd79b565d51a1 assets/minecraft-the-stories-mod/items/strong_topaz_sword.json
 0d1d00729aca7eef6d19631eb0ee8670beb33c3b assets/minecraft-the-stories-mod/items/super_crafter_default.json
+2b05c530acb2acf6bfd70e67ef4ae9fedf40d25f assets/minecraft-the-stories-mod/items/zen_staff_iron_head_stage_three.json
+b4bdc9df84d3e0308a5bdb6b2be545d47f6f8ef8 assets/minecraft-the-stories-mod/items/zen_staff_iron_head_stage_two.json
 02fdb8bc2ff6c180cef4a09692a867ce09df74b6 assets/minecraft-the-stories-mod/models/block/compressed_wood.json
 05ad784fe187b9761dec0dd9b6ac2b20c5a15079 assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate.json
 1cc0451293bf50c751f6515e4b279aa5b2580d4b assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate_open.json
@@ -390,6 +393,7 @@ c81c18d8d318216583db21893d1e94ee0042f6b9 assets/minecraft-the-stories-mod/models
 a0f42abccff8016f596247c3193cc243232e796f assets/minecraft-the-stories-mod/models/item/strong_gold_ingot.json
 5df246e0756cf647a47ad8c8b13e4f79d25acb59 assets/minecraft-the-stories-mod/models/item/strong_iron.json
 6e82f3549e386eb7caa2c60d793618256cd50daf assets/minecraft-the-stories-mod/models/item/strong_iron_ingot.json
+d6ea9731f4f0c983357e6dafa471195fc0afef01 assets/minecraft-the-stories-mod/models/item/strong_iron_pressed_plate.json
 2780443f5d1a3673e5b498ce51c5bf4f796bee25 assets/minecraft-the-stories-mod/models/item/strong_ruby.json
 e7f796f14b4e742d5622882e6b0da6601e0b0f85 assets/minecraft-the-stories-mod/models/item/strong_ruby_axe.json
 7d31242f27245afb13a7a9b0429268037d10f83d assets/minecraft-the-stories-mod/models/item/strong_ruby_boots.json
@@ -504,3 +508,5 @@ f4686eb26d0b542dee6c0bfc39e727aba05b97f0 assets/minecraft-the-stories-mod/models
 df2a0ac78c1c47d45e852511a0edc084ed892c8a assets/minecraft-the-stories-mod/models/item/strong_topaz_spear.json
 aa252808c199a6ae8a93867528a2b733987b47d2 assets/minecraft-the-stories-mod/models/item/strong_topaz_spear_in_hand.json
 81b5f9b8a8ba23ac165f73181ac947e407a5420a assets/minecraft-the-stories-mod/models/item/strong_topaz_sword.json
+b106029c27067c067c93ad478a9360ee2409237e assets/minecraft-the-stories-mod/models/item/zen_staff_iron_head_stage_three.json
+cc8983d1ea4d0fd6df89650f4231180c01b748b2 assets/minecraft-the-stories-mod/models/item/zen_staff_iron_head_stage_two.json

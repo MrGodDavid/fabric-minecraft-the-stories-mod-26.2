@@ -1,0 +1,10 @@
+{
+  "type": "minecraft-the-stories-mod:super_crafting",
+  "hammer": "minecraft-the-stories-mod:hammer_of_crafter",
+  "hammer_usage": 30,
+  "result": {
+    "id": "minecraft-the-stories-mod:zen_staff_iron_head_stage_two"
+  },
+  "stage_item": "minecraft-the-stories-mod:strong_iron_pressed_plate",
+  "update_scroll": "minecraft-the-stories-mod:rare_upgrade_scroll_stage_two"
+}

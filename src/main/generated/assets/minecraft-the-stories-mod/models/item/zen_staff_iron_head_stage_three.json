@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft-the-stories-mod:item/zen_staff_iron_head_stage_three"
+  }
+}

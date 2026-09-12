@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.block.ImplementedContainer;
+import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsCraftableBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsAbstractBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
@@ -33,7 +34,7 @@ import java.util.Optional;
  * @author Mr. GodDavid
  * @since 8/17/2026
  */
-public class EnricherBlockEntity extends MtsAbstractBlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedContainer {
+public class EnricherBlockEntity extends MtsAbstractBlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedContainer, MtsCraftableBlockEntity<EnricherRecipe> {
 
     private static final Component DEFAULT_NAME = Component.translatable("block.minecraft-the-stories-mod.enricher_default");
 
@@ -213,7 +214,8 @@ public class EnricherBlockEntity extends MtsAbstractBlockEntity implements Exten
         return hasFuel && isItemOutputRight && isAmountRight;
     }
 
-    private Optional<RecipeHolder<EnricherRecipe>> getCurrentRecipe() {
+    @Override
+    public Optional<RecipeHolder<EnricherRecipe>> getCurrentRecipe() {
         return ((ServerLevel) level).recipeAccess()
                 .getRecipeFor(MtsRecipes.ENRICHER_TYPE, new EnricherRecipeInput(inventory.get(INPUT_SLOT), inventory.get(FUEL_SLOT)), level);
     }

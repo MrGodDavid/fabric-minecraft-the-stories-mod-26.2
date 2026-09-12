@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
@@ -18,11 +19,16 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.block.ImplementedContainer;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsAbstractBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
-import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsCraftableBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.super_crafter.SuperCrafterRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.super_crafter.SuperCrafterRecipeInput;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
-import static net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlockEntity.Context.TOTAL_SLOTS;
+import java.util.Optional;
+
+import static net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlockEntity.Context.*;
 
 /**
  * Block entity for Super Crafter Block.
@@ -30,7 +36,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.
  * @author Mr. GodDavid
  * @since 8/17/2026
  */
-public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedContainer {
+public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedContainer, MtsCraftableBlockEntity<SuperCrafterRecipe> {
 
     public NonNullList<ItemStack> inventory = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
 
@@ -85,13 +91,27 @@ public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements E
     }
 
     void craftItem() {
-        inventory.set(Context.RESULT_SLOT, new ItemStack(MtsItems.STRONG_AMETHYST_AXE));
+        Optional<RecipeHolder<SuperCrafterRecipe>> recipe = this.getCurrentRecipe();
+        if (recipe.isEmpty()) return;
+        ItemStack output = recipe.get().value().assemble(new SuperCrafterRecipeInput(
+                inventory.get(TEMPLATE_CONSUMER_SLOT),
+                inventory.get(CRAFTING_HAMMER_SLOT),
+                inventory.get(ITEM_STAGE_SLOT))
+        );
+        inventory.set(Context.RESULT_SLOT, output.copy());
     }
 
     void consumeIngredients() {
         inventory.set(Context.TEMPLATE_CONSUMER_SLOT, inventory.get(Context.TEMPLATE_CONSUMER_SLOT).copyWithCount(inventory.get(Context.TEMPLATE_CONSUMER_SLOT).getCount() - 1));
-        inventory.set(Context.CRAFTING_HAMMER_SLOT, inventory.get(Context.CRAFTING_HAMMER_SLOT).copyWithCount(inventory.get(Context.CRAFTING_HAMMER_SLOT).getCount() - 1));
+        if (useHammer()) {
+            inventory.set(CRAFTING_HAMMER_SLOT, inventory.get(CRAFTING_HAMMER_SLOT).copyWithCount(inventory.get(CRAFTING_HAMMER_SLOT).getCount() - 1));
+        }
         inventory.set(Context.ITEM_STAGE_SLOT, inventory.get(Context.ITEM_STAGE_SLOT).copyWithCount(inventory.get(Context.ITEM_STAGE_SLOT).getCount() - 1));
+    }
+
+    private boolean useHammer() {
+        inventory.get(CRAFTING_HAMMER_SLOT).setDamageValue(inventory.get(CRAFTING_HAMMER_SLOT).getDamageValue() + 10);
+        return inventory.get(CRAFTING_HAMMER_SLOT).getDamageValue() >= inventory.get(CRAFTING_HAMMER_SLOT).getMaxDamage();
     }
 
     private boolean hasRecipe() {
@@ -102,18 +122,24 @@ public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements E
     }
 
     private boolean isStageItemIngredientCorrect() {
+        Optional<RecipeHolder<SuperCrafterRecipe>> recipe = this.getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
         ItemStack stageItem = inventory.get(Context.ITEM_STAGE_SLOT);
-        return stageItem.is(MtsItems.STRONG_RUBY_AXE);
+        return recipe.get().value().stageItem().test(stageItem);
     }
 
     private boolean isHammerIngredientCorrect() {
+        Optional<RecipeHolder<SuperCrafterRecipe>> recipe = this.getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
         ItemStack hammer = inventory.get(Context.CRAFTING_HAMMER_SLOT);
-        return hammer.is(MtsItems.STRONG_TOPAZ_INGOT);
+        return recipe.get().value().hammer().test(hammer);
     }
 
     private boolean isTemplateIngredientCorrect() {
+        Optional<RecipeHolder<SuperCrafterRecipe>> recipe = this.getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
         ItemStack template = inventory.get(Context.TEMPLATE_CONSUMER_SLOT);
-        return template.is(MtsItems.STRONG_AMETHYST_INGOT);
+        return recipe.get().value().upgradeScroll().test(template);
     }
 
     /**
@@ -162,6 +188,16 @@ public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements E
     @Override
     public NonNullList<ItemStack> getItems() {
         return this.inventory;
+    }
+
+    @Override
+    public Optional<RecipeHolder<SuperCrafterRecipe>> getCurrentRecipe() {
+        return ((ServerLevel) level).recipeAccess().
+                getRecipeFor(MtsRecipes.SUPER_CRAFTER_TYPE, new SuperCrafterRecipeInput(
+                                inventory.get(TEMPLATE_CONSUMER_SLOT),
+                                inventory.get(CRAFTING_HAMMER_SLOT),
+                                inventory.get(ITEM_STAGE_SLOT)),
+                        level);
     }
 
     public static final class Context {
