@@ -79,6 +79,10 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         add(DEEPSLATE_RUBY_ORE, createMultipleOreDrops(DEEPSLATE_RUBY_ORE, RAW_STRONG_RUBY, 1.0f, 3.0f));
         add(STONE_TOPAZ_ORE, createMultipleOreDrops(STONE_TOPAZ_ORE, RAW_STRONG_TOPAZ, 1.0f, 2.0f));
         add(DEEPSLATE_TOPAZ_ORE, createMultipleOreDrops(DEEPSLATE_AMETHYST_ORE, RAW_STRONG_TOPAZ, 1.0f, 3.0f));
+
+        add(NETHER_STRONG_RUBY_ORE, createMultipleOreDrops(NETHER_STRONG_RUBY_ORE, RAW_STRONG_TOPAZ, 1.0f, 4.0f));
+
+        add(END_STRONG_AMETHYST_ORE, createMultipleOreDrops(END_STRONG_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 4.0f));
     }
 
     public LootTable.Builder createMultipleOreDrops(final Block block, Item item, float minDrops, float maxDrops) {

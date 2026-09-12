@@ -1,14 +1,18 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -37,7 +41,9 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
 
     public static final TargetingConditions.Selector PREY_SELECTOR = selectPrey();
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(15, 29);
-    private long persistentAngerEndTime;
+    private static final byte ATTACK_EVENT = 100;
+    private static final byte STAND_EVENT = 99;
+    private static final EntityDataAccessor<Boolean> DATA_CHARGING = SynchedEntityData.defineId(BrownBearEntity.class, EntityDataSerializers.BOOLEAN);
     private @NonNull EntityReference<LivingEntity> persistentAngerTarget;
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState attackAnimationState = new AnimationState();
@@ -46,10 +52,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     public final AnimationState sitAnimationState = new AnimationState();
     public final AnimationState standAnimationState = new AnimationState();
     private boolean pendingSitAnimation;
-    private static final byte ATTACK_EVENT = 100;
-    private static final byte STAND_EVENT = 99;
-    private static final EntityDataAccessor<Boolean> DATA_CHARGING = SynchedEntityData.defineId(BrownBearEntity.class, EntityDataSerializers.BOOLEAN);
-    public boolean animateRunningAnimationWhenRiding;
+    private long persistentAngerEndTime;
 
     public BrownBearEntity(EntityType<? extends BrownBearEntity> type, Level level) {
         super(type, level);
@@ -68,7 +71,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         this.goalSelector.addGoal(1, new TamableAnimalPanicGoal(1.25, DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES));
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
-        this.goalSelector.addGoal(4, new BrownBearAttackGoal(this, this.chargeSpeedModifier(), true));
+        this.goalSelector.addGoal(4, new BrownBearEntity.BrownBearAttackGoal(this, this.chargeSpeedModifier(), true));
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.0, 10.0F, 2.0F));
         this.goalSelector.addGoal(6, new BreedGoal(this, 1.0));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
@@ -86,7 +89,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     private boolean playerDoesBadThings(LivingEntity livingEntity, ServerLevel serverLevel) {
         if (livingEntity instanceof Player player) {
             ItemStack item = player.getMainHandItem();
-            return item.is(MtsTags.Entities.AGRO_BROWN_BEAR_ITEMS) && this.isAngryAt(player, serverLevel);
+            return item.is(MtsTags.Entities.AGRO_BROWN_BEAR_ITEMS) || this.isAngryAt(player, serverLevel);
         }
         return false;
     }
@@ -95,14 +98,29 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
         boolean isItemCorrect = itemStack.is(Items.COD);
+
         if (!this.level().isClientSide()) {
             if (!isTame() && !isBaby() && isItemCorrect) {
                 itemStack.consume(1, player);
                 tryToTame(player);
                 return InteractionResult.SUCCESS;
-
             }
+
             if (isTame() && isOwnedBy(player)) {
+                // Healing
+                if (this.isFood(itemStack) && this.getHealth() < this.getMaxHealth()) {
+                    this.feed(player, hand, itemStack, 2.0F, 2.0F);
+                    this.spawnHealingParticles();
+                    return InteractionResult.SUCCESS;
+                }
+
+                // Sit/Stand
+                if (player.isShiftKeyDown() && this.getControllingPassenger() != player) {
+                    setOrderedToSit(!isOrderedToSit());
+                    return InteractionResult.SUCCESS;
+                }
+
+                // Not riding --> mount
                 if (this.getPassengers().isEmpty()) {
                     this.setOrderedToSit(false);
                     player.startRiding(this);
@@ -113,13 +131,28 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
                 if (result.consumesAction()) {
                     return result;
                 }
-
-                setOrderedToSit(!isOrderedToSit());
-                return InteractionResult.SUCCESS;
             }
         }
 
         return isOwnedBy(player) || isTame() || isItemCorrect ? InteractionResult.CONSUME : InteractionResult.PASS;
+    }
+
+    private void tryToTame(Player player) {
+        if (this.random.nextInt(5) == 0) {
+            tame(player);
+            setOrderedToSit(true);
+            level().broadcastEntityEvent(this, EntityEvent.TAMING_SUCCEEDED);
+        } else {
+            this.spawnTamingFailedParticles();
+        }
+    }
+
+    private void spawnHealingParticles() {
+        ((ServerLevel) this.level()).sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + this.getBbHeight()+0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
+    }
+
+    private void spawnTamingFailedParticles() {
+        ((ServerLevel) this.level()).sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + this.getBbHeight()+0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
     }
 
     @Override
@@ -183,14 +216,6 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         }
     }
 
-    private void tryToTame(Player player) {
-        if (this.random.nextInt(5) == 0) {
-            tame(player);
-            setOrderedToSit(true);
-            level().broadcastEntityEvent(this, EntityEvent.TAMING_SUCCEEDED);
-        }
-    }
-
     @Override
     public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean success = super.doHurtTarget(level, target);
@@ -216,9 +241,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         if (level().isClientSide()) {
             this.idleAnimationState.animateWhen(!isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
 
-            animateRunningAnimationWhenRiding = this.isVehicle() && this.getDeltaMovement().horizontalDistanceSqr() > 0.0001;
-
-            if (this.entityData.get(DATA_CHARGING) || animateRunningAnimationWhenRiding) {
+            if (this.entityData.get(DATA_CHARGING) || animateRunningAnimationWhenRiding()) {
                 this.runAnimationState.startIfStopped(this.tickCount);
             } else {
                 this.runAnimationState.stop();
@@ -245,6 +268,10 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         }
     }
 
+    private boolean animateRunningAnimationWhenRiding() {
+        return this.isVehicle() && this.walkAnimation.isMoving();
+    }
+
     private boolean isCharging() {
         return !this.isVehicle() && this.getTarget() != null && this.getTarget().isAlive();
     }
@@ -259,9 +286,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         if (id == EntityEvent.TAMING_SUCCEEDED) {
             this.tameAnimationState.start(this.tickCount);
         }
-
         if (id == STAND_EVENT) {
-            System.out.println("here");
             this.standAnimationState.start(this.tickCount);
         }
     }
@@ -269,7 +294,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     @Override
     public void setOrderedToSit(boolean orderedToSit) {
         super.setOrderedToSit(orderedToSit);
-        setInSittingPose(orderedToSit);
+        this.setInSittingPose(orderedToSit);
 
         this.jumping = false;
         this.navigation.stop();
@@ -355,6 +380,21 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     private static TargetingConditions.@NonNull Selector selectPrey() {
         return (target, level) -> target.is(EntityTypes.SHEEP)
                 || target.is(EntityTypes.COW) || target.is(EntityTypes.PIG) || target.is(EntityTypes.CHICKEN) || target.is(EntityTypes.FOX) || target.is(EntityTypes.WOLF);
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return this.isBaby() ? SoundEvents.POLAR_BEAR_AMBIENT_BABY : SoundEvents.POLAR_BEAR_AMBIENT;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getHurtSound(DamageSource source) {
+        return SoundEvents.POLAR_BEAR_HURT;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return SoundEvents.POLAR_BEAR_DEATH;
     }
 
     private static class BrownBearAttackGoal extends MeleeAttackGoal {

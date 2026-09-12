@@ -84,6 +84,7 @@ public class BrownBearEntityModel extends EntityModel<BrownBearEntityRenderState
     @Override
     public void setupAnim(BrownBearEntityRenderState state) {
         super.setupAnim(state);
+        this.root.getAllParts().forEach(ModelPart::resetPose);
 
         this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
         this.tameAnimation.apply(state.tameAnimationState, state.ageInTicks);
@@ -97,7 +98,7 @@ public class BrownBearEntityModel extends EntityModel<BrownBearEntityRenderState
             this.sitAnimation.apply(state.sitAnimationState, state.ageInTicks);
         }
 
-        if (!state.tameAnimationState.isStarted() && !state.sitAnimationState.isStarted() && state.animateWalkingAnimationWhenRiding) {
+        if (!state.tameAnimationState.isStarted() && !state.sitAnimationState.isStarted()) {
             if (state.runAnimationState.isStarted()) {
                 this.runAnimation.apply(state.runAnimationState, state.ageInTicks);
             } else {

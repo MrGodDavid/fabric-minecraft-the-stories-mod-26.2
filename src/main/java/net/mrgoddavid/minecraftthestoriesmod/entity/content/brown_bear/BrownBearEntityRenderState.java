@@ -15,6 +15,4 @@ public class BrownBearEntityRenderState extends LivingEntityRenderState {
     public final AnimationState tameAnimationState = new AnimationState();
     public final AnimationState sitAnimationState = new AnimationState();
     public final AnimationState standAnimationState = new AnimationState();
-
-    public boolean animateWalkingAnimationWhenRiding;
 }
