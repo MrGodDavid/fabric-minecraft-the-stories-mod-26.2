@@ -18,6 +18,7 @@ d6acd7a6f5e64c976f2b24ba080295836ae25032 assets/minecraft-the-stories-mod/blocks
 b7f3d6d76ea187a06085d74d2e0a0113079de24c assets/minecraft-the-stories-mod/blockstates/raw_strong_emerald_block.json
 f2905168de1192c26541d85498b297998f471380 assets/minecraft-the-stories-mod/blockstates/raw_strong_ruby_block.json
 2e64639eb1cb3d7f6899d967dc93a0864148ba7f assets/minecraft-the-stories-mod/blockstates/raw_strong_topaz_block.json
+bda300a2737255b8e6bf134d86d1ae35de5e4293 assets/minecraft-the-stories-mod/blockstates/squeezer_default.json
 eda11c42f52bbe4d5a77bf81096ace83405497d2 assets/minecraft-the-stories-mod/blockstates/stone_amethyst_ore.json
 f0fd3f5f0996f384385317363451502948ee3703 assets/minecraft-the-stories-mod/blockstates/stone_ruby_ore.json
 36b2b3a63b051c29a0917e5da9b641dee3bafc06 assets/minecraft-the-stories-mod/blockstates/stone_topaz_ore.json
@@ -104,6 +105,7 @@ f71abbad5eb1ae1a8b11808761411f1cb42cf448 assets/minecraft-the-stories-mod/items/
 c5c35a557c10b6d653d7b88747cb305807c32fa6 assets/minecraft-the-stories-mod/items/raw_strong_topaz_block.json
 8890baa7f0516dbf45065ba200e09d181545c8c2 assets/minecraft-the-stories-mod/items/spruce_bow.json
 b6cb827da39bb2be4e2abb02c490b65fc46809f3 assets/minecraft-the-stories-mod/items/spruce_stick.json
+3cfa8bc997d1212757f585b339dfd7cdbac0c8c4 assets/minecraft-the-stories-mod/items/squeezer_default.json
 50b6aefce931830c15556c989178358bb516654a assets/minecraft-the-stories-mod/items/stone_amethyst_ore.json
 4662c71da798990de2e9ecd373f8c12b3ebf2560 assets/minecraft-the-stories-mod/items/stone_ruby_ore.json
 2d8fed800dfbb896418a357185d5ee916b24a1b7 assets/minecraft-the-stories-mod/items/stone_topaz_ore.json

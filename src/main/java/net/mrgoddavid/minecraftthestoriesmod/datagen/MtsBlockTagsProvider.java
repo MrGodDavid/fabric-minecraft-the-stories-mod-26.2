@@ -8,6 +8,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 
@@ -72,7 +73,8 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD))
                 .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG))
 
-                .add(MtsBlocks.getResourceKey(SUPER_CRAFTER_BLOCK));
+                .add(MtsBlocks.getResourceKey(SUPER_CRAFTER_BLOCK))
+                .add(MtsBlocks.getResourceKey(SQUEEZER));
 
         tag(BlockTags.WOODEN_FENCES)
                 .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_FENCE));

@@ -15,6 +15,7 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
@@ -70,6 +71,7 @@ public class MtsBlocks {
     public static final Block ENRICHER;
     public static final Block ENDER_EXALTER;
     public static final Block ORE_COMPRESSOR;
+    public static final Block SQUEEZER;
 
     public static final Block ENRICHER_WASTE_FLUID;
     public static final Block BLUE_FUEL_FLUID;
@@ -114,6 +116,7 @@ public class MtsBlocks {
         ENRICHER = registerBlock("enricher_default", properties -> new EnricherBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(EnricherBlock.LIT) ? 15 : 0)));
         ENDER_EXALTER = registerBlock("ender_exalter", properties -> new EnderExalterBlock(properties.strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
         ORE_COMPRESSOR = registerBlock("ore_compressor_default", properties -> new OreCompressorBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+        SQUEEZER = registerBlock("squeezer_default", properties -> new SqueezerBlock(properties.strength(3.0f, 2.0f).requiresCorrectToolForDrops().ignitedByLava().sound(SoundType.WOOD)));
 
         ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
         BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));

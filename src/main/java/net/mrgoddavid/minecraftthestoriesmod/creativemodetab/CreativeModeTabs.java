@@ -193,6 +193,7 @@ public class CreativeModeTabs {
                         output.accept(ENRICHER);
                         output.accept(ENDER_EXALTER);
                         output.accept(ORE_COMPRESSOR);
+                        output.accept(SQUEEZER);
                     })
                     .build()
     );

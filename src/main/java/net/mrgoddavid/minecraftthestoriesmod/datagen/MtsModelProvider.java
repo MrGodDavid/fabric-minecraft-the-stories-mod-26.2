@@ -23,10 +23,12 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
@@ -83,9 +85,10 @@ public class MtsModelProvider extends FabricModelProvider {
                 .fence(COMPRESSED_WOOD_FENCE)
                 .fenceGate(COMPRESSED_WOOD_FENCE_GATE);
 
-        this.generateFacingModels(blockModelGenerators, SUPER_CRAFTER_BLOCK, SuperCrafterBlock.STATE, SuperCrafterBlock.FACING, (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path())));
-        this.generateFacingModels(blockModelGenerators, ENRICHER, EnricherBlock.STATE, EnricherBlock.FACING, (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path())));
-        this.generateFacingModels(blockModelGenerators, ORE_COMPRESSOR, OreCompressorBlock.STATE, OreCompressorBlock.FACING, (type -> Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, type.path())));
+        this.generateFacingModels(blockModelGenerators, SUPER_CRAFTER_BLOCK, SuperCrafterBlock.STATE, SuperCrafterBlock.FACING, (type -> Constants.modId(type.path())));
+        this.generateFacingModels(blockModelGenerators, ENRICHER, EnricherBlock.STATE, EnricherBlock.FACING, (type -> Constants.modId(type.path())));
+        this.generateFacingModels(blockModelGenerators, ORE_COMPRESSOR, OreCompressorBlock.STATE, OreCompressorBlock.FACING, (type -> Constants.modId(type.path())));
+        this.generateFacingModels(blockModelGenerators, SQUEEZER, SqueezerBlock.STATE, SqueezerBlock.FACING, (type -> Constants.modId(type.path())));
 
         blockModelGenerators.createNonTemplateModelBlock(ENDER_EXALTER);
     }
