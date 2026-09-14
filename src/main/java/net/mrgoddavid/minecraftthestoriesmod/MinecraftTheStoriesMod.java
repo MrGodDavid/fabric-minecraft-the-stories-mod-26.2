@@ -21,6 +21,8 @@ import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticles;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,9 @@ public class MinecraftTheStoriesMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        MtsLogger.header();
+
+        VanillaPaths.registerVanillaEntityPaths();
         MtsTestWorldServer.register();
         MtsScreenTextures.register();
 
@@ -71,5 +76,7 @@ public class MinecraftTheStoriesMod implements ModInitializer {
 
         LootTableEvents.REPLACE.register(MtsLootTableModifiers::replaceLootTables);
         LootTableEvents.MODIFY.register(MtsLootTableModifiers::modifyLootTables);
+
+        MtsLogger.tailer();
     }
 }

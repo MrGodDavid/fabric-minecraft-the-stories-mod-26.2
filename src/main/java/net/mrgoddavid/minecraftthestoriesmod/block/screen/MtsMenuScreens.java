@@ -7,6 +7,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherScre
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * Registers screens of menus.
@@ -17,7 +18,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 public class MtsMenuScreens {
 
     public static void register() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering menus of screens for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("MTS Screens For Menus");
 
         MenuScreens.register(MtsMenuTypes.ENDER_EXALTER_MENU, EnderExalterScreen::new);
         MenuScreens.register(MtsMenuTypes.ENRICHER_MENU, EnricherScreen::new);

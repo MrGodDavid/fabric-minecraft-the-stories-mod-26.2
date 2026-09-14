@@ -9,7 +9,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
  * @author Mr. GodDavid
  * @since 8/14/2026
  */
-public class VanillaPaths {
+public final class VanillaPaths {
 
     public static final String DEEPSLATE_DIAMOND_ORE = concatBlockPath("deepslate_diamond_ore");
     public static final String DEEPSLATE_EMERALD_ORE = concatBlockPath("deepslate_emerald_ore");

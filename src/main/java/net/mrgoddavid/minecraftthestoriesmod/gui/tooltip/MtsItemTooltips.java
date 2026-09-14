@@ -29,6 +29,6 @@ public final class MtsItemTooltips {
     }
 
     public static void register() {
-        MtsLogger.info("Custom Tooltips");
+        MtsLogger.info("MTS Tooltips");
     }
 }

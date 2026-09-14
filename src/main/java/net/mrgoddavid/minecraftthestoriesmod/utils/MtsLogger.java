@@ -9,6 +9,14 @@ import org.jspecify.annotations.NonNull;
  */
 public final class MtsLogger {
 
+    public static void header() {
+        MinecraftTheStoriesMod.LOGGER.info("============= [BEGIN REGISTRATION] =============");
+    }
+
+    public static void tailer() {
+        MinecraftTheStoriesMod.LOGGER.info("============= [FINISH REGISTRATION] =============");
+    }
+
     public static void info(@NonNull final String name) {
         MinecraftTheStoriesMod.LOGGER.info("Registering {} for: \"" + MinecraftTheStoriesMod.MOD_ID + "\"", name);
     }

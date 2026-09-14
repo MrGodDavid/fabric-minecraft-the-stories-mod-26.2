@@ -7,6 +7,7 @@ import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * Rendering registries of MTS mod.
@@ -17,7 +18,7 @@ import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 public class MtsFluidRenderingRegistries {
 
     public static void register() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering fluid rendering registries for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("MTS Fluid Rendering Registries");
 
         FluidRenderingRegistry.register(
                 MtsFluids.ENRICHER_WASTE_STILL,
