@@ -11,7 +11,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.PushReaction;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
@@ -76,6 +78,8 @@ public class MtsBlocks {
     public static final Block ENRICHER_WASTE_FLUID;
     public static final Block BLUE_FUEL_FLUID;
 
+    public static final Block STRAWBERRY_CROP;
+
     static {
         DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties), BlockBehaviour.Properties.of().strength(6f, 6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
         DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(4, 6), properties), BlockBehaviour.Properties.of().strength(6f, 7f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
@@ -120,6 +124,8 @@ public class MtsBlocks {
 
         ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
         BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
+
+        STRAWBERRY_CROP = registerBlockWithoutBlockItem("strawberry_crop", properties -> new StrawberryCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
     }
 
     /**
@@ -154,6 +160,13 @@ public class MtsBlocks {
         ResourceKey<Block> blockResourceKey = ResourceKey.create(Registries.BLOCK, blockId);
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(blockResourceKey));
         registerModBlockItem(name, toRegister);
+        return Registry.register(BuiltInRegistries.BLOCK, blockId, toRegister);
+    }
+
+    private static Block registerBlockWithoutBlockItem(String name, Function<BlockBehaviour.Properties, Block> function) {
+        Identifier blockId = Constants.modId(name);
+        ResourceKey<Block> blockResourceKey = ResourceKey.create(Registries.BLOCK, blockId);
+        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(blockResourceKey));
         return Registry.register(BuiltInRegistries.BLOCK, blockId, toRegister);
     }
 

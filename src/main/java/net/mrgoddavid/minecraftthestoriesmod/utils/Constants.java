@@ -31,4 +31,21 @@ public final class Constants {
     public static Identifier defaultId(@NonNull final String path) {
         return Identifier.withDefaultNamespace(path);
     }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 9/13/2026
+     */
+    public static final class Universal {
+
+        public static final int NEW_BORN = 0;
+
+        private Universal() throws IllegalAccessException {
+            throw new IllegalAccessException("You cannot instantiate this class!");
+        }
+    }
+
+    private Constants() throws IllegalAccessException {
+        throw new IllegalAccessException("You cannot instantiate this class!");
+    }
 }

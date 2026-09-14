@@ -22,6 +22,7 @@ bda300a2737255b8e6bf134d86d1ae35de5e4293 assets/minecraft-the-stories-mod/blocks
 eda11c42f52bbe4d5a77bf81096ace83405497d2 assets/minecraft-the-stories-mod/blockstates/stone_amethyst_ore.json
 f0fd3f5f0996f384385317363451502948ee3703 assets/minecraft-the-stories-mod/blockstates/stone_ruby_ore.json
 36b2b3a63b051c29a0917e5da9b641dee3bafc06 assets/minecraft-the-stories-mod/blockstates/stone_topaz_ore.json
+40f2211afc3dfdaabee863e91df18dadcd3f4c43 assets/minecraft-the-stories-mod/blockstates/strawberry_crop.json
 e0abf598d4ebd651e262474dd54a6728a6fce0e5 assets/minecraft-the-stories-mod/blockstates/stripped_compressed_wood.json
 fa6754f58b192f206ae03321578c9dc4a504108b assets/minecraft-the-stories-mod/blockstates/stripped_compressed_wood_log.json
 6e773243877ac9224362cfba0f94750488c1ca9e assets/minecraft-the-stories-mod/blockstates/strong_amethyst_block.json
@@ -92,6 +93,7 @@ b6d46deccfeed4edd61d342b27373126a24c521f assets/minecraft-the-stories-mod/items/
 e81226482c8416ff183bd624f0768548de0c7c9f assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_one.json
 1ae990e6583b5c891ab61428482704afdc924fb8 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_three.json
 6e2d150d3e39fdffa2c8158d590c13a0b17c5bd6 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_two.json
+f504d4f30ae70c7bd7d204ce91f5ead8c84ebec4 assets/minecraft-the-stories-mod/items/raw_strawberry.json
 7a99705c1e438ccd3edb645f5d42a90c70b98ed7 assets/minecraft-the-stories-mod/items/raw_strong_amethyst.json
 1eb9d48e7734997accd40d000a8b187a7df21b7d assets/minecraft-the-stories-mod/items/raw_strong_amethyst_block.json
 cff267509d5cddab84ac39a86c5eaf78b77fb7f7 assets/minecraft-the-stories-mod/items/raw_strong_amethyst_wall.json
@@ -109,6 +111,8 @@ b6cb827da39bb2be4e2abb02c490b65fc46809f3 assets/minecraft-the-stories-mod/items/
 50b6aefce931830c15556c989178358bb516654a assets/minecraft-the-stories-mod/items/stone_amethyst_ore.json
 4662c71da798990de2e9ecd373f8c12b3ebf2560 assets/minecraft-the-stories-mod/items/stone_ruby_ore.json
 2d8fed800dfbb896418a357185d5ee916b24a1b7 assets/minecraft-the-stories-mod/items/stone_topaz_ore.json
+f96636af6642d9c8152ff2a89326fbd8fb2da3bc assets/minecraft-the-stories-mod/items/strawberry.json
+3984ac1a30a2c2e6b2d7bc1b8e7d3824fc62627d assets/minecraft-the-stories-mod/items/strawberry_seeds.json
 6843737dad5dcc6dcc9d56db250e39a5ef57ea93 assets/minecraft-the-stories-mod/items/stripped_compressed_wood.json
 ede03a34712ec5438496f2da606e5de09484249a assets/minecraft-the-stories-mod/items/stripped_compressed_wood_log.json
 648781bd88fba25ed4fb04ec1826c6db979335da assets/minecraft-the-stories-mod/items/strong_amethyst.json
@@ -199,6 +203,12 @@ cdac08245ea05be409a0c42bec2565e1c3760121 assets/minecraft-the-stories-mod/models
 0547af1d53c8de4da0f7bdd430fdf8a7a250a695 assets/minecraft-the-stories-mod/models/block/stone_amethyst_ore.json
 bc7a91c8d275d17dec9571525c8fc7de75fa40c7 assets/minecraft-the-stories-mod/models/block/stone_ruby_ore.json
 00d73a47e27f9d546c025dda70797d41cfd06e7e assets/minecraft-the-stories-mod/models/block/stone_topaz_ore.json
+8f30350e3d39366e456a5439ac58beeb678ee977 assets/minecraft-the-stories-mod/models/block/strawberry_crop_stage0.json
+88ba547000a794ba262f630653e9feca113d136f assets/minecraft-the-stories-mod/models/block/strawberry_crop_stage1.json
+27d37614993ccb4d15a1186da44a21c52506bf28 assets/minecraft-the-stories-mod/models/block/strawberry_crop_stage2.json
+0d1e38e8368def9dd6b490028a1b4458c52988aa assets/minecraft-the-stories-mod/models/block/strawberry_crop_stage3.json
+b766aee77be73d9dc8b25b47de7a6d33e422895b assets/minecraft-the-stories-mod/models/block/strawberry_crop_stage4.json
+bb4ae797960ba72e50caa946f41e8a7a07e4dfce assets/minecraft-the-stories-mod/models/block/strawberry_crop_stage5.json
 320702bcd4de35ce17d6aa86e19a79ddde066dcb assets/minecraft-the-stories-mod/models/block/stripped_compressed_wood.json
 e936a0d5ef21ee5812b171f462686de7fa5909b7 assets/minecraft-the-stories-mod/models/block/stripped_compressed_wood_log.json
 23a2f577af92514ea068528f4b16942ae22cc22f assets/minecraft-the-stories-mod/models/block/strong_amethyst_block.json
@@ -326,6 +336,7 @@ e1f5a37c649d1620419fe353091265659cf80e14 assets/minecraft-the-stories-mod/models
 31b569a898a6400d3f860f1d216652a6f30bb315 assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_one.json
 97908cbe7844806216efdeb9c230d10ffeca363a assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_three.json
 9fffde6085bf26b7fd1fe63ff30489744a49b660 assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_two.json
+709722044ea83e919d67194501815cc1eda74e07 assets/minecraft-the-stories-mod/models/item/raw_strawberry.json
 242b230908c6531136af3760b9e2329160e95242 assets/minecraft-the-stories-mod/models/item/raw_strong_amethyst.json
 362fc4306aeebe12df53f059fe5b1060a1f80f27 assets/minecraft-the-stories-mod/models/item/raw_strong_diamond.json
 a685a40c17d1634483d42894f7ec053864c927ab assets/minecraft-the-stories-mod/models/item/raw_strong_emerald.json
@@ -336,6 +347,8 @@ ac62cfdc989c380e9cbebc60f51dfa22ea929c41 assets/minecraft-the-stories-mod/models
 8cc73a1e0331cc7222700e17bd36f2a2d392d495 assets/minecraft-the-stories-mod/models/item/spruce_bow_pulling_1.json
 ce2a025cdd4b34c0aaef9b1691b7656e2aa3ca03 assets/minecraft-the-stories-mod/models/item/spruce_bow_pulling_2.json
 cde40c65482144ca5477753305138dac035ef47f assets/minecraft-the-stories-mod/models/item/spruce_stick.json
+a19ffd23c20fac921fda2684e79df70080bae392 assets/minecraft-the-stories-mod/models/item/strawberry.json
+4afbd47715783ffe7264725df67ec3cf21b3c537 assets/minecraft-the-stories-mod/models/item/strawberry_seeds.json
 4945050e1796998946ca46463b70ab8d3d677048 assets/minecraft-the-stories-mod/models/item/strong_amethyst.json
 fb880b9773f43302b755e47cd4099522eb80d8f2 assets/minecraft-the-stories-mod/models/item/strong_amethyst_axe.json
 33dce8cc7701915cafe3a6b799bf81187c7009c5 assets/minecraft-the-stories-mod/models/item/strong_amethyst_boots.json

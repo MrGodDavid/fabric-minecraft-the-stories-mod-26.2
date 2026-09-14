@@ -143,6 +143,10 @@ public class CreativeModeTabs {
                         output.accept(STRONG_IRON_PRESSED_PLATE);
                         output.accept(STRONG_IRON_ZEN_STAFF_STAGE_TWO);
                         output.accept(STRONG_IRON_ZEN_STAFF_STAGE_THREE);
+
+                        output.accept(STRAWBERRY_SEEDS);
+                        output.accept(STRAWBERRY);
+                        output.accept(RAW_STRAWBERRY);
                     })
                     .build()
     );

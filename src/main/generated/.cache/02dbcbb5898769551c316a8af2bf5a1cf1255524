@@ -15,6 +15,7 @@ a249c46329a41538f49a564e1f14338aaf1be5a0 data/minecraft-the-stories-mod/tags/blo
 a249c46329a41538f49a564e1f14338aaf1be5a0 data/minecraft-the-stories-mod/tags/block/needs_strong_iron_tool.json
 aa4950dd7a467a36d6d176a45413ebcf8e898e06 data/minecraft-the-stories-mod/tags/block/needs_strong_ruby_tool.json
 d35a78e2e9b10b0382a6046f53dc819f1d198287 data/minecraft-the-stories-mod/tags/block/needs_strong_topaz_tool.json
+4cec57c2b5b92487b5bd93cef901f4a5e016ace9 data/minecraft/tags/block/crops.json
 e191f826b5fccd329d6514842b01f5cc4a361d13 data/minecraft/tags/block/fence_gates.json
 da361f7bc314490f4cdc122516b9032f7fd7f04c data/minecraft/tags/block/fences.json
 df22ddd0ddade59911cce16a53b346b8d9b262b8 data/minecraft/tags/block/incorrect_for_diamond_tool.json

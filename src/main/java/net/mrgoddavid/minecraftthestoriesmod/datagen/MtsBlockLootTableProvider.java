@@ -1,7 +1,9 @@
 package net.mrgoddavid.minecraftthestoriesmod.datagen;
 
+import com.google.common.collect.ImmutableMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -9,13 +11,21 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditions;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
@@ -83,14 +93,48 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         add(NETHER_STRONG_RUBY_ORE, createMultipleOreDrops(NETHER_STRONG_RUBY_ORE, RAW_STRONG_TOPAZ, 1.0f, 4.0f));
 
         add(END_STRONG_AMETHYST_ORE, createMultipleOreDrops(END_STRONG_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 4.0f));
+
+        this.createCropDrops(STRAWBERRY_CROP, this.defineStrawberryDropsRules());
+    }
+
+    private ImmutableMap<LootItemCondition.Builder, Item> defineStrawberryDropsRules() {
+        LootItemCondition.Builder rawStrawberryDropsCondition =
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, StrawberryCropBlock.RAW_STRAWBERRY_AGE));
+        LootItemCondition.Builder strawberryDropsCondition =
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, StrawberryCropBlock.MAX_AGE));
+        LootItemCondition.Builder strawberrySeedsDropsCondition =
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, Constants.Universal.NEW_BORN));
+
+        return ImmutableMap.of(
+                rawStrawberryDropsCondition, RAW_STRAWBERRY,
+                strawberryDropsCondition, STRAWBERRY,
+                strawberrySeedsDropsCondition, STRAWBERRY_SEEDS
+        );
+
+    }
+
+    private void createCropDrops(Block cropBlock, ImmutableMap<LootItemCondition.Builder, Item> lootCropMap) {
+        LootTable.Builder cropDropsBuilder = LootTable.lootTable();
+        for (ImmutableMap.Entry<LootItemCondition.Builder, Item> entry : lootCropMap.entrySet()) {
+            Item item = entry.getValue();
+            if (item != null) {
+                cropDropsBuilder.withPool(LootPool.lootPool()
+                        .when(entry.getKey())
+                        .add(LootItem.lootTableItem(item)));
+            }
+        }
+        this.add(cropBlock, cropDropsBuilder);
     }
 
     public LootTable.Builder createMultipleOreDrops(final Block block, Item item, float minDrops, float maxDrops) {
         HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         return this.createSilkTouchDispatchTable(block, this.applyExplosionDecay(
-                block, LootItem.lootTableItem(item)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                        block, LootItem.lootTableItem(item)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
+                                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
                 )
         );
     }

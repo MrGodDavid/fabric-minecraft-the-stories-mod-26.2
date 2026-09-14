@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
@@ -89,8 +90,9 @@ public class MtsModelProvider extends FabricModelProvider {
         this.generateFacingModels(blockModelGenerators, ENRICHER, EnricherBlock.STATE, EnricherBlock.FACING, (type -> Constants.modId(type.path())));
         this.generateFacingModels(blockModelGenerators, ORE_COMPRESSOR, OreCompressorBlock.STATE, OreCompressorBlock.FACING, (type -> Constants.modId(type.path())));
         this.generateFacingModels(blockModelGenerators, SQUEEZER, SqueezerBlock.STATE, SqueezerBlock.FACING, (type -> Constants.modId(type.path())));
-
         blockModelGenerators.createNonTemplateModelBlock(ENDER_EXALTER);
+
+        blockModelGenerators.createCropBlock(STRAWBERRY_CROP, StrawberryCropBlock.AGE, 0, 1, 2, 3, 4, 5);
     }
 
     public <T extends Enum<T> & StringRepresentable> void generateFacingModels(
@@ -230,6 +232,9 @@ public class MtsModelProvider extends FabricModelProvider {
         this.generateMtsBow(itemModelGenerators, MANGROVE_BOW);
         this.generateMtsBow(itemModelGenerators, PALE_OAK_BOW);
         this.generateMtsBow(itemModelGenerators, SPRUCE_BOW);
+
+        itemModelGenerators.generateFlatItem(STRAWBERRY, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_STRAWBERRY, flatItemTemplate);
     }
 
     public void generateMtsBow(final ItemModelGenerators itemModelGenerators, final Item mtsBowItem) {

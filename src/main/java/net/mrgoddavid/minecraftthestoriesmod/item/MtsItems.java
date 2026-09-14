@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
@@ -43,6 +44,13 @@ public class MtsItems {
 
     public static final Item HAMMER_OF_CRAFTER = registerItem("hammer_of_crafter", properties -> new AxeItem(MtsItemToolMaterials.STRONG_RUBY,
             5.8f, -3.3f, properties.durability(1200)));
+
+    // #################################################################################################################
+    // #                                              MTS CUSTOM FOOD                                                  #
+    // #################################################################################################################
+    public static final Item STRAWBERRY_SEEDS = registerItem("strawberry_seeds", properties -> new BlockItem(STRAWBERRY_CROP, properties.useBlockDescriptionPrefix()));
+    public static final Item STRAWBERRY = registerItem("strawberry", properties -> new Item(properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new Item(properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
 
     // #################################################################################################################
     // #                                        SUPER CRAFTER INGREDIENTS                                              #

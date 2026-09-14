@@ -2,6 +2,8 @@ package net.mrgoddavid.minecraftthestoriesmod.gui.tooltip;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**
  * Custom tooltips for Mts mod.
@@ -18,15 +20,15 @@ public final class MtsItemTooltips {
     public static final Identifier LEGENDARY_WEAPONS_TOOLTIP_STYLE = tooltip("legendary_weapons_tooltip");
 
     private static Identifier tooltip(String path) {
-        return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, path);
+        return Constants.modId( path);
     }
 
     @Deprecated
     private static Identifier icon(String path) {
-        return Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "textures/gui/icons/" + path + "_3d_icon.png");
+        return Constants.modId( "textures/gui/icons/" + path + "_3d_icon.png");
     }
 
     public static void register() {
-        MinecraftTheStoriesMod.LOGGER.info("Registering tooltips for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Custom Tooltips");
     }
 }

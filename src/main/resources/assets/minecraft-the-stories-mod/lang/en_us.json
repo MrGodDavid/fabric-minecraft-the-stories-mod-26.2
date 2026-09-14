@@ -108,6 +108,10 @@
   "item.minecraft-the-stories-mod.enricher_waste_bucket": "Enricher Waste Bucket",
   "item.minecraft-the-stories-mod.blue_fuel_bucket": "Blue Fuel Bucket",
 
+  "item.minecraft-the-stories-mod.strawberry": "Strawberry",
+  "item.minecraft-the-stories-mod.raw_strawberry": "Raw Strawberry",
+  "block.minecraft-the-stories-mod.strawberry_seeds": "Strawberry Seeds",
+
   "block.minecraft-the-stories-mod.deepslate_amethyst_ore": "Deepslate Amethyst Ore",
   "block.minecraft-the-stories-mod.deepslate_ruby_ore": "Deepslate Ruby Ore",
   "block.minecraft-the-stories-mod.deepslate_topaz_ore": "Deepslate Topaz Ore",
@@ -144,6 +148,9 @@
   "block.minecraft-the-stories-mod.enricher_default": "Enricher",
   "block.minecraft-the-stories-mod.ender_exalter": "Ender Exalter",
   "block.minecraft-the-stories-mod.ore_compressor_default": "Ore Compressor",
+  "block.minecraft-the-stories-mod.ore_squeezer_default": "Squeezer",
+
+  "block.minecraft-the-stories-mod.strawberry_crop": "Strawberry Crop",
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",
   "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks",

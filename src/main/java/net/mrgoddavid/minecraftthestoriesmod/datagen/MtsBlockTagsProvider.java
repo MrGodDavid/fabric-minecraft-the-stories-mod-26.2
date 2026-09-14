@@ -194,5 +194,10 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(MtsTags.Blocks.NEEDS_STRONG_GOLD_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
+        // #################################################################################################################
+        // #                                          MTS CUSTOM CROP TAG                                                  #
+        // #################################################################################################################
+        tag(BlockTags.CROPS)
+                .add(MtsBlocks.getResourceKey(STRAWBERRY_CROP));
     }
 }
