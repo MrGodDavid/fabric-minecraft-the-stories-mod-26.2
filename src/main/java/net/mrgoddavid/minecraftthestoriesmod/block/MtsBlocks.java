@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.PushReaction;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
@@ -79,6 +80,7 @@ public class MtsBlocks {
     public static final Block BLUE_FUEL_FLUID;
 
     public static final Block STRAWBERRY_CROP;
+    public static final Block BLUEBERRY_BUSH;
 
     static {
         DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties), BlockBehaviour.Properties.of().strength(6f, 6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
@@ -126,6 +128,7 @@ public class MtsBlocks {
         BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
 
         STRAWBERRY_CROP = registerBlockWithoutBlockItem("strawberry_crop", properties -> new StrawberryCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
+        BLUEBERRY_BUSH = registerBlockWithoutBlockItem("blueberry_bush", properties -> new BlueberryBushBlock(properties.randomTicks().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY)));
     }
 
     /**

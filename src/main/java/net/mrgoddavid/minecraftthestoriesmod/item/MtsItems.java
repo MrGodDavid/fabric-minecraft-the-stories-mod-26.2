@@ -51,6 +51,8 @@ public class MtsItems {
     public static final Item STRAWBERRY_SEEDS = registerItem("strawberry_seeds", properties -> new BlockItem(STRAWBERRY_CROP, properties.useBlockDescriptionPrefix()));
     public static final Item STRAWBERRY = registerItem("strawberry", properties -> new Item(properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
     public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new Item(properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_BLUEBERRY = registerItem("raw_blueberry", properties -> new Item(properties.food(MtsFoods.RAW_BLUEBERRY, MtsFoods.RAW_BLUEBERRY_CONSUMABLE)));
+    public static final Item BLUEBERRY = registerItem("blueberry", properties -> new BlockItem(BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
 
     // #################################################################################################################
     // #                                        SUPER CRAFTER INGREDIENTS                                              #
@@ -300,7 +302,7 @@ public class MtsItems {
      * @return the registered Item.
      */
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
-        Identifier id = Constants.modId( name);
+        Identifier id = Constants.modId(name);
         ResourceKey<Item> resourceKey = ResourceKey.create(Registries.ITEM, id);
         return Registry.register(
                 BuiltInRegistries.ITEM, id,
@@ -449,6 +451,15 @@ public class MtsItems {
             fabricCreativeModeTabOutput.accept(MANGROVE_STICK);
             fabricCreativeModeTabOutput.accept(PALE_OAK_STICK);
             fabricCreativeModeTabOutput.accept(SPRUCE_STICK);
+
+            fabricCreativeModeTabOutput.accept(STRAWBERRY_SEEDS);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(fabricCreativeModeTabOutput -> {
+            fabricCreativeModeTabOutput.accept(STRAWBERRY);
+            fabricCreativeModeTabOutput.accept(RAW_STRAWBERRY);
+            fabricCreativeModeTabOutput.accept(BLUEBERRY);
+            fabricCreativeModeTabOutput.accept(RAW_BLUEBERRY);
         });
     }
 }

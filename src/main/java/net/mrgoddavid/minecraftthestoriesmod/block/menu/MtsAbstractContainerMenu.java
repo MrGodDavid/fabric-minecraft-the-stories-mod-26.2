@@ -21,10 +21,10 @@ public abstract class MtsAbstractContainerMenu extends AbstractContainerMenu {
     private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_ROW_COUNT * PLAYER_INVENTORY_COLUMN_COUNT; // 27
     private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT; // 36
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
-    private static final int ENDER_EXALTER_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT; // 36
+    private static final int CUSTOM_BLOCK_ENTITY_MENU_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT; // 36
 
     private final PlayerInventoryMenuCoordsContext context;
-    private int ENDER_EXALTER_SLOT_COUNT; // modify this to display how many slots you want.
+    private int CUSTOM_BLOCK_ENTITY_MENU_SLOT_COUNT; // modify this to display how many slots you want.
 
     protected MtsAbstractContainerMenu(@Nullable MenuType<?> menuType, int containerId, Inventory inventory) {
         super(menuType, containerId);
@@ -34,8 +34,8 @@ public abstract class MtsAbstractContainerMenu extends AbstractContainerMenu {
         addPlayerHotbar(inventory);
     }
 
-    protected void registerTotalSlots(int slots) {
-        this.ENDER_EXALTER_SLOT_COUNT = slots;
+    protected final void registerTotalSlots(int slots) {
+        this.CUSTOM_BLOCK_ENTITY_MENU_SLOT_COUNT = slots;
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
@@ -67,10 +67,10 @@ public abstract class MtsAbstractContainerMenu extends AbstractContainerMenu {
         // Check if the slot clicked is one of the vanilla container slots
         if (slotIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
             // This is a vanilla container slot, so merge the stack into the entity's inventory
-            if (!moveItemStackTo(sourceStack, ENDER_EXALTER_FIRST_SLOT_INDEX, ENDER_EXALTER_FIRST_SLOT_INDEX + ENDER_EXALTER_SLOT_COUNT, false)) {
+            if (!moveItemStackTo(sourceStack, CUSTOM_BLOCK_ENTITY_MENU_FIRST_SLOT_INDEX, CUSTOM_BLOCK_ENTITY_MENU_FIRST_SLOT_INDEX + CUSTOM_BLOCK_ENTITY_MENU_SLOT_COUNT, false)) {
                 return ItemStack.EMPTY;
             }
-        } else if (slotIndex < ENDER_EXALTER_FIRST_SLOT_INDEX + ENDER_EXALTER_SLOT_COUNT) {
+        } else if (slotIndex < CUSTOM_BLOCK_ENTITY_MENU_FIRST_SLOT_INDEX + CUSTOM_BLOCK_ENTITY_MENU_SLOT_COUNT) {
             // This is an Ender-Exalter slot, so merge the stack into player's inventory
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
                 return ItemStack.EMPTY;

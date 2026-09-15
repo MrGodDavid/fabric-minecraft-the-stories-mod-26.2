@@ -4,7 +4,9 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
+import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsAbstractScreen;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
 
@@ -14,7 +16,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextur
  * @author Mr. GodDavid
  * @since 8/22/2026
  */
-public class EnricherScreen extends AbstractContainerScreen<EnricherMenu> {
+public class EnricherScreen extends MtsAbstractScreen<EnricherMenu> {
 
     public EnricherScreen(EnricherMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
@@ -23,11 +25,8 @@ public class EnricherScreen extends AbstractContainerScreen<EnricherMenu> {
     @Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractBackground(graphics, mouseX, mouseY, a);
-        int centeredX = (width - imageWidth) / 2;
-        int centeredY = (height - imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, ENRICHER_GUI, centeredX, centeredY, 0, 0, imageWidth, imageHeight, 256, 256);
-        renderProgressArrow(graphics, centeredX, centeredY);
-        renderProgressWasteFluidBar(graphics, centeredX, centeredY);
+        renderProgressArrow(graphics, x(), y());
+        renderProgressWasteFluidBar(graphics, x(), y());
     }
 
     private void renderProgressArrow(GuiGraphicsExtractor graphics, int x, int y) {
@@ -43,8 +42,13 @@ public class EnricherScreen extends AbstractContainerScreen<EnricherMenu> {
         }
     }
 
+    /**
+     * Put the identifier of this block entity's screen here.
+     *
+     * @return the identifier of the screen texture of this custom block.
+     */
     @Override
-    protected void extractLabels(GuiGraphicsExtractor graphics, int xm, int ym) {
-        graphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, -12566464, false);
+    protected Identifier registerScreenTexture() {
+        return ENRICHER_GUI;
     }
 }

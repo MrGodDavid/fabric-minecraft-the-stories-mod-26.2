@@ -1,11 +1,14 @@
 package net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor;
 
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
+import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsAbstractScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
+
+import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
 
 /**
  * Screen of Enricher.
@@ -13,7 +16,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
  * @author Mr. GodDavid
  * @since 8/22/2026
  */
-public class OreCompressorScreen extends AbstractContainerScreen<OreCompressorMenu> {
+public class OreCompressorScreen extends MtsAbstractScreen<OreCompressorMenu> {
 
     public OreCompressorScreen(OreCompressorMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title, 176, 189);
@@ -21,12 +24,9 @@ public class OreCompressorScreen extends AbstractContainerScreen<OreCompressorMe
 
     @Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
-        int x = (this.width - this.imageWidth) / 2;
-        int y = (this.height - this.imageHeight) / 2;
         super.extractBackground(graphics, mouseX, mouseY, a);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, MtsScreenTextures.ORE_COMPRESSOR_GUI, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
-        drawArrowProgress(graphics, x, y);
-        drawRemainingFuelProgress(graphics, x, y);
+        drawArrowProgress(graphics, x(), y());
+        drawRemainingFuelProgress(graphics, x(), y());
     }
 
     private void drawRemainingFuelProgress(GuiGraphicsExtractor graphics, int x, int y) {
@@ -45,13 +45,11 @@ public class OreCompressorScreen extends AbstractContainerScreen<OreCompressorMe
     @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractRenderState(graphics, mouseX, mouseY, a);
-        int x = (this.width - this.imageWidth) / 2;
-        int y = (this.height - this.imageHeight) / 2;
-        drawUpperPressPlate(graphics, x, y);
-        drawBottomPressPlaye(graphics, x, y);
+        drawUpperPressPlate(graphics, x(), y());
+        drawBottomPressPlate(graphics, x(), y());
     }
 
-    private void drawBottomPressPlaye(GuiGraphicsExtractor graphics, int x, int y) {
+    private void drawBottomPressPlate(GuiGraphicsExtractor graphics, int x, int y) {
         graphics.blit(RenderPipelines.GUI_TEXTURED, MtsScreenTextures.ORE_COMPRESSOR_BOTTOM_PRESS_PLATE, x + 62, y + 65 + (8 - menu.getScaledPressPlateProgress()),
                 0, 8 - menu.getScaledPressPlateProgress(), 16, menu.getScaledPressPlateProgress(), 16, 8);
     }
@@ -61,8 +59,13 @@ public class OreCompressorScreen extends AbstractContainerScreen<OreCompressorMe
                 0, 8 - menu.getScaledPressPlateProgress(), 16, menu.getScaledPressPlateProgress(), 16, 8);
     }
 
+    /**
+     * Put the identifier of this block entity's screen here.
+     *
+     * @return the identifier of the screen texture of this custom block.
+     */
     @Override
-    protected void extractLabels(GuiGraphicsExtractor graphics, int xm, int ym) {
-        graphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, -12566464, false);
+    protected Identifier registerScreenTexture() {
+        return ORE_COMPRESSOR_GUI;
     }
 }

@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
@@ -93,6 +94,7 @@ public class MtsModelProvider extends FabricModelProvider {
         blockModelGenerators.createNonTemplateModelBlock(ENDER_EXALTER);
 
         blockModelGenerators.createCropBlock(STRAWBERRY_CROP, StrawberryCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+        blockModelGenerators.createCrossBlock(BLUEBERRY_BUSH, BlockModelGenerators.PlantType.NOT_TINTED, BlueberryBushBlock.AGE, 0, 1, 2, 3);
     }
 
     public <T extends Enum<T> & StringRepresentable> void generateFacingModels(
@@ -214,7 +216,6 @@ public class MtsModelProvider extends FabricModelProvider {
 
         itemModelGenerators.declareCustomModelItem(STRONG_AMETHYST_LONG_KNIFE);
 
-
         itemModelGenerators.generateFlatItem(ACACIA_STICK, flatItemTemplate);
         itemModelGenerators.generateFlatItem(BIRCH_STICK, flatItemTemplate);
         itemModelGenerators.generateFlatItem(CHERRY_STICK, flatItemTemplate);
@@ -235,6 +236,7 @@ public class MtsModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(STRAWBERRY, flatItemTemplate);
         itemModelGenerators.generateFlatItem(RAW_STRAWBERRY, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(RAW_BLUEBERRY, flatItemTemplate);
     }
 
     public void generateMtsBow(final ItemModelGenerators itemModelGenerators, final Item mtsBowItem) {

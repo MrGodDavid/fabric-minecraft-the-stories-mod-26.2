@@ -22,6 +22,7 @@ public class MtsScreenTextures {
     public static final Identifier ORE_COMPRESSOR_BOTTOM_PRESS_PLATE = registerTexturePath("ore_compressor", "ore_compressor_bottom_press_plate");
     public static final Identifier ORE_COMPRESSOR_PROGRESS_ARROW = registerTexturePath("ore_compressor", "ore_compressor_progress_arrow");
     public static final Identifier ORE_COMPRESSOR_BLUE_FUEL_BAR = registerTexturePath("ore_compressor", "ore_compressor_blue_fuel_bar");
+    public static final Identifier SQUEEZER_GUI = registerTexturePath("squeezer", "squeezer_gui");
 
     private static Identifier registerTexturePath(final String block, final String name) {
         return Constants.modId(path(block, name));

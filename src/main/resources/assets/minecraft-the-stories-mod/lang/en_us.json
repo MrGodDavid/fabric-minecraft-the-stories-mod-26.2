@@ -111,6 +111,8 @@
   "item.minecraft-the-stories-mod.strawberry": "Strawberry",
   "item.minecraft-the-stories-mod.raw_strawberry": "Raw Strawberry",
   "block.minecraft-the-stories-mod.strawberry_seeds": "Strawberry Seeds",
+  "block.minecraft-the-stories-mod.blueberry": "Blueberry",
+  "item.minecraft-the-stories-mod.raw_blueberry": "Raw Blueberry",
 
   "block.minecraft-the-stories-mod.deepslate_amethyst_ore": "Deepslate Amethyst Ore",
   "block.minecraft-the-stories-mod.deepslate_ruby_ore": "Deepslate Ruby Ore",
@@ -148,7 +150,7 @@
   "block.minecraft-the-stories-mod.enricher_default": "Enricher",
   "block.minecraft-the-stories-mod.ender_exalter": "Ender Exalter",
   "block.minecraft-the-stories-mod.ore_compressor_default": "Ore Compressor",
-  "block.minecraft-the-stories-mod.ore_squeezer_default": "Squeezer",
+  "block.minecraft-the-stories-mod.squeezer_default": "Squeezer",
 
   "block.minecraft-the-stories-mod.strawberry_crop": "Strawberry Crop",
 

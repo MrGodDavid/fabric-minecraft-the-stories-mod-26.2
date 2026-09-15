@@ -1,26 +1,25 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer;
 
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsAbstractScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 
-import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
-
 /**
- * Screen of Super Crafter.
- *
  * @author Mr. GodDavid
- * @since 8/26/2026
+ * @since 9/14/2026
  */
-public class SuperCrafterScreen extends MtsAbstractScreen<SuperCrafterMenu> {
+public class SqueezerScreen extends MtsAbstractScreen<SqueezerMenu> {
 
-    public SuperCrafterScreen(SuperCrafterMenu menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 176, 181);
+    public SqueezerScreen(SqueezerMenu menu, Inventory inventory, Component title) {
+        super(menu, inventory, title, 176, 209);
+    }
+
+    @Override
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+        super.extractBackground(graphics, mouseX, mouseY, a);
     }
 
     /**
@@ -30,6 +29,6 @@ public class SuperCrafterScreen extends MtsAbstractScreen<SuperCrafterMenu> {
      */
     @Override
     protected Identifier registerScreenTexture() {
-        return SUPER_CRAFTER_GUI;
+        return MtsScreenTextures.SQUEEZER_GUI;
     }
 }

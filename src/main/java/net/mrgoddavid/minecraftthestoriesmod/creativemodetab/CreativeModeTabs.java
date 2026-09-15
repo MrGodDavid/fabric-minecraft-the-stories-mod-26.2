@@ -147,6 +147,8 @@ public class CreativeModeTabs {
                         output.accept(STRAWBERRY_SEEDS);
                         output.accept(STRAWBERRY);
                         output.accept(RAW_STRAWBERRY);
+                        output.accept(BLUEBERRY);
+                        output.accept(RAW_BLUEBERRY);
                     })
                     .build()
     );

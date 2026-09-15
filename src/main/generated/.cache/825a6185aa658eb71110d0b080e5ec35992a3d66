@@ -1,4 +1,5 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Model Definitions
+d65cc52962a6c3277e2433c21f2ff3ee93363a3d assets/minecraft-the-stories-mod/blockstates/blueberry_bush.json
 327d68d31005d9590dd7753f95a37eff3e19f5af assets/minecraft-the-stories-mod/blockstates/compressed_wood.json
 f5a3b4d4bca53bc2fdb04f444fa4677dbcc1c8b9 assets/minecraft-the-stories-mod/blockstates/compressed_wood_fence.json
 09f0bc18a9ea8ae39fb90b741b881c32809ad2c7 assets/minecraft-the-stories-mod/blockstates/compressed_wood_fence_gate.json
@@ -42,6 +43,7 @@ e1e74db5144ec0bcc820aa2785812769de7b713a assets/minecraft-the-stories-mod/items/
 2228d3950fb27579b54bbc1062f7967158db1e0a assets/minecraft-the-stories-mod/items/birch_bow.json
 bd00ec6029a7d68f9f11202eabfbaa8d7eb478f3 assets/minecraft-the-stories-mod/items/birch_stick.json
 a7b567cf6a7e1c716ac83b498bab677eac8e31bc assets/minecraft-the-stories-mod/items/blue_fuel_bucket.json
+5e25647e02f4c03a89c050c1f7b4f16dc44e3fcc assets/minecraft-the-stories-mod/items/blueberry.json
 9ca25cf9c568c5dc0c17570662f49dfb1eb439bb assets/minecraft-the-stories-mod/items/broken_diamond_pickaxe.json
 957c0f85a34af3e02b5b6bbf9036b6207e1337c6 assets/minecraft-the-stories-mod/items/broken_iron_pickaxe.json
 ae6dc8dba3f7e9e64e63e2fac7d8519e8fa5e94c assets/minecraft-the-stories-mod/items/cherry_bow.json
@@ -93,6 +95,7 @@ b6d46deccfeed4edd61d342b27373126a24c521f assets/minecraft-the-stories-mod/items/
 e81226482c8416ff183bd624f0768548de0c7c9f assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_one.json
 1ae990e6583b5c891ab61428482704afdc924fb8 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_three.json
 6e2d150d3e39fdffa2c8158d590c13a0b17c5bd6 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_two.json
+147bf959d635ece5a705d342011781ebfec57cfe assets/minecraft-the-stories-mod/items/raw_blueberry.json
 f504d4f30ae70c7bd7d204ce91f5ead8c84ebec4 assets/minecraft-the-stories-mod/items/raw_strawberry.json
 7a99705c1e438ccd3edb645f5d42a90c70b98ed7 assets/minecraft-the-stories-mod/items/raw_strong_amethyst.json
 1eb9d48e7734997accd40d000a8b187a7df21b7d assets/minecraft-the-stories-mod/items/raw_strong_amethyst_block.json
@@ -176,6 +179,10 @@ c53e5219bebeb830e010944c0940442d68122e25 assets/minecraft-the-stories-mod/items/
 0d1d00729aca7eef6d19631eb0ee8670beb33c3b assets/minecraft-the-stories-mod/items/super_crafter_default.json
 2b05c530acb2acf6bfd70e67ef4ae9fedf40d25f assets/minecraft-the-stories-mod/items/zen_staff_iron_head_stage_three.json
 b4bdc9df84d3e0308a5bdb6b2be545d47f6f8ef8 assets/minecraft-the-stories-mod/items/zen_staff_iron_head_stage_two.json
+91a8daa5db37b38217d711f0746e31e3e6ac0916 assets/minecraft-the-stories-mod/models/block/blueberry_bush_stage0.json
+ed04918a8a490b81440fad9e93b92b7e6c865bb9 assets/minecraft-the-stories-mod/models/block/blueberry_bush_stage1.json
+fbb84dbb276381e45def22235034c5cb272c87fd assets/minecraft-the-stories-mod/models/block/blueberry_bush_stage2.json
+a7b18d8e71b6b0f5e01bdf89c67e6b2381e861f4 assets/minecraft-the-stories-mod/models/block/blueberry_bush_stage3.json
 02fdb8bc2ff6c180cef4a09692a867ce09df74b6 assets/minecraft-the-stories-mod/models/block/compressed_wood.json
 05ad784fe187b9761dec0dd9b6ac2b20c5a15079 assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate.json
 1cc0451293bf50c751f6515e4b279aa5b2580d4b assets/minecraft-the-stories-mod/models/block/compressed_wood_fence_gate_open.json
@@ -240,6 +247,7 @@ e8b222585083321158f1fde0a4bcbaf831f6bb1c assets/minecraft-the-stories-mod/models
 66d00f97f993fbb5eaeee370a0b3c59ce473f05b assets/minecraft-the-stories-mod/models/item/birch_bow_pulling_2.json
 cd470ae692e28e30f0747823ad48b581801d6993 assets/minecraft-the-stories-mod/models/item/birch_stick.json
 6fdae9a86eea3879cb891f321c8726f81d58ae93 assets/minecraft-the-stories-mod/models/item/blue_fuel_bucket.json
+cc6dd1e37b1ae18d1ffe0300a379c9ecea56de3a assets/minecraft-the-stories-mod/models/item/blueberry.json
 afb0c14cba4c7d426680ad821e73d818fb82d69d assets/minecraft-the-stories-mod/models/item/broken_diamond_pickaxe.json
 3fe39e3c95f1eded45fb178ee6b88d6af2e16e4b assets/minecraft-the-stories-mod/models/item/broken_iron_pickaxe.json
 bc7dcc43a0057851677abfb27ef6975dca6a586d assets/minecraft-the-stories-mod/models/item/cherry_bow.json
@@ -336,6 +344,7 @@ e1f5a37c649d1620419fe353091265659cf80e14 assets/minecraft-the-stories-mod/models
 31b569a898a6400d3f860f1d216652a6f30bb315 assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_one.json
 97908cbe7844806216efdeb9c230d10ffeca363a assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_three.json
 9fffde6085bf26b7fd1fe63ff30489744a49b660 assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_two.json
+3c709903bca31fb71487525e398e5a4a74dc1441 assets/minecraft-the-stories-mod/models/item/raw_blueberry.json
 709722044ea83e919d67194501815cc1eda74e07 assets/minecraft-the-stories-mod/models/item/raw_strawberry.json
 242b230908c6531136af3760b9e2329160e95242 assets/minecraft-the-stories-mod/models/item/raw_strong_amethyst.json
 362fc4306aeebe12df53f059fe5b1060a1f80f27 assets/minecraft-the-stories-mod/models/item/raw_strong_diamond.json

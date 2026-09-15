@@ -34,6 +34,7 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 8/15/2026
  */
+@SuppressWarnings("NullableProblems")
 public class SuperCrafterBlock extends BaseEntityBlock implements EntityBlock {
 
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;

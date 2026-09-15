@@ -11,5 +11,10 @@ import java.util.Optional;
  */
 public interface MtsCraftableBlockEntity<T extends Recipe<?>> {
 
+    /**
+     * Implements this method based on the inventory of your block entity.
+     *
+     * @return optional recipe holder of your block's custom entity (if that block entity can craft/blast/smith items).
+     */
     Optional<RecipeHolder<T>> getCurrentRecipe();
 }

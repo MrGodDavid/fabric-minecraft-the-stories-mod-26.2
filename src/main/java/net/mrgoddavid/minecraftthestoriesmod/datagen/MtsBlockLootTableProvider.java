@@ -5,12 +5,16 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -22,6 +26,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditions;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
@@ -51,6 +56,8 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
      */
     @Override
     public void generate() {
+
+        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
         dropSelf(RAW_STRONG_EMERALD_BLOCK);
         dropSelf(RAW_STRONG_DIAMOND_BLOCK);
@@ -95,6 +102,26 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         add(END_STRONG_AMETHYST_ORE, createMultipleOreDrops(END_STRONG_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 4.0f));
 
         this.createCropDrops(STRAWBERRY_CROP, this.defineStrawberryDropsRules());
+        this.add(
+                BLUEBERRY_BUSH,
+                block -> this.applyExplosionDecay(
+                        block, LootTable.lootTable()
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(BLUEBERRY_BUSH).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3)))
+                                                .add(LootItem.lootTableItem(BLUEBERRY))
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                                )
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(BLUEBERRY_BUSH).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2)))
+                                                .add(LootItem.lootTableItem(RAW_BLUEBERRY))
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                                )
+                )
+        );
     }
 
     private ImmutableMap<LootItemCondition.Builder, Item> defineStrawberryDropsRules() {

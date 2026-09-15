@@ -1,10 +1,10 @@
 package net.mrgoddavid.minecraftthestoriesmod.block.screen;
 
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
@@ -24,6 +24,7 @@ public class MtsMenuScreens {
         MenuScreens.register(MtsMenuTypes.ENRICHER_MENU, EnricherScreen::new);
         MenuScreens.register(MtsMenuTypes.SUPER_CRAFTER_MENU, SuperCrafterScreen::new);
         MenuScreens.register(MtsMenuTypes.ORE_COMPRESSOR_MENU, OreCompressorScreen::new);
+        MenuScreens.register(MtsMenuTypes.SQUEEZER_MENU, SqueezerScreen::new);
     }
 
     private MtsMenuScreens() throws IllegalAccessException {

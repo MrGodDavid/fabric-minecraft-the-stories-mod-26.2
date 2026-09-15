@@ -52,7 +52,7 @@ public abstract class MtsAbstractBlockEntity extends BlockEntity {
      */
     public abstract void drops();
 
-    public void defaultDrops(final NonNullList<ItemStack> inventory) {
+    protected final void defaultDrops(final NonNullList<ItemStack> inventory) {
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 }

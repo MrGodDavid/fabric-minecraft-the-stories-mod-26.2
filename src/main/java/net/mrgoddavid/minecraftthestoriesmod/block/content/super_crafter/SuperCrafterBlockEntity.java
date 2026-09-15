@@ -38,17 +38,12 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.
  */
 public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedContainer, MtsCraftableBlockEntity<SuperCrafterRecipe> {
 
-    public NonNullList<ItemStack> inventory = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
+    public final NonNullList<ItemStack> inventory = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
 
     public static final Component DEFAULT_NAME = Component.translatable("block.minecraft-the-stories-mod.super_crafter_default");
 
     public SuperCrafterBlockEntity(BlockPos worldPosition, BlockState blockState) {
         super(MtsBlockEntities.SUPER_CRAFTER_BE, worldPosition, blockState);
-    }
-
-    @Override
-    public void registerDebugValues(ServerLevel level, Registration registration) {
-        super.registerDebugValues(level, registration);
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {

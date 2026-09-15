@@ -13,9 +13,13 @@ public class MtsFoods {
 
     public static final FoodProperties STRAWBERRY = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
     public static final FoodProperties RAW_STRAWBERRY = new FoodProperties.Builder().nutrition(1).saturationModifier(0.125f).build();
+    public static final FoodProperties BLUEBERRY = new FoodProperties.Builder().nutrition(3).saturationModifier(0.2f).build();
+    public static final FoodProperties RAW_BLUEBERRY = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).build();
 
     public static final Consumable STRAWBERRY_CONSUMABLE = Consumables.defaultFood().consumeSeconds(1.2f).build();
     public static final Consumable RAW_STRAWBERRY_CONSUMABLE = Consumables.defaultFood().consumeSeconds(1.2f).build();
+    public static final Consumable BLUEBERRY_CONSUMABLE = Consumables.defaultFood().consumeSeconds(1.0f).build();
+    public static final Consumable RAW_BLUEBERRY_CONSUMABLE = Consumables.defaultFood().consumeSeconds(1.0f).build();
 
     public static void register() {
         MtsLogger.info("Custom Foods");
