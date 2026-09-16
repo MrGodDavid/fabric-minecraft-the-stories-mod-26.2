@@ -168,6 +168,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(Items.GOLDEN_SPEAR))
                 .add(MtsItems.getResourceKey(Items.DIAMOND_SPEAR))
                 .add(MtsItems.getResourceKey(Items.COPPER_SPEAR));
+
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS)
                 .add(MtsItems.getResourceKey(Items.NETHERITE_SPEAR))
                 .add(MtsItems.getResourceKey(EMERALD_SPEAR))
@@ -175,10 +176,13 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(STRONG_RUBY_SPEAR))
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_SPEAR));
 
+        tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS)
+                .add(MtsItems.getResourceKey(STRONG_IRON_ZEN_STAFF));
+
         tag(ItemTags.SPEARS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)
-                .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS);
-//                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_SPEARS);
+                .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SPEARS)
+                .addTag(MtsTags.Items.MTS_RARE_WEAPONS_SPEARS);
     }
 
     /**
@@ -205,7 +209,8 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(MtsTags.Items.MTS_RARE_WEAPONS_SWORDS)
                 .add(MtsItems.getResourceKey(STRONG_IRON_LONG_KNIFE))
-                .add(MtsItems.getResourceKey(STRONG_AMETHYST_LONG_KNIFE));
+                .add(MtsItems.getResourceKey(STRONG_AMETHYST_LONG_KNIFE))
+                .add(MtsItems.getResourceKey(STRONG_IRON_DOUBLE_BLADE));
 
         tag(ItemTags.SWORDS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)

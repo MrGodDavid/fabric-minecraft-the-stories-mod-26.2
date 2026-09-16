@@ -1,6 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils;
 
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import org.jspecify.annotations.NonNull;
 
@@ -39,6 +41,7 @@ public final class Constants {
     public static final class Universal {
 
         public static final int NEW_BORN = 0;
+        public static final Ingredient NULL_INGREDIENT = Ingredient.of(Blocks.BARRIER);
 
         private Universal() throws IllegalAccessException {
             throw new IllegalAccessException("You cannot instantiate this class!");

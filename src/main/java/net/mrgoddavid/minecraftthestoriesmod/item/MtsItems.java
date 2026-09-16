@@ -55,13 +55,6 @@ public class MtsItems {
     public static final Item BLUEBERRY = registerItem("blueberry", properties -> new BlockItem(BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
 
     // #################################################################################################################
-    // #                                        SUPER CRAFTER INGREDIENTS                                              #
-    // #################################################################################################################
-    public static final Item STRONG_IRON_PRESSED_PLATE = registerItem("strong_iron_pressed_plate", Item::new);
-    public static final Item STRONG_IRON_ZEN_STAFF_STAGE_TWO = registerItem("zen_staff_iron_head_stage_two", Item::new);
-    public static final Item STRONG_IRON_ZEN_STAFF_STAGE_THREE = registerItem("zen_staff_iron_head_stage_three", Item::new);
-
-    // #################################################################################################################
     // #                                                NATURAL ITEMS                                                  #
     // #################################################################################################################
     public static final Item ACACIA_STICK = registerItem("acacia_stick", Item::new);
@@ -256,6 +249,8 @@ public class MtsItems {
             new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
     public static final Item STRONG_IRON_ZEN_STAFF = registerItem("strong_iron_zen_staff", properties ->
             new Item(properties.spear(MtsItemToolMaterials.STRONG_IRON, 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)));
+    public static final Item STRONG_IRON_DOUBLE_BLADE = registerItem("strong_iron_double_blade", properties ->
+            new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.3f, -2.0f)));
 
     public static final Item STRONG_DIAMOND_BATTLE_AXE = registerItem("diamond_battle_axe", properties ->
             new Item(properties.sword(MtsItemToolMaterials.STRONG_DIAMOND, 5.5f, -3.5f)));
@@ -266,6 +261,15 @@ public class MtsItems {
 
     public static final Item STRONG_AMETHYST_LONG_KNIFE = registerItem("amethyst_long_knife", properties ->
             new Item(properties.sword(MtsItemToolMaterials.STRONG_AMETHYST, 3.5f, -2.2f)));
+
+    // #################################################################################################################
+    // #                                        SUPER CRAFTER INGREDIENTS                                              #
+    // #################################################################################################################
+    public static final Item STRONG_IRON_PRESSED_PLATE = registerItem("strong_iron_pressed_plate", Item::new);
+    public static final Item STRONG_IRON_ZEN_STAFF_STAGE_TWO = registerItem("zen_staff_iron_head_stage_two", Item::new);
+    public static final Item STRONG_IRON_ZEN_STAFF_STAGE_THREE = registerItem("zen_staff_iron_head_stage_three", Item::new);
+    public static final Item STRONG_DIAMOND_VILLAGER_SOLDER_AXE_HEAD_STAGE_TWO = registerItem("axe_diamond_design_001_head_stage_two", Item::new);
+    public static final Item STRONG_DIAMOND_VILLAGER_SOLDER_AXE_HEAD_STAGE_THREE = registerItem("axe_diamond_design_001_head_stage_three", Item::new);
 
     /**
      * Gets the resource key of the mod item.
@@ -391,9 +395,13 @@ public class MtsItems {
             fabricCreativeModeTabOutput.accept(SPRUCE_BOW);
 
             fabricCreativeModeTabOutput.accept(STRONG_IRON_LONG_KNIFE);
+            fabricCreativeModeTabOutput.accept(STRONG_IRON_ZEN_STAFF);
+            fabricCreativeModeTabOutput.accept(STRONG_IRON_DOUBLE_BLADE);
+
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_BATTLE_AXE);
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_CROP);
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
+
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_LONG_KNIFE);
         });
 

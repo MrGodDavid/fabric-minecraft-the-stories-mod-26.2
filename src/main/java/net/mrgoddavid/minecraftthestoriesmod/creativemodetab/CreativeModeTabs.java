@@ -80,6 +80,7 @@ public class CreativeModeTabs {
 
                         output.accept(STRONG_IRON_LONG_KNIFE);
                         output.accept(STRONG_IRON_ZEN_STAFF);
+                        output.accept(STRONG_IRON_DOUBLE_BLADE);
 
                         output.accept(STRONG_DIAMOND_BATTLE_AXE);
                         output.accept(STRONG_DIAMOND_CROP);

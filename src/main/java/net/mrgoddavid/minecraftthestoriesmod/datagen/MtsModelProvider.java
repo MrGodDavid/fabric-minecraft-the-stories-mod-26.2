@@ -209,6 +209,7 @@ public class MtsModelProvider extends FabricModelProvider {
 
         itemModelGenerators.declareCustomModelItem(STRONG_IRON_LONG_KNIFE);
         itemModelGenerators.declareCustomModelItem(STRONG_IRON_ZEN_STAFF);
+        itemModelGenerators.declareCustomModelItem(STRONG_IRON_DOUBLE_BLADE);
 
         itemModelGenerators.itemModelOutput.accept(STRONG_DIAMOND_BATTLE_AXE, ItemModelUtils.plainModel(getScale2xModelId(itemModelGenerators, STRONG_DIAMOND_BATTLE_AXE)));
         itemModelGenerators.declareCustomModelItem(STRONG_DIAMOND_CROP);

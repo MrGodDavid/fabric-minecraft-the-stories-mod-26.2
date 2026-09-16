@@ -23,6 +23,10 @@ public record OreCompressorRecipeInput(ItemStack compressedOre, ItemStack blueFu
         return Context.DATA_SIZE;
     }
 
+    /**
+     * @author Mr. GodDavid
+     * @since 9/11/2026
+     */
     public static class Context {
         public static final int COMPRESSED_ORE_POSITION = 0;
         public static final int BLUE_FUEL_POSITION = 1;

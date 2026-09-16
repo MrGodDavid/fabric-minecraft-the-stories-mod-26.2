@@ -7,6 +7,8 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher.EnricherRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.ore_compressor.OreCompressorRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipeInput;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.super_crafter.SuperCrafterRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
@@ -20,6 +22,7 @@ public class MtsRecipes {
     public static final RecipeSerializer<EnricherRecipe> ENRICHER_SERIALIZER = registerRecipeSerializer("enriching", new RecipeSerializer<>(EnricherRecipe.CODEC, EnricherRecipe.STREAM_CODEC));
     public static final RecipeSerializer<SuperCrafterRecipe> SUPER_CRAFTER_SERIALIZER = registerRecipeSerializer("super_crafting", new RecipeSerializer<>(SuperCrafterRecipe.CODEC, SuperCrafterRecipe.STREAM_CODEC));
     public static final RecipeSerializer<OreCompressorRecipe> ORE_COMPRESSOR_SERIALIZER = registerRecipeSerializer("ore_compressing", new RecipeSerializer<>(OreCompressorRecipe.CODEC, OreCompressorRecipe.STREAM_CODEC));
+    public static final RecipeSerializer<SqueezerRecipe> SQUEEZER_SERIALIZER = registerRecipeSerializer("squeezing", new RecipeSerializer<>(SqueezerRecipe.CODEC, SqueezerRecipe.STREAM_CODEC));
 
     public static final RecipeType<EnricherRecipe> ENRICHER_TYPE = registerRecipeType("enriching", new RecipeType<EnricherRecipe>() {
         @Override
@@ -37,6 +40,12 @@ public class MtsRecipes {
         @Override
         public String toString() {
             return "ore_compressing";
+        }
+    });
+    public static final RecipeType<SqueezerRecipe> SQUEEZER_TYPE = registerRecipeType("squeezing", new RecipeType<SqueezerRecipe>() {
+        @Override
+        public String toString() {
+            return "squeezing";
         }
     });
 
