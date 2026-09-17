@@ -1,0 +1,8 @@
+{
+  "type": "minecraft-the-stories-mod:squeezing",
+  "fruit_in_north_slot": "minecraft-the-stories-mod:raw_strawberry",
+  "fruit_in_south_slot": "minecraft-the-stories-mod:raw_strawberry",
+  "mixture": {
+    "id": "minecraft-the-stories-mod:strawberry"
+  }
+}

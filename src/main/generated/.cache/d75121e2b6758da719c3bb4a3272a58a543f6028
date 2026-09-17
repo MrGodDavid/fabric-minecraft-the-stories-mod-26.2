@@ -10,7 +10,8 @@ f19e92df100aa5cf7bd365258a33a8d50e5334a9 data/minecraft-the-stories-mod/tags/ite
 2430e0234c76d23cc898aa8e6b2762c22b7d985a data/minecraft-the-stories-mod/tags/item/mts_legendary_weapons.json
 1325f6e9e02f3b5a61e5da8ad30c987af1ae42ee data/minecraft-the-stories-mod/tags/item/mts_rare_weapons.json
 216746b1ecab1cae6c3116dba6f4fb2fc3f6cd1c data/minecraft-the-stories-mod/tags/item/mts_rare_weapons_axes.json
-36fd4dff1240ae969e9c6420f6eb59c256c52e00 data/minecraft-the-stories-mod/tags/item/mts_rare_weapons_swords.json
+3a09482b3642bd76cc69f31a0bca9fd455ef3ef7 data/minecraft-the-stories-mod/tags/item/mts_rare_weapons_spears.json
+0d461e6e659bb7d230815ac257ded74a2b86e4ce data/minecraft-the-stories-mod/tags/item/mts_rare_weapons_swords.json
 ea37f68fb0b1675efaf89d389203e02d05a4367c data/minecraft-the-stories-mod/tags/item/mts_uncommon_axes.json
 5037f8eb4f3e811c82c61342a242de2aaeb31f9b data/minecraft-the-stories-mod/tags/item/mts_uncommon_spears.json
 d2fdb1ad17a7e493dbe8d30cf2957927d82380a1 data/minecraft-the-stories-mod/tags/item/mts_uncommon_swords.json
@@ -25,5 +26,5 @@ c10523c342fde9d2a43c32e25b3e310a8b5cd0f3 data/minecraft/tags/item/foot_armor.jso
 9e09b1a3a63123b61755a9691f88e977322e0b3b data/minecraft/tags/item/leg_armor.json
 0e7147b79c684b09ac975baec020543592f5ea5f data/minecraft/tags/item/pickaxes.json
 594670bf1b5988cdf97d3cef4da1bd00d08ecda4 data/minecraft/tags/item/shovels.json
-ede155c1a31b2fffc331133f0a726e12cc348b67 data/minecraft/tags/item/spears.json
+5cc429771febc4614e752945696ce75a8aa570d5 data/minecraft/tags/item/spears.json
 43919afbcdabcb3c6ab6d01c6dd3c8fb4eb9398e data/minecraft/tags/item/swords.json

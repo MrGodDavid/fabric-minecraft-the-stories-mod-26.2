@@ -17,7 +17,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.EnricherRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.OreCompressorRecipeBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SqueezerRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SuperCrafterRecipeBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -217,6 +219,16 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(RARE_UPGRADE_SCROLL_STAGE_THREE), Ingredient.of(HAMMER_OF_CRAFTER), Ingredient.of(STRONG_IRON_ZEN_STAFF_STAGE_TWO), STRONG_IRON_ZEN_STAFF_STAGE_THREE, 50)
                         .unlockedBy(getHasName(HAMMER_OF_CRAFTER), has(HAMMER_OF_CRAFTER))
                         .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_zen_staff_stage_three_from_super_crafting");
+
+                // #################################################################################################################
+                // #                                              SQUEEZER RECIPES                                                 #
+                // #################################################################################################################
+                SqueezerRecipeBuilder.squeezerRecipe(RecipeCategory.MISC, STRAWBERRY)
+                        .fruitInNorthSlot(Ingredient.of(RAW_STRAWBERRY))
+                        .fruitInSouthSlot(Ingredient.of(RAW_STRAWBERRY))
+                        .build()
+                        .unlockedBy(getHasName(RAW_STRAWBERRY), has(RAW_STRAWBERRY))
+                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strawberry_from_squeezing");
 
                 // #################################################################################################################
                 // #                                        COMPRESSED TOOLS RECIPES                                               #

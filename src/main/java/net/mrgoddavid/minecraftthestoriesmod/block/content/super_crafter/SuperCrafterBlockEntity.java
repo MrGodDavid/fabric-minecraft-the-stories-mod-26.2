@@ -98,13 +98,13 @@ public class SuperCrafterBlockEntity extends MtsAbstractBlockEntity implements E
 
     void consumeIngredients() {
         inventory.set(Context.TEMPLATE_CONSUMER_SLOT, inventory.get(Context.TEMPLATE_CONSUMER_SLOT).copyWithCount(inventory.get(Context.TEMPLATE_CONSUMER_SLOT).getCount() - 1));
-        if (useHammer()) {
+        if (usedHammer()) {
             inventory.set(CRAFTING_HAMMER_SLOT, inventory.get(CRAFTING_HAMMER_SLOT).copyWithCount(inventory.get(CRAFTING_HAMMER_SLOT).getCount() - 1));
         }
         inventory.set(Context.ITEM_STAGE_SLOT, inventory.get(Context.ITEM_STAGE_SLOT).copyWithCount(inventory.get(Context.ITEM_STAGE_SLOT).getCount() - 1));
     }
 
-    private boolean useHammer() {
+    private boolean usedHammer() {
         inventory.get(CRAFTING_HAMMER_SLOT).setDamageValue(inventory.get(CRAFTING_HAMMER_SLOT).getDamageValue() + 10);
         return inventory.get(CRAFTING_HAMMER_SLOT).getDamageValue() >= inventory.get(CRAFTING_HAMMER_SLOT).getMaxDamage();
     }

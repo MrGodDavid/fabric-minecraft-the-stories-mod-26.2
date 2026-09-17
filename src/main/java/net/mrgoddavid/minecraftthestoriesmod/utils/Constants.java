@@ -1,7 +1,10 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils;
 
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import org.jspecify.annotations.NonNull;
@@ -11,6 +14,11 @@ import org.jspecify.annotations.NonNull;
  * @since 9/7/2026
  */
 public final class Constants {
+
+    public static void initialize() {
+        MtsLogger.init("Constants");
+        Universal.initialize();
+    }
 
     /**
      * Creates an identifier that combines mod id as namespace and path.
@@ -40,8 +48,15 @@ public final class Constants {
      */
     public static final class Universal {
 
+        public static void initialize() {
+            MtsLogger.init("Universal Constants");
+        }
+
         public static final int NEW_BORN = 0;
-        public static final Ingredient NULL_INGREDIENT = Ingredient.of(Blocks.BARRIER);
+
+        public static Ingredient nullIngredient() {
+            return Ingredient.of(Blocks.BARRIER);
+        }
 
         private Universal() throws IllegalAccessException {
             throw new IllegalAccessException("You cannot instantiate this class!");

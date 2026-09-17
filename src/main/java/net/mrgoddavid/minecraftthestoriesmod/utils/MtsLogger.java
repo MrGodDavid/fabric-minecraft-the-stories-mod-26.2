@@ -21,6 +21,10 @@ public final class MtsLogger {
         MinecraftTheStoriesMod.LOGGER.info("Registering {} for: \"" + MinecraftTheStoriesMod.MOD_ID + "\"", name);
     }
 
+    public static void init(@NonNull final String msg) {
+        MinecraftTheStoriesMod.LOGGER.info("[INITIALIZATION] {} for: \"" + MinecraftTheStoriesMod.MOD_ID + "\"", msg);
+    }
+
     private MtsLogger() throws IllegalAccessException {
         throw new IllegalAccessException("You cannot instantiate this class!");
     }

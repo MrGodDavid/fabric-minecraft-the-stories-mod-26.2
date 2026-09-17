@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.*;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 /**
  * Generates all JSON files for mod that can be used in vanilla Minecraft.
@@ -17,6 +18,8 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
 
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+        Constants.initialize();
+
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
         pack.addProvider(MtsItemTagsProvider::new);

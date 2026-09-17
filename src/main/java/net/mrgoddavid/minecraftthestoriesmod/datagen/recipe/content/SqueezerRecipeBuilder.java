@@ -10,6 +10,10 @@ import net.minecraft.world.level.ItemLike;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.MtsAbstractRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipeInput;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import org.jspecify.annotations.Nullable;
+
+import java.util.Optional;
 
 /**
  * @author Mr. GodDavid
@@ -25,7 +29,7 @@ public class SqueezerRecipeBuilder extends MtsAbstractRecipeBuilder {
     private final Ingredient fruitInNorthwestSlot;
 
     private SqueezerRecipeBuilder(SqueezerRecipeBuilder.Builder builder) {
-        super(builder.recipeCategory, builder.resultStack);
+        super(builder.recipeCategory, builder.mixture);
         this.fruitInNorthSlot = builder.fruitInNorthSlot;
         this.fruitInNortheastSlot = builder.fruitInNortheastSlot;
         this.fruitInSoutheastSlot = builder.fruitInSoutheastSlot;
@@ -34,14 +38,24 @@ public class SqueezerRecipeBuilder extends MtsAbstractRecipeBuilder {
         this.fruitInNorthwestSlot = builder.fruitInNorthwestSlot;
     }
 
-    public static SqueezerRecipeBuilder.Builder squeezerRecipe() {
-        return new SqueezerRecipeBuilder.Builder();
+    public static SqueezerRecipeBuilder.Builder squeezerRecipe(RecipeCategory recipeCategory, ItemLike mixture) {
+        return new SqueezerRecipeBuilder.Builder(recipeCategory, mixture);
+    }
+
+    public static SqueezerRecipeBuilder.Builder squeezerRecipe(RecipeCategory recipeCategory, ItemLike mixture, int count) {
+        return new SqueezerRecipeBuilder.Builder(recipeCategory, mixture, count);
     }
 
     @Override
     public void save(RecipeOutput output, ResourceKey<Recipe<?>> id) {
-        SqueezerRecipe recipe = new SqueezerRecipe(this.fruitInNorthSlot, this.fruitInNortheastSlot, this.fruitInSoutheastSlot,
-                this.fruitInSouthSlot, this.fruitInSouthwestSlot, fruitInNorthwestSlot, super.result());
+        SqueezerRecipe recipe = new SqueezerRecipe(
+                Optional.ofNullable(this.fruitInNorthSlot),
+                Optional.ofNullable(this.fruitInNortheastSlot),
+                Optional.ofNullable(this.fruitInSoutheastSlot),
+                Optional.ofNullable(this.fruitInSouthSlot),
+                Optional.ofNullable(this.fruitInSouthwestSlot),
+                Optional.ofNullable(this.fruitInNorthwestSlot),
+                super.result());
         output.accept(id, recipe, super.advancementBuilder().build(output, id, super.category()));
     }
 
@@ -50,21 +64,22 @@ public class SqueezerRecipeBuilder extends MtsAbstractRecipeBuilder {
      * @since 9/15/2026
      */
     public static final class Builder {
-        private RecipeCategory recipeCategory;
-        private Ingredient fruitInNorthSlot;
-        private Ingredient fruitInNortheastSlot;
-        private Ingredient fruitInSoutheastSlot;
-        private Ingredient fruitInSouthSlot;
-        private Ingredient fruitInSouthwestSlot;
-        private Ingredient fruitInNorthwestSlot;
-        private ItemStackTemplate resultStack;
+        private final RecipeCategory recipeCategory;
+        private final ItemStackTemplate mixture;
+        private @Nullable Ingredient fruitInNorthSlot;
+        private @Nullable Ingredient fruitInNortheastSlot;
+        private @Nullable Ingredient fruitInSoutheastSlot;
+        private @Nullable Ingredient fruitInSouthSlot;
+        private @Nullable Ingredient fruitInSouthwestSlot;
+        private @Nullable Ingredient fruitInNorthwestSlot;
 
-        private Builder() {
+        private Builder(RecipeCategory recipeCategory, ItemLike mixture) {
+            this(recipeCategory, mixture, 1);
         }
 
-        public SqueezerRecipeBuilder.Builder category(RecipeCategory recipeCategory) {
+        private Builder(RecipeCategory recipeCategory, ItemLike mixture, int count) {
             this.recipeCategory = recipeCategory;
-            return this;
+            this.mixture = new ItemStackTemplate(mixture.asItem(), count);
         }
 
         public SqueezerRecipeBuilder.Builder fruitInNorthSlot(Ingredient ingredient) {
@@ -94,16 +109,6 @@ public class SqueezerRecipeBuilder extends MtsAbstractRecipeBuilder {
 
         public SqueezerRecipeBuilder.Builder fruitInNorthwestSlot(Ingredient ingredient) {
             this.fruitInNorthwestSlot = ingredient;
-            return this;
-        }
-
-        public SqueezerRecipeBuilder.Builder mixture(ItemLike mixture) {
-            this.resultStack = new ItemStackTemplate(mixture.asItem());
-            return this;
-        }
-
-        public SqueezerRecipeBuilder.Builder mixture(ItemLike mixture, int count) {
-            this.resultStack = new ItemStackTemplate(mixture.asItem(), count);
             return this;
         }
 

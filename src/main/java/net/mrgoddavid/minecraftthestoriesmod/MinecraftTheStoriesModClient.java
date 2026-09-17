@@ -20,6 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.client.MtsFluidRenderingRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 public class MinecraftTheStoriesModClient implements ClientModInitializer {
 

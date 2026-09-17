@@ -83,7 +83,7 @@ public class SqueezerBlock extends BaseEntityBlock implements EntityBlock {
             }
             return InteractionResult.SUCCESS;
         }
-        return InteractionResult.FAIL;
+        return InteractionResult.SUCCESS;
     }
 
     @Override
