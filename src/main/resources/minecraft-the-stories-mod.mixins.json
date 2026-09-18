@@ -3,7 +3,8 @@
   "package": "net.mrgoddavid.minecraftthestoriesmod.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "ExampleMixin"
+    "ExampleMixin",
+    "PlayerMixin"
   ],
   "client": [
     "client.AbstractContainerScreenMixin",

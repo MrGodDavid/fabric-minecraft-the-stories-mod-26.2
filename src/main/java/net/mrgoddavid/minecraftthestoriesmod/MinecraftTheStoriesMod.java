@@ -14,14 +14,16 @@ import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityRenderers;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsEntityFluidInteractions;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+import net.mrgoddavid.minecraftthestoriesmod.gui.hud.MtsHud;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.loot.MtsLootTableModifiers;
+import net.mrgoddavid.minecraftthestoriesmod.networking.MtsPackets;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticles;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.thirst.ThirstEvents;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
@@ -50,6 +52,10 @@ public class MinecraftTheStoriesMod implements ModInitializer {
     @Override
     public void onInitialize() {
         MtsLogger.header();
+
+        MtsPackets.register();
+        ThirstEvents.register();
+        MtsHud.register();
 
         VanillaPaths.registerVanillaEntityPaths();
         MtsTestWorldServer.register();
