@@ -24,6 +24,6 @@ public class MtsAdvancementTriggers {
     }
 
     public static void register(){
-        MtsLogger.info("MTS Advancement Triggers");
+        MtsLogger.info("Custom Advancement Triggers");
     }
 }

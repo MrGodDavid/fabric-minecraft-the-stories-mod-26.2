@@ -1,8 +1,9 @@
-package net.mrgoddavid.minecraftthestoriesmod.thirst;
+package net.mrgoddavid.minecraftthestoriesmod.networking.contents;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.server.level.ServerPlayer;
 import net.mrgoddavid.minecraftthestoriesmod.networking.packet.s2c.ThirstPayloadS2C;
+import net.mrgoddavid.minecraftthestoriesmod.thirst.ThirstManager;
 
 /**
  * @author Mr. GodDavid

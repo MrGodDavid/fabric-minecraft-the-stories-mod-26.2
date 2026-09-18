@@ -7,24 +7,6 @@
           "block": "minecraft-the-stories-mod:strawberry_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "4"
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft-the-stories-mod:raw_strawberry"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "conditions": [
-        {
-          "block": "minecraft-the-stories-mod:strawberry_crop",
-          "condition": "minecraft:block_state_property",
-          "properties": {
             "age": "5"
           }
         }

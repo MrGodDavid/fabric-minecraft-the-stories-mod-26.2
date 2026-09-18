@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
+import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworking;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 /**

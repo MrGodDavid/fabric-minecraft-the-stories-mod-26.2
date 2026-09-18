@@ -20,6 +20,8 @@ import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
  */
 public class BlueberryBushBlock extends SweetBerryBushBlock {
 
+    public static final int AGE_NOT_FULLY_GROWN = MAX_AGE - 1;
+
     public BlueberryBushBlock(Properties properties) {
         super(properties);
     }
@@ -47,6 +49,6 @@ public class BlueberryBushBlock extends SweetBerryBushBlock {
     }
 
     private boolean notFullyGrown(int age) {
-        return age == MAX_AGE - 1;
+        return age == AGE_NOT_FULLY_GROWN;
     }
 }

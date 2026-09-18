@@ -5,17 +5,13 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -23,14 +19,15 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditions;
+import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
+import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsNonnullElementSetLists;
 
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
@@ -102,29 +99,10 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         add(END_STRONG_AMETHYST_ORE, createMultipleOreDrops(END_STRONG_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 4.0f));
 
         this.createCropDrops(STRAWBERRY_CROP, this.defineStrawberryDropsRules());
-        this.add(
-                BLUEBERRY_BUSH,
-                block -> this.applyExplosionDecay(
-                        block, LootTable.lootTable()
-                                .withPool(
-                                        LootPool.lootPool()
-                                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(BLUEBERRY_BUSH).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3)))
-                                                .add(LootItem.lootTableItem(BLUEBERRY))
-                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
-                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
-                                )
-                                .withPool(
-                                        LootPool.lootPool()
-                                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(BLUEBERRY_BUSH).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2)))
-                                                .add(LootItem.lootTableItem(RAW_BLUEBERRY))
-                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
-                                )
-                )
-        );
+        this.createCropDrops(BLUEBERRY_BUSH, this.defineBlueberryBushDropsRules(), enchantments);
     }
 
-    private ImmutableMap<LootItemCondition.Builder, Item> defineStrawberryDropsRules() {
+    private MtsNonnullElementSetLists.NonnullPairList<LootItemCondition.Builder, Item> defineStrawberryDropsRules() {
         LootItemCondition.Builder rawStrawberryDropsCondition =
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, StrawberryCropBlock.RAW_STRAWBERRY_AGE));
@@ -135,23 +113,49 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, Constants.Universal.NEW_BORN));
 
-        return ImmutableMap.of(
-                rawStrawberryDropsCondition, RAW_STRAWBERRY,
-                strawberryDropsCondition, STRAWBERRY,
-                strawberrySeedsDropsCondition, STRAWBERRY_SEEDS
+        return MtsNonnullElementSetLists.NonnullPairList.of(
+                new MtsElementSets.Pair<>(rawStrawberryDropsCondition, RAW_STRAWBERRY),
+                new MtsElementSets.Pair<>(strawberryDropsCondition, STRAWBERRY),
+                new MtsElementSets.Pair<>(strawberrySeedsDropsCondition, STRAWBERRY_SEEDS)
         );
-
     }
 
-    private void createCropDrops(Block cropBlock, ImmutableMap<LootItemCondition.Builder, Item> lootCropMap) {
+    private MtsNonnullElementSetLists.NonnullQuartetList<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> defineBlueberryBushDropsRules() {
+        MtsElementSets.Quartet<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> harvestBlueberryCondition = new MtsElementSets.Quartet<>(
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(BLUEBERRY_BUSH)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlueberryBushBlock.AGE, BlueberryBushBlock.MAX_AGE)),
+                BLUEBERRY,
+                UniformGenerator.between(2.0F, 3.0F),
+                Enchantments.FORTUNE
+        );
+        MtsElementSets.Quartet<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> harvestRawBlueberryCondition = new MtsElementSets.Quartet<>(
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(BLUEBERRY_BUSH)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlueberryBushBlock.AGE, BlueberryBushBlock.AGE_NOT_FULLY_GROWN)),
+                RAW_BLUEBERRY,
+                UniformGenerator.between(1.0F, 2.0F),
+                Enchantments.FORTUNE
+        );
+        return MtsNonnullElementSetLists.NonnullQuartetList.of(harvestBlueberryCondition, harvestRawBlueberryCondition);
+    }
+
+    private void createCropDrops(Block cropBlock, MtsNonnullElementSetLists.NonnullQuartetList<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> drops, HolderLookup.RegistryLookup<Enchantment> enchantments) {
         LootTable.Builder cropDropsBuilder = LootTable.lootTable();
-        for (ImmutableMap.Entry<LootItemCondition.Builder, Item> entry : lootCropMap.entrySet()) {
-            Item item = entry.getValue();
-            if (item != null) {
-                cropDropsBuilder.withPool(LootPool.lootPool()
-                        .when(entry.getKey())
-                        .add(LootItem.lootTableItem(item)));
-            }
+        for (MtsElementSets.Quartet<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> element : drops) {
+            cropDropsBuilder.withPool(LootPool.lootPool()
+                    .when(element.e1())
+                    .add(LootItem.lootTableItem(element.e2()))
+                    .apply(SetItemCountFunction.setCount(element.e3()))
+                    .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(element.e4()))));
+        }
+        this.add(cropBlock, cropDropsBuilder);
+    }
+
+    private void createCropDrops(Block cropBlock, MtsNonnullElementSetLists.NonnullPairList<LootItemCondition.Builder, Item> lootCropDropsRules) {
+        LootTable.Builder cropDropsBuilder = LootTable.lootTable();
+        for (MtsElementSets.Pair<LootItemCondition.Builder, Item> pair : lootCropDropsRules) {
+            cropDropsBuilder.withPool(LootPool.lootPool()
+                    .when(pair.e1())
+                    .add(LootItem.lootTableItem(pair.e2())));
         }
         this.add(cropBlock, cropDropsBuilder);
     }
