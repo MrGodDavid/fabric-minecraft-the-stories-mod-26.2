@@ -13,8 +13,8 @@ public class ClientboundPackets {
     public static void handleThirstPayload(ThirstPayloadS2C thirstPayloadS2C, ClientPlayNetworking.Context context) {
         // Here we can do whatever we want to handle thirst logic.
         ThirstClientManager.setThirst(thirstPayloadS2C.thirst());
-        System.out.println(
-                "[MTS] Client received thirst: " + thirstPayloadS2C.thirst()
-        );
+//        System.out.println(
+//                "[MTS] Client received thirst: " + thirstPayloadS2C.thirst()
+//        );
     }
 }
