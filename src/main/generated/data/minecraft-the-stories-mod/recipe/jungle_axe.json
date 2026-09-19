@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "jungle_axe",
+  "key": {
+    "#": "minecraft-the-stories-mod:jungle_stick",
+    "X": "minecraft:jungle_planks"
+  },
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:jungle_axe"
+  }
+}

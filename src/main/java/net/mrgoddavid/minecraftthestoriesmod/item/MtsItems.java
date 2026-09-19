@@ -157,7 +157,6 @@ public class MtsItems {
     public static final Item EMERALD_BOOTS = registerItem("emerald_boots", properties ->
             new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.BOOTS)));
 
-
     // #################################################################################################################
     // #                                                RUBY TOOLS                                                     #
     // #################################################################################################################
@@ -245,6 +244,23 @@ public class MtsItems {
     // #################################################################################################################
     // #                                             CUSTOM WEAPONS                                                    #
     // #################################################################################################################
+    public static final Item ACACIA_AXE = registerItem("acacia_axe", properties ->
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item BIRCH_AXE = registerItem("birch_axe", properties ->
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item CHERRY_AXE = registerItem("cherry_axe", properties ->
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item DARK_OAK_AXE = registerItem("dark_oak_axe", properties ->
+            new  AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item JUNGLE_AXE = registerItem("jungle_axe", properties ->
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item MANGROVE_AXE = registerItem("mangrove_axe", properties ->
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item PALE_OAK_AXE = registerItem("pale_oak_axe", properties ->
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item SPRUCE_AXE = registerItem("spruce_axe", properties ->
+            new  AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+
     public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties ->
             new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
     public static final Item STRONG_IRON_ZEN_STAFF = registerItem("strong_iron_zen_staff", properties ->
@@ -356,30 +372,39 @@ public class MtsItems {
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(fabricCreativeModeTabOutput -> {
-            fabricCreativeModeTabOutput.accept(EMERALD_AXE);
+            fabricCreativeModeTabOutput.accept(ACACIA_AXE);
+            fabricCreativeModeTabOutput.accept(BIRCH_AXE);
+            fabricCreativeModeTabOutput.accept(CHERRY_AXE);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_AXE);
+            fabricCreativeModeTabOutput.accept(JUNGLE_AXE);
+            fabricCreativeModeTabOutput.accept(MANGROVE_AXE);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_AXE);
+            fabricCreativeModeTabOutput.accept(SPRUCE_AXE);
+
             fabricCreativeModeTabOutput.accept(EMERALD_SWORD);
             fabricCreativeModeTabOutput.accept(EMERALD_SPEAR);
+            fabricCreativeModeTabOutput.accept(EMERALD_AXE);
+            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_SWORD);
+            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_SPEAR);
+            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_AXE);
+            fabricCreativeModeTabOutput.accept(STRONG_RUBY_SWORD);
+            fabricCreativeModeTabOutput.accept(STRONG_RUBY_SPEAR);
+            fabricCreativeModeTabOutput.accept(STRONG_RUBY_AXE);
+            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_SWORD);
+            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_SPEAR);
+            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_AXE);
             fabricCreativeModeTabOutput.accept(EMERALD_HELMET);
             fabricCreativeModeTabOutput.accept(EMERALD_CHESTPLATE);
             fabricCreativeModeTabOutput.accept(EMERALD_LEGGINGS);
             fabricCreativeModeTabOutput.accept(EMERALD_BOOTS);
-            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_AXE);
-            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_SWORD);
-            fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_SPEAR);
             fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_HELMET);
             fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_CHESTPLATE);
             fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_LEGGINGS);
             fabricCreativeModeTabOutput.accept(STRONG_TOPAZ_BOOTS);
-            fabricCreativeModeTabOutput.accept(STRONG_RUBY_AXE);
-            fabricCreativeModeTabOutput.accept(STRONG_RUBY_SWORD);
-            fabricCreativeModeTabOutput.accept(STRONG_RUBY_SPEAR);
             fabricCreativeModeTabOutput.accept(STRONG_RUBY_HELMET);
             fabricCreativeModeTabOutput.accept(STRONG_RUBY_CHESTPLATE);
             fabricCreativeModeTabOutput.accept(STRONG_RUBY_LEGGINGS);
             fabricCreativeModeTabOutput.accept(STRONG_RUBY_BOOTS);
-            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_AXE);
-            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_SWORD);
-            fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_SPEAR);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_HELMET);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_CHESTPLATE);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_LEGGINGS);

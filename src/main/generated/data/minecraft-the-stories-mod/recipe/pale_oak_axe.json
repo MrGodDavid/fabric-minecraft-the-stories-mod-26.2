@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "pale_oak_axe",
+  "key": {
+    "#": "minecraft-the-stories-mod:pale_oak_stick",
+    "X": "minecraft:pale_oak_planks"
+  },
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:pale_oak_axe"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mangrove_axe",
+  "key": {
+    "#": "minecraft-the-stories-mod:mangrove_stick",
+    "X": "minecraft:mangrove_planks"
+  },
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:mangrove_axe"
+  }
+}

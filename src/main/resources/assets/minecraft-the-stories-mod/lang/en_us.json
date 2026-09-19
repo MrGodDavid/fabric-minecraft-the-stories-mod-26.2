@@ -63,6 +63,15 @@
   "item.minecraft-the-stories-mod.strong_topaz_spear": "Strong Topaz Spear",
   "item.minecraft-the-stories-mod.strong_topaz_sword": "Strong Topaz Sword",
 
+  "item.minecraft-the-stories-mod.acacia_axe": "Acacia Axe",
+  "item.minecraft-the-stories-mod.birch_axe": "Birch Axe",
+  "item.minecraft-the-stories-mod.cherry_axe": "Cherry Axe",
+  "item.minecraft-the-stories-mod.dark_oak_axe": "Dark Oak Axe",
+  "item.minecraft-the-stories-mod.jungle_axe": "Jungle Axe",
+  "item.minecraft-the-stories-mod.mangrove_axe": "Mangrove Axe",
+  "item.minecraft-the-stories-mod.pale_oak_axe": "Pale Oak Axe",
+  "item.minecraft-the-stories-mod.spruce_axe": "Spruce Axe",
+
   "item.minecraft-the-stories-mod.acacia_bow": "Acacia Bow",
   "item.minecraft-the-stories-mod.birch_bow": "Birch Bow",
   "item.minecraft-the-stories-mod.cherry_bow": "Cherry Bow",
@@ -95,6 +104,10 @@
   "item.minecraft-the-stories-mod.legendary_upgrade_scroll_stage_five": "Legendary Upgrade Scroll Stage Five",
 
   "item.minecraft-the-stories-mod.hammer_of_crafter": "Hammer Of Crafter",
+
+  "item.minecraft-the-stories-mod.strong_iron_pressed_plate": "Strong Iron Pressed Plate",
+  "item.minecraft-the-stories-mod.zen_staff_iron_head_stage_two": "Strong Iron Zen Staff Head Stage Two",
+  "item.minecraft-the-stories-mod.zen_staff_iron_head_stage_three": "Strong Iron Zen Staff Head Stage Three",
 
   "item.minecraft-the-stories-mod.iron_long_knife": "Strong Iron Long Knife",
   "item.minecraft-the-stories-mod.strong_iron_zen_staff": "Strong Iron Zen Staff",
@@ -157,6 +170,7 @@
 
   "creative_mode_tab.mts.strong_diamond_items": "MTS Overworld Items",
   "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks",
+  "creative_mode_tab.mts.epic_upgrade_scroll_stage_four": "Mts Upgrade Scrolls",
 
   "entity.minecraft-the-stories-mod.brown_bear": "Brown Bear",
 

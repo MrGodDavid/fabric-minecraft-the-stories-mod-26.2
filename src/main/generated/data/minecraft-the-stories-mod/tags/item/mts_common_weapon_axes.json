@@ -5,6 +5,14 @@
     "minecraft:iron_axe",
     "minecraft:golden_axe",
     "minecraft:diamond_axe",
-    "minecraft:copper_axe"
+    "minecraft:copper_axe",
+    "minecraft-the-stories-mod:acacia_axe",
+    "minecraft-the-stories-mod:birch_axe",
+    "minecraft-the-stories-mod:cherry_axe",
+    "minecraft-the-stories-mod:dark_oak_axe",
+    "minecraft-the-stories-mod:jungle_axe",
+    "minecraft-the-stories-mod:mangrove_axe",
+    "minecraft-the-stories-mod:pale_oak_axe",
+    "minecraft-the-stories-mod:spruce_axe"
   ]
 }

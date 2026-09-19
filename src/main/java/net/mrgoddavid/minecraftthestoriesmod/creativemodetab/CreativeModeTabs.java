@@ -9,6 +9,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
@@ -28,7 +29,7 @@ public class CreativeModeTabs {
 
     public static final CreativeModeTab MTS_OVERWORLD_ITEMS_TAB = Registry.register(
             BuiltInRegistries.CREATIVE_MODE_TAB,
-            Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "mts_overworld_items"),
+            Constants.modId("mts_overworld_items"),
             FabricCreativeModeTab.builder()
                     .icon(() -> new ItemStack(MtsItems.STRONG_AMETHYST))
                     .title(Component.translatable("creative_mode_tab.mts.strong_diamond_items"))
@@ -53,30 +54,39 @@ public class CreativeModeTabs {
                         output.accept(STRONG_GOLD);
                         output.accept(STRONG_GOLD_INGOT);
 
-                        output.accept(STRONG_AMETHYST_AXE);
-                        output.accept(STRONG_AMETHYST_HOE);
-                        output.accept(STRONG_AMETHYST_PICKAXE);
-                        output.accept(STRONG_AMETHYST_SHOVEL);
-                        output.accept(STRONG_AMETHYST_SPEAR);
-                        output.accept(STRONG_AMETHYST_SWORD);
+                        output.accept(ACACIA_AXE);
+                        output.accept(BIRCH_AXE);
+                        output.accept(CHERRY_AXE);
+                        output.accept(DARK_OAK_AXE);
+                        output.accept(JUNGLE_AXE);
+                        output.accept(MANGROVE_AXE);
+                        output.accept(PALE_OAK_AXE);
+                        output.accept(SPRUCE_AXE);
+
+                        output.accept(EMERALD_SHOVEL);
+                        output.accept(EMERALD_PICKAXE);
                         output.accept(EMERALD_AXE);
                         output.accept(EMERALD_HOE);
-                        output.accept(EMERALD_PICKAXE);
-                        output.accept(EMERALD_SHOVEL);
-                        output.accept(EMERALD_SPEAR);
                         output.accept(EMERALD_SWORD);
-                        output.accept(STRONG_RUBY_AXE);
-                        output.accept(STRONG_RUBY_HOE);
-                        output.accept(STRONG_RUBY_PICKAXE);
-                        output.accept(STRONG_RUBY_SHOVEL);
-                        output.accept(STRONG_RUBY_SPEAR);
-                        output.accept(STRONG_RUBY_SWORD);
+                        output.accept(EMERALD_SPEAR);
+                        output.accept(STRONG_TOPAZ_SHOVEL);
+                        output.accept(STRONG_TOPAZ_PICKAXE);
                         output.accept(STRONG_TOPAZ_AXE);
                         output.accept(STRONG_TOPAZ_HOE);
-                        output.accept(STRONG_TOPAZ_PICKAXE);
-                        output.accept(STRONG_TOPAZ_SHOVEL);
-                        output.accept(STRONG_TOPAZ_SPEAR);
                         output.accept(STRONG_TOPAZ_SWORD);
+                        output.accept(STRONG_TOPAZ_SPEAR);
+                        output.accept(STRONG_RUBY_SHOVEL);
+                        output.accept(STRONG_RUBY_PICKAXE);
+                        output.accept(STRONG_RUBY_AXE);
+                        output.accept(STRONG_RUBY_HOE);
+                        output.accept(STRONG_RUBY_SWORD);
+                        output.accept(STRONG_RUBY_SPEAR);
+                        output.accept(STRONG_AMETHYST_SHOVEL);
+                        output.accept(STRONG_AMETHYST_PICKAXE);
+                        output.accept(STRONG_AMETHYST_AXE);
+                        output.accept(STRONG_AMETHYST_HOE);
+                        output.accept(STRONG_AMETHYST_SWORD);
+                        output.accept(STRONG_AMETHYST_SPEAR);
 
                         output.accept(STRONG_IRON_LONG_KNIFE);
                         output.accept(STRONG_IRON_ZEN_STAFF);
@@ -88,35 +98,22 @@ public class CreativeModeTabs {
 
                         output.accept(STRONG_AMETHYST_LONG_KNIFE);
 
-                        output.accept(EMERALD_BOOTS);
                         output.accept(EMERALD_HELMET);
                         output.accept(EMERALD_CHESTPLATE);
                         output.accept(EMERALD_LEGGINGS);
-                        output.accept(STRONG_TOPAZ_BOOTS);
+                        output.accept(EMERALD_BOOTS);
                         output.accept(STRONG_TOPAZ_HELMET);
                         output.accept(STRONG_TOPAZ_CHESTPLATE);
                         output.accept(STRONG_TOPAZ_LEGGINGS);
-                        output.accept(STRONG_RUBY_BOOTS);
+                        output.accept(STRONG_TOPAZ_BOOTS);
                         output.accept(STRONG_RUBY_HELMET);
                         output.accept(STRONG_RUBY_CHESTPLATE);
                         output.accept(STRONG_RUBY_LEGGINGS);
-                        output.accept(STRONG_AMETHYST_BOOTS);
+                        output.accept(STRONG_RUBY_BOOTS);
                         output.accept(STRONG_AMETHYST_HELMET);
                         output.accept(STRONG_AMETHYST_CHESTPLATE);
                         output.accept(STRONG_AMETHYST_LEGGINGS);
-
-                        output.accept(RARE_UPGRADE_SCROLL_STAGE_ONE);
-                        output.accept(RARE_UPGRADE_SCROLL_STAGE_TWO);
-                        output.accept(RARE_UPGRADE_SCROLL_STAGE_THREE);
-                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_ONE);
-                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_TWO);
-                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_THREE);
-                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_FOUR);
-                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_ONE);
-                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_TWO);
-                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_THREE);
-                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR);
-                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE);
+                        output.accept(STRONG_AMETHYST_BOOTS);
 
                         output.accept(ACACIA_BOW);
                         output.accept(BIRCH_BOW);
@@ -156,7 +153,7 @@ public class CreativeModeTabs {
 
     public static final CreativeModeTab MTS_OVERWORLD_BLOCKS_TAB = Registry.register(
             BuiltInRegistries.CREATIVE_MODE_TAB,
-            Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "mts_overworld_blocks"),
+            Constants.modId( "mts_overworld_blocks"),
             FabricCreativeModeTab.builder()
                     .icon(() -> new ItemStack(STONE_AMETHYST_ORE))
                     .title(Component.translatable("creative_mode_tab.mts.strong_diamond_blocks"))
@@ -203,6 +200,28 @@ public class CreativeModeTabs {
                         output.accept(SQUEEZER);
                     })
                     .build()
+    );
+
+    public static final CreativeModeTab MTS_OVERWORLD_UPGRADE_SCROLL_TAB = Registry.register(
+            BuiltInRegistries.CREATIVE_MODE_TAB,
+            Constants.modId("mts_upgrade_scrolls"),
+            FabricCreativeModeTab.builder()
+                    .icon(() -> new ItemStack(EPIC_UPGRADE_SCROLL_STAGE_FOUR))
+                    .title(Component.translatable("creative_mode_tab.mts.epic_upgrade_scroll_stage_four"))
+                    .displayItems((parameters, output) -> {
+                        output.accept(RARE_UPGRADE_SCROLL_STAGE_ONE);
+                        output.accept(RARE_UPGRADE_SCROLL_STAGE_TWO);
+                        output.accept(RARE_UPGRADE_SCROLL_STAGE_THREE);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_ONE);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_TWO);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_THREE);
+                        output.accept(EPIC_UPGRADE_SCROLL_STAGE_FOUR);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_ONE);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_TWO);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_THREE);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR);
+                        output.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE);
+                    }).build()
     );
 
     public static void register() {

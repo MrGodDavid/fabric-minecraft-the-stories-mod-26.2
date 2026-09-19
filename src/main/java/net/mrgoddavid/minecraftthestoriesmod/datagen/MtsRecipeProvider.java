@@ -176,6 +176,18 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.mtsBowBuilder(SPRUCE_BOW, SPRUCE_STICK, Items.SPRUCE_PLANKS, "spruce_bow");
 
                 // #################################################################################################################
+                // #                                                AXE RECIPES                                                    #
+                // #################################################################################################################
+                this.woodenAxeFromPlanks(ACACIA_AXE, Items.ACACIA_PLANKS, ACACIA_STICK, Blocks.ACACIA_LOG, "acacia_axe");
+                this.woodenAxeFromPlanks(BIRCH_AXE, Items.BIRCH_PLANKS, BIRCH_STICK, Blocks.BIRCH_LOG, "birch_axe");
+                this.woodenAxeFromPlanks(CHERRY_AXE, Items.CHERRY_PLANKS, CHERRY_STICK, Blocks.CHERRY_LOG, "cherry_axe");
+                this.woodenAxeFromPlanks(DARK_OAK_AXE, Items.DARK_OAK_PLANKS, DARK_OAK_STICK, Blocks.DARK_OAK_LOG, "dark_oak_axe");
+                this.woodenAxeFromPlanks(JUNGLE_AXE, Items.JUNGLE_PLANKS, JUNGLE_STICK, Blocks.JUNGLE_LOG, "jungle_axe");
+                this.woodenAxeFromPlanks(MANGROVE_AXE, Items.MANGROVE_PLANKS, MANGROVE_STICK, Blocks.MANGROVE_LOG, "mangrove_axe");
+                this.woodenAxeFromPlanks(PALE_OAK_AXE, Items.PALE_OAK_PLANKS, PALE_OAK_STICK, Blocks.PALE_OAK_LOG, "pale_oak_axe");
+                this.woodenAxeFromPlanks(SPRUCE_AXE, Items.SPRUCE_PLANKS, SPRUCE_STICK, Blocks.SPRUCE_LOG, "spruce_axe");
+
+                // #################################################################################################################
                 // #                                              ENRICHER RECIPES                                                 #
                 // #################################################################################################################
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(Items.RAW_GOLD), Ingredient.of(Items.COAL), STRONG_GOLD, 2, 1)
@@ -565,6 +577,18 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 super.shaped(RecipeCategory.TOOLS, crafted)
                         .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
                         .define('X', ingot)
+                        .pattern("XX")
+                        .pattern("X#")
+                        .pattern(" #")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void woodenAxeFromPlanks(final ItemLike crafted, final ItemLike planks, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', planks)
                         .pattern("XX")
                         .pattern("X#")
                         .pattern(" #")

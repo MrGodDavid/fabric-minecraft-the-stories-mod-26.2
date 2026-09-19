@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "birch_axe",
+  "key": {
+    "#": "minecraft-the-stories-mod:birch_stick",
+    "X": "minecraft:birch_planks"
+  },
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:birch_axe"
+  }
+}

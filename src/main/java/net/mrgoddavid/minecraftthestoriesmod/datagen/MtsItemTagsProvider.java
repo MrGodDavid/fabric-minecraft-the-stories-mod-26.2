@@ -232,7 +232,15 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(Items.IRON_AXE))
                 .add(MtsItems.getResourceKey(Items.GOLDEN_AXE))
                 .add(MtsItems.getResourceKey(Items.DIAMOND_AXE))
-                .add(MtsItems.getResourceKey(Items.COPPER_AXE));
+                .add(MtsItems.getResourceKey(Items.COPPER_AXE))
+                .add(MtsItems.getResourceKey(ACACIA_AXE))
+                .add(MtsItems.getResourceKey(BIRCH_AXE))
+                .add(MtsItems.getResourceKey(CHERRY_AXE))
+                .add(MtsItems.getResourceKey(DARK_OAK_AXE))
+                .add(MtsItems.getResourceKey(JUNGLE_AXE))
+                .add(MtsItems.getResourceKey(MANGROVE_AXE))
+                .add(MtsItems.getResourceKey(PALE_OAK_AXE))
+                .add(MtsItems.getResourceKey(SPRUCE_AXE));
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_AXES)
                 .add(MtsItems.getResourceKey(Items.NETHERITE_AXE))
                 .add(MtsItems.getResourceKey(EMERALD_AXE))

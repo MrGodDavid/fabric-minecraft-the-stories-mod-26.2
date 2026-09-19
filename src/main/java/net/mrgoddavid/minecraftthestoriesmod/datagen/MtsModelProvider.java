@@ -188,6 +188,15 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateSpear(STRONG_TOPAZ_SPEAR);
         itemModelGenerators.generateFlatItem(STRONG_TOPAZ_SWORD, flatHandledItemTemplate);
 
+        itemModelGenerators.generateFlatItem(ACACIA_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(BIRCH_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(CHERRY_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(DARK_OAK_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(JUNGLE_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(MANGROVE_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(PALE_OAK_AXE, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(SPRUCE_AXE, flatHandledItemTemplate);
+
         itemModelGenerators.generateTrimmableItem(EMERALD_HELMET, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerators.generateTrimmableItem(EMERALD_CHESTPLATE, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerators.generateTrimmableItem(EMERALD_LEGGINGS, MtsArmorMaterials.EMERALD_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);

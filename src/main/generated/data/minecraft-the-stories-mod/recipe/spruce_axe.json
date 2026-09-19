@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "spruce_axe",
+  "key": {
+    "#": "minecraft-the-stories-mod:spruce_stick",
+    "X": "minecraft:spruce_planks"
+  },
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:spruce_axe"
+  }
+}
