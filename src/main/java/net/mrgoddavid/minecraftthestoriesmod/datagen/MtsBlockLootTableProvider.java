@@ -1,6 +1,5 @@
 package net.mrgoddavid.minecraftthestoriesmod.datagen;
 
-import com.google.common.collect.ImmutableMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
@@ -142,10 +141,10 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         LootTable.Builder cropDropsBuilder = LootTable.lootTable();
         for (MtsElementSets.Quartet<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> element : drops) {
             cropDropsBuilder.withPool(LootPool.lootPool()
-                    .when(element.e1())
-                    .add(LootItem.lootTableItem(element.e2()))
-                    .apply(SetItemCountFunction.setCount(element.e3()))
-                    .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(element.e4()))));
+                    .when(element.first())
+                    .add(LootItem.lootTableItem(element.second()))
+                    .apply(SetItemCountFunction.setCount(element.third()))
+                    .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(element.fourth()))));
         }
         this.add(cropBlock, cropDropsBuilder);
     }
@@ -154,8 +153,8 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         LootTable.Builder cropDropsBuilder = LootTable.lootTable();
         for (MtsElementSets.Pair<LootItemCondition.Builder, Item> pair : lootCropDropsRules) {
             cropDropsBuilder.withPool(LootPool.lootPool()
-                    .when(pair.e1())
-                    .add(LootItem.lootTableItem(pair.e2())));
+                    .when(pair.first())
+                    .add(LootItem.lootTableItem(pair.second())));
         }
         this.add(cropBlock, cropDropsBuilder);
     }

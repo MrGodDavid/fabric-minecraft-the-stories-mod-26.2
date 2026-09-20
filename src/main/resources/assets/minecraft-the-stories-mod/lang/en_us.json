@@ -217,5 +217,9 @@
   "advancements.minecraft-the-stories-mod.good_to_see_you_old_friend.title": "Good To See You, Old Friend",
   "advancements.minecraft-the-stories-mod.good_to_see_you_old_friend.description": "Upgrade a diamond pickaxe to netherite pickaxe.",
   "advancements.minecraft-the-stories-mod.new_amethyst.title": "New Amethyst",
-  "advancements.minecraft-the-stories-mod.new_amethyst.description": "Mine stone/deepslate amethyst with Netherite Pickaxe. This is Diamond Pickaxe's redemption."
+  "advancements.minecraft-the-stories-mod.new_amethyst.description": "Mine stone/deepslate amethyst with Netherite Pickaxe. This is Diamond Pickaxe's redemption.",
+
+  "tooltip.minecraft-the-stories.enricher_waste_bucket.shift_down": "A bucket of dangerous waste from the Enricher. This waste is perhaps the most toxic thing on this land. You don't want to take a bath with it nor drink it.",
+  "tooltip.minecraft-the-stories.blue_fuel_bucket.shift_down": "A bucket of organic fuel, which is used for powering strange machines. Do not underestimate the power of nature.",
+  "tooltip.minecraft-the-stories-mod.shift_down": "Press §eShift§r for more information!"
 }

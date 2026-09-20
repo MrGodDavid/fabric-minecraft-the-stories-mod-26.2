@@ -1,19 +1,26 @@
 package net.mrgoddavid.minecraftthestoriesmod.item;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.TooltipLineBreaker;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
@@ -35,9 +42,25 @@ public class MtsItems {
 
     // Custom mod items go here.
     public static final Item ENRICHER_WASTE_BUCKET = registerItem("enricher_waste_bucket",
-            properties -> new BucketItem(MtsFluids.ENRICHER_WASTE_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)));
+            properties -> new BucketItem(MtsFluids.ENRICHER_WASTE_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)) {
+                @Override
+                public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+                    appendConditionalTooltip(builder, Minecraft.getInstance().hasShiftDown(), shiftDown -> shiftDown
+                            ? new TooltipLineBreaker(Constants.Universal.LINE_LENGTH, "tooltip.minecraft-the-stories.enricher_waste_bucket.shift_down").linebreak()
+                            : Constants.Universal.SHIFT_DOWN_TOOLTIP_INFORMATION);
+                    super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
+                }
+            });
     public static final Item BLUE_FUEL_BUCKET = registerItem("blue_fuel_bucket",
-            properties -> new BucketItem(MtsFluids.BLUE_FUEL_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)));
+            properties -> new BucketItem(MtsFluids.BLUE_FUEL_STILL, properties.craftRemainder(Items.BUCKET).stacksTo(1)) {
+                @Override
+                public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+                    appendConditionalTooltip(builder, Minecraft.getInstance().hasShiftDown(), shiftDown -> shiftDown
+                            ? new TooltipLineBreaker(Constants.Universal.LINE_LENGTH, "tooltip.minecraft-the-stories.blue_fuel_bucket.shift_down").linebreak()
+                            : Constants.Universal.SHIFT_DOWN_TOOLTIP_INFORMATION);
+                    super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
+                }
+            });
 
     public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", Item::new);
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);
@@ -251,7 +274,7 @@ public class MtsItems {
     public static final Item CHERRY_AXE = registerItem("cherry_axe", properties ->
             new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
     public static final Item DARK_OAK_AXE = registerItem("dark_oak_axe", properties ->
-            new  AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
     public static final Item JUNGLE_AXE = registerItem("jungle_axe", properties ->
             new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
     public static final Item MANGROVE_AXE = registerItem("mangrove_axe", properties ->
@@ -259,7 +282,7 @@ public class MtsItems {
     public static final Item PALE_OAK_AXE = registerItem("pale_oak_axe", properties ->
             new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
     public static final Item SPRUCE_AXE = registerItem("spruce_axe", properties ->
-            new  AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
 
     public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties ->
             new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
@@ -328,6 +351,12 @@ public class MtsItems {
                 BuiltInRegistries.ITEM, id,
                 function.apply(new Item.Properties().setId(resourceKey))
         );
+    }
+
+    private static void appendConditionalTooltip(Consumer<Component> builder, boolean condition, Function<Boolean, Component[]> factory) {
+        for (Component component : factory.apply(condition)) {
+            builder.accept(component);
+        }
     }
 
     /**

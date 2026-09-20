@@ -9,38 +9,38 @@ public interface MtsElementSets {
     /**
      * A set of two numbers/things is called a Quartet. The two numbers/things are unique from each other.
      *
-     * @param e1  first nonnull element.
-     * @param e2  second nonnull element.
+     * @param first  first nonnull element.
+     * @param second  second nonnull element.
      * @param <A> type of the first nonnull element.
      * @param <B> type of the second nonnull element.
      * @author Mr. GodDavid
      * @since 9/18/2026
      */
-    record Pair<A, B>(A e1, B e2) implements MtsElementSets {
+    record Pair<A, B>(A first, B second) implements MtsElementSets {
     }
 
     /**
      * A set of three numbers/things is called a Quartet. The three numbers/things are unique from each other.
      *
-     * @param e1  first nonnull element.
-     * @param e2  second nonnull element.
-     * @param e3  third nonnull element.
+     * @param first  first nonnull element.
+     * @param second  second nonnull element.
+     * @param third  third nonnull element.
      * @param <A> type of the first nonnull element.
      * @param <B> type of the second nonnull element.
      * @param <C> type of the third nonnull element.
      * @author Mr. GodDavid
      * @since 9/18/2026
      */
-    record Trio<A, B, C>(A e1, B e2, C e3) implements MtsElementSets {
+    record Trio<A, B, C>(A first, B second, C third) implements MtsElementSets {
     }
 
     /**
      * A set of four numbers/things is called a Quartet. The four numbers/things are unique from each other.
      *
-     * @param e1  first nonnull element.
-     * @param e2  second nonnull element.
-     * @param e3  third nonnull element.
-     * @param e4  fourth nonnull element.
+     * @param first  first nonnull element.
+     * @param second  second nonnull element.
+     * @param third  third nonnull element.
+     * @param fourth  fourth nonnull element.
      * @param <A> type of the first nonnull element.
      * @param <B> type of the second nonnull element.
      * @param <C> type of the third nonnull element.
@@ -48,6 +48,6 @@ public interface MtsElementSets {
      * @author Mr. GodDavid
      * @since 9/18/2026
      */
-    record Quartet<A, B, C, D>(A e1, B e2, C e3, D e4) implements MtsElementSets {
+    record Quartet<A, B, C, D>(A first, B second, C third, D fourth) implements MtsElementSets {
     }
 }
