@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "enricher",
+  "key": {
+    "B": "minecraft:brick_slab",
+    "C": "minecraft:copper_ingot",
+    "F": "minecraft:blast_furnace",
+    "I": "minecraft:blackstone"
+  },
+  "pattern": [
+    "III",
+    "CFC",
+    "BBB"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:enricher_default"
+  }
+}

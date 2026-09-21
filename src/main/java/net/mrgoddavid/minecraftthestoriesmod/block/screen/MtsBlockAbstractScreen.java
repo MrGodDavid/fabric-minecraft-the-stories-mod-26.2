@@ -17,16 +17,16 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
  * @since 9/14/2026
  */
 @SuppressWarnings("NullableProblems")
-public abstract class MtsAbstractScreen<T extends AbstractContainerMenu> extends AbstractContainerScreen<T> {
+public abstract class MtsBlockAbstractScreen<T extends AbstractContainerMenu> extends AbstractContainerScreen<T> {
 
     private int x;
     private int y;
 
-    public MtsAbstractScreen(T menu, Inventory inventory, Component title) {
+    public MtsBlockAbstractScreen(T menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
     }
 
-    public MtsAbstractScreen(T menu, Inventory inventory, Component title, int imageWidth, int imageHeight) {
+    public MtsBlockAbstractScreen(T menu, Inventory inventory, Component title, int imageWidth, int imageHeight) {
         super(menu, inventory, title, imageWidth, imageHeight);
     }
 

@@ -18,6 +18,10 @@ public final class Constants {
         Universal.initialize();
     }
 
+    public static String modRecipe(@NonNull final String name) {
+        return MinecraftTheStoriesMod.MOD_ID + ":" + name;
+    }
+
     /**
      * Creates an identifier that combines mod id as namespace and path.
      * <pre>{@code minecraft-the-stories-mod:path}</pre>

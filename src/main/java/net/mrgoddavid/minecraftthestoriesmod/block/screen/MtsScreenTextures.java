@@ -24,12 +24,22 @@ public class MtsScreenTextures {
     public static final Identifier ORE_COMPRESSOR_BLUE_FUEL_BAR = registerTexturePath("ore_compressor", "ore_compressor_blue_fuel_bar");
     public static final Identifier SQUEEZER_GUI = registerTexturePath("squeezer", "squeezer_gui");
 
-    private static Identifier registerTexturePath(final String block, final String name) {
-        return Constants.modId(path(block, name));
+    public static final Identifier STORY_BOOK_GUI = registerTexturePath("story_book_background");
+
+    private static Identifier registerTexturePath(final String name) {
+        return Constants.modId(withTextureGuiPath().concat(name).concat(".png"));
     }
 
-    private static String path(final String block, final String name) {
+    private static Identifier registerTexturePath(final String block, final String name) {
+        return Constants.modId(withPath(block, name));
+    }
+
+    private static String withPath(final String block, final String name) {
         return "textures/gui/menu/" + block + "/" + name + ".png";
+    }
+
+    private static String withTextureGuiPath() {
+        return "textures/gui/sprites/";
     }
 
     public static void register() {

@@ -247,6 +247,8 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STRAWBERRY, flatItemTemplate);
         itemModelGenerators.generateFlatItem(RAW_STRAWBERRY, flatItemTemplate);
         itemModelGenerators.generateFlatItem(RAW_BLUEBERRY, flatItemTemplate);
+
+        itemModelGenerators.generateFlatItem(STORY_BOOK, flatItemTemplate);
     }
 
     public void generateMtsBow(final ItemModelGenerators itemModelGenerators, final Item mtsBowItem) {

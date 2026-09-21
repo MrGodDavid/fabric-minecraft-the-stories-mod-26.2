@@ -9,8 +9,8 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsAbstractDataComponentContainerMenu;
-import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsBlockAbstractDataComponentContainerMenu;
+import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
 
 /**
  * Menu of Ore Compressor.
@@ -18,7 +18,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
  * @author Mr. GodDavid
  * @since 8/29/2026
  */
-public class OreCompressorMenu extends MtsAbstractDataComponentContainerMenu {
+public class OreCompressorMenu extends MtsBlockAbstractDataComponentContainerMenu {
 
     private final Container inventory;
     private final ContainerData data;

@@ -1,12 +1,11 @@
 package net.mrgoddavid.minecraftthestoriesmod.block.content.enricher;
 
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
-import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsAbstractScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsBlockAbstractScreen;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
 
@@ -16,7 +15,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextur
  * @author Mr. GodDavid
  * @since 8/22/2026
  */
-public class EnricherScreen extends MtsAbstractScreen<EnricherMenu> {
+public class EnricherScreen extends MtsBlockAbstractScreen<EnricherMenu> {
 
     public EnricherScreen(EnricherMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);

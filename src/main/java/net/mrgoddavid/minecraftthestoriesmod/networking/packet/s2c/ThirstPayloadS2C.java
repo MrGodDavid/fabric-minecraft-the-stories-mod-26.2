@@ -7,8 +7,6 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 /**
- * TODO: add logics of when to trigger the game sending this packet.
- *
  * @author Mr. GodDavid
  * @since 9/17/2026
  */

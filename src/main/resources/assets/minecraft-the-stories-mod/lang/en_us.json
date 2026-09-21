@@ -122,6 +122,8 @@
   "item.minecraft-the-stories-mod.enricher_waste_bucket": "Enricher Waste Bucket",
   "item.minecraft-the-stories-mod.blue_fuel_bucket": "Blue Fuel Bucket",
 
+  "item.minecraft-the-stories-mod.story_book": "Story Book",
+
   "item.minecraft-the-stories-mod.strawberry": "Strawberry",
   "item.minecraft-the-stories-mod.raw_strawberry": "Raw Strawberry",
   "block.minecraft-the-stories-mod.strawberry_seeds": "Strawberry Seeds",
@@ -218,8 +220,14 @@
   "advancements.minecraft-the-stories-mod.good_to_see_you_old_friend.description": "Upgrade a diamond pickaxe to netherite pickaxe.",
   "advancements.minecraft-the-stories-mod.new_amethyst.title": "New Amethyst",
   "advancements.minecraft-the-stories-mod.new_amethyst.description": "Mine stone/deepslate amethyst with Netherite Pickaxe. This is Diamond Pickaxe's redemption.",
+  "advancements.minecraft-the-stories-mod.enriching.title": "Enriching",
+  "advancements.minecraft-the-stories-mod.enriching.description": "Craft an Enricher",
 
   "tooltip.minecraft-the-stories.enricher_waste_bucket.shift_down": "A bucket of dangerous waste from the Enricher. This waste is perhaps the most toxic thing on this land. You don't want to take a bath with it nor drink it.",
   "tooltip.minecraft-the-stories.blue_fuel_bucket.shift_down": "A bucket of organic fuel, which is used for powering strange machines. Do not underestimate the power of nature.",
-  "tooltip.minecraft-the-stories-mod.shift_down": "Press §eShift§r for more information!"
+  "tooltip.minecraft-the-stories-mod.shift_down": "Press §eShift§r for more information!",
+  "container.minecraft-the-stories.story_book": "Story Book",
+
+  "book.minecraft-the-stories-mod.page_next": "Next Page",
+  "book.minecraft-the-stories-mod.page_previous": "Previous Page"
 }

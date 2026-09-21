@@ -21,6 +21,7 @@ import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SqueezerReci
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SuperCrafterRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -190,27 +191,41 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 // #################################################################################################################
                 // #                                              ENRICHER RECIPES                                                 #
                 // #################################################################################################################
+                shaped(RecipeCategory.MISC, ENRICHER)
+                        .define('B', Items.BRICK_SLAB)
+                        .define('I', Blocks.BLACKSTONE)
+                        .define('C', Items.COPPER_INGOT)
+                        .define('F', Blocks.BLAST_FURNACE)
+                        .unlockedBy(getHasName(Items.BRICK_SLAB), has(Items.BRICK_SLAB))
+                        .unlockedBy(getHasName(STRONG_IRON_BLOCK), has(STRONG_IRON_BLOCK))
+                        .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                        .unlockedBy(getHasName(Items.BLAST_FURNACE), has(Items.BLAST_FURNACE))
+                        .pattern("III")
+                        .pattern("CFC")
+                        .pattern("BBB")
+                        .group("enricher")
+                        .save(output, Constants.modRecipe("enricher"));
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(Items.RAW_GOLD), Ingredient.of(Items.COAL), STRONG_GOLD, 2, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_gold_from_enriching");
+                        .save(output, Constants.modRecipe("strong_gold_from_enriching"));
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.COAL), STRONG_IRON, 5, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_from_enriching");
+                        .save(output, Constants.modRecipe("strong_iron_from_enriching"));
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_EMERALD), Ingredient.of(Items.COAL), STRONG_EMERALD, 10, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_emerald_from_enriching");
+                        .save(output, Constants.modRecipe("strong_emerald_from_enriching"));
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_DIAMOND), Ingredient.of(Items.COAL), STRONG_DIAMOND, 15, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_diamond_from_enriching");
+                        .save(output, Constants.modRecipe("strong_diamond_from_enriching"));
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_TOPAZ), Ingredient.of(Items.COAL), STRONG_TOPAZ, 20, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_topaz_from_enriching");
+                        .save(output, Constants.modRecipe("strong_topaz_from_enriching"));
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_RUBY), Ingredient.of(Items.COAL), STRONG_RUBY, 25, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_ruby_from_enriching");
+                        .save(output, Constants.modRecipe("strong_ruby_from_enriching"));
                 EnricherRecipeBuilder.enricherRecipe(RecipeCategory.MISC, Ingredient.of(RAW_STRONG_AMETHYST), Ingredient.of(Items.COAL), STRONG_AMETHYST, 35, 1)
                         .unlockedBy(getHasName(RAW_STRONG_TOPAZ), has(RAW_STRONG_TOPAZ))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_amethyst_from_enriching");
+                        .save(output, Constants.modRecipe("strong_amethyst_from_enriching"));
 
                 // #################################################################################################################
                 // #                                        ORE COMPRESSOR RECIPES                                                 #
@@ -224,13 +239,13 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 // #################################################################################################################
                 SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(RARE_UPGRADE_SCROLL_STAGE_ONE), Ingredient.of(HAMMER_OF_CRAFTER), Ingredient.of(STRONG_IRON_INGOT), STRONG_IRON_PRESSED_PLATE, 10)
                         .unlockedBy(getHasName(HAMMER_OF_CRAFTER), has(HAMMER_OF_CRAFTER))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_pressed_plate_from_super_crafting");
+                        .save(output, Constants.modRecipe("strong_iron_pressed_plate_from_super_crafting"));
                 SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(RARE_UPGRADE_SCROLL_STAGE_TWO), Ingredient.of(HAMMER_OF_CRAFTER), Ingredient.of(STRONG_IRON_PRESSED_PLATE), STRONG_IRON_ZEN_STAFF_STAGE_TWO, 30)
                         .unlockedBy(getHasName(HAMMER_OF_CRAFTER), has(HAMMER_OF_CRAFTER))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_zen_staff_stage_two_from_super_crafting");
+                        .save(output, Constants.modRecipe("strong_iron_zen_staff_stage_two_from_super_crafting"));
                 SuperCrafterRecipeBuilder.superCrafterRecipe(RecipeCategory.MISC, Ingredient.of(RARE_UPGRADE_SCROLL_STAGE_THREE), Ingredient.of(HAMMER_OF_CRAFTER), Ingredient.of(STRONG_IRON_ZEN_STAFF_STAGE_TWO), STRONG_IRON_ZEN_STAFF_STAGE_THREE, 50)
                         .unlockedBy(getHasName(HAMMER_OF_CRAFTER), has(HAMMER_OF_CRAFTER))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strong_iron_zen_staff_stage_three_from_super_crafting");
+                        .save(output, Constants.modRecipe("strong_iron_zen_staff_stage_three_from_super_crafting"));
 
                 // #################################################################################################################
                 // #                                              SQUEEZER RECIPES                                                 #
@@ -240,7 +255,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .fruitInSouthSlot(Ingredient.of(RAW_STRAWBERRY))
                         .build()
                         .unlockedBy(getHasName(RAW_STRAWBERRY), has(RAW_STRAWBERRY))
-                        .save(output, MinecraftTheStoriesMod.MOD_ID + ":strawberry_from_squeezing");
+                        .save(output, Constants.modRecipe("strawberry_from_squeezing"));
 
                 // #################################################################################################################
                 // #                                        COMPRESSED TOOLS RECIPES                                               #

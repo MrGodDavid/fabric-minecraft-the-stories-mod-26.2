@@ -14,13 +14,12 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderEx
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
-import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsMenuScreens;
+import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuScreens;
 import net.mrgoddavid.minecraftthestoriesmod.client.MtsFluidRenderingRegistries;
 
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 public class MinecraftTheStoriesModClient implements ClientModInitializer {
 
@@ -34,7 +33,8 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
         ModelLayerRegistry.registerModelLayer(OreCompressorBlockRenderer.MODEL_LAYER, OreCompressorFreewheelModel::getTexturedModelData);
         BlockEntityRenderers.register(MtsBlockEntities.ORE_COMPRESSOR_BE, OreCompressorBlockRenderer::new);
         BlockEntityRenderers.register(MtsBlockEntities.ENDER_EXALTER_BE, EnderExalterBlockRenderer::new);
-        MtsMenuScreens.register();
+        MtsMenuScreens.registerBlockScreens();
+        MtsMenuScreens.registerItemScreens();
         MtsItemTooltips.register();
         MtsFluidRenderingRegistries.register();
 

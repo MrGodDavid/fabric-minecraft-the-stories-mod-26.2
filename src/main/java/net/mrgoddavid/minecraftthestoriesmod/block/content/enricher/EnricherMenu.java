@@ -7,8 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsAbstractDataComponentContainerMenu;
-import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsBlockAbstractDataComponentContainerMenu;
+import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
 
 /**
  * Menu of Enricher.
@@ -16,7 +16,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
  * @author Mr. GodDavid
  * @since 8/22/2026
  */
-public class EnricherMenu extends MtsAbstractDataComponentContainerMenu {
+public class EnricherMenu extends MtsBlockAbstractDataComponentContainerMenu {
 
     private final Container inventory;
     private final ContainerData data;

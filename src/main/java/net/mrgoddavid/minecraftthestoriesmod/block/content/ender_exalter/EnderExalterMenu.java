@@ -7,7 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsAbstractNonDataComponentContainerMenu;
-import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlockEntity.TOTAL_SLOTS;
 

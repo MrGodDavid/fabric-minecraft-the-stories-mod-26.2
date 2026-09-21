@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
  * @author Mr. GodDavid
  * @since 8/26/2026
  */
-public abstract class MtsAbstractNonDataComponentContainerMenu extends MtsAbstractContainerMenu {
+public abstract class MtsAbstractNonDataComponentContainerMenu extends MtsBlockBlockAbstractContainerMenu {
 
     public MtsAbstractNonDataComponentContainerMenu(MenuType<?> type, int containerId, Inventory inventory,
                                                     @SuppressWarnings("unused") BlockEntity blockEntity) {

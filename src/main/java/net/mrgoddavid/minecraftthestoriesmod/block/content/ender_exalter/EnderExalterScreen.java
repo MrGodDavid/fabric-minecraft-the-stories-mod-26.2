@@ -1,12 +1,9 @@
 package net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter;
 
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
-import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsAbstractScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsBlockAbstractScreen;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
 
@@ -17,7 +14,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextur
  * @author Mr. GodDavid
  * @since 8/21/2026
  */
-public class EnderExalterScreen extends MtsAbstractScreen<EnderExalterMenu> {
+public class EnderExalterScreen extends MtsBlockAbstractScreen<EnderExalterMenu> {
 
     public EnderExalterScreen(EnderExalterMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);

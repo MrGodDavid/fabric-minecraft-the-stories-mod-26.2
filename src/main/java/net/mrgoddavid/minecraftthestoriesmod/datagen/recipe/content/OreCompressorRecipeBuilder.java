@@ -36,6 +36,6 @@ public class OreCompressorRecipeBuilder extends MtsAbstractRecipeBuilder {
     @Override
     public void save(RecipeOutput output, ResourceKey<Recipe<?>> id) {
         OreCompressorRecipe recipe = new OreCompressorRecipe(this.compressedOre, this.blueFuel, super.result());
-        output.accept(id, recipe, super.advancementBuilder().build(output, id, super.category()));
+        output.accept(id, recipe, super.advancementBuilder().build(output, id, super.getCategory()));
     }
 }

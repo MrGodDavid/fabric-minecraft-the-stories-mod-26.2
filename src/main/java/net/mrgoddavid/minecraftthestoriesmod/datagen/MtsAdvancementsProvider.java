@@ -454,6 +454,22 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("use_diamond_pic_mining_stone_amethyst_ore", specificItemMinesSpecificBlock(items, blocks, Items.DIAMOND_PICKAXE, MtsBlocks.STONE_AMETHYST_ORE))
                     .addCriterion("use_diamond_pic_mining_deepslate_amethyst_ore", specificItemMinesSpecificBlock(items, blocks, Items.DIAMOND_PICKAXE, MtsBlocks.DEEPSLATE_AMETHYST_ORE))
                     .save(output, generateSaveName("not_today_my_old_friend"));
+
+            // Craft an enricher.
+            AdvancementHolder enriching = Advancement.Builder.advancement()
+                    .parent(orangeThings)
+                    .display(
+                            MtsBlocks.ENRICHER,
+                            Component.translatable("advancements.minecraft-the-stories-mod.enriching.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.enriching.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("craft_an_enricher", hasObtainedItem(items, MtsBlocks.ENRICHER))
+                    .save(output, generateSaveName("enriching"));
         }
 
         public Criterion<?> hasEnteredVillagesWithFullEmeraldArmor() {

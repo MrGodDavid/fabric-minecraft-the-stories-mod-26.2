@@ -9,8 +9,6 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.MtsAbstractRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
-import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipeInput;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
@@ -56,7 +54,7 @@ public class SqueezerRecipeBuilder extends MtsAbstractRecipeBuilder {
                 Optional.ofNullable(this.fruitInSouthwestSlot),
                 Optional.ofNullable(this.fruitInNorthwestSlot),
                 super.result());
-        output.accept(id, recipe, super.advancementBuilder().build(output, id, super.category()));
+        output.accept(id, recipe, super.advancementBuilder().build(output, id, super.getCategory()));
     }
 
     /**

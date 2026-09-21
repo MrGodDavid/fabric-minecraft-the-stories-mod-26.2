@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
-import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsAbstractScreen;
+import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsBlockAbstractScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
@@ -16,7 +16,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextur
  * @author Mr. GodDavid
  * @since 8/22/2026
  */
-public class OreCompressorScreen extends MtsAbstractScreen<OreCompressorMenu> {
+public class OreCompressorScreen extends MtsBlockAbstractScreen<OreCompressorMenu> {
 
     public OreCompressorScreen(OreCompressorMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title, 176, 189);

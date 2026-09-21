@@ -11,9 +11,9 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 8/26/2026
  */
-public abstract class MtsAbstractDataComponentContainerMenu extends MtsAbstractContainerMenu {
+public abstract class MtsBlockAbstractDataComponentContainerMenu extends MtsBlockBlockAbstractContainerMenu {
 
-    public MtsAbstractDataComponentContainerMenu(@Nullable MenuType<?> menuType, int containerId, Inventory inventory, @SuppressWarnings("unused") ContainerData data) {
+    public MtsBlockAbstractDataComponentContainerMenu(@Nullable MenuType<?> menuType, int containerId, Inventory inventory, @SuppressWarnings("unused") ContainerData data) {
         super(menuType, containerId, inventory);
     }
 }

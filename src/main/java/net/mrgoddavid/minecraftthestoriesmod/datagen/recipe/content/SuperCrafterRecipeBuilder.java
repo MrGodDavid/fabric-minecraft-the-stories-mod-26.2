@@ -41,6 +41,6 @@ public class SuperCrafterRecipeBuilder extends MtsAbstractRecipeBuilder {
     @Override
     public void save(RecipeOutput output, @NonNull ResourceKey<Recipe<?>> id) {
         SuperCrafterRecipe recipe = new SuperCrafterRecipe(this.updateScroll, this.hammer, this.stageItem, super.result(),  this.hammerUsage);
-        output.accept(id, recipe, super.advancementBuilder().build(output, id, super.category()));
+        output.accept(id, recipe, super.advancementBuilder().build(output, id, super.getCategory()));
     }
 }

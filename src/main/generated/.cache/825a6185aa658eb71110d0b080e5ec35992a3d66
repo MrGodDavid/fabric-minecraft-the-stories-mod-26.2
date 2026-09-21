@@ -122,6 +122,7 @@ b6cb827da39bb2be4e2abb02c490b65fc46809f3 assets/minecraft-the-stories-mod/items/
 50b6aefce931830c15556c989178358bb516654a assets/minecraft-the-stories-mod/items/stone_amethyst_ore.json
 4662c71da798990de2e9ecd373f8c12b3ebf2560 assets/minecraft-the-stories-mod/items/stone_ruby_ore.json
 2d8fed800dfbb896418a357185d5ee916b24a1b7 assets/minecraft-the-stories-mod/items/stone_topaz_ore.json
+14c19ce56d29305ddf7eeb0d78e108087155cb39 assets/minecraft-the-stories-mod/items/story_book.json
 f96636af6642d9c8152ff2a89326fbd8fb2da3bc assets/minecraft-the-stories-mod/items/strawberry.json
 3984ac1a30a2c2e6b2d7bc1b8e7d3824fc62627d assets/minecraft-the-stories-mod/items/strawberry_seeds.json
 6843737dad5dcc6dcc9d56db250e39a5ef57ea93 assets/minecraft-the-stories-mod/items/stripped_compressed_wood.json
@@ -373,6 +374,7 @@ ac62cfdc989c380e9cbebc60f51dfa22ea929c41 assets/minecraft-the-stories-mod/models
 8cc73a1e0331cc7222700e17bd36f2a2d392d495 assets/minecraft-the-stories-mod/models/item/spruce_bow_pulling_1.json
 ce2a025cdd4b34c0aaef9b1691b7656e2aa3ca03 assets/minecraft-the-stories-mod/models/item/spruce_bow_pulling_2.json
 cde40c65482144ca5477753305138dac035ef47f assets/minecraft-the-stories-mod/models/item/spruce_stick.json
+42b6b8cc035a7488c0d40507c8b1b7d281fb162d assets/minecraft-the-stories-mod/models/item/story_book.json
 a19ffd23c20fac921fda2684e79df70080bae392 assets/minecraft-the-stories-mod/models/item/strawberry.json
 4afbd47715783ffe7264725df67ec3cf21b3c537 assets/minecraft-the-stories-mod/models/item/strawberry_seeds.json
 4945050e1796998946ca46463b70ab8d3d677048 assets/minecraft-the-stories-mod/models/item/strong_amethyst.json

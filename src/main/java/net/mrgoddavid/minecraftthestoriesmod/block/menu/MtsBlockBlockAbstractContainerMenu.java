@@ -12,7 +12,7 @@ import org.jspecify.annotations.Nullable;
  * This is the abstract container menu of MTS mod. This class defines the slot position of player's hotbar and player's
  * inventory.
  */
-public abstract class MtsAbstractContainerMenu extends AbstractContainerMenu {
+public abstract class MtsBlockBlockAbstractContainerMenu extends AbstractContainerMenu {
 
     // SLOT INDICES
     private static final int HOTBAR_SLOT_COUNT = 9;
@@ -26,7 +26,7 @@ public abstract class MtsAbstractContainerMenu extends AbstractContainerMenu {
     private final PlayerInventoryMenuCoordsContext context;
     private int CUSTOM_BLOCK_ENTITY_MENU_SLOT_COUNT; // modify this to display how many slots you want.
 
-    protected MtsAbstractContainerMenu(@Nullable MenuType<?> menuType, int containerId, Inventory inventory) {
+    protected MtsBlockBlockAbstractContainerMenu(@Nullable MenuType<?> menuType, int containerId, Inventory inventory) {
         super(menuType, containerId);
         this.context = registerContext();
 

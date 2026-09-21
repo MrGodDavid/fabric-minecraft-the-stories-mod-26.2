@@ -4,8 +4,10 @@ import net.minecraft.advancements.triggers.Criterion;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeUnlockAdvancementBuilder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -47,7 +49,7 @@ public abstract class MtsAbstractRecipeBuilder implements RecipeBuilder {
         return result;
     }
 
-    protected RecipeCategory category() {
+    protected RecipeCategory getCategory() {
         return category;
     }
 

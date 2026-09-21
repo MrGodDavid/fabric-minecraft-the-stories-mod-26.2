@@ -58,6 +58,7 @@ d16fdada037d1a663398880d3f0539fa3eaf5564 data/minecraft-the-stories-mod/advancem
 83d1c59ebe9d8467db5667a3398c4fd2ebbc40a6 data/minecraft-the-stories-mod/advancement/recipes/misc/compressed_wood_logs_from_compressed_wood.json
 67c1046552e8ddc5de9b3ba30eb77c79a4975e45 data/minecraft-the-stories-mod/advancement/recipes/misc/compressed_wood_planks.json
 c4092c1a36bbbe351f98482a5d41413cca0dd390 data/minecraft-the-stories-mod/advancement/recipes/misc/compressed_wood_planks_from_compressed_wood_logs.json
+d998d8cc944474b19829f1ef72d5ce156a7e69fc data/minecraft-the-stories-mod/advancement/recipes/misc/enricher.json
 df92cb28441c887618a66c2042c226222af96fc4 data/minecraft-the-stories-mod/advancement/recipes/misc/raw_amethyst_from_raw_amethyst_block.json
 7eabc7b2f6ddf42bd03599e2a8c7ffa9838c7d7d data/minecraft-the-stories-mod/advancement/recipes/misc/raw_strong_amethyst.json
 40f9e92d4d93096d9a254953f5a1bb678c1ec1d3 data/minecraft-the-stories-mod/advancement/recipes/misc/raw_strong_amethyst_from_blasting_deepslate_amethyst_ore.json
@@ -155,6 +156,7 @@ f182860bc370398e8c1b4d7dfea91e949c75d87f data/minecraft-the-stories-mod/recipe/e
 3fa8589601b4fd32912f25ab5b3a558c0294bcc4 data/minecraft-the-stories-mod/recipe/emerald_shovel.json
 7ac20b15829455da3a8459248a8d420baa57ca7e data/minecraft-the-stories-mod/recipe/emerald_spear.json
 fd4c24cdf56d74bf01b491781c51ff180623ccea data/minecraft-the-stories-mod/recipe/emerald_sword.json
+6bb64dd363ebf9216ec3ab8e25a30e16a58aa5f1 data/minecraft-the-stories-mod/recipe/enricher.json
 af754ddb9f2b1426b292f236a3bfe578dead6903 data/minecraft-the-stories-mod/recipe/jungle_axe.json
 1da09a184f078aa3758f533a3a719f08ba966729 data/minecraft-the-stories-mod/recipe/jungle_bow.json
 2e76137f6f4442a31c86ef322293915127a8c82e data/minecraft-the-stories-mod/recipe/jungle_stick.json

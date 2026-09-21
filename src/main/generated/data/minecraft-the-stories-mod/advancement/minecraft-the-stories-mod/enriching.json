@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/obtain_topaz_ores",
+  "criteria": {
+    "craft_an_enricher": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:enricher_default"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.enriching.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:enricher_default"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.enriching.title"
+    }
+  },
+  "requirements": [
+    [
+      "craft_an_enricher"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
