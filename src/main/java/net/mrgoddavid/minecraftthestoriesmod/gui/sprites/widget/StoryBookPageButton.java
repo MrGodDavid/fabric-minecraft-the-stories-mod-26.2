@@ -35,6 +35,7 @@ public class StoryBookPageButton extends Button {
         } else {
             sprite = this.isHoveredOrFocused() ? MtsWidgetTextures.STORY_BOOK_PAGE_BACKWARD_HIGHLIGHTED : MtsWidgetTextures.STORY_BOOK_PAGE_BACKWARD;
         }
+
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getX(), this.getY(), 17, 9);
     }
 

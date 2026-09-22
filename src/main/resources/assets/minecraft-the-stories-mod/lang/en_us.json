@@ -229,5 +229,6 @@
   "container.minecraft-the-stories.story_book": "Story Book",
 
   "book.minecraft-the-stories-mod.page_next": "Next Page",
-  "book.minecraft-the-stories-mod.page_previous": "Previous Page"
+  "book.minecraft-the-stories-mod.page_previous": "Previous Page",
+  "book.minecraft-the-stories-mod.pageIndicator": "%1$s"
 }

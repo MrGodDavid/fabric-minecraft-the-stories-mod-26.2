@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.gui.sprites;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 
 /**
  * @author Mr. GodDavid
@@ -24,7 +25,7 @@ public final class MtsWidgetTextures {
     }
 
     private static String withPath(String name) {
-        return "textures/gui/sprites/widget/" + name + ".png";
+        return Directory.builder().widget().build().directory() + name;
     }
 
     private MtsWidgetTextures() throws IllegalAccessException {

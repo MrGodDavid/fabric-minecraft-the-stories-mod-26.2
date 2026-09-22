@@ -6,10 +6,10 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.Inventory;
 import net.mrgoddavid.minecraftthestoriesmod.gui.sprites.widget.StoryBookPageButton;
-
-import java.util.List;
+import org.jspecify.annotations.NonNull;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures.*;
 
@@ -19,29 +19,68 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextur
  */
 public class StoryBookScreen extends AbstractContainerScreen<StoryBookMenu> {
 
-    public static final int BOOK_GUI_Y_OFFSET = 35;
-    public static final int IMAGE_WIDTH = 200;
-    public static final int IMAGE_HEIGHT = 142;
+    private static final int PAGE_NUMBER_Y = -20;
+    private static final int BOOK_GUI_Y_OFFSET = 35;
+    private static final int IMAGE_WIDTH = 200;
+    private static final int IMAGE_HEIGHT = 142;
+    private static final int DONE_BUTTON_WIDTH = 200;
+    private static final Style PAGE_NUM_STYLE = Style.EMPTY.withoutShadow().withColor(0xFF000000);
+
     private StoryBookPageButton forwardButton;
     private StoryBookPageButton backButton;
-    private int currentPage = 10;
+    private int currentPage = 0;
 
     public StoryBookScreen(StoryBookMenu menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 200, 142);
+        super(menu, inventory, title, IMAGE_WIDTH, IMAGE_HEIGHT);
     }
 
     @Override
     protected void init() {
         super.init();
+        this.createPageButtons();
         this.createDoneButton();
     }
 
+    private Component getLeftPageNumber() {
+        return Component.translatable("book.minecraft-the-stories-mod.pageIndicator", currentPage * 2).withStyle(PAGE_NUM_STYLE);
+    }
+
+    private Component getRightPageNumber() {
+        return Component.translatable("book.minecraft-the-stories-mod.pageIndicator", currentPage * 2 + 1).withStyle(PAGE_NUM_STYLE);
+    }
+
     private void createDoneButton() {
-        int left = (this.width - IMAGE_WIDTH) / 2;
-        int top = (this.height - IMAGE_HEIGHT) / 2;
-        this.forwardButton = this.addRenderableWidget(new StoryBookPageButton(left, top + 65, true, button -> System.out.println("Next Page!"), true));
-        this.backButton = this.addRenderableWidget(new StoryBookPageButton(left + 100, top + 65, false, button -> System.out.println("Previous Page!"), true));
+        this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).pos((this.width - DONE_BUTTON_WIDTH) / 2, getBackgroundTop() + IMAGE_HEIGHT).width(DONE_BUTTON_WIDTH).build());
+    }
+
+    private void createPageButtons() {
+        int left = getBackgroundLeft();
+        int top = getBackgroundTop();
+        this.forwardButton = super.addRenderableWidget(new StoryBookPageButton(left + 105, top + 122 - BOOK_GUI_Y_OFFSET, true, this::processForwardButton, true));
+        this.backButton = super.addRenderableWidget(new StoryBookPageButton(left + 78, top + 122 - BOOK_GUI_Y_OFFSET, false, this::processBackwardButton, true));
         this.updateButtonVisibility();
+    }
+
+    private void processBackwardButton(Button button) {
+        if (this.currentPage > 0) {
+            this.currentPage--;
+        }
+        this.updateButtonVisibility();
+    }
+
+    private void processForwardButton(Button button) {
+        if (this.currentPage < 100) {
+            this.currentPage++;
+        }
+        this.updateButtonVisibility();
+    }
+
+    private int getBackgroundTop() {
+        return (this.height - IMAGE_HEIGHT) / 2;
+    }
+
+    private int getBackgroundLeft() {
+        return (this.width - IMAGE_WIDTH) / 2;
     }
 
     private void updateButtonVisibility() {
@@ -63,6 +102,9 @@ public class StoryBookScreen extends AbstractContainerScreen<StoryBookMenu> {
 
     @Override
     protected void extractLabels(GuiGraphicsExtractor graphics, int xm, int ym) {
-        return;
+        if (currentPage > 0) {
+            graphics.text(font, getLeftPageNumber().getVisualOrderText(), 16, PAGE_NUMBER_Y, 0xFFFFFFFF);
+        }
+        graphics.text(font, getRightPageNumber().getVisualOrderText(), 176, PAGE_NUMBER_Y, 0xFFFFFFFF);
     }
 }

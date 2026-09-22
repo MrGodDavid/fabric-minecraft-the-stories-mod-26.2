@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -21,13 +22,8 @@ import org.jspecify.annotations.Nullable;
  */
 public class OreCompressorBlockRenderer implements BlockEntityRenderer<OreCompressorBlockEntity, OreCompressorBlockRenderState> {
 
-    public static final ModelLayerLocation MODEL_LAYER = new ModelLayerLocation(
-            Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "ore_compressor"), "main"
-    );
-
-    public static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(
-            MinecraftTheStoriesMod.MOD_ID, "textures/block/ore_compressor_3d_texture.png"
-    );
+    public static final ModelLayerLocation MODEL_LAYER = new ModelLayerLocation(Constants.modId("ore_compressor"), "main");
+    public static final Identifier TEXTURE =Constants.modId("textures/block/ore_compressor_3d_texture.png");
 
     private OreCompressorFreewheelModel model;
 
@@ -44,11 +40,12 @@ public class OreCompressorBlockRenderer implements BlockEntityRenderer<OreCompre
     @Override
     public void extractRenderState(OreCompressorBlockEntity blockEntity, OreCompressorBlockRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
         BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-
-        state.isCompressing = blockEntity.isCompressing();
-        state.animationTime = ((blockEntity.getLevel().getGameTime() + partialTicks) % 20.0f) / 20.0f;
-        state.angleCorrection = blockEntity.getBlockState().getValue(OreCompressorBlock.FREEWHEEL_MODEL_CORRECTION).angleCorrection();
-        state.translationCorrection = blockEntity.getBlockState().getValue(OreCompressorBlock.FREEWHEEL_MODEL_CORRECTION).translation();
+        if (blockEntity.hasLevel()) {
+            state.isCompressing = blockEntity.isCompressing();
+            state.animationTime = ((blockEntity.getLevel().getGameTime() + partialTicks) % 20.0f) / 20.0f;
+            state.angleCorrection = blockEntity.getBlockState().getValue(OreCompressorBlock.FREEWHEEL_MODEL_CORRECTION).angleCorrection();
+            state.translationCorrection = blockEntity.getBlockState().getValue(OreCompressorBlock.FREEWHEEL_MODEL_CORRECTION).translation();
+        }
     }
 
     @Override

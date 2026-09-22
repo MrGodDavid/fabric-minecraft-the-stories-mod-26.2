@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.block.screen;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 
 /**
  * This class holds a collection of texture paths of MTS mod.
@@ -35,11 +36,11 @@ public class MtsScreenTextures {
     }
 
     private static String withPath(final String block, final String name) {
-        return "textures/gui/menu/" + block + "/" + name + ".png";
+        return Directory.builder().textures().gui().menu().build().directory() + block + "/" + name + ".png";
     }
 
     private static String withTextureGuiPath() {
-        return "textures/gui/sprites/";
+        return Directory.builder().textures().gui().sprites().build().directory();
     }
 
     public static void register() {

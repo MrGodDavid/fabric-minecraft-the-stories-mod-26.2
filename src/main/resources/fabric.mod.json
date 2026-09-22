@@ -24,6 +24,12 @@
 		],
 		"fabric-datagen": [
 			"net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesModDataGenerator"
+		],
+		"rei_client": [
+			"net.mrgoddavid.minecraftthestoriesmod.combat.MtsREIClient"
+		],
+		"rei_common": [
+			"net.mrgoddavid.minecraftthestoriesmod.combat.MtsREICommon"
 		]
 	},
 	"mixins": [

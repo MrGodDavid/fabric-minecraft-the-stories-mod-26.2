@@ -18,6 +18,7 @@ repositories {
 		}
 		filter { includeGroupAndSubgroups('com.geckolib') }
 	}
+	maven { url "https://maven.shedaniel.me" }
 }
 
 fabricApi {
@@ -35,6 +36,12 @@ dependencies {
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
 	implementation "com.geckolib:geckolib-fabric-26.2:5.5.3"
+
+	implementation "me.shedaniel:RoughlyEnoughItems-api-fabric:26.2.820"
+	implementation "me.shedaniel:RoughlyEnoughItems-fabric:26.2.820"
+
+	include api("dev.architectury:architectury-fabric:21.0.4")
+	compileOnly("me.shedaniel.cloth:basic-math:0.6.1")
 }
 
 processResources {
