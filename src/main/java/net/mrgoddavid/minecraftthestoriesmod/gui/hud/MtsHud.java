@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudStatusBarHeightRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * @author Mr. GodDavid

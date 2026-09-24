@@ -7,7 +7,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCom
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerScreen;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterScreen;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookScreen;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * Registers screens of menus.

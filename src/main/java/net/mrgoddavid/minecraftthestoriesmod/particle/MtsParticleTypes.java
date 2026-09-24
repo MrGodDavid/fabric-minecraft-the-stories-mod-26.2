@@ -2,8 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.particle;
 
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * @author Mr. GodDavid

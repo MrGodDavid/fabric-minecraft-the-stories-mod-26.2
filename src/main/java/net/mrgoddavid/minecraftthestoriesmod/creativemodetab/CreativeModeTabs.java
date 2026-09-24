@@ -4,13 +4,11 @@ import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;

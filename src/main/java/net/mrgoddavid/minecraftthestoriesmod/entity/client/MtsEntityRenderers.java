@@ -3,7 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.client;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.mrgoddavid.minecraftthestoriesmod.entity.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntityRenderer;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * @author Mr. GodDavid

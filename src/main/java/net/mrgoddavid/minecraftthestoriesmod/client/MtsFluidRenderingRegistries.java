@@ -7,7 +7,7 @@ import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * Rendering registries of MTS mod.

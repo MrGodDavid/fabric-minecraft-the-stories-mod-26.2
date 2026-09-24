@@ -2,9 +2,8 @@ package net.mrgoddavid.minecraftthestoriesmod.fluid;
 
 import net.fabricmc.fabric.api.registry.fluid.EntityFluidInteractionRegistry;
 import net.fabricmc.fabric.api.registry.fluid.FluidBehavior;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * @author Mr. GodDavid

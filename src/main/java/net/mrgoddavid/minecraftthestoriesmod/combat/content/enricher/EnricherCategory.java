@@ -30,7 +30,7 @@ public class EnricherCategory implements DisplayCategory<Display> {
 
     @Override
     public Component getTitle() {
-        return Component.translatable("block.minecraft-the-stories-mod.enricher");
+        return Component.translatable("block.minecraft-the-stories-mod.enricher_default");
     }
 
     @Override
@@ -42,7 +42,7 @@ public class EnricherCategory implements DisplayCategory<Display> {
     public List<Widget> setupDisplay(Display display, Rectangle bounds) {
         List<Widget> widgets = new LinkedList<>();
         Point startPoint = new Point(bounds.getCenterX() - 88, bounds.getCenterY() - 83);
-        widgets.add(Widgets.createTexturedWidget(MtsScreenTextures.ENRICHER_GUI, new Rectangle(startPoint.x, startPoint.y, 176, 166)));
+        widgets.add(Widgets.createTexturedWidget(MtsScreenTextures.ENRICHER_GUI, new Rectangle(startPoint.x, startPoint.y, 176, 70)));
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 53, startPoint.y + 10)).entries(display.getInputEntries().getFirst()).markInput());
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 53, startPoint.y + 46)).entries(display.getInputEntries().get(1)).markInput());
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 109, startPoint.y + 29)).entries(display.getOutputEntries().getFirst()).markOutput());

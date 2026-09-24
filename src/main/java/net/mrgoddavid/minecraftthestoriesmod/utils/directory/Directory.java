@@ -15,8 +15,9 @@ public final class Directory {
         this.directory = builder.directory;
     }
 
-    public String directory() {
-        return this.directory;
+    @Override
+    public String toString() {
+        return directory;
     }
 
     public static Directory.Builder builder() {
@@ -150,6 +151,46 @@ public final class Directory {
             return this;
         }
 
+        public Builder daffi() {
+            this.directory = this.directory.concat(FILES.DAFFI.getName());
+            return this;
+        }
+
+        public Builder sga() {
+            this.directory = this.directory.concat(FILES.SGA.getName());
+            return this;
+        }
+
+        public Builder resources() {
+            this.directory = this.directory.concat(FILES.RESOURCES.getName());
+            return this;
+        }
+
+        public Builder assets() {
+            this.directory = this.directory.concat(FILES.ASSETS.getName());
+            return this;
+        }
+
+        public Builder minecraft_the_stories_mod() {
+            this.directory = this.directory.concat(FILES.MINECRAFT_THE_STORIES_MOD.getName());
+            return this;
+        }
+
+        public Builder src() {
+            this.directory = this.directory.concat(FILES.SRC.getName());
+            return this;
+        }
+
+        public Builder main_dir() {
+            this.directory = this.directory.concat(FILES.MAIN.getName());
+            return this;
+        }
+
+        public Builder storybook_pages() {
+            this.directory = this.directory.concat(FILES.STORYBOOK_PAGES.getName());
+            return this;
+        }
+
         public Directory build() {
             return new Directory(this);
         }
@@ -182,10 +223,18 @@ public final class Directory {
         SUPER_CRAFTER,
         HUD,
         TOOLTIP,
-        WIDGET;
+        WIDGET,
+        DAFFI,
+        SGA,
+        RESOURCES,
+        ASSETS,
+        MINECRAFT_THE_STORIES_MOD,
+        SRC,
+        MAIN,
+        STORYBOOK_PAGES;
 
         String getName() {
-            return this.name().toLowerCase().concat("/");
+            return ((this == MINECRAFT_THE_STORIES_MOD) ? "minecraft-the-stories-mod" : this.name().toLowerCase()).concat("/");
         }
     }
 }

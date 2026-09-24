@@ -2,7 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.client;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 import org.jspecify.annotations.NonNull;
 
@@ -15,11 +15,11 @@ public class MtsEntityTextures {
     public static final Identifier BROWN_BEAR = register("brown_bear");
 
     private static Identifier register(@NonNull final String name) {
-        return Constants.modId(Directory.builder().textures().entity().build().directory() + name + "/" + name + ".png");
+        return Constants.modId(Directory.builder().textures().entity().build() + name + "/" + name + ".png");
     }
 
     private static Identifier register(@NonNull final String type, @NonNull final String name) {
-        return Constants.modId(Directory.builder().textures().entity().build().directory() + type + "/" + name + ".png");
+        return Constants.modId(Directory.builder().textures().entity().build() + type + "/" + name + ".png");
     }
 
     public static void register() {

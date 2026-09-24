@@ -2,7 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.block.screen;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 
 /**
@@ -36,11 +36,11 @@ public class MtsScreenTextures {
     }
 
     private static String withPath(final String block, final String name) {
-        return Directory.builder().textures().gui().menu().build().directory() + block + "/" + name + ".png";
+        return Directory.builder().textures().gui().menu().build() + block + "/" + name + ".png";
     }
 
     private static String withTextureGuiPath() {
-        return Directory.builder().textures().gui().sprites().build().directory();
+        return Directory.builder().textures().gui().sprites().build().toString();
     }
 
     public static void register() {

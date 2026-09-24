@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils;
+package net.mrgoddavid.minecraftthestoriesmod.utils.log;
 
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import org.jspecify.annotations.NonNull;

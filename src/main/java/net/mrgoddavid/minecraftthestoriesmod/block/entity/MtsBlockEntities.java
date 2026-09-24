@@ -12,7 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCom
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 

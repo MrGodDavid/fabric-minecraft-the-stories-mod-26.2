@@ -67,15 +67,12 @@ public class PlayerMixin implements ThirstHolder, StoryBookProgressHolder {
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     private void mts$saveStorybookProgress(ValueOutput output, CallbackInfo ci) {
-        StoryBookProgress progress = ((StoryBookProgressHolder) this).mts$getStoryBookProgress();
+        this.mts$getStoryBookProgress.save(output);
 
-        Codec<List<Identifier>> seenEntitiesCodec = Identifier.CODEC.listOf();
-        output.store("story_book_progress_seen_entities", seenEntitiesCodec, new ArrayList<>(progress.getSeenEntities()));
-        Codec<List<Identifier>> interactedEntitiesCodec = Identifier.CODEC.listOf();
-        output.store("story_book_progress_interacted_entities", interactedEntitiesCodec, new ArrayList<>(progress.getInteractedEntities()));
     }
 
+    @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     private void mts$loadStorybookProgress(ValueInput input, CallbackInfo ci) {
-        ValueInput list = input.childOrEmpty("story_book_progress_seen_entities");
+        this.mts$getStoryBookProgress.load(input);
     }
 }

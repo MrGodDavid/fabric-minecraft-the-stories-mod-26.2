@@ -25,7 +25,7 @@ import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticles;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
 import net.mrgoddavid.minecraftthestoriesmod.thirst.ThirstEvents;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
 import org.slf4j.Logger;

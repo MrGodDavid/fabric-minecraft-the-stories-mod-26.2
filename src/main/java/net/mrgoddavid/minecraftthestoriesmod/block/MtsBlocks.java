@@ -27,7 +27,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 import java.util.function.Consumer;
 import java.util.function.Function;

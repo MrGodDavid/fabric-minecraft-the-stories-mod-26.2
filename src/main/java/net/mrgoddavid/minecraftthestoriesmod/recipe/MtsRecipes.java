@@ -8,10 +8,9 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.enricher.EnricherRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.ore_compressor.OreCompressorRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
-import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipeInput;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.super_crafter.SuperCrafterRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * @author Mr. GodDavid

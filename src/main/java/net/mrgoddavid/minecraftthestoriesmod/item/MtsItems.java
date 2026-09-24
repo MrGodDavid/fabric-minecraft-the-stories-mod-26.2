@@ -16,7 +16,7 @@ import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.TooltipLineBreaker;
 
 import java.util.function.Consumer;
@@ -62,7 +62,7 @@ public class MtsItems {
             });
 
     public static final Item STORY_BOOK = registerItem("story_book",
-            properties -> new StoryBookItem(properties.craftRemainder(Items.BOOK).stacksTo(1)));
+            properties -> new StoryBookItem(properties.craftRemainder(Items.BOOK).stacksTo(1).rarity(Rarity.EPIC)));
 
     public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", Item::new);
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);

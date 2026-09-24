@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * @author Mr. GodDavid

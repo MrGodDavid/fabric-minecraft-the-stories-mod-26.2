@@ -6,6 +6,9 @@ import net.minecraft.world.entity.player.Player;
 import java.util.function.Predicate;
 
 /**
+ * @param id              a unique identifier of this story book page.
+ * @param texture         the identifier that points to the texture of this page of story book.
+ * @param unlockCriterion criteria for unlocking this page in story book.
  * @author Mr. GodDavid
  * @since 9/21/2026
  */

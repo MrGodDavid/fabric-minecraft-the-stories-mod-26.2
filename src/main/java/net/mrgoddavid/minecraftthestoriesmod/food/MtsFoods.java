@@ -3,7 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.food;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * @author Mr. GodDavid

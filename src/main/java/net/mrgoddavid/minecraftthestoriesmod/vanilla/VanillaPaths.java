@@ -1,7 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.vanilla;
 
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * Holds a connection of the path of blocks in vanilla Minecraft.

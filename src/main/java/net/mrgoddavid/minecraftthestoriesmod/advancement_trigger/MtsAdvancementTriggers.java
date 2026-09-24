@@ -6,7 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.EnteredVillageWithFullEmeraldArmorTrigger;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.MineBlockWithToolTrigger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * Triggers of MTS advancements.

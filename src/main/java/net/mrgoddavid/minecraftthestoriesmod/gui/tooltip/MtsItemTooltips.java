@@ -1,9 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.gui.tooltip;
 
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
  * Custom tooltips for Mts mod.
