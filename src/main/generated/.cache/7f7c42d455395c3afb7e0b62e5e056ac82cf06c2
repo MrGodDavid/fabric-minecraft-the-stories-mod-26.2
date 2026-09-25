@@ -11,6 +11,9 @@ b2616f9f59e7b951f1f7d19b03f3d6716307f791 data/minecraft-the-stories-mod/loot_tab
 92a7f7f403931e6b821735ba58459040a8ac26bb data/minecraft-the-stories-mod/loot_table/blocks/end_amethyst_ore.json
 be73340ec44db5c3fa4cfb9d892138ea62328ca6 data/minecraft-the-stories-mod/loot_table/blocks/ender_exalter.json
 16c00181fa3ce03f2af7f9cd30168d95a63c3dff data/minecraft-the-stories-mod/loot_table/blocks/enricher_default.json
+6c6e88236fa975e8d24bbe9d5b94b9128e6a1cfe data/minecraft-the-stories-mod/loot_table/blocks/lemon_tree_log.json
+8f5cdf676c2fb5d856d30f1af339cc755c4eaae9 data/minecraft-the-stories-mod/loot_table/blocks/lemon_tree_planks.json
+2f519cda1931f907db81003334d9c2d8768010a3 data/minecraft-the-stories-mod/loot_table/blocks/lemon_tree_wood.json
 2db1ab90e15edf8486f02a6e29898e4245413a89 data/minecraft-the-stories-mod/loot_table/blocks/nether_ruby_ore.json
 a7c0ad0efd1833a785d432e677a847f8d4cc4613 data/minecraft-the-stories-mod/loot_table/blocks/ore_compressor_default.json
 108c646b1e18bf0a3c7fd4dff4979a6e4b050b1a data/minecraft-the-stories-mod/loot_table/blocks/raw_strong_amethyst_block.json
@@ -24,6 +27,8 @@ eff5c1670e155af87d7572093d4b8f6dba948733 data/minecraft-the-stories-mod/loot_tab
 a1ae2506ab535a415924aa49b7f1bbe304e38bae data/minecraft-the-stories-mod/loot_table/blocks/strawberry_crop.json
 24396e635df1fc13246fc1f23ab7d2b54150523a data/minecraft-the-stories-mod/loot_table/blocks/stripped_compressed_wood.json
 0998a3df7dfef567cd29cf7f5dfbc57abbc92e62 data/minecraft-the-stories-mod/loot_table/blocks/stripped_compressed_wood_log.json
+4f283bc483544cbea314b9ba545cdf50df6fba04 data/minecraft-the-stories-mod/loot_table/blocks/stripped_lemon_tree_log.json
+2e349580ed4050dc6cca36d0d59f7f1ffec10eb6 data/minecraft-the-stories-mod/loot_table/blocks/stripped_lemon_tree_wood.json
 a0c837b40a8b6f2535587d2716c206392c1f835b data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_block.json
 6bda6f1e40e494c4181b418b8ad27f46351a8771 data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_fence.json
 065a2c3d314374db3338701f382e03665f5bc061 data/minecraft-the-stories-mod/loot_table/blocks/strong_amethyst_fence_gate.json

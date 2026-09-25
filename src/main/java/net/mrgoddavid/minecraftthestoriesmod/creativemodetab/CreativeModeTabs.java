@@ -182,11 +182,18 @@ public class CreativeModeTabs {
 
                         output.accept(COMPRESSED_WOOD);
                         output.accept(COMPRESSED_WOOD_LOG);
-                        output.accept(COMPRESSED_WOOD_PLANKS);
                         output.accept(STRIPPED_COMPRESSED_WOOD);
                         output.accept(STRIPPED_COMPRESSED_WOOD_LOG);
+                        output.accept(COMPRESSED_WOOD_PLANKS);
                         output.accept(COMPRESSED_WOOD_FENCE);
                         output.accept(COMPRESSED_WOOD_FENCE_GATE);
+
+                        output.accept(LEMON_TREE_WOOD);
+                        output.accept(LEMON_TREE_LOG);
+                        output.accept(STRIPPED_LEMON_TREE_WOOD);
+                        output.accept(STRIPPED_LEMON_TREE_LOG);
+                        output.accept(LEMON_TREE_PLANKS);
+                        output.accept(LEMON_TREE_LEAVES);
 
                         output.accept(STRONG_AMETHYST_FENCE);
                         output.accept(STRONG_AMETHYST_FENCE_GATE);

@@ -19,7 +19,6 @@ import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.EnricherReci
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.OreCompressorRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SqueezerRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SuperCrafterRecipeBuilder;
-import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.NonNull;
@@ -283,7 +282,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
                         .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
                         .group("compressed_wood")
-                        .save(output);
+                        .save(output, "compressed_wood_planks_from_crafting");
                 shaped(RecipeCategory.MISC, COMPRESSED_WOOD_LOG)
                         .define('A', Blocks.OAK_LOG)
                         .define('B', Blocks.SPRUCE_LOG)
@@ -307,7 +306,7 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
                         .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
                         .group("compressed_wood")
-                        .save(output);
+                        .save(output, "compressed_wood_log_from_crafting");
                 shaped(RecipeCategory.MISC, COMPRESSED_WOOD)
                         .define('A', Blocks.OAK_WOOD)
                         .define('B', Blocks.SPRUCE_WOOD)
@@ -331,48 +330,10 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
                         .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
                         .group("compressed_wood")
-                        .save(output);
-                shaped(RecipeCategory.MISC, COMPRESSED_WOOD)
-                        .define('L', COMPRESSED_WOOD_LOG)
-                        .pattern("LL")
-                        .pattern("LL")
-                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
-                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
-                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
-                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
-                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
-                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
-                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
-                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
-                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
-                        .group("compressed_wood")
-                        .save(output, "compressed_wood_from_compressed_wood_logs");
-                shapeless(RecipeCategory.MISC, COMPRESSED_WOOD_LOG, 4)
-                        .requires(COMPRESSED_WOOD)
-                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
-                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
-                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
-                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
-                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
-                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
-                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
-                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
-                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
-                        .group("compressed_wood")
-                        .save(output, "compressed_wood_logs_from_compressed_wood");
-                shapeless(RecipeCategory.MISC, COMPRESSED_WOOD_PLANKS, 4)
-                        .requires(COMPRESSED_WOOD_LOG)
-                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
-                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
-                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
-                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
-                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
-                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
-                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
-                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
-                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
-                        .group("compressed_wood")
-                        .save(output, "compressed_wood_planks_from_compressed_wood_logs");
+                        .save(output, "compressed_wood_from_crafting");
+                woodFromLogs(COMPRESSED_WOOD, COMPRESSED_WOOD_LOG);
+                woodFromLogs(STRIPPED_COMPRESSED_WOOD, STRIPPED_COMPRESSED_WOOD_LOG);
+                planksFromLogs(COMPRESSED_WOOD_PLANKS, MtsTags.Items.COMPRESSED_WOOD_LOGS, 4);
                 fenceBuilder(COMPRESSED_WOOD_FENCE, Ingredient.of(COMPRESSED_WOOD_PLANKS));
                 fenceGateBuilder(COMPRESSED_WOOD_FENCE_GATE, Ingredient.of(COMPRESSED_WOOD_PLANKS));
 
@@ -391,6 +352,14 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.OBSIDIAN), has(Blocks.OBSIDIAN))
                         .group("super_crafter")
                         .save(output);
+
+                // #################################################################################################################
+                // #                                        CUSTOM WOOD AND TOOLS                                                  #
+                // #################################################################################################################
+                woodFromLogs(LEMON_TREE_WOOD, LEMON_TREE_LOG);
+                woodFromLogs(STRIPPED_LEMON_TREE_WOOD, STRIPPED_LEMON_TREE_LOG);
+                planksFromLogs(LEMON_TREE_PLANKS, MtsTags.Items.LEMON_TREE_LOGS, 4);
+
 
                 // #################################################################################################################
                 // #                                        IRON MATERIAL RECIPES                                                  #

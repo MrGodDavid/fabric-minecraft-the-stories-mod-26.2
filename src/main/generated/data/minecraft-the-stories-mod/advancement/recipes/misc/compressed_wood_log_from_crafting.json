@@ -93,7 +93,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft-the-stories-mod:compressed_wood_planks_from_compressed_wood_logs"
+        "recipe": "minecraft-the-stories-mod:compressed_wood_log_from_crafting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -114,7 +114,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft-the-stories-mod:compressed_wood_planks_from_compressed_wood_logs"
+      "minecraft-the-stories-mod:compressed_wood_log_from_crafting"
     ]
   }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "minecraft-the-stories-mod:block/lemon_tree_log_top",
+    "side": "minecraft-the-stories-mod:block/lemon_tree_log"
+  }
+}

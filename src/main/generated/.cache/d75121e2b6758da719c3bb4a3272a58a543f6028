@@ -1,6 +1,8 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Tags for minecraft:item
 bb5b26866199291f195090e2950727dad3085630 data/minecraft-the-stories-mod/tags/item/agro_brown_bear_items.json
 e346296a57ced0d8072db57e33af19b06ac2a1d5 data/minecraft-the-stories-mod/tags/item/breed_brown_bear_items.json
+1782ca36b74fad70f28e7737a24a4155920cec13 data/minecraft-the-stories-mod/tags/item/compressed_logs.json
+adf11bbcefee1d2b16243a32211996665ce4d451 data/minecraft-the-stories-mod/tags/item/lemon_tree_logs.json
 09d412f30c0a87334e74ccc411b1e231fcd1cdad data/minecraft-the-stories-mod/tags/item/mts_common_weapon_axes.json
 3f813e747d39b2cec1cfee47743b5b52df87cc16 data/minecraft-the-stories-mod/tags/item/mts_common_weapon_bows.json
 e707bed9930427ddc144b172c0d8267814aa0fbb data/minecraft-the-stories-mod/tags/item/mts_common_weapon_spears.json
@@ -20,11 +22,15 @@ fec2c49dbf0212dd3f62d59f5a7d7307954460ea data/minecraft-the-stories-mod/tags/ite
 65fcfd367d3b1148fa666ff24f08b5b481ae4406 data/minecraft/tags/item/axes.json
 592261a88a4e8fa99484594a4034e08b85af5db8 data/minecraft/tags/item/chest_armor.json
 83b01cec73e24fa0a2aad77ff412127c323d442c data/minecraft/tags/item/enchantable/bow.json
+aeab870a5e50c273478766abb10a6d8e13fd7b7f data/minecraft/tags/item/enchantable/weapon.json
 c10523c342fde9d2a43c32e25b3e310a8b5cd0f3 data/minecraft/tags/item/foot_armor.json
 489a56c285a4d19dc6eb42202787638d75961d4e data/minecraft/tags/item/head_armor.json
 6fe827e2f0ad08765349df711f4daccacf2c4ccf data/minecraft/tags/item/hoes.json
+e78b605a606d540e7a61e85d264e2a382841d0b3 data/minecraft/tags/item/leaves.json
 9e09b1a3a63123b61755a9691f88e977322e0b3b data/minecraft/tags/item/leg_armor.json
+ea9731f6b4af977ab774c43f004e5ca593173010 data/minecraft/tags/item/logs_that_burn.json
 0e7147b79c684b09ac975baec020543592f5ea5f data/minecraft/tags/item/pickaxes.json
+acf21a9e6ea0055ef444450dd91e54a3dcd354f5 data/minecraft/tags/item/planks.json
 594670bf1b5988cdf97d3cef4da1bd00d08ecda4 data/minecraft/tags/item/shovels.json
 5cc429771febc4614e752945696ce75a8aa570d5 data/minecraft/tags/item/spears.json
 43919afbcdabcb3c6ab6d01c6dd3c8fb4eb9398e data/minecraft/tags/item/swords.json

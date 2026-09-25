@@ -3,20 +3,20 @@ package net.mrgoddavid.minecraftthestoriesmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 
-import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.COMPRESSED_WOOD_PLANKS;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.LEMON_TREE_LOG;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.LEMON_TREE_WOOD;
+import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.STRIPPED_COMPRESSED_WOOD_LOG;
 import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
 
 /**
@@ -132,6 +132,42 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(STRONG_TOPAZ_BOOTS))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_BOOTS))
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_BOOTS));
+
+        tag(ItemTags.WEAPON_ENCHANTABLE)
+                .add(MtsItems.getResourceKey(HAMMER_OF_CRAFTER));
+
+        tag(MtsTags.Items.COMPRESSED_WOOD_LOGS)
+                .add(MtsItems.getResourceKey(COMPRESSED_WOOD.asItem()))
+                .add(MtsItems.getResourceKey(COMPRESSED_WOOD_LOG.asItem()))
+                .add(MtsItems.getResourceKey(STRIPPED_COMPRESSED_WOOD.asItem()))
+                .add(MtsItems.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG.asItem()))
+                .add(MtsItems.getResourceKey(COMPRESSED_WOOD_PLANKS.asItem()));
+        tag(MtsTags.Items.LEMON_TREE_LOGS)
+                .add(MtsItems.getResourceKey(LEMON_TREE_WOOD.asItem()))
+                .add(MtsItems.getResourceKey(LEMON_TREE_LOG.asItem()))
+                .add(MtsItems.getResourceKey(LEMON_TREE_WOOD.asItem()))
+                .add(MtsItems.getResourceKey(LEMON_TREE_LOG.asItem()));
+
+        this.addToVanillaItemTag$LOGS_THAT_BURN();
+        this.addToVanillaItemTag$PLANKS();
+        this.addToVanillaItemTag$LEAVES();
+    }
+
+    private void addToVanillaItemTag$LEAVES() {
+        tag(ItemTags.LEAVES)
+                .add(MtsItems.getResourceKey(LEMON_TREE_LEAVES.asItem()));
+    }
+
+    private void addToVanillaItemTag$PLANKS() {
+        tag(ItemTags.PLANKS)
+                .add(MtsItems.getResourceKey(COMPRESSED_WOOD_PLANKS.asItem()))
+                .add(MtsItems.getResourceKey(LEMON_TREE_PLANKS.asItem()));
+    }
+
+    private void addToVanillaItemTag$LOGS_THAT_BURN() {
+        tag(ItemTags.LOGS_THAT_BURN)
+                .addTag(MtsTags.Items.COMPRESSED_WOOD_LOGS)
+                .addTag(MtsTags.Items.LEMON_TREE_LOGS);
     }
 
     /**

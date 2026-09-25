@@ -30,7 +30,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
  * @author Mr. GodDavid
  * @since 8/12/2026
  */
-public class MtsItems {
+public final class MtsItems {
 
     /**
      * Private constructor.
@@ -68,7 +68,7 @@ public class MtsItems {
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);
 
     public static final Item HAMMER_OF_CRAFTER = registerItem("hammer_of_crafter", properties -> new AxeItem(MtsItemToolMaterials.STRONG_RUBY,
-            5.8f, -3.3f, properties.durability(1200)));
+            5.8f, -3.3f, properties.durability(1200).enchantable(20).rarity(Rarity.UNCOMMON)));
 
     // #################################################################################################################
     // #                                              MTS CUSTOM FOOD                                                  #
@@ -488,6 +488,13 @@ public class MtsItems {
             fabricCreativeModeTabOutput.accept(COMPRESSED_WOOD_PLANKS);
             fabricCreativeModeTabOutput.accept(COMPRESSED_WOOD_FENCE);
             fabricCreativeModeTabOutput.accept(COMPRESSED_WOOD_FENCE_GATE);
+
+            fabricCreativeModeTabOutput.accept(LEMON_TREE_WOOD);
+            fabricCreativeModeTabOutput.accept(LEMON_TREE_LOG);
+            fabricCreativeModeTabOutput.accept(STRIPPED_LEMON_TREE_WOOD);
+            fabricCreativeModeTabOutput.accept(STRIPPED_LEMON_TREE_LOG);
+            fabricCreativeModeTabOutput.accept(LEMON_TREE_PLANKS);
+            fabricCreativeModeTabOutput.accept(LEMON_TREE_LEAVES);
 
             fabricCreativeModeTabOutput.accept(STRONG_IRON_BLOCK);
             fabricCreativeModeTabOutput.accept(STRONG_GOLD_BLOCK);

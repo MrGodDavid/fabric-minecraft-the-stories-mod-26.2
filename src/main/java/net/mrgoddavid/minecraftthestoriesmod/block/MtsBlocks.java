@@ -16,7 +16,9 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
@@ -67,14 +69,6 @@ public class MtsBlocks {
     public static final Block STRONG_AMETHYST_WALL = registerBlock("strong_amethyst_wall", properties -> new WallBlock(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final Block RAW_STRONG_AMETHYST_WALL = registerBlock("raw_strong_amethyst_wall", properties -> new WallBlock(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
-    public static final Block COMPRESSED_WOOD = registerBlock("compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_LOG = registerBlock("compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_PLANKS = registerBlock("compressed_wood_planks", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block STRIPPED_COMPRESSED_WOOD = registerBlock("stripped_compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block STRIPPED_COMPRESSED_WOOD_LOG = registerBlock("stripped_compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_FENCE = registerBlock("compressed_wood_fence", properties -> new FenceBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_FENCE_GATE = registerBlock("compressed_wood_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-
     public static final Block SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
     public static final Block ENRICHER = registerBlock("enricher_default", properties -> new EnricherBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(EnricherBlock.LIT) ? 15 : 0)));
     public static final Block ENDER_EXALTER = registerBlock("ender_exalter", properties -> new EnderExalterBlock(properties.strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -84,8 +78,32 @@ public class MtsBlocks {
     public static final Block ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
     public static final Block BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
 
+    // #################################################################################################################
+    // #                                              MTS CUSTOM CROP                                                  #
+    // #################################################################################################################
     public static final Block STRAWBERRY_CROP = registerBlockWithoutBlockItem("strawberry_crop", properties -> new StrawberryCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
     public static final Block BLUEBERRY_BUSH = registerBlockWithoutBlockItem("blueberry_bush", properties -> new BlueberryBushBlock(properties.randomTicks().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY)));
+
+    // #################################################################################################################
+    // #                                            MTS CUSTOM NATURE                                                  #
+    // #################################################################################################################
+    public static final Block COMPRESSED_WOOD = registerBlock("compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block COMPRESSED_WOOD_LOG = registerBlock("compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block COMPRESSED_WOOD_PLANKS = registerBlock("compressed_wood_planks", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block STRIPPED_COMPRESSED_WOOD = registerBlock("stripped_compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block STRIPPED_COMPRESSED_WOOD_LOG = registerBlock("stripped_compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block COMPRESSED_WOOD_FENCE = registerBlock("compressed_wood_fence", properties -> new FenceBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block COMPRESSED_WOOD_FENCE_GATE = registerBlock("compressed_wood_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block LEMON_TREE_LOG = registerBlock("lemon_tree_log", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block LEMON_TREE_WOOD = registerBlock("lemon_tree_wood", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block STRIPPED_LEMON_TREE_LOG = registerBlock("stripped_lemon_tree_log", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block STRIPPED_LEMON_TREE_WOOD = registerBlock("stripped_lemon_tree_wood", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block LEMON_TREE_LEAVES = registerBlock("lemon_tree_leaves", properties -> new TintedParticleLeavesBlock(0.01F,
+            properties.mapColor(MapColor.PLANT).strength(0.2F).randomTicks().sound(SoundType.WET_GRASS)
+                    .noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY)
+                    .isSuffocating(Blocks::never).isRedstoneConductor(Blocks::never).isViewBlocking(Blocks::never))
+    );
+    public static final Block LEMON_TREE_PLANKS = registerBlock("lemon_tree_planks", properties -> new RotatedPillarBlock(properties.strength(2.0F).sound(SoundType.WOOD).ignitedByLava().mapColor(MapColor.COLOR_YELLOW)));
 
     /**
      * Gets the resource key of the mod block.

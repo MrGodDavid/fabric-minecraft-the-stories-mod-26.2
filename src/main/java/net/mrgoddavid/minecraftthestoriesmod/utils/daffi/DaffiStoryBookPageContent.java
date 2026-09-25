@@ -13,19 +13,19 @@ import java.util.List;
  * @author Mr. GodDavid
  * @since 9/23/2026
  */
+@SuppressWarnings("ExtractMethodRecommender")
 public final class DaffiStoryBookPageContent {
 
+    private static final Directory PAINTED_STORYBOOK_PAGES_DIR = Directory.builder().src().main_dir().resources().assets().minecraft_the_stories_mod().textures().item().storybook_pages().build();
+    private static final Directory ATLAS_DIR = Directory.builder().src().main_dir().resources().assets().minecraft_the_stories_mod().textures().daffi().build();
+    private static final String STORYBOOK_PAGE_PREFIX = "storybook_page_";
     private static final int WIDTH = 82;
     private static final int HEIGHT = 110;
-    static final Directory PAINTED_STORYBOOK_PAGES_DIR = Directory.builder().src().main_dir().resources().assets().minecraft_the_stories_mod().textures().item().storybook_pages().build();
-    static final Directory ATLAS_DIR = Directory.builder().src().main_dir().resources().assets().minecraft_the_stories_mod().textures().daffi().build();
-
-    private static final String STORYBOOK_PAGE_PREFIX = "storybook_page_";
-    private final Map<Integer, SGACharacter> sgaCharacterMap;
-    private final List<DaffiTextProhibitRectangle> prohibitAreas = new ArrayList<>();
     private static final int LINE_HEIGHT = 6;
     private static final int CHARACTER_SPACING = 1;
     private static final int PROHIBIT_PADDING = 2;
+    private final Map<Integer, SGACharacter> sgaCharacterMap;
+    private final List<DaffiTextProhibitRectangle> prohibitAreas = new ArrayList<>();
 
     public DaffiStoryBookPageContent(Map<Integer, SGACharacter> sgaCharacterMap) {
         this.sgaCharacterMap = sgaCharacterMap;
@@ -54,7 +54,6 @@ public final class DaffiStoryBookPageContent {
             BufferedImage atlasImage = ImageIO.read(atlasFile);
             BufferedImage paintedImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = (Graphics2D) paintedImage.getGraphics();
-
             for (PlacedCharacter character : layoutText(text)) {
                 BufferedImage cropped = atlasImage.getSubimage(
                         (int) character.sgaCharacter().bounds().getX(),

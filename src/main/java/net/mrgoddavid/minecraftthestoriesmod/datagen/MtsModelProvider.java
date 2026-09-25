@@ -79,6 +79,9 @@ public class MtsModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(STRONG_IRON_BLOCK);
         blockModelGenerators.createTrivialCube(STRONG_GOLD_BLOCK);
 
+        // #################################################################################################################
+        // #                                        CUSTOM WOOD AND TOOLS                                                  #
+        // #################################################################################################################
         blockModelGenerators.createAxisAlignedPillarBlock(COMPRESSED_WOOD, TexturedModel.CUBE);
         blockModelGenerators.createAxisAlignedPillarBlock(STRIPPED_COMPRESSED_WOOD, TexturedModel.CUBE);
         blockModelGenerators.woodProvider(COMPRESSED_WOOD_LOG).log(COMPRESSED_WOOD_LOG);
@@ -86,7 +89,16 @@ public class MtsModelProvider extends FabricModelProvider {
         blockModelGenerators.family(COMPRESSED_WOOD_PLANKS)
                 .fence(COMPRESSED_WOOD_FENCE)
                 .fenceGate(COMPRESSED_WOOD_FENCE_GATE);
+        blockModelGenerators.createAxisAlignedPillarBlock(LEMON_TREE_WOOD, TexturedModel.CUBE);
+        blockModelGenerators.createAxisAlignedPillarBlock(STRIPPED_LEMON_TREE_WOOD, TexturedModel.CUBE);
+        blockModelGenerators.woodProvider(LEMON_TREE_LOG).log(LEMON_TREE_LOG);
+        blockModelGenerators.woodProvider(STRIPPED_LEMON_TREE_LOG).log(STRIPPED_LEMON_TREE_LOG);
+        blockModelGenerators.family(LEMON_TREE_PLANKS);
+        blockModelGenerators.createTintedLeaves(LEMON_TREE_LEAVES, TexturedModel.LEAVES, 0x819604);
 
+        // #################################################################################################################
+        // #                                        CUSTOM BLOCK MODELS                                                    #
+        // #################################################################################################################
         this.generateFacingModels(blockModelGenerators, SUPER_CRAFTER_BLOCK, SuperCrafterBlock.STATE, SuperCrafterBlock.FACING, (type -> Constants.modId(type.path())));
         this.generateFacingModels(blockModelGenerators, ENRICHER, EnricherBlock.STATE, EnricherBlock.FACING, (type -> Constants.modId(type.path())));
         this.generateFacingModels(blockModelGenerators, ORE_COMPRESSOR, OreCompressorBlock.STATE, OreCompressorBlock.FACING, (type -> Constants.modId(type.path())));

@@ -73,6 +73,13 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD))
                 .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG))
 
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_WOOD))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LOG))
+                .add(MtsBlocks.getResourceKey(STRIPPED_LEMON_TREE_WOOD))
+                .add(MtsBlocks.getResourceKey(STRIPPED_LEMON_TREE_LOG))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_PLANKS))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LEAVES))
+
                 .add(MtsBlocks.getResourceKey(SUPER_CRAFTER_BLOCK))
                 .add(MtsBlocks.getResourceKey(SQUEEZER));
 
@@ -199,5 +206,28 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // #################################################################################################################
         tag(BlockTags.CROPS)
                 .add(MtsBlocks.getResourceKey(STRAWBERRY_CROP));
+
+        // #################################################################################################################
+        // #                                          MTS CUSTOM TREE TYPE                                                 #
+        // #################################################################################################################
+        tag(MtsTags.Blocks.COMPRESSED_LOGS)
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD))
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_LOG))
+                .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD))
+                .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG))
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_PLANKS));
+        tag(MtsTags.Blocks.LEMON_TREE_LOGS)
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_WOOD))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LOG))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_WOOD))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LOG));
+        tag(BlockTags.LOGS)
+                .addTag(MtsTags.Blocks.COMPRESSED_LOGS)
+                .addTag(MtsTags.Blocks.LEMON_TREE_LOGS);
+        tag(BlockTags.PLANKS)
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_PLANKS))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_PLANKS));
+        tag(BlockTags.LEAVES)
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LEAVES));
     }
 }

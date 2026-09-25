@@ -156,6 +156,12 @@
   "block.minecraft-the-stories-mod.compressed_wood_planks": "Compressed Wood Planks",
   "block.minecraft-the-stories-mod.compressed_wood_fence": "Compressed Wood Fence",
   "block.minecraft-the-stories-mod.compressed_wood_fence_gate": "Compressed Wood Fence Gate",
+  "block.minecraft-the-stories-mod.lemon_tree_wood": "Lemon Tree Wood",
+  "block.minecraft-the-stories-mod.lemon_tree_log": "Lemon Tree Log",
+  "block.minecraft-the-stories-mod.stripped_lemon_tree_wood": "Stripped Lemon Tree Wood",
+  "block.minecraft-the-stories-mod.stripped_lemon_tree_log": "Stripped Lemon Tree Log",
+  "block.minecraft-the-stories-mod.lemon_tree_planks": "Lemon Tree Planks",
+  "block.minecraft-the-stories-mod.lemon_tree_leaves": "Lemon Tree Leaves",
 
   "block.minecraft-the-stories-mod.strong_amethyst_fence": "Strong Amethyst Fence",
   "block.minecraft-the-stories-mod.strong_amethyst_fence_gate": "Strong Amethyst Fence Gate",

@@ -4,7 +4,6 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
-import net.mrgoddavid.minecraftthestoriesmod.utils.log.ClassNameFormatter;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -22,7 +21,7 @@ public final class DaffiStorybookPagePainter {
     static final Directory EXPECTED_SGA_CHARACTER_JSON_FILE_DIR = Directory.builder().src().main_dir().resources().assets().minecraft_the_stories_mod().textures().daffi().build();
 
     public static void main(String[] args) {
-        if (sgaCharacterJSONFileExisted()) {
+        if (!sgaCharacterJSONFileExisted()) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Type mapType = new TypeToken<Map<Integer, SGACharacter>>() {
             }.getType();

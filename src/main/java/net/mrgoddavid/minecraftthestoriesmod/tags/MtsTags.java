@@ -6,7 +6,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 /**
@@ -68,6 +67,9 @@ public final class MtsTags {
      */
     public static class Blocks {
 
+        public static final TagKey<Block> COMPRESSED_LOGS = createTag("compressed_logs");
+        public static final TagKey<Block> LEMON_TREE_LOGS = createTag("lemon_tree_logs");
+
         public static final TagKey<Block> NEEDS_STRONG_AMETHYST_TOOL = createTag("needs_strong_amethyst_tool");
         public static final TagKey<Block> NEEDS_EMERALD_TOOL = createTag("needs_emerald_tool");
         public static final TagKey<Block> NEEDS_STRONG_RUBY_TOOL = createTag("needs_strong_ruby_tool");
@@ -108,6 +110,9 @@ public final class MtsTags {
      * @since 8/14/2026
      */
     public static class Items {
+
+        public static final TagKey<Item> COMPRESSED_WOOD_LOGS = createTag("compressed_logs");
+        public static final TagKey<Item> LEMON_TREE_LOGS = createTag("lemon_tree_logs");
 
         public static final TagKey<Item> MTS_COMMON_WEAPONS_AXES = createTag("mts_common_weapon_axes");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_SWORDS = createTag("mts_common_weapon_swords");

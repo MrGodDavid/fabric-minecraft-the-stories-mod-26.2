@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "compressed_wood",
+  "key": {
+    "A": "minecraft:oak_wood",
+    "B": "minecraft:spruce_wood",
+    "C": "minecraft:jungle_wood",
+    "D": "minecraft:birch_wood",
+    "E": "minecraft:dark_oak_wood",
+    "F": "minecraft:acacia_wood",
+    "G": "minecraft:mangrove_wood",
+    "H": "minecraft:pale_oak_wood",
+    "I": "minecraft:cherry_wood"
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "GHI"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:compressed_wood"
+  }
+}

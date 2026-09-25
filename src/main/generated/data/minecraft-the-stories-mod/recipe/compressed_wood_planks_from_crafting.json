@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "compressed_wood",
+  "key": {
+    "A": "minecraft:oak_planks",
+    "B": "minecraft:spruce_planks",
+    "C": "minecraft:jungle_planks",
+    "D": "minecraft:birch_planks",
+    "E": "minecraft:dark_oak_planks",
+    "F": "minecraft:acacia_planks",
+    "G": "minecraft:mangrove_planks",
+    "H": "minecraft:pale_oak_planks",
+    "I": "minecraft:cherry_planks"
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "GHI"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:compressed_wood_planks"
+  }
+}

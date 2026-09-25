@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "minecraft-the-stories-mod:block/lemon_tree_leaves"
+  }
+}
