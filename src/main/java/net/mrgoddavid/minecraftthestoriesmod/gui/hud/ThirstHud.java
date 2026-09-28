@@ -4,7 +4,7 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.thirst.ThirstClientManager;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstClientManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.RandomPulse;
 

@@ -55,9 +55,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(MtsTags.Entities.AGRO_BROWN_BEAR_ITEMS)
                 .add(MtsItems.getResourceKey(Items.HONEY_BOTTLE))
-                .add(MtsItems.getResourceKey(Items.HONEYCOMB))
-                .add(MtsItems.getResourceKey(Items.HONEY_BLOCK))
-                .add(MtsItems.getResourceKey(Items.HONEYCOMB_BLOCK));
+                .add(MtsItems.getResourceKey(Items.HONEY_BLOCK));
         tag(MtsTags.Entities.BREED_BROWN_BEAR_ITEMS)
                 .add(MtsItems.getResourceKey(Items.SALMON))
                 .add(MtsItems.getResourceKey(Items.SALMON_BUCKET));
@@ -73,11 +71,15 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(PALE_OAK_STICK))
                 .add(MtsItems.getResourceKey(SPRUCE_STICK));
 
+        tag(MtsTags.Items.MTS_COMMON_MELEE_WEAPONS)
+                .add(MtsItems.getResourceKey(OAK_CUDGEL));
+
         tag(MtsTags.Items.MTS_COMMON_WEAPONS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_BOWS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)
-                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS);
+                .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)
+                .addTag(MtsTags.Items.MTS_COMMON_MELEE_WEAPONS);
         tag(MtsTags.Items.MTS_UNCOMMON_WEAPONS)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_AXES)
                 .addTag(MtsTags.Items.MTS_UNCOMMON_WEAPONS_SWORDS)

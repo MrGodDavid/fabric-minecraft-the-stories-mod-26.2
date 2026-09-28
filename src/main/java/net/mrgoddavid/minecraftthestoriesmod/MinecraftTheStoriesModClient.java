@@ -1,6 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -15,7 +16,8 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCom
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuScreens;
-import net.mrgoddavid.minecraftthestoriesmod.client.MtsFluidRenderingRegistries;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFluidRenderingRegistries;
 
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
@@ -55,6 +57,10 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
             MtsAdvancementTriggers.MINE_BLOCK_WITH_TOOL_TRIGGER.trigger(
                     serverPlayer, state, tool
             );
+        });
+
+        ClientTickEvents.END_CLIENT_TICK.register((client) -> {
+            TargetDummyDamageManager.tick();
         });
 
         ServerTickEvents.END_SERVER_TICK.register(server -> {

@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -186,6 +187,11 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.woodenAxeFromPlanks(MANGROVE_AXE, Items.MANGROVE_PLANKS, MANGROVE_STICK, Blocks.MANGROVE_LOG, "mangrove_axe");
                 this.woodenAxeFromPlanks(PALE_OAK_AXE, Items.PALE_OAK_PLANKS, PALE_OAK_STICK, Blocks.PALE_OAK_LOG, "pale_oak_axe");
                 this.woodenAxeFromPlanks(SPRUCE_AXE, Items.SPRUCE_PLANKS, SPRUCE_STICK, Blocks.SPRUCE_LOG, "spruce_axe");
+
+                // #################################################################################################################
+                // #                                         MELEE WEAPON RECIPES                                                  #
+                // #################################################################################################################
+                this.cudgelBuilder(OAK_CUDGEL, Items.STICK, "oak_cudgel");
 
                 // #################################################################################################################
                 // #                                              ENRICHER RECIPES                                                 #
@@ -496,6 +502,17 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .save(output);
                 wall(RecipeCategory.BUILDING_BLOCKS, STRONG_AMETHYST_WALL, STRONG_AMETHYST_INGOT);
                 wall(RecipeCategory.BUILDING_BLOCKS, RAW_STRONG_AMETHYST_WALL, RAW_STRONG_AMETHYST);
+            }
+
+            private void cudgelBuilder(final ItemLike cudgel, final ItemLike stick, final String id) {
+                super.shaped(RecipeCategory.COMBAT, cudgel)
+                        .define('S', stick)
+                        .pattern(" SS")
+                        .pattern(" SS")
+                        .pattern("S  ")
+                        .unlockedBy(getHasName(stick), has(stick))
+                        .group(id)
+                        .save(output);
             }
 
             private void mtsBowBuilder(final ItemLike bow, final ItemLike stick, final ItemLike unlockPlanks, final String id) {

@@ -37,6 +37,7 @@ a04f02511cb865f5473925bf3330b567b0679976 data/minecraft-the-stories-mod/advancem
 a2fcea0dced6b9bcf39c4ccbb730aa5104ed7c74 data/minecraft-the-stories-mod/advancement/recipes/combat/emerald_sword.json
 9a5ea0483382a16c7d44e59bc6b29232c86be021 data/minecraft-the-stories-mod/advancement/recipes/combat/jungle_bow.json
 b194f611b74cb27c781d7d59a53a5d179ec52e08 data/minecraft-the-stories-mod/advancement/recipes/combat/mangrove_bow.json
+eccc0f35b87c2e43f847741a6f72e50905e9e319 data/minecraft-the-stories-mod/advancement/recipes/combat/oak_cudgel.json
 71e6a895e264d082179fec8f9113649806b6169c data/minecraft-the-stories-mod/advancement/recipes/combat/pale_oak_bow.json
 abcf7050d73076b709e4b01c5e6f8d266ab4c747 data/minecraft-the-stories-mod/advancement/recipes/combat/spruce_bow.json
 63fc79bb6b921f5e20259c6374e69ee2904e2d00 data/minecraft-the-stories-mod/advancement/recipes/combat/strong_amethyst_boots.json
@@ -167,6 +168,7 @@ af754ddb9f2b1426b292f236a3bfe578dead6903 data/minecraft-the-stories-mod/recipe/j
 59f44bd13add6d318af1bfaab36566ef0c26dc7a data/minecraft-the-stories-mod/recipe/mangrove_axe.json
 2121229841bb57ced5e6d289341513216824fda5 data/minecraft-the-stories-mod/recipe/mangrove_bow.json
 e47218433d7e6af0e95277e8e1db14c5f322cc8d data/minecraft-the-stories-mod/recipe/mangrove_stick.json
+7ca9eb708c2fda3afff16dfa49d869f9401252f4 data/minecraft-the-stories-mod/recipe/oak_cudgel.json
 7db4ebab4920382c2912491f13f332052280eff6 data/minecraft-the-stories-mod/recipe/pale_oak_axe.json
 19296b4dbaed7ad0b5a31aa309c4a71c6af43534 data/minecraft-the-stories-mod/recipe/pale_oak_bow.json
 5d8fec202eacc50e30b4f6343ccae6633d33405a data/minecraft-the-stories-mod/recipe/pale_oak_stick.json

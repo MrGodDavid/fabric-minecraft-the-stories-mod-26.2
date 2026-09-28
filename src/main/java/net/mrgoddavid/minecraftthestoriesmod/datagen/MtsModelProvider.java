@@ -226,6 +226,8 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_LEGGINGS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_BOOTS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
+        itemModelGenerators.generateFlatItem(OAK_CUDGEL, flatHandledItemTemplate);
+
         itemModelGenerators.declareCustomModelItem(HAMMER_OF_CRAFTER);
 
         itemModelGenerators.declareCustomModelItem(STRONG_IRON_LONG_KNIFE);
@@ -246,7 +248,6 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(MANGROVE_STICK, flatItemTemplate);
         itemModelGenerators.generateFlatItem(PALE_OAK_STICK, flatItemTemplate);
         itemModelGenerators.generateFlatItem(SPRUCE_STICK, flatItemTemplate);
-
         this.generateMtsBow(itemModelGenerators, ACACIA_BOW);
         this.generateMtsBow(itemModelGenerators, BIRCH_BOW);
         this.generateMtsBow(itemModelGenerators, CHERRY_BOW);

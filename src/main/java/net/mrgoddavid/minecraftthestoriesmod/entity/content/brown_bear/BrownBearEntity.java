@@ -27,7 +27,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
-import net.mrgoddavid.minecraftthestoriesmod.entity.MtsEntityTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;

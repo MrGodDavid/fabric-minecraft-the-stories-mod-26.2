@@ -3,8 +3,8 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityModelLayers;
-import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityTextures;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
 
 /**
  * @author Mr. GodDavid

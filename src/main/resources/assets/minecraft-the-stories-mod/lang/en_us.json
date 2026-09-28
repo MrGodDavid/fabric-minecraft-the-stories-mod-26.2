@@ -109,6 +109,7 @@
   "item.minecraft-the-stories-mod.zen_staff_iron_head_stage_two": "Strong Iron Zen Staff Head Stage Two",
   "item.minecraft-the-stories-mod.zen_staff_iron_head_stage_three": "Strong Iron Zen Staff Head Stage Three",
 
+  "item.minecraft-the-stories-mod.oak_cudgel": "Oak Cudgel",
   "item.minecraft-the-stories-mod.iron_long_knife": "Strong Iron Long Knife",
   "item.minecraft-the-stories-mod.strong_iron_zen_staff": "Strong Iron Zen Staff",
   "item.minecraft-the-stories-mod.strong_iron_double_side_blade": "Strong Iron Double Blade",
@@ -136,6 +137,8 @@
   "block.minecraft-the-stories-mod.stone_amethyst_ore": "Stone Amethyst Ore",
   "block.minecraft-the-stories-mod.stone_ruby_ore": "Stone Ruby Ore",
   "block.minecraft-the-stories-mod.stone_topaz_ore": "Stone Topaz Ore",
+  "block.minecraft-the-stories-mod.nether_ruby_ore": "Nether Ruby Ore",
+  "block.minecraft-the-stories-mod.end_amethyst_ore": "End Amethyst Ore",
   "block.minecraft-the-stories-mod.raw_strong_amethyst_block": "Raw Strong Amethyst Block",
   "block.minecraft-the-stories-mod.raw_strong_diamond_block": "Raw Strong Diamond Block",
   "block.minecraft-the-stories-mod.raw_strong_emerald_block": "Raw Strong Emerald Block",
@@ -181,6 +184,7 @@
   "creative_mode_tab.mts.epic_upgrade_scroll_stage_four": "Mts Upgrade Scrolls",
 
   "entity.minecraft-the-stories-mod.brown_bear": "Brown Bear",
+  "entity.minecraft-the-stories-mod.target_dummy": "Target Dummy",
 
   "advancements.minecraft-the-stories-mod.root.title": "Minecraft: The Stories",
   "advancements.minecraft-the-stories-mod.root.description": "How fast can you get a wooden pickaxe now?",

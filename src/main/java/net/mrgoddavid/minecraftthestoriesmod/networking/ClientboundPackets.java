@@ -1,8 +1,11 @@
 package net.mrgoddavid.minecraftthestoriesmod.networking;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.mrgoddavid.minecraftthestoriesmod.networking.packet.s2c.ThirstPayloadS2C;
-import net.mrgoddavid.minecraftthestoriesmod.thirst.ThirstClientManager;
+import net.minecraft.world.entity.Entity;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
+import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.TargetDummyDamageNumberS2C;
+import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.ThirstPayloadS2C;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstClientManager;
 
 /**
  * @author Mr. GodDavid
@@ -11,10 +14,15 @@ import net.mrgoddavid.minecraftthestoriesmod.thirst.ThirstClientManager;
 public class ClientboundPackets {
 
     public static void handleThirstPayload(ThirstPayloadS2C thirstPayloadS2C, ClientPlayNetworking.Context context) {
-        // Here we can do whatever we want to handle thirst logic.
         ThirstClientManager.setThirst(thirstPayloadS2C.thirst());
-//        System.out.println(
-//                "[MTS] Client received thirst: " + thirstPayloadS2C.thirst()
-//        );
+    }
+
+    public static void handleTargetDummyDamagedPayload(TargetDummyDamageNumberS2C payload, ClientPlayNetworking.Context context) {
+        context.client().execute(() -> {
+            if (context.client().level == null) return;
+            Entity entity = context.client().level.getEntity(payload.entityId());
+            if (entity == null) return;
+            TargetDummyDamageManager.addDamage(entity, payload.damage());
+        });
     }
 }

@@ -1,0 +1,33 @@
+package net.mrgoddavid.minecraftthestoriesmod.registries;
+
+import net.minecraft.resources.Identifier;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
+import org.jspecify.annotations.NonNull;
+
+/**
+ * @author Mr. GodDavid
+ * @since 9/8/2026
+ */
+public class MtsEntityTextures {
+
+    public static final Identifier BROWN_BEAR = register("brown_bear");
+    public static final Identifier TARGET_DUMMY = register("target_dummy");
+
+    private static Identifier register(@NonNull final String name) {
+        return Constants.modId(Directory.builder().textures().entity().build() + name + "/" + name + ".png");
+    }
+
+    private static Identifier register(@NonNull final String type, @NonNull final String name) {
+        return Constants.modId(Directory.builder().textures().entity().build() + type + "/" + name + ".png");
+    }
+
+    public static void register() {
+        MtsLogger.info("Mts Entity Textures");
+    }
+
+    private MtsEntityTextures() throws IllegalAccessException {
+        throw new IllegalAccessException("You cannot instantiate this class!");
+    }
+}

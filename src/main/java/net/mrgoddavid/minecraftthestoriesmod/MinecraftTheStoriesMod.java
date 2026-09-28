@@ -9,9 +9,9 @@ import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
-import net.mrgoddavid.minecraftthestoriesmod.entity.MtsEntityTypes;
-import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityModelLayers;
-import net.mrgoddavid.minecraftthestoriesmod.entity.client.MtsEntityRenderers;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityRenderers;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsEntityFluidInteractions;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.gui.hud.MtsHud;
@@ -26,7 +26,7 @@ import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFlammableBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsStrippableBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
-import net.mrgoddavid.minecraftthestoriesmod.thirst.ThirstEvents;
+import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstEvents;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
@@ -70,11 +70,6 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsFluids.register();
         MtsEntityFluidInteractions.register();
 
-        MtsEntityTypes.register();
-        MtsEntityTypes.registerAttributes();
-        MtsEntityModelLayers.register();
-        MtsEntityRenderers.register();
-
         CreativeModeTabs.register();
         MtsItemModelTemplates.register();
         MtsMenuTypes.register();
@@ -90,6 +85,10 @@ public class MinecraftTheStoriesMod implements ModInitializer {
 
         MtsFlammableBlocks.register();
         MtsStrippableBlocks.register();
+        MtsEntityTypes.register();
+        MtsEntityTypes.registerAttributes();
+        MtsEntityModelLayers.register();
+        MtsEntityRenderers.register();
 
         MtsLogger.tailer();
     }

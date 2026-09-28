@@ -9,7 +9,8 @@
   "client": [
     "client.AbstractContainerScreenMixin",
     "client.GuiGraphicsExtractorAccessor",
-    "client.GuiGraphicsExtractorMixin"
+    "client.GuiGraphicsExtractorMixin",
+    "client.ItemInHandRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

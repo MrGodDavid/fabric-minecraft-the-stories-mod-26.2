@@ -60,6 +60,7 @@ public class CreativeModeTabs {
                         output.accept(MANGROVE_AXE);
                         output.accept(PALE_OAK_AXE);
                         output.accept(SPRUCE_AXE);
+                        output.accept(OAK_CUDGEL);
 
                         output.accept(EMERALD_SHOVEL);
                         output.accept(EMERALD_PICKAXE);

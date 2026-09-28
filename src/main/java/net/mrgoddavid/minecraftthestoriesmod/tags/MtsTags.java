@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.tags;
 
+import jdk.javadoc.doclet.Taglet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
@@ -114,6 +115,7 @@ public final class MtsTags {
         public static final TagKey<Item> COMPRESSED_WOOD_LOGS = createTag("compressed_logs");
         public static final TagKey<Item> LEMON_TREE_LOGS = createTag("lemon_tree_logs");
 
+        public static final TagKey<Item> MTS_COMMON_MELEE_WEAPONS = createTag("mts_common_melee_weapons");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_AXES = createTag("mts_common_weapon_axes");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_SWORDS = createTag("mts_common_weapon_swords");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_SPEARS = createTag("mts_common_weapon_spears");

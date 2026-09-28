@@ -13,6 +13,7 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
+import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
@@ -286,6 +287,9 @@ public final class MtsItems {
     public static final Item SPRUCE_AXE = registerItem("spruce_axe", properties ->
             new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
 
+    public static final Item OAK_CUDGEL = registerItem("oak_cudgel", properties ->
+            new CudgelItem(properties));
+
     public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties ->
             new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
     public static final Item STRONG_IRON_ZEN_STAFF = registerItem("strong_iron_zen_staff", properties ->
@@ -411,6 +415,7 @@ public final class MtsItems {
             fabricCreativeModeTabOutput.accept(MANGROVE_AXE);
             fabricCreativeModeTabOutput.accept(PALE_OAK_AXE);
             fabricCreativeModeTabOutput.accept(SPRUCE_AXE);
+            fabricCreativeModeTabOutput.accept(OAK_CUDGEL);
 
             fabricCreativeModeTabOutput.accept(EMERALD_SWORD);
             fabricCreativeModeTabOutput.accept(EMERALD_SPEAR);
