@@ -7,6 +7,7 @@ import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementT
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
@@ -25,6 +26,7 @@ import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticles;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFlammableBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsStrippableBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.sound.MtsSounds;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
 import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstEvents;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -79,6 +81,8 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsBlockEntities.register();
         MtsAdvancementTriggers.register();
         MtsWorldGen.register();
+        MtsSounds.register();
+        MtsDamageTypes.register();
 
         LootTableEvents.REPLACE.register(MtsLootTableModifiers::replaceLootTables);
         LootTableEvents.MODIFY.register(MtsLootTableModifiers::modifyLootTables);

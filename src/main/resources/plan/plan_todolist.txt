@@ -7,8 +7,7 @@
 #GAMEPLAY
 	->
 		@LINK https://app.diagrams.net/#HMrGodDavid%2Ffabric-minecraft-the-stories-mod-26.2%2Fmain%2F.github%2FMTSModPlanning.drawio#%7B%22pageId%22%3A%22xBtbFhSAIO169gTzjdz9%22%7D
-		Player is the adventurer who explores an abandoned server after several years.
-		The time is about a thousand years after the Last Event in MTS fiction timeline.
+		Player is the adventurer who explores an abandoned server; the time is about a thousand years after the Last Event in MTS fiction timeline.
 		Player's goal is to explore the forgotten world, explore the back stories, and defeat bosses who are still corrupting the world.
 		Player needs to defeat nine ancient spirits of the forest and collect [SOMETHING] to unlock the gate of the Crystalized Cave.
 	->
@@ -29,7 +28,10 @@
 		@ENTITIES
 			->
 				@ENTITY BROWN_BEAR: Giant Brown Bear that live in forests. They would not attack players unless players hold honey blocks or honey bottles. They are NEUTRAL_MOBS. They can be tamed with salmons. Player can use saddle
-					to ride brown bears. Brown bears would attack bees, pigs, sheep, cows, and chicken, foxes, and wolfs.
+					to ride brown bears. Brown bears would attack bees, pigs, sheep, cows, and chicken, foxes, and wolfs. (@WIP)
+				@ENTITY DEER: Deer has male and female variant. Male can only breed with female. Deer is ridable and tamable animal.
+				@ENTITY DUMMY_TARGET: Target dummy. Like Armor Stands. Inspired by an awesome youtube video, and I will link his channel and video in here. Dummy Target displays the attack point that player dealt.
+					@BUG Target dummy will be killed if player smashes target dummy with mace.
 			->
 		@STRUCTURES
 			->
@@ -42,12 +44,11 @@
 	#TODO
 		@UPDATE ADDITIONAL_WOODEN_TOOLS (@WIP)
 			->
-				Add additional wood type for Axes, ✅ Bows, Pickaxes, Hoes, Shovels, Swords, Spears, and Cudgels. 
-				Additional wood types are Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Pale Oak, and Spruce.
-				Different wood type has different attributes, buffs, and debuffs. Like the Wooden bows.
+				Add additional wood type for Axes, ✅ Bows, Pickaxes, Hoes, Shovels, Swords, Spears, and ✅ Cudgels. Additional wood types are Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Pale Oak, and Spruce.
+				✅ Different wood type has different attributes, buffs, and debuffs. Like the Wooden bows.
 				✅ Draw textures.
-				Add items.
-				Define Cudgel Item Class. (@WIP, @PRIORITIZED)
+				✅ Define Cudgel Item Class.
+				✅ Define Wood Materials Classes.
 				½ Implement Cudgels animations. (@WIP) We have something. Need to be polished.
 			->
 		@UPDATE BROWN_BEAR_UPDATE (@WIP)
@@ -79,5 +80,5 @@
 
 #DEADLINE
 	->
-		
+		IDK yet.
 	->

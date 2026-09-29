@@ -20,6 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.EnricherReci
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.OreCompressorRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SqueezerRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SuperCrafterRecipeBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.NonNull;
@@ -191,7 +192,15 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 // #################################################################################################################
                 // #                                         MELEE WEAPON RECIPES                                                  #
                 // #################################################################################################################
-                this.cudgelBuilder(OAK_CUDGEL, Items.STICK, "oak_cudgel");
+                this.cudgelBuilder(ACACIA_CUDGEL, ACACIA_STICK, "cudgel");
+                this.cudgelBuilder(BIRCH_CUDGEL, BIRCH_STICK, "cudgel");
+                this.cudgelBuilder(CHERRY_CUDGEL, CHERRY_STICK, "cudgel");
+                this.cudgelBuilder(DARK_OAK_CUDGEL, DARK_OAK_STICK, "cudgel");
+                this.cudgelBuilder(JUNGLE_CUDGEL, JUNGLE_STICK, "cudgel");
+                this.cudgelBuilder(MANGROVE_CUDGEL, MANGROVE_STICK, "cudgel");
+                this.cudgelBuilder(OAK_CUDGEL, Items.STICK, "cudgel");
+                this.cudgelBuilder(PALE_OAK_CUDGEL, PALE_OAK_STICK, "cudgel");
+                this.cudgelBuilder(SPRUCE_CUDGEL, SPRUCE_STICK, "cudgel");
 
                 // #################################################################################################################
                 // #                                              ENRICHER RECIPES                                                 #

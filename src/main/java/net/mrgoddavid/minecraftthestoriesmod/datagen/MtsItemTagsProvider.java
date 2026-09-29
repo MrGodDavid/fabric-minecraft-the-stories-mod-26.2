@@ -72,7 +72,15 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(SPRUCE_STICK));
 
         tag(MtsTags.Items.MTS_COMMON_MELEE_WEAPONS)
-                .add(MtsItems.getResourceKey(OAK_CUDGEL));
+                .add(MtsItems.getResourceKey(ACACIA_CUDGEL))
+                .add(MtsItems.getResourceKey(BIRCH_CUDGEL))
+                .add(MtsItems.getResourceKey(CHERRY_CUDGEL))
+                .add(MtsItems.getResourceKey(DARK_OAK_CUDGEL))
+                .add(MtsItems.getResourceKey(JUNGLE_CUDGEL))
+                .add(MtsItems.getResourceKey(MANGROVE_CUDGEL))
+                .add(MtsItems.getResourceKey(PALE_OAK_CUDGEL))
+                .add(MtsItems.getResourceKey(OAK_CUDGEL))
+                .add(MtsItems.getResourceKey(SPRUCE_CUDGEL));
 
         tag(MtsTags.Items.MTS_COMMON_WEAPONS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)

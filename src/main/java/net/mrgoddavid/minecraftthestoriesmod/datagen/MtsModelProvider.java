@@ -29,6 +29,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.NonNull;
@@ -226,7 +227,15 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_LEGGINGS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_BOOTS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
+        itemModelGenerators.generateFlatItem(ACACIA_CUDGEL, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(BIRCH_CUDGEL, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(CHERRY_CUDGEL, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(DARK_OAK_CUDGEL, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(JUNGLE_CUDGEL, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(MANGROVE_CUDGEL, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(PALE_OAK_CUDGEL, flatHandledItemTemplate);
         itemModelGenerators.generateFlatItem(OAK_CUDGEL, flatHandledItemTemplate);
+        itemModelGenerators.generateFlatItem(SPRUCE_CUDGEL, flatHandledItemTemplate);
 
         itemModelGenerators.declareCustomModelItem(HAMMER_OF_CRAFTER);
 

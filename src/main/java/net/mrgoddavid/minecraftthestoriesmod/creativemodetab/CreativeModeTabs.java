@@ -53,14 +53,22 @@ public class CreativeModeTabs {
                         output.accept(STRONG_GOLD_INGOT);
 
                         output.accept(ACACIA_AXE);
+                        output.accept(ACACIA_CUDGEL);
                         output.accept(BIRCH_AXE);
+                        output.accept(BIRCH_CUDGEL);
                         output.accept(CHERRY_AXE);
+                        output.accept(CHERRY_CUDGEL);
                         output.accept(DARK_OAK_AXE);
+                        output.accept(DARK_OAK_CUDGEL);
                         output.accept(JUNGLE_AXE);
+                        output.accept(JUNGLE_CUDGEL);
                         output.accept(MANGROVE_AXE);
+                        output.accept(MANGROVE_CUDGEL);
                         output.accept(PALE_OAK_AXE);
-                        output.accept(SPRUCE_AXE);
+                        output.accept(PALE_OAK_CUDGEL);
                         output.accept(OAK_CUDGEL);
+                        output.accept(SPRUCE_AXE);
+                        output.accept(SPRUCE_CUDGEL);
 
                         output.accept(EMERALD_SHOVEL);
                         output.accept(EMERALD_PICKAXE);

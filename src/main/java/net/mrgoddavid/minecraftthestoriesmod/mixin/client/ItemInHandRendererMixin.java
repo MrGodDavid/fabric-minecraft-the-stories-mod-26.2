@@ -9,7 +9,6 @@ import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.CudgelAnimations;
-import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,10 +35,7 @@ public class ItemInHandRendererMixin {
             SubmitNodeCollector submitNodeCollector,
             int lightCoords, CallbackInfo ci
     ) {
-//        if (!(itemStack.getItem() instanceof CudgelItem)) {
-//            return;
-//        }
-        if (!(itemStack.is(MtsItems.OAK_CUDGEL))) {
+        if (!(itemStack.getItem() instanceof CudgelItem)) {
             return;
         }
         if (player.isScoping()) {

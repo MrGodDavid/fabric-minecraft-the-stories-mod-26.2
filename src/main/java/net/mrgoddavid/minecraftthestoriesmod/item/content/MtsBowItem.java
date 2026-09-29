@@ -8,10 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.ArrowItem;
-import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.Nullable;
 
@@ -28,8 +25,8 @@ public class MtsBowItem extends BowItem {
 
     private final Attribute attribute;
 
-    public MtsBowItem(Properties properties, Attribute attribute) {
-        super(properties);
+    public MtsBowItem(ToolMaterial toolMaterial, Properties properties, Attribute attribute) {
+        super(properties.durability(toolMaterial.durability()).enchantable(toolMaterial.enchantmentValue()));
         this.attribute = attribute;
     }
 
@@ -89,7 +86,7 @@ public class MtsBowItem extends BowItem {
                 return false;
             }
 
-            List<ItemStack> firedProjectiles = draw(itemStack, projectile, player);
+            List<ItemStack> firedProjectiles = ProjectileWeaponItem.draw(itemStack, projectile, player);
             if (level instanceof ServerLevel serverLevel && !firedProjectiles.isEmpty()) {
                 this.shoot(serverLevel, player, player.getUsedItemHand(), itemStack, firedProjectiles, pow * 3.0F, 1.0F, pow == 1.0F, null);
             }

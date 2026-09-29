@@ -251,21 +251,21 @@ public final class MtsItems {
     // # charge_duration = 20.0F / ratio                                                                               #
     // #################################################################################################################
     public static final Item ACACIA_BOW = registerItem("acacia_bow", properties -> new MtsBowItem(
-            properties.durability(576).enchantable(1), new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(1.5F).build()));
+            MtsItemToolMaterials.ACACIA_BOW, properties, new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(1.5F).build()));
     public static final Item BIRCH_BOW = registerItem("birch_bow", properties -> new MtsBowItem(
-            properties.durability(378).enchantable(1), new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(16.0F).uncertainty(1.0F).build()));
+            MtsItemToolMaterials.BIRCH_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(16.0F).uncertainty(1.0F).build()));
     public static final Item CHERRY_BOW = registerItem("cherry_bow", properties -> new MtsBowItem(
-            properties.durability(189).enchantable(1), new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(10.0F).uncertainty(0.75F).build()));
+            MtsItemToolMaterials.CHERRY_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(10.0F).uncertainty(0.75F).build()));
     public static final Item DARK_OAK_BOW = registerItem("dark_oak_bow", properties -> new MtsBowItem(
-            properties.durability(378).enchantable(1), new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
+            MtsItemToolMaterials.DARK_OAK_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
     public static final Item JUNGLE_BOW = registerItem("jungle_bow", properties -> new MtsBowItem(
-            properties.durability(756).enchantable(1), new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(2.0F).build()));
+            MtsItemToolMaterials.JUNGLE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(2.0F).build()));
     public static final Item MANGROVE_BOW = registerItem("mangrove_bow", properties -> new MtsBowItem(
-            properties.durability(283).enchantable(1), new MtsBowItem.Attribute.Builder().damage(2.5F).chargeDuration(16.0F).uncertainty(1.25F).build()));
+            MtsItemToolMaterials.MANGROVE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.5F).chargeDuration(16.0F).uncertainty(1.25F).build()));
     public static final Item PALE_OAK_BOW = registerItem("pale_oak_bow", properties -> new MtsBowItem(
-            properties.durability(378).enchantable(1), new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
+            MtsItemToolMaterials.PALE_OAK_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
     public static final Item SPRUCE_BOW = registerItem("spruce_bow", properties -> new MtsBowItem(
-            properties.durability(189).enchantable(1), new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(8.0F).uncertainty(1.25F).build()));
+            MtsItemToolMaterials.SPRUCE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(8.0F).uncertainty(1.25F).build()));
 
     // #################################################################################################################
     // #                                             CUSTOM WEAPONS                                                    #
@@ -287,8 +287,24 @@ public final class MtsItems {
     public static final Item SPRUCE_AXE = registerItem("spruce_axe", properties ->
             new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
 
+    public static final Item ACACIA_CUDGEL = registerItem("acacia_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.ACACIA, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item BIRCH_CUDGEL = registerItem("birch_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.BIRCH, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item CHERRY_CUDGEL = registerItem("cherry_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.CHERRY, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item DARK_OAK_CUDGEL = registerItem("dark_oak_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.DARK_OAK, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item JUNGLE_CUDGEL = registerItem("jungle_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.JUNGLE, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item MANGROVE_CUDGEL = registerItem("mangrove_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.MANGROVE, 1.0F, -1.0F, 1.0F, properties));
     public static final Item OAK_CUDGEL = registerItem("oak_cudgel", properties ->
-            new CudgelItem(properties));
+            new CudgelItem(ToolMaterial.WOOD, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item PALE_OAK_CUDGEL = registerItem("pale_oak_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.PALE_OAK, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item SPRUCE_CUDGEL = registerItem("spruce_cudgel", properties ->
+            new CudgelItem(MtsItemToolMaterials.SPRUCE, 1.0F, -1.0F, 1.0F, properties));
 
     public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties ->
             new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
@@ -408,14 +424,22 @@ public final class MtsItems {
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(fabricCreativeModeTabOutput -> {
             fabricCreativeModeTabOutput.accept(ACACIA_AXE);
+            fabricCreativeModeTabOutput.accept(ACACIA_CUDGEL);
             fabricCreativeModeTabOutput.accept(BIRCH_AXE);
+            fabricCreativeModeTabOutput.accept(BIRCH_CUDGEL);
             fabricCreativeModeTabOutput.accept(CHERRY_AXE);
+            fabricCreativeModeTabOutput.accept(CHERRY_CUDGEL);
             fabricCreativeModeTabOutput.accept(DARK_OAK_AXE);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_CUDGEL);
             fabricCreativeModeTabOutput.accept(JUNGLE_AXE);
+            fabricCreativeModeTabOutput.accept(JUNGLE_CUDGEL);
             fabricCreativeModeTabOutput.accept(MANGROVE_AXE);
+            fabricCreativeModeTabOutput.accept(MANGROVE_CUDGEL);
             fabricCreativeModeTabOutput.accept(PALE_OAK_AXE);
-            fabricCreativeModeTabOutput.accept(SPRUCE_AXE);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_CUDGEL);
             fabricCreativeModeTabOutput.accept(OAK_CUDGEL);
+            fabricCreativeModeTabOutput.accept(SPRUCE_AXE);
+            fabricCreativeModeTabOutput.accept(SPRUCE_CUDGEL);
 
             fabricCreativeModeTabOutput.accept(EMERALD_SWORD);
             fabricCreativeModeTabOutput.accept(EMERALD_SPEAR);

@@ -26,11 +26,13 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
         pack.addProvider(MtsBlockTagsProvider::new);
         pack.addProvider(MtsFluidTagProvider::new);
         pack.addProvider(MtsModelProvider::new);
+        pack.addProvider(MtsRegistryDataProvider::new);
         pack.addProvider(MtsEquipmentAssetProvider::new);
         pack.addProvider(MtsRecipeProvider::new);
         pack.addProvider(MtsBlockLootTableProvider::new);
         pack.addProvider(MtsAdvancementsProvider::new);
         pack.addProvider(MtsWorldGenProvider::new);
+        pack.addProvider(MtsSoundsProvider::new);
     }
 
     @Override
@@ -38,5 +40,6 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
 //        DataGeneratorEntrypoint.super.buildRegistry(registryBuilder);
         registryBuilder.add(Registries.CONFIGURED_FEATURE, MtsWorldGenBootstrapper::bootstrapConfiguredFeatures);
         registryBuilder.add(Registries.PLACED_FEATURE, MtsWorldGenBootstrapper::bootstrapPlacedFeatures);
+        registryBuilder.add(Registries.DAMAGE_TYPE, MtsDamageTypes::bootstrap);
     }
 }

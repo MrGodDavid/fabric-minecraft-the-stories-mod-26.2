@@ -45,10 +45,12 @@ ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blocks
 36144a1f252bc829a495642157eae0ec3399159c assets/minecraft-the-stories-mod/blockstates/super_crafter_default.json
 69d2acf348a1876a6dc355043068fcb136ce6bf1 assets/minecraft-the-stories-mod/items/acacia_axe.json
 5cb7cc0fbaba9fdd7342bebb60c7ef92d614f853 assets/minecraft-the-stories-mod/items/acacia_bow.json
+8236d7ae3d038059ebfa0aee1bfdbb70089dffc9 assets/minecraft-the-stories-mod/items/acacia_cudgel.json
 128953de2f32f73bc21e02a21a4d6218ecdad70e assets/minecraft-the-stories-mod/items/acacia_stick.json
 e1e74db5144ec0bcc820aa2785812769de7b713a assets/minecraft-the-stories-mod/items/amethyst_long_knife.json
 984fcab477d81cedf9e3dd82997e28e09739240a assets/minecraft-the-stories-mod/items/birch_axe.json
 2228d3950fb27579b54bbc1062f7967158db1e0a assets/minecraft-the-stories-mod/items/birch_bow.json
+e66b080da1d72af4030b2d9af3df49df66292032 assets/minecraft-the-stories-mod/items/birch_cudgel.json
 bd00ec6029a7d68f9f11202eabfbaa8d7eb478f3 assets/minecraft-the-stories-mod/items/birch_stick.json
 a7b567cf6a7e1c716ac83b498bab677eac8e31bc assets/minecraft-the-stories-mod/items/blue_fuel_bucket.json
 5e25647e02f4c03a89c050c1f7b4f16dc44e3fcc assets/minecraft-the-stories-mod/items/blueberry.json
@@ -56,6 +58,7 @@ a7b567cf6a7e1c716ac83b498bab677eac8e31bc assets/minecraft-the-stories-mod/items/
 957c0f85a34af3e02b5b6bbf9036b6207e1337c6 assets/minecraft-the-stories-mod/items/broken_iron_pickaxe.json
 59d265b896b48d9532a3c438da5f555918b5ed43 assets/minecraft-the-stories-mod/items/cherry_axe.json
 ae6dc8dba3f7e9e64e63e2fac7d8519e8fa5e94c assets/minecraft-the-stories-mod/items/cherry_bow.json
+88df44f70d5d69ce1219dbf16216d8a4886883d8 assets/minecraft-the-stories-mod/items/cherry_cudgel.json
 39546d89c6eaa641a2eb315a45efa5dae0fd9536 assets/minecraft-the-stories-mod/items/cherry_stick.json
 a6e54e891d4d93c225fd437bc7e3c9f6668be9cf assets/minecraft-the-stories-mod/items/compressed_wood.json
 8b7e369d6193496a3340c7d206fdfa4a94fe716a assets/minecraft-the-stories-mod/items/compressed_wood_fence.json
@@ -64,6 +67,7 @@ a6e54e891d4d93c225fd437bc7e3c9f6668be9cf assets/minecraft-the-stories-mod/items/
 35e46567e7e45f3e55e59d392c6153b803adc688 assets/minecraft-the-stories-mod/items/compressed_wood_planks.json
 97d98684dae3f9e9f931164af16f4fb554ea79cc assets/minecraft-the-stories-mod/items/dark_oak_axe.json
 0f91d0415a99e934b0b15ebf1e3080082a19154a assets/minecraft-the-stories-mod/items/dark_oak_bow.json
+67db0db545eda5f0855e52fc38896b64b9cf944c assets/minecraft-the-stories-mod/items/dark_oak_cudgel.json
 206187fe9686fedcaa4409550fa0ff70df7450ed assets/minecraft-the-stories-mod/items/dark_oak_stick.json
 c6bc8dd933f3f43f0a51cd2f47927d5bf9204206 assets/minecraft-the-stories-mod/items/deepslate_amethyst_ore.json
 f3e0f9f719cd6e65708bb767d0d698b8f84a7645 assets/minecraft-the-stories-mod/items/deepslate_ruby_ore.json
@@ -91,6 +95,7 @@ f9a91bb7f833c627531ff958e7a7fd3048fe51ff assets/minecraft-the-stories-mod/items/
 0748aeed9d7a6aa4f98527cf01479f95cdf59792 assets/minecraft-the-stories-mod/items/iron_long_knife.json
 b62ff294a05bdb6984308f86aba0fdbbd1af35c7 assets/minecraft-the-stories-mod/items/jungle_axe.json
 43443ca9117cda60ced948c90714a2c199978f7f assets/minecraft-the-stories-mod/items/jungle_bow.json
+47da7f37f4fb540e2fba9c57826fea89950a1a69 assets/minecraft-the-stories-mod/items/jungle_cudgel.json
 0b73b5f7932ec77b50fafec106452938c6c4cd26 assets/minecraft-the-stories-mod/items/jungle_stick.json
 1c50988d9be17f67963092517a00b5ca38a017e0 assets/minecraft-the-stories-mod/items/legendary_upgrade_scroll_stage_five.json
 79497e3484d20d847c02213cffc7b83d68345827 assets/minecraft-the-stories-mod/items/legendary_upgrade_scroll_stage_four.json
@@ -103,12 +108,14 @@ ff957ed358913332c700acec316c7b1ad77eb0dc assets/minecraft-the-stories-mod/items/
 fc3111b3147004800f0c4e4ebcb4a2402c6345d6 assets/minecraft-the-stories-mod/items/lemon_tree_wood.json
 84a139d0c6c569c7c0d4abf7cdb456b37b23469f assets/minecraft-the-stories-mod/items/mangrove_axe.json
 49d68083f30f3389f9639003d3506e5beb322a24 assets/minecraft-the-stories-mod/items/mangrove_bow.json
+8d5f08f62c0bcaea2522c30ac8750fb5fd0e52df assets/minecraft-the-stories-mod/items/mangrove_cudgel.json
 5afae8cf6603cffcb86c1921f6d86d778806abd3 assets/minecraft-the-stories-mod/items/mangrove_stick.json
 58521b4551acd53806f4e7cd4b19e561a50b4a44 assets/minecraft-the-stories-mod/items/nether_ruby_ore.json
 5cafab81afb168950ec928092becc698360fbf10 assets/minecraft-the-stories-mod/items/oak_cudgel.json
 02640e39641c8897f0846d1e6bd1554f1d35d696 assets/minecraft-the-stories-mod/items/ore_compressor_default.json
 aceb7a7a2252fd040d2658253bb4890145376983 assets/minecraft-the-stories-mod/items/pale_oak_axe.json
 8dbd050e3b5fa560e16548c54b3e2fbe9d2408f3 assets/minecraft-the-stories-mod/items/pale_oak_bow.json
+45fcd8c6f2d9329a152cee854181f34d8fbe98ab assets/minecraft-the-stories-mod/items/pale_oak_cudgel.json
 4b08497f9945b0da15e065fd3ecc935f576f07be assets/minecraft-the-stories-mod/items/pale_oak_stick.json
 e81226482c8416ff183bd624f0768548de0c7c9f assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_one.json
 1ae990e6583b5c891ab61428482704afdc924fb8 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_three.json
@@ -128,6 +135,7 @@ f71abbad5eb1ae1a8b11808761411f1cb42cf448 assets/minecraft-the-stories-mod/items/
 c5c35a557c10b6d653d7b88747cb305807c32fa6 assets/minecraft-the-stories-mod/items/raw_strong_topaz_block.json
 9de44d2f1c29feec16405a8bd915a54a1e1ba4cc assets/minecraft-the-stories-mod/items/spruce_axe.json
 8890baa7f0516dbf45065ba200e09d181545c8c2 assets/minecraft-the-stories-mod/items/spruce_bow.json
+27af21026919080612b07ba5252176d435009489 assets/minecraft-the-stories-mod/items/spruce_cudgel.json
 b6cb827da39bb2be4e2abb02c490b65fc46809f3 assets/minecraft-the-stories-mod/items/spruce_stick.json
 3cfa8bc997d1212757f585b339dfd7cdbac0c8c4 assets/minecraft-the-stories-mod/items/squeezer_default.json
 50b6aefce931830c15556c989178358bb516654a assets/minecraft-the-stories-mod/items/stone_amethyst_ore.json
@@ -270,12 +278,14 @@ d8d4d6451ba82b8ced10746e7cc003d0bcbc170f assets/minecraft-the-stories-mod/models
 34dc6fa969b54a10101544f55701d6843e1ceb33 assets/minecraft-the-stories-mod/models/item/acacia_bow_pulling_0.json
 c7daa1984984a596bcafdea79ac69dfb66ff14af assets/minecraft-the-stories-mod/models/item/acacia_bow_pulling_1.json
 49b0a5bab582f9a727a33dff6909b3bfd558d234 assets/minecraft-the-stories-mod/models/item/acacia_bow_pulling_2.json
+593fff39f08280c29ddd452082a018a7862917dd assets/minecraft-the-stories-mod/models/item/acacia_cudgel.json
 241ac3dbf814386f0c2ef266a56c5525f2772be1 assets/minecraft-the-stories-mod/models/item/acacia_stick.json
 7bdedf3f16606995f60fcafabc739a56f05b389f assets/minecraft-the-stories-mod/models/item/birch_axe.json
 9fee4193e20c48d3176ba7ff3bcb875266545e55 assets/minecraft-the-stories-mod/models/item/birch_bow.json
 0f31fd8bd2a621f633fed6b6e4818dddcf5f3935 assets/minecraft-the-stories-mod/models/item/birch_bow_pulling_0.json
 e8b222585083321158f1fde0a4bcbaf831f6bb1c assets/minecraft-the-stories-mod/models/item/birch_bow_pulling_1.json
 66d00f97f993fbb5eaeee370a0b3c59ce473f05b assets/minecraft-the-stories-mod/models/item/birch_bow_pulling_2.json
+f137979f282c4e7289f1185ce85f040ac89fa76e assets/minecraft-the-stories-mod/models/item/birch_cudgel.json
 cd470ae692e28e30f0747823ad48b581801d6993 assets/minecraft-the-stories-mod/models/item/birch_stick.json
 6fdae9a86eea3879cb891f321c8726f81d58ae93 assets/minecraft-the-stories-mod/models/item/blue_fuel_bucket.json
 cc6dd1e37b1ae18d1ffe0300a379c9ecea56de3a assets/minecraft-the-stories-mod/models/item/blueberry.json
@@ -286,12 +296,14 @@ bc7dcc43a0057851677abfb27ef6975dca6a586d assets/minecraft-the-stories-mod/models
 e75d39ac41e1431fac040049d38992ff69271a83 assets/minecraft-the-stories-mod/models/item/cherry_bow_pulling_0.json
 6af08f34752321013803336bca20d0d8ad0cbe4c assets/minecraft-the-stories-mod/models/item/cherry_bow_pulling_1.json
 21cd959e1b8b740e9c5ffef7379402af365f9b00 assets/minecraft-the-stories-mod/models/item/cherry_bow_pulling_2.json
+9fe8c2ac13399600fcfeefeaa4219396e252ede6 assets/minecraft-the-stories-mod/models/item/cherry_cudgel.json
 83b9b3f5b614e7890e3222ea3178b593a31263b9 assets/minecraft-the-stories-mod/models/item/cherry_stick.json
 cd19a999ed4cb06a5ed65ff09def1029c2b35990 assets/minecraft-the-stories-mod/models/item/dark_oak_axe.json
 00015b2eb901016ac047e8ca63f313f499926729 assets/minecraft-the-stories-mod/models/item/dark_oak_bow.json
 6655e869b034563a2738a9c1e6bfa122ddacb3f8 assets/minecraft-the-stories-mod/models/item/dark_oak_bow_pulling_0.json
 a214ad04397686895f44d68a6b4e696a0f5e971d assets/minecraft-the-stories-mod/models/item/dark_oak_bow_pulling_1.json
 eb07799dfc86fdcf6b8b16f06daf7fcb1a9c8fd2 assets/minecraft-the-stories-mod/models/item/dark_oak_bow_pulling_2.json
+961fb8402bb352fa4b61a5b37f987fb78bf3bd79 assets/minecraft-the-stories-mod/models/item/dark_oak_cudgel.json
 75e713e743f1523a7dbf897dcb83af879aa407ac assets/minecraft-the-stories-mod/models/item/dark_oak_stick.json
 4832ba55bb19f08356fee7dcb82a6ce45e5ef9e7 assets/minecraft-the-stories-mod/models/item/diamond_battle_axe.json
 f8b67593b5bd8885023d68fa078b088921eb8939 assets/minecraft-the-stories-mod/models/item/emerald_axe.json
@@ -359,6 +371,7 @@ f779cd75f2a85f5c9891fabfc0a6a84d30211d3a assets/minecraft-the-stories-mod/models
 756a715c53f527a76867a3592afba54d67e79d0b assets/minecraft-the-stories-mod/models/item/jungle_bow_pulling_0.json
 8654c5af8c7bb49f86c6bb4f9530f1deffd42c9c assets/minecraft-the-stories-mod/models/item/jungle_bow_pulling_1.json
 cd8c89760db897201cb26aa165223b32251d5d3f assets/minecraft-the-stories-mod/models/item/jungle_bow_pulling_2.json
+dcd6ae1b0f0c246d04c11317b88470ecfed4bef3 assets/minecraft-the-stories-mod/models/item/jungle_cudgel.json
 679f68b0e392eb8662812fcbb93cd200852b3eeb assets/minecraft-the-stories-mod/models/item/jungle_stick.json
 ae5bf1e5c965ec8468de79266b59fc43e86834ac assets/minecraft-the-stories-mod/models/item/legendary_upgrade_scroll_stage_five.json
 faaa854d930ce814af404b81e887ade971f96f6c assets/minecraft-the-stories-mod/models/item/legendary_upgrade_scroll_stage_four.json
@@ -370,6 +383,7 @@ f497626bd5ff5bf64ee82b1c93b3b818fb4c19da assets/minecraft-the-stories-mod/models
 f8025685a05087764859c356c458a5c2890b0dc3 assets/minecraft-the-stories-mod/models/item/mangrove_bow_pulling_0.json
 6eae1a4f9d6a55371c6bd9acbe661788acd83ea0 assets/minecraft-the-stories-mod/models/item/mangrove_bow_pulling_1.json
 b3cc8d9723c99471b605981f045b9a4368041990 assets/minecraft-the-stories-mod/models/item/mangrove_bow_pulling_2.json
+70abebbf39a0fb9f9326c78c28f692883d21bc30 assets/minecraft-the-stories-mod/models/item/mangrove_cudgel.json
 095c1bb33b1eab0753619213c48a9821dcf81cff assets/minecraft-the-stories-mod/models/item/mangrove_stick.json
 4ebadef4e556c20ec57f1d3fba95215a10f49464 assets/minecraft-the-stories-mod/models/item/oak_cudgel.json
 1f8bad2502a675b50e590426a36bfb4b1c27e46c assets/minecraft-the-stories-mod/models/item/pale_oak_axe.json
@@ -377,6 +391,7 @@ b3cc8d9723c99471b605981f045b9a4368041990 assets/minecraft-the-stories-mod/models
 61dbf177baeb2a946951d4b5b5adc445237494ad assets/minecraft-the-stories-mod/models/item/pale_oak_bow_pulling_0.json
 3a2e137393eea1533a4b1d9bf9cda161086a8e96 assets/minecraft-the-stories-mod/models/item/pale_oak_bow_pulling_1.json
 70eace87f5a7b7c6ae5cb24fae306cfe4d3be6e4 assets/minecraft-the-stories-mod/models/item/pale_oak_bow_pulling_2.json
+9033d3cf3c4ec7e83773e56263084a65560ed412 assets/minecraft-the-stories-mod/models/item/pale_oak_cudgel.json
 e1f5a37c649d1620419fe353091265659cf80e14 assets/minecraft-the-stories-mod/models/item/pale_oak_stick.json
 31b569a898a6400d3f860f1d216652a6f30bb315 assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_one.json
 97908cbe7844806216efdeb9c230d10ffeca363a assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_three.json
@@ -393,6 +408,7 @@ fb1ef55630c691039136bb9721193a2e461ec86e assets/minecraft-the-stories-mod/models
 ac62cfdc989c380e9cbebc60f51dfa22ea929c41 assets/minecraft-the-stories-mod/models/item/spruce_bow_pulling_0.json
 8cc73a1e0331cc7222700e17bd36f2a2d392d495 assets/minecraft-the-stories-mod/models/item/spruce_bow_pulling_1.json
 ce2a025cdd4b34c0aaef9b1691b7656e2aa3ca03 assets/minecraft-the-stories-mod/models/item/spruce_bow_pulling_2.json
+2e9612878c9e0c51976568090baeca877e82ef24 assets/minecraft-the-stories-mod/models/item/spruce_cudgel.json
 cde40c65482144ca5477753305138dac035ef47f assets/minecraft-the-stories-mod/models/item/spruce_stick.json
 42b6b8cc035a7488c0d40507c8b1b7d281fb162d assets/minecraft-the-stories-mod/models/item/story_book.json
 a19ffd23c20fac921fda2684e79df70080bae392 assets/minecraft-the-stories-mod/models/item/strawberry.json

@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "cudgel",
   "key": {
-    "S": "minecraft:stick"
+    "S": "minecraft-the-stories-mod:birch_stick"
   },
   "pattern": [
     " SS",
@@ -11,6 +11,6 @@
     "S  "
   ],
   "result": {
-    "id": "minecraft-the-stories-mod:oak_cudgel"
+    "id": "minecraft-the-stories-mod:birch_cudgel"
   }
 }

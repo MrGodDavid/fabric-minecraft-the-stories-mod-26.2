@@ -143,6 +143,16 @@ public final class MtsTags {
         public static final TagKey<Item> STRONG_DIAMOND_REPAIR = createTag("strong_diamond_repair");
         public static final TagKey<Item> STRONG_EMERALD_REPAIR = createTag("strong_emerald_repair");
 
+//        public static final TagKey<Item> ACACIA_REPAIR =  createTag("acacia_repair");
+//        public static final TagKey<Item> BIRCH_REPAIR = createTag("birch_repair");
+//        public static final TagKey<Item> CHERRY_REPAIR = createTag("cherry_repair");
+//        public static final TagKey<Item> DARK_OAK_REPAIR = createTag("dark_oak_repair");
+//        public static final TagKey<Item> JUNGLE_REPAIR = createTag("jungle_repair");
+//        public static final TagKey<Item> MANGROVE_REPAIR = createTag("mangrove_repair");
+//        public static final TagKey<Item> OAK_REPAIR = createTag("oak_repair");
+//        public static final TagKey<Item> PALE_OAK_REPAIR = createTag("pale_oak_repair");
+//        public static final TagKey<Item> SPRUCE_REPAIR = createTag("spruce_repair");
+
         private static TagKey<Item> createTag(final String name) {
             Identifier identifier = Constants.modId(name);
             return TagKey.create(Registries.ITEM, identifier);
