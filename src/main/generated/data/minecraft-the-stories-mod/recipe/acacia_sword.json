@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "acacia_sword",
+  "key": {
+    "#": "minecraft-the-stories-mod:acacia_stick",
+    "X": "minecraft:acacia_planks"
+  },
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:acacia_sword"
+  }
+}

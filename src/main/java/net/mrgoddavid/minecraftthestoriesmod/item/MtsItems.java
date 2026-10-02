@@ -134,106 +134,70 @@ public final class MtsItems {
     // #################################################################################################################
     // #                                                AMETHYST TOOLS                                                 #
     // #################################################################################################################
-    public static final Item STRONG_AMETHYST_AXE = registerItem("strong_amethyst_axe", properties ->
-            new AxeItem(MtsItemToolMaterials.STRONG_AMETHYST, 6f, -3.2f, properties.fireResistant()));
-    public static final Item STRONG_AMETHYST_HOE = registerItem("strong_amethyst_hoe", properties ->
-            new HoeItem(MtsItemToolMaterials.STRONG_AMETHYST, 0f, -3.0f, properties.fireResistant()));
-    public static final Item STRONG_AMETHYST_PICKAXE = registerItem("strong_amethyst_pickaxe", properties ->
-            new Item(properties.pickaxe(MtsItemToolMaterials.STRONG_AMETHYST, 1f, -2.8f).fireResistant()));
-    public static final Item STRONG_AMETHYST_SHOVEL = registerItem("strong_amethyst_shovel", properties ->
-            new ShovelItem(MtsItemToolMaterials.STRONG_AMETHYST, 1.5f, -3.0f, properties.fireResistant()));
+    public static final Item STRONG_AMETHYST_AXE = registerItem("strong_amethyst_axe", properties -> new AxeItem(MtsItemToolMaterials.STRONG_AMETHYST, 6f, -3.2f, properties.fireResistant()));
+    public static final Item STRONG_AMETHYST_HOE = registerItem("strong_amethyst_hoe", properties -> new HoeItem(MtsItemToolMaterials.STRONG_AMETHYST, 0f, -3.0f, properties.fireResistant()));
+    public static final Item STRONG_AMETHYST_PICKAXE = registerItem("strong_amethyst_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.STRONG_AMETHYST, 1f, -2.8f).fireResistant()));
+    public static final Item STRONG_AMETHYST_SHOVEL = registerItem("strong_amethyst_shovel", properties -> new ShovelItem(MtsItemToolMaterials.STRONG_AMETHYST, 1.5f, -3.0f, properties.fireResistant()));
     public static final Item STRONG_AMETHYST_SPEAR = registerItem("strong_amethyst_spear", properties ->
             new Item(properties.spear(MtsItemToolMaterials.STRONG_AMETHYST,
                     0.95f, 0.95f, 0.6f, 2.5f, 11.0f, 6.75f, 5.1f, 8.25f, 4.6f).fireResistant()));
-    public static final Item STRONG_AMETHYST_SWORD = registerItem("strong_amethyst_sword", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_AMETHYST, 3.0f, -2.4f).fireResistant()));
+    public static final Item STRONG_AMETHYST_SWORD = registerItem("strong_amethyst_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_AMETHYST, 3.0f, -2.4f).fireResistant()));
 
-    public static final Item STRONG_AMETHYST_HELMET = registerItem("strong_amethyst_helmet", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.HELMET)));
-    public static final Item STRONG_AMETHYST_CHESTPLATE = registerItem("strong_amethyst_chestplate", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
-    public static final Item STRONG_AMETHYST_LEGGINGS = registerItem("strong_amethyst_leggings", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
-    public static final Item STRONG_AMETHYST_BOOTS = registerItem("strong_amethyst_boots", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.BOOTS)));
+    public static final Item STRONG_AMETHYST_HELMET = registerItem("strong_amethyst_helmet", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.HELMET)));
+    public static final Item STRONG_AMETHYST_CHESTPLATE = registerItem("strong_amethyst_chestplate", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
+    public static final Item STRONG_AMETHYST_LEGGINGS = registerItem("strong_amethyst_leggings", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
+    public static final Item STRONG_AMETHYST_BOOTS = registerItem("strong_amethyst_boots", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorType.BOOTS)));
 
     // #################################################################################################################
     // #                                                EMERALD TOOLS                                                  #
     // #################################################################################################################
-    public static final Item EMERALD_AXE = registerItem("emerald_axe", properties ->
-            new AxeItem(MtsItemToolMaterials.EMERALD, 6f, -3.2f, properties));
-    public static final Item EMERALD_HOE = registerItem("emerald_hoe", properties ->
-            new HoeItem(MtsItemToolMaterials.EMERALD, 0f, -3.0f, properties));
-    public static final Item EMERALD_PICKAXE = registerItem("emerald_pickaxe", properties ->
-            new Item(properties.pickaxe(MtsItemToolMaterials.EMERALD, 1f, -2.8f)));
-    public static final Item EMERALD_SHOVEL = registerItem("emerald_shovel", properties ->
-            new ShovelItem(MtsItemToolMaterials.EMERALD, 1.5f, -3.0f, properties));
+    public static final Item EMERALD_AXE = registerItem("emerald_axe", properties -> new AxeItem(MtsItemToolMaterials.EMERALD, 6f, -3.2f, properties));
+    public static final Item EMERALD_HOE = registerItem("emerald_hoe", properties -> new HoeItem(MtsItemToolMaterials.EMERALD, 0f, -3.0f, properties));
+    public static final Item EMERALD_PICKAXE = registerItem("emerald_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.EMERALD, 1f, -2.8f)));
+    public static final Item EMERALD_SHOVEL = registerItem("emerald_shovel", properties -> new ShovelItem(MtsItemToolMaterials.EMERALD, 1.5f, -3.0f, properties));
     public static final Item EMERALD_SPEAR = registerItem("emerald_spear", properties ->
             new Item(properties.spear(MtsItemToolMaterials.EMERALD,
                     1.0f, 1.0f, 1.0f, 2.75f, 11.5f, 6.75f, 5.1f, 11.0f, 4.6f)));
-    public static final Item EMERALD_SWORD = registerItem("emerald_sword", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.EMERALD, 3.0f, -2.4f)));
+    public static final Item EMERALD_SWORD = registerItem("emerald_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.EMERALD, 3.0f, -2.4f)));
 
-    public static final Item EMERALD_HELMET = registerItem("emerald_helmet", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.HELMET)));
-    public static final Item EMERALD_CHESTPLATE = registerItem("emerald_chestplate", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
-    public static final Item EMERALD_LEGGINGS = registerItem("emerald_leggings", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
-    public static final Item EMERALD_BOOTS = registerItem("emerald_boots", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.BOOTS)));
+    public static final Item EMERALD_HELMET = registerItem("emerald_helmet", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.HELMET)));
+    public static final Item EMERALD_CHESTPLATE = registerItem("emerald_chestplate", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
+    public static final Item EMERALD_LEGGINGS = registerItem("emerald_leggings", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
+    public static final Item EMERALD_BOOTS = registerItem("emerald_boots", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.EMERALD_ARMOR_MATERIAL, ArmorType.BOOTS)));
 
     // #################################################################################################################
     // #                                                RUBY TOOLS                                                     #
     // #################################################################################################################
-    public static final Item STRONG_RUBY_AXE = registerItem("strong_ruby_axe", properties ->
-            new AxeItem(MtsItemToolMaterials.STRONG_RUBY, 6f, -3.2f, properties.fireResistant()));
-    public static final Item STRONG_RUBY_HOE = registerItem("strong_ruby_hoe", properties ->
-            new HoeItem(MtsItemToolMaterials.STRONG_RUBY, 0f, -3.0f, properties.fireResistant()));
-    public static final Item STRONG_RUBY_PICKAXE = registerItem("strong_ruby_pickaxe", properties ->
-            new Item(properties.pickaxe(MtsItemToolMaterials.STRONG_RUBY, 1f, -2.8f).fireResistant()));
-    public static final Item STRONG_RUBY_SHOVEL = registerItem("strong_ruby_shovel", properties ->
-            new ShovelItem(MtsItemToolMaterials.STRONG_RUBY, 1.5f, -3.0f, properties.fireResistant()));
+    public static final Item STRONG_RUBY_AXE = registerItem("strong_ruby_axe", properties -> new AxeItem(MtsItemToolMaterials.STRONG_RUBY, 6f, -3.2f, properties.fireResistant()));
+    public static final Item STRONG_RUBY_HOE = registerItem("strong_ruby_hoe", properties -> new HoeItem(MtsItemToolMaterials.STRONG_RUBY, 0f, -3.0f, properties.fireResistant()));
+    public static final Item STRONG_RUBY_PICKAXE = registerItem("strong_ruby_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.STRONG_RUBY, 1f, -2.8f).fireResistant()));
+    public static final Item STRONG_RUBY_SHOVEL = registerItem("strong_ruby_shovel", properties -> new ShovelItem(MtsItemToolMaterials.STRONG_RUBY, 1.5f, -3.0f, properties.fireResistant()));
     public static final Item STRONG_RUBY_SPEAR = registerItem("strong_ruby_spear", properties ->
             new Item(properties.spear(MtsItemToolMaterials.STRONG_RUBY,
                     1.15f, 1.05f, 0.55f, 2.75f, 10.0f, 6.75f, 5.1f, 9.25f, 4.6f).fireResistant()));
-    public static final Item STRONG_RUBY_SWORD = registerItem("strong_ruby_sword", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_RUBY, 3.0f, -2.4f).fireResistant()));
+    public static final Item STRONG_RUBY_SWORD = registerItem("strong_ruby_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_RUBY, 3.0f, -2.4f).fireResistant()));
 
-    public static final Item STRONG_RUBY_HELMET = registerItem("strong_ruby_helmet", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.HELMET)));
-    public static final Item STRONG_RUBY_CHESTPLATE = registerItem("strong_ruby_chestplate", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
-    public static final Item STRONG_RUBY_LEGGINGS = registerItem("strong_ruby_leggings", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
-    public static final Item STRONG_RUBY_BOOTS = registerItem("strong_ruby_boots", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.BOOTS)));
+    public static final Item STRONG_RUBY_HELMET = registerItem("strong_ruby_helmet", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.HELMET)));
+    public static final Item STRONG_RUBY_CHESTPLATE = registerItem("strong_ruby_chestplate", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
+    public static final Item STRONG_RUBY_LEGGINGS = registerItem("strong_ruby_leggings", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
+    public static final Item STRONG_RUBY_BOOTS = registerItem("strong_ruby_boots", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.RUBY_ARMOR_MATERIAL, ArmorType.BOOTS)));
 
     // #################################################################################################################
     // #                                                TOPAZ TOOLS                                                    #
     // #################################################################################################################
-    public static final Item STRONG_TOPAZ_AXE = registerItem("strong_topaz_axe", properties ->
-            new AxeItem(MtsItemToolMaterials.STRONG_TOPAZ, 6f, -3.2f, properties));
-    public static final Item STRONG_TOPAZ_HOE = registerItem("strong_topaz_hoe", properties ->
-            new HoeItem(MtsItemToolMaterials.STRONG_TOPAZ, 0f, -3.0f, properties));
-    public static final Item STRONG_TOPAZ_PICKAXE = registerItem("strong_topaz_pickaxe", properties ->
-            new Item(properties.pickaxe(MtsItemToolMaterials.STRONG_TOPAZ, 1f, -2.8f)));
-    public static final Item STRONG_TOPAZ_SHOVEL = registerItem("strong_topaz_shovel", properties ->
-            new ShovelItem(MtsItemToolMaterials.STRONG_TOPAZ, 1.5f, -3.0f, properties));
+    public static final Item STRONG_TOPAZ_AXE = registerItem("strong_topaz_axe", properties -> new AxeItem(MtsItemToolMaterials.STRONG_TOPAZ, 6f, -3.2f, properties));
+    public static final Item STRONG_TOPAZ_HOE = registerItem("strong_topaz_hoe", properties -> new HoeItem(MtsItemToolMaterials.STRONG_TOPAZ, 0f, -3.0f, properties));
+    public static final Item STRONG_TOPAZ_PICKAXE = registerItem("strong_topaz_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.STRONG_TOPAZ, 1f, -2.8f)));
+    public static final Item STRONG_TOPAZ_SHOVEL = registerItem("strong_topaz_shovel", properties -> new ShovelItem(MtsItemToolMaterials.STRONG_TOPAZ, 1.5f, -3.0f, properties));
     public static final Item STRONG_TOPAZ_SPEAR = registerItem("strong_topaz_spear", properties ->
             new Item(properties.spear(MtsItemToolMaterials.STRONG_TOPAZ,
                     1.11f, 0.85f, 0.75f, 3.0f, 11.0f, 7.0f, 3.3f, 9.75f, 4.6f)));
-    public static final Item STRONG_TOPAZ_SWORD = registerItem("strong_topaz_sword", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_TOPAZ, 3.0f, -2.4f)));
+    public static final Item STRONG_TOPAZ_SWORD = registerItem("strong_topaz_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_TOPAZ, 3.0f, -2.4f)));
 
-    public static final Item STRONG_TOPAZ_HELMET = registerItem("strong_topaz_helmet", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.HELMET)));
-    public static final Item STRONG_TOPAZ_CHESTPLATE = registerItem("strong_topaz_chestplate", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
-    public static final Item STRONG_TOPAZ_LEGGINGS = registerItem("strong_topaz_leggings", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
-    public static final Item STRONG_TOPAZ_BOOTS = registerItem("strong_topaz_boots", properties ->
-            new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.BOOTS)));
+    public static final Item STRONG_TOPAZ_HELMET = registerItem("strong_topaz_helmet", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.HELMET)));
+    public static final Item STRONG_TOPAZ_CHESTPLATE = registerItem("strong_topaz_chestplate", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
+    public static final Item STRONG_TOPAZ_LEGGINGS = registerItem("strong_topaz_leggings", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
+    public static final Item STRONG_TOPAZ_BOOTS = registerItem("strong_topaz_boots", properties -> new Item(properties.humanoidArmor(MtsArmorMaterials.TOPAZ_ARMOR_MATERIAL, ArmorType.BOOTS)));
 
     // #################################################################################################################
     // #                                             CUSTOM BOWS                                                       #
@@ -250,78 +214,85 @@ public final class MtsItems {
     // # Spruce Bow:      durability: 0.5x,   arrow_damage: 0.75x,   charging_speed: 2.5x,   uncertainty: 1.25x (NNPP) #
     // # charge_duration = 20.0F / ratio                                                                               #
     // #################################################################################################################
-    public static final Item ACACIA_BOW = registerItem("acacia_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.ACACIA_BOW, properties, new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(1.5F).build()));
-    public static final Item BIRCH_BOW = registerItem("birch_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.BIRCH_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(16.0F).uncertainty(1.0F).build()));
-    public static final Item CHERRY_BOW = registerItem("cherry_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.CHERRY_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(10.0F).uncertainty(0.75F).build()));
-    public static final Item DARK_OAK_BOW = registerItem("dark_oak_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.DARK_OAK_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
-    public static final Item JUNGLE_BOW = registerItem("jungle_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.JUNGLE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(2.0F).build()));
-    public static final Item MANGROVE_BOW = registerItem("mangrove_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.MANGROVE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.5F).chargeDuration(16.0F).uncertainty(1.25F).build()));
-    public static final Item PALE_OAK_BOW = registerItem("pale_oak_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.PALE_OAK_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
-    public static final Item SPRUCE_BOW = registerItem("spruce_bow", properties -> new MtsBowItem(
-            MtsItemToolMaterials.SPRUCE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(8.0F).uncertainty(1.25F).build()));
+    public static final Item ACACIA_BOW = registerItem("acacia_bow", properties -> new MtsBowItem(MtsItemToolMaterials.ACACIA_BOW, properties, new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(1.5F).build()));
+    public static final Item BIRCH_BOW = registerItem("birch_bow", properties -> new MtsBowItem(MtsItemToolMaterials.BIRCH_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(16.0F).uncertainty(1.0F).build()));
+    public static final Item CHERRY_BOW = registerItem("cherry_bow", properties -> new MtsBowItem(MtsItemToolMaterials.CHERRY_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(10.0F).uncertainty(0.75F).build()));
+    public static final Item DARK_OAK_BOW = registerItem("dark_oak_bow", properties -> new MtsBowItem(MtsItemToolMaterials.DARK_OAK_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
+    public static final Item JUNGLE_BOW = registerItem("jungle_bow", properties -> new MtsBowItem(MtsItemToolMaterials.JUNGLE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(3.0F).chargeDuration(40.0F).uncertainty(2.0F).build()));
+    public static final Item MANGROVE_BOW = registerItem("mangrove_bow", properties -> new MtsBowItem(MtsItemToolMaterials.MANGROVE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.5F).chargeDuration(16.0F).uncertainty(1.25F).build()));
+    public static final Item PALE_OAK_BOW = registerItem("pale_oak_bow", properties -> new MtsBowItem(MtsItemToolMaterials.PALE_OAK_BOW, properties, new MtsBowItem.Attribute.Builder().damage(2.0F).chargeDuration(20.0F).uncertainty(1.0F).build()));
+    public static final Item SPRUCE_BOW = registerItem("spruce_bow", properties -> new MtsBowItem(MtsItemToolMaterials.SPRUCE_BOW, properties, new MtsBowItem.Attribute.Builder().damage(1.5F).chargeDuration(8.0F).uncertainty(1.25F).build()));
 
     // #################################################################################################################
-    // #                                             CUSTOM WEAPONS                                                    #
+    // #                                          CUSTOM WOODEN WEAPONS                                                #
     // #################################################################################################################
-    public static final Item ACACIA_AXE = registerItem("acacia_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
-    public static final Item BIRCH_AXE = registerItem("birch_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
-    public static final Item CHERRY_AXE = registerItem("cherry_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
-    public static final Item DARK_OAK_AXE = registerItem("dark_oak_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
-    public static final Item JUNGLE_AXE = registerItem("jungle_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
-    public static final Item MANGROVE_AXE = registerItem("mangrove_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
-    public static final Item PALE_OAK_AXE = registerItem("pale_oak_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
-    public static final Item SPRUCE_AXE = registerItem("spruce_axe", properties ->
-            new AxeItem(ToolMaterial.WOOD, 6.0F, -3.2F, properties));
+    public static final Item ACACIA_AXE = registerItem("acacia_axe", properties -> new AxeItem(MtsItemToolMaterials.ACACIA, 6.0F, -3.2F, properties));
+    public static final Item ACACIA_HOE = registerItem("acacia_hoe", properties -> new HoeItem(MtsItemToolMaterials.ACACIA, 0.0F, -3.0F, properties));
+    public static final Item ACACIA_PICKAXE = registerItem("acacia_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.ACACIA, 1.0F, -2.8F)));
+    public static final Item ACACIA_SHOVEL = registerItem("acacia_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.ACACIA, 1.5F, -3.0F)));
+    public static final Item ACACIA_SWORD = registerItem("acacia_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.ACACIA, 3.0F, -2.4F)));
+    public static final Item ACACIA_SPEAR = registerItem("acacia_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.ACACIA, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item ACACIA_CUDGEL = registerItem("acacia_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.ACACIA, 1.5F, -3.0F, 1.0F, properties));
+    public static final Item BIRCH_AXE = registerItem("birch_axe", properties -> new AxeItem(MtsItemToolMaterials.BIRCH, 6.0F, -3.2F, properties));
+    public static final Item BIRCH_HOE = registerItem("birch_hoe", properties -> new HoeItem(MtsItemToolMaterials.BIRCH, 0.0F, -3.0F, properties));
+    public static final Item BIRCH_PICKAXE = registerItem("birch_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.BIRCH, 1.0F, -2.8F)));
+    public static final Item BIRCH_SHOVEL = registerItem("birch_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.BIRCH, 1.5F, -3.0F)));
+    public static final Item BIRCH_SWORD = registerItem("birch_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.BIRCH, 3.0F, -2.4F)));
+    public static final Item BIRCH_SPEAR = registerItem("birch_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.BIRCH, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item BIRCH_CUDGEL = registerItem("birch_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.BIRCH, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item CHERRY_AXE = registerItem("cherry_axe", properties -> new AxeItem(MtsItemToolMaterials.CHERRY, 6.0F, -3.2F, properties));
+    public static final Item CHERRY_HOE = registerItem("cherry_hoe", properties -> new HoeItem(MtsItemToolMaterials.CHERRY, 0.0F, -3.0F, properties));
+    public static final Item CHERRY_PICKAXE = registerItem("cherry_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.CHERRY, 1.0F, -2.8F)));
+    public static final Item CHERRY_SHOVEL = registerItem("cherry_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.CHERRY, 1.5F, -3.0F)));
+    public static final Item CHERRY_SWORD = registerItem("cherry_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.CHERRY, 3.0F, -2.4F)));
+    public static final Item CHERRY_SPEAR = registerItem("cherry_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.CHERRY, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item CHERRY_CUDGEL = registerItem("cherry_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.CHERRY, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item DARK_OAK_AXE = registerItem("dark_oak_axe", properties -> new AxeItem(MtsItemToolMaterials.DARK_OAK, 6.0F, -3.2F, properties));
+    public static final Item DARK_OAK_HOE = registerItem("dark_oak_hoe", properties -> new HoeItem(MtsItemToolMaterials.DARK_OAK, 0.0F, -3.0F, properties));
+    public static final Item DARK_OAK_PICKAXE = registerItem("dark_oak_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.DARK_OAK, 1.0F, -2.8F)));
+    public static final Item DARK_OAK_SHOVEL = registerItem("dark_oak_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.DARK_OAK, 1.5F, -3.0F)));
+    public static final Item DARK_OAK_SWORD = registerItem("dark_oak_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.DARK_OAK, 3.0F, -2.4F)));
+    public static final Item DARK_OAK_SPEAR = registerItem("dark_oak_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.DARK_OAK, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item DARK_OAK_CUDGEL = registerItem("dark_oak_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.DARK_OAK, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item JUNGLE_AXE = registerItem("jungle_axe", properties -> new AxeItem(MtsItemToolMaterials.JUNGLE, 6.0F, -3.2F, properties));
+    public static final Item JUNGLE_HOE = registerItem("jungle_hoe", properties -> new HoeItem(MtsItemToolMaterials.JUNGLE, 0.0F, -3.0F, properties));
+    public static final Item JUNGLE_PICKAXE = registerItem("jungle_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.JUNGLE, 1.0F, -2.8F)));
+    public static final Item JUNGLE_SHOVEL = registerItem("jungle_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.JUNGLE, 1.5F, -3.0F)));
+    public static final Item JUNGLE_SWORD = registerItem("jungle_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.JUNGLE, 3.0F, -2.4F)));
+    public static final Item JUNGLE_SPEAR = registerItem("jungle_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.JUNGLE, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item JUNGLE_CUDGEL = registerItem("jungle_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.JUNGLE, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item MANGROVE_AXE = registerItem("mangrove_axe", properties -> new AxeItem(MtsItemToolMaterials.MANGROVE, 6.0F, -3.2F, properties));
+    public static final Item MANGROVE_HOE = registerItem("mangrove_hoe", properties -> new HoeItem(MtsItemToolMaterials.MANGROVE, 0.0F, -3.0F, properties));
+    public static final Item MANGROVE_PICKAXE = registerItem("mangrove_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.MANGROVE, 1.0F, -2.8F)));
+    public static final Item MANGROVE_SHOVEL = registerItem("mangrove_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.MANGROVE, 1.5F, -3.0F)));
+    public static final Item MANGROVE_SWORD = registerItem("mangrove_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.MANGROVE, 3.0F, -2.4F)));
+    public static final Item MANGROVE_SPEAR = registerItem("mangrove_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.MANGROVE, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item MANGROVE_CUDGEL = registerItem("mangrove_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.MANGROVE, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item OAK_CUDGEL = registerItem("oak_cudgel", properties -> new CudgelItem(ToolMaterial.WOOD, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item PALE_OAK_AXE = registerItem("pale_oak_axe", properties -> new AxeItem(MtsItemToolMaterials.PALE_OAK, 6.0F, -3.2F, properties));
+    public static final Item PALE_OAK_HOE = registerItem("pale_oak_hoe", properties -> new HoeItem(MtsItemToolMaterials.PALE_OAK, 0.0F, -3.0F, properties));
+    public static final Item PALE_OAK_PICKAXE = registerItem("pale_oak_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.PALE_OAK, 1.0F, -2.8F)));
+    public static final Item PALE_OAK_SHOVEL = registerItem("pale_oak_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.PALE_OAK, 1.5F, -3.0F)));
+    public static final Item PALE_OAK_SWORD = registerItem("pale_oak_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.PALE_OAK, 3.0F, -2.4F)));
+    public static final Item PALE_OAK_SPEAR = registerItem("pale_oak_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.PALE_OAK, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item PALE_OAK_CUDGEL = registerItem("pale_oak_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.PALE_OAK, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item SPRUCE_AXE = registerItem("spruce_axe", properties -> new AxeItem(MtsItemToolMaterials.SPRUCE, 6.0F, -3.2F, properties));
+    public static final Item SPRUCE_HOE = registerItem("spruce_hoe", properties -> new HoeItem(MtsItemToolMaterials.SPRUCE, 0.0F, -3.0F, properties));
+    public static final Item SPRUCE_PICKAXE = registerItem("spruce_pickaxe", properties -> new Item(properties.pickaxe(MtsItemToolMaterials.SPRUCE, 1.0F, -2.8F)));
+    public static final Item SPRUCE_SHOVEL = registerItem("spruce_shovel", properties -> new Item(properties.shovel(MtsItemToolMaterials.SPRUCE, 1.5F, -3.0F)));
+    public static final Item SPRUCE_SWORD = registerItem("spruce_sword", properties -> new Item(properties.sword(MtsItemToolMaterials.SPRUCE, 3.0F, -2.4F)));
+    public static final Item SPRUCE_SPEAR = registerItem("spruce_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.SPRUCE, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
+    public static final Item SPRUCE_CUDGEL = registerItem("spruce_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.SPRUCE, 1.0F, -1.0F, 1.0F, properties));
 
-    public static final Item ACACIA_CUDGEL = registerItem("acacia_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.ACACIA, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item BIRCH_CUDGEL = registerItem("birch_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.BIRCH, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item CHERRY_CUDGEL = registerItem("cherry_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.CHERRY, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item DARK_OAK_CUDGEL = registerItem("dark_oak_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.DARK_OAK, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item JUNGLE_CUDGEL = registerItem("jungle_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.JUNGLE, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item MANGROVE_CUDGEL = registerItem("mangrove_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.MANGROVE, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item OAK_CUDGEL = registerItem("oak_cudgel", properties ->
-            new CudgelItem(ToolMaterial.WOOD, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item PALE_OAK_CUDGEL = registerItem("pale_oak_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.PALE_OAK, 1.0F, -1.0F, 1.0F, properties));
-    public static final Item SPRUCE_CUDGEL = registerItem("spruce_cudgel", properties ->
-            new CudgelItem(MtsItemToolMaterials.SPRUCE, 1.0F, -1.0F, 1.0F, properties));
+    public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
+    public static final Item STRONG_IRON_ZEN_STAFF = registerItem("strong_iron_zen_staff", properties -> new Item(properties.spear(MtsItemToolMaterials.STRONG_IRON, 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)));
+    public static final Item STRONG_IRON_DOUBLE_BLADE = registerItem("strong_iron_double_blade", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.3f, -2.0f)));
 
-    public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
-    public static final Item STRONG_IRON_ZEN_STAFF = registerItem("strong_iron_zen_staff", properties ->
-            new Item(properties.spear(MtsItemToolMaterials.STRONG_IRON, 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)));
-    public static final Item STRONG_IRON_DOUBLE_BLADE = registerItem("strong_iron_double_blade", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.3f, -2.0f)));
+    public static final Item STRONG_DIAMOND_BATTLE_AXE = registerItem("diamond_battle_axe", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_DIAMOND, 5.5f, -3.5f)));
+    public static final Item STRONG_DIAMOND_CROP = registerItem("strong_diamond_chop", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_DIAMOND, 5.75f, -3.75f)));
+    public static final Item STRONG_DIAMOND_VILLAGER_SOLIDER_AXE = registerItem("strong_diamond_villager_soldier_axe", properties -> new AxeItem(MtsItemToolMaterials.STRONG_DIAMOND, 5.5f, -3.5f, properties));
 
-    public static final Item STRONG_DIAMOND_BATTLE_AXE = registerItem("diamond_battle_axe", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_DIAMOND, 5.5f, -3.5f)));
-    public static final Item STRONG_DIAMOND_CROP = registerItem("strong_diamond_chop", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_DIAMOND, 5.75f, -3.75f)));
-    public static final Item STRONG_DIAMOND_VILLAGER_SOLIDER_AXE = registerItem("strong_diamond_villager_soldier_axe", properties ->
-            new AxeItem(MtsItemToolMaterials.STRONG_DIAMOND, 5.5f, -3.5f, properties));
-
-    public static final Item STRONG_AMETHYST_LONG_KNIFE = registerItem("amethyst_long_knife", properties ->
-            new Item(properties.sword(MtsItemToolMaterials.STRONG_AMETHYST, 3.5f, -2.2f)));
+    public static final Item STRONG_AMETHYST_LONG_KNIFE = registerItem("amethyst_long_knife", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_AMETHYST, 3.5f, -2.2f)));
 
     // #################################################################################################################
     // #                                        SUPER CRAFTER INGREDIENTS                                              #
@@ -424,23 +395,39 @@ public final class MtsItems {
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(fabricCreativeModeTabOutput -> {
             fabricCreativeModeTabOutput.accept(ACACIA_AXE);
+            fabricCreativeModeTabOutput.accept(ACACIA_SWORD);
+            fabricCreativeModeTabOutput.accept(ACACIA_SPEAR);
             fabricCreativeModeTabOutput.accept(ACACIA_CUDGEL);
             fabricCreativeModeTabOutput.accept(BIRCH_AXE);
+            fabricCreativeModeTabOutput.accept(BIRCH_SWORD);
+            fabricCreativeModeTabOutput.accept(BIRCH_SPEAR);
             fabricCreativeModeTabOutput.accept(BIRCH_CUDGEL);
             fabricCreativeModeTabOutput.accept(CHERRY_AXE);
+            fabricCreativeModeTabOutput.accept(CHERRY_SWORD);
+            fabricCreativeModeTabOutput.accept(CHERRY_SPEAR);
             fabricCreativeModeTabOutput.accept(CHERRY_CUDGEL);
             fabricCreativeModeTabOutput.accept(DARK_OAK_AXE);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_SWORD);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_SPEAR);
             fabricCreativeModeTabOutput.accept(DARK_OAK_CUDGEL);
             fabricCreativeModeTabOutput.accept(JUNGLE_AXE);
+            fabricCreativeModeTabOutput.accept(JUNGLE_SWORD);
+            fabricCreativeModeTabOutput.accept(JUNGLE_SPEAR);
             fabricCreativeModeTabOutput.accept(JUNGLE_CUDGEL);
             fabricCreativeModeTabOutput.accept(MANGROVE_AXE);
+            fabricCreativeModeTabOutput.accept(MANGROVE_SWORD);
+            fabricCreativeModeTabOutput.accept(MANGROVE_SPEAR);
             fabricCreativeModeTabOutput.accept(MANGROVE_CUDGEL);
-            fabricCreativeModeTabOutput.accept(PALE_OAK_AXE);
-            fabricCreativeModeTabOutput.accept(PALE_OAK_CUDGEL);
             fabricCreativeModeTabOutput.accept(OAK_CUDGEL);
-            fabricCreativeModeTabOutput.accept(SPRUCE_AXE);
-            fabricCreativeModeTabOutput.accept(SPRUCE_CUDGEL);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_AXE);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_SWORD);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_SPEAR);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_CUDGEL);
 
+            fabricCreativeModeTabOutput.accept(SPRUCE_AXE);
+            fabricCreativeModeTabOutput.accept(SPRUCE_SWORD);
+            fabricCreativeModeTabOutput.accept(SPRUCE_SPEAR);
+            fabricCreativeModeTabOutput.accept(SPRUCE_CUDGEL);
             fabricCreativeModeTabOutput.accept(EMERALD_SWORD);
             fabricCreativeModeTabOutput.accept(EMERALD_SPEAR);
             fabricCreativeModeTabOutput.accept(EMERALD_AXE);
@@ -453,6 +440,7 @@ public final class MtsItems {
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_SWORD);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_SPEAR);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_AXE);
+
             fabricCreativeModeTabOutput.accept(EMERALD_HELMET);
             fabricCreativeModeTabOutput.accept(EMERALD_CHESTPLATE);
             fabricCreativeModeTabOutput.accept(EMERALD_LEGGINGS);
@@ -482,15 +470,45 @@ public final class MtsItems {
             fabricCreativeModeTabOutput.accept(STRONG_IRON_LONG_KNIFE);
             fabricCreativeModeTabOutput.accept(STRONG_IRON_ZEN_STAFF);
             fabricCreativeModeTabOutput.accept(STRONG_IRON_DOUBLE_BLADE);
-
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_BATTLE_AXE);
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_CROP);
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
-
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_LONG_KNIFE);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(fabricCreativeModeTabOutput -> {
+            fabricCreativeModeTabOutput.accept(ACACIA_AXE);
+            fabricCreativeModeTabOutput.accept(ACACIA_HOE);
+            fabricCreativeModeTabOutput.accept(ACACIA_PICKAXE);
+            fabricCreativeModeTabOutput.accept(ACACIA_SHOVEL);
+            fabricCreativeModeTabOutput.accept(BIRCH_AXE);
+            fabricCreativeModeTabOutput.accept(BIRCH_HOE);
+            fabricCreativeModeTabOutput.accept(BIRCH_PICKAXE);
+            fabricCreativeModeTabOutput.accept(BIRCH_SHOVEL);
+            fabricCreativeModeTabOutput.accept(CHERRY_AXE);
+            fabricCreativeModeTabOutput.accept(CHERRY_HOE);
+            fabricCreativeModeTabOutput.accept(CHERRY_PICKAXE);
+            fabricCreativeModeTabOutput.accept(CHERRY_SHOVEL);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_AXE);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_HOE);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_PICKAXE);
+            fabricCreativeModeTabOutput.accept(DARK_OAK_SHOVEL);
+            fabricCreativeModeTabOutput.accept(JUNGLE_AXE);
+            fabricCreativeModeTabOutput.accept(JUNGLE_HOE);
+            fabricCreativeModeTabOutput.accept(JUNGLE_PICKAXE);
+            fabricCreativeModeTabOutput.accept(JUNGLE_SHOVEL);
+            fabricCreativeModeTabOutput.accept(MANGROVE_AXE);
+            fabricCreativeModeTabOutput.accept(MANGROVE_HOE);
+            fabricCreativeModeTabOutput.accept(MANGROVE_PICKAXE);
+            fabricCreativeModeTabOutput.accept(MANGROVE_SHOVEL);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_AXE);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_HOE);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_PICKAXE);
+            fabricCreativeModeTabOutput.accept(PALE_OAK_SHOVEL);
+            fabricCreativeModeTabOutput.accept(SPRUCE_AXE);
+            fabricCreativeModeTabOutput.accept(SPRUCE_HOE);
+            fabricCreativeModeTabOutput.accept(SPRUCE_PICKAXE);
+            fabricCreativeModeTabOutput.accept(SPRUCE_SHOVEL);
             fabricCreativeModeTabOutput.accept(EMERALD_AXE);
             fabricCreativeModeTabOutput.accept(EMERALD_HOE);
             fabricCreativeModeTabOutput.accept(EMERALD_PICKAXE);

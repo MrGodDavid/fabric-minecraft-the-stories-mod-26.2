@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "wooden_spear",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "minecraft:oak_planks"
+  },
+  "pattern": [
+    "  X",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "id": "minecraft:wooden_spear"
+  }
+}

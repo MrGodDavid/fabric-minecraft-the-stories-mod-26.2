@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "acacia_hoe",
+  "key": {
+    "#": "minecraft-the-stories-mod:acacia_stick",
+    "X": "minecraft:acacia_planks"
+  },
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:acacia_hoe"
+  }
+}

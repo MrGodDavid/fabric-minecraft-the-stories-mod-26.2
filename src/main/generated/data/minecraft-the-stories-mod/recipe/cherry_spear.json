@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "cherry_spear",
+  "key": {
+    "#": "minecraft-the-stories-mod:cherry_stick",
+    "X": "minecraft:cherry_planks"
+  },
+  "pattern": [
+    "  X",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:cherry_spear"
+  }
+}

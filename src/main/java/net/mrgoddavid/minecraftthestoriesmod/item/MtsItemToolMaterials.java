@@ -26,11 +26,11 @@ public class MtsItemToolMaterials {
     public static final ToolMaterial PALE_OAK_BOW = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_BOW_DURABILITY, 2.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
     public static final ToolMaterial SPRUCE_BOW = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_BOW_DURABILITY / 2, 5.0F,  0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
 
-    public static final ToolMaterial ACACIA = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, (int) (OAK_DURABILITY * 1.5F), 1.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
-    public static final ToolMaterial BIRCH = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY, 2.0F * 1.25F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
+    public static final ToolMaterial ACACIA = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, (int) (OAK_DURABILITY * 1.5F), 1.0F, 0.2F, 10, ItemTags.WOODEN_TOOL_MATERIALS);
+    public static final ToolMaterial BIRCH = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY, 2.0F * 1.25F, 0.1F, 10, ItemTags.WOODEN_TOOL_MATERIALS);
     public static final ToolMaterial CHERRY = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY / 2, 4.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
     public static final ToolMaterial DARK_OAK = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY, 2.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
-    public static final ToolMaterial JUNGLE = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY * 2, 1.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
+    public static final ToolMaterial JUNGLE = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY * 2, 1.0F, 0.2F, 10, ItemTags.WOODEN_TOOL_MATERIALS);
     public static final ToolMaterial MANGROVE = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, (int) (OAK_DURABILITY * 0.75F), 2.0F * 1.25F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
     public static final ToolMaterial OAK = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY, 2.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
     public static final ToolMaterial PALE_OAK = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_DURABILITY, 2.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);

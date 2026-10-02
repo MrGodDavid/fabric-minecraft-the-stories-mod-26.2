@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "pale_oak_pickaxe",
+  "key": {
+    "#": "minecraft-the-stories-mod:pale_oak_stick",
+    "X": "minecraft:pale_oak_planks"
+  },
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:pale_oak_pickaxe"
+  }
+}

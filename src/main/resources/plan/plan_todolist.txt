@@ -18,6 +18,16 @@
 				@BIOME CRYSTALIZED_CAVE: A corrupted cave under the influence of Seal Of Herobrine.
 				@BIOME DENSE_WOOD: Ancient forests that are controlled by ancient spirits. The rise of ancient spirits occurred after the extinction of the species of NPC PLAYER & PLAYER.
 				@BIOME DEEP_OCEANIA: The place where hosted by the Kingdom of Ocean.
+				
+				@BIOME WILD_ACACIA: Home of the large Acacia trees and other special Acacian entities.
+				@BIOME GIGANTIC_BIRCHLIN: Host of the Gigantic Birch trees. Watch for steps while climbing the trees!
+				@BIOME BLOOMY_CHERRY_WOODS: Denser and bigger cherry trees and dark cherry trees.
+				@BIOME DARK_OAKLIN: Hoster Dense Dark Oak Trees.
+				@BIOME LUSH_JUNGLE: Jungle trees are tall, but Jungles in Lush Jungle is EVEN taller!
+				@BIOME SWAMPY_MANGRILLIN: Dangerous swamp that took several life of previous adventurers. 
+				@BIOME DENSE_OAKLIN: Dense oak trees are growing in this biome.
+				@BIOME PALE_OAKLIN: The Dense oak biome in the version of Pale Garden.
+				@BIOME SPRUCIA: Taiga biome is huge, Sprucia is denser and larger than Taiga.
 			-> 
 		@BOSSES
 			->
@@ -31,7 +41,17 @@
 					to ride brown bears. Brown bears would attack bees, pigs, sheep, cows, and chicken, foxes, and wolfs. (@WIP)
 				@ENTITY DEER: Deer has male and female variant. Male can only breed with female. Deer is ridable and tamable animal.
 				@ENTITY DUMMY_TARGET: Target dummy. Like Armor Stands. Inspired by an awesome youtube video, and I will link his channel and video in here. Dummy Target displays the attack point that player dealt.
-					@BUG Target dummy will be killed if player smashes target dummy with mace.
+					@BUG Target dummy would  be killed when player smashes target dummy with mace.
+				@ENTITY ACACIANIA: Spirit of the Wild Acacia. Tamable auxiliary entity. Grants Anti-dehydration effects to all surrounding entities when it is tamed by player.
+				@ENTITY LOUDER: Entity in 
+				@ENTITY BIRCHIA: Spirit of Gigantic Birchlin. Tamable auxiliary entity.
+				@ENTITY CHERRINA: Spirit of Bloomy Cherry Woods. Tamable auxiliary entity. Grants Entice effect--decrease damage dealt by surrounding enemies.
+				@ENTITY DENSE_OAKIE: Spirit of Dark Oaklin. Tamable auxiliary entity. Grants Strength effects. Increase damage dealt by player in the range of this dense_oakie.
+				@ENTITY JUNGLENIA: Spirit of Lush Jungle. Tamable auxiliary entity. Grants Swift effects. Increase player's speed in the range of junglenia.
+				@ENTITY MANGROVINA: Spirit of Swampy Mangrilin. Tamable auxiliary entity. Grants Swimmer and Hydration buff in range of mangrovia. 
+				@ENTITY OAKIE: Spirit of the Dense Oaklin. Tamable auxiliary entity. Grants healing effects to all surrounding entity, including the time when it is tamed by player. (@WIP)
+				@ENTITY LIGHT_OAKIE: Spirit of Pale Oaklin. Tamable auxiliary entity. Grants Jumping effect, increasing player's jumping height in the range of Light Oakie.
+				@ENTITY SPRUCIA: Spirit of Sprucia. Tamable auxiliary entity. Grants Attacker effect, increasing attack speed and damage on player.
 			->
 		@STRUCTURES
 			->
@@ -42,9 +62,20 @@
 
 #UPDATE
 	#TODO
+		@UPDATE WOODS_AND_SPRIITS
+			->
+				Each of the Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Oak, Pale Oak, and Spruce has a "ultra" or "dense" version of biome.
+				Each biome has 1 - 2 passive entities and 3 - 5 hostile entities, including one small-sized boss and one middle-sized boss.
+				Name of the new entities in each of the "dense" forest: Acaciania, Birchia, Cherrina, Dense Oakie, Junglenia, Mangrovina, Oakie, Light Oakie, and Sprucia.
+				Hostile power: Twisted Spirit & Glitched Guardian.
+			->
+			->
+				
+			->
 		@UPDATE ADDITIONAL_WOODEN_TOOLS (@WIP)
 			->
-				Add additional wood type for Axes, ✅ Bows, Pickaxes, Hoes, Shovels, Swords, Spears, and ✅ Cudgels. Additional wood types are Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Pale Oak, and Spruce.
+				✅ Add additional wood type for Axes, ✅ Bows, ✅ Pickaxes, ✅ Hoes, ✅ Shovels, ✅ Swords, ✅ Spears, and ✅ Cudgels. Additional wood types are Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Pale Oak, and Spruce.
+				Polish attack speed, attack damage for each type of wood of all types of tools.
 				✅ Different wood type has different attributes, buffs, and debuffs. Like the Wooden bows.
 				✅ Draw textures.
 				✅ Define Cudgel Item Class.
@@ -80,5 +111,5 @@
 
 #DEADLINE
 	->
-		IDK yet.
+		IDK.
 	->

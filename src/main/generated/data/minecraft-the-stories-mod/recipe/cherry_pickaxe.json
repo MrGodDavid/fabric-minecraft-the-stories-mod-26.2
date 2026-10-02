@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "cherry_pickaxe",
+  "key": {
+    "#": "minecraft-the-stories-mod:cherry_stick",
+    "X": "minecraft:cherry_planks"
+  },
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:cherry_pickaxe"
+  }
+}

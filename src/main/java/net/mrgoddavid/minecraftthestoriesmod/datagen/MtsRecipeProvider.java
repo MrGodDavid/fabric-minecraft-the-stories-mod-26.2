@@ -128,36 +128,86 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.mtsSignBuilder(Items.SPRUCE_SIGN, Items.SPRUCE_PLANKS, SPRUCE_STICK, Items.SPRUCE_PLANKS, SPRUCE_STICK, "spruce_sign");
 
                 // TODO more wooden weapon variants.
+                this.woodenAxeFromPlanks(ACACIA_AXE, Items.ACACIA_PLANKS, ACACIA_STICK, Items.ACACIA_PLANKS, "acacia_axe");
+                this.woodenHoeFromPlanks(ACACIA_HOE, Items.ACACIA_PLANKS, ACACIA_STICK, Items.ACACIA_PLANKS, "acacia_hoe");
+                this.woodenPickaxeFromPlanks(ACACIA_PICKAXE, Items.ACACIA_PLANKS, ACACIA_STICK,  Items.ACACIA_PLANKS, "acacia_pickaxe");
+                this.woodenShovelFromPlanks(ACACIA_SHOVEL, Items.ACACIA_PLANKS, ACACIA_STICK,  Items.ACACIA_PLANKS, "acacia_shovel");
+                this.woodenSpearFromPlanks(ACACIA_SPEAR, Items.ACACIA_PLANKS, ACACIA_STICK,  Items.ACACIA_PLANKS, "acacia_spear");
+                this.woodenSwordFromPlanks(ACACIA_SWORD, Items.ACACIA_PLANKS, ACACIA_STICK,  Items.ACACIA_PLANKS, "acacia_sword");
+                this.woodenAxeFromPlanks(BIRCH_AXE, Items.BIRCH_PLANKS, BIRCH_STICK, Items.BIRCH_PLANKS, "birch_axe");
+                this.woodenHoeFromPlanks(BIRCH_HOE, Items.BIRCH_PLANKS, BIRCH_STICK, Items.BIRCH_PLANKS, "birch_hoe");
+                this.woodenPickaxeFromPlanks(BIRCH_PICKAXE, Items.BIRCH_PLANKS, BIRCH_STICK,  Items.BIRCH_PLANKS, "birch_pickaxe");
+                this.woodenShovelFromPlanks(BIRCH_SHOVEL, Items.BIRCH_PLANKS, BIRCH_STICK,  Items.BIRCH_PLANKS, "birch_shovel");
+                this.woodenSpearFromPlanks(BIRCH_SPEAR, Items.BIRCH_PLANKS, BIRCH_STICK,  Items.BIRCH_PLANKS, "birch_spear");
+                this.woodenSwordFromPlanks(BIRCH_SWORD, Items.BIRCH_PLANKS, BIRCH_STICK,  Items.BIRCH_PLANKS, "birch_sword");
+                this.woodenAxeFromPlanks(CHERRY_AXE, Items.CHERRY_PLANKS, CHERRY_STICK, Items.CHERRY_PLANKS, "cherry_axe");
+                this.woodenHoeFromPlanks(CHERRY_HOE, Items.CHERRY_PLANKS, CHERRY_STICK, Items.CHERRY_PLANKS, "cherry_hoe");
+                this.woodenPickaxeFromPlanks(CHERRY_PICKAXE, Items.CHERRY_PLANKS, CHERRY_STICK,  Items.CHERRY_PLANKS, "cherry_pickaxe");
+                this.woodenShovelFromPlanks(CHERRY_SHOVEL, Items.CHERRY_PLANKS, CHERRY_STICK,  Items.CHERRY_PLANKS, "cherry_shovel");
+                this.woodenSpearFromPlanks(CHERRY_SPEAR, Items.CHERRY_PLANKS, CHERRY_STICK,  Items.CHERRY_PLANKS, "cherry_spear");
+                this.woodenSwordFromPlanks(CHERRY_SWORD, Items.CHERRY_PLANKS, CHERRY_STICK,  Items.CHERRY_PLANKS, "cherry_sword");
+                this.woodenAxeFromPlanks(DARK_OAK_AXE, Items.DARK_OAK_PLANKS, DARK_OAK_STICK, Items.DARK_OAK_PLANKS, "dark_oak_axe");
+                this.woodenHoeFromPlanks(DARK_OAK_HOE, Items.DARK_OAK_PLANKS, DARK_OAK_STICK, Items.DARK_OAK_PLANKS, "dark_oak_hoe");
+                this.woodenPickaxeFromPlanks(DARK_OAK_PICKAXE, Items.DARK_OAK_PLANKS, DARK_OAK_STICK,  Items.DARK_OAK_PLANKS, "dark_oak_pickaxe");
+                this.woodenShovelFromPlanks(DARK_OAK_SHOVEL, Items.DARK_OAK_PLANKS, DARK_OAK_STICK,  Items.DARK_OAK_PLANKS, "dark_oak_shovel");
+                this.woodenSpearFromPlanks(DARK_OAK_SPEAR, Items.DARK_OAK_PLANKS, DARK_OAK_STICK,  Items.DARK_OAK_PLANKS, "dark_oak_spear");
+                this.woodenSwordFromPlanks(DARK_OAK_SWORD, Items.DARK_OAK_PLANKS, DARK_OAK_STICK,  Items.DARK_OAK_PLANKS, "dark_oak_sword");
+                this.woodenAxeFromPlanks(JUNGLE_AXE, Items.JUNGLE_PLANKS, JUNGLE_STICK, Items.JUNGLE_PLANKS, "jungle_axe");
+                this.woodenHoeFromPlanks(JUNGLE_HOE, Items.JUNGLE_PLANKS, JUNGLE_STICK, Items.JUNGLE_PLANKS, "jungle_hoe");
+                this.woodenPickaxeFromPlanks(JUNGLE_PICKAXE, Items.JUNGLE_PLANKS, JUNGLE_STICK,  Items.JUNGLE_PLANKS, "jungle_pickaxe");
+                this.woodenShovelFromPlanks(JUNGLE_SHOVEL, Items.JUNGLE_PLANKS, JUNGLE_STICK,  Items.JUNGLE_PLANKS, "jungle_shovel");
+                this.woodenSpearFromPlanks(JUNGLE_SPEAR, Items.JUNGLE_PLANKS, JUNGLE_STICK,  Items.JUNGLE_PLANKS, "jungle_spear");
+                this.woodenSwordFromPlanks(JUNGLE_SWORD, Items.JUNGLE_PLANKS, JUNGLE_STICK,  Items.JUNGLE_PLANKS, "jungle_sword");
+                this.woodenAxeFromPlanks(MANGROVE_AXE, Items.MANGROVE_PLANKS, MANGROVE_STICK, Items.MANGROVE_PLANKS, "mangrove_axe");
+                this.woodenHoeFromPlanks(MANGROVE_HOE, Items.MANGROVE_PLANKS, MANGROVE_STICK, Items.MANGROVE_PLANKS, "mangrove_hoe");
+                this.woodenPickaxeFromPlanks(MANGROVE_PICKAXE, Items.MANGROVE_PLANKS, MANGROVE_STICK,  Items.MANGROVE_PLANKS, "mangrove_pickaxe");
+                this.woodenShovelFromPlanks(MANGROVE_SHOVEL, Items.MANGROVE_PLANKS, MANGROVE_STICK,  Items.MANGROVE_PLANKS, "mangrove_shovel");
+                this.woodenSpearFromPlanks(MANGROVE_SPEAR, Items.MANGROVE_PLANKS, MANGROVE_STICK,  Items.MANGROVE_PLANKS, "mangrove_spear");
+                this.woodenSwordFromPlanks(MANGROVE_SWORD, Items.MANGROVE_PLANKS, MANGROVE_STICK,  Items.MANGROVE_PLANKS, "mangrove_sword");
+                this.woodenAxeFromPlanks(PALE_OAK_AXE, Items.PALE_OAK_PLANKS, PALE_OAK_STICK, Items.PALE_OAK_PLANKS, "pale_oak_axe");
+                this.woodenHoeFromPlanks(PALE_OAK_HOE, Items.PALE_OAK_PLANKS, PALE_OAK_STICK, Items.PALE_OAK_PLANKS, "pale_oak_hoe");
+                this.woodenPickaxeFromPlanks(PALE_OAK_PICKAXE, Items.PALE_OAK_PLANKS, PALE_OAK_STICK,  Items.PALE_OAK_PLANKS, "pale_oak_pickaxe");
+                this.woodenShovelFromPlanks(PALE_OAK_SHOVEL, Items.PALE_OAK_PLANKS, PALE_OAK_STICK,  Items.PALE_OAK_PLANKS, "pale_oak_shovel");
+                this.woodenSpearFromPlanks(PALE_OAK_SPEAR, Items.PALE_OAK_PLANKS, PALE_OAK_STICK,  Items.PALE_OAK_PLANKS, "pale_oak_spear");
+                this.woodenSwordFromPlanks(PALE_OAK_SWORD, Items.PALE_OAK_PLANKS, PALE_OAK_STICK,  Items.PALE_OAK_PLANKS, "pale_oak_sword");
+                this.woodenAxeFromPlanks(SPRUCE_AXE, Items.SPRUCE_PLANKS, SPRUCE_STICK, Items.SPRUCE_PLANKS, "spruce_axe");
+                this.woodenHoeFromPlanks(SPRUCE_HOE, Items.SPRUCE_PLANKS, SPRUCE_STICK, Items.SPRUCE_PLANKS, "spruce_hoe");
+                this.woodenPickaxeFromPlanks(SPRUCE_PICKAXE, Items.SPRUCE_PLANKS, SPRUCE_STICK,  Items.SPRUCE_PLANKS, "spruce_pickaxe");
+                this.woodenShovelFromPlanks(SPRUCE_SHOVEL, Items.SPRUCE_PLANKS, SPRUCE_STICK,  Items.SPRUCE_PLANKS, "spruce_shovel");
+                this.woodenSpearFromPlanks(SPRUCE_SPEAR, Items.SPRUCE_PLANKS, SPRUCE_STICK,  Items.SPRUCE_PLANKS, "spruce_spear");
+                this.woodenSwordFromPlanks(SPRUCE_SWORD, Items.SPRUCE_PLANKS, SPRUCE_STICK,  Items.SPRUCE_PLANKS, "spruce_sword");
+
+                this.overrideVanillaAxe(Items.WOODEN_AXE, Items.OAK_PLANKS, Items.STICK, Items.OAK_PLANKS, "wooden_axe");
                 this.overrideVanillaAxe(Items.STONE_AXE, Items.COBBLESTONE, Items.COBBLESTONE, "stone_axe");
                 this.overrideVanillaAxe(Items.IRON_AXE, Items.IRON_INGOT, Items.IRON_INGOT, "stone_axe");
                 this.overrideVanillaAxe(Items.GOLDEN_AXE, Items.GOLD_INGOT, Items.GOLD_INGOT, "golden_axe");
                 this.overrideVanillaAxe(Items.COPPER_AXE, Items.COPPER_INGOT, Items.COPPER_INGOT, "copper_axe");
                 this.overrideVanillaAxe(Items.DIAMOND_AXE, Items.DIAMOND, Items.DIAMOND, "diamond_axe");
-
+                this.overrideVanillaHoe(Items.WOODEN_HOE, Items.OAK_PLANKS, Items.STICK, Items.OAK_PLANKS, "wooden_hoe");
                 this.overrideVanillaHoe(Items.STONE_HOE, Items.COBBLESTONE, Items.COBBLESTONE, "stone_hoe");
                 this.overrideVanillaHoe(Items.IRON_HOE, Items.IRON_INGOT, Items.IRON_INGOT, "stone_hoe");
                 this.overrideVanillaHoe(Items.GOLDEN_HOE, Items.GOLD_INGOT, Items.GOLD_INGOT, "golden_hoe");
                 this.overrideVanillaHoe(Items.COPPER_HOE, Items.COPPER_INGOT, Items.COPPER_INGOT, "copper_hoe");
                 this.overrideVanillaHoe(Items.DIAMOND_HOE, Items.DIAMOND, Items.DIAMOND, "diamond_hoe");
-
+                this.overrideVanillaPickaxe(Items.WOODEN_PICKAXE, Items.OAK_PLANKS, Items.STICK, Items.OAK_PLANKS, "wooden_pickaxe");
                 this.overrideVanillaPickaxe(Items.STONE_PICKAXE, Items.COBBLESTONE, Items.COBBLESTONE, "stone_pickaxe");
                 this.overrideVanillaPickaxe(Items.IRON_PICKAXE, Items.IRON_INGOT, Items.IRON_INGOT, "stone_pickaxe");
                 this.overrideVanillaPickaxe(Items.GOLDEN_PICKAXE, Items.GOLD_INGOT, Items.GOLD_INGOT, "golden_pickaxe");
                 this.overrideVanillaPickaxe(Items.COPPER_PICKAXE, Items.COPPER_INGOT, Items.COPPER_INGOT, "copper_pickaxe");
                 this.overrideVanillaPickaxe(Items.DIAMOND_PICKAXE, Items.DIAMOND, Items.DIAMOND, "diamond_pickaxe");
-
+                this.overrideVanillaShovel(Items.WOODEN_SHOVEL, Items.OAK_PLANKS, Items.STICK, Items.OAK_PLANKS, "wooden_shovel");
                 this.overrideVanillaShovel(Items.STONE_SHOVEL, Items.COBBLESTONE, Items.COBBLESTONE, "stone_shovel");
                 this.overrideVanillaShovel(Items.IRON_SHOVEL, Items.IRON_INGOT, Items.IRON_INGOT, "stone_shovel");
                 this.overrideVanillaShovel(Items.GOLDEN_SHOVEL, Items.GOLD_INGOT, Items.GOLD_INGOT, "golden_shovel");
                 this.overrideVanillaShovel(Items.COPPER_SHOVEL, Items.COPPER_INGOT, Items.COPPER_INGOT, "copper_shovel");
                 this.overrideVanillaShovel(Items.DIAMOND_SHOVEL, Items.DIAMOND, Items.DIAMOND, "diamond_shovel");
-
+                this.overrideVanillaSpear(Items.WOODEN_SPEAR, Items.OAK_PLANKS, Items.STICK, Items.OAK_PLANKS, "wooden_spear");
                 this.overrideVanillaSpear(Items.STONE_SPEAR, Items.COBBLESTONE, Items.COBBLESTONE, "stone_spear");
                 this.overrideVanillaSpear(Items.IRON_SPEAR, Items.IRON_INGOT, Items.IRON_INGOT, "stone_spear");
                 this.overrideVanillaSpear(Items.GOLDEN_SPEAR, Items.GOLD_INGOT, Items.GOLD_INGOT, "golden_spear");
                 this.overrideVanillaSpear(Items.COPPER_SPEAR, Items.COPPER_INGOT, Items.COPPER_INGOT, "copper_spear");
                 this.overrideVanillaSpear(Items.DIAMOND_SPEAR, Items.DIAMOND, Items.DIAMOND, "diamond_spear");
-
+                this.overrideVanillaSword(Items.WOODEN_SWORD, Items.OAK_PLANKS, Items.STICK, Items.OAK_PLANKS, "wooden_sword");
                 this.overrideVanillaSword(Items.STONE_SWORD, Items.COBBLESTONE, Items.COBBLESTONE, "stone_sword");
                 this.overrideVanillaSword(Items.IRON_SWORD, Items.IRON_INGOT, Items.IRON_INGOT, "stone_sword");
                 this.overrideVanillaSword(Items.GOLDEN_SWORD, Items.GOLD_INGOT, Items.GOLD_INGOT, "golden_sword");
@@ -176,18 +226,6 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.mtsBowBuilder(Items.BOW, Items.STICK, Items.OAK_PLANKS, "bow");
                 this.mtsBowBuilder(PALE_OAK_BOW, PALE_OAK_STICK, Items.PALE_OAK_PLANKS, "pale_oak_bow");
                 this.mtsBowBuilder(SPRUCE_BOW, SPRUCE_STICK, Items.SPRUCE_PLANKS, "spruce_bow");
-
-                // #################################################################################################################
-                // #                                                AXE RECIPES                                                    #
-                // #################################################################################################################
-                this.woodenAxeFromPlanks(ACACIA_AXE, Items.ACACIA_PLANKS, ACACIA_STICK, Blocks.ACACIA_LOG, "acacia_axe");
-                this.woodenAxeFromPlanks(BIRCH_AXE, Items.BIRCH_PLANKS, BIRCH_STICK, Blocks.BIRCH_LOG, "birch_axe");
-                this.woodenAxeFromPlanks(CHERRY_AXE, Items.CHERRY_PLANKS, CHERRY_STICK, Blocks.CHERRY_LOG, "cherry_axe");
-                this.woodenAxeFromPlanks(DARK_OAK_AXE, Items.DARK_OAK_PLANKS, DARK_OAK_STICK, Blocks.DARK_OAK_LOG, "dark_oak_axe");
-                this.woodenAxeFromPlanks(JUNGLE_AXE, Items.JUNGLE_PLANKS, JUNGLE_STICK, Blocks.JUNGLE_LOG, "jungle_axe");
-                this.woodenAxeFromPlanks(MANGROVE_AXE, Items.MANGROVE_PLANKS, MANGROVE_STICK, Blocks.MANGROVE_LOG, "mangrove_axe");
-                this.woodenAxeFromPlanks(PALE_OAK_AXE, Items.PALE_OAK_PLANKS, PALE_OAK_STICK, Blocks.PALE_OAK_LOG, "pale_oak_axe");
-                this.woodenAxeFromPlanks(SPRUCE_AXE, Items.SPRUCE_PLANKS, SPRUCE_STICK, Blocks.SPRUCE_LOG, "spruce_axe");
 
                 // #################################################################################################################
                 // #                                         MELEE WEAPON RECIPES                                                  #
@@ -607,9 +645,81 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .save(output);
             }
 
+            private void woodenPickaxeFromPlanks(final ItemLike crafted, final ItemLike planks, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', planks)
+                        .pattern("XXX")
+                        .pattern(" # ")
+                        .pattern(" # ")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void woodenHoeFromPlanks(final ItemLike crafted, final ItemLike planks, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', planks)
+                        .pattern("XX")
+                        .pattern(" #")
+                        .pattern(" #")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void woodenShovelFromPlanks(final ItemLike crafted, final ItemLike planks, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', planks)
+                        .pattern("X")
+                        .pattern("#")
+                        .pattern("#")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void woodenSpearFromPlanks(final ItemLike crafted, final ItemLike planks, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', planks)
+                        .pattern("  X")
+                        .pattern(" # ")
+                        .pattern("#  ")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
+            private void woodenSwordFromPlanks(final ItemLike crafted, final ItemLike planks, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', planks)
+                        .pattern("X")
+                        .pattern("X")
+                        .pattern("#")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(output);
+            }
+
             private void overrideVanillaAxe(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.TOOLS, crafted)
                         .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
+                        .define('X', ingot)
+                        .pattern("XX")
+                        .pattern("X#")
+                        .pattern(" #")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(vanillaRecipeOutput);
+            }
+
+            private void overrideVanillaAxe(final ItemLike crafted, final ItemLike ingot, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
                         .define('X', ingot)
                         .pattern("XX")
                         .pattern("X#")
@@ -631,9 +741,33 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .save(vanillaRecipeOutput);
             }
 
+            private void overrideVanillaHoe(final ItemLike crafted, final ItemLike ingot, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', ingot)
+                        .pattern("XX")
+                        .pattern(" #")
+                        .pattern(" #")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(vanillaRecipeOutput);
+            }
+
             private void overrideVanillaPickaxe(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.TOOLS, crafted)
                         .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
+                        .define('X', ingot)
+                        .pattern("XXX")
+                        .pattern(" # ")
+                        .pattern(" # ")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(vanillaRecipeOutput);
+            }
+
+            private void overrideVanillaPickaxe(final ItemLike crafted, final ItemLike ingot, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
                         .define('X', ingot)
                         .pattern("XXX")
                         .pattern(" # ")
@@ -655,6 +789,18 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .save(vanillaRecipeOutput);
             }
 
+            private void overrideVanillaShovel(final ItemLike crafted, final ItemLike ingot, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.TOOLS, crafted)
+                        .define('#', stick)
+                        .define('X', ingot)
+                        .pattern("X")
+                        .pattern("#")
+                        .pattern("#")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(vanillaRecipeOutput);
+            }
+
             private void overrideVanillaSpear(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.COMBAT, crafted)
                         .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
@@ -667,9 +813,33 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                         .save(vanillaRecipeOutput);
             }
 
+            private void overrideVanillaSpear(final ItemLike crafted, final ItemLike ingot, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
+                        .define('#', stick)
+                        .define('X', ingot)
+                        .pattern("  X")
+                        .pattern(" # ")
+                        .pattern("#  ")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(vanillaRecipeOutput);
+            }
+
             private void overrideVanillaSword(final ItemLike crafted, final ItemLike ingot, final ItemLike unlockItem, final String id) {
                 super.shaped(RecipeCategory.COMBAT, crafted)
                         .define('#', MtsTags.Recipes.MTS_UNIVERSAL_STICK)
+                        .define('X', ingot)
+                        .pattern("X")
+                        .pattern("X")
+                        .pattern("#")
+                        .unlockedBy(getHasName(unlockItem), has(unlockItem))
+                        .group(id)
+                        .save(vanillaRecipeOutput);
+            }
+
+            private void overrideVanillaSword(final ItemLike crafted, final ItemLike ingot, final ItemLike stick, final ItemLike unlockItem, final String id) {
+                super.shaped(RecipeCategory.COMBAT, crafted)
+                        .define('#', stick)
                         .define('X', ingot)
                         .pattern("X")
                         .pattern("X")

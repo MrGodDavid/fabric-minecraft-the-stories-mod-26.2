@@ -1,5 +1,13 @@
 {
   "values": [
+    "minecraft-the-stories-mod:acacia_spear",
+    "minecraft-the-stories-mod:birch_spear",
+    "minecraft-the-stories-mod:cherry_spear",
+    "minecraft-the-stories-mod:dark_oak_spear",
+    "minecraft-the-stories-mod:jungle_spear",
+    "minecraft-the-stories-mod:mangrove_spear",
+    "minecraft-the-stories-mod:pale_oak_spear",
+    "minecraft-the-stories-mod:spruce_spear",
     "minecraft:wooden_spear",
     "minecraft:stone_spear",
     "minecraft:iron_spear",

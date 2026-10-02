@@ -71,7 +71,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(PALE_OAK_STICK))
                 .add(MtsItems.getResourceKey(SPRUCE_STICK));
 
-        tag(MtsTags.Items.MTS_COMMON_MELEE_WEAPONS)
+        tag(MtsTags.Items.MTS_CUDGELS)
                 .add(MtsItems.getResourceKey(ACACIA_CUDGEL))
                 .add(MtsItems.getResourceKey(BIRCH_CUDGEL))
                 .add(MtsItems.getResourceKey(CHERRY_CUDGEL))
@@ -81,6 +81,8 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(PALE_OAK_CUDGEL))
                 .add(MtsItems.getResourceKey(OAK_CUDGEL))
                 .add(MtsItems.getResourceKey(SPRUCE_CUDGEL));
+        tag(MtsTags.Items.MTS_COMMON_MELEE_WEAPONS)
+                .addTag(MtsTags.Items.MTS_CUDGELS);
 
         tag(MtsTags.Items.MTS_COMMON_WEAPONS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_AXES)
@@ -105,18 +107,42 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(BROKEN_DIAMOND_PICKAXE));
 
         tag(ItemTags.HOES)
+                .add(MtsItems.getResourceKey(ACACIA_HOE))
+                .add(MtsItems.getResourceKey(BIRCH_HOE))
+                .add(MtsItems.getResourceKey(CHERRY_HOE))
+                .add(MtsItems.getResourceKey(DARK_OAK_HOE))
+                .add(MtsItems.getResourceKey(JUNGLE_HOE))
+                .add(MtsItems.getResourceKey(MANGROVE_HOE))
+                .add(MtsItems.getResourceKey(PALE_OAK_HOE))
+                .add(MtsItems.getResourceKey(SPRUCE_HOE))
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_HOE))
                 .add(MtsItems.getResourceKey(EMERALD_HOE))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_HOE))
                 .add(MtsItems.getResourceKey(STRONG_TOPAZ_HOE));
 
         tag(ItemTags.PICKAXES)
+                .add(MtsItems.getResourceKey(ACACIA_PICKAXE))
+                .add(MtsItems.getResourceKey(BIRCH_PICKAXE))
+                .add(MtsItems.getResourceKey(CHERRY_PICKAXE))
+                .add(MtsItems.getResourceKey(DARK_OAK_PICKAXE))
+                .add(MtsItems.getResourceKey(JUNGLE_PICKAXE))
+                .add(MtsItems.getResourceKey(MANGROVE_PICKAXE))
+                .add(MtsItems.getResourceKey(PALE_OAK_PICKAXE))
+                .add(MtsItems.getResourceKey(SPRUCE_PICKAXE))
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_PICKAXE))
                 .add(MtsItems.getResourceKey(EMERALD_PICKAXE))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_PICKAXE))
                 .add(MtsItems.getResourceKey(STRONG_TOPAZ_PICKAXE));
 
         tag(ItemTags.SHOVELS)
+                .add(MtsItems.getResourceKey(ACACIA_SHOVEL))
+                .add(MtsItems.getResourceKey(BIRCH_SHOVEL))
+                .add(MtsItems.getResourceKey(CHERRY_SHOVEL))
+                .add(MtsItems.getResourceKey(DARK_OAK_SHOVEL))
+                .add(MtsItems.getResourceKey(JUNGLE_SHOVEL))
+                .add(MtsItems.getResourceKey(MANGROVE_SHOVEL))
+                .add(MtsItems.getResourceKey(PALE_OAK_SHOVEL))
+                .add(MtsItems.getResourceKey(SPRUCE_SHOVEL))
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_SHOVEL))
                 .add(MtsItems.getResourceKey(EMERALD_SHOVEL))
                 .add(MtsItems.getResourceKey(STRONG_RUBY_SHOVEL))
@@ -208,6 +234,14 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      */
     private void moveSpearsToTiers() {
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)
+                .add(MtsItems.getResourceKey(ACACIA_SPEAR))
+                .add(MtsItems.getResourceKey(BIRCH_SPEAR))
+                .add(MtsItems.getResourceKey(CHERRY_SPEAR))
+                .add(MtsItems.getResourceKey(DARK_OAK_SPEAR))
+                .add(MtsItems.getResourceKey(JUNGLE_SPEAR))
+                .add(MtsItems.getResourceKey(MANGROVE_SPEAR))
+                .add(MtsItems.getResourceKey(PALE_OAK_SPEAR))
+                .add(MtsItems.getResourceKey(SPRUCE_SPEAR))
                 .add(MtsItems.getResourceKey(Items.WOODEN_SPEAR))
                 .add(MtsItems.getResourceKey(Items.STONE_SPEAR))
                 .add(MtsItems.getResourceKey(Items.IRON_SPEAR))
@@ -239,6 +273,14 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      */
     private void moveSwordsToTiers() {
         tag(MtsTags.Items.MTS_COMMON_WEAPONS_SWORDS)
+                .add(MtsItems.getResourceKey(ACACIA_SWORD))
+                .add(MtsItems.getResourceKey(BIRCH_SWORD))
+                .add(MtsItems.getResourceKey(CHERRY_SWORD))
+                .add(MtsItems.getResourceKey(DARK_OAK_SWORD))
+                .add(MtsItems.getResourceKey(JUNGLE_SWORD))
+                .add(MtsItems.getResourceKey(MANGROVE_SWORD))
+                .add(MtsItems.getResourceKey(PALE_OAK_SWORD))
+                .add(MtsItems.getResourceKey(SPRUCE_SWORD))
                 .add(MtsItems.getResourceKey(Items.WOODEN_SWORD))
                 .add(MtsItems.getResourceKey(Items.STONE_SWORD))
                 .add(MtsItems.getResourceKey(Items.IRON_SWORD))

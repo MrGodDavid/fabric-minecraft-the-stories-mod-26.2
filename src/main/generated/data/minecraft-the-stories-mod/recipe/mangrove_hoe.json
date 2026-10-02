@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mangrove_hoe",
+  "key": {
+    "#": "minecraft-the-stories-mod:mangrove_stick",
+    "X": "minecraft:mangrove_planks"
+  },
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "result": {
+    "id": "minecraft-the-stories-mod:mangrove_hoe"
+  }
+}
