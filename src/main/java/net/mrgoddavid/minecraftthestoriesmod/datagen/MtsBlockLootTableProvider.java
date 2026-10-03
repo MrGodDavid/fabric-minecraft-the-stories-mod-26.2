@@ -103,26 +103,41 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
 
         add(END_STRONG_AMETHYST_ORE, createMultipleOreDrops(END_STRONG_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 4.0f));
 
-        this.createCropDrops(STRAWBERRY_CROP, this.defineStrawberryDropsRules());
+        this.createCropDrops(STRAWBERRY_CROP, this.defineStrawberryDropsRules(), enchantments);
         this.createCropDrops(BLUEBERRY_BUSH, this.defineBlueberryBushDropsRules(), enchantments);
     }
 
-    private MtsNonnullElementSetLists.NonnullPairList<LootItemCondition.Builder, Item> defineStrawberryDropsRules() {
-        LootItemCondition.Builder rawStrawberryDropsCondition =
+    private MtsNonnullElementSetLists.NonnullQuartetList<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> defineStrawberryDropsRules() {
+        LootItemCondition.Builder rawStrawberryDropsCriteria =
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, StrawberryCropBlock.RAW_STRAWBERRY_AGE));
-        LootItemCondition.Builder strawberryDropsCondition =
+        LootItemCondition.Builder strawberryDropsCriteria =
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, StrawberryCropBlock.MAX_AGE));
-        LootItemCondition.Builder strawberrySeedsDropsCondition =
+        LootItemCondition.Builder strawberrySeedsDropsCriteria =
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(STRAWBERRY_CROP)
-                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, Constants.Universal.NEW_BORN));
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrawberryCropBlock.AGE, StrawberryCropBlock.MAX_AGE));
 
-        return MtsNonnullElementSetLists.NonnullPairList.of(
-                new MtsElementSets.Pair<>(rawStrawberryDropsCondition, RAW_STRAWBERRY),
-                new MtsElementSets.Pair<>(strawberryDropsCondition, STRAWBERRY),
-                new MtsElementSets.Pair<>(strawberrySeedsDropsCondition, STRAWBERRY_SEEDS)
+        MtsElementSets.Quartet<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> rawStrawberryDropsCondition = new MtsElementSets.Quartet<>(
+                rawStrawberryDropsCriteria,
+                RAW_STRAWBERRY,
+                UniformGenerator.between(1.0F, 2.0F),
+                Enchantments.FORTUNE
         );
+        MtsElementSets.Quartet<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> strawberryDropsCondition = new MtsElementSets.Quartet<>(
+                strawberryDropsCriteria,
+                STRAWBERRY,
+                UniformGenerator.between(1.0F, 3.0F),
+                Enchantments.FORTUNE
+        );
+        MtsElementSets.Quartet<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> strawberrySeedsDropsCondition = new MtsElementSets.Quartet<>(
+                strawberrySeedsDropsCriteria,
+                STRAWBERRY_SEEDS,
+                UniformGenerator.between(1.0F, 3.0F),
+                Enchantments.FORTUNE
+        );
+
+        return MtsNonnullElementSetLists.NonnullQuartetList.of(rawStrawberryDropsCondition, strawberryDropsCondition, strawberrySeedsDropsCondition);
     }
 
     private MtsNonnullElementSetLists.NonnullQuartetList<LootItemCondition.Builder, Item, NumberProvider, ResourceKey<Enchantment>> defineBlueberryBushDropsRules() {

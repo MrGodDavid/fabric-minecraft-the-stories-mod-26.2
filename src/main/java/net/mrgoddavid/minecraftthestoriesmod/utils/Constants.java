@@ -57,6 +57,7 @@ public final class Constants {
 
         public static final int NEW_BORN = 0;
         public static final int LINE_LENGTH = 40;
+        public static final int MAX_SATURATION = 20;
 
         public static final Component[] SHIFT_DOWN_TOOLTIP_INFORMATION = new Component[]{Component.translatable("tooltip.minecraft-the-stories-mod.shift_down")};
 

@@ -17,6 +17,24 @@
           "name": "minecraft-the-stories-mod:strawberry"
         }
       ],
+      "functions": [
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 3.0,
+            "min": 1.0
+          },
+          "function": "minecraft:set_count"
+        },
+        {
+          "enchantment": "minecraft:fortune",
+          "formula": "minecraft:uniform_bonus_count",
+          "function": "minecraft:apply_bonus",
+          "parameters": {
+            "bonusMultiplier": 1
+          }
+        }
+      ],
       "rolls": 1.0
     },
     {
@@ -25,7 +43,7 @@
           "block": "minecraft-the-stories-mod:strawberry_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "0"
+            "age": "5"
           }
         }
       ],
@@ -33,6 +51,24 @@
         {
           "type": "minecraft:item",
           "name": "minecraft-the-stories-mod:strawberry_seeds"
+        }
+      ],
+      "functions": [
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 3.0,
+            "min": 1.0
+          },
+          "function": "minecraft:set_count"
+        },
+        {
+          "enchantment": "minecraft:fortune",
+          "formula": "minecraft:uniform_bonus_count",
+          "function": "minecraft:apply_bonus",
+          "parameters": {
+            "bonusMultiplier": 1
+          }
         }
       ],
       "rolls": 1.0

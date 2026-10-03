@@ -14,6 +14,7 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
+import net.mrgoddavid.minecraftthestoriesmod.item.content.DrinkableItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
@@ -75,10 +76,10 @@ public final class MtsItems {
     // #                                              MTS CUSTOM FOOD                                                  #
     // #################################################################################################################
     public static final Item STRAWBERRY_SEEDS = registerItem("strawberry_seeds", properties -> new BlockItem(STRAWBERRY_CROP, properties.useBlockDescriptionPrefix()));
-    public static final Item STRAWBERRY = registerItem("strawberry", properties -> new Item(properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
-    public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new Item(properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
-    public static final Item RAW_BLUEBERRY = registerItem("raw_blueberry", properties -> new Item(properties.food(MtsFoods.RAW_BLUEBERRY, MtsFoods.RAW_BLUEBERRY_CONSUMABLE)));
-    public static final Item BLUEBERRY = registerItem("blueberry", properties -> new BlockItem(BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
+    public static final Item STRAWBERRY = registerItem("strawberry", properties -> new DrinkableItem(3, properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new DrinkableItem(-2, properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_BLUEBERRY = registerItem("raw_blueberry", properties -> new DrinkableItem(-2, properties.food(MtsFoods.RAW_BLUEBERRY, MtsFoods.RAW_BLUEBERRY_CONSUMABLE)));
+    public static final Item BLUEBERRY = registerItem("blueberry", properties -> new DrinkableItem(2, BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
 
     // #################################################################################################################
     // #                                                NATURAL ITEMS                                                  #

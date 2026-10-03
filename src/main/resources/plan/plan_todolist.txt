@@ -89,10 +89,10 @@
 				Implement Brown Bear Agro mechanism.
 				Add other variants. (Baby Brown Bear & Zombified Brown Bear.)
 			->
-		@UPDATE DRINKS_AND_THIRST_UPDATE (@WIP)
+		✅ @UPDATE DRINKS_AND_THIRST_UPDATE (@FINISHED)
 			->
 		 		✅ Implement Drink and Thirst Packets/Networking.
-		 		Implement Drinkable saturation and properties.
+		 		✅ Implement Drinkable saturation and properties.
 		 	->
 		 @UPDATE MORE_COMABTS (@WIP)
 		 	->
