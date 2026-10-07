@@ -12,7 +12,7 @@ import org.jspecify.annotations.NonNull;
  * @author Mr. GodDavid
  * @since 9/7/2026
  */
-public class MtsEntityModelLayers {
+public final class MtsEntityModelLayers {
 
     public static final ModelLayerLocation BROWN_BEAR = createMain("brown_bear");
     public static final ModelLayerLocation TARGET_DUMMY = createMain("target_dummy");

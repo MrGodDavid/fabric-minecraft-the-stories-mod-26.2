@@ -55,7 +55,7 @@ public final class Constants {
             MtsLogger.init("Universal Constants");
         }
 
-        public static final int NEW_BORN = 0;
+        public static final int AGE_NEW_BORN = 0;
         public static final int LINE_LENGTH = 40;
         public static final int MAX_SATURATION = 20;
 

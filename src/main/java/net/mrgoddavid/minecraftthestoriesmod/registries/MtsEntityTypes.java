@@ -15,7 +15,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  * @author Mr. GodDavid
  * @since 9/7/2026
  */
-public class MtsEntityTypes {
+public final class MtsEntityTypes {
 
     public static final EntityType<BrownBearEntity> BROWN_BEAR = register("brown_bear",
             EntityType.Builder.<BrownBearEntity>of(BrownBearEntity::new, MobCategory.CREATURE)

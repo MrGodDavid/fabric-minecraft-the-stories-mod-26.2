@@ -12,6 +12,8 @@ import net.minecraft.world.item.crafting.Recipe;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Optional;
+
 /**
  * @author Mr. GodDavid
  * @since 9/1/2026
@@ -35,7 +37,7 @@ public abstract class MtsAbstractRecipeBuilder implements RecipeBuilder {
 
     @Override
     public RecipeBuilder group(@Nullable String group) {
-        this.group = group;
+        this.group = Optional.ofNullable(group).orElse("DEFAULT_GROUP");
         return this;
     }
 

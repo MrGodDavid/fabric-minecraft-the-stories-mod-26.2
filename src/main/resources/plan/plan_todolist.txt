@@ -42,15 +42,15 @@
 				@ENTITY DEER: Deer has male and female variant. Male can only breed with female. Deer is ridable and tamable animal.
 				@ENTITY DUMMY_TARGET: Target dummy. Like Armor Stands. Inspired by an awesome youtube video, and I will link his channel and video in here. Dummy Target displays the attack point that player dealt.
 					@BUG Target dummy would  be killed when player smashes target dummy with mace.
-				@ENTITY ACACIANIA: Spirit of the Wild Acacia. Tamable auxiliary entity. Grants Anti-dehydration effects to all surrounding entities when it is tamed by player.
+				@ENTITY ACACIANIA: Spirit of the Wild Acacia. Tamable auxiliary entity. Grants Swift effect effects to all surrounding entities when it is tamed by player.
 				@ENTITY LOUDER: Entity in 
-				@ENTITY BIRCHIA: Spirit of Gigantic Birchlin. Tamable auxiliary entity.
-				@ENTITY CHERRINA: Spirit of Bloomy Cherry Woods. Tamable auxiliary entity. Grants Entice effect--decrease damage dealt by surrounding enemies.
+				@ENTITY BIRCHIA: Spirit of Gigantic Birchlin. Tamable auxiliary entity. Grants jumping boost effect.
+				@ENTITY CHERRINIA: Spirit of Bloomy Cherry Woods. Tamable auxiliary entity. Grants Entice effect--decrease damage dealt by surrounding enemies.
 				@ENTITY DENSE_OAKIE: Spirit of Dark Oaklin. Tamable auxiliary entity. Grants Strength effects. Increase damage dealt by player in the range of this dense_oakie.
-				@ENTITY JUNGLENIA: Spirit of Lush Jungle. Tamable auxiliary entity. Grants Swift effects. Increase player's speed in the range of junglenia.
-				@ENTITY MANGROVINA: Spirit of Swampy Mangrilin. Tamable auxiliary entity. Grants Swimmer and Hydration buff in range of mangrovia. 
+				@ENTITY JUNMI: Spirit of Lush Jungle. Tamable auxiliary entity. Grants Hydration effects. Increase player's speed in the range of junglenia.
+				@ENTITY MANGROLINO: Spirit of Swampy Mangrilin. Tamable auxiliary entity. Grants Swimmer and Hydration buff in range of mangrovia. 
 				@ENTITY OAKIE: Spirit of the Dense Oaklin. Tamable auxiliary entity. Grants healing effects to all surrounding entity, including the time when it is tamed by player. (@WIP)
-				@ENTITY LIGHT_OAKIE: Spirit of Pale Oaklin. Tamable auxiliary entity. Grants Jumping effect, increasing player's jumping height in the range of Light Oakie.
+				@ENTITY LIGHT_OAKIE: Spirit of Pale Oaklin. Tamable auxiliary entity. Grants invisible (trying to make armors invisible), increasing player's jumping height in the range of Light Oakie.
 				@ENTITY SPRUCIA: Spirit of Sprucia. Tamable auxiliary entity. Grants Attacker effect, increasing attack speed and damage on player.
 			->
 		@STRUCTURES

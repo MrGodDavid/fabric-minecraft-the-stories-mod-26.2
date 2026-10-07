@@ -15,7 +15,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  * @author Mr. GodDavid
  * @since 8/26/2026
  */
-public class MtsFluidRenderingRegistries {
+public final class MtsFluidRenderingRegistries {
 
     public static void register() {
         MtsLogger.info("MTS Fluid Rendering Registries");

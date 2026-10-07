@@ -9,7 +9,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  * @author Mr. GodDavid
  * @since 9/7/2026
  */
-public class MtsEntityRenderers {
+public final class MtsEntityRenderers {
 
     public static void register() {
         MtsLogger.info("Entity Renderers");

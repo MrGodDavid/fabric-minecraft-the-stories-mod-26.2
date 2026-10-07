@@ -10,7 +10,7 @@ import org.jspecify.annotations.NonNull;
  * @author Mr. GodDavid
  * @since 9/8/2026
  */
-public class MtsEntityTextures {
+public final class MtsEntityTextures {
 
     public static final Identifier BROWN_BEAR = register("brown_bear");
     public static final Identifier TARGET_DUMMY = register("target_dummy");

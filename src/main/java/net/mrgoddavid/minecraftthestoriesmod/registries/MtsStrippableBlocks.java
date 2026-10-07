@@ -9,7 +9,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
  * @author Mr. GodDavid
  * @since 9/25/2026
  */
-public class MtsStrippableBlocks {
+public final class MtsStrippableBlocks {
 
     public static void register() {
         MtsLogger.info("Custom Strippable Blocks");
