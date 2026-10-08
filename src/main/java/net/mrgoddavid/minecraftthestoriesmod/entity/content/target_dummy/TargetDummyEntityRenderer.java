@@ -8,13 +8,17 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
-import org.joml.Matrix4f;
+import net.mrgoddavid.minecraftthestoriesmod.utils.RandomPulse;
 import org.joml.Quaternionf;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
@@ -22,12 +26,14 @@ import org.joml.Quaternionf;
  */
 public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyEntity, TargetDummyRenderState, TargetDummyModel> {
 
+    private static final RandomPulse pulse = RandomPulse.builder(100).origin(0).bound(100).probability(50).build();
+
     public TargetDummyEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new TargetDummyModel(context.bakeLayer(MtsEntityModelLayers.TARGET_DUMMY)), 0.6F);
     }
 
     @Override
-    public Identifier getTextureLocation(TargetDummyRenderState state) {
+    public @NonNull Identifier getTextureLocation(TargetDummyRenderState state) {
         return MtsEntityTextures.TARGET_DUMMY;
     }
 
@@ -37,16 +43,21 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
     }
 
     @Override
-    public void submit(TargetDummyRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+    public void submit(TargetDummyRenderState state, @NonNull PoseStack poseStack, @NonNull SubmitNodeCollector submitNodeCollector, @NonNull CameraRenderState camera) {
         super.submit(state, poseStack, submitNodeCollector, camera);
-        // take away: do not use poseStack.mulPose(camera.orientation).
+        Minecraft mc = Minecraft.getInstance();
+        pulse.tick();
+        MtsParticleSpawner.spawnCircle(mc, pulse, ParticleTypes.CLOUD, state, 2, 4, 2, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR);
         if (TargetDummyDamageManager.getDamageNumbers().isEmpty()) return;
-        Font font = Minecraft.getInstance().font;
+
+        Font font = mc.font;
+
         for (TargetDummyDamageManager.TargetDummyDamageNumber damageNumber : TargetDummyDamageManager.getDamageNumbers()) {
             String text = formatText(damageNumber.getDamage());
             float width = font.width(text);
             int alpha = (int) (damageNumber.getAlpha() * 255.0F);
             int color = (alpha << 24) | 0xFFFFFF;
+
             poseStack.pushPose();
             poseStack.translate(damageNumber.getXOffset(), damageNumber.getY() - state.y, damageNumber.getZOffset());
             poseStack.mulPose(new Quaternionf(camera.orientation));

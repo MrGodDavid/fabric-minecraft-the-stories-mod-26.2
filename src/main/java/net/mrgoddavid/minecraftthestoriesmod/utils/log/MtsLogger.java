@@ -25,6 +25,11 @@ public final class MtsLogger {
         MinecraftTheStoriesMod.LOGGER.info("[INITIALIZATION] {} for: \"" + MinecraftTheStoriesMod.MOD_ID + "\"", msg);
     }
 
+
+    public static void warn(@NonNull String warning) {
+        MinecraftTheStoriesMod.LOGGER.warn(warning);
+    }
+
     private MtsLogger() throws IllegalAccessException {
         throw new IllegalAccessException("You cannot instantiate this class!");
     }

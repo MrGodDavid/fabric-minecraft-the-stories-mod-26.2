@@ -1,5 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.log;
 
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+
 import java.lang.reflect.Type;
 
 /**
@@ -14,6 +16,15 @@ public final class ClassNameFormatter {
 
     public static String format(Type clazz) {
         return "[" + clazz.getTypeName() + "]";
+    }
+
+    public static <T extends LivingEntityRenderState> String extractEntityNameFromEntityRenderState(T state) {
+        String name = state.getClass().getSimpleName();
+        if (name.length() < 11) {
+            MtsLogger.warn("Invalid entity name: " + name);
+            return "[ERROR]";
+        }
+        return name.substring(0, name.length() - 11);
     }
 
     private ClassNameFormatter() throws IllegalAccessException {

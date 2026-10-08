@@ -1,7 +1,10 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy;
 
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
@@ -51,6 +54,15 @@ public class TargetDummyEntity extends LivingEntity {
         if  (actualDamage > 0.0F) {
             MtsPacketHelper.sendTargetDummyDamageNumber(level, this, actualDamage);
         }
+
+        // Just testing.
+//        System.out.println("Hurt Target Dummy!!!");
+//
+//        if (!this.level().isClientSide()) {
+//            for(int i = 0; i < 8; ++i) {
+//                ((ServerLevel) (this.level())).sendParticles(ParticleTypes.CLOUD, this.getX() + i, this.getY(), this.getZ() + i, 2, 0.3d, 0.3d, 0.3d, 0.0);
+//            }
+//        }
         return true;
     }
 }

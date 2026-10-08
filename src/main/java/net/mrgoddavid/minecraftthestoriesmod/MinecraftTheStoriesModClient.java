@@ -2,11 +2,9 @@ package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
-import net.minecraft.client.particle.BubbleParticle;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +17,7 @@ import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuScreens;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFluidRenderingRegistries;
 
-import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsParticleTypeRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
 
@@ -39,8 +37,7 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
         MtsMenuScreens.registerItemScreens();
         MtsItemTooltips.register();
         MtsFluidRenderingRegistries.register();
-
-        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.ENRICHER_WASTE_PARTICLE, BubbleParticle.Provider::new);
+        MtsParticleTypeRegistries.register();
 
 //        ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
 //            if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.NETHERITE_SWORD)) {

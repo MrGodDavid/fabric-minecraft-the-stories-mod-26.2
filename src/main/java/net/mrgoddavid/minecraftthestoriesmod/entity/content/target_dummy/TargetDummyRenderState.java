@@ -7,5 +7,4 @@ import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
  * @since 9/25/2026
  */
 public class TargetDummyRenderState extends HumanoidRenderState {
-
 }
