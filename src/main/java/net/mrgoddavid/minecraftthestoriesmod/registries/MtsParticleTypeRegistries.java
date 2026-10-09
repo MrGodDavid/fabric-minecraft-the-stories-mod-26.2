@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.registries;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.minecraft.client.particle.BubbleParticle;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.particle.content.ColoredPlayerCloudParticle;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**
@@ -17,5 +18,6 @@ public final class MtsParticleTypeRegistries {
         MtsLogger.info("Particle Types");
 
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.ENRICHER_WASTE_PARTICLE, BubbleParticle.Provider::new);
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.COLORED_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(100, 100, 100, 255));
     }
 }

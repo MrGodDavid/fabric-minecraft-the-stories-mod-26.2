@@ -17,6 +17,7 @@ public class MtsParticles {
         MtsLogger.info("MTS Particles");
 
         registerParticle("enricher_waste_particle", MtsParticleTypes.ENRICHER_WASTE_PARTICLE);
+        registerParticle("colored_cloud_particle", MtsParticleTypes.COLORED_CLOUD_PARTICLE);
     }
 
     private static <T extends ParticleType<SimpleParticleType>> void registerParticle(final String name, final T particle) {

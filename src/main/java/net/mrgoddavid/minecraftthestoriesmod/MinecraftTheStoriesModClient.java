@@ -39,6 +39,8 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
         MtsFluidRenderingRegistries.register();
         MtsParticleTypeRegistries.register();
 
+//        ParticleProviderRegistry.register(MtsParticleTypes.COLORFUL_CLOUD_PARTICLE, sprites -> new ColorfulPlayerCloudParticle.Provider(sprites).color(100, 100, 100, 255));
+
 //        ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
 //            if (stack.is(Items.DIAMOND_SWORD) || stack.is(Items.NETHERITE_SWORD)) {
 //                lines.add(Component.literal("A weapon forged in ancient times").withStyle(ChatFormatting.GOLD));

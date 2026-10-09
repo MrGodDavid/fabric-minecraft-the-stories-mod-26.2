@@ -48,28 +48,21 @@ public final class Constants {
 
     /**
      * @author Mr. GodDavid
-     * @since 9/13/2026
+     * @since 10/8/2026
      */
-    public static final class Universal {
-
-        public static void initialize() {
-            MtsLogger.init("Universal Constants");
-        }
-
-        public static final int AGE_NEW_BORN = 0;
-        public static final int LINE_LENGTH = 40;
-        public static final int MAX_SATURATION = 20;
+    public static final class ParticleSpawnOffsets {
         @SuppressWarnings("unchecked")
         public static final MtsElementSets.Pair<Double, Double>[] EIGHT_DIR_OFFSET = new MtsElementSets.Pair[]{
-                new MtsElementSets.Pair<Double, Double>(0.0d, 1.0d),
-                new MtsElementSets.Pair<Double, Double>(0.7071067812d, 0.7071067812d),
-                new MtsElementSets.Pair<Double, Double>(1.0d, 0.0d),
-                new MtsElementSets.Pair<Double, Double>(0.7071067812d, -0.7071067812d),
-                new MtsElementSets.Pair<Double, Double>(0.0d, -1.0d),
-                new MtsElementSets.Pair<Double, Double>(-0.7071067812d, -0.7071067812d),
-                new MtsElementSets.Pair<Double, Double>(-1.0d, 0.0d),
-                new MtsElementSets.Pair<Double, Double>(-0.7071067812d, 0.7071067812d),
+                new MtsElementSets.Pair<>(0.0d, 1.0d),
+                new MtsElementSets.Pair<>(0.7071067812d, 0.7071067812d),
+                new MtsElementSets.Pair<>(1.0d, 0.0d),
+                new MtsElementSets.Pair<>(0.7071067812d, -0.7071067812d),
+                new MtsElementSets.Pair<>(0.0d, -1.0d),
+                new MtsElementSets.Pair<>(-0.7071067812d, -0.7071067812d),
+                new MtsElementSets.Pair<>(-1.0d, 0.0d),
+                new MtsElementSets.Pair<>(-0.7071067812d, 0.7071067812d),
         };
+
         @SuppressWarnings("unchecked")
         public static final MtsElementSets.Pair<Double, Double>[] SIXTEEN_DIR_OFFSET = new MtsElementSets.Pair[]{
                 new MtsElementSets.Pair<>(0.0d, 1.0d),
@@ -89,6 +82,41 @@ public final class Constants {
                 new MtsElementSets.Pair<>(-0.707106781d, 0.707106781d),
                 new MtsElementSets.Pair<>(-0.382683432d, 0.923879533d)
         };
+
+        @SuppressWarnings("unchecked")
+        public static final MtsElementSets.Pair<Double, Double>[] SQUARE_CORNER_OFFSET = new MtsElementSets.Pair[]{
+                new MtsElementSets.Pair<>(1.0d, 1.0d),
+                new MtsElementSets.Pair<>(1.0d, -1.0d),
+                new MtsElementSets.Pair<>(-1.0d, -1.0d),
+                new MtsElementSets.Pair<>(-1.0d, 1.0d)
+        };
+
+        @SuppressWarnings("unchecked")
+        public static final MtsElementSets.Pair<Double, Double>[] SQUARE_EIGHT_PARTICLE_OFFSET = new MtsElementSets.Pair[]{
+                new MtsElementSets.Pair<>(1.0d, 1.0d),
+                new MtsElementSets.Pair<>(1.0d, 0.0d),
+                new MtsElementSets.Pair<>(1.0d, -1.0d),
+                new MtsElementSets.Pair<>(0.0d, -1.0d),
+                new MtsElementSets.Pair<>(-1.0d, -1.0d),
+                new MtsElementSets.Pair<>(-1.0d, 0.0d),
+                new MtsElementSets.Pair<>(-1.0d, 1.0d),
+                new MtsElementSets.Pair<>(0.0d, 1.0d)
+        };
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 9/13/2026
+     */
+    public static final class Universal {
+
+        public static void initialize() {
+            MtsLogger.init("Universal Constants");
+        }
+
+        public static final int AGE_NEW_BORN = 0;
+        public static final int LINE_LENGTH = 40;
+        public static final int MAX_SATURATION = 20;
 
         public static final Component[] SHIFT_DOWN_TOOLTIP_INFORMATION = new Component[]{Component.translatable("tooltip.minecraft-the-stories-mod.shift_down")};
 

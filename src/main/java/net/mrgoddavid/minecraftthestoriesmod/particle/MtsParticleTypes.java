@@ -11,6 +11,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 public class MtsParticleTypes {
 
     public static final SimpleParticleType ENRICHER_WASTE_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType COLORED_CLOUD_PARTICLE = FabricParticleTypes.simple();
 
     public static void register() {
         MtsLogger.info("Particle Types");
