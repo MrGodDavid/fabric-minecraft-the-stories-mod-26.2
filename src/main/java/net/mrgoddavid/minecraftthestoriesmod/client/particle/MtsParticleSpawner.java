@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.RandomPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.dave.RandomPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ClassNameFormatter;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;

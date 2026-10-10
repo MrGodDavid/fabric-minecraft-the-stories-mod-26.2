@@ -1,15 +1,15 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils;
+package net.mrgoddavid.minecraftthestoriesmod.utils.dave;
 
 /**
  * @author Mr. GodDavid
  * @since 10/9/2026
  */
-public final class TickCounter {
+public final class PeriodicPulse {
 
     private int tickCounter;
     private final int maxTick;
 
-    private TickCounter(Builder builder) {
+    private PeriodicPulse(Builder builder) {
         this.tickCounter = builder.tickCounter;
         this.maxTick = builder.maxTick;
     }
@@ -46,6 +46,9 @@ public final class TickCounter {
         private int maxTick = 10;
 
         public Builder startFrom(int tickCounter) {
+            if (tickCounter < 0) {
+                throw new IllegalArgumentException("Starting tick cannot be negative! Current tick is " + tickCounter);
+            }
             this.tickCounter = tickCounter;
             return this;
         }
@@ -55,8 +58,8 @@ public final class TickCounter {
             return this;
         }
 
-        public TickCounter build() {
-            return new TickCounter(this);
+        public PeriodicPulse build() {
+            return new PeriodicPulse(this);
         }
     }
 

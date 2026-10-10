@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils;
+package net.mrgoddavid.minecraftthestoriesmod.utils.dave;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.MouseHandler;

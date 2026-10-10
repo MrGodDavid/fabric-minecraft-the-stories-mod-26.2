@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstClientManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.RandomPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.dave.RandomPulse;
 
 /**
  * @author Mr. GodDavid

@@ -16,7 +16,7 @@ import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamag
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
-import net.mrgoddavid.minecraftthestoriesmod.utils.RandomPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.dave.RandomPulse;
 import org.joml.Quaternionf;
 import org.jspecify.annotations.NonNull;
 
