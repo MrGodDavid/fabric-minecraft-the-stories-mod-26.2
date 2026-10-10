@@ -3,16 +3,16 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
+import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityRenderers;
+import net.mrgoddavid.minecraftthestoriesmod.registries.*;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsEntityFluidInteractions;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.gui.hud.MtsHud;
@@ -24,8 +24,6 @@ import net.mrgoddavid.minecraftthestoriesmod.networking.MtsPackets;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticles;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.MtsRecipes;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFlammableBlocks;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsStrippableBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.sound.MtsSounds;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
 import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstEvents;
@@ -83,6 +81,7 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsWorldGen.register();
         MtsSounds.register();
         MtsDamageTypes.register();
+        MtsEffects.register();
 
         LootTableEvents.REPLACE.register(MtsLootTableModifiers::replaceLootTables);
         LootTableEvents.MODIFY.register(MtsLootTableModifiers::modifyLootTables);
@@ -93,6 +92,7 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsEntityTypes.registerAttributes();
         MtsEntityModelLayers.register();
         MtsEntityRenderers.register();
+        MtsEntityAttributes.register();
 
         MtsLogger.tailer();
     }

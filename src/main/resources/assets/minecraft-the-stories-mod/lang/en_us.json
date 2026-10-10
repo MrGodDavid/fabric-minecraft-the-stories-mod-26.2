@@ -235,6 +235,9 @@
 
   "sound.minecraft-the-stories-mod.bonk": "Bonk",
 
+  "effect.minecraft-the-stories-mod.public_enemy": "Public Enemy",
+  "effect.minecraft-the-stories-mod.public_enemy.description": "You are too strong, so everyone hates you, including all the passive mobs...",
+
   "advancements.minecraft-the-stories-mod.root.title": "Minecraft: The Stories",
   "advancements.minecraft-the-stories-mod.root.description": "How fast can you get a wooden pickaxe now?",
   "advancements.minecraft-the-stories-mod.use_iron_pic_mine_diamonds.title": "Isn't It Iron Pick?",

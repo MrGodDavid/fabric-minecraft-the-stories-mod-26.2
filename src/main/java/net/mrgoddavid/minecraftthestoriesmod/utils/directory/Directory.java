@@ -191,6 +191,16 @@ public final class Directory {
             return this;
         }
 
+        public Builder mob_effect() {
+            this.directory = this.directory.concat(FILES.MOB_EFFECT.getName());
+            return this;
+        }
+
+        public Builder sounds() {
+            this.directory = this.directory.concat(FILES.SOUNDS.getName());
+            return this;
+        }
+
         public Directory build() {
             return new Directory(this);
         }
@@ -231,7 +241,9 @@ public final class Directory {
         MINECRAFT_THE_STORIES_MOD,
         SRC,
         MAIN,
-        STORYBOOK_PAGES;
+        STORYBOOK_PAGES,
+        MOB_EFFECT,
+        SOUNDS;
 
         String getName() {
             return ((this == MINECRAFT_THE_STORIES_MOD) ? "minecraft-the-stories-mod" : this.name().toLowerCase()).concat("/");

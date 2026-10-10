@@ -48,9 +48,9 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
         Minecraft mc = Minecraft.getInstance();
 
         // Spawn particles around entity
-//        pulse.tick();
-//        MtsParticleSpawner.spawnCircle(mc, pulse, MtsParticleTypes.ENRICHER_WASTE_PARTICLE, state, 2, 4, 2, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
-//        MtsParticleSpawner.spawnSquare(mc, pulse, MtsParticleTypes.COLORED_CLOUD_PARTICLE, state, 3, 5, 2, 3, ParticleSpawnMode.SQUARE_FILL_IN, false);
+        pulse.tick();
+        MtsParticleSpawner.spawnCircle(mc, pulse, MtsParticleTypes.ENRICHER_WASTE_PARTICLE, state, 2, 4, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
+        MtsParticleSpawner.spawnSquare(mc, pulse, MtsParticleTypes.COLORED_CLOUD_PARTICLE, state, 3, 5, 1, ParticleSpawnMode.SQUARE_FILL_IN, false);
 
         // If the entity was hurt by the player.
         if (TargetDummyDamageManager.getDamageNumbers().isEmpty()) return;

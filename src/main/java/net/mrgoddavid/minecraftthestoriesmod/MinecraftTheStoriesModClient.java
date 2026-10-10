@@ -1,9 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,10 +12,11 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCom
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuScreens;
-import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsClientTickEventRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFluidRenderingRegistries;
 
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsParticleTypeRegistries;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsServerTickEventRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
 
@@ -39,6 +38,9 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
         MtsFluidRenderingRegistries.register();
         MtsParticleTypeRegistries.register();
 
+        MtsServerTickEventRegistries.register();
+        MtsClientTickEventRegistries.register();
+
 //        ParticleProviderRegistry.register(MtsParticleTypes.COLORFUL_CLOUD_PARTICLE, sprites -> new ColorfulPlayerCloudParticle.Provider(sprites).color(100, 100, 100, 255));
 
 //        ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipFlag, lines) -> {
@@ -56,16 +58,6 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
             MtsAdvancementTriggers.MINE_BLOCK_WITH_TOOL_TRIGGER.trigger(
                     serverPlayer, state, tool
             );
-        });
-
-        ClientTickEvents.END_CLIENT_TICK.register((client) -> {
-            TargetDummyDamageManager.tick();
-        });
-
-        ServerTickEvents.END_SERVER_TICK.register(server -> {
-            for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-                MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.trigger(player);
-            }
         });
     }
 }

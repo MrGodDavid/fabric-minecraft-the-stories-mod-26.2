@@ -148,11 +148,11 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     }
 
     private void spawnHealingParticles() {
-        ((ServerLevel) this.level()).sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + this.getBbHeight()+0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
+        ((ServerLevel) this.level()).sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + this.getBbHeight() + 0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
     }
 
     private void spawnTamingFailedParticles() {
-        ((ServerLevel) this.level()).sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + this.getBbHeight()+0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
+        ((ServerLevel) this.level()).sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + this.getBbHeight() + 0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
     }
 
     @Override

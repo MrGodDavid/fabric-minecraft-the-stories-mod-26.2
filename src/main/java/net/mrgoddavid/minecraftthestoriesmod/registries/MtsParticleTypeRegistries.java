@@ -18,6 +18,6 @@ public final class MtsParticleTypeRegistries {
         MtsLogger.info("Particle Types");
 
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.ENRICHER_WASTE_PARTICLE, BubbleParticle.Provider::new);
-        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.COLORED_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(100, 100, 100, 255));
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.COLORED_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(255, 0, 0, 255));
     }
 }
