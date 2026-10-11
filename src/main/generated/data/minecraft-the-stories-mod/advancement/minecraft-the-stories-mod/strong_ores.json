@@ -1,0 +1,99 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/enriching",
+  "criteria": {
+    "obtain_strong_amethyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_amethyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_strong_diamond": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_diamond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_strong_emerald": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_emerald"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_strong_gold": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_gold"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_strong_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_iron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_strong_ruby": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_ruby"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_strong_topaz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:strong_topaz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.strong_ores.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:strong_amethyst"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.strong_ores.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_strong_amethyst",
+      "obtain_strong_diamond",
+      "obtain_strong_emerald",
+      "obtain_strong_gold",
+      "obtain_strong_iron",
+      "obtain_strong_ruby",
+      "obtain_strong_topaz"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

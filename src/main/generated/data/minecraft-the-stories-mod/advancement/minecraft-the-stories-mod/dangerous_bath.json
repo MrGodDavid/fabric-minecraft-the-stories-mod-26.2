@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/purple_bucket",
+  "criteria": {
+    "bath_in_enricher_waste": {
+      "trigger": "minecraft-the-stories-mod:bathing_in_enricher_waste"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.dangerous_bath.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "minecraft:skeleton_skull"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.dangerous_bath.title"
+    }
+  },
+  "requirements": [
+    [
+      "bath_in_enricher_waste"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

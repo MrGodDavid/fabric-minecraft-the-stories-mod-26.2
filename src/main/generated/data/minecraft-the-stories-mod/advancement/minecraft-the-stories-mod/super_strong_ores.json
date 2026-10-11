@@ -1,0 +1,119 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/strong_ores",
+  "criteria": {
+    "obtain_a_full_stack_of_strong_amethyst_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:strong_amethyst_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_a_full_stack_of_strong_diamond_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:strong_diamond_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_a_full_stack_of_strong_emerald_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:strong_emerald_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_a_full_stack_of_strong_gold_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:strong_gold_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_a_full_stack_of_strong_iron_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:strong_iron_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_a_full_stack_of_strong_ruby_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:strong_ruby_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_a_full_stack_of_strong_topaz_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": "minecraft-the-stories-mod:strong_topaz_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.super_strong_ores.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "minecraft-the-stories-mod:strong_amethyst_ingot"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.super_strong_ores.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_a_full_stack_of_strong_amethyst_ingot"
+    ],
+    [
+      "obtain_a_full_stack_of_strong_diamond_ingot"
+    ],
+    [
+      "obtain_a_full_stack_of_strong_emerald_ingot"
+    ],
+    [
+      "obtain_a_full_stack_of_strong_gold_ingot"
+    ],
+    [
+      "obtain_a_full_stack_of_strong_iron_ingot"
+    ],
+    [
+      "obtain_a_full_stack_of_strong_ruby_ingot"
+    ],
+    [
+      "obtain_a_full_stack_of_strong_topaz_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

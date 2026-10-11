@@ -23,13 +23,13 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.EnteredVillageWithFullEmeraldArmorTrigger;
-import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.MineBlockWithToolTrigger;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.*;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -309,6 +309,22 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("mine_deepslate_amethyst_ore_with_netherite_pickaxe", specificItemMinesSpecificBlock(items, blocks, Items.NETHERITE_PICKAXE, MtsBlocks.DEEPSLATE_AMETHYST_ORE))
                     .save(output, generateSaveName("new_amethyst"));
 
+            // Obtain full strong amethyst armor
+            AdvancementHolder aStepCloserToImmortal = Advancement.Builder.advancement()
+                    .parent(newAmethyst)
+                    .display(
+                            MtsItems.STRONG_AMETHYST_CHESTPLATE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.a_step_closer_to_immortal.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.a_step_closer_to_immortal.description"),
+                            Constants.defaultId("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .addCriterion("wear_full_amethyst_armor", wearFullAmethystArmor())
+                    .save(output, generateSaveName("a_step_closer_to_immortal"));
+
             // Craft Strong Amethyst Pickaxe with Super Crafter
             AdvancementHolder purplePickaxe = Advancement.Builder.advancement()
                     .parent(newAmethyst)
@@ -434,6 +450,95 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("obtain_full_stack_of_compressed_wood_log", hasObtainFullStackOf(items, MtsBlocks.COMPRESSED_WOOD_LOG))
                     .save(output, generateSaveName("wood_master"));
 
+            // Obtain all 9 types of wooden axe, bow, cudgel, hoe, pickaxe, shovel, sword, and spear.
+            // The types of wood are acacia, birch, cherry, dark oak, jungle, mangrove, pale oak, oak, and spruce.
+            AdvancementHolder woodenPsychopath = Advancement.Builder.advancement()
+                    .parent(woodMaster)
+                    .display(
+                            MtsItems.OAK_CUDGEL,
+                            Component.translatable("advancements.minecraft-the-stories-mod.wooden_psychopath.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.wooden_psychopath.desciription"),
+                            Constants.defaultId("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.CHALLENGE,
+                            true,
+                            true,
+                            false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.AND)
+                    .addCriterion("obtain_acacia_axe", hasObtainedItem(items, MtsItems.ACACIA_AXE))
+                    .addCriterion("obtain_acacia_bow", hasObtainedItem(items, MtsItems.ACACIA_BOW))
+                    .addCriterion("obtain_acacia_cudgel", hasObtainedItem(items, MtsItems.ACACIA_CUDGEL))
+                    .addCriterion("obtain_acacia_hoe", hasObtainedItem(items, MtsItems.ACACIA_HOE))
+                    .addCriterion("obtain_acacia_pickaxe", hasObtainedItem(items, MtsItems.ACACIA_PICKAXE))
+                    .addCriterion("obtain_acacia_shovel", hasObtainedItem(items, MtsItems.ACACIA_SHOVEL))
+                    .addCriterion("obtain_acacia_sword", hasObtainedItem(items, MtsItems.ACACIA_SWORD))
+                    .addCriterion("obtain_acacia_spear", hasObtainedItem(items, MtsItems.ACACIA_SPEAR))
+                    .addCriterion("obtain_birch_axe", hasObtainedItem(items, MtsItems.BIRCH_AXE))
+                    .addCriterion("obtain_birch_bow", hasObtainedItem(items, MtsItems.BIRCH_BOW))
+                    .addCriterion("obtain_birch_cudgel", hasObtainedItem(items, MtsItems.BIRCH_CUDGEL))
+                    .addCriterion("obtain_birch_hoe", hasObtainedItem(items, MtsItems.BIRCH_HOE))
+                    .addCriterion("obtain_birch_pickaxe", hasObtainedItem(items, MtsItems.BIRCH_PICKAXE))
+                    .addCriterion("obtain_birch_shovel", hasObtainedItem(items, MtsItems.BIRCH_SHOVEL))
+                    .addCriterion("obtain_birch_sword", hasObtainedItem(items, MtsItems.BIRCH_SWORD))
+                    .addCriterion("obtain_birch_spear", hasObtainedItem(items, MtsItems.BIRCH_SPEAR))
+                    .addCriterion("obtain_cherry_axe", hasObtainedItem(items, MtsItems.CHERRY_AXE))
+                    .addCriterion("obtain_cherry_bow", hasObtainedItem(items, MtsItems.CHERRY_BOW))
+                    .addCriterion("obtain_cherry_cudgel", hasObtainedItem(items, MtsItems.CHERRY_CUDGEL))
+                    .addCriterion("obtain_cherry_hoe", hasObtainedItem(items, MtsItems.CHERRY_HOE))
+                    .addCriterion("obtain_cherry_pickaxe", hasObtainedItem(items, MtsItems.CHERRY_PICKAXE))
+                    .addCriterion("obtain_cherry_shovel", hasObtainedItem(items, MtsItems.CHERRY_SHOVEL))
+                    .addCriterion("obtain_cherry_sword", hasObtainedItem(items, MtsItems.CHERRY_SWORD))
+                    .addCriterion("obtain_cherry_spear", hasObtainedItem(items, MtsItems.CHERRY_SPEAR))
+                    .addCriterion("obtain_dark_oak_axe", hasObtainedItem(items, MtsItems.DARK_OAK_AXE))
+                    .addCriterion("obtain_dark_oak_bow", hasObtainedItem(items, MtsItems.DARK_OAK_BOW))
+                    .addCriterion("obtain_dark_oak_cudgel", hasObtainedItem(items, MtsItems.DARK_OAK_CUDGEL))
+                    .addCriterion("obtain_dark_oak_hoe", hasObtainedItem(items, MtsItems.DARK_OAK_HOE))
+                    .addCriterion("obtain_dark_oak_pickaxe", hasObtainedItem(items, MtsItems.DARK_OAK_PICKAXE))
+                    .addCriterion("obtain_dark_oak_shovel", hasObtainedItem(items, MtsItems.DARK_OAK_SHOVEL))
+                    .addCriterion("obtain_dark_oak_sword", hasObtainedItem(items, MtsItems.DARK_OAK_SWORD))
+                    .addCriterion("obtain_dark_oak_spear", hasObtainedItem(items, MtsItems.DARK_OAK_SPEAR))
+                    .addCriterion("obtain_jungle_axe", hasObtainedItem(items, MtsItems.JUNGLE_AXE))
+                    .addCriterion("obtain_jungle_bow", hasObtainedItem(items, MtsItems.JUNGLE_BOW))
+                    .addCriterion("obtain_jungle_cudgel", hasObtainedItem(items, MtsItems.JUNGLE_CUDGEL))
+                    .addCriterion("obtain_jungle_hoe", hasObtainedItem(items, MtsItems.JUNGLE_HOE))
+                    .addCriterion("obtain_jungle_pickaxe", hasObtainedItem(items, MtsItems.JUNGLE_PICKAXE))
+                    .addCriterion("obtain_jungle_shovel", hasObtainedItem(items, MtsItems.JUNGLE_SHOVEL))
+                    .addCriterion("obtain_jungle_sword", hasObtainedItem(items, MtsItems.JUNGLE_SWORD))
+                    .addCriterion("obtain_jungle_spear", hasObtainedItem(items, MtsItems.JUNGLE_SPEAR))
+                    .addCriterion("obtain_mangrove_axe", hasObtainedItem(items, MtsItems.MANGROVE_AXE))
+                    .addCriterion("obtain_mangrove_bow", hasObtainedItem(items, MtsItems.MANGROVE_BOW))
+                    .addCriterion("obtain_mangrove_cudgel", hasObtainedItem(items, MtsItems.MANGROVE_CUDGEL))
+                    .addCriterion("obtain_mangrove_hoe", hasObtainedItem(items, MtsItems.MANGROVE_HOE))
+                    .addCriterion("obtain_mangrove_pickaxe", hasObtainedItem(items, MtsItems.MANGROVE_PICKAXE))
+                    .addCriterion("obtain_mangrove_shovel", hasObtainedItem(items, MtsItems.MANGROVE_SHOVEL))
+                    .addCriterion("obtain_mangrove_sword", hasObtainedItem(items, MtsItems.MANGROVE_SWORD))
+                    .addCriterion("obtain_mangrove_spear", hasObtainedItem(items, MtsItems.MANGROVE_SPEAR))
+                    .addCriterion("obtain_pale_oak_axe", hasObtainedItem(items, MtsItems.PALE_OAK_AXE))
+                    .addCriterion("obtain_pale_oak_bow", hasObtainedItem(items, MtsItems.PALE_OAK_BOW))
+                    .addCriterion("obtain_pale_oak_cudgel", hasObtainedItem(items, MtsItems.PALE_OAK_CUDGEL))
+                    .addCriterion("obtain_pale_oak_hoe", hasObtainedItem(items, MtsItems.PALE_OAK_HOE))
+                    .addCriterion("obtain_pale_oak_pickaxe", hasObtainedItem(items, MtsItems.PALE_OAK_PICKAXE))
+                    .addCriterion("obtain_pale_oak_shovel", hasObtainedItem(items, MtsItems.PALE_OAK_SHOVEL))
+                    .addCriterion("obtain_pale_oak_sword", hasObtainedItem(items, MtsItems.PALE_OAK_SWORD))
+                    .addCriterion("obtain_pale_oak_spear", hasObtainedItem(items, MtsItems.PALE_OAK_SPEAR))
+                    .addCriterion("obtain_oak_axe", hasObtainedItem(items, Items.WOODEN_AXE))
+                    .addCriterion("obtain_oak_bow", hasObtainedItem(items, Items.BOW))
+                    .addCriterion("obtain_oak_cudgel", hasObtainedItem(items, MtsItems.OAK_CUDGEL))
+                    .addCriterion("obtain_oak_hoe", hasObtainedItem(items, Items.WOODEN_HOE))
+                    .addCriterion("obtain_oak_pickaxe", hasObtainedItem(items, Items.WOODEN_PICKAXE))
+                    .addCriterion("obtain_oak_shovel", hasObtainedItem(items, Items.WOODEN_SHOVEL))
+                    .addCriterion("obtain_oak_sword", hasObtainedItem(items, Items.WOODEN_SWORD))
+                    .addCriterion("obtain_oak_spear", hasObtainedItem(items, Items.WOODEN_SPEAR))
+                    .addCriterion("obtain_spruce_oak_axe", hasObtainedItem(items, MtsItems.SPRUCE_AXE))
+                    .addCriterion("obtain_spruce_oak_bow", hasObtainedItem(items, MtsItems.SPRUCE_BOW))
+                    .addCriterion("obtain_spruce_oak_cudgel", hasObtainedItem(items, MtsItems.SPRUCE_CUDGEL))
+                    .addCriterion("obtain_spruce_oak_hoe", hasObtainedItem(items, MtsItems.SPRUCE_HOE))
+                    .addCriterion("obtain_spruce_oak_pickaxe", hasObtainedItem(items, MtsItems.SPRUCE_PICKAXE))
+                    .addCriterion("obtain_spruce_oak_shovel", hasObtainedItem(items, MtsItems.SPRUCE_SHOVEL))
+                    .addCriterion("obtain_spruce_oak_sword", hasObtainedItem(items, MtsItems.SPRUCE_SWORD))
+                    .addCriterion("obtain_spruce_oak_spear", hasObtainedItem(items, MtsItems.SPRUCE_SPEAR))
+                    .save(output, generateSaveName("wooden_psychopath"));
+
             // Use Diamond Pickaxe to mine (stone) ruby ore, (stone) amethyst ore, and netherite.
             AdvancementHolder notTodayMyOldFriend = Advancement.Builder.advancement()
                     .parent(fasterGoldenPickaxe)
@@ -470,22 +575,103 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     )
                     .addCriterion("craft_an_enricher", hasObtainedItem(items, MtsBlocks.ENRICHER))
                     .save(output, generateSaveName("enriching"));
+
+            // Obtain a strong material.
+            AdvancementHolder strongOres = Advancement.Builder.advancement()
+                    .parent(enriching)
+                    .display(
+                            MtsItems.STRONG_AMETHYST,
+                            Component.translatable("advancements.minecraft-the-stories-mod.strong_ores.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.strong_ores.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.OR)
+                    .addCriterion("obtain_strong_amethyst", hasObtainedItem(items, MtsItems.STRONG_AMETHYST))
+                    .addCriterion("obtain_strong_diamond", hasObtainedItem(items, MtsItems.STRONG_DIAMOND))
+                    .addCriterion("obtain_strong_emerald", hasObtainedItem(items, MtsItems.STRONG_EMERALD))
+                    .addCriterion("obtain_strong_gold", hasObtainedItem(items, MtsItems.STRONG_GOLD))
+                    .addCriterion("obtain_strong_iron", hasObtainedItem(items, MtsItems.STRONG_IRON))
+                    .addCriterion("obtain_strong_ruby", hasObtainedItem(items, MtsItems.STRONG_RUBY))
+                    .addCriterion("obtain_strong_topaz", hasObtainedItem(items, MtsItems.STRONG_TOPAZ))
+                    .save(output, generateSaveName("strong_ores"));
+
+            // Obtain full stacks of all ingot version of strong materials.
+            AdvancementHolder superStrongOres = Advancement.Builder.advancement()
+                    .parent(strongOres)
+                    .display(
+                            MtsItems.STRONG_AMETHYST_INGOT,
+                            Component.translatable("advancements.minecraft-the-stories-mod.super_strong_ores.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.super_strong_ores.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.AND)
+                    .addCriterion("obtain_a_full_stack_of_strong_amethyst_ingot", hasObtainFullStackOf(items, MtsItems.STRONG_AMETHYST_INGOT))
+                    .addCriterion("obtain_a_full_stack_of_strong_diamond_ingot", hasObtainFullStackOf(items, MtsItems.STRONG_DIAMOND_INGOT))
+                    .addCriterion("obtain_a_full_stack_of_strong_emerald_ingot", hasObtainFullStackOf(items, MtsItems.STRONG_EMERALD_INGOT))
+                    .addCriterion("obtain_a_full_stack_of_strong_gold_ingot", hasObtainFullStackOf(items, MtsItems.STRONG_GOLD_INGOT))
+                    .addCriterion("obtain_a_full_stack_of_strong_iron_ingot", hasObtainFullStackOf(items, MtsItems.STRONG_IRON_INGOT))
+                    .addCriterion("obtain_a_full_stack_of_strong_ruby_ingot", hasObtainFullStackOf(items, MtsItems.STRONG_RUBY_INGOT))
+                    .addCriterion("obtain_a_full_stack_of_strong_topaz_ingot", hasObtainFullStackOf(items, MtsItems.STRONG_TOPAZ_INGOT))
+                    .save(output, generateSaveName("super_strong_ores"));
+
+            // Use bucket to collect Enricher Waste.
+            AdvancementHolder purpleBucket = Advancement.Builder.advancement()
+                    .parent(enriching)
+                    .display(
+                            MtsItems.ENRICHER_WASTE_BUCKET,
+                            Component.translatable("advancements.minecraft-the-stories-mod.purple_bucket.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.purple_bucket.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("obtain_enricher_waste_bucket", hasObtainedItem(items, MtsItems.ENRICHER_WASTE_BUCKET))
+                    .save(output, generateSaveName("purple_bucket"));
+
+            // Bathing in dangerous §cEnricher §cWaste. What a brave cat...
+            AdvancementHolder dangerousBath = Advancement.Builder.advancement()
+                    .parent(purpleBucket)
+                    .display(
+                            Items.SKELETON_SKULL,
+                            Component.translatable("advancements.minecraft-the-stories-mod.dangerous_bath.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.dangerous_bath.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("bath_in_enricher_waste", hasBathedInEnricherWaste())
+                    .save(output, generateSaveName("dangerous_bath"));
+
         }
 
-        public Criterion<?> hasEnteredVillagesWithFullEmeraldArmor() {
+        private Criterion<?> wearFullAmethystArmor() {
+            return MtsAdvancementTriggers.WEAR_FULL_AMETHYST_ARMOR_TRIGGER.createCriterion(
+                    new WearFullArmorTrigger.TriggerInstance(Optional.empty()));
+        }
+
+        private Criterion<?> hasBathedInEnricherWaste() {
+            return MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_TRIGGER.createCriterion(
+                    new BathingInEnricherWasteTrigger.TriggerInstance(Optional.empty()));
+        }
+
+        private Criterion<?> hasEnteredVillagesWithFullEmeraldArmor() {
             return MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.createCriterion(
                     new EnteredVillageWithFullEmeraldArmorTrigger.TriggerInstance(Optional.empty()));
         }
 
-        public Criterion<?> hasObtainFullStackOf(final HolderGetter<Item> currentTime, final ItemLike requiredItem) {
+        private Criterion<?> hasObtainFullStackOf(final HolderGetter<Item> currentTime, final ItemLike requiredItem) {
             return this.hasObtainNumItemOf(currentTime, requiredItem, 64);
         }
 
-        public Criterion<?> hasObtainNumItemOf(final HolderGetter<Item> currentItem, final ItemLike requiredItem, final int count) {
+        private Criterion<?> hasObtainNumItemOf(final HolderGetter<Item> currentItem, final ItemLike requiredItem, final int count) {
             return InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(currentItem, requiredItem).withCount(MinMaxBounds.Ints.exactly(count)).build());
         }
 
-        public Criterion<?> specificItemMinesSpecificBlock(final HolderGetter<Item> currentTool, final HolderGetter<Block> currentBlock, final ItemLike requiredItem, final Block targetBlock) {
+        private Criterion<?> specificItemMinesSpecificBlock(final HolderGetter<Item> currentTool, final HolderGetter<Block> currentBlock, final ItemLike requiredItem, final Block targetBlock) {
             return MtsAdvancementTriggers.MINE_BLOCK_WITH_TOOL_TRIGGER.createCriterion(
                     new MineBlockWithToolTrigger.TriggerInstance(
                             Optional.of(HolderSet.direct(currentBlock.getOrThrow(MtsBlocks.getResourceKey(targetBlock)))),
@@ -493,7 +679,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
             );
         }
 
-        public Criterion<?> hasObtainedItem(final HolderGetter<Item> current, final ItemLike require) {
+        private Criterion<?> hasObtainedItem(final HolderGetter<Item> current, final ItemLike require) {
             return InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(current, require));
         }
 
@@ -504,7 +690,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
          * @param id of the advancement.
          * @return the path of storing this advancement in .json file.
          */
-        public String generateSaveName(final String id) {
+        private String generateSaveName(final String id) {
             return MinecraftTheStoriesMod.MOD_ID + ":minecraft-the-stories-mod/" + id;
         }
     }

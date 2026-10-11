@@ -1,0 +1,957 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/wood_master",
+  "criteria": {
+    "obtain_acacia_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_acacia_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_acacia_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_acacia_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_acacia_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_acacia_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_acacia_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_acacia_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:acacia_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_birch_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:birch_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_cherry_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:cherry_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_dark_oak_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:dark_oak_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_jungle_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:jungle_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_mangrove_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:mangrove_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:oak_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_oak_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_pale_oak_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:pale_oak_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_bow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_bow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_spruce_oak_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:spruce_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.wooden_psychopath.desciription"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "minecraft-the-stories-mod:oak_cudgel"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.wooden_psychopath.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_acacia_axe"
+    ],
+    [
+      "obtain_acacia_bow"
+    ],
+    [
+      "obtain_acacia_cudgel"
+    ],
+    [
+      "obtain_acacia_hoe"
+    ],
+    [
+      "obtain_acacia_pickaxe"
+    ],
+    [
+      "obtain_acacia_shovel"
+    ],
+    [
+      "obtain_acacia_sword"
+    ],
+    [
+      "obtain_acacia_spear"
+    ],
+    [
+      "obtain_birch_axe"
+    ],
+    [
+      "obtain_birch_bow"
+    ],
+    [
+      "obtain_birch_cudgel"
+    ],
+    [
+      "obtain_birch_hoe"
+    ],
+    [
+      "obtain_birch_pickaxe"
+    ],
+    [
+      "obtain_birch_shovel"
+    ],
+    [
+      "obtain_birch_sword"
+    ],
+    [
+      "obtain_birch_spear"
+    ],
+    [
+      "obtain_cherry_axe"
+    ],
+    [
+      "obtain_cherry_bow"
+    ],
+    [
+      "obtain_cherry_cudgel"
+    ],
+    [
+      "obtain_cherry_hoe"
+    ],
+    [
+      "obtain_cherry_pickaxe"
+    ],
+    [
+      "obtain_cherry_shovel"
+    ],
+    [
+      "obtain_cherry_sword"
+    ],
+    [
+      "obtain_cherry_spear"
+    ],
+    [
+      "obtain_dark_oak_axe"
+    ],
+    [
+      "obtain_dark_oak_bow"
+    ],
+    [
+      "obtain_dark_oak_cudgel"
+    ],
+    [
+      "obtain_dark_oak_hoe"
+    ],
+    [
+      "obtain_dark_oak_pickaxe"
+    ],
+    [
+      "obtain_dark_oak_shovel"
+    ],
+    [
+      "obtain_dark_oak_sword"
+    ],
+    [
+      "obtain_dark_oak_spear"
+    ],
+    [
+      "obtain_jungle_axe"
+    ],
+    [
+      "obtain_jungle_bow"
+    ],
+    [
+      "obtain_jungle_cudgel"
+    ],
+    [
+      "obtain_jungle_hoe"
+    ],
+    [
+      "obtain_jungle_pickaxe"
+    ],
+    [
+      "obtain_jungle_shovel"
+    ],
+    [
+      "obtain_jungle_sword"
+    ],
+    [
+      "obtain_jungle_spear"
+    ],
+    [
+      "obtain_mangrove_axe"
+    ],
+    [
+      "obtain_mangrove_bow"
+    ],
+    [
+      "obtain_mangrove_cudgel"
+    ],
+    [
+      "obtain_mangrove_hoe"
+    ],
+    [
+      "obtain_mangrove_pickaxe"
+    ],
+    [
+      "obtain_mangrove_shovel"
+    ],
+    [
+      "obtain_mangrove_sword"
+    ],
+    [
+      "obtain_mangrove_spear"
+    ],
+    [
+      "obtain_pale_oak_axe"
+    ],
+    [
+      "obtain_pale_oak_bow"
+    ],
+    [
+      "obtain_pale_oak_cudgel"
+    ],
+    [
+      "obtain_pale_oak_hoe"
+    ],
+    [
+      "obtain_pale_oak_pickaxe"
+    ],
+    [
+      "obtain_pale_oak_shovel"
+    ],
+    [
+      "obtain_pale_oak_sword"
+    ],
+    [
+      "obtain_pale_oak_spear"
+    ],
+    [
+      "obtain_oak_axe"
+    ],
+    [
+      "obtain_oak_bow"
+    ],
+    [
+      "obtain_oak_cudgel"
+    ],
+    [
+      "obtain_oak_hoe"
+    ],
+    [
+      "obtain_oak_pickaxe"
+    ],
+    [
+      "obtain_oak_shovel"
+    ],
+    [
+      "obtain_oak_sword"
+    ],
+    [
+      "obtain_oak_spear"
+    ],
+    [
+      "obtain_spruce_oak_axe"
+    ],
+    [
+      "obtain_spruce_oak_bow"
+    ],
+    [
+      "obtain_spruce_oak_cudgel"
+    ],
+    [
+      "obtain_spruce_oak_hoe"
+    ],
+    [
+      "obtain_spruce_oak_pickaxe"
+    ],
+    [
+      "obtain_spruce_oak_shovel"
+    ],
+    [
+      "obtain_spruce_oak_sword"
+    ],
+    [
+      "obtain_spruce_oak_spear"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/new_amethyst",
+  "criteria": {
+    "wear_full_amethyst_armor": {
+      "trigger": "minecraft-the-stories-mod:wear_full_amethyst_armor"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.a_step_closer_to_immortal.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:strong_amethyst_chestplate"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.a_step_closer_to_immortal.title"
+    }
+  },
+  "requirements": [
+    [
+      "wear_full_amethyst_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

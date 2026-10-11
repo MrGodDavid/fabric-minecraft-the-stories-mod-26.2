@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/enriching",
+  "criteria": {
+    "obtain_enricher_waste_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft-the-stories-mod:enricher_waste_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.purple_bucket.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:enricher_waste_bucket"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.purple_bucket.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_enricher_waste_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

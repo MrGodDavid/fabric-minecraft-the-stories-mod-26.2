@@ -27,6 +27,10 @@ public final class MtsServerTickEventRegistries {
 
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
                 MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.trigger(player);
+                MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_TRIGGER.trigger(player);
+                MtsAdvancementTriggers.WEAR_FULL_AMETHYST_ARMOR_TRIGGER.trigger(player);
+//                MtsAdvancementTriggers.WEAR_FULL_RUBY_ARMOR_TRIGGER.trigger(player);
+//                MtsAdvancementTriggers.WEAR_FULL_TOPAZ_ARMOR_TRIGGER.trigger(player);
 
                 if (PERIODIC_PULSE.fire(tick -> tick >= PERIODIC_PULSE.getMaxTick())) {
                     PERIODIC_PULSE.reset();

@@ -8,12 +8,14 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
+import net.mrgoddavid.minecraftthestoriesmod.item.content.CursedItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.DrinkableItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
@@ -66,8 +68,8 @@ public final class MtsItems {
     public static final Item STORY_BOOK = registerItem("story_book",
             properties -> new StoryBookItem(properties.craftRemainder(Items.BOOK).stacksTo(1).rarity(Rarity.EPIC)));
 
-    public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", Item::new);
-    public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", Item::new);
+    public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", properties -> new CursedItem(properties, MobEffects.MINING_FATIGUE));
+    public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", properties -> new CursedItem(properties, MobEffects.MINING_FATIGUE));
 
     public static final Item HAMMER_OF_CRAFTER = registerItem("hammer_of_crafter", properties -> new AxeItem(MtsItemToolMaterials.STRONG_RUBY,
             5.8f, -3.3f, properties.durability(1200).enchantable(20).rarity(Rarity.UNCOMMON)));

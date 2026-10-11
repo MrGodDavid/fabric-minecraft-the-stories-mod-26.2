@@ -1,6 +1,8 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Advancements
+eb58883b742596982848382153b51af00f9a6096 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/a_step_closer_to_immortal.json
 aff008688bf63c486691d304290662da1f619533 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/back_on_track.json
 fb789b00c77422eed5d30f5ec30aaacccc51b2e6 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/compressed_wood_planks.json
+6fe117d93f242b40e18cea80bae1584fa3daac1a data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/dangerous_bath.json
 8e1506abb24b12f8c32e732671d5a45288d46e2a data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/enriching.json
 1688f279c36c9928f0b8b8ae3e476886e23971da data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/faster_golden_pickaxe.json
 3803c4eb0e21556fac21a7cfb4b1b25d3d14cfd2 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/fire_pickaxe.json
@@ -11,14 +13,18 @@ a9fd3c216f23a576f6565c3ef316de0afb423ba5 data/minecraft-the-stories-mod/advancem
 3c3856422108a8a127a22ec7ff5790cf5d118852 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/new_amethyst.json
 70fdbf7dfd84b9509452d2ff0b9a230cfc24f0b4 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/not_today_my_old_friend.json
 141bceb07aa23f026f95ca11629af9afc91889c5 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/obtain_topaz_ores.json
+e663eb9d232331f92bf8abb49b101b26d463fb43 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/purple_bucket.json
 e99ef40f2e6b3bf5a3921041f7785d71ea4ebe29 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/purple_pickaxe.json
 534f1f9b0768c408a1f6ba49f4f9daab28371ff0 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/redstone.json
 2e9ca0316609f48f4c31a5368f317f14fbfdaad2 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/root.json
 46a862fd6455b9bc48c45fe9c9506098f0c29590 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/show_off_emerald_armor.json
+b67cb06b6de3f37244583947dfe5ac78bd0bd2dc data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/strong_ores.json
 c40fed80d3e9279b475cdd7f7670432de4078510 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/super_crafter.json
+44b304eb20b0fc4c41a7d53ba2f1e1e5fdfed658 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/super_strong_ores.json
 b79f4101dc584e1ae1876d80c60d26f1a4e9db30 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/time_for_lumberjacking.json
 f594b5685dc344e6c78ad553f49eca84fdbde169 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/use_diamond_pic_mining_topaz_ores.json
 8da94e217da0c22b135bcf8fb512b3fc69be38b7 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/use_emerald_pic_mining_diamonds.json
 855b379a85cabab782f8f55a881a349781648e79 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/use_iron_pic_mine_diamonds.json
 ab25837466bdcd4bda80011219ca0fe5fd68a747 data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/wood_collector.json
 fc0210a647a0053766a622c45459de57da477b8c data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/wood_master.json
+4d89c185d0248e1a1627d9e19cb04d642d96eaaf data/minecraft-the-stories-mod/advancement/minecraft-the-stories-mod/wooden_psychopath.json
