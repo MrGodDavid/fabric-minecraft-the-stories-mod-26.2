@@ -144,6 +144,7 @@ public class MtsModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(BROKEN_IRON_PICKAXE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(BROKEN_DIAMOND_PICKAXE, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(PUBLIC_ENEMY_EFFECT_ICON, flatItemTemplate);
 
         itemModelGenerators.generateFlatItem(RAW_STRONG_AMETHYST, flatItemTemplate);
         itemModelGenerators.generateFlatItem(RAW_STRONG_DIAMOND, flatItemTemplate);

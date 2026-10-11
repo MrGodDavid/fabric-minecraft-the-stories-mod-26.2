@@ -17,29 +17,40 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  */
 public final class MtsServerTickEventRegistries {
 
-    private static final PeriodicPulse PERIODIC_PULSE = PeriodicPulse.builder().maxTick(20).build();
+    private static final PeriodicPulse ONE_SECOND_20_TICKS_PERIODIC_PULSE = PeriodicPulse.builder().maxTick(20).build();
 
     public static void register() {
         MtsLogger.info("Custom End Server Tick Events");
 
         ServerTickEvents.END_SERVER_TICK.register(server -> {
-            PERIODIC_PULSE.tick();
+            ONE_SECOND_20_TICKS_PERIODIC_PULSE.tick();
 
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-                MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.trigger(player);
-                MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_TRIGGER.trigger(player);
-                MtsAdvancementTriggers.WEAR_FULL_AMETHYST_ARMOR_TRIGGER.trigger(player);
-//                MtsAdvancementTriggers.WEAR_FULL_RUBY_ARMOR_TRIGGER.trigger(player);
-//                MtsAdvancementTriggers.WEAR_FULL_TOPAZ_ARMOR_TRIGGER.trigger(player);
+                // Checks advancement triggers of player while playing.
+                checkPlayerAdvancementTriggers(player);
 
-                if (PERIODIC_PULSE.fire(tick -> tick >= PERIODIC_PULSE.getMaxTick())) {
-                    PERIODIC_PULSE.reset();
-                    if (hasFullAmethystArmor(player)) {
-                        player.addEffect(new MobEffectInstance(MtsEffects.PUBLIC_ENEMY, 40, 0, true, false, true));
-                    }
-                }
+                // Grants Public Enemy effect to player if the player wears full Amethyst armor.
+                grantsPublicEnemyEffectIfWearingFullAmethystArmor(player);
             }
         });
+    }
+
+    private static void checkPlayerAdvancementTriggers(ServerPlayer player) {
+        MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.trigger(player);
+        MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_TRIGGER.trigger(player);
+        MtsAdvancementTriggers.WEAR_FULL_AMETHYST_ARMOR_TRIGGER.trigger(player);
+//                MtsAdvancementTriggers.WEAR_FULL_RUBY_ARMOR_TRIGGER.trigger(player);
+//                MtsAdvancementTriggers.WEAR_FULL_TOPAZ_ARMOR_TRIGGER.trigger(player);
+        MtsAdvancementTriggers.HAS_PUBLIC_ENEMY_EFFECT_TRIGGER.trigger(player);
+    }
+
+    private static void grantsPublicEnemyEffectIfWearingFullAmethystArmor(ServerPlayer player) {
+        if (ONE_SECOND_20_TICKS_PERIODIC_PULSE.fire(tick -> tick >= ONE_SECOND_20_TICKS_PERIODIC_PULSE.getMaxTick())) {
+            ONE_SECOND_20_TICKS_PERIODIC_PULSE.reset();
+            if (hasFullAmethystArmor(player)) {
+                player.addEffect(new MobEffectInstance(MtsEffects.PUBLIC_ENEMY, 40, 0, true, false, true));
+            }
+        }
     }
 
     private static boolean hasFullAmethystArmor(ServerPlayer player) {

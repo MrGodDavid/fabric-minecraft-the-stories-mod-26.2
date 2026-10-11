@@ -12,6 +12,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
@@ -70,6 +71,7 @@ public final class MtsItems {
 
     public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", properties -> new CursedItem(properties, MobEffects.MINING_FATIGUE));
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", properties -> new CursedItem(properties, MobEffects.MINING_FATIGUE));
+    public static final Item PUBLIC_ENEMY_EFFECT_ICON = registerItem("public_enemy", properties -> new CursedItem(properties, MtsEffects.PUBLIC_ENEMY));
 
     public static final Item HAMMER_OF_CRAFTER = registerItem("hammer_of_crafter", properties -> new AxeItem(MtsItemToolMaterials.STRONG_RUBY,
             5.8f, -3.3f, properties.durability(1200).enchantable(20).rarity(Rarity.UNCOMMON)));

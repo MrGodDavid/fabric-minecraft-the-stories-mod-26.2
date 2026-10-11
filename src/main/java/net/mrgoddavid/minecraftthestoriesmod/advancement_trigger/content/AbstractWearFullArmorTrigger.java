@@ -17,11 +17,11 @@ import java.util.Optional;
  * @author Mr. GodDavid
  * @since 10/10/2026
  */
-public abstract class WearFullArmorTrigger extends SimpleCriterionTrigger<WearFullArmorTrigger.TriggerInstance> {
+public abstract class AbstractWearFullArmorTrigger extends SimpleCriterionTrigger<AbstractWearFullArmorTrigger.TriggerInstance> {
 
     private final ArmorType armorType;
 
-    protected WearFullArmorTrigger(ArmorType armorType) {
+    protected AbstractWearFullArmorTrigger(ArmorType armorType) {
         this.armorType = armorType;
     }
 

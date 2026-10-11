@@ -13,7 +13,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  * @author Mr. GodDavid
  * @since 8/25/2026
  */
-public class MtsAdvancementTriggers {
+public final class MtsAdvancementTriggers {
 
     public static final MineBlockWithToolTrigger MINE_BLOCK_WITH_TOOL_TRIGGER = register("mine_block_with_tool", new MineBlockWithToolTrigger());
     public static final EnteredVillageWithFullEmeraldArmorTrigger ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER = register("enter_village_with_full_emerald_armor", new EnteredVillageWithFullEmeraldArmorTrigger());
@@ -21,6 +21,7 @@ public class MtsAdvancementTriggers {
     public static final WearFullAmethystArmorTrigger WEAR_FULL_AMETHYST_ARMOR_TRIGGER = register("wear_full_amethyst_armor", new WearFullAmethystArmorTrigger());
     public static final WearFullTopazArmorTrigger WEAR_FULL_TOPAZ_ARMOR_TRIGGER = register("wear_full_topaz_armor", new WearFullTopazArmorTrigger());
     public static final WearFullRubyArmorTrigger WEAR_FULL_RUBY_ARMOR_TRIGGER = register("wear_full_ruby_armor", new WearFullRubyArmorTrigger());
+    public static final HasPublicEnemyEffectTrigger HAS_PUBLIC_ENEMY_EFFECT_TRIGGER = register("has_public_effect", new HasPublicEnemyEffectTrigger());
 
     private static <T extends CriterionTrigger<?>> T register(final String name, T trigger) {
         return Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.modId( name), trigger);

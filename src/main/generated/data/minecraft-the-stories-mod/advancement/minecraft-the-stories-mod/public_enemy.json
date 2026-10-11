@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/new_amethyst",
+  "criteria": {
+    "has_public_enemy_effect": {
+      "trigger": "minecraft-the-stories-mod:has_public_effect"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.public_enemy.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:public_enemy"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.public_enemy.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_public_enemy_effect"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

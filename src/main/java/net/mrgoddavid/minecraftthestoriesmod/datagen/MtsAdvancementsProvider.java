@@ -16,7 +16,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -29,7 +28,6 @@ import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -317,13 +315,27 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             Component.translatable("advancements.minecraft-the-stories-mod.a_step_closer_to_immortal.title"),
                             Component.translatable("advancements.minecraft-the-stories-mod.a_step_closer_to_immortal.description"),
                             Constants.defaultId("gui/advancements/backgrounds/adventure"),
-                            AdvancementType.TASK,
+                            AdvancementType.GOAL,
                             true,
                             true,
                             false
                     )
                     .addCriterion("wear_full_amethyst_armor", wearFullAmethystArmor())
                     .save(output, generateSaveName("a_step_closer_to_immortal"));
+
+            // You are too powerful, so everyone hates you. Even the passive mobs hate you now...
+            AdvancementHolder publicEnemy = Advancement.Builder.advancement()
+                    .parent(newAmethyst)
+                    .display(
+                            MtsItems.PUBLIC_ENEMY_EFFECT_ICON,
+                            Component.translatable("advancements.minecraft-the-stories-mod.public_enemy.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.public_enemy.description"),
+                            Constants.defaultId("gui/advancements/backgrounds/adventure"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("has_public_enemy_effect", hasPublicEnemyEffect())
+                    .save(output, generateSaveName("public_enemy"));
 
             // Craft Strong Amethyst Pickaxe with Super Crafter
             AdvancementHolder purplePickaxe = Advancement.Builder.advancement()
@@ -648,9 +660,14 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
 
         }
 
+        private Criterion<?> hasPublicEnemyEffect() {
+            return MtsAdvancementTriggers.HAS_PUBLIC_ENEMY_EFFECT_TRIGGER.createCriterion(
+                    new AbstractHasMobEffectTrigger.TriggerInstance(Optional.empty()));
+        }
+
         private Criterion<?> wearFullAmethystArmor() {
             return MtsAdvancementTriggers.WEAR_FULL_AMETHYST_ARMOR_TRIGGER.createCriterion(
-                    new WearFullArmorTrigger.TriggerInstance(Optional.empty()));
+                    new AbstractWearFullArmorTrigger.TriggerInstance(Optional.empty()));
         }
 
         private Criterion<?> hasBathedInEnricherWaste() {

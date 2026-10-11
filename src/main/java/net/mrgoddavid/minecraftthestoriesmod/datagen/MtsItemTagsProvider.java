@@ -104,7 +104,8 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(BROKEN_IRON_PICKAXE));
 
         tag(MtsTags.Items.MTS_LEGENDARY_WEAPONS)
-                .add(MtsItems.getResourceKey(BROKEN_DIAMOND_PICKAXE));
+                .add(MtsItems.getResourceKey(BROKEN_DIAMOND_PICKAXE))
+                .add(MtsItems.getResourceKey(PUBLIC_ENEMY_EFFECT_ICON));
 
         tag(ItemTags.HOES)
                 .add(MtsItems.getResourceKey(ACACIA_HOE))

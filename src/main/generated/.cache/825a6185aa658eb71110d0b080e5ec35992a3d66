@@ -152,6 +152,7 @@ c246d947fddaf1cb53bdca9be34e3b2d9fcd6518 assets/minecraft-the-stories-mod/items/
 fc0a20a8db98f839f6dec4f87244769782038170 assets/minecraft-the-stories-mod/items/pale_oak_spear.json
 4b08497f9945b0da15e065fd3ecc935f576f07be assets/minecraft-the-stories-mod/items/pale_oak_stick.json
 964ed12580243ba2d1dc5cbad24ddedf14e2586b assets/minecraft-the-stories-mod/items/pale_oak_sword.json
+dba129719e7119b27d339e8672c1a57551502583 assets/minecraft-the-stories-mod/items/public_enemy.json
 e81226482c8416ff183bd624f0768548de0c7c9f assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_one.json
 1ae990e6583b5c891ab61428482704afdc924fb8 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_three.json
 6e2d150d3e39fdffa2c8158d590c13a0b17c5bd6 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_two.json
@@ -468,6 +469,7 @@ a1c23f26f1b27dfb841cbcdc10b54692d6d646c7 assets/minecraft-the-stories-mod/models
 1583e758da92e59aaa96e32e4787040a28542eb2 assets/minecraft-the-stories-mod/models/item/pale_oak_spear.json
 e1f5a37c649d1620419fe353091265659cf80e14 assets/minecraft-the-stories-mod/models/item/pale_oak_stick.json
 caa053f3e9105b574b75492435006851d9d01678 assets/minecraft-the-stories-mod/models/item/pale_oak_sword.json
+a223b3de4580c77361aa376517f5aab35417bc65 assets/minecraft-the-stories-mod/models/item/public_enemy.json
 31b569a898a6400d3f860f1d216652a6f30bb315 assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_one.json
 97908cbe7844806216efdeb9c230d10ffeca363a assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_three.json
 9fffde6085bf26b7fd1fe63ff30489744a49b660 assets/minecraft-the-stories-mod/models/item/rare_upgrade_scroll_stage_two.json

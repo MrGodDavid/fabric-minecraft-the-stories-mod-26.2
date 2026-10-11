@@ -10,6 +10,7 @@
     "description": {
       "translate": "advancements.minecraft-the-stories-mod.a_step_closer_to_immortal.description"
     },
+    "frame": "goal",
     "icon": {
       "id": "minecraft-the-stories-mod:strong_amethyst_chestplate"
     },
