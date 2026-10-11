@@ -30,6 +30,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCr
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.worldgen.tree.MtsTreeGrowers;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -104,6 +105,8 @@ public class MtsBlocks {
                     .isSuffocating(Blocks::never).isRedstoneConductor(Blocks::never).isViewBlocking(Blocks::never))
     );
     public static final Block LEMON_TREE_PLANKS = registerBlock("lemon_tree_planks", properties -> new RotatedPillarBlock(properties.strength(2.0F).sound(SoundType.WOOD).ignitedByLava().mapColor(MapColor.COLOR_YELLOW)));
+    public static final Block LEMON_TREE_SAPLING = registerBlock("lemon_tree_sapling", properties -> new SaplingBlock(MtsTreeGrowers.LEMON_TREE, properties.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final Block POTTED_LEMON_TREE_SAPLING = registerBlock("potted_lemon-tree_sapling", properties -> new FlowerPotBlock(LEMON_TREE_SAPLING, properties.instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
 
     /**
      * Gets the resource key of the mod block.

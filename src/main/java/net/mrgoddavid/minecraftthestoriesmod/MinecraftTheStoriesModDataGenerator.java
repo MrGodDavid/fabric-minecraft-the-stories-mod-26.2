@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.*;
+import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGenBootstrapper;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsWorldGenProvider;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 /**

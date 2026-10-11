@@ -244,6 +244,7 @@ public class CreativeModeTabs {
                         output.accept(STRIPPED_LEMON_TREE_LOG);
                         output.accept(LEMON_TREE_PLANKS);
                         output.accept(LEMON_TREE_LEAVES);
+                        output.accept(LEMON_TREE_SAPLING);
 
                         output.accept(STRONG_AMETHYST_FENCE);
                         output.accept(STRONG_AMETHYST_FENCE_GATE);

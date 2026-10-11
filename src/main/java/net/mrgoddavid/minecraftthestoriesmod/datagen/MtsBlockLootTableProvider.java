@@ -80,7 +80,9 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(STRIPPED_LEMON_TREE_WOOD);
         dropSelf(STRIPPED_LEMON_TREE_LOG);
         dropSelf(LEMON_TREE_PLANKS);
-//        add(LEMON_TREE_LEAVES, block -> createMangroveLeavesDrops())
+        add(LEMON_TREE_LEAVES, block -> createLeavesDrops(block, LEMON_TREE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(LEMON_TREE_SAPLING);
+        add(POTTED_LEMON_TREE_SAPLING, block -> createPotFlowerItemTable(POTTED_LEMON_TREE_SAPLING));
 
         dropSelf(STRONG_AMETHYST_FENCE);
         dropSelf(STRONG_AMETHYST_FENCE_GATE);

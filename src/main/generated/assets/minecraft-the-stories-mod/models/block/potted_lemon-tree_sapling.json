@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "minecraft-the-stories-mod:block/lemon_tree_sapling"
+  }
+}

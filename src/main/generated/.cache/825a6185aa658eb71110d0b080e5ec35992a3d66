@@ -14,9 +14,11 @@ eff5b0da6bd0ebdd61ec4a309e3d1bf60022b020 assets/minecraft-the-stories-mod/blocks
 6d7097844107652fdda44f51b10b5cfc67b7d81b assets/minecraft-the-stories-mod/blockstates/lemon_tree_leaves.json
 f4157673b5d4676ad3ea437631745fc03760bcf9 assets/minecraft-the-stories-mod/blockstates/lemon_tree_log.json
 2d42177d3a6b600638056608dc3c9da7ef6da1ba assets/minecraft-the-stories-mod/blockstates/lemon_tree_planks.json
+1315b1c8eba7f412cdd3f7c1810e8907083f5a7f assets/minecraft-the-stories-mod/blockstates/lemon_tree_sapling.json
 2e5f9d64974b07f466ac2a49f61c66debb4ad5c2 assets/minecraft-the-stories-mod/blockstates/lemon_tree_wood.json
 cba5169b2fc91d2934bab134823885732b86cb0f assets/minecraft-the-stories-mod/blockstates/nether_ruby_ore.json
 2e5cbed633e2f0074146f72b2cdf85f34c676128 assets/minecraft-the-stories-mod/blockstates/ore_compressor_default.json
+94fd3b699e1ee1e9e889f46dbb9b39e2ecd58a8c assets/minecraft-the-stories-mod/blockstates/potted_lemon-tree_sapling.json
 ea1bd56e840b0d5015851cf8122c886c688bac52 assets/minecraft-the-stories-mod/blockstates/raw_strong_amethyst_block.json
 2e08d6ce3639abd898eb600b70a36d312e916952 assets/minecraft-the-stories-mod/blockstates/raw_strong_amethyst_wall.json
 d6acd7a6f5e64c976f2b24ba080295836ae25032 assets/minecraft-the-stories-mod/blockstates/raw_strong_diamond_block.json
@@ -130,6 +132,7 @@ b6d46deccfeed4edd61d342b27373126a24c521f assets/minecraft-the-stories-mod/items/
 4df69a4f6b766d199cfda888f32e495861ac49b2 assets/minecraft-the-stories-mod/items/lemon_tree_leaves.json
 ff957ed358913332c700acec316c7b1ad77eb0dc assets/minecraft-the-stories-mod/items/lemon_tree_log.json
 06ac827b22a0278832315110c397e072ca4ea5b3 assets/minecraft-the-stories-mod/items/lemon_tree_planks.json
+72158091d4c08a782d3c65f1766aa967cccecc5b assets/minecraft-the-stories-mod/items/lemon_tree_sapling.json
 fc3111b3147004800f0c4e4ebcb4a2402c6345d6 assets/minecraft-the-stories-mod/items/lemon_tree_wood.json
 84a139d0c6c569c7c0d4abf7cdb456b37b23469f assets/minecraft-the-stories-mod/items/mangrove_axe.json
 49d68083f30f3389f9639003d3506e5beb322a24 assets/minecraft-the-stories-mod/items/mangrove_bow.json
@@ -152,6 +155,7 @@ c246d947fddaf1cb53bdca9be34e3b2d9fcd6518 assets/minecraft-the-stories-mod/items/
 fc0a20a8db98f839f6dec4f87244769782038170 assets/minecraft-the-stories-mod/items/pale_oak_spear.json
 4b08497f9945b0da15e065fd3ecc935f576f07be assets/minecraft-the-stories-mod/items/pale_oak_stick.json
 964ed12580243ba2d1dc5cbad24ddedf14e2586b assets/minecraft-the-stories-mod/items/pale_oak_sword.json
+3ed7312cd43bec35a5ab6eeb3aeb8625f262c899 assets/minecraft-the-stories-mod/items/potted_lemon-tree_sapling.json
 dba129719e7119b27d339e8672c1a57551502583 assets/minecraft-the-stories-mod/items/public_enemy.json
 e81226482c8416ff183bd624f0768548de0c7c9f assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_one.json
 1ae990e6583b5c891ab61428482704afdc924fb8 assets/minecraft-the-stories-mod/items/rare_upgrade_scroll_stage_three.json
@@ -272,8 +276,10 @@ de701846bc8c1bd541047f9a296b48903beb5e2f assets/minecraft-the-stories-mod/models
 52824523086327c465cffc0db1a6ba4c6c94e9c8 assets/minecraft-the-stories-mod/models/block/lemon_tree_leaves.json
 459d3bb9196877dff2bd8d1f81690cd482c0fb53 assets/minecraft-the-stories-mod/models/block/lemon_tree_log.json
 f792d8cf8eec6ca75bd1ce87b153e71aa54e479d assets/minecraft-the-stories-mod/models/block/lemon_tree_planks.json
+3b0a42e88ae044d892335309033601a995450ec5 assets/minecraft-the-stories-mod/models/block/lemon_tree_sapling.json
 abdf3169f16c945695bb05181ac1e9ca6d73cb74 assets/minecraft-the-stories-mod/models/block/lemon_tree_wood.json
 c8915bde60d33ccb3aee9a041d71fe4050a99eb0 assets/minecraft-the-stories-mod/models/block/nether_ruby_ore.json
+f547cf0dc2d6a2b9bee3b81c050e8b3a94e4b9b0 assets/minecraft-the-stories-mod/models/block/potted_lemon-tree_sapling.json
 cdac08245ea05be409a0c42bec2565e1c3760121 assets/minecraft-the-stories-mod/models/block/raw_strong_amethyst_block.json
 2424e870fc89789b17250a09e98f3edcc5b0111c assets/minecraft-the-stories-mod/models/block/raw_strong_amethyst_wall_inventory.json
 0f4b8f2885c995807404f34e08b8a3550b35d216 assets/minecraft-the-stories-mod/models/block/raw_strong_amethyst_wall_post.json
@@ -444,6 +450,7 @@ faaa854d930ce814af404b81e887ade971f96f6c assets/minecraft-the-stories-mod/models
 e3d89c61e30f93da80472740328852be72f00d1e assets/minecraft-the-stories-mod/models/item/legendary_upgrade_scroll_stage_one.json
 ff4b7b790be5c695508e5c12544078c311bd3b1d assets/minecraft-the-stories-mod/models/item/legendary_upgrade_scroll_stage_three.json
 73f6532bf45a61cfe2c3d0403737c61e31f0bd76 assets/minecraft-the-stories-mod/models/item/legendary_upgrade_scroll_stage_two.json
+e20f5c9714bc08d44df85ca5f2eb2f445625fd91 assets/minecraft-the-stories-mod/models/item/lemon_tree_sapling.json
 930df17d94c18aa24d65acc970411f9bda16bab6 assets/minecraft-the-stories-mod/models/item/mangrove_axe.json
 f497626bd5ff5bf64ee82b1c93b3b818fb4c19da assets/minecraft-the-stories-mod/models/item/mangrove_bow.json
 f8025685a05087764859c356c458a5c2890b0dc3 assets/minecraft-the-stories-mod/models/item/mangrove_bow_pulling_0.json

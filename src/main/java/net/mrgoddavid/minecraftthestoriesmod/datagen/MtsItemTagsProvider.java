@@ -184,6 +184,8 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(LEMON_TREE_LOG.asItem()))
                 .add(MtsItems.getResourceKey(LEMON_TREE_WOOD.asItem()))
                 .add(MtsItems.getResourceKey(LEMON_TREE_LOG.asItem()));
+        tag(ItemTags.SAPLINGS)
+                .add(MtsItems.getResourceKey(LEMON_TREE_SAPLING.asItem()));
 
         this.addToVanillaItemTag$LOGS_THAT_BURN();
         this.addToVanillaItemTag$PLANKS();

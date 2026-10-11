@@ -20,6 +20,7 @@ d35a78e2e9b10b0382a6046f53dc819f1d198287 data/minecraft-the-stories-mod/tags/blo
 4cec57c2b5b92487b5bd93cef901f4a5e016ace9 data/minecraft/tags/block/crops.json
 e191f826b5fccd329d6514842b01f5cc4a361d13 data/minecraft/tags/block/fence_gates.json
 da361f7bc314490f4cdc122516b9032f7fd7f04c data/minecraft/tags/block/fences.json
+56e9a6df9f6c6d1a6ab4b54d66449aae5b005c87 data/minecraft/tags/block/flower_pots.json
 df22ddd0ddade59911cce16a53b346b8d9b262b8 data/minecraft/tags/block/incorrect_for_diamond_tool.json
 a97015d81d6ac2bf16feb917cbc13e094541a6d3 data/minecraft/tags/block/incorrect_for_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/incorrect_for_netherite_tool.json

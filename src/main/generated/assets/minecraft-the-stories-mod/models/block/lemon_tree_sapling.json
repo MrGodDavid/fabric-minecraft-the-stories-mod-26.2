@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "minecraft-the-stories-mod:block/lemon_tree_sapling"
+  }
+}

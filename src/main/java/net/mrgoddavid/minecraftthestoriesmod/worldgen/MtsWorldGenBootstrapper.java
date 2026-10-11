@@ -1,22 +1,27 @@
-package net.mrgoddavid.minecraftthestoriesmod.datagen;
+package net.mrgoddavid.minecraftthestoriesmod.worldgen;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
-import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
 
 import java.util.List;
 
@@ -60,13 +65,29 @@ public final class MtsWorldGenBootstrapper {
 
         context.register(MtsWorldGen.STRONG_RUBY_NETHER_ORE, new ConfiguredFeature<>(
                 Feature.ORE, new OreConfiguration(List.of(
-                        OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), MtsBlocks.NETHER_STRONG_RUBY_ORE.defaultBlockState())
+                OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), MtsBlocks.NETHER_STRONG_RUBY_ORE.defaultBlockState())
         ), 10, 0.25f)));
 
         context.register(MtsWorldGen.STRONG_AMETHYST_END_ORE, new ConfiguredFeature<>(
                 Feature.ORE, new OreConfiguration(List.of(
-                        OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), MtsBlocks.END_STRONG_AMETHYST_ORE.defaultBlockState())
+                OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), MtsBlocks.END_STRONG_AMETHYST_ORE.defaultBlockState())
         ), 10, 0.25f)));
+
+        // ===============================================================================================================
+        //                                                    TREE GEN
+        // ===============================================================================================================
+        context.register(MtsWorldGen.LEMON_TREE, new ConfiguredFeature<>(
+                Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LOG),
+                new BendingTrunkPlacer(3, 3, 4, 2, ConstantInt.of(5)),
+
+                BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LEAVES),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
+                new TwoLayersFeatureSize(1, 0, 2),
+
+                BlockStateProvider.simple(Blocks.DIRT)
+        ).build()));
+
     }
 
     public static void bootstrapPlacedFeatures(BootstrapContext<PlacedFeature> context) {
@@ -142,6 +163,15 @@ public final class MtsWorldGenBootstrapper {
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(30), VerticalAnchor.absolute(128))
                 )));
+
+        // ===============================================================================================================
+        //                                                    TREE GEN
+        // ===============================================================================================================
+        // 1 / change must equal to an integer!
+        context.register(MtsWorldGen.LEMON_TREE_PLACED, new PlacedFeature(
+                configuredFeatures.getOrThrow(MtsWorldGen.LEMON_TREE),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2), MtsBlocks.LEMON_TREE_SAPLING)
+        ));
     }
 
     private MtsWorldGenBootstrapper() throws IllegalAccessException {

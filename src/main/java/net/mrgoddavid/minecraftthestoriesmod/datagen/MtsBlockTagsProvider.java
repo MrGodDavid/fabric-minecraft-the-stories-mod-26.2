@@ -229,5 +229,7 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(LEMON_TREE_PLANKS));
         tag(BlockTags.LEAVES)
                 .add(MtsBlocks.getResourceKey(LEMON_TREE_LEAVES));
+        tag(BlockTags.FLOWER_POTS)
+                .add(MtsBlocks.getResourceKey(POTTED_LEMON_TREE_SAPLING));
     }
 }

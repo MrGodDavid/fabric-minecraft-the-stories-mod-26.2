@@ -101,6 +101,7 @@ public class MtsModelProvider extends FabricModelProvider {
         blockModelGenerators.woodProvider(STRIPPED_LEMON_TREE_LOG).log(STRIPPED_LEMON_TREE_LOG);
         blockModelGenerators.family(LEMON_TREE_PLANKS);
         blockModelGenerators.createTintedLeaves(LEMON_TREE_LEAVES, TexturedModel.LEAVES, 0x819604);
+        blockModelGenerators.createPlantWithDefaultItem(LEMON_TREE_SAPLING, POTTED_LEMON_TREE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         // #################################################################################################################
         // #                                        CUSTOM BLOCK MODELS                                                    #
