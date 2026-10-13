@@ -78,7 +78,6 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(STRIPPED_LEMON_TREE_WOOD))
                 .add(MtsBlocks.getResourceKey(STRIPPED_LEMON_TREE_LOG))
                 .add(MtsBlocks.getResourceKey(LEMON_TREE_PLANKS))
-                .add(MtsBlocks.getResourceKey(LEMON_TREE_LEAVES))
 
                 .add(MtsBlocks.getResourceKey(SUPER_CRAFTER_BLOCK))
                 .add(MtsBlocks.getResourceKey(SQUEEZER));

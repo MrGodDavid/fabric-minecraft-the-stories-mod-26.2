@@ -1,12 +1,19 @@
 package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.minecraft.client.color.block.BlockTintSource;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
+import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
@@ -19,6 +26,8 @@ import net.mrgoddavid.minecraftthestoriesmod.registries.MtsParticleTypeRegistrie
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsServerTickEventRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
+
+import java.util.List;
 
 public class MinecraftTheStoriesModClient implements ClientModInitializer {
 
@@ -59,5 +68,18 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
                     serverPlayer, state, tool
             );
         });
+
+        BlockColorRegistry.register(List.of(new BlockTintSource() {
+
+            @Override
+            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                return BiomeColors.getAverageFoliageColor(level, pos);
+            }
+
+            @Override
+            public int color(BlockState state) {
+                return 0x819604;
+            }
+        }), MtsBlocks.LEMON_TREE_LEAVES);
     }
 }

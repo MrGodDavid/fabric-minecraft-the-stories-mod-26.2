@@ -1,6 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod.client.particle;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
@@ -9,6 +10,9 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.dave.RandomPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ClassNameFormatter;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import org.jspecify.annotations.NonNull;
+
+import java.util.logging.Level;
 
 /**
  * Holds some designs of spawning particles.
@@ -19,6 +23,51 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 public class MtsParticleSpawner {
 
     private MtsParticleSpawner() {
+    }
+
+    public static void spawnTriangle(Minecraft mc, RandomPulse randomPulse, ParticleOptions particleType, LivingEntityRenderState renderState, double yOffset, double size, int times, ParticleSpawnMode mode, boolean randomness) {
+        switch (mode) {
+            case EQUILIBRIUM_TRIANGLE_VERTEX ->
+                    doSpawnParticleInEquilibriumTriangle(mc, randomPulse, particleType, renderState, yOffset, size, randomness);
+            case EQUILIBRIUM_TRIANGLE_CONTINUOUS ->
+                    doSpawnParticleInContinuousEquilibriumTriangle(mc, randomPulse, particleType, renderState, yOffset, size, times, randomness);
+            default ->
+                    MtsLogger.warn("Invalid mode: " + "[" + mode + "] when spawning particles at entity: " + ClassNameFormatter.extractEntityNameFromEntityRenderState(renderState));
+        }
+    }
+
+    private static void doSpawnParticleInContinuousEquilibriumTriangle(Minecraft mc, RandomPulse randomPulse, ParticleOptions particleType, LivingEntityRenderState renderState, double yOffset, double size, int times, boolean randomness) {
+        if (mc.level == null) return;
+
+        double centerX = renderState.x;
+        double centerY = renderState.y;
+        double centerZ = renderState.z;
+        double randomX = randomness ? Mth.randomBetween(mc.level.getRandom(), -0.5f, 0.5f) : 0.0d;
+        double randomZ = randomness ? Mth.randomBetween(mc.level.getRandom(), -0.5f, 0.5f) : 0.0d;
+        for (int side = 0; side < 3; side++) {
+            MtsElementSets.Pair<Double, Double> firstPoint = Constants.ParticleSpawnOffsets.EQUILIBRIUM_TRIANGLE_VERTEX_OFFSET[side];
+            MtsElementSets.Pair<Double, Double> secondPoint = Constants.ParticleSpawnOffsets.EQUILIBRIUM_TRIANGLE_VERTEX_OFFSET[(side + 1) % 3];
+            double dx = (secondPoint.first() - firstPoint.first()) * size;
+            double dz = (secondPoint.second() - firstPoint.second()) * size;
+            double xStep = dx / (times + 1d);
+            double zStep = dz / (times + 1d);
+            double xOffset = firstPoint.first() * size;
+            double zOffset = firstPoint.second() * size;
+            for (int point = 0; point <= times; point++) {
+                mc.level.addParticle(particleType,
+                        centerX + xOffset + randomX,
+                        centerY + yOffset,
+                        centerZ + zOffset + randomZ,
+                        0.0d, 0.0d, 0.0d
+                );
+                xOffset += xStep;
+                zOffset += zStep;
+            }
+        }
+    }
+
+    private static void doSpawnParticleInEquilibriumTriangle(Minecraft mc, RandomPulse randomPulse, ParticleOptions particleType, LivingEntityRenderState renderState, double yOffset, double size, boolean randomness) {
+        doSpawnParticleClusterPatternInner(mc, randomPulse, particleType, renderState, Constants.ParticleSpawnOffsets.EQUILIBRIUM_TRIANGLE_VERTEX_OFFSET, yOffset, size, randomness);
     }
 
     public static void spawnSquare(Minecraft mc, RandomPulse pulse, ParticleOptions particleType, LivingEntityRenderState renderState, double yOffset, double size, ParticleSpawnMode mode, boolean randomness) {
@@ -36,14 +85,14 @@ public class MtsParticleSpawner {
                     throw new IllegalArgumentException("Trying to spawn 0 particles per one side using continuous spawning. " +
                             "Times under continuous mode: [" + times + "] must be positive!");
                 }
-                doSpawnSquareFilledInParticle(mc, pulse, particleType, renderState, yOffset, size, times, randomness);
+                doSpawnSquareFilledInSideParticle(mc, pulse, particleType, renderState, yOffset, size, times, randomness);
             }
             default ->
                     MtsLogger.warn("Invalid mode: " + "[" + mode + "] when spawning particles at entity: " + ClassNameFormatter.extractEntityNameFromEntityRenderState(renderState));
         }
     }
 
-    private static void doSpawnSquareFilledInParticle(Minecraft mc, RandomPulse pulse, ParticleOptions particleType, LivingEntityRenderState renderState, double yOffset, double size, int times, boolean randomness) {
+    private static void doSpawnSquareFilledInSideParticle(Minecraft mc, RandomPulse pulse, ParticleOptions particleType, LivingEntityRenderState renderState, double yOffset, double size, int times, boolean randomness) {
         doSpawnParticleContinuousSquarePatternInner(mc, pulse, particleType, renderState, Constants.ParticleSpawnOffsets.SQUARE_CORNER_OFFSET, yOffset, size, times, randomness);
     }
 

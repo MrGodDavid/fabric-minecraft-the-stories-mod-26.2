@@ -69,6 +69,9 @@ public final class MtsItems {
     public static final Item STORY_BOOK = registerItem("story_book",
             properties -> new StoryBookItem(properties.craftRemainder(Items.BOOK).stacksTo(1).rarity(Rarity.EPIC)));
 
+    // #################################################################################################################
+    // #                                              MTS EASTER EGG ITEMS                                             #
+    // #################################################################################################################
     public static final Item BROKEN_IRON_PICKAXE = registerItem("broken_iron_pickaxe", properties -> new CursedItem(properties, MobEffects.MINING_FATIGUE));
     public static final Item BROKEN_DIAMOND_PICKAXE = registerItem("broken_diamond_pickaxe", properties -> new CursedItem(properties, MobEffects.MINING_FATIGUE));
     public static final Item PUBLIC_ENEMY_EFFECT_ICON = registerItem("public_enemy", properties -> new CursedItem(properties, MtsEffects.PUBLIC_ENEMY));

@@ -48,6 +48,15 @@ public final class Constants {
 
     /**
      * @author Mr. GodDavid
+     * @since 10/11/2026
+     */
+    public static final class Math {
+
+        public static final double SQRT_3 = 1.732050808;
+    }
+
+    /**
+     * @author Mr. GodDavid
      * @since 10/8/2026
      */
     public static final class ParticleSpawnOffsets {
@@ -102,6 +111,13 @@ public final class Constants {
                 new MtsElementSets.Pair<>(-1.0d, 1.0d),
                 new MtsElementSets.Pair<>(0.0d, 1.0d)
         };
+
+        @SuppressWarnings("unchecked")
+        public static final MtsElementSets.Pair<Double, Double>[] EQUILIBRIUM_TRIANGLE_VERTEX_OFFSET = new MtsElementSets.Pair[]{
+                new MtsElementSets.Pair<>(-0.5d, -Math.SQRT_3 / 6.0d),
+                new MtsElementSets.Pair<>(0.5d, -Math.SQRT_3 / 6.0d),
+                new MtsElementSets.Pair<>(0.0d, Math.SQRT_3 / 3.0d),
+        };
     }
 
     /**
@@ -110,7 +126,7 @@ public final class Constants {
      */
     public static final class Universal {
 
-        public static void initialize() {
+        private static void initialize() {
             MtsLogger.init("Universal Constants");
         }
 

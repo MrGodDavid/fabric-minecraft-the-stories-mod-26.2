@@ -51,6 +51,7 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
         pulse.tick();
         MtsParticleSpawner.spawnCircle(mc, pulse, MtsParticleTypes.ENRICHER_WASTE_PARTICLE, state, 2, 4, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
         MtsParticleSpawner.spawnSquare(mc, pulse, MtsParticleTypes.COLORED_CLOUD_PARTICLE, state, 3, 5, 1, ParticleSpawnMode.SQUARE_FILL_IN, false);
+        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.COLORED_CLOUD_PARTICLE, state, 5, 5, 2, ParticleSpawnMode.EQUILIBRIUM_TRIANGLE_CONTINUOUS, false);
 
         // If the entity was hurt by the player.
         if (TargetDummyDamageManager.getDamageNumbers().isEmpty()) return;

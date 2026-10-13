@@ -16,7 +16,7 @@ import java.util.Optional;
  */
 public class BathingInEnricherWasteTrigger extends SimpleCriterionTrigger<BathingInEnricherWasteTrigger.TriggerInstance> {
 
-    private static final Timer BATHING_TIME = new Timer(60);
+    private static final Timer BATHING_TIME = new Timer(1200);
 
     @Override
     public Codec<TriggerInstance> codec() {
