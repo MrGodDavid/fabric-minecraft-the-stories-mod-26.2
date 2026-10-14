@@ -16,10 +16,7 @@ import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -32,9 +29,6 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
-import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemToolMaterials;
-import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
-import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import org.jspecify.annotations.NonNull;
@@ -139,6 +133,7 @@ public class MtsModelProvider extends FabricModelProvider {
         final ModelTemplate flatItemTemplate = ModelTemplates.FLAT_ITEM;
         final ModelTemplate flatHandledItemTemplate = ModelTemplates.FLAT_HANDHELD_ITEM;
 
+        itemModelGenerators.generateFlatItem(STRONG_DIAMOND_PRESSED_PLATE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_IRON_PRESSED_PLATE, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_IRON_ZEN_STAFF_STAGE_TWO, flatItemTemplate);
         itemModelGenerators.generateFlatItem(STRONG_IRON_ZEN_STAFF_STAGE_THREE, flatItemTemplate);
@@ -294,6 +289,8 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.declareCustomModelItem(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
 
         itemModelGenerators.declareCustomModelItem(STRONG_AMETHYST_LONG_KNIFE);
+
+        itemModelGenerators.declareCustomModelItem(STRONG_IRON_BIG_MACE);
 
         itemModelGenerators.generateFlatItem(ACACIA_STICK, flatItemTemplate);
         itemModelGenerators.generateFlatItem(BIRCH_STICK, flatItemTemplate);

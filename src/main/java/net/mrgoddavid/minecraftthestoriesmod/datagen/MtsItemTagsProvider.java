@@ -260,7 +260,8 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(MtsItems.getResourceKey(STRONG_AMETHYST_SPEAR));
 
         tag(MtsTags.Items.MTS_RARE_WEAPONS_SPEARS)
-                .add(MtsItems.getResourceKey(STRONG_IRON_ZEN_STAFF));
+                .add(MtsItems.getResourceKey(STRONG_IRON_ZEN_STAFF))
+                .add(MtsItems.getResourceKey(STRONG_IRON_BIG_MACE));
 
         tag(ItemTags.SPEARS)
                 .addTag(MtsTags.Items.MTS_COMMON_WEAPONS_SPEARS)

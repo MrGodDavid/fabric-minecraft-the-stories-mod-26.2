@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.particle;
+package net.mrgoddavid.minecraftthestoriesmod.client.particle;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
@@ -17,7 +17,8 @@ public class MtsParticles {
         MtsLogger.info("MTS Particles");
 
         registerParticle("enricher_waste_particle", MtsParticleTypes.ENRICHER_WASTE_PARTICLE);
-        registerParticle("colored_cloud_particle", MtsParticleTypes.COLORED_CLOUD_PARTICLE);
+        registerParticle("colored_cloud_particle", MtsParticleTypes.RED_CLOUD_PARTICLE);
+        registerParticle("oakie_regeneration_particle", MtsParticleTypes.OAKIE_REGENERATION_PARTICLE);
     }
 
     private static <T extends ParticleType<SimpleParticleType>> void registerParticle(final String name, final T particle) {

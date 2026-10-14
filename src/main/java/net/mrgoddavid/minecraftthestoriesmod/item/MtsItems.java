@@ -302,12 +302,15 @@ public final class MtsItems {
 
     public static final Item STRONG_AMETHYST_LONG_KNIFE = registerItem("amethyst_long_knife", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_AMETHYST, 3.5f, -2.2f)));
 
+    public static final Item STRONG_IRON_BIG_MACE = registerItem("strong_iron_big_mace", properties -> new CudgelItem(MtsItemToolMaterials.STRONG_IRON, 3.5F, -3.0F, 1.0F, properties));
+
     // #################################################################################################################
     // #                                        SUPER CRAFTER INGREDIENTS                                              #
     // #################################################################################################################
     public static final Item STRONG_IRON_PRESSED_PLATE = registerItem("strong_iron_pressed_plate", Item::new);
     public static final Item STRONG_IRON_ZEN_STAFF_STAGE_TWO = registerItem("zen_staff_iron_head_stage_two", Item::new);
     public static final Item STRONG_IRON_ZEN_STAFF_STAGE_THREE = registerItem("zen_staff_iron_head_stage_three", Item::new);
+    public static final Item STRONG_DIAMOND_PRESSED_PLATE = registerItem("strong_diamond_pressed_plate", Item::new);
     public static final Item STRONG_DIAMOND_VILLAGER_SOLDER_AXE_HEAD_STAGE_TWO = registerItem("axe_diamond_design_001_head_stage_two", Item::new);
     public static final Item STRONG_DIAMOND_VILLAGER_SOLDER_AXE_HEAD_STAGE_THREE = registerItem("axe_diamond_design_001_head_stage_three", Item::new);
 
@@ -399,6 +402,8 @@ public final class MtsItems {
             fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_THREE);
             fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FOUR);
             fabricCreativeModeTabOutput.accept(LEGENDARY_UPGRADE_SCROLL_STAGE_FIVE);
+            fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_PRESSED_PLATE);
+            fabricCreativeModeTabOutput.accept(STRONG_IRON_PRESSED_PLATE);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(fabricCreativeModeTabOutput -> {
@@ -482,6 +487,7 @@ public final class MtsItems {
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_CROP);
             fabricCreativeModeTabOutput.accept(STRONG_DIAMOND_VILLAGER_SOLIDER_AXE);
             fabricCreativeModeTabOutput.accept(STRONG_AMETHYST_LONG_KNIFE);
+            fabricCreativeModeTabOutput.accept(STRONG_IRON_BIG_MACE);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(fabricCreativeModeTabOutput -> {

@@ -5,9 +5,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
-import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemToolMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
-import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
@@ -146,6 +144,8 @@ public class CreativeModeTabs {
 
                         output.accept(STRONG_AMETHYST_LONG_KNIFE);
 
+                        output.accept(STRONG_IRON_BIG_MACE);
+
                         output.accept(EMERALD_HELMET);
                         output.accept(EMERALD_CHESTPLATE);
                         output.accept(EMERALD_LEGGINGS);
@@ -189,6 +189,7 @@ public class CreativeModeTabs {
                         output.accept(STRONG_IRON_PRESSED_PLATE);
                         output.accept(STRONG_IRON_ZEN_STAFF_STAGE_TWO);
                         output.accept(STRONG_IRON_ZEN_STAFF_STAGE_THREE);
+                        output.accept(STRONG_DIAMOND_PRESSED_PLATE);
 
                         output.accept(STRAWBERRY_SEEDS);
                         output.accept(STRAWBERRY);

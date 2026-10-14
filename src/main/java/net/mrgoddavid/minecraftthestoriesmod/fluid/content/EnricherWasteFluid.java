@@ -32,7 +32,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
-import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.Nullable;
 

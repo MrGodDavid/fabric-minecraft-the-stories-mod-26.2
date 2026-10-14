@@ -26,7 +26,7 @@ a97015d81d6ac2bf16feb917cbc13e094541a6d3 data/minecraft/tags/block/incorrect_for
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/incorrect_for_netherite_tool.json
 e78b605a606d540e7a61e85d264e2a382841d0b3 data/minecraft/tags/block/leaves.json
 ea9731f6b4af977ab774c43f004e5ca593173010 data/minecraft/tags/block/logs.json
-2b2b59eb83677faaaba0d5c9b1a637457c90f60b data/minecraft/tags/block/mineable/axe.json
+b5de640425f54399900f1817057d4e7432f0c24d data/minecraft/tags/block/mineable/axe.json
 0e32399e8ef5038293f1182128ae817b9ba476aa data/minecraft/tags/block/mineable/pickaxe.json
 4928ab4b5cec33b5ba1d42b51cfb41152421f883 data/minecraft/tags/block/needs_diamond_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/needs_iron_tool.json

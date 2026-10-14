@@ -13,9 +13,11 @@ import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
-import net.mrgoddavid.minecraftthestoriesmod.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.dave.RandomPulse;
 import org.joml.Quaternionf;
 import org.jspecify.annotations.NonNull;
@@ -43,15 +45,27 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
     }
 
     @Override
+    public void extractRenderState(TargetDummyEntity entity, TargetDummyRenderState state, float partialTicks) {
+        super.extractRenderState(entity, state, partialTicks);
+        state.entityUUID = entity.getUUID();
+    }
+
+    @Override
     public void submit(TargetDummyRenderState state, @NonNull PoseStack poseStack, @NonNull SubmitNodeCollector submitNodeCollector, @NonNull CameraRenderState camera) {
         super.submit(state, poseStack, submitNodeCollector, camera);
         Minecraft mc = Minecraft.getInstance();
 
         // Spawn particles around entity
         pulse.tick();
-        MtsParticleSpawner.spawnCircle(mc, pulse, MtsParticleTypes.ENRICHER_WASTE_PARTICLE, state, 2, 4, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
-        MtsParticleSpawner.spawnSquare(mc, pulse, MtsParticleTypes.COLORED_CLOUD_PARTICLE, state, 3, 5, 1, ParticleSpawnMode.SQUARE_FILL_IN, false);
-        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.COLORED_CLOUD_PARTICLE, state, 5, 5, 2, ParticleSpawnMode.EQUILIBRIUM_TRIANGLE_CONTINUOUS, false);
+        MtsParticleSpawner.spawnCircle(mc, pulse, MtsParticleTypes.ENRICHER_WASTE_PARTICLE, state.entityUUID, "spawn_circle_1", new Timer(60), state, 2, 4, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
+        MtsParticleSpawner.spawnSquare(mc, pulse, MtsParticleTypes.RED_CLOUD_PARTICLE,state.entityUUID, "spawn_square_1",  new Timer(60), state, 3, 5, 1, ParticleSpawnMode.SQUARE_FILL_IN, false);
+        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.RED_CLOUD_PARTICLE, state.entityUUID, "spawn_triangle_1", new Timer(60), state, 5, 5, 2, ParticleSpawnMode.EQUILIBRIUM_TRIANGLE_CONTINUOUS, false);
+        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_triangle_2", new Timer(40), state, 7, Constants.Universal.DOUBLE_PLACEHOLDER, Constants.Universal.INTEGER_PLACEHOLDER,
+                () -> MtsParticleSpawner.vertexRuleBuilder()
+                        .add(2, 3)
+                        .add(3, 4)
+                        .add(1, 0).build(),
+                ParticleSpawnMode.TRIANGLE_VERTEX, false);
 
         // If the entity was hurt by the player.
         if (TargetDummyDamageManager.getDamageNumbers().isEmpty()) return;
@@ -66,7 +80,7 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
 
             poseStack.pushPose();
             poseStack.translate(damageNumber.getXOffset(), damageNumber.getY() - state.y, damageNumber.getZOffset());
-            poseStack.mulPose(new Quaternionf(camera.orientation));
+            poseStack.mulPose(new Quaternionf(camera.orientation)); // TODO
             poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
             poseStack.scale(-0.025F, -0.025F, 0.025F);
             submitNodeCollector.submitText(poseStack, -width / 2.0F, -4.0F, Component.literal(text).getVisualOrderText(), false, Font.DisplayMode.SEE_THROUGH, 0xF000F0, color, 0, 0);

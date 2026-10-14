@@ -37,7 +37,20 @@ public enum ParticleSpawnMode {
      */
     EQUILIBRIUM_TRIANGLE_CONTINUOUS,
     /**
-     * Spawn particle in a random triangle. (The user needs to define the coordinate offset around the living entity.)
+     * Spawn particle in a normal triangle. (The user needs to define the coordinate offset around the living entity.)
      */
-    TRIANGLE;
+    TRIANGLE_VERTEX,
+    /**
+     * Spawn particle in a normal triangle continuously. (The user needs to define the coordinate offset around the
+     * living entity.)
+     */
+    TRIANGLE_VERTEX_CONTINUOUS,
+    /**
+     * Fill the circular region with eight-dir circle offset coordinate offsets.
+     */
+    FILL_CIRCLE_EIGHT_DIR,
+    /**
+     * Fill the circular region with sixteen-dir circle offset coordinate offsets.
+     */
+    FILL_CIRCLE_SIXTEEN_DIR;
 }

@@ -213,6 +213,7 @@ ca35945b34b0c6f999c5a9f4bd44c6721f68c0fd assets/minecraft-the-stories-mod/items/
 f0d805b9a26478edcfa02ccd6c13be50f76e84b0 assets/minecraft-the-stories-mod/items/strong_diamond_block.json
 dc3a6d0be9e6fbe876324e01ff1ba1d5779c3aaf assets/minecraft-the-stories-mod/items/strong_diamond_chop.json
 4108c4e18dd0f9f90975da7e217891059fe22a8b assets/minecraft-the-stories-mod/items/strong_diamond_ingot.json
+2bbc5c43bfb726ca02689719811259dfb64df4a2 assets/minecraft-the-stories-mod/items/strong_diamond_pressed_plate.json
 9ad48b02b852db7e39af69764d1c8b456c8312bd assets/minecraft-the-stories-mod/items/strong_diamond_villager_soldier_axe.json
 7ea17f7a7c2928c0aef9ad1a4ab266a4d1750625 assets/minecraft-the-stories-mod/items/strong_emerald.json
 65ced7389e7649b499261cabeedfe9bfcea34114 assets/minecraft-the-stories-mod/items/strong_emerald_block.json
@@ -221,6 +222,7 @@ a7ff27efaf63a78cb6c5c4e180b0e9fa89a896dd assets/minecraft-the-stories-mod/items/
 cb48f396f7587b275a9fd37e01763d7cf39aee26 assets/minecraft-the-stories-mod/items/strong_gold_block.json
 79b312fc75ff17de2511206153975f9198d4c8d6 assets/minecraft-the-stories-mod/items/strong_gold_ingot.json
 1e42e4ba7273c044eea61242cf843006589a964f assets/minecraft-the-stories-mod/items/strong_iron.json
+1501ffbecc0a4439b36e8221cfecebb0f730d551 assets/minecraft-the-stories-mod/items/strong_iron_big_mace.json
 aada0ae3a858939a152b92d8b8d11904c8908432 assets/minecraft-the-stories-mod/items/strong_iron_block.json
 900723e0fbf828431449f4a606f13d516d893ab4 assets/minecraft-the-stories-mod/items/strong_iron_double_blade.json
 96d274a435bb5e3a57a2b0c0bcf87f36d4157a5b assets/minecraft-the-stories-mod/items/strong_iron_ingot.json
@@ -561,6 +563,7 @@ d2349edb3e6a64a1a99e2992383cce99e7ccf981 assets/minecraft-the-stories-mod/models
 e1a8189cbed9d28c050d24574eea9bf15499637c assets/minecraft-the-stories-mod/models/item/strong_amethyst_sword.json
 29d90cce4abd5233d24bcc311cab92bf2c2205a0 assets/minecraft-the-stories-mod/models/item/strong_diamond.json
 c81c18d8d318216583db21893d1e94ee0042f6b9 assets/minecraft-the-stories-mod/models/item/strong_diamond_ingot.json
+41da7ee1bc8d233a5885f4839af54cafc7ee16f6 assets/minecraft-the-stories-mod/models/item/strong_diamond_pressed_plate.json
 56aae870df6544ee83ada6add6393fbcb6cf73dd assets/minecraft-the-stories-mod/models/item/strong_emerald.json
 059681853db474ae63774344ed5ae59ef15d5fc9 assets/minecraft-the-stories-mod/models/item/strong_emerald_ingot.json
 22b1325f8adf9aff4894e7db6f2ade857311d721 assets/minecraft-the-stories-mod/models/item/strong_gold.json

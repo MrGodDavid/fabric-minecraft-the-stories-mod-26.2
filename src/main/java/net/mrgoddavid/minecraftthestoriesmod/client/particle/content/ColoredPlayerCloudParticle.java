@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.particle.content;
+package net.mrgoddavid.minecraftthestoriesmod.client.particle.content;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -87,9 +87,24 @@ public class ColoredPlayerCloudParticle extends SingleQuadParticle {
             this.colorRGBA = 0xFFFFFFFF;
         }
 
+        /**
+         * Defines color of the particle.
+         *
+         * @param r channel of an RGBA color.
+         * @param g channel of an RGBA color.
+         * @param b channel of an RGBA color.
+         * @return the reference of the builder of colored cloud particles.
+         * @apiNote this method automatically fills the alpha channel to 255.
+         */
+        public Provider color(int r, int g, int b) {
+            this.color(r, g, b, 255);
+            return this;
+        }
+
         public Provider color(int r, int g, int b, int a) {
             if ((r | g | b | a) < 0 || (r > 255 || g > 255 || b > 255 || a > 255)) {
-                throw new IllegalArgumentException("Color RGBA value must be between 0 and 255!");
+                throw new IllegalArgumentException("Color RGBA value must be between 0 and 255!" +
+                        "\nCurrent RGBA value: r:" + r + ", g:" + g + ", b:" + b + ", a:" + a);
             }
             this.colorRGBA = r << 24 | g << 16 | b << 8 | a;
             return this;

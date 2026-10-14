@@ -134,6 +134,23 @@ public final class Constants {
         public static final int LINE_LENGTH = 40;
         public static final int MAX_SATURATION = 20;
 
+        /**
+         * A placeholder for int values. Value: {@link Integer#MAX_VALUE}.
+         */
+        public static final int INTEGER_PLACEHOLDER = Integer.MAX_VALUE;
+        /**
+         * A placeholder for double values. Value: {@link Double#NaN}.
+         */
+        public static final double DOUBLE_PLACEHOLDER = Double.NaN;
+        /**
+         * A placeholder for float values. Value: {@link Float#NaN}.
+         */
+        public static final float FLOAT_PLACEHOLDER = Float.NaN;
+        /**
+         * A placeholder for long values. Value: {@link Long#MAX_VALUE}.
+         */
+        public static final long LONG_PLACEHOLDER = Long.MAX_VALUE;
+
         public static final Component[] SHIFT_DOWN_TOOLTIP_INFORMATION = new Component[]{Component.translatable("tooltip.minecraft-the-stories-mod.shift_down")};
 
         @Deprecated
