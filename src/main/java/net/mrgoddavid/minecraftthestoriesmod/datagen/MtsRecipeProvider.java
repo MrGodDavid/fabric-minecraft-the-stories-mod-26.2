@@ -127,7 +127,6 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 this.mtsSignBuilder(Items.PALE_OAK_SIGN, Items.PALE_OAK_PLANKS, PALE_OAK_STICK, Items.PALE_OAK_PLANKS, PALE_OAK_STICK, "pale_oak_sign");
                 this.mtsSignBuilder(Items.SPRUCE_SIGN, Items.SPRUCE_PLANKS, SPRUCE_STICK, Items.SPRUCE_PLANKS, SPRUCE_STICK, "spruce_sign");
 
-                // TODO more wooden weapon variants.
                 this.woodenAxeFromPlanks(ACACIA_AXE, Items.ACACIA_PLANKS, ACACIA_STICK, Items.ACACIA_PLANKS, "acacia_axe");
                 this.woodenHoeFromPlanks(ACACIA_HOE, Items.ACACIA_PLANKS, ACACIA_STICK, Items.ACACIA_PLANKS, "acacia_hoe");
                 this.woodenPickaxeFromPlanks(ACACIA_PICKAXE, Items.ACACIA_PLANKS, ACACIA_STICK,  Items.ACACIA_PLANKS, "acacia_pickaxe");

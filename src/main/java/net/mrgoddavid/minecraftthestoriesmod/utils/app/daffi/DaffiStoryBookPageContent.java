@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils.daffi;
+package net.mrgoddavid.minecraftthestoriesmod.utils.app.daffi;
 
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 

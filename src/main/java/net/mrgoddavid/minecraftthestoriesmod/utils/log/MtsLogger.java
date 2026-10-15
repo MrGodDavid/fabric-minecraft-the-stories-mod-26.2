@@ -29,6 +29,10 @@ public final class MtsLogger {
         MinecraftTheStoriesMod.LOGGER.warn(warning);
     }
 
+    public static void error(@NonNull String errorMsg) {
+        MinecraftTheStoriesMod.LOGGER.error(errorMsg);
+    }
+
     private MtsLogger() throws IllegalAccessException {
         throw new IllegalAccessException("You cannot instantiate this class!");
     }

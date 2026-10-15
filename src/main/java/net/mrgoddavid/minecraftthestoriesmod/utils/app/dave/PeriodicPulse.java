@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils.dave;
+package net.mrgoddavid.minecraftthestoriesmod.utils.app.dave;
 
 /**
  * @author Mr. GodDavid

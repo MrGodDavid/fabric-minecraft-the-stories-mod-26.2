@@ -8,7 +8,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  * @author Mr. GodDavid
  * @since 8/30/2026
  */
-public class MtsParticleTypes {
+public final class MtsParticleTypes {
 
     public static final SimpleParticleType ENRICHER_WASTE_PARTICLE = FabricParticleTypes.simple();
     public static final SimpleParticleType RED_CLOUD_PARTICLE = FabricParticleTypes.simple();

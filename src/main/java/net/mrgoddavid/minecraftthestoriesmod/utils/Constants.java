@@ -5,6 +5,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import org.jspecify.annotations.NonNull;
@@ -44,6 +45,28 @@ public final class Constants {
      */
     public static Identifier defaultId(@NonNull final String path) {
         return Identifier.withDefaultNamespace(path);
+    }
+
+    public static final class Paths {
+
+        public static final Directory PATH_TO_PARTICLE_ATLAS;
+        public static final Directory PATH_TO_PARTICLE_FRAMES;
+
+        static {
+            PATH_TO_PARTICLE_ATLAS = Directory.builder()
+                    .src().main_dir().resources()
+                    .assets()
+                    .minecraft_the_stories_mod()
+                    .textures()
+                    .atlases().build();
+            PATH_TO_PARTICLE_FRAMES = Directory.builder()
+                    .src().main_dir().resources()
+                    .assets()
+                    .minecraft_the_stories_mod()
+                    .textures()
+                    .particle()
+                    .build();
+        }
     }
 
     /**

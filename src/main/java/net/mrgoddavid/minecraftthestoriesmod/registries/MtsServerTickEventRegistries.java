@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
-import net.mrgoddavid.minecraftthestoriesmod.utils.dave.PeriodicPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.PeriodicPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 /**

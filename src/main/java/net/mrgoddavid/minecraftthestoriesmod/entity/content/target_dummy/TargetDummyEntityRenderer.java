@@ -11,14 +11,14 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
-import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
-import net.mrgoddavid.minecraftthestoriesmod.utils.dave.RandomPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
 import org.joml.Quaternionf;
 import org.jspecify.annotations.NonNull;
 
@@ -80,7 +80,7 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
 
             poseStack.pushPose();
             poseStack.translate(damageNumber.getXOffset(), damageNumber.getY() - state.y, damageNumber.getZOffset());
-            poseStack.mulPose(new Quaternionf(camera.orientation)); // TODO
+            poseStack.mulPose(new Quaternionf(camera.orientation));
             poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
             poseStack.scale(-0.025F, -0.025F, 0.025F);
             submitNodeCollector.submitText(poseStack, -width / 2.0F, -4.0F, Component.literal(text).getVisualOrderText(), false, Font.DisplayMode.SEE_THROUGH, 0xF000F0, color, 0, 0);

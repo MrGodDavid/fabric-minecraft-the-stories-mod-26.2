@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils.daffi;
+package net.mrgoddavid.minecraftthestoriesmod.utils.app.daffi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

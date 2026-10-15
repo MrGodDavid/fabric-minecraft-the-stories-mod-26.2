@@ -11,7 +11,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  * @author Mr. GodDavid
  * @since 8/30/2026
  */
-public class MtsParticles {
+public final class MtsParticles {
 
     public static void register() {
         MtsLogger.info("MTS Particles");

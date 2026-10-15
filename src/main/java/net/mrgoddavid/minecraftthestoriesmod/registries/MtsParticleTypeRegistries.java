@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.minecraft.client.particle.BubbleParticle;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.content.ColoredPlayerCloudParticle;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.content.AbstractWoodlinParticle;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.content.OakieRegenerationParticle;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
