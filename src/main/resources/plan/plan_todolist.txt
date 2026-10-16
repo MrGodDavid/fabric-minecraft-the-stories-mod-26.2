@@ -47,7 +47,7 @@
 				@ENTITY BIRCHIA: Spirit of Gigantic Birchlin. Tamable auxiliary entity. Grants jumping boost effect.
 				@ENTITY CHERRINIA: Spirit of Bloomy Cherry Woods. Tamable auxiliary entity. Grants Entice effect--decrease damage dealt by surrounding enemies.
 				@ENTITY DENSE_OAKIE: Spirit of Dark Oaklin. Tamable auxiliary entity. Grants Strength effects. Increase damage dealt by player in the range of this dense_oakie.
-				@ENTITY JUNMI: Spirit of Lush Jungle. Tamable auxiliary entity. Grants Hydration effects. Increase player's speed in the range of junglenia.
+				@ENTITY JUNMI: Spirit of Lush Jungle. Tamable auxiliary entity. Grants Hydration effects. Increase player's speed of hydrating in the range of junglenia.
 				@ENTITY MANGROLINO: Spirit of Swampy Mangrilin. Tamable auxiliary entity. Grants Swimmer and Hydration buff in range of mangrovia. 
 				@ENTITY OAKIE: Spirit of the Dense Oaklin. Tamable auxiliary entity. Grants healing effects to all surrounding entity, including the time when it is tamed by player. (@WIP)
 				@ENTITY LIGHT_OAKIE: Spirit of Pale Oaklin. Tamable auxiliary entity. Grants invisible (trying to make armors invisible), increasing player's jumping height in the range of Light Oakie.
