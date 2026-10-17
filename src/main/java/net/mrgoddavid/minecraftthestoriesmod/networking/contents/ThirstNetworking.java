@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.server.level.ServerPlayer;
 import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.ThirstPayloadS2C;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -11,7 +13,8 @@ import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
  */
 public class ThirstNetworking {
 
-    private ThirstNetworking() {
+    private ThirstNetworking() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static void sync(ServerPlayer player, ThirstManager thirstManager) {

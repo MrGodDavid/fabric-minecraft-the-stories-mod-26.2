@@ -1,6 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.image;
 
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -53,6 +55,7 @@ public final class AtlasCropper {
         }
     }
 
-    private AtlasCropper() {
+    private AtlasCropper() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

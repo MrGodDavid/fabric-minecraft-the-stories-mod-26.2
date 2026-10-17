@@ -2,8 +2,10 @@ package net.mrgoddavid.minecraftthestoriesmod.gui.sprites;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -29,6 +31,6 @@ public final class MtsWidgetTextures {
     }
 
     private MtsWidgetTextures() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

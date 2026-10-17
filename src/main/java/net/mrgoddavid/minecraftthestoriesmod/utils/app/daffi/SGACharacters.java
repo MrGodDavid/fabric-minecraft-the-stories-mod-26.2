@@ -1,5 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.app.daffi;
 
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
@@ -85,6 +88,7 @@ public final class SGACharacters {
         }
     }
 
-    private SGACharacters() {
+    private SGACharacters() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

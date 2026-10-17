@@ -7,7 +7,9 @@ import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * Rendering registries of MTS mod.
@@ -43,6 +45,6 @@ public final class MtsFluidRenderingRegistries {
     }
 
     private MtsFluidRenderingRegistries() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

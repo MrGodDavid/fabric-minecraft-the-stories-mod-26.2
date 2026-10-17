@@ -7,7 +7,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -182,11 +184,11 @@ public final class Constants {
         }
 
         private Universal() throws IllegalAccessException {
-            throw new IllegalAccessException("You cannot instantiate this class!");
+            ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
         }
     }
 
     private Constants() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

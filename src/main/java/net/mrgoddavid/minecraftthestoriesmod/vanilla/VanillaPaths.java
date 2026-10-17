@@ -1,6 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.vanilla;
 
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * Holds a connection of the path of blocks in vanilla Minecraft.
@@ -52,6 +54,6 @@ public final class VanillaPaths {
     }
 
     private VanillaPaths() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

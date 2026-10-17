@@ -9,7 +9,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworking;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -17,7 +19,8 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  */
 public class ThirstEvents {
 
-    private ThirstEvents() {
+    private ThirstEvents() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static void register() {

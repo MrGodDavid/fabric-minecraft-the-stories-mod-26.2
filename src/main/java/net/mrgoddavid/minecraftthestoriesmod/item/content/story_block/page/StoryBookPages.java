@@ -5,6 +5,8 @@ import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.progress.S
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.progress.StoryBookProgressHolder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.List;
 
@@ -25,7 +27,8 @@ public class StoryBookPages {
             )
     );
 
-    private StoryBookPages() {
+    private StoryBookPages() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static List<StoryBookPage> getUnlockedPages(Player player) {

@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntityModel;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyModel;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntityModel;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import org.jspecify.annotations.NonNull;
@@ -16,6 +17,7 @@ public final class MtsEntityModelLayers {
 
     public static final ModelLayerLocation BROWN_BEAR = createMain("brown_bear");
     public static final ModelLayerLocation TARGET_DUMMY = createMain("target_dummy");
+    public static final ModelLayerLocation OAKIE = createMain("oakie");
 
     private static ModelLayerLocation createMain(@NonNull final String name) {
         return new ModelLayerLocation(Constants.modId(name), "main");
@@ -26,5 +28,6 @@ public final class MtsEntityModelLayers {
 
         ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.BROWN_BEAR, BrownBearEntityModel::getTexturedModelData);
         ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.TARGET_DUMMY, TargetDummyModel::getTexturedModelData);
+        ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.OAKIE, OakieEntityModel::getTexturedModelData);
     }
 }

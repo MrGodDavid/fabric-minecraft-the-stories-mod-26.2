@@ -7,6 +7,8 @@ import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstClientManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -26,7 +28,8 @@ public class ThirstHud {
     private static int counter = 0;
     private static boolean updateOnce = false;
 
-    private ThirstHud() {
+    private ThirstHud() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     /**

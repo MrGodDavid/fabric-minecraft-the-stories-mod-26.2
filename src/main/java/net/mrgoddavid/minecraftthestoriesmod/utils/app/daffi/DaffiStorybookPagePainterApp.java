@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Mr. GodDavid
  * @since 9/23/2026
  */
-public final class DaffiStorybookPagePainter {
+public final class DaffiStorybookPagePainterApp {
 
     static final Directory EXPECTED_SGA_CHARACTER_JSON_FILE_DIR = Directory.builder().src().main_dir().resources().assets().minecraft_the_stories_mod().textures().daffi().build();
 

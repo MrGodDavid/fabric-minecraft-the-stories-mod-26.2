@@ -9,7 +9,9 @@ import net.minecraft.world.level.material.Fluid;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.content.BlueFuelFluid;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.content.EnricherWasteFluid;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -29,7 +31,7 @@ public class MtsFluids {
     }
 
     private MtsFluids() throws IllegalAccessException {
-        throw new IllegalAccessException("You can't instantiate MtsFluids!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static void register() {

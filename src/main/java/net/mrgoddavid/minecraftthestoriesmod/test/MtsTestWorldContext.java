@@ -9,6 +9,8 @@ import net.minecraft.world.level.WorldDataConfiguration;
 import net.minecraft.world.level.levelgen.WorldDimensions;
 import net.minecraft.world.level.levelgen.WorldOptions;
 import net.minecraft.world.level.levelgen.presets.WorldPresets;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * Context of MTS Test World.
@@ -22,7 +24,8 @@ public class MtsTestWorldContext {
     private static ServerLevel overworld;
     private static BlockPos origin;
 
-    private MtsTestWorldContext() {
+    private MtsTestWorldContext() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static void register(ServerLevel overworld, BlockPos origin) {

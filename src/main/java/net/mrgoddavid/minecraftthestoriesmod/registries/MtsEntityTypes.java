@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyEntity;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
@@ -18,15 +19,11 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 public final class MtsEntityTypes {
 
     public static final EntityType<BrownBearEntity> BROWN_BEAR = register("brown_bear",
-            EntityType.Builder.<BrownBearEntity>of(BrownBearEntity::new, MobCategory.CREATURE)
-                    .sized(1.0f, 1.0f)
-                    .eyeHeight(1.1875f)
-    );
+            EntityType.Builder.<BrownBearEntity>of(BrownBearEntity::new, MobCategory.CREATURE).sized(1.0f, 1.0f).eyeHeight(1.1875f));
     public static final EntityType<TargetDummyEntity> TARGET_DUMMY = register("target_dummy",
-            EntityType.Builder.<TargetDummyEntity>of(TargetDummyEntity::new, MobCategory.MISC)
-                    .sized(0.8f, 1.8f)
-                    .eyeHeight(1.6f)
-    );
+            EntityType.Builder.<TargetDummyEntity>of(TargetDummyEntity::new, MobCategory.MISC).sized(0.8f, 1.8f).eyeHeight(1.6f));
+    public static final EntityType<OakieEntity> OAKIE = register("oakie",
+            EntityType.Builder.<OakieEntity>of(OakieEntity::new, MobCategory.MISC).sized(0.375f, 0.625f).eyeHeight(0.3125f));
 
     private static <T extends Entity> EntityType<T> register(final String name, final EntityType.Builder<T> builder) {
         ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Constants.modId(name));
@@ -42,5 +39,6 @@ public final class MtsEntityTypes {
 
         FabricDefaultAttributeRegistry.register(BROWN_BEAR, BrownBearEntity.createCubeAttributes());
         FabricDefaultAttributeRegistry.register(TARGET_DUMMY, TargetDummyEntity.createLivingAttributes());
+        FabricDefaultAttributeRegistry.register(OAKIE, OakieEntity.createCubeAttributes());
     }
 }

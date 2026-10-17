@@ -50,6 +50,7 @@ public abstract class AbstractWoodlinParticle extends SingleQuadParticle {
     }
 
     /**
+     * @param <P> Particle type that extends {@link AbstractWoodlinParticle}.
      * @author Mr. GodDavid
      * @since 10/13/2026
      */

@@ -2,8 +2,10 @@ package net.mrgoddavid.minecraftthestoriesmod.registries;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -14,6 +16,7 @@ public final class MtsEntityTextures {
 
     public static final Identifier BROWN_BEAR = register("brown_bear");
     public static final Identifier TARGET_DUMMY = register("target_dummy");
+    public static final Identifier OAKIE = register("oakie");
 
     private static Identifier register(@NonNull final String name) {
         return Constants.modId(Directory.builder().textures().entity().build() + name + "/" + name + ".png");
@@ -28,6 +31,6 @@ public final class MtsEntityTextures {
     }
 
     private MtsEntityTextures() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

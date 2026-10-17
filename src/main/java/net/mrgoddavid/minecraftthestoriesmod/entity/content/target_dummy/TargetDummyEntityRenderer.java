@@ -56,16 +56,28 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
         Minecraft mc = Minecraft.getInstance();
 
         // Spawn particles around entity
-        pulse.tick();
-        MtsParticleSpawner.spawnCircle(mc, pulse, MtsParticleTypes.ENRICHER_WASTE_PARTICLE, state.entityUUID, "spawn_circle_1", new Timer(60), state, 2, 4, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
-        MtsParticleSpawner.spawnSquare(mc, pulse, MtsParticleTypes.RED_CLOUD_PARTICLE,state.entityUUID, "spawn_square_1",  new Timer(60), state, 3, 5, 1, ParticleSpawnMode.SQUARE_FILL_IN, false);
-        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.RED_CLOUD_PARTICLE, state.entityUUID, "spawn_triangle_1", new Timer(60), state, 5, 5, 2, ParticleSpawnMode.EQUILIBRIUM_TRIANGLE_CONTINUOUS, false);
-        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_triangle_2", new Timer(40), state, 7, Constants.Universal.DOUBLE_PLACEHOLDER, Constants.Universal.INTEGER_PLACEHOLDER,
-                () -> MtsParticleSpawner.vertexRuleBuilder()
-                        .add(2, 3)
-                        .add(3, 4)
-                        .add(1, 0).build(),
-                ParticleSpawnMode.TRIANGLE_VERTEX, false);
+//        pulse.tick();
+//        MtsParticleSpawner.spawnCircle(mc, pulse, MtsParticleTypes.ENRICHER_WASTE_PARTICLE, state.entityUUID, "spawn_circle_1", new Timer(60), state, 2, 4, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
+//        MtsParticleSpawner.spawnSquare(mc, pulse, MtsParticleTypes.RED_CLOUD_PARTICLE,state.entityUUID, "spawn_square_1",  new Timer(60), state, 3, 5, 1, ParticleSpawnMode.SQUARE_FILL_IN, false);
+//        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.RED_CLOUD_PARTICLE, state.entityUUID, "spawn_triangle_1", new Timer(60), state, 5, 5, 2, ParticleSpawnMode.EQUILIBRIUM_TRIANGLE_CONTINUOUS, false);
+//        MtsParticleSpawner.spawnTriangle(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_triangle_2", new Timer(40), state, 7, Constants.Universal.DOUBLE_PLACEHOLDER, Constants.Universal.INTEGER_PLACEHOLDER,
+//                () -> MtsParticleSpawner.vertexRuleBuilder()
+//                        .add(2, 3)
+//                        .add(3, 4)
+//                        .add(1, 0).build(),
+//                ParticleSpawnMode.TRIANGLE_VERTEX, false);
+//
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.ACACIANIA_SWIFTNESS_PARTICLE, state.entityUUID, "spawn_point_particle_1", new Timer(40), state, 1, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.BIRCHIA_JUMPING_BOOST_PARTICLE, state.entityUUID, "spawn_point_particle_2", new Timer(40), state, 2, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.CHERRINIA_ENTICEMENT_PARTICLE, state.entityUUID, "spawn_point_particle_3", new Timer(40), state, 3, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.DENSE_OAKIE_STRENGTH_PARTICLE, state.entityUUID, "spawn_point_particle_4", new Timer(40), state, 4, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.JUNMI_HYDRATION_PARTICLE, state.entityUUID, "spawn_point_particle_5", new Timer(40), state, 5, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.MANGROLINO_SWIMMER_BOOST_PARTICLE, state.entityUUID, "spawn_point_particle_6", new Timer(40), state, 6, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_point_particle_7", new Timer(40), state, 7, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.LIGHT_OAKIE_INVISIBILITY_PARTICLE, state.entityUUID, "spawn_point_particle_8", new Timer(40), state, 8, 10, 0, false);
+//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.SPRUCIA_ATTACK_SPEED_PARTICLE, state.entityUUID, "spawn_point_particle_9", new Timer(40), state, 9, 10, 0, false);
+//
+//        MtsParticleSpawner.fillCircle(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_filling_circle_1", new Timer(40), state, 0, 5, 2, ParticleSpawnMode.FILL_CIRCLE_SIXTEEN_DIR, false);
 
         // If the entity was hurt by the player.
         if (TargetDummyDamageManager.getDamageNumbers().isEmpty()) return;

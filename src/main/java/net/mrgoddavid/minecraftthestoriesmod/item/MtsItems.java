@@ -21,8 +21,10 @@ import net.mrgoddavid.minecraftthestoriesmod.item.content.DrinkableItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.TooltipLineBreaker;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -40,8 +42,8 @@ public final class MtsItems {
     /**
      * Private constructor.
      */
-    private MtsItems() {
-        throw new IllegalStateException("You can't instantiate ModItems class!");
+    private MtsItems() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     // Custom mod items go here.

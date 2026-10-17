@@ -30,7 +30,9 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.tree.MtsTreeGrowers;
 
 import java.util.function.Consumer;
@@ -237,7 +239,7 @@ public class MtsBlocks {
     /**
      * Private constructor.
      */
-    private MtsBlocks() {
-        throw new IllegalStateException("You can't instantiate ModItems class!");
+    private MtsBlocks() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

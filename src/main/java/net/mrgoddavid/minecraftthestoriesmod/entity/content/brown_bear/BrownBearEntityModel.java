@@ -88,6 +88,9 @@ public class BrownBearEntityModel extends EntityModel<BrownBearEntityRenderState
         this.root.getAllParts().forEach(ModelPart::resetPose);
         EntityAnimationUtils.applyMobHeadRotation(this, state.yRot, state.xRot);
 
+        // PLEASE DO NOT TRY TO SIMPLIFY THIS WEIRD IF STATEMENTS
+        // IT WORKS NOW AND ONLY CODERS WHO PLAY WITH DARK MAGICS COULD UNDERSTAND THESE...
+        // ONE MORE TIME, DO NOT TOUCH THIS CODE!!!
         this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
         this.tameAnimation.apply(state.tameAnimationState, state.ageInTicks);
         if (!state.tameAnimationState.isStarted() && !state.sitAnimationState.isStarted()) {
@@ -95,11 +98,8 @@ public class BrownBearEntityModel extends EntityModel<BrownBearEntityRenderState
         }
         if (!state.tameAnimationState.isStarted()) {
             this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
-        }
-        if (!state.tameAnimationState.isStarted()) {
             this.sitAnimation.apply(state.sitAnimationState, state.ageInTicks);
         }
-
         if (!state.tameAnimationState.isStarted() && !state.sitAnimationState.isStarted()) {
             if (state.runAnimationState.isStarted()) {
                 this.runAnimation.apply(state.runAnimationState, state.ageInTicks);

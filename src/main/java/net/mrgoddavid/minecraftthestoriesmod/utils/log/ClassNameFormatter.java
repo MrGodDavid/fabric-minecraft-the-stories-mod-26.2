@@ -28,6 +28,6 @@ public final class ClassNameFormatter {
     }
 
     private ClassNameFormatter() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate " + format(ClassNameFormatter.class) + "!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

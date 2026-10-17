@@ -1,6 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.networking.manager;
 
 import net.minecraft.world.entity.Entity;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,7 +36,8 @@ public class TargetDummyDamageManager {
         return DAMAGE_NUMBERS;
     }
 
-    private TargetDummyDamageManager() {
+    private TargetDummyDamageManager() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     /**

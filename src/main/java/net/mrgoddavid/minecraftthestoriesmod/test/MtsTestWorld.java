@@ -9,6 +9,8 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.storage.LevelStorageSource;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class MtsTestWorld {
     public static final String WORLD_ID = "mts_test";
 
     private MtsTestWorld() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static void changeDevTitleScreen() {

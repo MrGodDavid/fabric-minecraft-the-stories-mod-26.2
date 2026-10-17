@@ -4,12 +4,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ClassNameFormatter;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.*;
 
@@ -24,12 +27,47 @@ public final class MtsParticleSpawner {
     private static final float RANDOMNESS = 0.5f;
     private static final Map<EffectKey, Timer> PARTICLE_OPTIONS_TIMER_MAP = new HashMap<>();
 
-    private MtsParticleSpawner() {
+    private MtsParticleSpawner() throws IllegalAccessException {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     private static Timer getOrCreateTimer(final UUID entityUUID, final String effectId, final Timer initialTimer) {
         EffectKey key = new EffectKey(entityUUID, effectId);
         return PARTICLE_OPTIONS_TIMER_MAP.computeIfAbsent(key, ignored -> initialTimer);
+    }
+
+    public static void spawnPointAt(
+        final Minecraft mc,
+        final RandomPulse pulse,
+        final ParticleOptions particleType,
+        final UUID entityUUID,
+        final String effectId,
+        final Timer timer,
+        final LivingEntityRenderState renderState,
+        final double localX,
+        final double localY,
+        final double localZ,
+        final boolean randomness
+    ) {
+        if (mc.level == null) return;
+        if (pulse.isLock()) return;
+
+        Timer effectTimer = getOrCreateTimer(entityUUID, effectId, timer);
+        if (effectTimer.pass(() -> true)) {
+            RandomSource randomSource = mc.level.getRandom();
+            double randomXOffset = Mth.randomBetween(randomSource, -RANDOMNESS, RANDOMNESS);
+            double randomYOffset = Mth.randomBetween(randomSource, -RANDOMNESS, RANDOMNESS);
+            double randomZOffset = Mth.randomBetween(randomSource, -RANDOMNESS, RANDOMNESS);
+
+            mc.level.addParticle(
+                    particleType,
+                    renderState.x + localX + (randomness ? randomXOffset : 0.0d),
+                    renderState.y + localY + (randomness ? randomYOffset : 0.0d),
+                    renderState.z + localZ + (randomness ? randomZOffset : 0.0d),
+                    0.0d, 0.0d, 0.0d
+            );
+            effectTimer.reset();
+        }
     }
 
     public static void fillCircle(

@@ -7,7 +7,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
@@ -21,7 +23,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
 public class CreativeModeTabs {
 
     private CreativeModeTabs() throws IllegalAccessException {
-        throw new IllegalAccessException("You can't instantiate CreativeModeTabs class!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static final CreativeModeTab MTS_OVERWORLD_ITEMS_TAB = Registry.register(

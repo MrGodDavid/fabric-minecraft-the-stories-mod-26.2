@@ -7,7 +7,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.LevelData;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * Server of Mts Test World.
@@ -18,7 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 public class MtsTestWorldServer {
 
     private MtsTestWorldServer() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static void register() {

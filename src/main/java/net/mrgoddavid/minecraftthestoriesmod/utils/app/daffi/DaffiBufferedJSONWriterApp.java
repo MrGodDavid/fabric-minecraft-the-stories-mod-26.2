@@ -13,7 +13,7 @@ import java.nio.file.Paths;
  * @author Mr. GodDavid
  * @since 9/23/2026
  */
-public final class DaffiBufferedJSONWriter {
+public final class DaffiBufferedJSONWriterApp {
 
     public static void main(String[] args) {
         writeSGACharacterJSON();

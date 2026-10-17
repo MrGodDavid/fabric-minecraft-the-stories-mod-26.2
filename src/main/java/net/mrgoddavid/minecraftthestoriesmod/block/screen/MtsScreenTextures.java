@@ -2,8 +2,10 @@ package net.mrgoddavid.minecraftthestoriesmod.block.screen;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * This class holds a collection of texture paths of MTS mod.
@@ -48,6 +50,6 @@ public class MtsScreenTextures {
     }
 
     private MtsScreenTextures() throws IllegalAccessException {
-        throw new IllegalAccessException("Class MtsScreenTextures cannot be instantiated!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

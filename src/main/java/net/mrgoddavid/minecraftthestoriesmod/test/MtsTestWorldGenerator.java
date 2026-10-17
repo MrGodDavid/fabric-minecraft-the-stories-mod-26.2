@@ -4,6 +4,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.function.Predicate;
 
@@ -16,7 +18,7 @@ import java.util.function.Predicate;
 public class MtsTestWorldGenerator {
 
     private MtsTestWorldGenerator() throws IllegalAccessException {
-        throw new IllegalAccessException("You cannot instantiate this class!!");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static void generate() {
