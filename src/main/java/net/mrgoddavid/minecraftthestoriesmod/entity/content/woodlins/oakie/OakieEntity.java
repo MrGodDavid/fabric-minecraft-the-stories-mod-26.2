@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
@@ -18,24 +19,29 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.Nullable;
 
-import java.util.List;
-
 /**
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
 public class OakieEntity extends TamableAnimal {
 
+    private static final EntityDataAccessor<Boolean> DATA_ENCHANTING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN);
     private final byte STAND_EVENT = 99;
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState healAnimationState = new AnimationState();
     public final AnimationState enchantingAnimationState = new AnimationState();
     public final AnimationState disenchantingAnimationState = new AnimationState();
     public final AnimationState tameAnimationState = new AnimationState();
-    private boolean pendingSitAnimation;
+    private boolean pendingSitAnimation = false;
 
     public OakieEntity(EntityType<? extends OakieEntity> type, Level level) {
         super(type, level);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder entityData) {
+        super.defineSynchedData(entityData);
+        entityData.define(DATA_ENCHANTING, false);
     }
 
     @Override
@@ -162,8 +168,9 @@ public class OakieEntity extends TamableAnimal {
 
                     // enchant & disenchant
                     if (itemStack.is(Items.STICK)) {
-                        System.out.println("HERE");
-                        setOrderedToSit(!isOrderedToSit());
+                        boolean shouldEnchant = !this.isEnchanting();
+                        this.setEnchanting(shouldEnchant);
+                        this.setOrderedToSit(shouldEnchant);
                         return InteractionResult.SUCCESS;
                     }
 
@@ -194,5 +201,13 @@ public class OakieEntity extends TamableAnimal {
 
     private void spawnTamingFailedParticles() {
         ((ServerLevel) this.level()).sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + this.getBbHeight() + 0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
+    }
+
+    public boolean isEnchanting() {
+        return this.entityData.get(DATA_ENCHANTING);
+    }
+
+    private void setEnchanting(boolean enchanting){
+        this.entityData.set(DATA_ENCHANTING, enchanting);
     }
 }

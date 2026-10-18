@@ -40,6 +40,7 @@ public abstract class AbstractWoodlinParticle extends SingleQuadParticle {
         super.tick();
         if (!this.removed) {
             this.yd = (this.yd + 0.003) * 0.96;
+            this.alpha = 1.0F - ((float) this.age / (float) this.lifetime);
             this.setSpriteFromAge(this.sprites);
         }
     }

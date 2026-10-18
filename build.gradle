@@ -18,7 +18,9 @@ repositories {
 		}
 		filter { includeGroupAndSubgroups('com.geckolib') }
 	}
-	maven { url "https://maven.shedaniel.me" }
+
+	maven {url "https://maven.shedaniel.me"}
+	maven { name = "JitPack"; url = "https://jitpack.io" }
 }
 
 fabricApi {
@@ -39,6 +41,8 @@ dependencies {
 
 	implementation "me.shedaniel:RoughlyEnoughItems-api-fabric:26.2.820"
 	implementation "me.shedaniel:RoughlyEnoughItems-fabric:26.2.820"
+
+	include(implementation("com.github.MrGodDavid:CalculusV2:v1.2.4.1"))
 
 	include api("dev.architectury:architectury-fabric:21.0.4")
 	compileOnly("me.shedaniel.cloth:basic-math:0.6.1")

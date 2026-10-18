@@ -37,17 +37,17 @@ public final class MtsParticleSpawner {
     }
 
     public static void spawnPointAt(
-        final Minecraft mc,
-        final RandomPulse pulse,
-        final ParticleOptions particleType,
-        final UUID entityUUID,
-        final String effectId,
-        final Timer timer,
-        final LivingEntityRenderState renderState,
-        final double localX,
-        final double localY,
-        final double localZ,
-        final boolean randomness
+            final Minecraft mc,
+            final RandomPulse pulse,
+            final ParticleOptions particleType,
+            final UUID entityUUID,
+            final String effectId,
+            final Timer timer,
+            final LivingEntityRenderState renderState,
+            final double localX,
+            final double localY,
+            final double localZ,
+            final boolean randomness
     ) {
         if (mc.level == null) return;
         if (pulse.isLock()) return;
@@ -86,8 +86,8 @@ public final class MtsParticleSpawner {
     ) {
         Timer effectTimer = getOrCreateTimer(entityUUID, effectId, timer);
         double step = radius / (density + 1.0D);
-        float halfBoundingBoxWidth = renderState.boundingBoxWidth / 2;
-        float minimumDistance = halfBoundingBoxWidth * halfBoundingBoxWidth;
+        float halfBoundingBoxWidth = renderState.boundingBoxWidth / 2f;
+        float minimumDistance = halfBoundingBoxWidth * halfBoundingBoxWidth * 1.5f;
 
         if (effectTimer.pass(() -> true)) {
             switch (mode) {
@@ -140,7 +140,7 @@ public final class MtsParticleSpawner {
             final float minimumDistance,
             final double step
     ) {
-        for (double distance = minimumDistance; distance <= radius; distance += step) {
+        for (double distance = minimumDistance; distance < radius; distance += step) {
             doSpawnParticleClusterPatternInner(mc, pulse, particleType, renderState, offsets, yOffset, distance, randomness);
         }
     }

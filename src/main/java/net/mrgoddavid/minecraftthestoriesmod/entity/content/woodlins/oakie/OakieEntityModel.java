@@ -90,8 +90,8 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
         }
         if (state.walkAnimationSpeed > 0.0F) {
             this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 5.0F, 10.0F);
-        } else {
-            this.idelAnimation.apply(state.idleAnimationState, state.ageInTicks);
         }
+        this.idelAnimation.apply(state.idleAnimationState, state.ageInTicks);
+
     }
 }
