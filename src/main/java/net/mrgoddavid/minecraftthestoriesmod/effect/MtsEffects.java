@@ -5,6 +5,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.mrgoddavid.minecraftthestoriesmod.effect.content.LeechOfOakieEffect;
+import net.mrgoddavid.minecraftthestoriesmod.effect.content.PublicEnemyEffect;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
@@ -15,6 +17,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 public final class MtsEffects {
 
     public static final Holder<MobEffect> PUBLIC_ENEMY = registerMobEffect("public_enemy", new PublicEnemyEffect(MobEffectCategory.NEUTRAL, 0x942610));
+    public static final Holder<MobEffect> LEECH_OF_OAKIE = registerMobEffect("leech_of_oakie", new LeechOfOakieEffect(MobEffectCategory.NEUTRAL, 0xD8FF14));
 
     private static Holder<MobEffect> registerMobEffect(String name, MobEffect effect) {
         return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Constants.modId(name), effect);

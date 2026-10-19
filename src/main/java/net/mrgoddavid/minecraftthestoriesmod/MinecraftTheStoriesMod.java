@@ -87,11 +87,12 @@ public class MinecraftTheStoriesMod implements ModInitializer {
 
         MtsFlammableBlocks.register();
         MtsStrippableBlocks.register();
-        MtsEntityTypes.register();
-        MtsEntityTypes.registerAttributes();
+        MtsEntityAttributes.register();
         MtsEntityModelLayers.register();
         MtsEntityRenderers.register();
-        MtsEntityAttributes.register();
+        MtsRenderTypes.register();
+        MtsEntityTypes.register();
+        MtsEntityTypes.registerAttributes();
 
         MtsLogger.tailer();
     }

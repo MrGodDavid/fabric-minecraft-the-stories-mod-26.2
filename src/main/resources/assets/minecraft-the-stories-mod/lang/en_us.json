@@ -227,6 +227,9 @@
   "creative_mode_tab.mts.strong_diamond_blocks": "MTS Overworld Blocks",
   "creative_mode_tab.mts.epic_upgrade_scroll_stage_four": "Mts Upgrade Scrolls",
 
+  "death.attack.leech_of_oakie":"%s was too happy about being cursed by the Oakies.",
+  "death.attack.leech_of_oakie.player":"%s was cursed to death while trying to flee from %s",
+
   "entity.minecraft-the-stories-mod.brown_bear": "Brown Bear",
   "entity.minecraft-the-stories-mod.target_dummy": "Target Dummy",
 
@@ -243,6 +246,8 @@
 
   "effect.minecraft-the-stories-mod.public_enemy": "Public Enemy",
   "effect.minecraft-the-stories-mod.public_enemy.description": "You are too strong, so everyone hates you, including all the passive mobs...",
+  "effect.minecraft-the-stories-mod.leech_of_oakie": "Leech Of Oakie",
+  "effect.minecraft-the-stories-mod.leech_of_oakie.description": "How could you do such things to the cute Oakies? HOW COULD YOU?",
 
   "advancements.minecraft-the-stories-mod.root.title": "Minecraft: The Stories",
   "advancements.minecraft-the-stories-mod.root.description": "How fast can you get a wooden pickaxe now?",

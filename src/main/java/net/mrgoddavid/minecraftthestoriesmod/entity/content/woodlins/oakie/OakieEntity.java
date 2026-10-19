@@ -1,13 +1,18 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
+import com.google.common.collect.Lists;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,7 +22,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.entity.EntityTypeTest;
+import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import org.jspecify.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Mr. GodDavid
@@ -25,7 +35,8 @@ import org.jspecify.annotations.Nullable;
  */
 public class OakieEntity extends TamableAnimal {
 
-    private static final EntityDataAccessor<Boolean> DATA_ENCHANTING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final int HEALING_RADIUS = 5;
+    private static final EntityDataAccessor<Boolean> DATA_ENCHANTING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
     private final byte STAND_EVENT = 99;
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState healAnimationState = new AnimationState();
@@ -121,6 +132,7 @@ public class OakieEntity extends TamableAnimal {
     public void tick() {
         super.tick();
 
+        // Client side.
         if (level().isClientSide()) {
             this.idleAnimationState.animateWhen(!isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
 
@@ -141,6 +153,50 @@ public class OakieEntity extends TamableAnimal {
                 this.disenchantingAnimationState.stop();
             }
         }
+        // Server side.
+        else {
+            ServerLevel level = (ServerLevel) this.level();
+            grantsPlayersInEnchantingRegionEffects(level);
+            grantsEntitiesInEnchantingRegionEffects(level);
+        }
+    }
+
+    private void grantsEntitiesInEnchantingRegionEffects(ServerLevel level) {
+        List<LivingEntity> entitiesInEnchantingRegion = Lists.newArrayList();
+        level.getEntities(EntityTypeTest.forClass(LivingEntity.class), this::selectEntities, entitiesInEnchantingRegion);
+        for (LivingEntity entity : entitiesInEnchantingRegion) {
+            if (entity instanceof OakieEntity oakie) {
+                oakie.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 40, 0, false, true, true));
+            } else if (entity instanceof Mob mob) {
+                mob.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 40, 0, false, true, true));
+            }
+        }
+    }
+
+    private boolean selectEntities(LivingEntity entity) {
+        double dy = entity.getY() - this.getY();
+        if (dy < 0.0F || dy > 1.0F) return false;
+
+        double dx = entity.getX() - this.getX();
+        double dz = entity.getZ() - this.getZ();
+        double distanceSquared = dx * dx + dz * dz;
+        return distanceSquared <= HEALING_RADIUS * HEALING_RADIUS;
+    }
+
+    private void grantsPlayersInEnchantingRegionEffects(ServerLevel level) {
+        List<ServerPlayer> playersInEnchantingRegion = level.getPlayers(this::selectPlayerInEnchantingRegion);
+        for (ServerPlayer player : playersInEnchantingRegion) {
+            if (this.isOwnedBy(player) && this.isEnchanting()) {
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 2, false, true, true));
+                player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 60, 1, false, true, true));
+            } else {
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 0, false, true, true));
+            }
+        }
+    }
+
+    private boolean selectPlayerInEnchantingRegion(ServerPlayer player) {
+        return this.selectEntities(player);
     }
 
     @Override
@@ -171,6 +227,7 @@ public class OakieEntity extends TamableAnimal {
                         boolean shouldEnchant = !this.isEnchanting();
                         this.setEnchanting(shouldEnchant);
                         this.setOrderedToSit(shouldEnchant);
+                        this.setGlowingTag(shouldEnchant);
                         return InteractionResult.SUCCESS;
                     }
 

@@ -10,9 +10,7 @@ import java.lang.reflect.Type;
  */
 public final class ClassNameFormatter {
 
-    public static String format(Class<?> clazz) {
-        return "[" + clazz.getSimpleName() + "]";
-    }
+    public static String format(String className) {return "[" + className + "]";}
 
     public static String format(Type clazz) {
         return "[" + clazz.getTypeName() + "]";

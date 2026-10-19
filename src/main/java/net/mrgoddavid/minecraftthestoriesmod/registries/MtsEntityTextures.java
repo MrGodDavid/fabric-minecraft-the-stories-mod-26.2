@@ -18,6 +18,8 @@ public final class MtsEntityTextures {
     public static final Identifier TARGET_DUMMY = register("target_dummy");
     public static final Identifier OAKIE = register("oakie");
 
+    public static final Identifier OAKIE_EYES = register("oakie", "oakie_eyes");
+
     private static Identifier register(@NonNull final String name) {
         return Constants.modId(Directory.builder().textures().entity().build() + name + "/" + name + ".png");
     }

@@ -25,6 +25,7 @@ public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRen
 
     public OakieEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new OakieEntityModel(context.bakeLayer(MtsEntityModelLayers.OAKIE)), 0.6F);
+        this.addLayer(new OakieEyesLayer(this));
     }
 
     @Override
@@ -62,11 +63,11 @@ public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRen
 
     private void spawnTamedOakieRegenerationParticles(OakieEntityRenderState renderState) {
         Minecraft mc = Minecraft.getInstance();
-        MtsParticleSpawner.fillCircle(mc, RANDOM_PULSE, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, renderState.entityUUID, "oakie_regeneration_particle", new Timer(40), renderState, 0.0, 5, 2, ParticleSpawnMode.FILL_CIRCLE_SIXTEEN_DIR, true);
+        MtsParticleSpawner.fillCircle(mc, RANDOM_PULSE, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, renderState.entityUUID, "oakie_regeneration_particle", new Timer(40), renderState, 0.0, OakieEntity.HEALING_RADIUS, 2, ParticleSpawnMode.FILL_CIRCLE_EIGHT_DIR, true);
     }
 
     private void spawnEffectBorderParticles(OakieEntityRenderState renderState) {
         Minecraft mc = Minecraft.getInstance();
-        MtsParticleSpawner.spawnCircle(mc, RANDOM_PULSE, MtsParticleTypes.RED_CLOUD_PARTICLE, renderState.entityUUID, "oakie_particle_circle", new Timer(60), renderState, 2.0, 5, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
+        MtsParticleSpawner.spawnCircle(mc, RANDOM_PULSE, MtsParticleTypes.RED_CLOUD_PARTICLE, renderState.entityUUID, "oakie_particle_circle", new Timer(60), renderState, 0.5, OakieEntity.HEALING_RADIUS, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
     }
 }

@@ -95,6 +95,13 @@ public final class MtsParticleSpawner {
                         doFillPatternedEightDirCircle(mc, pulse, particleType, renderState, yOffset, radius, randomness, minimumDistance, step);
                 case FILL_CIRCLE_SIXTEEN_DIR ->
                         doFillPatternedSixteenDirCircle(mc, pulse, particleType, renderState, yOffset, radius, randomness, minimumDistance, step);
+                default -> {
+                    try {
+                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e.getMessage().concat(".[fillCircle] Current mode is: ").concat(mode.toString()));
+                    }
+                }
             }
             effectTimer.reset();
         }
@@ -229,8 +236,13 @@ public final class MtsParticleSpawner {
                         doSpawnParticleInEquilibriumTriangle(mc, randomPulse, particleType, renderState, yOffset, size, randomness);
                 case EQUILIBRIUM_TRIANGLE_CONTINUOUS ->
                         doSpawnParticleInContinuousEquilibriumTriangle(mc, randomPulse, particleType, renderState, yOffset, size, times, randomness);
-                default ->
-                        MtsLogger.warn("Invalid mode: " + "[" + mode + "] when spawning particles at entity: " + ClassNameFormatter.extractEntityNameFromEntityRenderState(renderState));
+                default -> {
+                    try {
+                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e.getMessage().concat(".[spawnTriangle] Current mode is: ").concat(mode.toString()));
+                    }
+                }
             }
             effectTimer.reset();
         }
@@ -365,10 +377,14 @@ public final class MtsParticleSpawner {
                     }
                     doSpawnSquareFilledInSideParticle(mc, pulse, particleType, renderState, yOffset, size, times, randomness);
                 }
-                default ->
-                        MtsLogger.warn("Invalid mode: " + "[" + mode + "] when spawning particles at entity: " + ClassNameFormatter.extractEntityNameFromEntityRenderState(renderState));
+                default -> {
+                    try {
+                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e.getMessage().concat(".[spawnSquare] Current mode is: ").concat(mode.toString()));
+                    }
+                }
             }
-            System.out.println("HERE");
             effectTimer.reset();
         }
     }
@@ -443,8 +459,13 @@ public final class MtsParticleSpawner {
                         doSpawnEightDirParticle(mc, pulse, particleType, renderState, yOffset, radius, randomness);
                 case CIRCLE_SIXTEEN_DIR ->
                         doSpawnSixteenDirParticle(mc, pulse, particleType, renderState, yOffset, radius, randomness);
-                default ->
-                        MtsLogger.warn("Invalid mode: " + "[" + mode + "] when spawning particles at entity: " + ClassNameFormatter.extractEntityNameFromEntityRenderState(renderState));
+                default -> {
+                    try {
+                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e.getMessage().concat(".[spawnCircle] Current mode is: ").concat(mode.toString()));
+                    }
+                }
             }
             effectTimer.reset();
         }

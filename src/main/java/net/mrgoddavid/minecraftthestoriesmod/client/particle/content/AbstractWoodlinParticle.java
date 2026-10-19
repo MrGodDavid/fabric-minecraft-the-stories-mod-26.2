@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.client.particle.content;
 
+import com.mrgoddavid.ocl.function.interpolation.EasingFunctions;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
@@ -40,7 +41,7 @@ public abstract class AbstractWoodlinParticle extends SingleQuadParticle {
         super.tick();
         if (!this.removed) {
             this.yd = (this.yd + 0.003) * 0.96;
-            this.alpha = 1.0F - ((float) this.age / (float) this.lifetime);
+            this.alpha = 1f - (float) -EasingFunctions.EASE_IN_OUT_SINE.value((double) this.age / this.lifetime);
             this.setSpriteFromAge(this.sprites);
         }
     }

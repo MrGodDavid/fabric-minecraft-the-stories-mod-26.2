@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.effect;
+package net.mrgoddavid.minecraftthestoriesmod.effect.content;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
@@ -11,13 +11,13 @@ import net.minecraft.world.entity.LivingEntity;
  */
 public class PublicEnemyEffect extends MobEffect {
 
-    protected PublicEnemyEffect(MobEffectCategory category, int color) {
+    public PublicEnemyEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
 
     @Override
     public boolean applyEffectTick(ServerLevel serverLevel, LivingEntity mob, int amplification) {
-        mob.setSpeed(mob.getSpeed() * 0.5f);
+        mob.setSpeed(mob.getSpeed() * 1.25f);
         return super.applyEffectTick(serverLevel, mob, amplification);
     }
 

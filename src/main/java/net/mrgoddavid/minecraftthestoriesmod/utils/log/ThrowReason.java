@@ -5,5 +5,6 @@ package net.mrgoddavid.minecraftthestoriesmod.utils.log;
  * @since 10/17/2026
  */
 public enum ThrowReason {
-    INSTANTIATE_UTIL_CLASS;
+    INSTANTIATE_UTIL_CLASS,
+    SWITCH_CASE_OUT_OF_SCOPE;
 }
