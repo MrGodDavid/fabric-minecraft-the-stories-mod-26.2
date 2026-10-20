@@ -6,6 +6,8 @@ import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamag
 import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.TargetDummyDamageNumberS2C;
 import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.ThirstPayloadS2C;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstClientManager;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -24,5 +26,9 @@ public class ClientboundPackets {
             if (entity == null) return;
             TargetDummyDamageManager.addDamage(entity, payload.damage());
         });
+    }
+
+    private ClientboundPackets() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

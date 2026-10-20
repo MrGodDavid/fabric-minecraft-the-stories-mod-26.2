@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.TargetDummyDamageNumberS2C;
 import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.ThirstPayloadS2C;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -31,5 +33,9 @@ public class MtsPackets {
 
         registerClientbound(PayloadTypeRegistry.clientboundPlay());
         registerServerbound(PayloadTypeRegistry.serverboundPlay());
+    }
+
+    private MtsPackets() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

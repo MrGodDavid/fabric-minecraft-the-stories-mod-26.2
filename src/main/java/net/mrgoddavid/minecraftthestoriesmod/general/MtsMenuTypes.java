@@ -44,7 +44,7 @@ public final class MtsMenuTypes {
         return Registry.register(BuiltInRegistries.MENU, Constants.modId(path), new MenuType<>(supplier, FeatureFlags.DEFAULT_FLAGS));
     }
 
-    private MtsMenuTypes() throws IllegalAccessException {
+    private MtsMenuTypes() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

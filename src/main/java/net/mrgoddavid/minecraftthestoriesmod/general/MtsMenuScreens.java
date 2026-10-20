@@ -35,7 +35,7 @@ public final class MtsMenuScreens {
         MenuScreens.register(MtsMenuTypes.STORY_BOOK_MENU, StoryBookScreen::new);
     }
 
-    private MtsMenuScreens() throws IllegalAccessException {
+    private MtsMenuScreens() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

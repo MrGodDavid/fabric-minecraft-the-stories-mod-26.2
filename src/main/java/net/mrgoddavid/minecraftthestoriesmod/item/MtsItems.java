@@ -42,7 +42,7 @@ public final class MtsItems {
     /**
      * Private constructor.
      */
-    private MtsItems() throws IllegalAccessException {
+    private MtsItems() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

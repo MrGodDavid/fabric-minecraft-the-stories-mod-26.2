@@ -24,7 +24,7 @@ public final class MtsPacketHelper {
         }
     }
 
-    private MtsPacketHelper() throws IllegalAccessException {
+    private MtsPacketHelper() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

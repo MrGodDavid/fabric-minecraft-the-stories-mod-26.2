@@ -1,7 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.log;
 
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.world.entity.LivingEntity;
 
 /**
  * @author Mr. GodDavid
@@ -10,47 +9,64 @@ import net.minecraft.world.entity.LivingEntity;
 public final class ErrorMessageBuilder {
 
     @SuppressWarnings("DuplicateBranchesInSwitch")
-    public static void infoAndThrow(Class<?> clazz, ThrowReason reason) throws IllegalAccessException {
-        String msg;
-        switch (reason) {
-            case INSTANTIATE_UTIL_CLASS -> {
-                msg = buildAttemptingInstantiateUtilityClassErrMsg(clazz);
-                MtsLogger.error(msg);
-                throw new IllegalAccessException(msg);
+    public static void infoAndThrow(Class<?> clazz, ThrowReason reason, int... numericalArgs) {
+        try {
+            String msg;
+            switch (reason) {
+                case INSTANTIATE_UTIL_CLASS -> {
+                    msg = buildAttemptingInstantiateUtilityClassErrMsg(clazz);
+                    MtsLogger.error(msg);
+                    throw new IllegalAccessException(msg);
+                }
+                case SWITCH_CASE_OUT_OF_SCOPE -> {
+                    msg = buildSwitchCaseOutOfScopeErrMsg(clazz);
+                    MtsLogger.error(msg);
+                    throw new IllegalAccessException(msg);
+                }
+                case BAD_TIMER_PASS_METHOD_ARGUMENT_CONDITION -> {
+                    msg = buildBadTimerPassMethodArgumentConditionErrMsg(clazz, numericalArgs);
+                    MtsLogger.error(msg);
+                    throw new IllegalArgumentException(msg);
+                }
+                default -> {
+                    msg = buildSwitchCaseOutOfScopeErrMsg(clazz);
+                    MtsLogger.error(msg);
+                    throw new IllegalAccessException(msg);
+                }
             }
-            case SWITCH_CASE_OUT_OF_SCOPE -> {
-                msg = buildSwitchCaseOutOfScopeErrMsg(clazz);
-                MtsLogger.error(msg);
-                throw new IllegalAccessException(msg);
-            }
-            default -> {
-                msg = buildSwitchCaseOutOfScopeErrMsg(clazz);
-                MtsLogger.error(msg);
-                throw new IllegalAccessException(msg);
-            }
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
 
     @SuppressWarnings("DuplicateBranchesInSwitch")
-    public static void infoAndThrowAtLivingEntity(LivingEntityRenderState clazz, ThrowReason reason) throws IllegalAccessException {
-        String msg;
-        switch (reason) {
-            case INSTANTIATE_UTIL_CLASS -> {
-                msg = buildAttemptingInstantiateUtilityClassErrMsg(ClassNameFormatter.extractEntityNameFromEntityRenderState(clazz));
-                MtsLogger.error(msg);
-                throw new IllegalAccessException(msg);
+    public static void infoAndThrowAtLivingEntity(LivingEntityRenderState clazz, ThrowReason reason) {
+        try {
+            String msg;
+            switch (reason) {
+                case INSTANTIATE_UTIL_CLASS -> {
+                    msg = buildAttemptingInstantiateUtilityClassErrMsg(ClassNameFormatter.extractEntityNameFromEntityRenderState(clazz));
+                    MtsLogger.error(msg);
+                    throw new IllegalAccessException(msg);
+                }
+                case SWITCH_CASE_OUT_OF_SCOPE -> {
+                    msg = buildSwitchCaseOutOfScopeErrMsg(ClassNameFormatter.extractEntityNameFromEntityRenderState(clazz));
+                    MtsLogger.error(msg);
+                    throw new IllegalAccessException(msg);
+                }
+                default -> {
+                    msg = buildSwitchCaseOutOfScopeErrMsg(ClassNameFormatter.extractEntityNameFromEntityRenderState(clazz));
+                    MtsLogger.error(msg);
+                    throw new IllegalAccessException(msg);
+                }
             }
-            case SWITCH_CASE_OUT_OF_SCOPE -> {
-                msg = buildSwitchCaseOutOfScopeErrMsg(ClassNameFormatter.extractEntityNameFromEntityRenderState(clazz));
-                MtsLogger.error(msg);
-                throw new IllegalAccessException(msg);
-            }
-            default -> {
-                msg = buildSwitchCaseOutOfScopeErrMsg(ClassNameFormatter.extractEntityNameFromEntityRenderState(clazz));
-                MtsLogger.error(msg);
-                throw new IllegalAccessException(msg);
-            }
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e.getMessage());
         }
+    }
+
+    private static String buildBadTimerPassMethodArgumentConditionErrMsg(Class<?> clazz, int... numericalArgs) {
+        return "[ERROR]: Bad " + ClassNameFormatter.format(clazz) + " initialization: current maxTick: [" + numericalArgs[0] + "] is less than or greater than 0";
     }
 
     private static String buildSwitchCaseOutOfScopeErrMsg(Class<?> clazz) {
@@ -69,7 +85,7 @@ public final class ErrorMessageBuilder {
         return "[ERROR]: You cannot instantiate " + ClassNameFormatter.format(className) + " because it is an utility class!";
     }
 
-    private ErrorMessageBuilder() throws IllegalAccessException {
+    private ErrorMessageBuilder() {
         infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

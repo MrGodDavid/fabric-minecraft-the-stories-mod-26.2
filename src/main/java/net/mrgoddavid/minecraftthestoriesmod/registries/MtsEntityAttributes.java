@@ -64,7 +64,7 @@ public final class MtsEntityAttributes {
                         builder.add(Attributes.ATTACK_DAMAGE, 3.0)));
     }
 
-    private MtsEntityAttributes() throws IllegalAccessException {
+    private MtsEntityAttributes() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

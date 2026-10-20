@@ -6,7 +6,9 @@ import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBear
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyModel;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntityModel;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -29,5 +31,9 @@ public final class MtsEntityModelLayers {
         ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.BROWN_BEAR, BrownBearEntityModel::getTexturedModelData);
         ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.TARGET_DUMMY, TargetDummyModel::getTexturedModelData);
         ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.OAKIE, OakieEntityModel::getTexturedModelData);
+    }
+
+    private MtsEntityModelLayers() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

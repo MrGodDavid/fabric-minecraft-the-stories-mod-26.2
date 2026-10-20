@@ -19,7 +19,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  */
 public class ThirstEvents {
 
-    private ThirstEvents() throws IllegalAccessException {
+    private ThirstEvents() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

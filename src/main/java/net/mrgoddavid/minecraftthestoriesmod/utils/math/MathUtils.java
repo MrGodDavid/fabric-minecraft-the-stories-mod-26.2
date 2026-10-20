@@ -1,6 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.math;
 
 import net.minecraft.world.phys.Vec3;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.joml.Vector3f;
 
 /**
@@ -8,6 +10,10 @@ import org.joml.Vector3f;
  * @since 9/27/2026
  */
 public final class MathUtils {
+
+    private MathUtils() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
+    }
 
     public static Vec3 slerp(Vector3f a, Vector3f b, float t) {
         Vector3f aHat = new Vector3f(a).normalize();

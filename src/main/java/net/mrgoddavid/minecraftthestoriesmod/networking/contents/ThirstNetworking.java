@@ -13,7 +13,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  */
 public class ThirstNetworking {
 
-    private ThirstNetworking() throws IllegalAccessException {
+    private ThirstNetworking() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

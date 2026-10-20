@@ -1,5 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils;
 
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+
 /**
  * This timer has a maximum time. The timer always starts from 0. The timer accumulates numbers if its criteria are
  * always met. Otherwise, the timer will reset the time back to 0. Once the timer meets its maximum time, it never reset
@@ -15,8 +18,7 @@ public class Timer {
 
     public Timer(int maxTick) {
         if (maxTick <= 0) {
-            throw new IllegalArgumentException("Bad timer initialization: current maxTick: [" + maxTick
-                    + "] is less than or greater than 0");
+            ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.BAD_TIMER_PASS_METHOD_ARGUMENT_CONDITION, maxTick);
         }
         this.maxTick = maxTick;
         this.currentTick = 0;

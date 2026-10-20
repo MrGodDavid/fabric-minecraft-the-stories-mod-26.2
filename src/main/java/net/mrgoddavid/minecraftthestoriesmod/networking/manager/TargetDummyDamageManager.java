@@ -36,7 +36,7 @@ public class TargetDummyDamageManager {
         return DAMAGE_NUMBERS;
     }
 
-    private TargetDummyDamageManager() throws IllegalAccessException {
+    private TargetDummyDamageManager() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

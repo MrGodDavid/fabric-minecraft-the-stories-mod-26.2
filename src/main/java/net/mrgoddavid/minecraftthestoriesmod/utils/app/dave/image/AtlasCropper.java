@@ -55,7 +55,7 @@ public final class AtlasCropper {
         }
     }
 
-    private AtlasCropper() throws IllegalAccessException {
+    private AtlasCropper() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -22,6 +22,8 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -37,7 +39,7 @@ import java.util.List;
 public class MtsLootTableModifiers {
 
     private MtsLootTableModifiers() {
-        throw new IllegalAccessError("Utility class");
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static @Nullable LootTable replaceLootTables(ResourceKey<LootTable> key, LootTable lootTable, LootTableSource source, HolderLookup.Provider provider) {

@@ -88,7 +88,7 @@ public final class SGACharacters {
         }
     }
 
-    private SGACharacters() throws IllegalAccessException {
+    private SGACharacters() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -10,7 +10,9 @@ import net.mrgoddavid.minecraftthestoriesmod.recipe.content.ore_compressor.OreCo
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.squeezer.SqueezerRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.recipe.content.super_crafter.SuperCrafterRecipe;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -48,7 +50,6 @@ public class MtsRecipes {
         }
     });
 
-
     private static <T extends Recipe<?>> RecipeType<T> registerRecipeType(String path, RecipeType<T> recipeType) {
         return Registry.register(BuiltInRegistries.RECIPE_TYPE, Constants.modId(path), recipeType);
     }
@@ -59,5 +60,9 @@ public class MtsRecipes {
 
     public static void register() {
         MtsLogger.info("MTS Recipes");
+    }
+
+    private MtsRecipes() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

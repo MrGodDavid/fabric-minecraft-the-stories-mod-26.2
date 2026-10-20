@@ -6,5 +6,6 @@ package net.mrgoddavid.minecraftthestoriesmod.utils.log;
  */
 public enum ThrowReason {
     INSTANTIATE_UTIL_CLASS,
-    SWITCH_CASE_OUT_OF_SCOPE;
+    SWITCH_CASE_OUT_OF_SCOPE,
+    BAD_TIMER_PASS_METHOD_ARGUMENT_CONDITION;
 }

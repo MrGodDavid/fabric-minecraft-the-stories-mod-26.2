@@ -8,6 +8,8 @@ import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * Mts Armor materials.
@@ -44,5 +46,9 @@ public class MtsArmorMaterials {
 
     private static ResourceKey<EquipmentAsset> createArmorMaterialKey(final String path) {
         return ResourceKey.create(ARMOR_MATERIAL_REGISTRY_KEY, Constants.modId(path));
+    }
+
+    private MtsArmorMaterials() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

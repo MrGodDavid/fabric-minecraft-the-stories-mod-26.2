@@ -3,11 +3,13 @@ package net.mrgoddavid.minecraftthestoriesmod.item;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.Optional;
 
-public class MtsItemModelTemplates {
+public final class MtsItemModelTemplates {
 
     public static final ModelTemplate SCALE_2X = register("item/scale_2x");
 
@@ -17,5 +19,9 @@ public class MtsItemModelTemplates {
 
     public static void register() {
         MtsLogger.info("Mts Item Model Templates");
+    }
+
+    private MtsItemModelTemplates() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

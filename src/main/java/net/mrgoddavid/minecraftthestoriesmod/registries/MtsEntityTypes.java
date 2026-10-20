@@ -10,7 +10,9 @@ import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBear
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -40,5 +42,9 @@ public final class MtsEntityTypes {
         FabricDefaultAttributeRegistry.register(BROWN_BEAR, BrownBearEntity.createCubeAttributes());
         FabricDefaultAttributeRegistry.register(TARGET_DUMMY, TargetDummyEntity.createLivingAttributes());
         FabricDefaultAttributeRegistry.register(OAKIE, OakieEntity.createCubeAttributes());
+    }
+
+    private MtsEntityTypes() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -4,6 +4,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ToolMaterial;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItemToolMaterials.WoodenToolsDurabilityBaseline.*;
 import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItemToolMaterials.StrongMaterialBaseAttributes.*;
@@ -14,7 +16,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItemToolMaterials.St
  * @author Mr. GodDavid
  * @since 8/14/2026
  */
-public class MtsItemToolMaterials {
+public final class MtsItemToolMaterials {
 
     public static final ToolMaterial ACACIA_BOW = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, (int) (OAK_BOW_DURABILITY * 1.5F), 1.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
     public static final ToolMaterial BIRCH_BOW = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, OAK_BOW_DURABILITY, 2.0F * 1.25F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
@@ -62,5 +64,9 @@ public class MtsItemToolMaterials {
         static final int STRONG_IRON_MATERIAL_BASE_DURABILITY = STRONG_VANILLA_MATERIAL_BASE_DURABILITY;
         static final int STRONG_EMERALD_MATERIAL_BASE_DURABILITY = STRONG_VANILLA_MATERIAL_BASE_DURABILITY * 4 / 3;
         static final int STRONG_DIAMOND_MATERIAL_BASE_DURABILITY = STRONG_VANILLA_MATERIAL_BASE_DURABILITY * 2;
+    }
+
+    private MtsItemToolMaterials() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

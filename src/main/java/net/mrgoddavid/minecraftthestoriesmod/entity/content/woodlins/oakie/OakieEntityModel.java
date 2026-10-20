@@ -11,6 +11,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.client.EntityAnimationUtils;
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
     private final ModelPart root;
     private final ModelPart body;
@@ -24,6 +25,7 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
 
     private final KeyframeAnimation idelAnimation;
     private final KeyframeAnimation walkAnimation;
+    @SuppressWarnings("unused")
     private final KeyframeAnimation healAnimation;
     private final KeyframeAnimation enchantingAnimation;
     private final KeyframeAnimation disenchantingAnimation;
@@ -88,6 +90,10 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
             this.disenchantingAnimation.apply(state.disenchantingAnimationState, state.ageInTicks);
             return;
         }
+//        if (state.healAnimationState.isStarted()) {
+//            this.healAnimation.apply(state.healAnimationState, state.ageInTicks);
+//            return;
+//        }
         if (state.walkAnimationSpeed > 0.0F) {
             this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 5.0F, 10.0F);
         }

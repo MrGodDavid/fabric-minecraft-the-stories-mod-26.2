@@ -3,7 +3,9 @@ package net.mrgoddavid.minecraftthestoriesmod.fluid;
 import net.fabricmc.fabric.api.registry.fluid.EntityFluidInteractionRegistry;
 import net.fabricmc.fabric.api.registry.fluid.FluidBehavior;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -61,5 +63,9 @@ public class MtsEntityFluidInteractions {
                 .allowBoats(true)
                 .allowSprinting(false)
                 .build());
+    }
+
+    private MtsEntityFluidInteractions() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

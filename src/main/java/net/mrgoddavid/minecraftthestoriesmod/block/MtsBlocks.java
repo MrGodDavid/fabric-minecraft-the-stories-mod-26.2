@@ -239,7 +239,7 @@ public class MtsBlocks {
     /**
      * Private constructor.
      */
-    private MtsBlocks() throws IllegalAccessException {
+    private MtsBlocks() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

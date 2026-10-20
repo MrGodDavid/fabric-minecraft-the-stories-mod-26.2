@@ -1,7 +1,9 @@
 package net.mrgoddavid.minecraftthestoriesmod.registries;
 
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
 
@@ -19,5 +21,9 @@ public final class MtsStrippableBlocks {
 
         StrippableBlockRegistry.register(LEMON_TREE_WOOD, STRIPPED_LEMON_TREE_WOOD);
         StrippableBlockRegistry.register(LEMON_TREE_LOG, STRIPPED_LEMON_TREE_LOG);
+    }
+
+    private MtsStrippableBlocks() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

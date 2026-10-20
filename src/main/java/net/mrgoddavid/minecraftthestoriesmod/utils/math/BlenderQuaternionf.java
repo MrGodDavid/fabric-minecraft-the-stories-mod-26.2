@@ -1,5 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.math;
 
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.joml.Quaternionf;
 
 /**
@@ -11,6 +13,7 @@ import org.joml.Quaternionf;
 public class BlenderQuaternionf {
 
     private BlenderQuaternionf() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
     public static Quaternionf toMinecraft(float w, float x, float y, float z) {

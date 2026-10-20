@@ -32,7 +32,7 @@ public final class MtsEntityTextures {
         MtsLogger.info("Mts Entity Textures");
     }
 
-    private MtsEntityTextures() throws IllegalAccessException {
+    private MtsEntityTextures() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

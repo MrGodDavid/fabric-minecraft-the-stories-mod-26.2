@@ -1,6 +1,8 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.list;
 
 import net.minecraft.core.NonNullList;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +12,10 @@ import java.util.List;
  * @since 9/18/2028
  */
 public class MtsNonnullElementSetLists {
+
+    private MtsNonnullElementSetLists() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
+    }
 
     /**
      * @author Mr. GodDavid

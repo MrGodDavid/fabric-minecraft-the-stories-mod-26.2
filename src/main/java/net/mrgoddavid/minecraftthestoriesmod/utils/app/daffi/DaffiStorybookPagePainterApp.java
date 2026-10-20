@@ -4,6 +4,8 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -17,6 +19,10 @@ import java.util.Map;
  * @since 9/23/2026
  */
 public final class DaffiStorybookPagePainterApp {
+
+    private DaffiStorybookPagePainterApp() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
+    }
 
     static final Directory EXPECTED_SGA_CHARACTER_JSON_FILE_DIR = Directory.builder().src().main_dir().resources().assets().minecraft_the_stories_mod().textures().daffi().build();
 

@@ -44,6 +44,7 @@ public final class MtsServerTickEventRegistries {
 //                MtsAdvancementTriggers.WEAR_FULL_RUBY_ARMOR_TRIGGER.trigger(player);
 //                MtsAdvancementTriggers.WEAR_FULL_TOPAZ_ARMOR_TRIGGER.trigger(player);
         MtsAdvancementTriggers.HAS_PUBLIC_ENEMY_EFFECT_TRIGGER.trigger(player);
+        MtsAdvancementTriggers.HIT_ENEMY_WITH_CUDGEL_TRIGGER.trigger(player);
     }
 
     private static void grantsPublicEnemyEffectIfWearingFullAmethystArmor(ServerPlayer player) {
@@ -62,7 +63,7 @@ public final class MtsServerTickEventRegistries {
                 && player.getItemBySlot(EquipmentSlot.FEET).is(MtsItems.STRONG_AMETHYST_BOOTS);
     }
 
-    private MtsServerTickEventRegistries() throws IllegalAccessException {
+    private MtsServerTickEventRegistries() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

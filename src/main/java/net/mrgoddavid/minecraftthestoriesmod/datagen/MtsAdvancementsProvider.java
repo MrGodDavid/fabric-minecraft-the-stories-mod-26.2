@@ -26,6 +26,7 @@ import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.*;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 
 import java.util.List;
@@ -379,6 +380,20 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("obtain_any_axes_amethyst_axe", hasObtainedItem(items, MtsItems.STRONG_AMETHYST_AXE))
                     .save(output, generateSaveName("time_for_lumberjacking"));
 
+            // Hit enemy with cudgel.
+            AdvancementHolder bonk = Advancement.Builder.advancement()
+                    .parent(timeForLumberjacking)
+                    .display(
+                            MtsItems.OAK_CUDGEL,
+                            Component.translatable("advancements.minecraft-the-stories-mod.bonk.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.bonk.description"),
+                            Constants.defaultId("gui/advancements/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("hit_enemy_with_cudgel", hitHitEnemyWithCudgel())
+                    .save(output, generateSaveName("bonk"));
+
             // Obtain all tree types in minecraft.
             AdvancementHolder woodCollector = Advancement.Builder.advancement()
                     .parent(timeForLumberjacking)
@@ -658,6 +673,11 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("bath_in_enricher_waste", hasBathedInEnricherWaste())
                     .save(output, generateSaveName("dangerous_bath"));
 
+        }
+
+        private Criterion<?> hitHitEnemyWithCudgel() {
+            return MtsAdvancementTriggers.HIT_ENEMY_WITH_CUDGEL_TRIGGER.createCriterion(
+                    new HitEnemyWithCudgelTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
         }
 
         private Criterion<?> hasPublicEnemyEffect() {

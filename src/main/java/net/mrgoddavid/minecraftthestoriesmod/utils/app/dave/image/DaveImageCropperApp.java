@@ -1,12 +1,18 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.image;
 
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
  * @since 10/14/2026
  */
 public final class DaveImageCropperApp {
+
+    private DaveImageCropperApp() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
+    }
 
     private static final String[] FILE_NAMES = new String[] {
             "acaciania_swiftness",

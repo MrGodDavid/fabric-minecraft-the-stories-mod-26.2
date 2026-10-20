@@ -53,7 +53,7 @@ public final class VanillaPaths {
         MtsLogger.info("Vanilla Entity Paths");
     }
 
-    private VanillaPaths() throws IllegalAccessException {
+    private VanillaPaths() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

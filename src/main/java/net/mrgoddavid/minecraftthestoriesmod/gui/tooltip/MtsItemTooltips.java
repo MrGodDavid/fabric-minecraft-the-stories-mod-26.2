@@ -2,7 +2,9 @@ package net.mrgoddavid.minecraftthestoriesmod.gui.tooltip;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * Custom tooltips for Mts mod.
@@ -29,5 +31,9 @@ public final class MtsItemTooltips {
 
     public static void register() {
         MtsLogger.info("MTS Tooltips");
+    }
+
+    private MtsItemTooltips() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

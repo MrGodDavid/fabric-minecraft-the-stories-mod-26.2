@@ -44,7 +44,7 @@ public final class MtsFluidRenderingRegistries {
         );
     }
 
-    private MtsFluidRenderingRegistries() throws IllegalAccessException {
+    private MtsFluidRenderingRegistries() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

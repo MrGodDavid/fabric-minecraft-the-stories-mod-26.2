@@ -4,7 +4,9 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.minecraft.client.particle.BubbleParticle;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.content.*;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * Registry class for MTS particle types.
@@ -29,5 +31,9 @@ public final class MtsParticleTypeRegistries {
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, OakieRegenerationParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.LIGHT_OAKIE_INVISIBILITY_PARTICLE, LightOakieInvisibilityParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.SPRUCIA_ATTACK_SPEED_PARTICLE, SpruciaAttackSpeedParticle.Provider::new);
+    }
+
+    private MtsParticleTypeRegistries() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -96,11 +96,7 @@ public final class MtsParticleSpawner {
                 case FILL_CIRCLE_SIXTEEN_DIR ->
                         doFillPatternedSixteenDirCircle(mc, pulse, particleType, renderState, yOffset, radius, randomness, minimumDistance, step);
                 default -> {
-                    try {
-                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e.getMessage().concat(".[fillCircle] Current mode is: ").concat(mode.toString()));
-                    }
+                    ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
                 }
             }
             effectTimer.reset();
@@ -237,11 +233,7 @@ public final class MtsParticleSpawner {
                 case EQUILIBRIUM_TRIANGLE_CONTINUOUS ->
                         doSpawnParticleInContinuousEquilibriumTriangle(mc, randomPulse, particleType, renderState, yOffset, size, times, randomness);
                 default -> {
-                    try {
-                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e.getMessage().concat(".[spawnTriangle] Current mode is: ").concat(mode.toString()));
-                    }
+                    ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
                 }
             }
             effectTimer.reset();
@@ -378,11 +370,7 @@ public final class MtsParticleSpawner {
                     doSpawnSquareFilledInSideParticle(mc, pulse, particleType, renderState, yOffset, size, times, randomness);
                 }
                 default -> {
-                    try {
-                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e.getMessage().concat(".[spawnSquare] Current mode is: ").concat(mode.toString()));
-                    }
+                    ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
                 }
             }
             effectTimer.reset();
@@ -460,11 +448,7 @@ public final class MtsParticleSpawner {
                 case CIRCLE_SIXTEEN_DIR ->
                         doSpawnSixteenDirParticle(mc, pulse, particleType, renderState, yOffset, radius, randomness);
                 default -> {
-                    try {
-                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e.getMessage().concat(".[spawnCircle] Current mode is: ").concat(mode.toString()));
-                    }
+                    ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
                 }
             }
             effectTimer.reset();

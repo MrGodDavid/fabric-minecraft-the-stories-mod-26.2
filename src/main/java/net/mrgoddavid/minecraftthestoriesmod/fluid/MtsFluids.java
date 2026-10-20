@@ -30,7 +30,7 @@ public class MtsFluids {
         ), fluid);
     }
 
-    private MtsFluids() throws IllegalAccessException {
+    private MtsFluids() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

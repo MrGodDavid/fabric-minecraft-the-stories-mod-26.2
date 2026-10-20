@@ -3,6 +3,8 @@ package net.mrgoddavid.minecraftthestoriesmod.utils.app.daffi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.io.BufferedWriter;
 import java.nio.file.Files;
@@ -14,6 +16,10 @@ import java.nio.file.Paths;
  * @since 9/23/2026
  */
 public final class DaffiBufferedJSONWriterApp {
+
+    private DaffiBufferedJSONWriterApp() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
+    }
 
     public static void main(String[] args) {
         writeSGACharacterJSON();

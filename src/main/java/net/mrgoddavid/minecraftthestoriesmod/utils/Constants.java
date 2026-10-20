@@ -183,12 +183,12 @@ public final class Constants {
             return Ingredient.of(Blocks.BARRIER);
         }
 
-        private Universal() throws IllegalAccessException {
+        private Universal() {
             ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
         }
     }
 
-    private Constants() throws IllegalAccessException {
+    private Constants() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

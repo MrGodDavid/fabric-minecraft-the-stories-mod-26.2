@@ -25,7 +25,7 @@ public final class ClassNameFormatter {
         return name.substring(0, name.length() - 11);
     }
 
-    private ClassNameFormatter() throws IllegalAccessException {
+    private ClassNameFormatter() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -11,7 +11,7 @@ public class ThirstClientManager {
 
     private static int thirst = ThirstManager.MAX_THIRST;
 
-    private ThirstClientManager() throws IllegalAccessException {
+    private ThirstClientManager() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

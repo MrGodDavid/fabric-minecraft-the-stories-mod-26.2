@@ -3,6 +3,8 @@ package net.mrgoddavid.minecraftthestoriesmod.gui.tooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -89,5 +91,9 @@ public abstract class MtsItemToolStyleHelper {
 
     private static FormattedCharSequence underlineTextInner(@NonNull String text, ChatFormatting color) {
         return Component.literal(text).withStyle((style -> style.withColor(color).withUnderlined(true))).getVisualOrderText();
+    }
+
+    private MtsItemToolStyleHelper() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

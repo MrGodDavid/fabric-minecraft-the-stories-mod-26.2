@@ -8,7 +8,9 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.mrgoddavid.minecraftthestoriesmod.effect.content.LeechOfOakieEffect;
 import net.mrgoddavid.minecraftthestoriesmod.effect.content.PublicEnemyEffect;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
@@ -25,5 +27,9 @@ public final class MtsEffects {
 
     public static void register() {
         MtsLogger.info("Custom Mob Effects");
+    }
+
+    private MtsEffects() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

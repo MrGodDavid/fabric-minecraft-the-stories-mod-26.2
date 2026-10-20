@@ -33,7 +33,7 @@ public final class MtsLogger {
         MinecraftTheStoriesMod.LOGGER.error(errorMsg);
     }
 
-    private MtsLogger() throws IllegalAccessException {
+    private MtsLogger() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -30,7 +30,7 @@ public final class MtsWidgetTextures {
         return Directory.builder().widget().build() + name;
     }
 
-    private MtsWidgetTextures() throws IllegalAccessException {
+    private MtsWidgetTextures() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

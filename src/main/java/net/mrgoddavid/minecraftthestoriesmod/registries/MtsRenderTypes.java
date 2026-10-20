@@ -18,7 +18,7 @@ public final class MtsRenderTypes {
         MtsLogger.info("Custom Render Types");
     }
 
-    private MtsRenderTypes() throws IllegalAccessException {
+    private MtsRenderTypes() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

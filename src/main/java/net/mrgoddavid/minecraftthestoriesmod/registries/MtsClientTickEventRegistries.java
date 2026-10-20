@@ -23,7 +23,7 @@ public final class MtsClientTickEventRegistries {
         });
     }
 
-    private MtsClientTickEventRegistries() throws IllegalAccessException {
+    private MtsClientTickEventRegistries() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/time_for_lumberjacking",
+  "criteria": {
+    "hit_enemy_with_cudgel": {
+      "trigger": "minecraft-the-stories-mod:hit_enemy_with_cudgel"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancements/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.bonk.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:oak_cudgel"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.bonk.title"
+    }
+  },
+  "requirements": [
+    [
+      "hit_enemy_with_cudgel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

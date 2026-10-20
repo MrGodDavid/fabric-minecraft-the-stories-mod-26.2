@@ -43,7 +43,7 @@ public class BathingInEnricherWasteTrigger extends SimpleCriterionTrigger<Bathin
 
         @Override
         public Optional<ContextAwarePredicate> player() {
-            return Optional.empty();
+            return player;
         }
     }
 }

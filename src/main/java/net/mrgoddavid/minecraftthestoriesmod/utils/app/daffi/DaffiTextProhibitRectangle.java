@@ -8,10 +8,6 @@ import java.awt.*;
  */
 public final class DaffiTextProhibitRectangle extends Rectangle {
 
-    public DaffiTextProhibitRectangle() {
-        super();
-    }
-
     public DaffiTextProhibitRectangle(int x, int y, int width, int height) {
         super(x, y, width, height);
     }

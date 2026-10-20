@@ -22,7 +22,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.item.MtsItems.*;
  */
 public class CreativeModeTabs {
 
-    private CreativeModeTabs() throws IllegalAccessException {
+    private CreativeModeTabs() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

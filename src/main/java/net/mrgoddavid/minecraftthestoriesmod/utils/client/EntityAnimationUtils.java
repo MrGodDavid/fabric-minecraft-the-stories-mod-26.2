@@ -42,7 +42,7 @@ public final class EntityAnimationUtils {
         return 1.0f;
     }
 
-    private EntityAnimationUtils() throws IllegalAccessException {
+    private EntityAnimationUtils() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

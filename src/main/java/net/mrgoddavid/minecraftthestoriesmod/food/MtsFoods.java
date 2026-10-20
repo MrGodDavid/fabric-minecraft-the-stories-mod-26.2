@@ -3,13 +3,15 @@ package net.mrgoddavid.minecraftthestoriesmod.food;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 /**
  * @author Mr. GodDavid
  * @since 9/13/2026
  */
-public class MtsFoods {
+public final class MtsFoods {
 
     public static final FoodProperties STRAWBERRY = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
     public static final FoodProperties RAW_STRAWBERRY = new FoodProperties.Builder().nutrition(1).saturationModifier(0.125f).build();
@@ -23,5 +25,9 @@ public class MtsFoods {
 
     public static void register() {
         MtsLogger.info("Custom Foods");
+    }
+
+    private MtsFoods() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }
