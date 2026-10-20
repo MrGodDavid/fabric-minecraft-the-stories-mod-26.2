@@ -1,6 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
 import com.google.common.collect.Lists;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -18,16 +19,23 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.bee.Bee;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.entity.EntityTypeTest;
+import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Mr. GodDavid
@@ -36,6 +44,7 @@ import java.util.List;
 public class OakieEntity extends TamableAnimal {
 
     public static final int HEALING_RADIUS = 5;
+    public static final int HEALING_RADIUS_SQUARED = HEALING_RADIUS * HEALING_RADIUS;
     private static final EntityDataAccessor<Boolean> DATA_ENCHANTING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
     private final byte STAND_EVENT = 99;
     public final AnimationState idleAnimationState = new AnimationState();
@@ -73,8 +82,9 @@ public class OakieEntity extends TamableAnimal {
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new OakieGrowCropsGoal());
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
     }
 
     public static AttributeSupplier.Builder createCubeAttributes() {
@@ -180,15 +190,15 @@ public class OakieEntity extends TamableAnimal {
         double dx = entity.getX() - this.getX();
         double dz = entity.getZ() - this.getZ();
         double distanceSquared = dx * dx + dz * dz;
-        return distanceSquared <= HEALING_RADIUS * HEALING_RADIUS;
+        return distanceSquared <= HEALING_RADIUS_SQUARED;
     }
 
     private void grantsPlayersInEnchantingRegionEffects(ServerLevel level) {
         List<ServerPlayer> playersInEnchantingRegion = level.getPlayers(this::selectPlayerInEnchantingRegion);
         for (ServerPlayer player : playersInEnchantingRegion) {
             if (this.isOwnedBy(player) && this.isEnchanting()) {
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 2, false, true, true));
-                player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 60, 1, false, true, true));
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 1, false, true, true));
+                player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 60, 0, false, true, true));
             } else {
                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 0, false, true, true));
             }
@@ -261,10 +271,107 @@ public class OakieEntity extends TamableAnimal {
     }
 
     public boolean isEnchanting() {
-        return this.entityData.get(DATA_ENCHANTING);
+        return this.isTame() && this.entityData.get(DATA_ENCHANTING);
     }
 
-    private void setEnchanting(boolean enchanting){
+    private void setEnchanting(boolean enchanting) {
         this.entityData.set(DATA_ENCHANTING, enchanting);
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 10/19/2026
+     */
+    private class OakieGrowCropsGoal extends Goal {
+
+        public static final int SPAWN_HAPPY_VILLAGER_PARTICLE_EVENT = 2011;
+
+        @Override
+        public boolean canUse() {
+            return OakieEntity.this.isEnchanting();
+        }
+
+        @Override
+        public void tick() {
+            if (OakieEntity.this.random.nextInt(this.adjustedTickDelay(30)) == 0) {
+                for (BlockPos candidateBlockPos : getBlockPosInCircle()) {
+                    BlockState state = OakieEntity.this.level().getBlockState(candidateBlockPos);
+                    BlockState growState = getCropStateFromPos(candidateBlockPos, state);
+                    this.applyGrowCrops(growState, candidateBlockPos);
+
+                    for (int i = 1; i <= 2; i++) {
+                        // below two blocks
+                        BlockPos belowPos = candidateBlockPos.below(i);
+                        BlockState belowState = OakieEntity.this.level().getBlockState(belowPos);
+                        BlockState growBelowState = getCropStateFromPos(belowPos, belowState);
+                        this.applyGrowCrops(growBelowState, belowPos);
+                        // above two blocks
+                        BlockPos abovePos = candidateBlockPos.above(i);
+                        BlockState aboveState = OakieEntity.this.level().getBlockState(abovePos);
+                        BlockState growAboveState = getCropStateFromPos(abovePos, aboveState);
+                        this.applyGrowCrops(growAboveState, abovePos);
+                    }
+                }
+            }
+        }
+
+        private List<BlockPos> getBlockPosInCircle() {
+            BlockPos center = OakieEntity.this.blockPosition();
+            BlockPos minCorner = center.offset(-HEALING_RADIUS, 0, -HEALING_RADIUS);
+            BlockPos maxCorner = center.offset(HEALING_RADIUS, 0, HEALING_RADIUS);
+            return BlockPos.betweenClosedStream(minCorner, maxCorner)
+                    .filter(pos -> {
+                        double dx = pos.getX() - center.getX();
+                        double dz = pos.getZ() - center.getZ();
+                        double distanceSquared = dx * dx + dz * dz;
+                        return distanceSquared <= HEALING_RADIUS_SQUARED;
+                    })
+                    .map(BlockPos::immutable)
+                    .collect(Collectors.toList());
+        }
+
+        private void applyGrowCrops(BlockState cropState, BlockPos blockPos) {
+            if (cropState != null) {
+                OakieEntity.this.level().levelEvent(SPAWN_HAPPY_VILLAGER_PARTICLE_EVENT, blockPos, 15);
+                OakieEntity.this.level().setBlockAndUpdate(blockPos, cropState);
+            }
+        }
+
+        /**
+         * I copied this from vanilla bee's {@code BeeGrowCropGoal} class.
+         *
+         * @param blockPos   position of crop below/above the oakie, as well as in the oakie's effectiveness region.
+         * @param blockState state of the crop below/above the oakie, as well as in the oakie's effectiveness region.
+         * @return the grown state of the crop below/above the oakie, as well as in the oakie's effectiveness region.
+         */
+        private BlockState getCropStateFromPos(BlockPos blockPos, BlockState blockState) {
+            BlockState growState = null;
+            Block block = blockState.getBlock();
+            if (blockState.is(MtsTags.Entities.OAKIE_GROWABLES)) {
+                if (block instanceof CropBlock cropBlockBelow) {
+                    if (!cropBlockBelow.isMaxAge(blockState)) {
+                        growState = cropBlockBelow.getStateForAge(cropBlockBelow.getAge(blockState) + 1);
+                    }
+                } else if (block instanceof StemBlock) {
+                    int age = blockState.getValue(StemBlock.AGE);
+                    if (age < 7) {
+                        growState = blockState.setValue(StemBlock.AGE, age + 1);
+                    }
+                } else if (blockState.is(Blocks.SWEET_BERRY_BUSH) || blockState.is(MtsBlocks.BLUEBERRY_BUSH)) {
+                    int age = blockState.getValue(SweetBerryBushBlock.AGE);
+                    if (age < 3) {
+                        growState = blockState.setValue(SweetBerryBushBlock.AGE, age + 1);
+                    }
+                }
+//                else if (blockState.is(Blocks.CAVE_VINES) || blockState.is(Blocks.CAVE_VINES_PLANT)) {
+//                    BonemealableBlock bonemealableBlock = (BonemealableBlock) blockState.getBlock();
+//                    if (bonemealableBlock.isValidBonemealTarget(OakieEntity.this.level(), blockPos, blockState)) {
+//                        bonemealableBlock.performBonemeal((ServerLevel) OakieEntity.this.level(), OakieEntity.this.random, blockPos, blockState);
+//                        growState = OakieEntity.this.level().getBlockState(blockPos);
+//                    }
+//                }
+            }
+            return growState;
+        }
     }
 }

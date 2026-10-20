@@ -36,7 +36,17 @@ public class Timer {
         }
     }
 
+    /**
+     * Checks if the timer has reached the certain criteria. If the parameter is null, we just check if the timer hits
+     * its maximum value.
+     *
+     * @param criterion criterion that cumulate the tick count of this timer.
+     * @return true if this timer has reached its maximum tick count.
+     */
     public boolean pass(Criterion criterion) {
+        if (criterion == null) {
+            return this.hasReachedMaxTick();
+        }
         this.tick(criterion);
         return hasReachedMaxTick();
     }

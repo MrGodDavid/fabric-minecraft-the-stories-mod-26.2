@@ -32,7 +32,7 @@ public class LeechOfOakieEffect extends MobEffect {
         List<LivingEntity> enemies = serverLevel.getEntitiesOfClass(LivingEntity.class, spreadRegion);
         for (LivingEntity enemy : enemies) {
             if (enemy instanceof Mob mob) {
-                // 5% change spreading to all surrounding enemies.
+                // 5% change to spread across all surrounding enemies.
                 if (serverLevel.getRandom().nextInt(20) == 0) {
                     mob.hurtServer(serverLevel, MtsDamageTypes.create(serverLevel, MtsDamageTypes.LEECH_OF_OAKIE), 0.25f * (amplification + 1));
                 }

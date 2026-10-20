@@ -3,6 +3,9 @@ package net.mrgoddavid.minecraftthestoriesmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.references.BlockIds;
+import net.minecraft.references.BlockItemId;
+import net.minecraft.references.BlockItemIds;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
@@ -230,5 +233,11 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(LEMON_TREE_LEAVES));
         tag(BlockTags.FLOWER_POTS)
                 .add(MtsBlocks.getResourceKey(POTTED_LEMON_TREE_SAPLING));
+
+        tag(MtsTags.Entities.OAKIE_GROWABLES)
+                .add(BlockItemIds.SWEET_BERRY_CROP.block())
+                .add(BlockItemIds.GLOW_BERRY_CROP.block())
+                .add(BlockIds.CAVE_VINES_PLANT)
+                .addTag(BlockTags.CROPS);
     }
 }

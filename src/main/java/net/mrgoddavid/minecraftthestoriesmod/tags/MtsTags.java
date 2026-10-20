@@ -19,12 +19,18 @@ public final class MtsTags {
 
     public static class Entities {
 
-        public static final TagKey<Item> AGRO_BROWN_BEAR_ITEMS = createTag("agro_brown_bear_items");
-        public static final TagKey<Item> BREED_BROWN_BEAR_ITEMS = createTag("breed_brown_bear_items");
+        public static final TagKey<Item> AGRO_BROWN_BEAR_ITEMS = createEntityItemTag("agro_brown_bear_items");
+        public static final TagKey<Item> BREED_BROWN_BEAR_ITEMS = createEntityItemTag("breed_brown_bear_items");
+        public static final TagKey<Block> OAKIE_GROWABLES =createEntityBlockTag("oakie_growables");
 
-        private static TagKey<Item> createTag(final String name) {
+        private static TagKey<Item> createEntityItemTag(final String name) {
             Identifier identifier = Constants.modId(name);
             return TagKey.create(Registries.ITEM, identifier);
+        }
+
+        private static TagKey<Block> createEntityBlockTag(final String name) {
+            Identifier identifier = Constants.modId(name);
+            return TagKey.create(Registries.BLOCK, identifier);
         }
     }
 
