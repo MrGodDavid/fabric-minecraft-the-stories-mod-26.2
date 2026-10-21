@@ -7,6 +7,7 @@ import net.minecraft.advancements.triggers.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class BathingInEnricherWasteTrigger extends SimpleCriterionTrigger<Bathin
     private static final Timer BATHING_TIME = new Timer(1200);
 
     @Override
-    public Codec<TriggerInstance> codec() {
+    public @NonNull Codec<TriggerInstance> codec() {
         return TriggerInstance.CODEC;
     }
 
@@ -42,7 +43,7 @@ public class BathingInEnricherWasteTrigger extends SimpleCriterionTrigger<Bathin
         }
 
         @Override
-        public Optional<ContextAwarePredicate> player() {
+        public @NonNull Optional<ContextAwarePredicate> player() {
             return player;
         }
     }

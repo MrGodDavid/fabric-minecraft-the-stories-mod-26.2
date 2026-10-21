@@ -10,7 +10,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.menu.MtsBlockAbstractDataComponentContainerMenu;
-import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuTypes;
 
 /**
  * Menu of Ore Compressor.

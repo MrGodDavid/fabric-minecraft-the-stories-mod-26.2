@@ -1,11 +1,10 @@
 package net.mrgoddavid.minecraftthestoriesmod.item.content.story_block;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuTypes;
 
 /**
  * @author Mr. GodDavid

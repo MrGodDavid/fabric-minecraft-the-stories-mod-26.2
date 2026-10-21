@@ -18,7 +18,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderEx
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
-import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuScreens;
+import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuScreens;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsClientTickEventRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFluidRenderingRegistries;
 

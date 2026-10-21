@@ -20,7 +20,7 @@ public class OakieEyesLayer extends EyesLayer<OakieEntityRenderState, OakieEntit
 
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, OakieEntityRenderState state, float yRot, float xRot) {
-        submitNodeCollector.order(1).submitModel(this.getParentModel(), state, poseStack, this.renderType(), lightCoords, OverlayTexture.NO_OVERLAY, 0xFF000000, null, state.outlineColor, null);
+        submitNodeCollector.order(1).submitModel(this.getParentModel(), state, poseStack, this.renderType(), lightCoords, OverlayTexture.NO_OVERLAY, state.eyeColor, null, state.outlineColor, null);
     }
 
     @Override

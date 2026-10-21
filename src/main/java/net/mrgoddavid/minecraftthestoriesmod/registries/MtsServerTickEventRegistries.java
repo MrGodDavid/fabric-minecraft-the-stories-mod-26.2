@@ -1,17 +1,21 @@
 package net.mrgoddavid.minecraftthestoriesmod.registries;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.PeriodicPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+
+import java.util.List;
 
 /**
  * @author Mr. GodDavid
@@ -30,11 +34,19 @@ public final class MtsServerTickEventRegistries {
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
                 // Checks advancement triggers of player while playing.
                 checkPlayerAdvancementTriggers(player);
+                checkOakieAdvancements(server, player);
 
                 // Grants Public Enemy effect to player if the player wears full Amethyst armor.
                 grantsPublicEnemyEffectIfWearingFullAmethystArmor(player);
             }
         });
+    }
+
+    private static void checkOakieAdvancements(MinecraftServer server, ServerPlayer player) {
+        List<OakieEntity> oakies = server.overworld().getEntitiesOfClass(OakieEntity.class, player.getBoundingBox().inflate(5.0D));
+        for (OakieEntity oakie : oakies) {
+            MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_WHILE_BEING_ENCHANTED_BY_OAKIE_TRIGGER.trigger(player, oakie);
+        }
     }
 
     private static void checkPlayerAdvancementTriggers(ServerPlayer player) {

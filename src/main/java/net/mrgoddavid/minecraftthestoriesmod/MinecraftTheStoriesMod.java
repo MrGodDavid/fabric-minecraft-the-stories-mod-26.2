@@ -9,7 +9,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.screen.MtsScreenTextures;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
-import net.mrgoddavid.minecraftthestoriesmod.general.MtsMenuTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
 import net.mrgoddavid.minecraftthestoriesmod.registries.*;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsEntityFluidInteractions;

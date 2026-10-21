@@ -673,6 +673,25 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("bath_in_enricher_waste", hasBathedInEnricherWaste())
                     .save(output, generateSaveName("dangerous_bath"));
 
+            // Bathing in dangerous Enricher Waste while being enchanted by oakie.
+            AdvancementHolder iAmAGenius = Advancement.Builder.advancement()
+                    .parent(dangerousBath)
+                    .display(
+                            Items.PLAYER_HEAD,
+                            Component.translatable("advancements.minecraft-the-stories-mod.i_am_a_genius.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.i_am_a_genius.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("bath_in_enricher_waste_while_being_enchanted_by_an_oakie", hasBathedInEnricherWasteWhileBeingEnchantedByOakies())
+                    .save(output, generateSaveName("i_am_a_genius"));
+
+        }
+
+        private Criterion<?> hasBathedInEnricherWasteWhileBeingEnchantedByOakies() {
+            return MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_WHILE_BEING_ENCHANTED_BY_OAKIE_TRIGGER.createCriterion(
+                    new BathingInEnricherWasteWhileBeingEnchantedByOakieTrigger.TriggerInstance(Optional.empty()));
         }
 
         private Criterion<?> hitHitEnemyWithCudgel() {

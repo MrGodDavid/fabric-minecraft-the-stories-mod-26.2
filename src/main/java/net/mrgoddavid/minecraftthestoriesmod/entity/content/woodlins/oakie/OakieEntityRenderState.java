@@ -19,4 +19,5 @@ public class OakieEntityRenderState extends LivingEntityRenderState {
     public final AnimationState tameAnimationState = new AnimationState();
     public boolean enchanting = false;
     public UUID entityUUID;
+    public int eyeColor;
 }

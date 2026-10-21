@@ -14,6 +14,7 @@ import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
 
 /**
  * @author Mr. GodDavid
@@ -48,6 +49,11 @@ public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRen
         state.tameAnimationState.copyFrom(entity.tameAnimationState);
         state.enchanting = entity.isEnchanting();
         state.entityUUID = entity.getUUID();
+        state.eyeColor = this.selectEyeColor(entity);
+    }
+
+    private int selectEyeColor(OakieEntity oakie) {
+        return oakie.isEnchanting() ? 0xFFD8FF14 : 0xFF000000;
     }
 
     @Override

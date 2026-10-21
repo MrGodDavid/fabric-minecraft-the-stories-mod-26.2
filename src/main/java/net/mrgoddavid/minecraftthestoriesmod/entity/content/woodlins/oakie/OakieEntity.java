@@ -86,7 +86,7 @@ public class OakieEntity extends TamableAnimal {
         this.goalSelector.addGoal(5, new OakieGrowCropsGoal());
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-//        this.targetSelector.addGoal(1, new OakieHealOwnerGoal(this, 4.5f, 10f, true, true));
+        this.targetSelector.addGoal(1, new OakieHealOwnerGoal(this, 4.5f, 10f, true, true));
     }
 
     public static AttributeSupplier.Builder createCubeAttributes() {
@@ -282,94 +282,98 @@ public class OakieEntity extends TamableAnimal {
         this.entityData.set(DATA_ENCHANTING, enchanting);
     }
 
-//    /**
-//     * @author Mr. GodDavid
-//     * @since 10/20/2026
-//     */
-//    private class OakieHealOwnerGoal extends TargetGoal {
-//
-//        private static final int HEAL_AMOUNT = 1;
-//        private final float minNoticeDistance;
-//        private final float maxNoticeDistance;
-//        private final Timer healCoodDownTimer = new Timer(60);
-//        protected @Nullable LivingEntity target;
-//
-//        public OakieHealOwnerGoal(Mob mob, float minNoticeDistance, float maxNoticeDistance, boolean mustSee, boolean mustReach) {
-//            super(mob, mustSee, mustReach);
-//            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.TARGET));
-//            this.minNoticeDistance = minNoticeDistance;
-//            this.maxNoticeDistance = maxNoticeDistance;
-//        }
-//
-//        @Override
-//        public void start() {
-//            this.mob.setTarget(this.target);
-//            super.start();
-//            OakieEntity.this.healAnimationState.start(OakieEntity.this.tickCount);
-//        }
-//
-//        @Override
-//        public void stop() {
-//            super.stop();
-//            OakieEntity.this.healAnimationState.stop();
-//        }
-//
-//        @Override
-//        public void tick() {
-//            if (this.target == null) return;
-//
-//            if (healCoodDownTimer.pass(this::checkWhetherOwnerInEnchantingRange)) {
-//                healCoodDownTimer.reset();
-//                this.heal();
-//            }
-//        }
-//
-//        private void heal() {
-//            this.target.setHealth(this.target.getHealth() + HEAL_AMOUNT);
-//        }
-//
-//        private boolean checkWhetherOwnerInEnchantingRange() {
-//            double distanceSq = this.distanceBetweenOakieAndOwner();
-//            return distanceSq <= HEALING_RADIUS_SQUARED;
-//        }
-//
-//        @Override
-//        public boolean canUse() {
-//            this.findOwner();
-//            return OakieEntity.this.isTame() && this.checkOwnerConditions() && this.target != null;
-//        }
-//
-//        private void findOwner() {
-//            this.target = null;
-//            if (this.isOwnerInNoticeRange()) {
-//                this.target = OakieEntity.this.getOwner();
-//            }
-//        }
-//
-//        private boolean isOwnerInNoticeRange() {
-//            if (OakieEntity.this.getOwner() == null) return false;
-//            double distanceSq = this.distanceBetweenOakieAndOwner();
-//            return distanceSq >= this.minNoticeDistance * this.minNoticeDistance && distanceSq <= this.maxNoticeDistance * this.maxNoticeDistance;
-//        }
-//
-//        private double distanceBetweenOakieAndOwner() {
-//            BlockPos ownerBlockPos = OakieEntity.this.getOwner().blockPosition();
-//            BlockPos oakiePos = OakieEntity.this.blockPosition();
-//            double dx = ownerBlockPos.getX() - oakiePos.getX();
-//            double dz = ownerBlockPos.getZ() - oakiePos.getZ();
-//            return dx * dx + dz * dz;
-//        }
-//
-//        private boolean checkOwnerConditions() {
-//            return OakieEntity.this.getOwner() != null && OakieEntity.this.getOwner().isAlive() && this.ownerNeedsToHeal();
-//        }
-//
-//        private boolean ownerNeedsToHeal() {
-//            double ownerHealth = OakieEntity.this.getOwner().getHealth();
-//            double ownerMaxHealth = OakieEntity.this.getOwner().getMaxHealth();
-//            return ownerHealth <= ownerMaxHealth * 0.8;
-//        }
-//    }
+    public boolean isOwnerInEnchantingRange(ServerPlayer player) {
+        return this.isEnchanting() && this.isOwnedBy(player) && this.selectPlayerInEnchantingRegion(player);
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 10/20/2026
+     */
+    private class OakieHealOwnerGoal extends TargetGoal {
+
+        private static final int HEAL_AMOUNT = 1;
+        private final float minNoticeDistance;
+        private final float maxNoticeDistance;
+        private final Timer healCoodDownTimer = new Timer(60);
+        protected @Nullable LivingEntity target;
+
+        public OakieHealOwnerGoal(Mob mob, float minNoticeDistance, float maxNoticeDistance, boolean mustSee, boolean mustReach) {
+            super(mob, mustSee, mustReach);
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.TARGET));
+            this.minNoticeDistance = minNoticeDistance;
+            this.maxNoticeDistance = maxNoticeDistance;
+        }
+
+        @Override
+        public void start() {
+            this.mob.setTarget(this.target);
+            super.start();
+            OakieEntity.this.healAnimationState.start(OakieEntity.this.tickCount);
+        }
+
+        @Override
+        public void stop() {
+            super.stop();
+            OakieEntity.this.healAnimationState.stop();
+        }
+
+        @Override
+        public void tick() {
+            if (this.target == null) return;
+
+            if (healCoodDownTimer.pass(this::checkWhetherOwnerInEnchantingRange)) {
+                healCoodDownTimer.reset();
+                this.heal();
+            }
+        }
+
+        private void heal() {
+            this.target.setHealth(this.target.getHealth() + HEAL_AMOUNT);
+        }
+
+        private boolean checkWhetherOwnerInEnchantingRange() {
+            double distanceSq = this.distanceBetweenOakieAndOwner();
+            return distanceSq <= HEALING_RADIUS_SQUARED;
+        }
+
+        @Override
+        public boolean canUse() {
+            this.findOwner();
+            return OakieEntity.this.isTame() && this.checkOwnerConditions() && this.target != null;
+        }
+
+        private void findOwner() {
+            this.target = null;
+            if (this.isOwnerInNoticeRange()) {
+                this.target = OakieEntity.this.getOwner();
+            }
+        }
+
+        private boolean isOwnerInNoticeRange() {
+            if (OakieEntity.this.getOwner() == null) return false;
+            double distanceSq = this.distanceBetweenOakieAndOwner();
+            return distanceSq >= this.minNoticeDistance * this.minNoticeDistance && distanceSq <= this.maxNoticeDistance * this.maxNoticeDistance;
+        }
+
+        private double distanceBetweenOakieAndOwner() {
+            BlockPos ownerBlockPos = OakieEntity.this.getOwner().blockPosition();
+            BlockPos oakiePos = OakieEntity.this.blockPosition();
+            double dx = ownerBlockPos.getX() - oakiePos.getX();
+            double dz = ownerBlockPos.getZ() - oakiePos.getZ();
+            return dx * dx + dz * dz;
+        }
+
+        private boolean checkOwnerConditions() {
+            return OakieEntity.this.getOwner() != null && OakieEntity.this.getOwner().isAlive() && this.ownerNeedsToHeal();
+        }
+
+        private boolean ownerNeedsToHeal() {
+            double ownerHealth = OakieEntity.this.getOwner().getHealth();
+            double ownerMaxHealth = OakieEntity.this.getOwner().getMaxHealth();
+            return ownerHealth <= ownerMaxHealth * 0.8;
+        }
+    }
 
     /**
      * @author Mr. GodDavid

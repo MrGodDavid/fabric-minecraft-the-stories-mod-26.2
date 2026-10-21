@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.general;
+package net.mrgoddavid.minecraftthestoriesmod.registries.client;
 
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuType;
 import net.minecraft.core.BlockPos;

@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.general;
+package net.mrgoddavid.minecraftthestoriesmod.registries.client;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterScreen;

@@ -29,4 +29,8 @@ public final class MathUtils {
         Vector3f v = new Vector3f(aHat).mul(c).add(new Vector3f(bHat).mul(d)).normalize();
         return new Vec3(v);
     }
+
+    public static int argbToColor(int r, int g, int b, int a) {
+        return a << 24 | r << 16 | g << 8 | b;
+    }
 }

@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/dangerous_bath",
+  "criteria": {
+    "bath_in_enricher_waste_while_being_enchanted_by_an_oakie": {
+      "trigger": "minecraft-the-stories-mod:bathing_in_enricher_waste_while_being_enchanted_by_oakie"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.i_am_a_genius.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "minecraft:player_head"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.i_am_a_genius.title"
+    }
+  },
+  "requirements": [
+    [
+      "bath_in_enricher_waste_while_being_enchanted_by_an_oakie"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
