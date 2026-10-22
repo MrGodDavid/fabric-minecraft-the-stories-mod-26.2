@@ -13,6 +13,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 public final class MtsRenderTypes {
 
     public static final RenderType OAKIE_EYES = RenderTypes.eyes(MtsEntityTextures.OAKIE_EYES);
+    public static final RenderType OAKIE_STAFF_GLOWING = RenderTypes.eyes(MtsEntityTextures.OAKIE_STAFF_GLOWING);
 
     public static void register() {
         MtsLogger.info("Custom Render Types");

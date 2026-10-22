@@ -1,9 +1,13 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.math;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.joml.Vector3f;
+
+import javax.swing.text.html.parser.Entity;
 
 /**
  * @author Mr. GodDavid
@@ -30,7 +34,14 @@ public final class MathUtils {
         return new Vec3(v);
     }
 
-    public static int argbToColor(int r, int g, int b, int a) {
+    public static int argbToColor(int a, int r, int g, int b) {
         return a << 24 | r << 16 | g << 8 | b;
+    }
+
+    public static double distanceSqBetweenMobAndBlockPos(LivingEntity mob, BlockPos pos) {
+        double x = mob.getX() - pos.getX();
+        double y = mob.getY() - pos.getY();
+        double z = mob.getZ() - pos.getZ();
+        return x * x + y * y + z * z;
     }
 }

@@ -10,15 +10,9 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
-import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
-import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
-import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
 import org.joml.Quaternionf;
 import org.jspecify.annotations.NonNull;
 
@@ -28,7 +22,7 @@ import org.jspecify.annotations.NonNull;
  */
 public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyEntity, TargetDummyRenderState, TargetDummyModel> {
 
-    private static final RandomPulse pulse = RandomPulse.builder(100).origin(0).bound(100).probability(50).build();
+//    private static final RandomPulse pulse = RandomPulse.builder(100).origin(0).bound(100).probability(50).build();
 
     public TargetDummyEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new TargetDummyModel(context.bakeLayer(MtsEntityModelLayers.TARGET_DUMMY)), 0.6F);

@@ -20,6 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
+@SuppressWarnings("NullableProblems")
 public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRenderState, OakieEntityModel> {
 
     private static final RandomPulse RANDOM_PULSE = RandomPulse.builder(100).origin(0).probability(50).build();
@@ -27,6 +28,7 @@ public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRen
     public OakieEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new OakieEntityModel(context.bakeLayer(MtsEntityModelLayers.OAKIE)), 0.6F);
         this.addLayer(new OakieEyesLayer(this));
+        this.addLayer(new OakieStaffGlowingLayer(this));
     }
 
     @Override
@@ -50,6 +52,12 @@ public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRen
         state.enchanting = entity.isEnchanting();
         state.entityUUID = entity.getUUID();
         state.eyeColor = this.selectEyeColor(entity);
+        state.staffGlowingColor = this.selectStaffGlowingColor(entity);
+    }
+
+    /** Y = (R x 0.299) + (G x 0.587) + (B x 0.114) */
+    private int selectStaffGlowingColor(OakieEntity oakie) {
+        return oakie.isEnchanting() ? MathUtils.argbToColor(255, 3, 2, 8) : 0;
     }
 
     private int selectEyeColor(OakieEntity oakie) {

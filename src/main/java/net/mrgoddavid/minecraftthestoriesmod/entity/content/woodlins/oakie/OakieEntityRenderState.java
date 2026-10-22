@@ -12,7 +12,6 @@ import java.util.UUID;
 public class OakieEntityRenderState extends LivingEntityRenderState {
 
     public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState walkAnimationState = new AnimationState();
     public final AnimationState healAnimationState = new AnimationState();
     public final AnimationState enchantingAnimationState = new AnimationState();
     public final AnimationState disenchantingAnimationState = new AnimationState();
@@ -20,4 +19,5 @@ public class OakieEntityRenderState extends LivingEntityRenderState {
     public boolean enchanting = false;
     public UUID entityUUID;
     public int eyeColor;
+    public int staffGlowingColor;
 }

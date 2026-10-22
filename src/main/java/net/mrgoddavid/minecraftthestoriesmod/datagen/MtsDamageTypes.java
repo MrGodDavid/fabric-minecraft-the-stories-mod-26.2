@@ -18,6 +18,7 @@ public class MtsDamageTypes {
 
     public static final ResourceKey<DamageType> CUDGEL_BONK = create("cudgel_bonk");
     public static final ResourceKey<DamageType> LEECH_OF_OAKIE = create("leech_of_oakie");
+    public static final ResourceKey<DamageType> OAKIE_BURN = create("oakie_burn");
 
     public static ResourceKey<DamageType> create(String name) {
         return ResourceKey.create(Registries.DAMAGE_TYPE, Constants.modId(name));
@@ -26,6 +27,7 @@ public class MtsDamageTypes {
     public static void bootstrap(BootstrapContext<DamageType> context) {
         context.register(CUDGEL_BONK, new DamageType("cudgel_bonk", 0.1f, DamageEffects.HURT));
         context.register(LEECH_OF_OAKIE, new DamageType("leech_of_oakie", 0.1f, DamageEffects.HURT));
+        context.register(OAKIE_BURN, new DamageType("oakie_burn", 0.1f, DamageEffects.HURT));
     }
 
     public static DamageSource create(Level level, ResourceKey<DamageType> key) {

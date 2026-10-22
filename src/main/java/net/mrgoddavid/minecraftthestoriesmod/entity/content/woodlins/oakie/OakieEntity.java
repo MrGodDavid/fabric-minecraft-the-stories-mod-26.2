@@ -17,7 +17,6 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.TargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
@@ -29,16 +28,47 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
+import net.mrgoddavid.minecraftthestoriesmod.utils.client.EntityUtils;
 import org.jspecify.annotations.Nullable;
 
 import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 /**
+ * Oakie is the spirit of the Dense Oaklin, where a mysterious dense oak forest and home to many ancient wooden
+ * species. In the original comic of Minecraft: The Stories, Dense Oaklin is a biome that is recorded by very few
+ * adventurers. So few people recorded that even the "author" did not draw this biome in the comic. (Kind of lazy, uh)
+ * Anyway, Dense Oaklin grows dense, tall, and strong ancient oak trees known as Oaklin. There is a very small chance
+ * that the House of Oakie would spawn in the center of the Oaklin.
+ * <p>According to an anonymous adventurer from the Empire of Monster, "I understand why the greatest and most powerful
+ * conquerer Naeus was forced to bypass this region. There are so many unknow plants and creatures living in here. The
+ * terrain is unpredictable due to the density of vegetation. This is incredible." His recording stops here.</p>
+ * <p>Later, the Player successfully entered the Dense Oaklin and tamed an Oakie. On his way back home, the "player"
+ * discovered that Oakies grant healing buffs to player and harm any enemies that is too close to player. The Player
+ * named this effect the Leech of Oakie, because he believed Oakies steal life from enemy to restore its owner's
+ * health.</p>
+ * <p>Oakies not only restore its owner's health but also help all crops within a circle of radius of 5 blocks to grow.
+ * Oakie can only do this if it's in Enchanting mode. Enchanting mode is the most powerful state for all Oakies. Oakie
+ * under this mode grants massive health boost and regeneration buffs. The only downside is Oakies cannot move when
+ * performing Enchanting mode because they need to focus on casting spells and make sure they don't cast spells to the
+ * wrong person.</p>
+ * <p>Oakies are loyal once it gained trust. They would make sure that their owner would not die by following close to
+ * their owner and heal them whenever the owner is critically injured.</p>
+ * <p>Oakies hate water and desert environment. They would receive water damage and heat damage respectively under
+ * the environments.</p>
+ * <p>Oakies receive twice as much as burning damage as players because they are made of wood! Make sure they don't get
+ * too close to lava, camp fire, or any fire sources. There is a small chance that oakie would receive fire damage once
+ * it stands next to a torch. Oakies have high chance of receiving fire damage next to a soul torch and less chance
+ * of receiving fire damage next to a copper torch.</p>
+ * <p>Oakies have a small chance of receiving frost damage when staying in a frost biome.</p>
+ *
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
@@ -46,14 +76,19 @@ public class OakieEntity extends TamableAnimal {
 
     public static final int HEALING_RADIUS = 5;
     public static final int HEALING_RADIUS_SQUARED = HEALING_RADIUS * HEALING_RADIUS;
-    private static final EntityDataAccessor<Boolean> DATA_ENCHANTING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
     private final byte STAND_EVENT = 99;
+    private static final EntityDataAccessor<Boolean> DATA_ENCHANTING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
+    private static final EntityDataAccessor<Boolean> DATA_HEALING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState healAnimationState = new AnimationState();
     public final AnimationState enchantingAnimationState = new AnimationState();
     public final AnimationState disenchantingAnimationState = new AnimationState();
     public final AnimationState tameAnimationState = new AnimationState();
     private boolean pendingSitAnimation = false;
+    private final Timer campFireHurtCoolDown = new Timer(40);
+    private final Timer fireblocksHurtCoolDown = new Timer(40);
+    private final Timer torchesHurtCoolDown = new Timer(40);
+    private final Timer lavaHurtCoolDown = new Timer(40);
 
     public OakieEntity(EntityType<? extends OakieEntity> type, Level level) {
         super(type, level);
@@ -63,6 +98,7 @@ public class OakieEntity extends TamableAnimal {
     protected void defineSynchedData(SynchedEntityData.Builder entityData) {
         super.defineSynchedData(entityData);
         entityData.define(DATA_ENCHANTING, false);
+        entityData.define(DATA_HEALING, false);
     }
 
     @Override
@@ -80,13 +116,37 @@ public class OakieEntity extends TamableAnimal {
         super.registerGoals();
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new TamableAnimalPanicGoal(1.25, DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES));
-        this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(5, new OakieGrowCropsGoal());
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new OakieHealOwnerGoal(this, 4.5f, 10f, true, true));
+        this.goalSelector.addGoal(2, new OakieAvoidFireBlockGoal(this, this::isFireblocks));
+        this.goalSelector.addGoal(2, new OakieAvoidCampFiresGoal(this, this::isCampfires));
+        this.goalSelector.addGoal(2, new OakieAvoidLavaGoal(this, this::isLava));
+        this.goalSelector.addGoal(3, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(3, new OakieHealOwnerGoal(6.0f, 12.0f));
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(6, new OakieGrowCropsGoal());
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+    }
+
+    private boolean isLava(BlockState blockState) {
+        return blockState.is(Blocks.LAVA);
+    }
+
+    private boolean isCampfires(BlockState blockState) {
+        return blockState.is(Blocks.CAMPFIRE) || blockState.is(Blocks.SOUL_CAMPFIRE);
+    }
+
+    private boolean isTorches(BlockState blockState) {
+        return blockState.is(Blocks.TORCH)
+                || blockState.is(Blocks.SOUL_TORCH)
+                || blockState.is(Blocks.COPPER_TORCH)
+                || blockState.is(Blocks.WALL_TORCH)
+                || blockState.is(Blocks.SOUL_WALL_TORCH)
+                || blockState.is(Blocks.COPPER_WALL_TORCH);
+    }
+
+    private boolean isFireblocks(BlockState blockState) {
+        return blockState.is(Blocks.FIRE) || blockState.is(Blocks.SOUL_FIRE);
     }
 
     public static AttributeSupplier.Builder createCubeAttributes() {
@@ -164,13 +224,47 @@ public class OakieEntity extends TamableAnimal {
             if (this.disenchantingAnimationState.isStarted() && this.disenchantingAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
                 this.disenchantingAnimationState.stop();
             }
+
+            if (this.isHealing()) {
+                this.healAnimationState.startIfStopped(this.tickCount);
+            } else {
+                this.healAnimationState.stop();
+            }
         }
         // Server side.
         else {
             ServerLevel level = (ServerLevel) this.level();
-            grantsPlayersInEnchantingRegionEffects(level);
-            grantsEntitiesInEnchantingRegionEffects(level);
+            this.grantsPlayersInEnchantingRegionEffects(level);
+            this.grantsEntitiesInEnchantingRegionEffects(level);
+
+            this.burnByFireSourceBlocks(level);
         }
+    }
+
+    private void burnByFireSourceBlocks(ServerLevel level) {
+        BlockPos nearestFireSource = EntityUtils.getNearestBlockPos(this, this::anyFireSourceBlock, 5);
+        if (nearestFireSource == null) return;
+
+        BlockState fireSourceBlockState = level.getBlockState(nearestFireSource);
+        if (this.campFireHurtCoolDown.pass(() -> this.isCampfires(fireSourceBlockState))) {
+            this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 0.5F);
+            this.campFireHurtCoolDown.reset();
+        } else if (this.fireblocksHurtCoolDown.pass(() -> this.isFireblocks(fireSourceBlockState))) {
+            this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 1.0F);
+            this.fireblocksHurtCoolDown.reset();
+        } else if (this.lavaHurtCoolDown.pass(() -> this.isLava(fireSourceBlockState))) {
+            this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 2.0F);
+            this.lavaHurtCoolDown.reset();
+        } else if (this.torchesHurtCoolDown.pass(() -> this.isTorches(fireSourceBlockState))) {
+            this.torchesHurtCoolDown.reset();
+            if (this.random.nextInt(20) == 0) {
+                this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 0.5F);
+            }
+        }
+    }
+
+    private boolean anyFireSourceBlock(BlockState blockState) {
+        return this.isFireblocks(blockState) || this.isCampfires(blockState) || this.isLava(blockState);
     }
 
     private void grantsEntitiesInEnchantingRegionEffects(ServerLevel level) {
@@ -178,7 +272,7 @@ public class OakieEntity extends TamableAnimal {
         level.getEntities(EntityTypeTest.forClass(LivingEntity.class), this::selectEntities, entitiesInEnchantingRegion);
         for (LivingEntity entity : entitiesInEnchantingRegion) {
             if (entity instanceof OakieEntity oakie) {
-                oakie.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0, false, true, true));
+                oakie.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 100, 2, false, true, true));
             } else if (entity instanceof Monster monster) {
                 monster.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
             } else if (entity instanceof Enemy) {
@@ -282,15 +376,56 @@ public class OakieEntity extends TamableAnimal {
         this.entityData.set(DATA_ENCHANTING, enchanting);
     }
 
+    public boolean isHealing() {
+        return this.isTame() && this.entityData.get(DATA_HEALING);
+    }
+
+    public void setHealing(boolean healing) {
+        this.entityData.set(DATA_HEALING, healing);
+    }
+
     public boolean isOwnerInEnchantingRange(ServerPlayer player) {
         return this.isEnchanting() && this.isOwnedBy(player) && this.selectPlayerInEnchantingRegion(player);
     }
 
     /**
      * @author Mr. GodDavid
+     * @since 10/21/2026
+     */
+    private static class OakieAvoidFireBlockGoal extends AvoidBlockGoal {
+
+        public OakieAvoidFireBlockGoal(PathfinderMob mob, Predicate<BlockState> blockSelector) {
+            super(mob, blockSelector, 20, 1.05, 1.55, 10);
+        }
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 10/21/2026
+     */
+    private static class OakieAvoidCampFiresGoal extends AvoidBlockGoal {
+
+        public OakieAvoidCampFiresGoal(PathfinderMob mob, Predicate<BlockState> blockSelector) {
+            super(mob, blockSelector, 15, 1.025, 1.525, 8);
+        }
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 10/21/2026
+     */
+    private static class OakieAvoidLavaGoal extends AvoidBlockGoal {
+
+        public OakieAvoidLavaGoal(PathfinderMob mob, Predicate<BlockState> blockSelector) {
+            super(mob, blockSelector, 24, 1.075, 1.75, 12);
+        }
+    }
+
+    /**
+     * @author Mr. GodDavid
      * @since 10/20/2026
      */
-    private class OakieHealOwnerGoal extends TargetGoal {
+    private class OakieHealOwnerGoal extends Goal {
 
         private static final int HEAL_AMOUNT = 1;
         private final float minNoticeDistance;
@@ -298,31 +433,29 @@ public class OakieEntity extends TamableAnimal {
         private final Timer healCoodDownTimer = new Timer(60);
         protected @Nullable LivingEntity target;
 
-        public OakieHealOwnerGoal(Mob mob, float minNoticeDistance, float maxNoticeDistance, boolean mustSee, boolean mustReach) {
-            super(mob, mustSee, mustReach);
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.TARGET));
+        public OakieHealOwnerGoal(float minNoticeDistance, float maxNoticeDistance) {
             this.minNoticeDistance = minNoticeDistance;
             this.maxNoticeDistance = maxNoticeDistance;
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
         }
 
         @Override
         public void start() {
-            this.mob.setTarget(this.target);
             super.start();
-            OakieEntity.this.healAnimationState.start(OakieEntity.this.tickCount);
+            OakieEntity.this.setHealing(true);
         }
 
         @Override
         public void stop() {
+            OakieEntity.this.setHealing(false);
             super.stop();
-            OakieEntity.this.healAnimationState.stop();
         }
 
         @Override
         public void tick() {
             if (this.target == null) return;
 
-            if (healCoodDownTimer.pass(this::checkWhetherOwnerInEnchantingRange)) {
+            if (healCoodDownTimer.pass(() -> this.checkWhetherOwnerInEnchantingRange(this.target))) { // this.target is not null here
                 healCoodDownTimer.reset();
                 this.heal();
             }
@@ -332,8 +465,8 @@ public class OakieEntity extends TamableAnimal {
             this.target.setHealth(this.target.getHealth() + HEAL_AMOUNT);
         }
 
-        private boolean checkWhetherOwnerInEnchantingRange() {
-            double distanceSq = this.distanceBetweenOakieAndOwner();
+        private boolean checkWhetherOwnerInEnchantingRange(LivingEntity entity) {
+            double distanceSq = this.distanceBetweenOakieAndOwner(entity);
             return distanceSq <= HEALING_RADIUS_SQUARED;
         }
 
@@ -343,25 +476,23 @@ public class OakieEntity extends TamableAnimal {
             return OakieEntity.this.isTame() && this.checkOwnerConditions() && this.target != null;
         }
 
-        private void findOwner() {
-            this.target = null;
-            if (this.isOwnerInNoticeRange()) {
-                this.target = OakieEntity.this.getOwner();
-            }
+        @Override
+        public boolean canContinueToUse() {
+            return this.target != null && this.target.isAlive() && this.ownerNeedsToHeal() && this.isOwnerInNoticeRange(this.target);
         }
 
-        private boolean isOwnerInNoticeRange() {
-            if (OakieEntity.this.getOwner() == null) return false;
-            double distanceSq = this.distanceBetweenOakieAndOwner();
+        private void findOwner() {
+            LivingEntity owner = OakieEntity.this.getOwner();
+            this.target = (this.target != null && isOwnerInNoticeRange(this.target)) ? owner : null;
+        }
+
+        private boolean isOwnerInNoticeRange(LivingEntity owner) {
+            double distanceSq = this.distanceBetweenOakieAndOwner(owner);
             return distanceSq >= this.minNoticeDistance * this.minNoticeDistance && distanceSq <= this.maxNoticeDistance * this.maxNoticeDistance;
         }
 
-        private double distanceBetweenOakieAndOwner() {
-            BlockPos ownerBlockPos = OakieEntity.this.getOwner().blockPosition();
-            BlockPos oakiePos = OakieEntity.this.blockPosition();
-            double dx = ownerBlockPos.getX() - oakiePos.getX();
-            double dz = ownerBlockPos.getZ() - oakiePos.getZ();
-            return dx * dx + dz * dz;
+        private double distanceBetweenOakieAndOwner(LivingEntity owner) {
+            return OakieEntity.this.distanceToSqr(owner);
         }
 
         private boolean checkOwnerConditions() {

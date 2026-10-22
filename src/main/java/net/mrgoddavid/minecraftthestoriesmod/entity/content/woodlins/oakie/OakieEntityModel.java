@@ -25,7 +25,6 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
 
     private final KeyframeAnimation idelAnimation;
     private final KeyframeAnimation walkAnimation;
-    @SuppressWarnings("unused")
     private final KeyframeAnimation healAnimation;
     private final KeyframeAnimation enchantingAnimation;
     private final KeyframeAnimation disenchantingAnimation;
@@ -56,7 +55,6 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
         PartDefinition partdefinition = meshdefinition.getRoot();
 
         PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
-
         PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -6.0F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -2.0F, 0.0F));
         body.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(0, 26).addBox(-0.25F, -0.5F, -0.5F, 1.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(3.75F, -3.5F, -0.5F));
 
@@ -90,14 +88,13 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
             this.disenchantingAnimation.apply(state.disenchantingAnimationState, state.ageInTicks);
             return;
         }
-//        if (state.healAnimationState.isStarted()) {
-//            this.healAnimation.apply(state.healAnimationState, state.ageInTicks);
-//            return;
-//        }
+        if (state.healAnimationState.isStarted()) {
+            this.healAnimation.apply(state.healAnimationState, state.ageInTicks);
+            return;
+        }
         if (state.walkAnimationSpeed > 0.0F) {
             this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 5.0F, 10.0F);
         }
         this.idelAnimation.apply(state.idleAnimationState, state.ageInTicks);
-
     }
 }
