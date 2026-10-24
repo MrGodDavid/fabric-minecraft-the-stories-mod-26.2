@@ -136,6 +136,7 @@ public class CreativeModeTabs {
                         output.accept(STRONG_AMETHYST_SWORD);
                         output.accept(STRONG_AMETHYST_SPEAR);
 
+                        output.accept(TEST_LONG_STICK);
                         output.accept(STRONG_IRON_LONG_KNIFE);
                         output.accept(STRONG_IRON_ZEN_STAFF);
                         output.accept(STRONG_IRON_DOUBLE_BLADE);

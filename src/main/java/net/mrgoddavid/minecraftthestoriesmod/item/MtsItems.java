@@ -19,6 +19,7 @@ import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CursedItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.DrinkableItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
+import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.AnimationTestItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
@@ -294,6 +295,7 @@ public final class MtsItems {
     public static final Item SPRUCE_SPEAR = registerItem("spruce_spear", properties -> new Item(properties.spear(MtsItemToolMaterials.SPRUCE, 0.65F, 0.7F, 0.75F, 5.0F, 14.0F, 10.0F, 5.1F, 15.0F, 4.6F)));
     public static final Item SPRUCE_CUDGEL = registerItem("spruce_cudgel", properties -> new CudgelItem(MtsItemToolMaterials.SPRUCE, 1.0F, -1.0F, 1.0F, properties));
 
+    public static final Item TEST_LONG_STICK = registerItem("animation_test_long_stick", properties -> new AnimationTestItem(MtsItemToolMaterials.OAK, 1.0F, -1.0F, 1.0F, properties));
     public static final Item STRONG_IRON_LONG_KNIFE = registerItem("iron_long_knife", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.5f, -2.2f)));
     public static final Item STRONG_IRON_ZEN_STAFF = registerItem("strong_iron_zen_staff", properties -> new Item(properties.spear(MtsItemToolMaterials.STRONG_IRON, 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)));
     public static final Item STRONG_IRON_DOUBLE_BLADE = registerItem("strong_iron_double_blade", properties -> new Item(properties.sword(MtsItemToolMaterials.STRONG_IRON, 3.3f, -2.0f)));

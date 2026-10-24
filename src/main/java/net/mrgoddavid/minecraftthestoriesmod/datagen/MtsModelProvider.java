@@ -279,6 +279,7 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateTrimmableItem(STRONG_AMETHYST_BOOTS, MtsArmorMaterials.AMETHYST_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
         itemModelGenerators.declareCustomModelItem(HAMMER_OF_CRAFTER);
+        itemModelGenerators.declareCustomModelItem(TEST_LONG_STICK);
 
         itemModelGenerators.declareCustomModelItem(STRONG_IRON_LONG_KNIFE);
         itemModelGenerators.declareCustomModelItem(STRONG_IRON_ZEN_STAFF);

@@ -84,6 +84,26 @@
 		 		Change the name of storybook >> adventure diary.
 		 		Fix texture-loading error.
 		 		Implement/Test Advanture Book page unlock mechanism.
-
+#IMPLEMENTATION_NOTES
+		@ENLARGED_WEAPONS
+				1. Draw the texture of the weapon. Make sure they are in size of 8x8, 16x16, 32x32, 64x64, 128x128, etc. The size = 2^n [n ∈ ℝ | n >= 0];
+				2. Import the texture to Blockbench and extrude it.
+				3. Go to Display tag.
+				3-1. Tools -> Optimize.
+				NOTE: Missing channels indicates the value is 0.
+				SCALE_FACTOR = width_of_new_texture / 16;
+				4. For right hand third-person display: Tx, Ty, and Tz: Depends on weapon's size. Ry: 90, Rz: 45, Sx = Sy = Sz = SCALE_FACTOR;
+				5. For left hand third-person display: Tx, Ty, and Tz: Same as the one above it. Ry: 90, Rz: -45, Sx = Sy = Sz = SCALE_FACTOR;
+				6. For right hand first-person display: Tx, Ty, and Tz: Adjust them until they hit the window. Ry: 90, Rz: 45, Sx = Sy = Sz = SCALE_FACTOR / (4 / 3);
+				7. For left hand first-person display: Tx, Ty, and Tz: Adjust them until they hit the window. Ry: 90, Rz: -45, Sx = Sy = Sz = SCALE_FACTOR / (4 / 3);
+				8. Skip the Head.
+				9. For the ground, adjust the size of the weapon based on your preference.
+				10. Skip the Frame, Shelf, and GUI.
+				11. File -> Export -> Export Block/Item Model -> Select desired location. (In this case export it to the item model json folder).
+				12. Open the exported json file.
+				13. Go to the "textures" -> "0" and "particle"
+				14. Make sure "0" and "particle" have the same format: <YOUR_MOD_ID>:item/<NAME_OF_YOUR_WEAPON_TEXTURE>, if not, fix them.
+				15. Save the file if you do any changes.
+				16. You're done! :D 
 #DEADLINE
 		IDK.

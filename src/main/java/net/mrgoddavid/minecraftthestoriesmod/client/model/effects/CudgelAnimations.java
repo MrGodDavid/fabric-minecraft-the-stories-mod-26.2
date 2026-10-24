@@ -32,17 +32,15 @@ public class CudgelAnimations {
     public static void swing(PoseStack poseStack, float attackProgress, HumanoidArm arm) {
         float t = Math.clamp(attackProgress, 0.0F, 1.0F);
 //        float invert = arm == HumanoidArm.RIGHT ? 1.0F : -1.0F;
-//        if (false) {
-//            Vec3 translation = interpolateTranslation(t);
-//            poseStack.translate(translation.multiply(invert, 1.0F, 1.0F));
-//        }
+//        Vec3 translation = interpolateTranslation(t);
+//        poseStack.translate(translation.multiply(-invert, 1.0F, 1.0F));
         Quaternionf rotation = interpolateRotation(t);
         poseStack.mulPose(rotation);
     }
 
     private static Vec3 interpolateTranslation(float progress) {
         for (int i = 0; i < TRANSLATION_KEYFRAMES.length - 1; ++i) {
-            TranslationKeyframe current =  TRANSLATION_KEYFRAMES[i];
+            TranslationKeyframe current = TRANSLATION_KEYFRAMES[i];
             TranslationKeyframe next = TRANSLATION_KEYFRAMES[i + 1];
             if (progress >= current.progress() && progress <= next.progress()) {
                 float interval = next.progress() - current.progress();
