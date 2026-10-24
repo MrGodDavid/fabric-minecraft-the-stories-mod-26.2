@@ -20,9 +20,6 @@ import java.util.Optional;
 public final class EntityAnimationUtils {
 
     public static void startAnimation(AbstractClientPlayer player, float frameInterp, float attack, PoseStack poseStack, float invert) {
-//        float attackStrength = Mth.clamp(player.getAttackStrengthScale(frameInterp), 0.0F, 1.0F);
-//        float rechargeProgress = isWeaponRecharging(player, frameInterp) ? attackStrength : 1.0F;
-//        float rise = 0.25f - Mth.lerp(rechargeProgress, 0.0f, 0.25f);
         float rise = 0.0f;
         boolean isSelectedItem = player.getMainHandItem().is(MtsItems.TEST_LONG_STICK);
         if (isSelectedItem && attack <= 0.0f) {
