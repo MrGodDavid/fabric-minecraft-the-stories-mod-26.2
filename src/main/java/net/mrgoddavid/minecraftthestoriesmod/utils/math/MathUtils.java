@@ -44,4 +44,11 @@ public final class MathUtils {
         double z = mob.getZ() - pos.getZ();
         return x * x + y * y + z * z;
     }
+
+    public static float linearInterpolation(float x, float originalMin, float originalMax, float targetMin, float targetMax) {
+        float progress = x - originalMin;
+        float targetDifference = targetMax - targetMin;
+        float originalDifference = originalMax - originalMin;
+        return targetMin + (progress * targetDifference) / originalDifference;
+    }
 }
