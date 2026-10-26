@@ -21,6 +21,7 @@ import net.mrgoddavid.minecraftthestoriesmod.item.content.DrinkableItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.AnimationTestItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -38,6 +39,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
  * @author Mr. GodDavid
  * @since 8/12/2026
  */
+@SuppressWarnings({"deprecation", "NullableProblems", "OptionalGetWithoutIsPresent"})
 public final class MtsItems {
 
     /**
@@ -318,6 +320,11 @@ public final class MtsItems {
     public static final Item STRONG_DIAMOND_VILLAGER_SOLDER_AXE_HEAD_STAGE_TWO = registerItem("axe_diamond_design_001_head_stage_two", Item::new);
     public static final Item STRONG_DIAMOND_VILLAGER_SOLDER_AXE_HEAD_STAGE_THREE = registerItem("axe_diamond_design_001_head_stage_three", Item::new);
 
+    // #################################################################################################################
+    // #                                                SPAWN EGGS                                                     #
+    // #################################################################################################################
+    public static final Item BROWN_BEAR_SPAWN_EGG = registerItem("brown_bear_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.BROWN_BEAR)));
+
     /**
      * Gets the resource key of the mod item.
      *
@@ -596,6 +603,10 @@ public final class MtsItems {
             fabricCreativeModeTabOutput.accept(RAW_STRAWBERRY);
             fabricCreativeModeTabOutput.accept(BLUEBERRY);
             fabricCreativeModeTabOutput.accept(RAW_BLUEBERRY);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(fabricCreativeModeTabOutput -> {
+            fabricCreativeModeTabOutput.accept(BROWN_BEAR_SPAWN_EGG);
         });
     }
 }

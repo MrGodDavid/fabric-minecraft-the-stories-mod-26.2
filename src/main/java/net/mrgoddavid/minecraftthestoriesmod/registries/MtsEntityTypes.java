@@ -9,6 +9,7 @@ import net.minecraft.world.entity.*;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieHealingBallEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -26,6 +27,8 @@ public final class MtsEntityTypes {
             EntityType.Builder.<TargetDummyEntity>of(TargetDummyEntity::new, MobCategory.MISC).sized(0.8f, 1.8f).eyeHeight(1.6f));
     public static final EntityType<OakieEntity> OAKIE = register("oakie",
             EntityType.Builder.<OakieEntity>of(OakieEntity::new, MobCategory.MISC).sized(0.375f, 0.625f).eyeHeight(0.3125f));
+    public static final EntityType<OakieHealingBallEntity> OAKIE_HEALING_BALL = register("oakie_healing_ball",
+            EntityType.Builder.<OakieHealingBallEntity>of(OakieHealingBallEntity::new, MobCategory.MISC).sized(0.375f, 0.375f).eyeHeight(0.1875f));
 
     private static <T extends Entity> EntityType<T> register(final String name, final EntityType.Builder<T> builder) {
         ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Constants.modId(name));
@@ -42,6 +45,7 @@ public final class MtsEntityTypes {
         FabricDefaultAttributeRegistry.register(BROWN_BEAR, BrownBearEntity.createCubeAttributes());
         FabricDefaultAttributeRegistry.register(TARGET_DUMMY, TargetDummyEntity.createLivingAttributes());
         FabricDefaultAttributeRegistry.register(OAKIE, OakieEntity.createCubeAttributes());
+        FabricDefaultAttributeRegistry.register(OAKIE_HEALING_BALL, OakieHealingBallEntity.createCubeAttributes());
     }
 
     private MtsEntityTypes() {

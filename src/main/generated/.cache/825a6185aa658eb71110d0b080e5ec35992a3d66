@@ -69,6 +69,7 @@ a7b567cf6a7e1c716ac83b498bab677eac8e31bc assets/minecraft-the-stories-mod/items/
 5e25647e02f4c03a89c050c1f7b4f16dc44e3fcc assets/minecraft-the-stories-mod/items/blueberry.json
 9ca25cf9c568c5dc0c17570662f49dfb1eb439bb assets/minecraft-the-stories-mod/items/broken_diamond_pickaxe.json
 957c0f85a34af3e02b5b6bbf9036b6207e1337c6 assets/minecraft-the-stories-mod/items/broken_iron_pickaxe.json
+744947b5db5689013aca7aa07476645129531419 assets/minecraft-the-stories-mod/items/brown_bear_spawn_egg.json
 59d265b896b48d9532a3c438da5f555918b5ed43 assets/minecraft-the-stories-mod/items/cherry_axe.json
 ae6dc8dba3f7e9e64e63e2fac7d8519e8fa5e94c assets/minecraft-the-stories-mod/items/cherry_bow.json
 88df44f70d5d69ce1219dbf16216d8a4886883d8 assets/minecraft-the-stories-mod/items/cherry_cudgel.json
@@ -351,6 +352,7 @@ e680146b6c9f972f51786d3f9c3bb4bd53440ce4 assets/minecraft-the-stories-mod/models
 cc6dd1e37b1ae18d1ffe0300a379c9ecea56de3a assets/minecraft-the-stories-mod/models/item/blueberry.json
 afb0c14cba4c7d426680ad821e73d818fb82d69d assets/minecraft-the-stories-mod/models/item/broken_diamond_pickaxe.json
 3fe39e3c95f1eded45fb178ee6b88d6af2e16e4b assets/minecraft-the-stories-mod/models/item/broken_iron_pickaxe.json
+da34b78df466f702b7ced4a0eca48dcd8d15bc1e assets/minecraft-the-stories-mod/models/item/brown_bear_spawn_egg.json
 48410c93c810c92594cbf111d6cc9153cb7e265a assets/minecraft-the-stories-mod/models/item/cherry_axe.json
 bc7dcc43a0057851677abfb27ef6975dca6a586d assets/minecraft-the-stories-mod/models/item/cherry_bow.json
 e75d39ac41e1431fac040049d38992ff69271a83 assets/minecraft-the-stories-mod/models/item/cherry_bow_pulling_0.json

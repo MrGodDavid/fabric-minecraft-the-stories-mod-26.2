@@ -14,7 +14,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  */
 public class MtsHud {
 
-    private MtsHud() throws IllegalAccessException {
+    private MtsHud() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

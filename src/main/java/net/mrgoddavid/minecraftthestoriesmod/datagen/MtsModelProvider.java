@@ -53,7 +53,6 @@ public class MtsModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-
         blockModelGenerators.createTrivialCube(DEEPSLATE_AMETHYST_ORE);
         blockModelGenerators.createTrivialCube(DEEPSLATE_RUBY_ORE);
         blockModelGenerators.createTrivialCube(DEEPSLATE_TOPAZ_ORE);
@@ -315,6 +314,8 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(RAW_BLUEBERRY, flatItemTemplate);
 
         itemModelGenerators.generateFlatItem(STORY_BOOK, flatItemTemplate);
+
+        itemModelGenerators.generateFlatItem(BROWN_BEAR_SPAWN_EGG, flatItemTemplate);
     }
 
     public void generateMtsBow(final ItemModelGenerators itemModelGenerators, final Item mtsBowItem) {

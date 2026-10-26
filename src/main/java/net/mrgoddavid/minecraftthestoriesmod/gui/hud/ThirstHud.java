@@ -21,14 +21,13 @@ public class ThirstHud {
     private static final Identifier THIRST_HALF = Constants.modId("textures/gui/sprites/hud/thirst_half.png");
 
     private static final int SIZE = 9;
-    private static final int SPACING = 0;
 
     private static final RandomPulse randomPulse = RandomPulse.builder(100)
             .origin(0).bound(100).probability(5).build();
     private static int counter = 0;
     private static boolean updateOnce = false;
 
-    private ThirstHud() throws IllegalAccessException {
+    private ThirstHud() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "MobMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "client.BlockBehaviorMixin"
   ],
   "client": [
     "client.AbstractContainerScreenMixin",

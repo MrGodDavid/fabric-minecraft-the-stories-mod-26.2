@@ -19,8 +19,9 @@ import org.joml.Vector3f;
 public final class MtsItemAnimations {
 
     public static final MtsEntityAnimationAnimator.AnimationBuilder TEST_ANIMATION = MtsEntityAnimationAnimator.animator()
-            .moveLeft(0.0f, 0.1f, 0, 10)
-            .moveRight(0.0f, 0.1f, 10, 20);
+            .moveRight(0.0f, 0.2f, 0, 12)
+            .moveLeft(0.0f, 1.0f, 12, 16)
+            .moveRight(0.0f, 0.8f, 16, 24);
 
     private MtsItemAnimations() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);

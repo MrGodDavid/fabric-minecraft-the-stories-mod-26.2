@@ -16,10 +16,11 @@ public final class MtsEntityTextures {
 
     public static final Identifier BROWN_BEAR = register("brown_bear");
     public static final Identifier TARGET_DUMMY = register("target_dummy");
-    public static final Identifier OAKIE = register("oakie");
 
+    public static final Identifier OAKIE = register("oakie");
     public static final Identifier OAKIE_EYES = register("oakie", "oakie_eyes");
     public static final Identifier OAKIE_STAFF_GLOWING = register("oakie", "oakie_staff_glowing");
+    public static final Identifier OAKIE_HEALING_BALL = register("oakie", "oakie_healing_ball");
 
     private static Identifier register(@NonNull final String name) {
         return Constants.modId(Directory.builder().textures().entity().build() + name + "/" + name + ".png");

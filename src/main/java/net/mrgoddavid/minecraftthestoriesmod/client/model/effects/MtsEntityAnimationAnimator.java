@@ -74,14 +74,14 @@ public final class MtsEntityAnimationAnimator {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float translateX = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
-        poseStack.translate(translateX, 0.0f, 0.0f);
+        poseStack.translate(-translateX, 0.0f, 0.0f);
     }
 
     public static void moveRight(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float translateX = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
-        poseStack.translate(-translateX, 0.0f, 0.0f);
+        poseStack.translate(translateX, 0.0f, 0.0f);
     }
 
     public static void moveUp(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
@@ -360,7 +360,7 @@ public final class MtsEntityAnimationAnimator {
         }
 
         private float normalizeFrames(int frame) {
-            return frame / 20.0F;
+            return frame / 24.0F;
         }
     }
 }

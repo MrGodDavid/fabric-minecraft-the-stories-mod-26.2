@@ -73,9 +73,14 @@ public abstract class ItemInHandRendererMixin {
         poseStack.pushPose();
 
         MtsEntityAnimationAnimator.startAnimation(player, frameInterp, attack, poseStack, invert);
-//        MtsEntityAnimationAnimator.rotateHorizontallyZLeft(poseStack, attack, 0, 45, 0.5f, 1.0f);
-//        MtsEntityAnimationAnimator.rotateYRight(poseStack, attack, 0, 45, 0.5f, 1.0f);
-        MtsItemAnimations.TEST_ANIMATION.animate(poseStack, attack);
+        MtsEntityAnimationAnimator.animator()
+                .rotateXBackward(0.0f, 90.0f, 0, 1)
+                .rotateXForward(0.0f, 120.0f, 1, 12)
+                .rotateXForward(0.0f, 30.0f, 12, 24)
+                .moveRight(0.0f, 0.2f, 0, 12).moveUp(0.0f, 2.0f, 0, 1)
+                .moveLeft(0.0f, 1.4f, 12, 16).moveDown(0.0f, 2.4f, 1, 12)
+                .moveRight(0.0f, 1.2f, 16, 24).moveUp(0.0f, 0.4f, 12, 24)
+                .animate(poseStack, attack);
 
         ItemInHandRenderer renderer = (ItemInHandRenderer) (Object) this;
         renderer.renderItem(

@@ -201,6 +201,7 @@ public class CreativeModeTabs {
                         output.accept(RAW_BLUEBERRY);
 
                         output.accept(STORY_BOOK);
+                        output.accept(BROWN_BEAR_SPAWN_EGG);
                     })
                     .build()
     );
