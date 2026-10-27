@@ -151,7 +151,7 @@ public class OakieEntity extends TamableAnimal {
 
     public static AttributeSupplier.Builder createCubeAttributes() {
         return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10)
+                .add(Attributes.MAX_HEALTH, 5)
                 .add(Attributes.MOVEMENT_SPEED, 0.2)
                 .add(Attributes.FOLLOW_RANGE, 32);
     }

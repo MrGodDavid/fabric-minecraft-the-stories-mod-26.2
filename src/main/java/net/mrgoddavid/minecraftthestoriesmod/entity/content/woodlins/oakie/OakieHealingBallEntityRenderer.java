@@ -26,4 +26,12 @@ public class OakieHealingBallEntityRenderer extends MobRenderer<OakieHealingBall
     public OakieHealingBallEntityRenderState createRenderState() {
         return new OakieHealingBallEntityRenderState();
     }
+
+    @Override
+    public void extractRenderState(OakieHealingBallEntity entity, OakieHealingBallEntityRenderState state, float partialTicks) {
+        super.extractRenderState(entity, state, partialTicks);
+        state.spawnAnimationState.copyFrom(entity.spawnAnimationState);
+        state.flyingAnimationState.copyFrom(entity.flyingAnimationState);
+        state.healAnimationState.copyFrom(entity.healAnimationState);
+    }
 }

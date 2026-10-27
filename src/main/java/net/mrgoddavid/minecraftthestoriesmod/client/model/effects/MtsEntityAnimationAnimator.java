@@ -6,11 +6,13 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.HumanoidArm;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntityModel;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
+import org.apache.logging.log4j.util.TriConsumer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,43 +71,49 @@ public final class MtsEntityAnimationAnimator {
         return 1.0f;
     }
 
+    private static int getMultiplierFromArm(HumanoidArm arm) {
+        return (arm == HumanoidArm.RIGHT) ? 1 : -1;
+    }
+
     // ===================================================[TRANSLATION]===================================================
-    public static void moveLeft(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+    public static void moveLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
+        int mul = getMultiplierFromArm(arm);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
-        float translateX = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
+        float translateX = mul * MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(-translateX, 0.0f, 0.0f);
     }
 
-    public static void moveRight(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+    public static void moveRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
+        int mul = getMultiplierFromArm(arm);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
-        float translateX = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
+        float translateX = mul * MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(translateX, 0.0f, 0.0f);
     }
 
-    public static void moveUp(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+    public static void moveUp(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float translateY = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(0.0f, translateY, 0.0f);
     }
 
-    public static void moveDown(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+    public static void moveDown(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float translateY = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(0.0f, -translateY, 0.0f);
     }
 
-    public static void moveForward(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+    public static void moveForward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float translateZ = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(0.0f, 0.0f, -translateZ);
     }
 
-    public static void moveBackward(PoseStack poseStack, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+    public static void moveBackward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float translateZ = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startPos, endPos);
@@ -113,85 +121,89 @@ public final class MtsEntityAnimationAnimator {
     }
 
     // ====================================================[ROTATION]=====================================================
-    public static void rotateXForward(PoseStack poseStack, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+    public static void rotateXForward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
+        int mul = getMultiplierFromArm(arm);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
-        float xRot = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
+        float xRot = mul * MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.XN.rotationDegrees(xRot));
     }
 
-    public static void rotateXBackward(PoseStack poseStack, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+    public static void rotateXBackward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float xRot = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.XP.rotationDegrees(xRot));
     }
 
-    public static void rotateYLeft(PoseStack poseStack, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+    public static void rotateYLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float yRot = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
     }
 
-    public static void rotateYRight(PoseStack poseStack, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+    public static void rotateYRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
+        int mul = getMultiplierFromArm(arm);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
-        float yRot = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
+        float yRot = mul * MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.YN.rotationDegrees(yRot));
     }
 
-    public static void rotateHorizontallyZLeft(PoseStack poseStack, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+    public static void rotateHorizontallyZLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
+        int mul = getMultiplierFromArm(arm);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
-        float zRot = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
-        poseStack.mulPose(Axis.ZN.rotationDegrees(zRot));
-    }
-
-    public static void rotateHorizontallyZRight(PoseStack poseStack, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
-        validateParamsOrThrow(startFrame, endFrame);
-        float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
-        float zRot = MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
+        float zRot = mul * MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.ZP.rotationDegrees(zRot));
     }
 
+    public static void rotateHorizontallyZRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        int mul = getMultiplierFromArm(arm);
+        float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
+        float zRot = mul * MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startDegrees, endDegrees);
+        poseStack.mulPose(Axis.ZN.rotationDegrees(zRot));
+    }
+
     // ======================================================[SCALE]======================================================
-    public static void expandLeft(PoseStack poseStack, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+    public static void expandLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float scaleX = 1.0f + MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(scaleX, 1.0f, 1.0f);
     }
 
-    public static void shrinkRight(PoseStack poseStack, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+    public static void shrinkRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float scaleX = 1.0f - MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(scaleX, 1.0f, 1.0f);
     }
 
-    public static void expandUp(PoseStack poseStack, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+    public static void expandUp(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float scaleY = 1.0f + MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(1.0f, scaleY, 1.0f);
     }
 
-    public static void shrinkDown(PoseStack poseStack, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+    public static void shrinkDown(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float scaleY = 1.0f - MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(1.0f, scaleY, 1.0f);
     }
 
-    public static void expandLongitudinally(PoseStack poseStack, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+    public static void expandLongitudinally(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float scaleZ = 1.0f + MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(1.0f, 1.0f, scaleZ);
     }
 
-    public static void shrinkLongitudinally(PoseStack poseStack, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+    public static void shrinkLongitudinally(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
         float clampedAttackTick = Mth.clamp(attackTick, startFrame, endFrame);
         float scaleZ = 1.0f - MathUtils.linearInterpolation(clampedAttackTick, startFrame, endFrame, startScale, endScale);
@@ -212,8 +224,158 @@ public final class MtsEntityAnimationAnimator {
         return new AnimationBuilder();
     }
 
+    public static KeyFrameBuilder keyFrame() {
+        return new KeyFrameBuilder();
+    }
+
     private MtsEntityAnimationAnimator() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 10/26/2026
+     */
+    public static final class KeyFrameBuilder {
+        private final List<TriConsumer<PoseStack, Float, HumanoidArm>> frameChannels;
+
+        private KeyFrameBuilder() {
+            this.frameChannels = new ArrayList<>();
+        }
+
+        public KeyFrameBuilder moveLeft(float startPos, float endPos, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.moveLeft(poseStack, attackTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder moveRight(float startPos, float endPos, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.moveRight(poseStack, attackTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder moveUp(float startPos, float endPos, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.moveUp(poseStack, attackTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder moveDown(float startPos, float endPos, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.moveDown(poseStack, attackTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder moveForward(float startPos, float endPos, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.moveForward(poseStack, attackTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder moveBackward(float startPos, float endPos, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.moveBackward(poseStack, attackTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder rotateXBackward(float startDegrees, float endDegrees, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.rotateXBackward(poseStack, attackTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder rotateXForward(float startDegrees, float endDegrees, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.rotateXForward(poseStack, attackTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder rotateYRight(float startDegrees, float endDegrees, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.rotateYRight(poseStack, attackTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder rotateYLeft(float startDegrees, float endDegrees, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.rotateYLeft(poseStack, attackTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder rotateHorizontallyZRight(float startDegrees, float endDegrees, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.rotateHorizontallyZRight(poseStack, attackTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder rotateHorizontallyZLeft(float startDegrees, float endDegrees, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.rotateHorizontallyZLeft(poseStack, attackTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder expandLeft(float startSize, float endSize, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.expandLeft(poseStack, attackTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder shrinkRight(float startSize, float endSize, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.shrinkRight(poseStack, attackTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder expandUp(float startSize, float endSize, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.expandUp(poseStack, attackTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder shrinkDown(float startSize, float endSize, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.shrinkDown(poseStack, attackTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder expandLongitudinally(float startSize, float endSize, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.expandLongitudinally(poseStack, attackTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        public KeyFrameBuilder shrinkLongitudinally(float startSize, float endSize, int startFrame, int endFrame) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> MtsEntityAnimationAnimator.shrinkLongitudinally(poseStack, attackTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
+            return this;
+        }
+
+        private float normalizeFrames(int frame) {
+            return frame / 24.0F;
+        }
+
+        public void accept(PoseStack poseStack, float attackTick, HumanoidArm arm) {
+            this.frameChannels.forEach(frameChannel -> frameChannel.accept(poseStack, attackTick, arm));
+        }
     }
 
     /**
@@ -221,146 +383,22 @@ public final class MtsEntityAnimationAnimator {
      * @since 10/24/2026
      */
     public static final class AnimationBuilder {
-        private final List<BiConsumer<PoseStack, Float>> frames;
+        private final List<KeyFrameBuilder> frames;
 
         private AnimationBuilder() {
             this.frames = new ArrayList<>();
         }
 
-        public AnimationBuilder moveLeft(float startPos, float endPos, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.moveLeft(poseStack, attackTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
+        public AnimationBuilder addKeyFrame(KeyFrameBuilder keyFrameBuilder) {
+            this.frames.add(keyFrameBuilder);
             return this;
         }
 
-        public AnimationBuilder moveRight(float startPos, float endPos, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.moveRight(poseStack, attackTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder moveUp(float startPos, float endPos, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.moveUp(poseStack, attackTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder moveDown(float startPos, float endPos, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.moveDown(poseStack, attackTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder moveForward(float startPos, float endPos, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.moveForward(poseStack, attackTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder moveBackward(float startPos, float endPos, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.moveBackward(poseStack, attackTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder rotateXBackward(float startDegrees, float endDegrees, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.rotateXBackward(poseStack, attackTick, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder rotateXForward(float startDegrees, float endDegrees, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.rotateXForward(poseStack, attackTick, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder rotateYRight(float startDegrees, float endDegrees, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.rotateYRight(poseStack, attackTick, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder rotateYLeft(float startDegrees, float endDegrees, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.rotateYLeft(poseStack, attackTick, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder rotateHorizontallyZRight(float startDegrees, float endDegrees, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.rotateHorizontallyZRight(poseStack, attackTick, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder rotateHorizontallyZLeft(float startDegrees, float endDegrees, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.rotateHorizontallyZLeft(poseStack, attackTick, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder expandLeft(float startSize, float endSize, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.expandLeft(poseStack, attackTick, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder shrinkRight(float startSize, float endSize, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.shrinkRight(poseStack, attackTick, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder expandUp(float startSize, float endSize, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.expandUp(poseStack, attackTick, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder shrinkDown(float startSize, float endSize, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.shrinkDown(poseStack, attackTick, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder expandLongitudinally(float startSize, float endSize, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.expandLongitudinally(poseStack, attackTick, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public AnimationBuilder shrinkLongitudinally(float startSize, float endSize, int startFrame, int endFrame) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frames.add(((poseStack, attackTick) -> MtsEntityAnimationAnimator.shrinkLongitudinally(poseStack, attackTick, startSize, endSize, normalizedStartFrame, normalizedEndFrame)));
-            return this;
-        }
-
-        public void animate(PoseStack poseStack, float attackTick) {
-            for (BiConsumer<PoseStack, Float> frame : this.frames) {
-                frame.accept(poseStack, attackTick);
+        public void animate(PoseStack poseStack, float attackTick, HumanoidArm arm) {
+            for (int i = this.frames.size() - 1; i >= 0; i--) {
+                KeyFrameBuilder frame = this.frames.get(i);
+                frame.accept(poseStack, attackTick, arm);
             }
-        }
-
-        private float normalizeFrames(int frame) {
-            return frame / 24.0F;
         }
     }
 }
