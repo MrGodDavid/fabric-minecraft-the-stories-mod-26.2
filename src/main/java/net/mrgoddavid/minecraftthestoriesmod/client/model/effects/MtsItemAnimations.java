@@ -16,7 +16,7 @@ public final class MtsItemAnimations {
                     .rotateXBackward(0.0f, 45.0f, 0, 4)
             )
             .addKeyFrame(MtsEntityAnimationAnimator.keyFrame()
-                    .moveLeft(0.0f, 0.6f, 4, 12).moveDown(0.0f, 1.0f, 4, 12)
+                    .moveLeft(0.0f, 0.6f, 4, 12).moveDown(0.0f, 0.5f, 4, 12)
                     .rotateXForward(0.0f, 90.0f, 4, 12)
                     .rotateHorizontallyZLeft(0.0f, 1.0f, 4, 12)
             );

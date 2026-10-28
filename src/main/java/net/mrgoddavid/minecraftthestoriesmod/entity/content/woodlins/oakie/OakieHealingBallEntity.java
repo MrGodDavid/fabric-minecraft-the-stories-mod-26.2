@@ -6,9 +6,14 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.FollowSpecificMobGoal;
 
 /**
  * @author Mr. GodDavid
@@ -23,6 +28,15 @@ public class OakieHealingBallEntity extends PathfinderMob {
 
     public OakieHealingBallEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
+        this.moveControl = new FlyingMoveControl<OakieHealingBallEntity>(this, 10, true);
+        this.setNoGravity(true);
+    }
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new FollowSpecificMobGoal<>(this, Player.class, 1.02d, 40.0f, 0.1f));
     }
 
     public static AttributeSupplier createCubeAttributes() {

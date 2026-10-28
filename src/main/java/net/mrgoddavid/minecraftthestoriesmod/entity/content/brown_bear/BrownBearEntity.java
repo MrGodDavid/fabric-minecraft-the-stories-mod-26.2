@@ -82,7 +82,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, 20, true, true, this::playerDoesBadThings));
         this.targetSelector.addGoal(5, new NonTameRandomTargetGoal<>(this, Animal.class, false, PREY_SELECTOR));
-        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Bee.class, 10, true, false, (bee, level) -> !this.isBaby() && bee.isBaby()));
+        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Bee.class, 10, true, false, (bee, level) -> !this.isBaby() && !bee.isBaby()));
         this.targetSelector.addGoal(7, new ResetUniversalAngerTargetGoal<>(this, true));
     }
 
@@ -379,7 +379,8 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
 
     private static TargetingConditions.@NonNull Selector selectPrey() {
         return (target, level) -> target.is(EntityTypes.SHEEP)
-                || target.is(EntityTypes.COW) || target.is(EntityTypes.PIG) || target.is(EntityTypes.CHICKEN) || target.is(EntityTypes.FOX) || target.is(EntityTypes.WOLF);
+                || target.is(EntityTypes.COW) || target.is(EntityTypes.PIG) || target.is(EntityTypes.CHICKEN)
+                || target.is(EntityTypes.FOX) || target.is(EntityTypes.WOLF);
     }
 
     @Override
@@ -397,6 +398,10 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         return SoundEvents.POLAR_BEAR_DEATH;
     }
 
+    /**
+     * @author Mr. GodDavid
+     * @since 9/7/2026
+     */
     private static class BrownBearAttackGoal extends MeleeAttackGoal {
 
         public BrownBearAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
