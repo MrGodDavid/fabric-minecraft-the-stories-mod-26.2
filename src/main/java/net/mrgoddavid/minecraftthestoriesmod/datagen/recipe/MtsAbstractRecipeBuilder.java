@@ -18,12 +18,13 @@ import java.util.Optional;
  * @author Mr. GodDavid
  * @since 9/1/2026
  */
+@SuppressWarnings("NullableProblems")
 public abstract class MtsAbstractRecipeBuilder implements RecipeBuilder {
 
     private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
     private final RecipeCategory category;
     private final ItemStackTemplate result;
-    private @NonNull String group;
+    private @Nullable String group;
 
     public MtsAbstractRecipeBuilder(RecipeCategory category, ItemStackTemplate result) {
         this.category = category;
@@ -37,7 +38,7 @@ public abstract class MtsAbstractRecipeBuilder implements RecipeBuilder {
 
     @Override
     public RecipeBuilder group(@Nullable String group) {
-        this.group = Optional.ofNullable(group).orElse("DEFAULT_GROUP");
+        this.group = Optional.ofNullable(group).orElse("[DEFAULT_GROUP]");
         return this;
     }
 
@@ -47,15 +48,15 @@ public abstract class MtsAbstractRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
-    protected ItemStackTemplate result() {
-        return result;
+    protected final ItemStackTemplate result() {
+        return this.result;
     }
 
-    protected RecipeCategory getCategory() {
-        return category;
+    protected final RecipeCategory getCategory() {
+        return this.category;
     }
 
-    protected RecipeUnlockAdvancementBuilder advancementBuilder() {
-        return advancementBuilder;
+    protected final RecipeUnlockAdvancementBuilder advancementBuilder() {
+        return this.advancementBuilder;
     }
 }

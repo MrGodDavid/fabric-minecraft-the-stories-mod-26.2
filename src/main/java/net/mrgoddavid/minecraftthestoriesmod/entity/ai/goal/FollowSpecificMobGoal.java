@@ -71,7 +71,7 @@ public class FollowSpecificMobGoal<T extends LivingEntity> extends Goal {
 
     @Override
     public void tick() {
-        if (this.followMob != null || this.mob.isLeashed()) return;
+        if (this.followMob == null || this.mob.isLeashed()) return;
         this.mob.getLookControl().setLookAt(this.followMob, 10.0F, this.mob.getMaxHeadXRot());
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = this.adjustedTickDelay(10);

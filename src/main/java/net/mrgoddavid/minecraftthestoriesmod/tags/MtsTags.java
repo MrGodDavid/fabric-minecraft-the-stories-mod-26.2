@@ -1,6 +1,5 @@
 package net.mrgoddavid.minecraftthestoriesmod.tags;
 
-import jdk.javadoc.doclet.Taglet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
@@ -21,7 +20,7 @@ public final class MtsTags {
 
         public static final TagKey<Item> AGRO_BROWN_BEAR_ITEMS = createEntityItemTag("agro_brown_bear_items");
         public static final TagKey<Item> BREED_BROWN_BEAR_ITEMS = createEntityItemTag("breed_brown_bear_items");
-        public static final TagKey<Block> OAKIE_GROWABLES =createEntityBlockTag("oakie_growables");
+        public static final TagKey<Block> OAKIE_GROWABLE = createEntityBlockTag("oakie_growable");
 
         private static TagKey<Item> createEntityItemTag(final String name) {
             Identifier identifier = Constants.modId(name);

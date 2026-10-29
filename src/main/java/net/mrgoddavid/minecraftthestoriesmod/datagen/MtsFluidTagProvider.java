@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -15,7 +16,7 @@ public class MtsFluidTagProvider extends FabricTagsProvider.FluidTagsProvider {
 
     public MtsFluidTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         super(output, registryLookupFuture);
-        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Fluid Tags for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Custom Fluid Tags");
     }
 
     /**

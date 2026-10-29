@@ -583,7 +583,7 @@ public class OakieEntity extends TamableAnimal {
         private BlockState getCropStateFromPos(BlockPos blockPos, BlockState blockState) {
             BlockState growState = null;
             Block block = blockState.getBlock();
-            if (blockState.is(MtsTags.Entities.OAKIE_GROWABLES)) {
+            if (blockState.is(MtsTags.Entities.OAKIE_GROWABLE)) {
                 if (block instanceof CropBlock cropBlockBelow) {
                     if (!cropBlockBelow.isMaxAge(blockState)) {
                         growState = cropBlockBelow.getStateForAge(cropBlockBelow.getAge(blockState) + 1);

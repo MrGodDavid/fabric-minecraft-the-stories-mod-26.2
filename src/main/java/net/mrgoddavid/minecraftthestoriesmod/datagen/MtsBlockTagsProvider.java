@@ -4,14 +4,11 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.references.BlockIds;
-import net.minecraft.references.BlockItemId;
 import net.minecraft.references.BlockItemIds;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import org.jspecify.annotations.NonNull;
 
@@ -108,11 +105,12 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         // This bastard took me 4 hours. 4 hours of painfully debugging.
         // Even ChatGPT was confused of my code, LMFAO.
-        // No matter how curious you are, do not touch these code and the all the JSON files in data/minecraft/block/ and
+        // No matter how curious you are, do not touch these code and all the JSON files in data/minecraft/block/ and
         // data/minecraft-the-stories-mod/tag/block/.
         // May my lord protect any person from touching these lines of code.
         // I wrote the mechanism on my notebook, so I won't forget the logic behind it. Hopefully I will still be able to
         // figure out my notes in the future.
+        // (Whisper: I forgot everything; cite: 10/28/2026)
         // ===============================
         // Total time has wasted: 2h.
         // ===============================
@@ -234,7 +232,7 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.FLOWER_POTS)
                 .add(MtsBlocks.getResourceKey(POTTED_LEMON_TREE_SAPLING));
 
-        tag(MtsTags.Entities.OAKIE_GROWABLES)
+        tag(MtsTags.Entities.OAKIE_GROWABLE)
                 .add(BlockItemIds.SWEET_BERRY_CROP.block())
                 .add(BlockItemIds.GLOW_BERRY_CROP.block())
                 .add(BlockIds.CAVE_VINES_PLANT)

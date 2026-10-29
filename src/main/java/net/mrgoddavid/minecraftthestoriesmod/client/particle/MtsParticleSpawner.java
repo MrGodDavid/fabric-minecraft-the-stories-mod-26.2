@@ -17,7 +17,8 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import java.util.*;
 
 /**
- * Holds some designs of spawning particles.
+ * Holds some designs of spawning particles. Users may also build custom location (rule) for spawning particles around
+ * a living entity.
  *
  * @author Mr. GodDavid
  * @since 10/7/2026
@@ -27,7 +28,7 @@ public final class MtsParticleSpawner {
     private static final float RANDOMNESS = 0.5f;
     private static final Map<EffectKey, Timer> PARTICLE_OPTIONS_TIMER_MAP = new HashMap<>();
 
-    private MtsParticleSpawner() throws IllegalAccessException {
+    private MtsParticleSpawner() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
@@ -512,8 +513,7 @@ public final class MtsParticleSpawner {
                     case 2 -> zOffset += step;
                     case 3 -> xOffset += step;
                     default ->
-                            throw new IllegalStateException("Invalid side: " + side + ". Reason of throwing this exception here " +
-                                    "is because the side index should be from 0 to 3. Check the countOfPointPerSide parameter!");
+                            ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
                 }
 
                 mc.level.addParticle(particleType,
@@ -555,6 +555,11 @@ public final class MtsParticleSpawner {
         }
     }
 
+    /**
+     * Allows user to build custom vertices of spawning particles.
+     *
+     * @return the rule for spawning particles around a living entity.
+     */
     public static VertexRuleBuilder vertexRuleBuilder() {
         return new VertexRuleBuilder();
     }

@@ -2,14 +2,19 @@ package net.mrgoddavid.minecraftthestoriesmod.registries;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
+import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
+import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworking;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.PeriodicPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -28,10 +33,24 @@ public final class MtsServerTickEventRegistries {
     public static void register() {
         MtsLogger.info("Custom End Server Tick Events");
 
+        ServerTickEvents.START_SERVER_TICK.register(server -> {
+            for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
+                float currentThirst = thirstManager.getThirst();
+                System.out.println(currentThirst);
+                if (currentThirst <= 0.0F) {
+                    ServerLevel level = player.level();
+                    player.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.THIRST), 0.5f);
+                }
+            }
+        });
+
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             ONE_SECOND_20_TICKS_PERIODIC_PULSE.tick();
 
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                registerPlayerThirstEvents(player);
+
                 // Checks advancement triggers of player while playing.
                 checkPlayerAdvancementTriggers(player);
                 checkOakieAdvancements(server, player);
@@ -40,6 +59,13 @@ public final class MtsServerTickEventRegistries {
                 grantsPublicEnemyEffectIfWearingFullAmethystArmor(player);
             }
         });
+    }
+
+    private static void registerPlayerThirstEvents(ServerPlayer player) {
+        ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
+        if (thirstManager.tick(player)) {
+            ThirstNetworking.sync(player, thirstManager);
+        }
     }
 
     private static void checkOakieAdvancements(MinecraftServer server, ServerPlayer player) {

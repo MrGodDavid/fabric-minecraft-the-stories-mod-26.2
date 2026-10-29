@@ -103,7 +103,6 @@ public abstract class ItemInHandRendererMixin {
         poseStack.translate(invert * 0.56F, -0.52F + inverseArmHeight * -0.6F, -0.72F); // do this if you want to keep vanilla's translation.
         if (attack > 0.0F) {
             MtsItemAnimations.CUDGEL_ANIMATION.animate(poseStack, attack, arm);
-
         }
         ItemInHandRenderer renderer = (ItemInHandRenderer) (Object) this;
         renderer.renderItem(

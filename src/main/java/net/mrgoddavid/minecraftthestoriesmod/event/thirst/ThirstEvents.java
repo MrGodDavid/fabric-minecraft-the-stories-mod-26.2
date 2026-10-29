@@ -26,7 +26,6 @@ public class ThirstEvents {
     public static void register() {
         MtsLogger.info("Thirst Events");
 
-        ServerTickEvents.END_SERVER_TICK.register(ThirstEvents::registerThirstEvent);
         ServerPlayConnectionEvents.JOIN.register(ThirstEvents::playerJoin);
         ServerPlayerEvents.COPY_FROM.register(ThirstEvents::copyFrom);
     }
@@ -44,14 +43,5 @@ public class ThirstEvents {
             newThirstManager.copyFrom(oldThirstManager);
         }
         ThirstNetworking.sync(newPlayer, newThirstManager);
-    }
-
-    private static void registerThirstEvent(MinecraftServer server) {
-        for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-            ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
-            if (thirstManager.tick(player)) {
-                ThirstNetworking.sync(player, thirstManager);
-            }
-        }
     }
 }
