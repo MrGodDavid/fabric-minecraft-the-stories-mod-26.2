@@ -13,7 +13,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCom
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerMenu;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterMenu;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookMenu;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;

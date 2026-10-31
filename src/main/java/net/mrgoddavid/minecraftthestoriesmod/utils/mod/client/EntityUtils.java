@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils.client;
+package net.mrgoddavid.minecraftthestoriesmod.utils.mod.client;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;

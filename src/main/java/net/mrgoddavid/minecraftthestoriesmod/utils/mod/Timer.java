@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils;
+package net.mrgoddavid.minecraftthestoriesmod.utils.mod;
 
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;

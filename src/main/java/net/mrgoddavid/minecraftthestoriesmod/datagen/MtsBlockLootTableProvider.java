@@ -23,7 +23,6 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsNonnullElementSetLists;
 

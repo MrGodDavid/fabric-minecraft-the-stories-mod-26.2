@@ -7,7 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.*;
 import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGenBootstrapper;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsWorldGenProvider;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 
 /**
  * Generates all JSON files for mod that can be used in vanilla Minecraft.
@@ -26,6 +26,7 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
 
         pack.addProvider(MtsItemTagsProvider::new);
         pack.addProvider(MtsBlockTagsProvider::new);
+        pack.addProvider(MtsDamageTypeTagsProvider::new);
         pack.addProvider(MtsFluidTagProvider::new);
         pack.addProvider(MtsModelProvider::new);
         pack.addProvider(MtsRegistryDataProvider::new);

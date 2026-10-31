@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils;
+package net.mrgoddavid.minecraftthestoriesmod.utils.mod;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;

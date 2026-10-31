@@ -4,6 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
@@ -33,28 +34,20 @@ public class GuiGraphicsExtractorMixin {
             cancellable = true
     )
     private void modifyTooltipComponents(
-            Font font, List<Component> texts, Optional<TooltipComponent> optionalImage, int xo, int yo, @Nullable Identifier style, CallbackInfo ci
+            Font font,
+            List<Component> texts,
+            Optional<TooltipComponent> optionalImage,
+            int xo,
+            int yo,
+            @Nullable Identifier style,
+            CallbackInfo ci
     ) {
+        // We only modify tooltips that contain our custom CWTooltipComponent.
+        if (optionalImage.isEmpty()) return;
+        if (!(optionalImage.get() instanceof MtsTooltipComponent tc)) return;
+        if (texts.isEmpty()) return;
 
-        /*
-         * We only modify tooltips that contain our
-         * custom CWTooltipComponent.
-         */
-        if (optionalImage.isEmpty()) {
-            return;
-        }
-
-        if (!(optionalImage.get() instanceof MtsTooltipComponent tc)) {
-            return;
-        }
-
-        if (texts.isEmpty()) {
-            return;
-        }
-
-        /*
-         * Convert the tooltip text into ClientTooltipComponents.
-         */
+        // Convert the tooltip text into ClientTooltipComponents.
         List<ClientTooltipComponent> components = new ArrayList<>();
 
         String stackName = tc.item().getHoverName().getString();
@@ -68,21 +61,19 @@ public class GuiGraphicsExtractorMixin {
 
         } else if (tc.item().is(MtsTags.Items.MTS_RARE_WEAPONS)) {
             components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.AQUA).getVisualOrderText()));
-            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Rare Weapon",  0xA5BDFF), 8));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Rare Weapon", 0xA5BDFF), 8));
 
         } else if (tc.item().is(MtsTags.Items.MTS_EPIC_WEAPONS)) {
             components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.LIGHT_PURPLE).getVisualOrderText()));
-            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Epic Weapon",  0x9141AC), 8));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Epic Weapon", 0x9141AC), 8));
 
         } else if (tc.item().is(MtsTags.Items.MTS_LEGENDARY_WEAPONS)) {
             components.add(ClientIconTextTooltipComponent.item(tc.item(), Component.literal(stackName).withStyle(ChatFormatting.YELLOW).getVisualOrderText()));
-            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Legendary Weapon",  0xEC971E), 8));
+            components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.boldUnderlinedText("Legendary Weapon", 0xEC971E), 8));
 
         }
 
-        /*
-         * Add the remaining vanilla tooltip lines.
-         */
+        // Add the remaining vanilla tooltip lines.
         for (int i = 1; i < texts.size(); i++) {
             components.add(ClientTooltipComponent.create(texts.get(i).getVisualOrderText()));
         }
@@ -102,16 +93,17 @@ public class GuiGraphicsExtractorMixin {
             components.add(ClientIconTextTooltipComponent.text(MtsItemToolStyleHelper.plainText("", 0xFFFFFFFF), 0)); // empty line.
         }
 
-        /*
-         * Call the private Minecraft method through our
-         * Mixin accessor.
-         */
-        ((GuiGraphicsExtractorAccessor) (Object) this).invokeSetTooltipForNextFrameInternal(font, components, xo, yo, net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE, style, false);
-
-        /*
-         * Prevent vanilla from continuing and creating
-         * the original separate image component.
-         */
+        // Call the private Minecraft method through our Mixin accessor.
+        ((GuiGraphicsExtractorAccessor) (Object) this)
+                .invokeSetTooltipForNextFrameInternal(
+                        font,
+                        components,
+                        xo,
+                        yo,
+                        DefaultTooltipPositioner.INSTANCE,
+                        style,
+                        false
+                );
         ci.cancel();
     }
 }

@@ -36,11 +36,10 @@ public final class MtsServerTickEventRegistries {
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
                 ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
-                float currentThirst = thirstManager.getThirst();
-                System.out.println(currentThirst);
-                if (currentThirst <= 0.0F) {
+                if (thirstManager.tickThirstDamageCoolDown()) {
                     ServerLevel level = player.level();
-                    player.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.THIRST), 0.5f);
+                    player.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.THIRST), 1.0F);
+                    thirstManager.resetThirstDamageCoolDown();
                 }
             }
         });

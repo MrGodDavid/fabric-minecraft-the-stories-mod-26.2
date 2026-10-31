@@ -27,13 +27,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
-import net.mrgoddavid.minecraftthestoriesmod.utils.client.EntityUtils;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 import org.jspecify.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -72,6 +74,7 @@ import java.util.function.Predicate;
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
+@SuppressWarnings({"NullableProblems", "resource"})
 public class OakieEntity extends TamableAnimal {
 
     public static final int HEALING_RADIUS = 5;
@@ -116,15 +119,15 @@ public class OakieEntity extends TamableAnimal {
         super.registerGoals();
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new TamableAnimalPanicGoal(1.25, DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES));
-        this.goalSelector.addGoal(2, new OakieAvoidFireBlockGoal(this, this::isFireblocks));
-        this.goalSelector.addGoal(2, new OakieAvoidCampFiresGoal(this, this::isCampfires));
-        this.goalSelector.addGoal(2, new OakieAvoidLavaGoal(this, this::isLava));
+        this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidFireBlockGoal(this, this::isFireblocks));
+        this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidCampFiresGoal(this, this::isCampfires));
+        this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidLavaGoal(this, this::isLava));
         this.goalSelector.addGoal(3, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(3, new OakieHealOwnerGoal(6.0f, 12.0f));
-        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+        this.goalSelector.addGoal(3, new OakieEntity.OakieHealOwnerGoal(6.0f, 18.0f)); // TODO debug this goal latter.
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.025D, 24.0f, 2.0F));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(6, new OakieGrowCropsGoal());
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(6, new OakieEntity.OakieGrowCropsGoal());
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 4.0F));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
 
@@ -425,9 +428,9 @@ public class OakieEntity extends TamableAnimal {
      * @author Mr. GodDavid
      * @since 10/20/2026
      */
+    @SuppressWarnings("DataFlowIssue")
     private class OakieHealOwnerGoal extends Goal {
 
-        private static final int HEAL_AMOUNT = 1;
         private final float minNoticeDistance;
         private final float maxNoticeDistance;
         private final Timer healCoodDownTimer = new Timer(60);
@@ -457,12 +460,24 @@ public class OakieEntity extends TamableAnimal {
 
             if (healCoodDownTimer.pass(() -> this.checkWhetherOwnerInEnchantingRange(this.target))) { // this.target is not null here
                 healCoodDownTimer.reset();
-                this.heal();
+                this.tryToSummonHealingBalls();
             }
         }
 
-        private void heal() {
-            this.target.setHealth(this.target.getHealth() + HEAL_AMOUNT);
+        private void tryToSummonHealingBalls() {
+            ServerLevel serverLevel = (ServerLevel) OakieEntity.this.level();
+            BlockPos pos = OakieEntity.this.blockPosition().offset(
+                    -2 + OakieEntity.this.random.nextInt(2),
+                    1,
+                    -2 + OakieEntity.this.random.nextInt(2)
+            );
+            OakieHealingBallEntity healingBall = MtsEntityTypes.OAKIE_HEALING_BALL.create(OakieEntity.this.level(), EntitySpawnReason.MOB_SUMMONED);
+            if (healingBall != null) {
+                healingBall.snapTo(pos, 0.0F, 0.0F);
+                healingBall.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pos), EntitySpawnReason.MOB_SUMMONED, null);
+                serverLevel.addFreshEntity(healingBall);
+                serverLevel.gameEvent(GameEvent.ENTITY_PLACE, pos, GameEvent.Context.of(OakieEntity.this));
+            }
         }
 
         private boolean checkWhetherOwnerInEnchantingRange(LivingEntity entity) {
@@ -476,19 +491,20 @@ public class OakieEntity extends TamableAnimal {
             return OakieEntity.this.isTame() && this.checkOwnerConditions() && this.target != null;
         }
 
-        @Override
-        public boolean canContinueToUse() {
-            return this.target != null && this.target.isAlive() && this.ownerNeedsToHeal() && this.isOwnerInNoticeRange(this.target);
-        }
-
         private void findOwner() {
             LivingEntity owner = OakieEntity.this.getOwner();
             this.target = (this.target != null && isOwnerInNoticeRange(this.target)) ? owner : null;
         }
 
+        @Override
+        public boolean canContinueToUse() {
+            return this.target != null && this.target.isAlive() && this.ownerNeedsToHeal() && this.isOwnerInNoticeRange(this.target);
+        }
+
         private boolean isOwnerInNoticeRange(LivingEntity owner) {
             double distanceSq = this.distanceBetweenOakieAndOwner(owner);
-            return distanceSq >= this.minNoticeDistance * this.minNoticeDistance && distanceSq <= this.maxNoticeDistance * this.maxNoticeDistance;
+            return distanceSq >= this.minNoticeDistance * this.minNoticeDistance
+                    && distanceSq <= this.maxNoticeDistance * this.maxNoticeDistance;
         }
 
         private double distanceBetweenOakieAndOwner(LivingEntity owner) {

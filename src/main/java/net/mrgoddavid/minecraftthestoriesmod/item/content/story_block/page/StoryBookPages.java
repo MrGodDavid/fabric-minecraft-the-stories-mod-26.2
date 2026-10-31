@@ -3,7 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.page;
 import net.minecraft.world.entity.player.Player;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.progress.StoryBookProgress;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.progress.StoryBookProgressHolder;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;

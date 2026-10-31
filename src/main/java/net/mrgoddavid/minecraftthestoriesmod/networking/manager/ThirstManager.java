@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.networking.manager;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 
 /**
  * @author Mr. GodDavid
@@ -12,12 +13,21 @@ public class ThirstManager {
     public static final int MAX_THIRST = 20;
     public static final float MAX_EXHAUSTION = 4.0F;
 
+    private final Timer thirstDamageCoolDown = new Timer(60);
     private int thirst = 20;
     private float exhaustion = 0.0f;
 
     public void copyFrom(ThirstManager old) {
         this.thirst = old.thirst;
         this.exhaustion = old.exhaustion;
+    }
+
+    public boolean tickThirstDamageCoolDown() {
+        return thirstDamageCoolDown.pass(() -> this.getThirst() < 6.0f);
+    }
+
+    public void resetThirstDamageCoolDown() {
+        this.thirstDamageCoolDown.reset();
     }
 
     public boolean tick(ServerPlayer player) {

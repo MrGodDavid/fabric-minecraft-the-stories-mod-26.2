@@ -5,9 +5,8 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricSoundsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.level.block.SoundType;
 import net.mrgoddavid.minecraftthestoriesmod.sound.MtsSounds;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;

@@ -17,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.FollowSpecificMobGoal;
+import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Comparator;
@@ -25,17 +26,19 @@ import java.util.Comparator;
  * @author Mr. GodDavid
  * @since 10/25/2026
  */
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings({"NullableProblems", "FieldCanBeLocal"})
 public class OakieHealingBallEntity extends PathfinderMob {
 
     private static final EntityDataAccessor<Byte> DATA_LIFECYCLE = SynchedEntityData.defineId(OakieHealingBallEntity.class, EntityDataSerializers.BYTE);
     public final AnimationState spawnAnimationState = new AnimationState();
     public final AnimationState flyingAnimationState = new AnimationState();
     public final AnimationState healAnimationState = new AnimationState();
-    private final float HEAL_AMOUNT = 3.0F;
+    public final int SATURATION = 1;
+    public final float THIRST_EXHAUSTION = -0.25F;
     private final double HEAL_DISTANCE = 4.0D;
     private final int EMERGING_DURATION_TICKS = 20;
     private final int DYING_DURATION_TICKS = 20;
+    private final int FOLLOW_DISTANCE = 20;
     private int lifeCycleTicks;
     private LifeCycle lastClientLifeCycle;
 
@@ -56,7 +59,7 @@ public class OakieHealingBallEntity extends PathfinderMob {
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new FollowSpecificMobGoal<>(this, Player.class, 1.01d, 40.0f, 0.1f, this::selectValidPlayer));
+        this.goalSelector.addGoal(1, new FollowSpecificMobGoal<>(this, Player.class, 1.01d, FOLLOW_DISTANCE, 0.1f, this::selectValidPlayer));
     }
 
     private boolean selectValidPlayer(Player player) {
@@ -102,9 +105,14 @@ public class OakieHealingBallEntity extends PathfinderMob {
                 .getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(HEAL_DISTANCE), this::selectAroundPlayer)
                 .stream().min(Comparator.comparingDouble(Player::getHealth)).orElse(null);
         if (player != null) {
-            player.heal(HEAL_AMOUNT);
+            this.grantSaturationAndHydration(player);
             this.beginDying();
         }
+    }
+
+    private void grantSaturationAndHydration(Player player) {
+        player.getFoodData().eat(SATURATION, 1);
+        ((ThirstHolder) player).mts$getThirstManager().addExhaustion(THIRST_EXHAUSTION);
     }
 
     private boolean selectAroundPlayer(Player player) {

@@ -22,10 +22,10 @@ import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.AnimationTestItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
-import net.mrgoddavid.minecraftthestoriesmod.utils.TooltipLineBreaker;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.TooltipLineBreaker;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.function.Consumer;
@@ -41,13 +41,6 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
  */
 @SuppressWarnings({"deprecation", "NullableProblems", "OptionalGetWithoutIsPresent"})
 public final class MtsItems {
-
-    /**
-     * Private constructor.
-     */
-    private MtsItems() {
-        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
-    }
 
     // Custom mod items go here.
     public static final Item ENRICHER_WASTE_BUCKET = registerItem("enricher_waste_bucket",
@@ -324,6 +317,8 @@ public final class MtsItems {
     // #                                                SPAWN EGGS                                                     #
     // #################################################################################################################
     public static final Item BROWN_BEAR_SPAWN_EGG = registerItem("brown_bear_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.BROWN_BEAR)));
+    public static final Item OAKIE_SPAWN_EGG = registerItem("oakie_spawn_egg", properties ->  new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE).rarity(Rarity.EPIC)));
+    public static final Item OAKIE_HEALING_BALL_SPAWN_EGG = registerItem("oakie_healing_ball_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE_HEALING_BALL).rarity(Rarity.EPIC)));
 
     /**
      * Gets the resource key of the mod item.
@@ -607,6 +602,12 @@ public final class MtsItems {
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(fabricCreativeModeTabOutput -> {
             fabricCreativeModeTabOutput.accept(BROWN_BEAR_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(OAKIE_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(OAKIE_HEALING_BALL_SPAWN_EGG);
         });
+    }
+
+    private MtsItems() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

@@ -6,7 +6,7 @@ import net.minecraft.advancements.predicates.ContextAwarePredicate;
 import net.minecraft.advancements.triggers.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
