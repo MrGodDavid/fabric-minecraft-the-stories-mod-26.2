@@ -10,20 +10,20 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
  */
 public class ThirstManager {
 
-    public static final int MAX_THIRST = 20;
+    public static final int MAX_HYDRATION = 20;
     public static final float MAX_EXHAUSTION = 4.0F;
 
     private final Timer thirstDamageCoolDown = new Timer(60);
-    private int thirst = 20;
+    private int hydrationPoint = 20;
     private float exhaustion = 0.0f;
 
     public void copyFrom(ThirstManager old) {
-        this.thirst = old.thirst;
+        this.hydrationPoint = old.hydrationPoint;
         this.exhaustion = old.exhaustion;
     }
 
     public boolean tickThirstDamageCoolDown() {
-        return thirstDamageCoolDown.pass(() -> this.getThirst() < 6.0f);
+        return thirstDamageCoolDown.pass(() -> this.getHydrationPoint() < 6.0f);
     }
 
     public void resetThirstDamageCoolDown() {
@@ -31,48 +31,53 @@ public class ThirstManager {
     }
 
     public boolean tick(ServerPlayer player) {
-        int oldThirst = this.getThirst();
+        int oldThirst = this.getHydrationPoint();
         float exhaustAmount = 0.0F;
 
         if (player.isSwimming()) {
-            exhaustAmount = 0.015f;
+            exhaustAmount = 0.15f;
         } else if (player.isSprinting()) {
-            exhaustAmount = 0.01f;
+            exhaustAmount = 0.1f;
         } else if (player.getDeltaMovement().horizontalDistanceSqr() > 0.0f) {
-            exhaustAmount = 0.005f;
+            exhaustAmount = 0.05f;
+        } else if (player.isJumping()) {
+            exhaustAmount = 0.075f;
         }
 
         this.addExhaustion(exhaustAmount);
-        return this.thirst != oldThirst;
+        return this.hydrationPoint != oldThirst;
     }
 
-    public boolean restoreThirst(int amount) {
-        if (amount <= 0.0F || this.thirst >= MAX_THIRST) return false;
+    public boolean restoreThirst(int hydrationRestoration, float exhaustion) {
+        if (this.hydrationPoint >= MAX_HYDRATION) return false;
 
-        int oldThirst = this.getThirst();
-        this.thirst = Mth.clamp(this.thirst + amount, 0, MAX_THIRST);
+        int oldThirst = this.getHydrationPoint();
+        this.hydrationPoint = Mth.clamp(this.hydrationPoint + hydrationRestoration, 0, MAX_HYDRATION);
         this.exhaustion = 0.0F;
-        return this.thirst != oldThirst;
+        if (exhaustion < 0.0F) {
+            this.exhaustion = Mth.clamp(this.exhaustion + exhaustion, 0.0F, MAX_EXHAUSTION);
+        }
+        return this.hydrationPoint != oldThirst;
     }
 
     public boolean addExhaustion(float amount) {
-        if (amount <= 0 || this.thirst <= 0) return false;
+        if (amount <= 0 || this.hydrationPoint <= 0) return false;
 
-        int oldThirst = this.thirst;
+        int oldThirst = this.hydrationPoint;
         this.exhaustion += amount;
-        while (this.exhaustion >= MAX_EXHAUSTION && this.thirst > 0) {
+        while (this.exhaustion >= MAX_EXHAUSTION && this.hydrationPoint > 0) {
             this.exhaustion -= MAX_EXHAUSTION;
-            this.thirst--;
+            this.hydrationPoint--;
         }
-        return this.thirst != oldThirst;
+        return this.hydrationPoint != oldThirst;
     }
 
-    public int getThirst() {
-        return thirst;
+    public int getHydrationPoint() {
+        return hydrationPoint;
     }
 
-    public void setThirst(int thirst) {
-        this.thirst = Mth.clamp(thirst, 0, MAX_THIRST);
+    public void setHydrationPoint(int hydrationPoint) {
+        this.hydrationPoint = Mth.clamp(hydrationPoint, 0, MAX_HYDRATION);
     }
 
     public float getExhaustion() {
@@ -84,6 +89,6 @@ public class ThirstManager {
     }
 
     public boolean isThirstFull() {
-        return this.thirst >= MAX_THIRST;
+        return this.hydrationPoint >= MAX_HYDRATION;
     }
 }
