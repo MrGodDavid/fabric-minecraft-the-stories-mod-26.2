@@ -9,7 +9,6 @@ import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworkin
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
-import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
 
 /**
  * @author Mr. GodDavid
@@ -19,11 +18,10 @@ public final class ThirstUtils {
 
     public static void restoreThirst(LivingEntity entity, ItemStack itemStack) {
         if (!(entity instanceof ServerPlayer player)) return;
-        int hydrationRestoration = itemStack.getOrDefault(MtsDataComponentTypes.DIETARY_WATER, DietaryWaterProperties.DEFAULT).hydrationRestoration();
-        float hydrationExhaustion = itemStack.getOrDefault(MtsDataComponentTypes.DIETARY_WATER, DietaryWaterProperties.DEFAULT).hydrationExhaustion();
-        if (hydrationRestoration == 0 && hydrationExhaustion == 0.0F) return;
+        int thirstRestoration = itemStack.getOrDefault(MtsDataComponentTypes.THIRST_RESTORATION, 0);
+        if (thirstRestoration <= 0.0F) return;
         ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
-        if (thirstManager != null && thirstManager.restoreThirst(hydrationRestoration, hydrationExhaustion)) {
+        if (thirstManager != null && thirstManager.restoreThirst(thirstRestoration)) {
             ThirstNetworking.sync(player, thirstManager);
         }
     }

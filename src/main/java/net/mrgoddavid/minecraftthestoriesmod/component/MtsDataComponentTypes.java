@@ -1,17 +1,16 @@
 package net.mrgoddavid.minecraftthestoriesmod.component;
 
 import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
-import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
 
 /**
  * @author Mr. GodDavid
@@ -19,9 +18,9 @@ import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
  */
 public final class MtsDataComponentTypes {
 
-    public static final DataComponentType<DietaryWaterProperties> DIETARY_WATER = register("food_water_properties", DietaryWaterProperties.CODEC, DietaryWaterProperties.STREAM_CODEC);
+    public static final DataComponentType<Integer> THIRST_RESTORATION = register("thirst_restoration", Codec.INT, ByteBufCodecs.INT);
 
-    private static <T> DataComponentType<T> register(String name, Codec<T> codec, StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec) {
+    private static <T> DataComponentType<T> register(String name, Codec<T> codec, StreamCodec<ByteBuf, T> streamCodec) {
         return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Constants.modId(name),
                 DataComponentType.<T>builder().persistent(codec).networkSynchronized(streamCodec).build());
     }

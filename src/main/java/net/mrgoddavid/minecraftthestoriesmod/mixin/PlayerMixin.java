@@ -75,7 +75,7 @@ public abstract class PlayerMixin implements ThirstHolder, StoryBookProgressHold
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     private void mts$saveAdditionalModSaveData(ValueOutput output, CallbackInfo ci) {
         ThirstManager thirstManager = this.mts$getThirstManager();
-        output.putInt("mts_thirst", thirstManager.getHydrationPoint());
+        output.putInt("mts_thirst", thirstManager.getThirst());
         output.putFloat("mts_thirst_exhaustion", thirstManager.getExhaustion());
 
         this.mts$getStoryBookProgress.save(output);
@@ -83,9 +83,9 @@ public abstract class PlayerMixin implements ThirstHolder, StoryBookProgressHold
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     private void mts$loadAdditionalModSaveData(ValueInput input, CallbackInfo ci) {
-        int mtsThirst = input.getIntOr("mts_thirst", ThirstManager.MAX_HYDRATION);
+        int mtsThirst = input.getIntOr("mts_thirst", ThirstManager.MAX_THIRST);
         float mtsThirstExhaustion = input.getFloatOr("mts_thirst_exhaustion", 0.0F);
-        this.mts$thirstManager.setHydrationPoint(mtsThirst);
+        this.mts$thirstManager.setThirst(mtsThirst);
         this.mts$thirstManager.setExhaustion(mtsThirstExhaustion);
 
         this.mts$getStoryBookProgress.load(input);

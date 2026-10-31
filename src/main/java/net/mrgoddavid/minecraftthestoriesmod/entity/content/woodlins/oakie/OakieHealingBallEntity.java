@@ -30,16 +30,15 @@ import java.util.Comparator;
 public class OakieHealingBallEntity extends PathfinderMob {
 
     private static final EntityDataAccessor<Byte> DATA_LIFECYCLE = SynchedEntityData.defineId(OakieHealingBallEntity.class, EntityDataSerializers.BYTE);
-    public static final int SATURATION = 1;
-    public static final int HYDRATION_RESTORATION = 1;
-    public static final float HYDRATION_EXHAUSTION = -0.25F;
-    private static final double HEAL_DISTANCE = 4.0D;
-    private static final int EMERGING_DURATION_TICKS = 20;
-    private static final int DYING_DURATION_TICKS = 20;
-    private static final int FOLLOW_DISTANCE = 20;
     public final AnimationState spawnAnimationState = new AnimationState();
     public final AnimationState flyingAnimationState = new AnimationState();
     public final AnimationState healAnimationState = new AnimationState();
+    public final int SATURATION = 1;
+    public final float THIRST_EXHAUSTION = -0.25F;
+    private final double HEAL_DISTANCE = 4.0D;
+    private final int EMERGING_DURATION_TICKS = 20;
+    private final int DYING_DURATION_TICKS = 20;
+    private final int FOLLOW_DISTANCE = 20;
     private int lifeCycleTicks;
     private LifeCycle lastClientLifeCycle;
 
@@ -113,7 +112,7 @@ public class OakieHealingBallEntity extends PathfinderMob {
 
     private void grantSaturationAndHydration(Player player) {
         player.getFoodData().eat(SATURATION, 1);
-        ((ThirstHolder) player).mts$getThirstManager().restoreThirst(HYDRATION_RESTORATION, HYDRATION_EXHAUSTION);
+        ((ThirstHolder) player).mts$getThirstManager().addExhaustion(THIRST_EXHAUSTION);
     }
 
     private boolean selectAroundPlayer(Player player) {
