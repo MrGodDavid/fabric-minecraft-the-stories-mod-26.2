@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.worldgen;
+package net.mrgoddavid.minecraftthestoriesmod.world.worldgen;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;

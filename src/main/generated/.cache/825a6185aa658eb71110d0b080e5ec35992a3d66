@@ -147,6 +147,8 @@ c5968ca6516058cebcd4803b1d8930af7f6b92bf assets/minecraft-the-stories-mod/items/
 92907c4bccbc17daa9cd6a86681cc5f499d0b2be assets/minecraft-the-stories-mod/items/mangrove_sword.json
 58521b4551acd53806f4e7cd4b19e561a50b4a44 assets/minecraft-the-stories-mod/items/nether_ruby_ore.json
 5cafab81afb168950ec928092becc698360fbf10 assets/minecraft-the-stories-mod/items/oak_cudgel.json
+678a6c6b41800382b17c582c34972a996c4f2810 assets/minecraft-the-stories-mod/items/oakie_healing_ball_spawn_egg.json
+9c0cbcb2b7f3f6cf632ab20d935c2873ae20a9c8 assets/minecraft-the-stories-mod/items/oakie_spawn_egg.json
 02640e39641c8897f0846d1e6bd1554f1d35d696 assets/minecraft-the-stories-mod/items/ore_compressor_default.json
 aceb7a7a2252fd040d2658253bb4890145376983 assets/minecraft-the-stories-mod/items/pale_oak_axe.json
 8dbd050e3b5fa560e16548c54b3e2fbe9d2408f3 assets/minecraft-the-stories-mod/items/pale_oak_bow.json
@@ -469,6 +471,8 @@ a1c23f26f1b27dfb841cbcdc10b54692d6d646c7 assets/minecraft-the-stories-mod/models
 095c1bb33b1eab0753619213c48a9821dcf81cff assets/minecraft-the-stories-mod/models/item/mangrove_stick.json
 6a4f5955e72db86c582365be10fb62cd5c72b640 assets/minecraft-the-stories-mod/models/item/mangrove_sword.json
 4ebadef4e556c20ec57f1d3fba95215a10f49464 assets/minecraft-the-stories-mod/models/item/oak_cudgel.json
+c093b4c14e9eb5f26821c8af9d656a11a7cb2281 assets/minecraft-the-stories-mod/models/item/oakie_healing_ball_spawn_egg.json
+fbb26a41b9d1030d91e112becc88b77dde7862dd assets/minecraft-the-stories-mod/models/item/oakie_spawn_egg.json
 1f8bad2502a675b50e590426a36bfb4b1c27e46c assets/minecraft-the-stories-mod/models/item/pale_oak_axe.json
 89887e7c716a27ed4e06e0a1d4d77c68f98d3773 assets/minecraft-the-stories-mod/models/item/pale_oak_bow.json
 61dbf177baeb2a946951d4b5b5adc445237494ad assets/minecraft-the-stories-mod/models/item/pale_oak_bow_pulling_0.json

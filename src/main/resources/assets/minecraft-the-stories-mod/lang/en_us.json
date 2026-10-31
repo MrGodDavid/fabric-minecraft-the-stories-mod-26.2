@@ -236,10 +236,18 @@
   "creative_mode_tab.mts.epic_upgrade_scroll_stage_four": "Mts Upgrade Scrolls",
 
   "death.attack.leech_of_oakie":"%s was too happy about being cursed by the Oakies.",
-  "death.attack.leech_of_oakie.player":"%s was cursed to death while trying to flee from %s",
+  "death.attack.leech_of_oakie.player":"%1s was cursed to death while trying to flee from %2s.",
+  "death.attack.thirst": "%s forgot to drink water.",
+  "death.attack.thirst.player": "%2s forgot to remind %1s to drink water.",
+  "death.attack.cudgel_bonk": "%s experienced Bonk Force.",
+  "death.attack.cudgel_bonk.player": "%1s was bonked to death while escaping from %2s.",
+  "death.attack.oakie_burn": "%s turned into a piece of charcoal.",
+  "death.attack.oakie_burn.player": "%2s turned %1s into a piece of charcoal.",
 
   "entity.minecraft-the-stories-mod.brown_bear": "Brown Bear",
   "entity.minecraft-the-stories-mod.target_dummy": "Target Dummy",
+  "entity.minecraft-the-stories-mod.oakie": "Oakie",
+  "entity.minecraft-the-stories-mod.oakie_healing_ball": "Oakie Healing Ball",
 
   "tooltip.minecraft-the-stories.enricher_waste_bucket.shift_down": "A bucket of dangerous waste from the Enricher. This waste is perhaps the most toxic thing on this land. You don't want to take a bath with it nor drink it.",
   "tooltip.minecraft-the-stories.blue_fuel_bucket.shift_down": "A bucket of organic fuel, which is used for powering strange machines. Do not underestimate the power of nature.",

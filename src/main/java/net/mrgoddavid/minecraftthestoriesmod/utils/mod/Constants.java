@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.utils;
+package net.mrgoddavid.minecraftthestoriesmod.utils.mod;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -157,7 +157,7 @@ public final class Constants {
 
         public static final int AGE_NEW_BORN = 0;
         public static final int LINE_LENGTH = 40;
-        public static final int MAX_SATURATION = 20;
+        public static final int MAX_FOOD_POINTS = 20;
 
         /**
          * A placeholder for int values. Value: {@link Integer#MAX_VALUE}.

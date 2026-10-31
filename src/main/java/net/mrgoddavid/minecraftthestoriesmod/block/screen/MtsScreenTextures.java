@@ -1,7 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod.block.screen;
 
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;

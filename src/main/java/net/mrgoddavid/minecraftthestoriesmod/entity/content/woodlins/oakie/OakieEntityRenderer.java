@@ -12,7 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
 

@@ -12,8 +12,7 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.Nullable;
 
 /**

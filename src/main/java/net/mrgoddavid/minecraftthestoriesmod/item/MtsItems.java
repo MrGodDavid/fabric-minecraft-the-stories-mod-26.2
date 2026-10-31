@@ -22,11 +22,12 @@ import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.AnimationTestItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
-import net.mrgoddavid.minecraftthestoriesmod.utils.TooltipLineBreaker;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.TooltipLineBreaker;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -41,13 +42,6 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
  */
 @SuppressWarnings({"deprecation", "NullableProblems", "OptionalGetWithoutIsPresent"})
 public final class MtsItems {
-
-    /**
-     * Private constructor.
-     */
-    private MtsItems() {
-        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
-    }
 
     // Custom mod items go here.
     public static final Item ENRICHER_WASTE_BUCKET = registerItem("enricher_waste_bucket",
@@ -88,10 +82,10 @@ public final class MtsItems {
     // #                                              MTS CUSTOM FOOD                                                  #
     // #################################################################################################################
     public static final Item STRAWBERRY_SEEDS = registerItem("strawberry_seeds", properties -> new BlockItem(STRAWBERRY_CROP, properties.useBlockDescriptionPrefix()));
-    public static final Item STRAWBERRY = registerItem("strawberry", properties -> new DrinkableItem(3, properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
-    public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new DrinkableItem(-2, properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
-    public static final Item RAW_BLUEBERRY = registerItem("raw_blueberry", properties -> new DrinkableItem(-2, properties.food(MtsFoods.RAW_BLUEBERRY, MtsFoods.RAW_BLUEBERRY_CONSUMABLE)));
-    public static final Item BLUEBERRY = registerItem("blueberry", properties -> new DrinkableItem(2, BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
+    public static final Item STRAWBERRY = registerItem("strawberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(3).thirstExhaustion(-2).build(), properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(-2).thirstExhaustion(3).build(), properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_BLUEBERRY = registerItem("raw_blueberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(-2).thirstExhaustion(3).build(), properties.food(MtsFoods.RAW_BLUEBERRY, MtsFoods.RAW_BLUEBERRY_CONSUMABLE)));
+    public static final Item BLUEBERRY = registerItem("blueberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(2).thirstExhaustion(-2).build(), BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
 
     // #################################################################################################################
     // #                                                NATURAL ITEMS                                                  #
@@ -324,6 +318,8 @@ public final class MtsItems {
     // #                                                SPAWN EGGS                                                     #
     // #################################################################################################################
     public static final Item BROWN_BEAR_SPAWN_EGG = registerItem("brown_bear_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.BROWN_BEAR)));
+    public static final Item OAKIE_SPAWN_EGG = registerItem("oakie_spawn_egg", properties ->  new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE).rarity(Rarity.EPIC)));
+    public static final Item OAKIE_HEALING_BALL_SPAWN_EGG = registerItem("oakie_healing_ball_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE_HEALING_BALL).rarity(Rarity.EPIC)));
 
     /**
      * Gets the resource key of the mod item.
@@ -607,6 +603,12 @@ public final class MtsItems {
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(fabricCreativeModeTabOutput -> {
             fabricCreativeModeTabOutput.accept(BROWN_BEAR_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(OAKIE_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(OAKIE_HEALING_BALL_SPAWN_EGG);
         });
+    }
+
+    private MtsItems() {
+        ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

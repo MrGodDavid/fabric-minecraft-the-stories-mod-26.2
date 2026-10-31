@@ -6,7 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
@@ -202,6 +202,8 @@ public class CreativeModeTabs {
 
                         output.accept(STORY_BOOK);
                         output.accept(BROWN_BEAR_SPAWN_EGG);
+                        output.accept(OAKIE_SPAWN_EGG);
+                        output.accept(OAKIE_HEALING_BALL_SPAWN_EGG);
                     })
                     .build()
     );

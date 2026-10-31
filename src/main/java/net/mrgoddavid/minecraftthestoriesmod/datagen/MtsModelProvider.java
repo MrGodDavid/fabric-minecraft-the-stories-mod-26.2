@@ -30,7 +30,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCr
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
@@ -316,6 +316,8 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STORY_BOOK, flatItemTemplate);
 
         itemModelGenerators.generateFlatItem(BROWN_BEAR_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(OAKIE_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(OAKIE_HEALING_BALL_SPAWN_EGG, flatItemTemplate);
     }
 
     public void generateMtsBow(final ItemModelGenerators itemModelGenerators, final Item mtsBowItem) {

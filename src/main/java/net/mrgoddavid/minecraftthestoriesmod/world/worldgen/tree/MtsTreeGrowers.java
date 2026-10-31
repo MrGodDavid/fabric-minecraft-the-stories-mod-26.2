@@ -1,10 +1,10 @@
-package net.mrgoddavid.minecraftthestoriesmod.worldgen.tree;
+package net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.worldgen.MtsWorldGen;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.MtsWorldGen;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;

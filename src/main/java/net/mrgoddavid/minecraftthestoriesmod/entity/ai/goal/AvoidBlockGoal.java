@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
-import net.mrgoddavid.minecraftthestoriesmod.utils.client.EntityUtils;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
 import org.jspecify.annotations.Nullable;
 

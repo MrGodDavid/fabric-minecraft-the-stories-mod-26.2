@@ -10,7 +10,7 @@ import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBear
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieHealingBallEntity;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;

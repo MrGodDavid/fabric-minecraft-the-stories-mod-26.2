@@ -1,6 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.image;
 
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 

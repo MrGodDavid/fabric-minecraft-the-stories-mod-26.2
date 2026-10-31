@@ -8,7 +8,7 @@ import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
-import net.mrgoddavid.minecraftthestoriesmod.gui.sprites.MtsWidgetTextures;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsWidgetTextures;
 
 /**
  * @author Mr. GodDavid

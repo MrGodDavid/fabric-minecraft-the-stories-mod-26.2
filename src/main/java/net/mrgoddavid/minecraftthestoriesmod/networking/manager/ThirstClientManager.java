@@ -9,7 +9,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  */
 public class ThirstClientManager {
 
-    private static int thirst = ThirstManager.MAX_THIRST;
+    private static int thirst = ThirstManager.MAX_HYDRATION;
 
     private ThirstClientManager() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
@@ -24,6 +24,6 @@ public class ThirstClientManager {
     }
 
     public static void reset() {
-        thirst = ThirstManager.MAX_THIRST;
+        thirst = ThirstManager.MAX_HYDRATION;
     }
 }

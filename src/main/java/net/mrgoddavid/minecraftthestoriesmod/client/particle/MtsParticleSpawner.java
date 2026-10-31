@@ -5,13 +5,11 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Timer;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
-import net.mrgoddavid.minecraftthestoriesmod.utils.log.ClassNameFormatter;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
-import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
 import java.util.*;

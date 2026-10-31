@@ -2,7 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.item;
 
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.TextureSlot;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;

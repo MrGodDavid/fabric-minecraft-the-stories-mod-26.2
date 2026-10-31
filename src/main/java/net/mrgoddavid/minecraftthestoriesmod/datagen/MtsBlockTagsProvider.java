@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -29,7 +30,7 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
     public MtsBlockTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         super(output, registryLookupFuture);
-        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Block Tags for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Data Of Custom Blocks");
     }
 
     /**

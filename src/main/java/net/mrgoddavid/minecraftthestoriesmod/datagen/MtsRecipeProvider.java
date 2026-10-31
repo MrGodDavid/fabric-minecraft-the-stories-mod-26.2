@@ -8,7 +8,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -20,9 +19,8 @@ import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.EnricherReci
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.OreCompressorRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SqueezerRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SuperCrafterRecipeBuilder;
-import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
-import net.mrgoddavid.minecraftthestoriesmod.utils.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 

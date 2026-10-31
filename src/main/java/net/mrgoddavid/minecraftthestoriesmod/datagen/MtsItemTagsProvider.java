@@ -8,6 +8,7 @@ import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -36,7 +37,7 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
      */
     public MtsItemTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         super(output, registryLookupFuture);
-        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Item Tags for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Data Of Custom Items");
     }
 
     /**

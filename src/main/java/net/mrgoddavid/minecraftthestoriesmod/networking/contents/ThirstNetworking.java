@@ -18,6 +18,6 @@ public class ThirstNetworking {
     }
 
     public static void sync(ServerPlayer player, ThirstManager thirstManager) {
-        ServerPlayNetworking.send(player, new ThirstPayloadS2C(thirstManager.getThirst()));
+        ServerPlayNetworking.send(player, new ThirstPayloadS2C(thirstManager.getHydrationPoint()));
     }
 }

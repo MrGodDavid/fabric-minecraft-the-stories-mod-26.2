@@ -19,7 +19,7 @@ import java.util.Optional;
  * @author Mr. GodDavid
  * @since 8/20/2026
  */
-public abstract class MtsItemToolStyleHelper {
+public final class MtsItemToolStyleHelper {
 
     public static FormattedCharSequence plainText(@Nullable String text, int color) {
         return plainTextInner(Optional.ofNullable(text).orElse("NULL TEXT"), color);
