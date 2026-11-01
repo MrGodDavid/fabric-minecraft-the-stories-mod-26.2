@@ -28,19 +28,19 @@ public class MtsArmorMaterials {
     public static final ResourceKey<EquipmentAsset> AMETHYST_KEY = createArmorMaterialKey("amethyst");
 
     public static final ArmorMaterial EMERALD_ARMOR_MATERIAL = new ArmorMaterial(
-            750, ArmorMaterials.makeDefense(3, 5, 7, 3, 8),
+            24, ArmorMaterials.makeDefense(3, 5, 7, 3, 8),
             10, SoundEvents.ARMOR_EQUIP_DIAMOND, 0.0f, 0.0f, MtsTags.Items.EMERALD_REPAIR, EMERALD_KEY
     );
     public static final ArmorMaterial TOPAZ_ARMOR_MATERIAL = new ArmorMaterial(
-            750, ArmorMaterials.makeDefense(3, 6, 7, 7, 7),
+            30, ArmorMaterials.makeDefense(3, 6, 7, 7, 7),
             12, SoundEvents.ARMOR_EQUIP_DIAMOND, 0.5f, 0.05f, MtsTags.Items.TOPAZ_REPAIR, TOPAZ_KEY
     );
     public static final ArmorMaterial RUBY_ARMOR_MATERIAL = new ArmorMaterial(
-            750, ArmorMaterials.makeDefense(3, 6, 7, 7, 8),
+            35, ArmorMaterials.makeDefense(3, 6, 7, 7, 8),
             10, SoundEvents.ARMOR_EQUIP_DIAMOND, 1.5f, 0.075f, MtsTags.Items.RUBY_REPAIR, RUBY_KEY
     );
     public static final ArmorMaterial AMETHYST_ARMOR_MATERIAL = new ArmorMaterial(
-            750, ArmorMaterials.makeDefense(4, 7, 8, 9, 11),
+            40, ArmorMaterials.makeDefense(4, 7, 8, 9, 11),
             30, SoundEvents.ARMOR_EQUIP_DIAMOND, 4.0f, 0.15f, MtsTags.Items.AMETHYST_REPAIR, AMETHYST_KEY
     );
 

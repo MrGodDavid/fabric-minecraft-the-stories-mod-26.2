@@ -3,7 +3,13 @@ package net.mrgoddavid.minecraftthestoriesmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagBuilder;
+import net.minecraft.tags.TagEntry;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -49,10 +55,10 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
     protected void addTags(HolderLookup.@NonNull Provider registries) {
 
         // if you are confused by which method's functionality, read the javadoc of the method.
-        moveAxesToTiers();
-        moveSwordsToTiers();
-        moveSpearsToTiers();
-        moveBowsToTiers();
+        this.moveAxesToTiers();
+        this.moveSwordsToTiers();
+        this.moveSpearsToTiers();
+        this.moveBowsToTiers();
 
         tag(MtsTags.Entities.AGRO_BROWN_BEAR_ITEMS)
                 .add(MtsItems.getResourceKey(Items.HONEY_BOTTLE))
@@ -191,6 +197,21 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         this.addToVanillaItemTag$LOGS_THAT_BURN();
         this.addToVanillaItemTag$PLANKS();
         this.addToVanillaItemTag$LEAVES();
+        this.brutalForcedAddingAllDurableItems(registries);
+    }
+
+    // not a good practice though...
+    private void brutalForcedAddingAllDurableItems(HolderLookup.@NonNull Provider registries) {
+        TagBuilder builder = getOrCreateRawBuilder(MtsTags.Items.DURABLE_WEAPONS);
+        BuiltInRegistries.DATA_COMPONENT_INITIALIZERS
+                .build(registries)
+                .stream()
+                .filter(pending -> pending.key().equals(Registries.ITEM))
+                .forEach(pending -> pending.forEach((holder, components) -> {
+                    if (components.has(DataComponents.MAX_DAMAGE)) {
+                        builder.add(TagEntry.element(holder.key().identifier()));
+                    }
+                }));
     }
 
     private void addToVanillaItemTag$LEAVES() {

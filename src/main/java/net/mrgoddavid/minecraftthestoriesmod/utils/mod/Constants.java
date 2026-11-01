@@ -49,6 +49,16 @@ public final class Constants {
         return Identifier.withDefaultNamespace(path);
     }
 
+    /**
+     * @author Mr. GodDavid
+     * @since 10/31/2026
+     */
+    public static final class GUI {
+
+        public static final int GUI_SCALE_WIDTH = 427;
+        public static final int GUI_SCALE_HEIGHT = 240;
+    }
+
     public static final class Paths {
 
         public static final Directory PATH_TO_PARTICLE_ATLAS;

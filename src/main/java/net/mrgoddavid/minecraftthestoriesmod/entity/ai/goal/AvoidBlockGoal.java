@@ -65,7 +65,7 @@ public class AvoidBlockGoal extends Goal {
     public void tick() {
         if (this.avoidBlockPos == null) return;
 
-        double distanceSq = MathUtils.distanceSqBetweenMobAndBlockPos(this.mob, this.avoidBlockPos);
+        double distanceSq = EntityUtils.distanceSqBetweenMobAndBlockPos(this.mob, this.avoidBlockPos);
         if (distanceSq < maxDist * maxDist * 0.5) {
             this.mob.getNavigation().setSpeedModifier(this.sprintSpeedMultiplier);
         } else {

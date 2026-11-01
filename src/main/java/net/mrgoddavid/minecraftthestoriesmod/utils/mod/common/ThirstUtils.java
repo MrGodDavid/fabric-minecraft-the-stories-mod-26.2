@@ -9,7 +9,7 @@ import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworkin
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
-import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
+import net.mrgoddavid.minecraftthestoriesmod.world.food.DietaryWaterProperties;
 
 /**
  * @author Mr. GodDavid

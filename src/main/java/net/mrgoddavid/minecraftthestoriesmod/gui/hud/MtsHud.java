@@ -3,6 +3,8 @@ package net.mrgoddavid.minecraftthestoriesmod.gui.hud;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudStatusBarHeightRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
+import net.mrgoddavid.minecraftthestoriesmod.gui.hud.content.QuickInventoryInfoHud;
+import net.mrgoddavid.minecraftthestoriesmod.gui.hud.content.ThirstHud;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -22,6 +24,9 @@ public class MtsHud {
         MtsLogger.info("Custom Hud Elements");
 
         HudElementRegistry.attachElementAfter(VanillaHudElements.FOOD_BAR, Constants.modId("thirst"), ThirstHud::extractRenderState);
+        HudElementRegistry.attachElementAfter(VanillaHudElements.AIR_BAR, Constants.modId("quick_inventory_info"), QuickInventoryInfoHud::extractRenderState);
+
         HudStatusBarHeightRegistry.addRight(Constants.modId("thirst"), player -> 9);
+        HudStatusBarHeightRegistry.addRight(Constants.modId("quick_inventory_info"), player -> 0);
     }
 }

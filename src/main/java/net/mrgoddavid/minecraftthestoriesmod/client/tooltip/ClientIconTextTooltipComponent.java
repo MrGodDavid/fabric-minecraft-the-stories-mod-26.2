@@ -64,7 +64,6 @@ public class ClientIconTextTooltipComponent implements ClientTooltipComponent {
             graphics.item(item, x, y, 0);
         }
         if (icon != null) {
-            System.out.println("RENDERING ICON: " + icon);
             graphics.blit(RenderPipelines.GUI_TEXTURED, icon, x, y, 0.0F, 0.0F, iconSize, iconSize, 16, 16);
         }
     }

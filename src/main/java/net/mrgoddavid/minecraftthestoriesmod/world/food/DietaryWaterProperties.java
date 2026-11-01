@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.world.drink;
+package net.mrgoddavid.minecraftthestoriesmod.world.food;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

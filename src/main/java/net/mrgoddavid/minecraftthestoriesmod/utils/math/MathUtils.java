@@ -38,13 +38,6 @@ public final class MathUtils {
         return a << 24 | r << 16 | g << 8 | b;
     }
 
-    public static double distanceSqBetweenMobAndBlockPos(LivingEntity mob, BlockPos pos) {
-        double x = mob.getX() - pos.getX();
-        double y = mob.getY() - pos.getY();
-        double z = mob.getZ() - pos.getZ();
-        return x * x + y * y + z * z;
-    }
-
     public static float linearInterpolation(float x, float originalMin, float originalMax, float targetMin, float targetMax) {
         float progress = x - originalMin;
         float targetDifference = targetMax - targetMin;

@@ -12,7 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.component.MtsDataComponentTypes;
 import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
-import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
+import net.mrgoddavid.minecraftthestoriesmod.world.food.DietaryWaterProperties;
 
 /**
  * @author Mr. GodDavid

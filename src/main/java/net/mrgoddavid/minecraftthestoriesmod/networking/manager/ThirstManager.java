@@ -35,13 +35,13 @@ public class ThirstManager {
         float exhaustAmount = 0.0F;
 
         if (player.isSwimming()) {
-            exhaustAmount = 0.15f;
+            exhaustAmount = 0.03f;
         } else if (player.isSprinting()) {
-            exhaustAmount = 0.1f;
+            exhaustAmount = 0.02f;
         } else if (player.getDeltaMovement().horizontalDistanceSqr() > 0.0f) {
-            exhaustAmount = 0.05f;
+            exhaustAmount = 0.01f;
         } else if (player.isJumping()) {
-            exhaustAmount = 0.075f;
+            exhaustAmount = 0.015f;
         }
 
         this.addExhaustion(exhaustAmount);

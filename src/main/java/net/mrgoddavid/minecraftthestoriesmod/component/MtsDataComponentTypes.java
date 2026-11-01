@@ -10,7 +10,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
-import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
+import net.mrgoddavid.minecraftthestoriesmod.world.food.DietaryWaterProperties;
 
 /**
  * @author Mr. GodDavid

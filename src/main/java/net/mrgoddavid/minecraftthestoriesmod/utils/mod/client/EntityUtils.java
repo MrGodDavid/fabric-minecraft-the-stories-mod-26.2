@@ -43,6 +43,13 @@ public final class EntityUtils {
         return nearestBlockPos;
     }
 
+    public static double distanceSqBetweenMobAndBlockPos(LivingEntity mob, BlockPos pos) {
+        double x = mob.getX() - pos.getX();
+        double y = mob.getY() - pos.getY();
+        double z = mob.getZ() - pos.getZ();
+        return x * x + y * y + z * z;
+    }
+
     private EntityUtils() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }

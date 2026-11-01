@@ -119,7 +119,6 @@ public final class MtsTags {
 
         public static final TagKey<Item> COMPRESSED_WOOD_LOGS = createTag("compressed_logs");
         public static final TagKey<Item> LEMON_TREE_LOGS = createTag("lemon_tree_logs");
-
         public static final TagKey<Item> MTS_COMMON_MELEE_WEAPONS = createTag("mts_common_melee_weapons");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_AXES = createTag("mts_common_weapon_axes");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_SWORDS = createTag("mts_common_weapon_swords");
@@ -131,24 +130,21 @@ public final class MtsTags {
         public static final TagKey<Item> MTS_RARE_WEAPONS_AXES = createTag("mts_rare_weapons_axes");
         public static final TagKey<Item> MTS_RARE_WEAPONS_SPEARS = createTag("mts_rare_weapons_spears");
         public static final TagKey<Item> MTS_RARE_WEAPONS_SWORDS = createTag("mts_rare_weapons_swords");
-
         public static final TagKey<Item> MTS_COMMON_WEAPONS = createTag("mts_common_weapons");
         public static final TagKey<Item> MTS_UNCOMMON_WEAPONS = createTag("mts_uncommon_weapons");
         public static final TagKey<Item> MTS_RARE_WEAPONS = createTag("mts_rare_weapons");
         public static final TagKey<Item> MTS_EPIC_WEAPONS = createTag("mts_epic_weapons");
         public static final TagKey<Item> MTS_LEGENDARY_WEAPONS = createTag("mts_legendary_weapons");
-
         public static final TagKey<Item> AMETHYST_REPAIR = createTag("amethyst_repair");
         public static final TagKey<Item> EMERALD_REPAIR = createTag("emerald_repair");
         public static final TagKey<Item> RUBY_REPAIR = createTag("ruby_repair");
         public static final TagKey<Item> TOPAZ_REPAIR = createTag("topaz_repair");
-
         public static final TagKey<Item> STRONG_IRON_REPAIR = createTag("strong_iron_repair");
         public static final TagKey<Item> STRONG_GOLD_REPAIR = createTag("strong_gold_repair");
         public static final TagKey<Item> STRONG_DIAMOND_REPAIR = createTag("strong_diamond_repair");
         public static final TagKey<Item> STRONG_EMERALD_REPAIR = createTag("strong_emerald_repair");
-
         public static final TagKey<Item> MTS_CUDGELS = createTag("mts_cudgels");
+        public static final TagKey<Item> DURABLE_WEAPONS = createTag("durable_weapons");
 
 //        public static final TagKey<Item> ACACIA_REPAIR =  createTag("acacia_repair");
 //        public static final TagKey<Item> BIRCH_REPAIR = createTag("birch_repair");

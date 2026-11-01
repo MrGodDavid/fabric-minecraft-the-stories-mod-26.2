@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.gui.hud;
+package net.mrgoddavid.minecraftthestoriesmod.gui.hud.content;
 
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -37,7 +37,7 @@ public class ThirstHud {
      * @param graphics     the {@link GuiGraphicsExtractor} used for rendering
      * @param deltaTracker the {@link DeltaTracker} providing timing information
      */
-    public static void extractRenderState(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker) {
+    public static void extractRenderState(GuiGraphicsExtractor graphics, @SuppressWarnings("unused") DeltaTracker deltaTracker) {
         int thirst = ThirstClientManager.getThirst();
 
         randomPulse.tick();

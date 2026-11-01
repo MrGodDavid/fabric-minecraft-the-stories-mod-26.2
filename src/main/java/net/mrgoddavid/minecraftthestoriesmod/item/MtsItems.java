@@ -27,7 +27,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.TooltipLineBreaker;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
-import net.mrgoddavid.minecraftthestoriesmod.world.drink.DietaryWaterProperties;
+import net.mrgoddavid.minecraftthestoriesmod.world.food.DietaryWaterProperties;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
