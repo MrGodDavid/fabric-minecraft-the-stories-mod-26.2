@@ -8,7 +8,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsEntityAnimationAnimator;
+import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimator;
 
 // Made with Blockbench 5.1.6
 // Exported for Minecraft version 1.17+ for Yarn
@@ -86,7 +86,7 @@ public class BrownBearEntityModel extends EntityModel<BrownBearEntityRenderState
     public void setupAnim(BrownBearEntityRenderState state) {
         super.setupAnim(state);
         this.root.getAllParts().forEach(ModelPart::resetPose);
-        MtsEntityAnimationAnimator.applyMobHeadRotation(this, state.yRot, state.xRot);
+        MtsDaffiAnimator.applyMobHeadRotation(this, state.yRot, state.xRot);
 
         // PLEASE DO NOT TRY TO SIMPLIFY THIS WEIRD IF STATEMENTS
         // IT WORKS NOW AND ONLY CODERS WHO PLAY WITH DARK MAGICS COULD UNDERSTAND THESE...

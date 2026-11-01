@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsItemAnimations;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
-import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsEntityAnimationAnimator;
+import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimator;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -71,7 +71,7 @@ public abstract class ItemInHandRendererMixin {
             HumanoidArm arm
     ) {
         poseStack.pushPose();
-        MtsEntityAnimationAnimator.startAnimation(player, frameInterp, attack, poseStack, invert);
+        MtsDaffiAnimator.startAnimation(player, frameInterp, attack, poseStack, invert);
 
         ItemInHandRenderer renderer = (ItemInHandRenderer) (Object) this;
         renderer.renderItem(

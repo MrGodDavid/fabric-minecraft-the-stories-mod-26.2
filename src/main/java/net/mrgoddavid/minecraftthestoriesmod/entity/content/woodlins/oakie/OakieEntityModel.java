@@ -5,7 +5,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsEntityAnimationAnimator;
+import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimator;
 
 /**
  * @author Mr. GodDavid
@@ -74,7 +74,7 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
     public void setupAnim(OakieEntityRenderState state) {
         super.setupAnim(state);
         this.root.getAllParts().forEach(ModelPart::resetPose);
-        MtsEntityAnimationAnimator.applyMobHeadRotation(this, state.yRot, state.xRot);
+        MtsDaffiAnimator.applyMobHeadRotation(this, state.yRot, state.xRot);
 
         if (state.tameAnimationState.isStarted()) {
             this.tameAnimation.apply(state.tameAnimationState, state.ageInTicks);

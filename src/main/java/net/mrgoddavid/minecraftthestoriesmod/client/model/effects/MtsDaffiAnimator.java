@@ -20,10 +20,13 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * Daffi animator animates animations of item-use animation in first pov. I'm figuring out how to animate thirst pov
+ * animations.
+ *
  * @author Mr. GodDavid
  * @since 10/11/2026
  */
-public final class MtsEntityAnimationAnimator {
+public final class MtsDaffiAnimator {
 
     /**
      * Must call this method before animating any items with mixin.
@@ -196,11 +199,11 @@ public final class MtsEntityAnimationAnimator {
 
     private static void validateParamsOrThrow(float startFrame, float endFrame) {
         if (startFrame < 0.0F || startFrame > 1.0F) {
-            ErrorMessageBuilder.infoAndThrow(MtsEntityAnimationAnimator.class, ThrowReason.ENTITY_ANIMATION_UTILS_INVALID_START_FRAME, startFrame);
+            ErrorMessageBuilder.infoAndThrow(MtsDaffiAnimator.class, ThrowReason.ENTITY_ANIMATION_UTILS_INVALID_START_FRAME, startFrame);
         } else if (endFrame < 0.0F || endFrame > 1.0F) {
-            ErrorMessageBuilder.infoAndThrow(MtsEntityAnimationAnimator.class, ThrowReason.ENTITY_ANIMATION_UTILS_INVALID_END_FRAME, endFrame);
+            ErrorMessageBuilder.infoAndThrow(MtsDaffiAnimator.class, ThrowReason.ENTITY_ANIMATION_UTILS_INVALID_END_FRAME, endFrame);
         } else if (startFrame > endFrame) {
-            ErrorMessageBuilder.infoAndThrow(MtsEntityAnimationAnimator.class, ThrowReason.ENTITY_ANIMATION_UTILS_START_FRAME_GREATER_THAN_END_FRAME, startFrame, endFrame);
+            ErrorMessageBuilder.infoAndThrow(MtsDaffiAnimator.class, ThrowReason.ENTITY_ANIMATION_UTILS_START_FRAME_GREATER_THAN_END_FRAME, startFrame, endFrame);
         }
     }
 
@@ -212,7 +215,7 @@ public final class MtsEntityAnimationAnimator {
         return new KeyFrameBuilder();
     }
 
-    private MtsEntityAnimationAnimator() {
+    private MtsDaffiAnimator() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 
@@ -241,7 +244,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.moveLeft(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.moveLeft(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -251,7 +254,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.moveRight(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.moveRight(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -261,7 +264,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.moveUp(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.moveUp(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -271,7 +274,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.moveDown(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.moveDown(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -281,7 +284,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.moveForward(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.moveForward(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -291,7 +294,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.moveBackward(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.moveBackward(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -301,7 +304,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.rotateXBackward(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.rotateXBackward(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -311,7 +314,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.rotateXForward(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.rotateXForward(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -321,7 +324,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.rotateYRight(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.rotateYRight(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -331,7 +334,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.rotateYLeft(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.rotateYLeft(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -341,7 +344,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.rotateHorizontallyZRight(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.rotateHorizontallyZRight(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -351,7 +354,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.rotateHorizontallyZLeft(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.rotateHorizontallyZLeft(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -361,7 +364,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.expandLeft(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.expandLeft(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -371,7 +374,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.shrinkRight(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.shrinkRight(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -381,7 +384,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.expandUp(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.expandUp(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -391,7 +394,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.shrinkDown(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.shrinkDown(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -401,7 +404,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.expandLongitudinally(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.expandLongitudinally(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
@@ -411,7 +414,7 @@ public final class MtsEntityAnimationAnimator {
             float normalizedEndFrame = normalizeFrames(endFrame);
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
-                MtsEntityAnimationAnimator.shrinkLongitudinally(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+                MtsDaffiAnimator.shrinkLongitudinally(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
