@@ -7,6 +7,7 @@ import net.minecraft.world.entity.AnimationState;
  * @author Mr. GodDavid
  * @since 10/25/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class OakieHealingBallEntityRenderState extends LivingEntityRenderState {
 
     public final AnimationState spawnAnimationState = new AnimationState();

@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsRenderTypes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
@@ -19,12 +20,12 @@ public class OakieEyesLayer extends EyesLayer<OakieEntityRenderState, OakieEntit
     }
 
     @Override
-    public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, OakieEntityRenderState state, float yRot, float xRot) {
+    public void submit(@NonNull PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, OakieEntityRenderState state, float yRot, float xRot) {
         submitNodeCollector.order(1).submitModel(this.getParentModel(), state, poseStack, this.renderType(), lightCoords, OverlayTexture.NO_OVERLAY, state.eyeColor, null, state.outlineColor, null);
     }
 
     @Override
-    public RenderType renderType() {
+    public @NonNull RenderType renderType() {
         return MtsRenderTypes.OAKIE_EYES;
     }
 }

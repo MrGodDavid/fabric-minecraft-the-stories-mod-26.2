@@ -20,7 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRenderState, OakieEntityModel> {
 
     private static final RandomPulse RANDOM_PULSE = RandomPulse.builder(100).origin(0).probability(50).build();

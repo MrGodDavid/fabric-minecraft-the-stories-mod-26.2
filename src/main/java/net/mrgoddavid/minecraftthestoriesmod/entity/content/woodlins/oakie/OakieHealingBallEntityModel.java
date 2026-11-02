@@ -12,6 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimat
  * @author Mr. GodDavid
  * @since 10/25/2026
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class OakieHealingBallEntityModel extends EntityModel<OakieHealingBallEntityRenderState> {
     private final ModelPart root;
     private final ModelPart ball_outside;

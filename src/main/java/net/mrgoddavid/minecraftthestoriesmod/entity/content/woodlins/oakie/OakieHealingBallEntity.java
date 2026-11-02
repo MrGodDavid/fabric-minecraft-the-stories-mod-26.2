@@ -27,7 +27,7 @@ import org.jspecify.annotations.Nullable;
  * @author Mr. GodDavid
  * @since 10/25/2026
  */
-@SuppressWarnings({"NullableProblems", "FieldCanBeLocal"})
+@SuppressWarnings({"NullableProblems", "FieldCanBeLocal", "SpellCheckingInspection", "resource"})
 public class OakieHealingBallEntity extends PathfinderMob {
 
     public static final int FOOD_RESTORATION = 2;
@@ -48,7 +48,7 @@ public class OakieHealingBallEntity extends PathfinderMob {
 
     public OakieHealingBallEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
-        this.moveControl = new FlyingMoveControl<OakieHealingBallEntity>(this, 20, true);
+        this.moveControl = new FlyingMoveControl<>(this, 20, true);
         this.setNoGravity(true);
         this.setNoAi(true);
     }

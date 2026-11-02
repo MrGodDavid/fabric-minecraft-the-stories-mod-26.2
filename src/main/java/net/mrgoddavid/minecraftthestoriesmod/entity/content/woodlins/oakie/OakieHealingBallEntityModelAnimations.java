@@ -13,6 +13,7 @@ import net.minecraft.client.animation.KeyframeAnimations;
  * @author Mr. GodDavid
  * @since 10/25/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class OakieHealingBallEntityModelAnimations {
 
     public static final AnimationDefinition SPAWN = AnimationDefinition.Builder.withLength(1.0F)

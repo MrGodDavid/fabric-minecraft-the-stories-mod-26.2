@@ -11,7 +11,7 @@ import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimat
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
-@SuppressWarnings("FieldCanBeLocal")
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
     private final ModelPart root;
     private final ModelPart body;

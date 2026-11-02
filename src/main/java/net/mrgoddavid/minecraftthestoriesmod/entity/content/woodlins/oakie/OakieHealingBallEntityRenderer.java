@@ -10,7 +10,7 @@ import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
  * @author Mr. GodDavid
  * @since 10/25/2026
  */
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 public class OakieHealingBallEntityRenderer extends MobRenderer<OakieHealingBallEntity, OakieHealingBallEntityRenderState, OakieHealingBallEntityModel> {
 
     public OakieHealingBallEntityRenderer(EntityRendererProvider.Context context) {

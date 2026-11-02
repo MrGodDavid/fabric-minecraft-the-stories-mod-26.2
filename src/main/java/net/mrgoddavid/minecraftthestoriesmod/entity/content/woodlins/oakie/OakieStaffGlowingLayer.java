@@ -12,7 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.registries.MtsRenderTypes;
  * @author Mr. GodDavid
  * @since 10/21/2026
  */
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 public class OakieStaffGlowingLayer extends EyesLayer<OakieEntityRenderState, OakieEntityModel> {
 
     public OakieStaffGlowingLayer(RenderLayerParent<OakieEntityRenderState, OakieEntityModel> renderer) {
