@@ -24,6 +24,9 @@ public class Timer {
         this.currentTick = 0;
     }
 
+    /**
+     * Must call this method if you want to reset this timer.
+     */
     public void reset() {
         this.currentTick = 0;
     }

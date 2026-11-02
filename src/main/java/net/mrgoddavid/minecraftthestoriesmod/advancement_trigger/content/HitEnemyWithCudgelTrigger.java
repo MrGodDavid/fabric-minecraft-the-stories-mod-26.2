@@ -21,7 +21,7 @@ import java.util.Optional;
 public class HitEnemyWithCudgelTrigger extends SimpleCriterionTrigger<HitEnemyWithCudgelTrigger.TriggerInstance> {
 
     @Override
-    public Codec<TriggerInstance> codec() {
+    public @NonNull Codec<TriggerInstance> codec() {
         return TriggerInstance.CODEC;
     }
 

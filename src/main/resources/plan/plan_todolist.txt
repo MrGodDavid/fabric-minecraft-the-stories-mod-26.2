@@ -39,7 +39,7 @@
 				@ENTITY DUMMY_TARGET: Target dummy. Like Armor Stands. Inspired by an awesome youtube video, and I will link his channel and video in here. Dummy Target displays the attack point that player dealt.
 					@BUG Target dummy would  be killed when player smashes target dummy with mace.
 				@ENTITY ACACIANIA: Spirit of the Wild Acacia. Tamable auxiliary entity. Grants Swift effect effects to all surrounding entities when it is tamed by player.
-				@ENTITY LOUDER: Entity in 
+				@ENTITY LOUDER: Entity in the Wild Acacia.
 				@ENTITY BIRCHIA: Spirit of Gigantic Birchlin. Tamable auxiliary entity. Grants jumping boost effect.
 				@ENTITY CHERRINIA: Spirit of Bloomy Cherry Woods. Tamable auxiliary entity. Grants Entice effect--decrease damage dealt by surrounding enemies.
 				@ENTITY DENSE_OAKIE: Spirit of Dark Oaklin. Tamable auxiliary entity. Grants Strength effects. Increase damage dealt by player in the range of this dense_oakie.
@@ -52,14 +52,23 @@
 				@STRUCTURE MAZE_OF_HEROBRINE: The place where held the Seal of Herobrine.
 				@STRUCTURE SEAL_OF_HEROBRINE: The core where Herobrine being sealed.
 				@STRUCTURE RUINED_VILLAGER_OUTPOST: Ancient warfare structure used for watching the border between Kingdom of Villagers and Pillager Empire.
+				@STRUCTURE SHATTERED_POTS: Randomly scattered pots filled with either valuable things or necessities. The sizes of this structure is small, medium, and large.
+				@STRUCTURE ADVENTURER_MARK: A small sign that has randomly generated text based on the biome. ONLY in Dense Forests biomes. There is a small chance that a treasure box is buried beneath the sign.
 
 #UPDATE
 	#TODO
-		@UPDATE WOODS_AND_SPRIITS
+		@UPDATE WOODS_AND_SPRIITS (@WIP)
 				Each of the Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Oak, Pale Oak, and Spruce has a "ultra" or "dense" version of biome.
 				Each biome has 1 - 2 passive entities and 3 - 5 hostile entities, including one small-sized boss and one middle-sized boss.
 				Name of the new entities in each of the "dense" forest: Acaciania, Birchia, Cherrina, Dense Oakie, Junglenia, Mangrovina, Oakie, Light Oakie, and Sprucia.
 				Hostile power: Twisted Spirit & Glitched Guardian.
+				
+				✅ Oakie's Healing Owner Goal not working. (Don't know if it actually works) Check: It is working.
+				❌ Oakie must have smarter path finding. (Abandoned this idea)
+				✅ Make Oakie immunes the sweet berry bush damages.  
+				Oakie healing ball must have effects such as glowing and particles spawning.
+				✅ (@BUG) Oakie not-owner stucksin enchanting animation loop bug.
+				
 		@UPDATE ADDITIONAL_WOODEN_TOOLS (@WIP)
 				✅ Add additional wood type for Axes, ✅ Bows, ✅ Pickaxes, ✅ Hoes, ✅ Shovels, ✅ Swords, ✅ Spears, and ✅ Cudgels. Additional wood types are Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Pale Oak, and Spruce.
 				Polish attack speed, attack damage for each type of wood of all types of tools.
@@ -67,23 +76,35 @@
 				✅ Draw textures.
 				✅ Define Cudgel Item Class.
 				✅ Define Wood Materials Classes.
-				½ Implement Cudgels animations. (@WIP) We have something. Need to be polished.
+				✅ Implement Cudgels animations. NOTE: We have something. Need to be polished. <--- Will come back later.
+				
 		@UPDATE BROWN_BEAR_UPDATE (@WIP)
 				✅ Add Brown Bear.
 				Implement riding feature. (@WIP)
 				Implement Brown Bear Agro mechanism.
 				Add other variants. (Baby Brown Bear & Zombified Brown Bear.)
-		✅ @UPDATE DRINKS_AND_THIRST_UPDATE (@FINISHED)
+				@BUG Brown Bear plays one more run animation when player rides brown bears and stops. (@WIP)
+				
+		@UPDATE DRINKS_AND_THIRST_UPDATE (@WIP) 
 		 		✅ Implement Drink and Thirst Packets/Networking.
 		 		✅ Implement Drinkable saturation and properties.
+		 		✅ Player would receive thirst damage after dehydrated.
+		 		✅ Modify vanilla food's dietary properties.
+		 		Implement drinkable water + potions.
+		 		
 		 @UPDATE MORE_COMABTS (@WIP)
 		 		Add more combat weapons.
+		 		
 		 @UPDATE TARGET_DUMMY (@WIP)
 		 		Fix target dummy died when player use falling mace attack.
+		 		
 		 @UPDATE STORYBOOK_UPDATE (@WIP)
 		 		Change the name of storybook >> adventure diary.
 		 		Fix texture-loading error.
-		 		Implement/Test Advanture Book page unlock mechanism.
+		 		Implement/Test Adventure Book page unlock mechanism.
+		 		
+		 @UPDATE VISUAL_HEALTHBAR
+		 		Add visible health bar when any living entity is damaged.
 #IMPLEMENTATION_NOTES
 		@ENLARGED_WEAPONS
 				1. Draw the texture of the weapon. Make sure they are in size of 8x8, 16x16, 32x32, 64x64, 128x128, etc. The size = 2^n [n ∈ ℝ | n >= 0];

@@ -88,7 +88,7 @@ public class ThirstManager {
         this.exhaustion = Math.max(0.0F, exhaustion);
     }
 
-    public boolean isThirstFull() {
+    public boolean isHydrationFull() {
         return this.hydrationPoint >= MAX_HYDRATION;
     }
 }

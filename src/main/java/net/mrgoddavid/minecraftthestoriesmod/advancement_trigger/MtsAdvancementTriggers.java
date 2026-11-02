@@ -27,6 +27,7 @@ public final class MtsAdvancementTriggers {
     public static final HitEnemyWithCudgelTrigger HIT_ENEMY_WITH_CUDGEL_TRIGGER = register("hit_enemy_with_cudgel", new HitEnemyWithCudgelTrigger());
     public static final BathingInEnricherWasteWhileBeingEnchantedByOakieTrigger BATHING_IN_ENRICHER_WASTE_WHILE_BEING_ENCHANTED_BY_OAKIE_TRIGGER
             = register("bathing_in_enricher_waste_while_being_enchanted_by_oakie", new BathingInEnricherWasteWhileBeingEnchantedByOakieTrigger());
+    public static final TameWoodlinsTrigger TAME_WOODLINS_TRIGGER = register("tame_woodlins", new TameWoodlinsTrigger());
 
     private static <T extends CriterionTrigger<?>> T register(final String name, T trigger) {
         return Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.modId(name), trigger);

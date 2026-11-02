@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -18,9 +19,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.FollowSpecificMobGoal;
 import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 import org.jspecify.annotations.Nullable;
-
-import java.util.Comparator;
 
 /**
  * @author Mr. GodDavid
@@ -29,16 +30,19 @@ import java.util.Comparator;
 @SuppressWarnings({"NullableProblems", "FieldCanBeLocal"})
 public class OakieHealingBallEntity extends PathfinderMob {
 
+    public static final int FOOD_RESTORATION = 2;
+    public static final int HYDRATION_RESTORATION = 1;
+    private static final int HEAL_AMOUNT = 2;
+    public static final float THIRST_EXHAUSTION = -0.25F;
+    private static final float HEAL_DISTANCE = 1.5F;
+    private static final float HEAL_DISTANCE_SQUARED = HEAL_DISTANCE * HEAL_DISTANCE;
+    private static final int EMERGING_DURATION_TICKS = 20;
+    private static final int DYING_DURATION_TICKS = 20;
+    private static final int FOLLOW_DISTANCE = 20;
     private static final EntityDataAccessor<Byte> DATA_LIFECYCLE = SynchedEntityData.defineId(OakieHealingBallEntity.class, EntityDataSerializers.BYTE);
     public final AnimationState spawnAnimationState = new AnimationState();
     public final AnimationState flyingAnimationState = new AnimationState();
     public final AnimationState healAnimationState = new AnimationState();
-    public final int SATURATION = 1;
-    public final float THIRST_EXHAUSTION = -0.25F;
-    private final double HEAL_DISTANCE = 4.0D;
-    private final int EMERGING_DURATION_TICKS = 20;
-    private final int DYING_DURATION_TICKS = 20;
-    private final int FOLLOW_DISTANCE = 20;
     private int lifeCycleTicks;
     private LifeCycle lastClientLifeCycle;
 
@@ -63,7 +67,11 @@ public class OakieHealingBallEntity extends PathfinderMob {
     }
 
     private boolean selectValidPlayer(Player player) {
-        return this.isFlying() && !player.isSpectator() && player.isAlive();
+        return this.isFlying() && this.validPlayerBaseCriteria(player);
+    }
+
+    private boolean validPlayerBaseCriteria(Player player) {
+        return !player.isCreative() && !player.isSpectator() && player.isAlive();
     }
 
     public static AttributeSupplier createCubeAttributes() {
@@ -101,22 +109,26 @@ public class OakieHealingBallEntity extends PathfinderMob {
     }
 
     private void tryHealNearbyPlayer() {
-        Player player = this.level()
-                .getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(HEAL_DISTANCE), this::selectAroundPlayer)
-                .stream().min(Comparator.comparingDouble(Player::getHealth)).orElse(null);
-        if (player != null) {
-            this.grantSaturationAndHydration(player);
+        EntityUtils.getNearestLivingEntity((ServerLevel) this.level(), this, Player.class, this::selectAroundPlayer, HEAL_DISTANCE).ifPresent(player -> {
+            ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
+            this.grantPositiveBuffs(player, thirstManager);
             this.beginDying();
-        }
-    }
-
-    private void grantSaturationAndHydration(Player player) {
-        player.getFoodData().eat(SATURATION, 1);
-        ((ThirstHolder) player).mts$getThirstManager().addExhaustion(THIRST_EXHAUSTION);
+        });
     }
 
     private boolean selectAroundPlayer(Player player) {
-        return !player.isSpectator() && player.isAlive() && this.distanceToSqr(player) < HEAL_DISTANCE * HEAL_DISTANCE && player.getHealth() < player.getMaxHealth();
+        return this.validPlayerBaseCriteria(player) && this.distanceToSqr(player) < HEAL_DISTANCE_SQUARED && this.needHealPlayer(player);
+    }
+
+    private boolean needHealPlayer(Player player) {
+        ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
+        return (player.getHealth() < player.getMaxHealth() || player.getFoodData().needsFood() || !thirstManager.isHydrationFull());
+    }
+
+    private void grantPositiveBuffs(Player player, ThirstManager thirstManager) {
+        player.getFoodData().eat(FOOD_RESTORATION, 1);
+        thirstManager.restoreThirst(HYDRATION_RESTORATION, THIRST_EXHAUSTION);
+        player.heal(HEAL_AMOUNT);
     }
 
     private void tickLifeCycle() {

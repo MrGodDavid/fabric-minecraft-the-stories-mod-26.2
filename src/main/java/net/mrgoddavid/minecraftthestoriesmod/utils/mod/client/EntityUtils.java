@@ -1,12 +1,17 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.mod.client;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
@@ -14,6 +19,29 @@ import java.util.function.Predicate;
  * @since 10/21/2026
  */
 public final class EntityUtils {
+
+    public static <T extends LivingEntity, S extends LivingEntity> Optional<T> getNearestLivingEntity(ServerLevel serverLevel, S self, Class<T> entityClass, float radius) {
+        return getNearestLivingEntity(serverLevel, self, entityClass, candidate -> true, radius);
+    }
+
+    /**
+     * Select the closest living entity (Target) around a living entity (Self).
+     *
+     * @param serverLevel        the level of the world must be a server level since we are doing this on the server
+     *                           side.
+     * @param self               the centered living entity. The center of the searching area.
+     * @param searchedClass        the class of entity will be searched.
+     * @param selectionPredicate rules for filtering the valid target living entities.
+     * @param radius             search radius/distance.
+     * @param <S>                type of the living entity in the center of the search circle.
+     * @param <T>                type of the targeted living entity that is being searched.
+     * @return the closets entity that fits all the previous criteria.s
+     */
+    public static <S extends LivingEntity, T extends LivingEntity> Optional<T> getNearestLivingEntity(ServerLevel serverLevel, S self, Class<T> searchedClass, Predicate<T> selectionPredicate, float radius) {
+        return serverLevel.getEntitiesOfClass(searchedClass, self.getBoundingBox().inflate(radius), selectionPredicate)
+                .stream()
+                .min(Comparator.comparingDouble(entity -> entity.distanceToSqr(self)));
+    }
 
     public static @Nullable BlockPos getNearestBlockPos(LivingEntity entity, Predicate<BlockState> blockStatePredicate, int searchRadius) {
         return getNearestBlockPos(entity, blockStatePredicate, searchRadius, searchRadius);

@@ -51,7 +51,6 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     public final AnimationState tameAnimationState = new AnimationState();
     public final AnimationState sitAnimationState = new AnimationState();
     public final AnimationState standAnimationState = new AnimationState();
-    private boolean pendingSitAnimation;
     private long persistentAngerEndTime;
 
     public BrownBearEntity(EntityType<? extends BrownBearEntity> type, Level level) {
@@ -234,38 +233,61 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
     public void tick() {
         super.tick();
 
+        // SERVER SIDE
         if (!level().isClientSide()) {
             entityData.set(DATA_CHARGING, isCharging());
         }
+        // CLIENT SIDE
+        else {
+            this.updateIdleAnimation();
+            this.updateRunAnimation();
+            this.updateAttackAnimation();
+            this.updateTameAnimation();
+            this.updateSitAnimation();
+            this.updateStandAnimation();
+        }
+    }
 
-        if (level().isClientSide()) {
-            this.idleAnimationState.animateWhen(!isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
+    private void updateStandAnimation() {
+        if (this.standAnimationState.isStarted() && this.standAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
+            this.standAnimationState.stop();
+        }
+    }
 
-            if (this.entityData.get(DATA_CHARGING) || animateRunningAnimationWhenRiding()) {
-                this.runAnimationState.startIfStopped(this.tickCount);
-            } else {
-                this.runAnimationState.stop();
-            }
+    private void updateTameAnimation() {
+        if (this.tameAnimationState.isStarted() && this.tameAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
+            this.tameAnimationState.stop();
+        }
+    }
 
-            if (this.attackAnimationState.isStarted() && this.attackAnimationState.getTimeInMillis(this.tickCount) > 999L) {
-                LivingEntity target = this.getTarget();
-                if (target == null || !target.isAlive()) {
-                    this.attackAnimationState.stop();
-                }
-            }
-
-            if (this.tameAnimationState.isStarted() && this.tameAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
-                this.tameAnimationState.stop();
-                if (pendingSitAnimation) {
-                    this.sitAnimationState.startIfStopped(this.tickCount);
-                    this.pendingSitAnimation = false;
-                }
-            }
-
-            if (this.standAnimationState.isStarted() && this.standAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
-                this.standAnimationState.stop();
+    private void updateAttackAnimation() {
+        if (this.attackAnimationState.isStarted() && this.attackAnimationState.getTimeInMillis(this.tickCount) > 999L) {
+            LivingEntity target = this.getTarget();
+            if (target == null || !target.isAlive()) {
+                this.attackAnimationState.stop();
             }
         }
+    }
+
+    private void updateRunAnimation() {
+        if (this.entityData.get(DATA_CHARGING) || this.animateRunningAnimationWhenRiding()) {
+            this.runAnimationState.startIfStopped(this.tickCount);
+        } else {
+            this.runAnimationState.stop();
+        }
+    }
+
+    private void updateSitAnimation() {
+        boolean shouldSit = this.isInSittingPose() && !this.tameAnimationState.isStarted();
+        if (shouldSit) {
+            this.sitAnimationState.startIfStopped(this.tickCount);
+        } else {
+            this.sitAnimationState.stop();
+        }
+    }
+
+    private void updateIdleAnimation() {
+        this.idleAnimationState.animateWhen(!isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
     }
 
     private boolean animateRunningAnimationWhenRiding() {
@@ -285,6 +307,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         }
         if (id == EntityEvent.TAMING_SUCCEEDED) {
             this.tameAnimationState.start(this.tickCount);
+            this.updateIdleAnimation();
         }
         if (id == STAND_EVENT) {
             this.standAnimationState.start(this.tickCount);
@@ -298,7 +321,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
 
         this.jumping = false;
         this.navigation.stop();
-        setTarget(null);
+        this.setTarget(null);
 
         if (!orderedToSit && !this.level().isClientSide()) {
             this.level().broadcastEntityEvent(this, STAND_EVENT);
@@ -307,30 +330,21 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
 
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> accessor) {
+        super.onSyncedDataUpdated(accessor);
         if (DATA_FLAGS_ID.equals(accessor)) {
-            if (isInSittingPose()) {
-                if (this.tameAnimationState.isStarted()) {
-                    this.pendingSitAnimation = true;
-                    this.sitAnimationState.stop();
-                } else {
-                    this.sitAnimationState.startIfStopped(this.tickCount);
-                }
-            } else {
-                this.pendingSitAnimation = false;
-                this.sitAnimationState.stop();
+            if (this.level().isClientSide()) {
+                this.updateSitAnimation();
             }
         }
-
-        super.onSyncedDataUpdated(accessor);
     }
 
     @Override
     protected void applyTamingSideEffects() {
         super.applyTamingSideEffects();
 
-        if (!this.level().isClientSide()) {
-            EntityTypes.PIG.spawn((ServerLevel) level(), blockPosition(), EntitySpawnReason.SPAWN_ITEM_USE);
-        }
+//        if (!this.level().isClientSide()) {
+//            EntityTypes.PIG.spawn((ServerLevel) level(), blockPosition(), EntitySpawnReason.SPAWN_ITEM_USE);
+//        }
     }
 
     @Override

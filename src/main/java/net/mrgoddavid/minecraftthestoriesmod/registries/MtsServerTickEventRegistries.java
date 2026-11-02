@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
@@ -19,8 +20,11 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.PeriodicPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Mr. GodDavid
@@ -68,10 +72,9 @@ public final class MtsServerTickEventRegistries {
     }
 
     private static void checkOakieAdvancements(MinecraftServer server, ServerPlayer player) {
-        List<OakieEntity> oakies = server.overworld().getEntitiesOfClass(OakieEntity.class, player.getBoundingBox().inflate(5.0D));
-        for (OakieEntity oakie : oakies) {
-            MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_WHILE_BEING_ENCHANTED_BY_OAKIE_TRIGGER.trigger(player, oakie);
-        }
+        EntityUtils.getNearestLivingEntity(server.overworld(), player, OakieEntity.class, 5.0F).ifPresent(oakieEntity -> {
+            MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_WHILE_BEING_ENCHANTED_BY_OAKIE_TRIGGER.trigger(player, oakieEntity);
+        });
     }
 
     private static void checkPlayerAdvancementTriggers(ServerPlayer player) {
@@ -82,6 +85,7 @@ public final class MtsServerTickEventRegistries {
 //                MtsAdvancementTriggers.WEAR_FULL_TOPAZ_ARMOR_TRIGGER.trigger(player);
         MtsAdvancementTriggers.HAS_PUBLIC_ENEMY_EFFECT_TRIGGER.trigger(player);
         MtsAdvancementTriggers.HIT_ENEMY_WITH_CUDGEL_TRIGGER.trigger(player);
+
     }
 
     private static void grantsPublicEnemyEffectIfWearingFullAmethystArmor(ServerPlayer player) {

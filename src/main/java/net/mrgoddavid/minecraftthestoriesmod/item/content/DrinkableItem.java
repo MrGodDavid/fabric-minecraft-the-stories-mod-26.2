@@ -37,7 +37,7 @@ public class DrinkableItem extends BlockItem {
 
         ThirstManager thirstManager = ((ThirstHolder) player).mts$getThirstManager();
         boolean isHungerFull = player.getFoodData().getFoodLevel() >= Constants.Universal.MAX_FOOD_POINTS;
-        boolean isHydrationFull = thirstManager.isThirstFull();
+        boolean isHydrationFull = thirstManager.isHydrationFull();
         if (isHungerFull && isHydrationFull) {
             return InteractionResult.FAIL;
         }
