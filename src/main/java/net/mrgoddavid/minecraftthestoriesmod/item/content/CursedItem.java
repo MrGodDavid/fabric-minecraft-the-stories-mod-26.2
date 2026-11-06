@@ -15,6 +15,8 @@ import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import org.jspecify.annotations.Nullable;
 
 /**
+ * Does absolutely nothing except cursing player.
+ *
  * @author Mr. GodDavid
  * @since 10/10/2026
  */

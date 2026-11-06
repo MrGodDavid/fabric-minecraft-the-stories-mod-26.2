@@ -44,7 +44,7 @@
 				@ENTITY CHERRINIA: Spirit of Bloomy Cherry Woods. Tamable auxiliary entity. Grants Entice effect--decrease damage dealt by surrounding enemies.
 				@ENTITY DENSE_OAKIE: Spirit of Dark Oaklin. Tamable auxiliary entity. Grants Strength effects. Increase damage dealt by player in the range of this dense_oakie.
 				@ENTITY JUNMI: Spirit of Lush Jungle. Tamable auxiliary entity. Grants Hydration effects. Increase player's speed of hydrating in the range of junglenia.
-				@ENTITY MANGROLINO: Spirit of Swampy Mangrilin. Tamable auxiliary entity. Grants Swimmer and Hydration buff in range of mangrovia. 
+				@ENTITY MANGROLINO: Spirit of Swampy Mangrilin. Tamable auxiliary entity. Grants Swimmer and Hydration buff in range of mangrolino. 
 				@ENTITY OAKIE: Spirit of the Dense Oaklin. Tamable auxiliary entity. Grants healing effects to all surrounding entity, including the time when it is tamed by player. (@WIP)
 				@ENTITY LIGHT_OAKIE: Spirit of Pale Oaklin. Tamable auxiliary entity. Grants invisible (trying to make armors invisible), increasing player's jumping height in the range of Light Oakie.
 				@ENTITY SPRUCIA: Spirit of Sprucia. Tamable auxiliary entity. Grants Attacker effect, increasing attack speed and damage on player.
@@ -62,12 +62,64 @@
 				Each biome has 1 - 2 passive entities and 3 - 5 hostile entities, including one small-sized boss and one middle-sized boss.
 				Name of the new entities in each of the "dense" forest: Acaciania, Birchia, Cherrina, Dense Oakie, Junglenia, Mangrovina, Oakie, Light Oakie, and Sprucia.
 				Hostile power: Twisted Spirit & Glitched Guardian.
+				Abstracts Woodlin codebase.
 				
-				✅ Oakie's Healing Owner Goal not working. (Don't know if it actually works) Check: It is working.
-				❌ Oakie must have smarter path finding. (Abandoned this idea)
-				✅ Make Oakie immunes the sweet berry bush damages.  
-				Oakie healing ball must have effects such as glowing and particles spawning.
-				✅ (@BUG) Oakie not-owner stucksin enchanting animation loop bug.
+				@ENTITY ACACIANIA
+						✅ Design model.
+						✅ Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
+				
+				@ENTITY BIRCHIA
+						✅ Design model.
+						Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
+				
+				@ENTITY CHERRINIA
+						✅ Design model.
+						Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
+				
+				@ENTITY DENSE_OAKIE
+						✅ Design model.
+						Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
+				
+				@ENTITY JUNMI
+						✅ Design model.
+						Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
+				
+				@ENTITY MANGROLINO
+						✅ Design model.
+						Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
+				
+				@ENTITY OAKIE
+						✅ Oakie's Healing Owner Goal not working. (Don't know if it actually works) Check: It is working.
+						❌ Oakie must have smarter path finding. (Abandoned this idea)
+						✅ Make Oakie immunes the sweet berry bush damages.  
+						Oakie healing ball must have effects such as glowing and particles spawning.
+						✅ (@BUG) Oakie not-owner stucksin enchanting animation loop bug.
+						(@BUG) Oakie staff not glowing while in enchanting state issue.
+						Oakie Healing Ball Glowing effect.
+				
+				@ENTITY LIGHT_OAKIE
+						✅ Design model.
+						Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
+				
+				@ENTITY SPRUCIA
+						✅ Design model.
+						Animate all animations.
+						Export the animation and model files from Blockbench to mod project files.
+						Extract all possible glowing effect textures.
 				
 		@UPDATE ADDITIONAL_WOODEN_TOOLS (@WIP)
 				✅ Add additional wood type for Axes, ✅ Bows, ✅ Pickaxes, ✅ Hoes, ✅ Shovels, ✅ Swords, ✅ Spears, and ✅ Cudgels. Additional wood types are Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Pale Oak, and Spruce.
@@ -94,6 +146,7 @@
 		 		
 		 @UPDATE MORE_COMABTS (@WIP)
 		 		Add more combat weapons.
+		 		Add more animations for each unique weapon.
 		 		
 		 @UPDATE TARGET_DUMMY (@WIP)
 		 		Fix target dummy died when player use falling mace attack.
@@ -110,7 +163,7 @@
 				1. Draw the texture of the weapon. Make sure they are in size of 8x8, 16x16, 32x32, 64x64, 128x128, etc. The size = 2^n [n ∈ ℝ | n >= 0];
 				2. Import the texture to Blockbench and extrude it.
 				3. Go to Display tag.
-				3-1. Tools -> Optimize.
+				3-1. [Tools] -> [Optimize]. If you don't see this option, go to [Files] -> [Plugins...] and search and download [Optimize] plugin.
 				NOTE: Missing channels indicates the value is 0.
 				SCALE_FACTOR = width_of_new_texture / 16;
 				4. For right hand third-person display: Tx, Ty, and Tz: Depends on weapon's size. Ry: 90, Rz: 45, Sx = Sy = Sz = SCALE_FACTOR;
@@ -125,6 +178,14 @@
 				13. Go to the "textures" -> "0" and "particle"
 				14. Make sure "0" and "particle" have the same format: <YOUR_MOD_ID>:item/<NAME_OF_YOUR_WEAPON_TEXTURE>, if not, fix them.
 				15. Save the file if you do any changes.
-				16. You're done! :D 
+				16. You're done! :D
+				
+		@MODDED_ENTITY_MODELS_&_ANIMATIONS
+				1. Go to [File] -> [Plugins...] and make sure you have [Fabric Modded Entity] downloaded.
+				2. Go to [File] -> [Project...] and check the [Export Version]. Make sure the [Export Version] is [Forge 1.17+ (Mojmaps)]. We set this despite we are using Fabric API to develop Minecraft mods. For some reason, [Fabric 1.17+] is still using the old model classes, which will give you tons of error messages when you paste the model class inside modern Fabric dev environment. Make sure you first save this model file in a place OTHER THAN your mod project folder.
+				3. Go to [Animate] tab and find [Export Modded Entity Animations]. Make sure everything is selected. Click [Confirm] and save this file in a place OTHER THAN in your mod project folder.
+				4. Copy and paste the model and animation class. Stay organized!
+				5. Fix any error messages that pops out in your code editing workspace.
+				6. You're done! :D
 #DEADLINE
 		IDK.

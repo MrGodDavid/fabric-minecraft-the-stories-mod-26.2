@@ -88,8 +88,8 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
             this.disenchantingAnimation.apply(state.disenchantingAnimationState, state.ageInTicks);
             return;
         }
-        if (state.healAnimationState.isStarted()) {
-            this.healAnimation.apply(state.healAnimationState, state.ageInTicks);
+        if (state.abilityUseAnimationState.isStarted()) {
+            this.healAnimation.apply(state.abilityUseAnimationState, state.ageInTicks);
             return;
         }
         if (state.walkAnimationSpeed > 0.0F) {

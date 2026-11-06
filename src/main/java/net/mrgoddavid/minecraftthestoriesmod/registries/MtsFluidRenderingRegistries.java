@@ -10,6 +10,7 @@ import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 
 /**
  * Rendering registries of MTS mod.
@@ -26,8 +27,8 @@ public final class MtsFluidRenderingRegistries {
                 MtsFluids.ENRICHER_WASTE_STILL,
                 MtsFluids.ENRICHER_WASTE_FLOWING,
                 new FluidModel.Unbaked(
-                        new Material(Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "block/enricher_waste_still")),
-                        new Material(Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "block/enricher_waste_flow")),
+                        new Material(Constants.modId("block/enricher_waste_still")),
+                        new Material(Constants.modId("block/enricher_waste_flow")),
                         null, null
                 )
         );
@@ -37,8 +38,8 @@ public final class MtsFluidRenderingRegistries {
                 MtsFluids.BLUE_FUEL_STILL,
                 MtsFluids.BLUE_FUEL_FLOWING,
                 new FluidModel.Unbaked(
-                        new Material(Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "block/blue_fuel_still")),
-                        new Material(Identifier.fromNamespaceAndPath(MinecraftTheStoriesMod.MOD_ID, "block/blue_fuel_flow")),
+                        new Material(Constants.modId("block/blue_fuel_still")),
+                        new Material(Constants.modId("block/blue_fuel_flow")),
                         null, null
                 )
         );

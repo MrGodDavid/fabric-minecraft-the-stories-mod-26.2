@@ -2,6 +2,8 @@ package net.mrgoddavid.minecraftthestoriesmod.fluid;
 
 import net.fabricmc.fabric.api.registry.fluid.EntityFluidInteractionRegistry;
 import net.fabricmc.fabric.api.registry.fluid.FluidBehavior;
+import net.minecraft.world.phys.Vec3;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -21,24 +23,32 @@ public class MtsEntityFluidInteractions {
                                         (entity, firstTick) -> {
                                             if (entity.level().isClientSide()) {
 
-                                                // float volumeModifier = 0.2f;
-                                                // Vec3 movement = entity.getDeltaMovement();
-                                                //  float speed = Math.min(1.0f, (float) Math.sqrt(movement.x * movement.x * (double) 0.2F + movement.y * movement.y + movement.z * movement.z * (double) 0.2F) * volumeModifier);
+//                                                 float volumeModifier = 0.2f;
+                                                Vec3 movement = entity.getDeltaMovement();
+//                                                  float speed = Math.min(1.0f, (float) Math.sqrt(
+//                                                          movement.x * movement.x * (double) 0.2F + movement.y * movement.y + movement.z * movement.z * (double) 0.2F) * volumeModifier);
 
-                                                //     Vec3 movement = entity.getDeltaMovement();
-                                                //     float yt = (float) Math.floor(entity.getY());
-//
-                                                //     for(int i = 0; (float)i < 1.0F + entity.getBbWidth() * 20.0F; ++i) {
-                                                //         double xo = (entity.getRandom().nextDouble() * (double)2.0F - (double)1.0F) * (double)entity.getBbWidth();
-                                                //         double zo = (entity.getRandom().nextDouble() * (double)2.0F - (double)1.0F) * (double)entity.getBbWidth();
-                                                //         entity.level().addParticle(MtsParticleTypes.ENRICHER_WASTE_PARTICLE, entity.getX() + xo, (double)(yt + 0.5F), entity.getZ() + zo, movement.x, movement.y - entity.getRandom().nextDouble() * (double)0.2F, movement.z);
-                                                //     }
-//
-                                                //     for(int i = 0; (float)i < 1.0F + entity.getBbWidth() * 20.0F; ++i) {
-                                                //         double xo = (entity.getRandom().nextDouble() * (double)2.0F - (double)1.0F) * (double)entity.getBbWidth();
-                                                //         double zo = (entity.getRandom().nextDouble() * (double)2.0F - (double)1.0F) * (double)entity.getBbWidth();
-                                                //         entity.level().addParticle(MtsParticleTypes.ENRICHER_WASTE_PARTICLE, entity.getX() + xo, (double)(yt + 0.5F), entity.getZ() + zo, movement.x, movement.y, movement.z);
-                                                //     }
+//                                                     Vec3 movement = entity.getDeltaMovement();
+                                                float yt = (float) Math.floor(entity.getY());
+
+                                                for (int i = 0; (float) i < 1.0F + entity.getBbWidth() * 20.0F; ++i) {
+                                                    double xo = (entity.getRandom().nextDouble() * (double) 2.0F - (double) 1.0F) * (double) entity.getBbWidth();
+                                                    double zo = (entity.getRandom().nextDouble() * (double) 2.0F - (double) 1.0F) * (double) entity.getBbWidth();
+                                                    entity.level().addParticle(MtsParticleTypes.ENRICHER_WASTE_PARTICLE,
+                                                            entity.getX() + xo,
+                                                            (double) (yt + 0.5F),
+                                                            entity.getZ() + zo, movement.x,
+                                                            movement.y - entity.getRandom().nextDouble() * (double) 0.2F, movement.z);
+                                                }
+
+                                                for (int i = 0; (float) i < 1.0F + entity.getBbWidth() * 20.0F; ++i) {
+                                                    double xo = (entity.getRandom().nextDouble() * (double) 2.0F - (double) 1.0F) * (double) entity.getBbWidth();
+                                                    double zo = (entity.getRandom().nextDouble() * (double) 2.0F - (double) 1.0F) * (double) entity.getBbWidth();
+                                                    entity.level().addParticle(MtsParticleTypes.ENRICHER_WASTE_PARTICLE,
+                                                            entity.getX() + xo,
+                                                            (double) (yt + 0.5F),
+                                                            entity.getZ() + zo, movement.x, movement.y, movement.z);
+                                                }
                                             }
                                         })
                         )
@@ -50,6 +60,7 @@ public class MtsEntityFluidInteractions {
                         .makeMobsFloat(true)
                         .allowBoats(true)
                         .allowSprinting(false)
+                        .enableDrowning(true)
                         .build()
         );
 
@@ -62,6 +73,7 @@ public class MtsEntityFluidInteractions {
                 .makeMobsFloat(true)
                 .allowBoats(true)
                 .allowSprinting(false)
+                .enableDrowning(true)
                 .build());
     }
 

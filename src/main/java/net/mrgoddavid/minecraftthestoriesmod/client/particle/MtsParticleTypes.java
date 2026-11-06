@@ -29,7 +29,7 @@ public final class MtsParticleTypes {
         MtsLogger.info("Particle Types");
     }
 
-    private MtsParticleTypes() throws IllegalAccessException {
+    private MtsParticleTypes() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

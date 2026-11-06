@@ -1,14 +1,9 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
-import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,20 +23,19 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.WoodlinContext;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
-import org.jspecify.annotations.Nullable;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.function.Predicate;
 
 /**
@@ -76,17 +70,13 @@ import java.util.function.Predicate;
  * @since 10/16/2026
  */
 @SuppressWarnings({"NullableProblems", "resource"})
-public class OakieEntity extends TamableAnimal {
+public class OakieEntity extends AbstractWoodlinEntity {
 
     public static final int HEALING_RADIUS = 5;
     public static final int HEALING_RADIUS_SQUARED = HEALING_RADIUS * HEALING_RADIUS;
-    private final byte STAND_EVENT = 99;
-    private static final EntityDataAccessor<Boolean> DATA_HEALING = SynchedEntityData.defineId(OakieEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
-    public final AnimationState idleAnimationState = new AnimationState();
+    public static final float MIN_NOTICE_NEEDS_HEALING_DISTANCE = 6.0F;
+    public static final float MAX_NOTICE_NEEDS_HEALING_DISTANCE = 18.0F;
     public final AnimationState healAnimationState = new AnimationState();
-    public final AnimationState enchantingAnimationState = new AnimationState();
-    public final AnimationState disenchantingAnimationState = new AnimationState();
-    public final AnimationState tameAnimationState = new AnimationState();
     private final Timer campFireHurtCoolDown = new Timer(40);
     private final Timer fireblocksHurtCoolDown = new Timer(40);
     private final Timer torchesHurtCoolDown = new Timer(40);
@@ -97,36 +87,25 @@ public class OakieEntity extends TamableAnimal {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_HEALING, false);
-    }
-
-    @Override
-    public boolean isFood(ItemStack itemStack) {
-        return false;
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(ServerLevel level, AgeableMob partner) {
-        return null;
-    }
-
-    @Override
-    protected void registerGoals() {
-        super.registerGoals();
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new TamableAnimalPanicGoal(1.25, DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES));
+    protected void registerBehavioralGoals() {
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidFireBlockGoal(this, this::isFireblocks));
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidCampFiresGoal(this, this::isCampfires));
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidLavaGoal(this, this::isLava));
-        this.goalSelector.addGoal(3, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(3, new OakieEntity.OakieHealOwnerGoal(6.0f, 18.0f)); // TODO debug this goal latter.
-        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.025D, 24.0f, 2.0F));
+        this.goalSelector.addGoal(3, new OakieEntity.OakieHealOwnerGoal(MIN_NOTICE_NEEDS_HEALING_DISTANCE, MAX_NOTICE_NEEDS_HEALING_DISTANCE));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new OakieEntity.OakieGrowCropsGoal());
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 4.0F));
-        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+    }
+
+    @Override
+    protected WoodlinContext registerWoodlinContexts() {
+        return WoodlinContext.builder()
+                .woodlinAbilityUsageRadius(HEALING_RADIUS)
+                .tamedAnimalPanicSpeedModifier(1.25D)
+                .tamedAnimalFollowOwnerSpeedModifier(1.025D)
+                .tamedAnimalFollowOwnerStartDistance(24.0F)
+                .tamedAnimalFollowOwnerStopDistance(2.0F)
+                .entityRandomlyLookDistance(4.0F)
+                .build();
     }
 
     private boolean isLava(BlockState blockState) {
@@ -150,7 +129,7 @@ public class OakieEntity extends TamableAnimal {
         return blockState.is(Blocks.FIRE) || blockState.is(Blocks.SOUL_FIRE);
     }
 
-    public static AttributeSupplier.Builder createCubeAttributes() {
+    public static AttributeSupplier.Builder createLivingEntityAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 5)
                 .add(Attributes.MOVEMENT_SPEED, 0.2)
@@ -158,98 +137,29 @@ public class OakieEntity extends TamableAnimal {
     }
 
     @Override
-    public void setOrderedToSit(boolean orderedToSit) {
-        super.setOrderedToSit(orderedToSit);
-        this.setInSittingPose(orderedToSit);
-
-        this.jumping = false;
-        this.navigation.stop();
-        this.setTarget(null);
-
-        if (!orderedToSit && !this.level().isClientSide()) {
-            this.level().broadcastEntityEvent(this, STAND_EVENT);
-        }
+    protected void additionalEntityClientSideTick() {
+        this.updateHealingAnimation();
     }
 
     @Override
-    public void onSyncedDataUpdated(EntityDataAccessor<?> accessor) {
-        super.onSyncedDataUpdated(accessor);
-        if (DATA_FLAGS_ID.equals(accessor)) {
-            if (this.level().isClientSide()) {
-                this.updateEnchantingAnimation();
-            }
-        }
-        if (DATA_HEALING.equals(accessor)) {
+    protected void addAdditionalEntityServerSideTick() {
+        this.burnByFireSourceBlocks((ServerLevel) this.level());
+    }
+
+    @Override
+    protected void handleAbilityUsageAnimation(EntityDataAccessor<?> accessor) {
+        if (DATA_USING_ABILITY.equals(accessor)) {
             if (this.level().isClientSide()) {
                 this.updateHealingAnimation();
             }
         }
     }
 
-    @Override
-    public void handleEntityEvent(byte id) {
-        super.handleEntityEvent(id);
-        if (id == EntityEvent.TAMING_SUCCEEDED) {
-            this.tameAnimationState.start(this.tickCount);
-            this.updateEnchantingAnimation();
-        }
-        if (id == STAND_EVENT && !this.isInSittingPose()) {
-            this.disenchantingAnimationState.start(this.tickCount);
-        }
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-
-        // Client side.
-        if (level().isClientSide()) {
-            this.updateIdleAnimation();
-            this.updateTameAnimation();
-            this.updateEnchantingAnimation();
-            this.updateDisenchantingAnimation();
-            this.updateHealingAnimation();
-        }
-        // Server side.
-        else {
-            ServerLevel level = (ServerLevel) this.level();
-            this.grantsPlayersInEnchantingRegionEffects(level);
-            this.grantsEntitiesInEnchantingRegionEffects(level);
-
-            this.burnByFireSourceBlocks(level);
-        }
-    }
-
-    private void updateDisenchantingAnimation() {
-        if (this.disenchantingAnimationState.isStarted() && this.disenchantingAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
-            this.disenchantingAnimationState.stop();
-        }
-    }
-
-    private void updateIdleAnimation() {
-        this.idleAnimationState.animateWhen(!isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
-    }
-
-    private void updateTameAnimation() {
-        if (this.tameAnimationState.isStarted() && this.tameAnimationState.getTimeInMillis(this.tickCount) > 1000L) {
-            this.tameAnimationState.stop();
-        }
-    }
-
     private void updateHealingAnimation() {
-        if (this.isHealing()) {
+        if (this.isUsingAbility()) {
             this.healAnimationState.startIfStopped(tickCount);
         } else {
             this.healAnimationState.stop();
-        }
-    }
-
-    private void updateEnchantingAnimation() {
-        boolean shouldEnchant = this.isEnchanting() && !this.tameAnimationState.isStarted();
-        if (shouldEnchant) {
-            this.enchantingAnimationState.startIfStopped(tickCount);
-        } else {
-            this.enchantingAnimationState.stop();
         }
     }
 
@@ -261,18 +171,25 @@ public class OakieEntity extends TamableAnimal {
         if (this.campFireHurtCoolDown.pass(() -> this.isCampfires(fireSourceBlockState))) {
             this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 0.5F);
             this.campFireHurtCoolDown.reset();
+
         } else if (this.fireblocksHurtCoolDown.pass(() -> this.isFireblocks(fireSourceBlockState))) {
             this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 1.0F);
             this.fireblocksHurtCoolDown.reset();
+
         } else if (this.lavaHurtCoolDown.pass(() -> this.isLava(fireSourceBlockState))) {
             this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 2.0F);
             this.lavaHurtCoolDown.reset();
+
         } else if (this.torchesHurtCoolDown.pass(() -> this.isTorches(fireSourceBlockState))) {
             this.torchesHurtCoolDown.reset();
             if (this.random.nextInt(20) == 0) {
                 this.hurtServer(level, MtsDamageTypes.create(level, MtsDamageTypes.OAKIE_BURN), 0.5F);
             }
         }
+    }
+
+    private boolean anyFireSourceBlock(BlockState blockState) {
+        return this.isFireblocks(blockState) || this.isCampfires(blockState) || this.isLava(blockState);
     }
 
     @Override
@@ -283,51 +200,31 @@ public class OakieEntity extends TamableAnimal {
         return super.hurtServer(level, source, damage);
     }
 
-    private boolean anyFireSourceBlock(BlockState blockState) {
-        return this.isFireblocks(blockState) || this.isCampfires(blockState) || this.isLava(blockState);
-    }
+    @Override
+    protected void grantsEffectsToLivingEntitiesInEnchantingRegion(LivingEntity entity) {
+        if (entity instanceof OakieEntity oakie) {
+            oakie.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 100, 2, false, true, true));
 
-    private void grantsEntitiesInEnchantingRegionEffects(ServerLevel level) {
-        List<LivingEntity> entitiesInEnchantingRegion = Lists.newArrayList();
-        level.getEntities(EntityTypeTest.forClass(LivingEntity.class), this::selectEntities, entitiesInEnchantingRegion);
-        for (LivingEntity entity : entitiesInEnchantingRegion) {
-            if (entity instanceof OakieEntity oakie) {
-                oakie.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 100, 2, false, true, true));
-            } else if (entity instanceof Monster monster) {
-                monster.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
-            } else if (entity instanceof Enemy) {
-                entity.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
-            }
+        } else if (entity instanceof Monster monster) {
+            monster.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
+
+        } else if (entity instanceof Enemy) {
+            entity.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
         }
-    }
-
-    private void grantsPlayersInEnchantingRegionEffects(ServerLevel level) {
-        List<ServerPlayer> playersInEnchantingRegion = level.getPlayers(this::selectPlayerInEnchantingRegion);
-        for (ServerPlayer player : playersInEnchantingRegion) {
-            if (this.isOwnedBy(player) && this.isEnchanting()) {
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 1, false, true, true));
-                player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, true, true));
-            } else {
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0, false, true, true));
-            }
-        }
-    }
-
-    private boolean selectPlayerInEnchantingRegion(ServerPlayer player) {
-        return this.selectEntities(player);
-    }
-
-    private boolean selectEntities(LivingEntity entity) {
-        double dy = Math.abs(entity.getY() - this.getY());
-        if (dy < 0.0F || dy > 1.0F) return false;
-
-        double dx = entity.getX() - this.getX();
-        double dz = entity.getZ() - this.getZ();
-        double distanceSquared = dx * dx + dz * dz;
-        return distanceSquared <= HEALING_RADIUS_SQUARED;
     }
 
     @Override
+    protected void grantsEffectToPlayersInEnchantingRegion(ServerPlayer player) {
+        if (this.isOwnedBy(player) && this.isEnchanting()) {
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 1, false, true, true));
+            player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, true, true));
+
+        } else {
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0, false, true, true));
+        }
+    }
+
+    @Override // todo will abstract this method.
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
         boolean isTameItemCorrect = itemStack.is(Items.OAK_SAPLING);
@@ -337,7 +234,7 @@ public class OakieEntity extends TamableAnimal {
                 // taming
                 if (!isTame() && isTameItemCorrect) {
                     itemStack.consume(1, player);
-                    tryToTame(player);
+                    this.tryToTame(player);
                     return InteractionResult.SUCCESS;
                 }
 
@@ -367,40 +264,6 @@ public class OakieEntity extends TamableAnimal {
         }
 
         return isOwnedBy(player) || isTame() || isTameItemCorrect ? InteractionResult.CONSUME : InteractionResult.PASS;
-    }
-
-    private void tryToTame(Player player) {
-        if (this.random.nextInt(10) == 0) {
-            tame(player);
-            setOrderedToSit(true);
-            level().broadcastEntityEvent(this, EntityEvent.TAMING_SUCCEEDED);
-        } else {
-            this.spawnTamingFailedParticles();
-        }
-    }
-
-    private void spawnHealingParticles() {
-        ((ServerLevel) this.level()).sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + this.getBbHeight() + 0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
-    }
-
-    private void spawnTamingFailedParticles() {
-        ((ServerLevel) this.level()).sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + this.getBbHeight() + 0.5d, this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.0);
-    }
-
-    public boolean isEnchanting() {
-        return this.isTame() && this.isInSittingPose();
-    }
-
-    public boolean isHealing() {
-        return this.isTame() && this.entityData.get(DATA_HEALING);
-    }
-
-    public void setHealing(boolean healing) {
-        this.entityData.set(DATA_HEALING, healing);
-    }
-
-    public boolean isOwnerInEnchantingRange(ServerPlayer player) {
-        return this.isEnchanting() && this.isOwnedBy(player) && this.selectPlayerInEnchantingRegion(player);
     }
 
     /**
@@ -438,46 +301,18 @@ public class OakieEntity extends TamableAnimal {
 
     /**
      * @author Mr. GodDavid
-     * @since 10/20/2026
+     * @since 10/20/2026 First version.
+     * @since 11/4/2026 Huge abstraction rewrite of this class.
      */
     @SuppressWarnings("DataFlowIssue")
-    private class OakieHealOwnerGoal extends Goal {
-
-        private final float minNoticeDistance;
-        private final float maxNoticeDistance;
-        private final Timer healCoodDownTimer = new Timer(60);
-        protected @Nullable LivingEntity target;
+    private class OakieHealOwnerGoal extends WoodlinUseAbilityGoal {
 
         public OakieHealOwnerGoal(float minNoticeDistance, float maxNoticeDistance) {
-            this.minNoticeDistance = minNoticeDistance;
-            this.maxNoticeDistance = maxNoticeDistance;
+            super(minNoticeDistance, maxNoticeDistance);
         }
 
         @Override
-        public void start() {
-            super.start();
-            OakieEntity.this.setHealing(true);
-        }
-
-        @Override
-        public void stop() {
-            OakieEntity.this.setHealing(false);
-            this.target = null;
-            this.healCoodDownTimer.reset();
-            super.stop();
-        }
-
-        @Override
-        public void tick() {
-            if (this.target == null) return;
-
-            if (healCoodDownTimer.pass(() -> this.isOwnerInNoticeRange(this.target))) { // this.target is not null here
-                healCoodDownTimer.reset();
-                this.tryToSummonHealingBalls();
-            }
-        }
-
-        private void tryToSummonHealingBalls() {
+        protected void registerAbilityUsageBehavior() {
             ServerLevel serverLevel = (ServerLevel) OakieEntity.this.level();
             BlockPos pos = OakieEntity.this.blockPosition().offset(
                     -2 + OakieEntity.this.random.nextInt(5),
@@ -494,36 +329,7 @@ public class OakieEntity extends TamableAnimal {
         }
 
         @Override
-        public boolean canUse() {
-            this.findOwner();
-            return OakieEntity.this.isTame() && this.healTargetBaseCriteria();
-        }
-
-        private void findOwner() {
-            LivingEntity owner = OakieEntity.this.getOwner();
-            this.target = (owner != null && isOwnerInNoticeRange(owner)) ? owner : null;
-        }
-
-        @Override
-        public boolean canContinueToUse() {
-            return this.healTargetBaseCriteria() && this.isOwnerInNoticeRange(this.target) && OakieEntity.this.getOwner() == this.target;
-        }
-
-        private boolean healTargetBaseCriteria() {
-            return this.target != null && this.target.isAlive() && this.ownerNeedsToHeal();
-        }
-
-        private boolean isOwnerInNoticeRange(LivingEntity owner) {
-            double distanceSq = this.distanceBetweenOakieAndOwner(owner);
-            return distanceSq >= this.minNoticeDistance * this.minNoticeDistance
-                    && distanceSq <= this.maxNoticeDistance * this.maxNoticeDistance;
-        }
-
-        private double distanceBetweenOakieAndOwner(LivingEntity owner) {
-            return OakieEntity.this.distanceToSqr(owner);
-        }
-
-        private boolean ownerNeedsToHeal() {
+        protected boolean customBaseCriteria() {
             double ownerHealth = this.target.getHealth();
             double ownerMaxHealth = this.target.getMaxHealth();
             return ownerHealth <= ownerMaxHealth * 0.8;
@@ -576,18 +382,7 @@ public class OakieEntity extends TamableAnimal {
         }
 
         private List<BlockPos> getBlockPosInCircle() {
-            BlockPos center = OakieEntity.this.blockPosition();
-            BlockPos minCorner = center.offset(-HEALING_RADIUS, 0, -HEALING_RADIUS);
-            BlockPos maxCorner = center.offset(HEALING_RADIUS, 0, HEALING_RADIUS);
-            return BlockPos.betweenClosedStream(minCorner, maxCorner)
-                    .filter(pos -> {
-                        double dx = pos.getX() - center.getX();
-                        double dz = pos.getZ() - center.getZ();
-                        double distanceSquared = dx * dx + dz * dz;
-                        return distanceSquared <= HEALING_RADIUS_SQUARED;
-                    })
-                    .map(BlockPos::immutable)
-                    .collect(Collectors.toList());
+            return EntityUtils.getBlockPosInCircle(OakieEntity.this, HEALING_RADIUS);
         }
 
         private void applyGrowCrops(BlockState cropState, BlockPos blockPos) {

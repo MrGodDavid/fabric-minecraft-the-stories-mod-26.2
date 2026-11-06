@@ -95,7 +95,6 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsEntityRenderers.register();
         MtsRenderTypes.register();
         MtsEntityTypes.register();
-        MtsEntityTypes.registerAttributes();
 
         MtsLogger.tailer();
     }

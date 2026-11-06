@@ -6,13 +6,16 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * @author Mr. GodDavid
@@ -22,6 +25,22 @@ public final class EntityUtils {
 
     public static <T extends LivingEntity, S extends LivingEntity> Optional<T> getNearestLivingEntity(ServerLevel serverLevel, S self, Class<T> entityClass, float radius) {
         return getNearestLivingEntity(serverLevel, self, entityClass, candidate -> true, radius);
+    }
+
+    public static List<BlockPos> getBlockPosInCircle(LivingEntity livingEntity, int radius) {
+        final double radiusSq =  radius * radius;
+        BlockPos center = livingEntity.blockPosition();
+        BlockPos minCorner = center.offset(-radius, 0, -radius);
+        BlockPos maxCorner = center.offset(radius, 0, radius);
+        return BlockPos.betweenClosedStream(minCorner, maxCorner)
+                .filter(pos -> {
+                    double dx = pos.getX() - center.getX();
+                    double dz = pos.getZ() - center.getZ();
+                    double distanceSquared = dx * dx + dz * dz;
+                    return distanceSquared <= radiusSq;
+                })
+                .map(BlockPos::immutable)
+                .collect(Collectors.toList());
     }
 
     /**

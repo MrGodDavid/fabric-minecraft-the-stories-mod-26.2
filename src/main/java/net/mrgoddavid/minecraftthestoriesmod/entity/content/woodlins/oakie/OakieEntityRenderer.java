@@ -1,19 +1,15 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
-import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
 import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
 
 /**
@@ -21,9 +17,9 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
  * @since 10/16/2026
  */
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
-public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRenderState, OakieEntityModel> {
+public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEntity, OakieEntityRenderState, OakieEntityModel> {
 
-    private static final RandomPulse RANDOM_PULSE = RandomPulse.builder(100).origin(0).probability(50).build();
+    private static final int OAKIE_ENCHANTING_STAFF_GLOWING_COLOR = MathUtils.argbToColor(255, 3, 2, 8);
 
     public OakieEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new OakieEntityModel(context.bakeLayer(MtsEntityModelLayers.OAKIE)), 0.6F);
@@ -44,44 +40,52 @@ public class OakieEntityRenderer extends MobRenderer<OakieEntity, OakieEntityRen
     @Override
     public void extractRenderState(OakieEntity entity, OakieEntityRenderState state, float partialTicks) {
         super.extractRenderState(entity, state, partialTicks);
-        state.idleAnimationState.copyFrom(entity.idleAnimationState);
-        state.healAnimationState.copyFrom(entity.healAnimationState);
-        state.enchantingAnimationState.copyFrom(entity.enchantingAnimationState);
-        state.disenchantingAnimationState.copyFrom(entity.disenchantingAnimationState);
-        state.tameAnimationState.copyFrom(entity.tameAnimationState);
-        state.enchanting = entity.isEnchanting();
-        state.entityUUID = entity.getUUID();
-        state.eyeColor = this.selectEyeColor(entity);
+        state.abilityUseAnimationState.copyFrom(entity.healAnimationState);
         state.staffGlowingColor = this.selectStaffGlowingColor(entity);
     }
 
     /** Y = (R x 0.299) + (G x 0.587) + (B x 0.114) */
     private int selectStaffGlowingColor(OakieEntity oakie) {
-        return oakie.isEnchanting() ? MathUtils.argbToColor(255, 3, 2, 8) : 0;
-    }
-
-    private int selectEyeColor(OakieEntity oakie) {
-        return oakie.isEnchanting() ? 0xFFD8FF14 : 0xFF000000;
+        return oakie.isEnchanting() ? OAKIE_ENCHANTING_STAFF_GLOWING_COLOR : 0;
     }
 
     @Override
-    public void submit(OakieEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
-        super.submit(state, poseStack, submitNodeCollector, camera);
-        RANDOM_PULSE.tick();
-
-        spawnEffectBorderParticles(state);
-        if (state.enchanting) {
-            spawnTamedOakieRegenerationParticles(state);
-        }
+    protected int getEyeGlowColor() {
+        return 0xFFD8FF14;
     }
 
-    private void spawnTamedOakieRegenerationParticles(OakieEntityRenderState renderState) {
+    @Override
+    protected void spawnTamedWoodlinAbilityUseParticles(OakieEntityRenderState renderState) {
         Minecraft mc = Minecraft.getInstance();
-        MtsParticleSpawner.fillCircle(mc, RANDOM_PULSE, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, renderState.entityUUID, "oakie_regeneration_particle", new Timer(40), renderState, 0.0, OakieEntity.HEALING_RADIUS, 2, ParticleSpawnMode.FILL_CIRCLE_EIGHT_DIR, true);
+        MtsParticleSpawner.fillCircle(mc,
+                RANDOM_PULSE,
+                MtsParticleTypes.OAKIE_REGENERATION_PARTICLE,
+                renderState.entityUUID,
+                "oakie_regeneration_particle",
+                new Timer(40),
+                renderState,
+                0.0,
+                OakieEntity.HEALING_RADIUS,
+                2,
+                ParticleSpawnMode.FILL_CIRCLE_EIGHT_DIR,
+                true
+        );
     }
 
-    private void spawnEffectBorderParticles(OakieEntityRenderState renderState) {
+    @Override
+    protected void spawnEffectBorderParticles(OakieEntityRenderState renderState) {
         Minecraft mc = Minecraft.getInstance();
-        MtsParticleSpawner.spawnCircle(mc, RANDOM_PULSE, MtsParticleTypes.RED_CLOUD_PARTICLE, renderState.entityUUID, "oakie_particle_circle", new Timer(60), renderState, 0.5, OakieEntity.HEALING_RADIUS, ParticleSpawnMode.CIRCLE_SIXTEEN_DIR, true);
+        MtsParticleSpawner.circle(mc,
+                RANDOM_PULSE,
+                MtsParticleTypes.RED_CLOUD_PARTICLE,
+                renderState.entityUUID,
+                "oakie_particle_circle",
+                new Timer(60),
+                renderState,
+                0.5,
+                OakieEntity.HEALING_RADIUS,
+                ParticleSpawnMode.CIRCLE_SIXTEEN_DIR,
+                true
+        );
     }
 }

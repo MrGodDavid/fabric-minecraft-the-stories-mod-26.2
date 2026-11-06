@@ -37,15 +37,19 @@ public final class MtsEntityTypes {
 
     public static void register() {
         MtsLogger.info("Entity Type");
+        registerAttributes();
     }
 
     public static void registerAttributes() {
         MtsLogger.info("Entity Attributes");
 
-        FabricDefaultAttributeRegistry.register(BROWN_BEAR, BrownBearEntity.createCubeAttributes());
+        MtsLogger.info("Brown Bear: " + BROWN_BEAR);
+        MtsLogger.info("Brown Bear Attributes: " +
+                BrownBearEntity.createLivingEntityAttributes());
+        FabricDefaultAttributeRegistry.register(BROWN_BEAR, BrownBearEntity.createLivingEntityAttributes());
         FabricDefaultAttributeRegistry.register(TARGET_DUMMY, TargetDummyEntity.createLivingAttributes());
-        FabricDefaultAttributeRegistry.register(OAKIE, OakieEntity.createCubeAttributes());
-        FabricDefaultAttributeRegistry.register(OAKIE_HEALING_BALL, OakieHealingBallEntity.createCubeAttributes());
+        FabricDefaultAttributeRegistry.register(OAKIE, OakieEntity.createLivingEntityAttributes());
+        FabricDefaultAttributeRegistry.register(OAKIE_HEALING_BALL, OakieHealingBallEntity.createLivingEntityAttributes());
     }
 
     private MtsEntityTypes() {

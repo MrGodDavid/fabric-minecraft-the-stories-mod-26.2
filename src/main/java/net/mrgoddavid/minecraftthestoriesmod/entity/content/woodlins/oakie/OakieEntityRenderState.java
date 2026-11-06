@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityRenderState;
 
 import java.util.UUID;
 
@@ -10,15 +11,7 @@ import java.util.UUID;
  * @since 10/16/2026
  */
 @SuppressWarnings("SpellCheckingInspection")
-public class OakieEntityRenderState extends LivingEntityRenderState {
+public class OakieEntityRenderState extends AbstractWoodlinEntityRenderState {
 
-    public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState healAnimationState = new AnimationState();
-    public final AnimationState enchantingAnimationState = new AnimationState();
-    public final AnimationState disenchantingAnimationState = new AnimationState();
-    public final AnimationState tameAnimationState = new AnimationState();
-    public boolean enchanting = false;
-    public UUID entityUUID;
-    public int eyeColor;
     public int staffGlowingColor;
 }

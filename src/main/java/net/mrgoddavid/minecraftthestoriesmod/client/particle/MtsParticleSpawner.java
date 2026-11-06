@@ -35,7 +35,7 @@ public final class MtsParticleSpawner {
         return PARTICLE_OPTIONS_TIMER_MAP.computeIfAbsent(key, ignored -> initialTimer);
     }
 
-    public static void spawnPointAt(
+    public static void point(
             final Minecraft mc,
             final RandomPulse pulse,
             final ParticleOptions particleType,
@@ -166,7 +166,7 @@ public final class MtsParticleSpawner {
      * {@link Constants.Universal#INTEGER_PLACEHOLDER} to the parameter "times" since we don't need these two
      * parameters.
      */
-    public static void spawnTriangle(
+    public static void triangle(
             final Minecraft mc,
             final RandomPulse randomPulse,
             final ParticleOptions particleType,
@@ -210,7 +210,7 @@ public final class MtsParticleSpawner {
         doSpawnParticleClusterPatternInner(mc, randomPulse, particleType, renderState, vertexRule.buildRule(), yOffset, size, randomness);
     }
 
-    public static void spawnTriangle(
+    public static void equilibriumTriangle(
             final Minecraft mc,
             final RandomPulse randomPulse,
             final ParticleOptions particleType,
@@ -310,7 +310,7 @@ public final class MtsParticleSpawner {
         doSpawnParticleClusterPatternInner(mc, randomPulse, particleType, renderState, Constants.ParticleSpawnOffsets.EQUILIBRIUM_TRIANGLE_VERTEX_OFFSET, yOffset, size, randomness);
     }
 
-    public static void spawnSquare(
+    public static void square(
             final Minecraft mc,
             final RandomPulse pulse,
             final ParticleOptions particleType,
@@ -323,7 +323,7 @@ public final class MtsParticleSpawner {
             final ParticleSpawnMode mode,
             final boolean randomness
     ) {
-        spawnSquare(mc, pulse, particleType, entityUUID, effectId, timer, renderState, yOffset, size, 1, mode, randomness);
+        square(mc, pulse, particleType, entityUUID, effectId, timer, renderState, yOffset, size, 1, mode, randomness);
     }
 
     /**
@@ -340,7 +340,7 @@ public final class MtsParticleSpawner {
      * @param randomness   a boolean variable that controls whether the particle should have a bit of randomness while
      *                     spawning.
      */
-    public static void spawnSquare(
+    public static void square(
             final Minecraft mc,
             final RandomPulse pulse,
             final ParticleOptions particleType,
@@ -426,7 +426,7 @@ public final class MtsParticleSpawner {
      * @param randomness   a boolean variable that controls whether the particle should have a bit of randomness while
      *                     spawning.
      */
-    public static void spawnCircle(
+    public static void circle(
             final Minecraft mc,
             final RandomPulse pulse,
             final ParticleOptions particleType,

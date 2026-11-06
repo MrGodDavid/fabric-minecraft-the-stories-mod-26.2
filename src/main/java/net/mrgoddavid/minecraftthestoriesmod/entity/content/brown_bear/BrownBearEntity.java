@@ -357,7 +357,7 @@ public class BrownBearEntity extends TamableAnimal implements NeutralMob {
         return new BrownBearEntity(MtsEntityTypes.BROWN_BEAR, level);
     }
 
-    public static AttributeSupplier.Builder createCubeAttributes() {
+    public static AttributeSupplier.Builder createLivingEntityAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 40)
                 .add(Attributes.ATTACK_DAMAGE, 10)

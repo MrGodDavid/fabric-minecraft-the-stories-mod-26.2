@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
@@ -21,19 +22,19 @@ public class StrawberryCropBlock extends CropBlock {
     /**
      * Access widened by fabric-transitive-access-wideners-v1 to accessible
      *
-     * @param properties
+     * @param properties block properties.
      */
     public StrawberryCropBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NonNull ItemLike getBaseSeedId() {
         return MtsItems.STRAWBERRY_SEEDS;
     }
 
     @Override
-    protected IntegerProperty getAgeProperty() {
+    protected @NonNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 

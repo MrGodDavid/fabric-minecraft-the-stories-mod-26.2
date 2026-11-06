@@ -13,23 +13,24 @@ import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.world.food.DietaryWaterProperties;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
  * @since 10/2/2026
  */
-public class DrinkableItem extends BlockItem {
+public class HydratableItem extends BlockItem {
 
-    public DrinkableItem(DietaryWaterProperties dietaryWaterProperties, final Block block, final Item.Properties properties) {
+    public HydratableItem(DietaryWaterProperties dietaryWaterProperties, final Block block, final Item.Properties properties) {
         super(block, properties.component(MtsDataComponentTypes.DIETARY_WATER, dietaryWaterProperties));
     }
 
-    public DrinkableItem(DietaryWaterProperties dietaryWaterProperties, Properties properties) {
+    public HydratableItem(DietaryWaterProperties dietaryWaterProperties, Properties properties) {
         this(dietaryWaterProperties, Blocks.AIR, properties);
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+    public @NonNull InteractionResult use(@NonNull Level level, Player player, @NonNull InteractionHand hand) {
         if (player.isCreative()) {
             player.startUsingItem(hand);
             return InteractionResult.CONSUME;

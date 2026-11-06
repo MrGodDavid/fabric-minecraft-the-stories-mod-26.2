@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 public final class ErrorMessageBuilder {
 
     @SuppressWarnings("DuplicateBranchesInSwitch")
-    public static void infoAndThrow(Class<?> clazz, ThrowReason reason, float... numericalArgs) {
+    public static void infoAndThrow(Class<?> clazz, ThrowReason reason, Number... numericalArgs) {
         try {
             String msg;
             switch (reason) {
@@ -24,23 +24,23 @@ public final class ErrorMessageBuilder {
                     throw new IllegalAccessException(msg);
                 }
                 case BAD_TIMER_PASS_METHOD_ARGUMENT_CONDITION -> {
-                    msg = buildBadTimerPassMethodArgumentConditionErrMsg(clazz, numericalArgs[0]);
+                    msg = buildBadTimerPassMethodArgumentConditionErrMsg(clazz, numericalArgs[0].floatValue());
                     MtsLogger.error(msg);
                     throw new IllegalArgumentException(msg);
                 }
                 case ENTITY_ANIMATION_UTILS_INVALID_START_FRAME -> {
-                    msg = buildEntityAnimationUtilsInvalidStartFrameErrMsg(clazz, numericalArgs[0]);
+                    msg = buildEntityAnimationUtilsInvalidStartFrameErrMsg(clazz, numericalArgs[0].floatValue());
                     MtsLogger.error(msg);
                     throw new IllegalArgumentException(msg);
                 }
                 case ENTITY_ANIMATION_UTILS_INVALID_END_FRAME -> {
-                    msg = buildEntityAnimationUtilsInvalidEndFrameErrMsg(clazz, numericalArgs[0]);
+                    msg = buildEntityAnimationUtilsInvalidEndFrameErrMsg(clazz, numericalArgs[0].floatValue());
                     MtsLogger.error(msg);
                     throw new IllegalArgumentException(msg);
                 }
                 case ENTITY_ANIMATION_UTILS_START_FRAME_GREATER_THAN_END_FRAME -> {
                     validArrayWithRequireLengthOrThrow(clazz, numericalArgs, 2);
-                    msg = buildEntityAnimationUtilsStartFrameGreaterThanEndFrameErrMsg(clazz, numericalArgs[0], numericalArgs[1]);
+                    msg = buildEntityAnimationUtilsStartFrameGreaterThanEndFrameErrMsg(clazz, numericalArgs[0].floatValue(), numericalArgs[1].floatValue());
                     MtsLogger.error(msg);
                     throw new IllegalArgumentException(msg);
                 }
@@ -55,7 +55,7 @@ public final class ErrorMessageBuilder {
         }
     }
 
-    private static void validArrayWithRequireLengthOrThrow(Class<?> clazz, float[] numericalArgs, int requiredLength) {
+    private static void validArrayWithRequireLengthOrThrow(Class<?> clazz, Number[] numericalArgs, int requiredLength) {
         String msg;
         if (numericalArgs.length < requiredLength) {
             msg = buildArrayLengthFailedRequirementErrMsg(clazz, requiredLength, numericalArgs);
@@ -90,7 +90,7 @@ public final class ErrorMessageBuilder {
         }
     }
 
-    private static String buildArrayLengthFailedRequirementErrMsg(Class<?> clazz, int requiredLength, float... numericalArgs) {
+    private static String buildArrayLengthFailedRequirementErrMsg(Class<?> clazz, int requiredLength, Number... numericalArgs) {
         return "[ERROR] in class: " + ClassNameFormatter.format(clazz) + " since current argument array length is: " + numericalArgs.length
                 + " , which is less than the required argument array length of: " + requiredLength;
     }

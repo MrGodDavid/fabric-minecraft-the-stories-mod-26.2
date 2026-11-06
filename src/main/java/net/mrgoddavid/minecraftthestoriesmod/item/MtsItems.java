@@ -17,7 +17,7 @@ import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.food.MtsFoods;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.CursedItem;
-import net.mrgoddavid.minecraftthestoriesmod.item.content.DrinkableItem;
+import net.mrgoddavid.minecraftthestoriesmod.item.content.HydratableItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.AnimationTestItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
@@ -82,10 +82,10 @@ public final class MtsItems {
     // #                                              MTS CUSTOM FOOD                                                  #
     // #################################################################################################################
     public static final Item STRAWBERRY_SEEDS = registerItem("strawberry_seeds", properties -> new BlockItem(STRAWBERRY_CROP, properties.useBlockDescriptionPrefix()));
-    public static final Item STRAWBERRY = registerItem("strawberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(3).thirstExhaustion(-2).build(), properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
-    public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(-2).thirstExhaustion(3).build(), properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
-    public static final Item RAW_BLUEBERRY = registerItem("raw_blueberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(-2).thirstExhaustion(3).build(), properties.food(MtsFoods.RAW_BLUEBERRY, MtsFoods.RAW_BLUEBERRY_CONSUMABLE)));
-    public static final Item BLUEBERRY = registerItem("blueberry", properties -> new DrinkableItem(new DietaryWaterProperties.Builder().thirstRestoration(2).thirstExhaustion(-2).build(), BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
+    public static final Item STRAWBERRY = registerItem("strawberry", properties -> new HydratableItem(new DietaryWaterProperties.Builder().thirstRestoration(3).thirstExhaustion(-2).build(), properties.food(MtsFoods.STRAWBERRY, MtsFoods.STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_STRAWBERRY = registerItem("raw_strawberry", properties -> new HydratableItem(new DietaryWaterProperties.Builder().thirstRestoration(-2).thirstExhaustion(3).build(), properties.food(MtsFoods.RAW_STRAWBERRY, MtsFoods.RAW_STRAWBERRY_CONSUMABLE)));
+    public static final Item RAW_BLUEBERRY = registerItem("raw_blueberry", properties -> new HydratableItem(new DietaryWaterProperties.Builder().thirstRestoration(-2).thirstExhaustion(3).build(), properties.food(MtsFoods.RAW_BLUEBERRY, MtsFoods.RAW_BLUEBERRY_CONSUMABLE)));
+    public static final Item BLUEBERRY = registerItem("blueberry", properties -> new HydratableItem(new DietaryWaterProperties.Builder().thirstRestoration(2).thirstExhaustion(-2).build(), BLUEBERRY_BUSH, properties.useBlockDescriptionPrefix().food(MtsFoods.BLUEBERRY, MtsFoods.BLUEBERRY_CONSUMABLE)));
 
     // #################################################################################################################
     // #                                                NATURAL ITEMS                                                  #
