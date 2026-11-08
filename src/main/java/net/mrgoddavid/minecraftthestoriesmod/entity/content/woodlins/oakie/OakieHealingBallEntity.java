@@ -33,7 +33,7 @@ public class OakieHealingBallEntity extends AbstractWoodlinAbilityEntity {
         super(type, level);
     }
 
-    public static AttributeSupplier createLivingEntityAttributes() {
+    public static AttributeSupplier createMtsEntityAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 4)
                 .add(Attributes.MOVEMENT_SPEED, 0.4)

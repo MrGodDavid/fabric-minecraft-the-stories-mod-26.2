@@ -17,6 +17,7 @@ public final class MtsEntityTextures {
     public static final Identifier BROWN_BEAR = register("brown_bear");
     public static final Identifier TARGET_DUMMY = register("target_dummy");
 
+    public static final Identifier ACACIANIA = register("acaciania");
     public static final Identifier OAKIE = register("oakie");
     public static final Identifier OAKIE_EYES = register("oakie", "oakie_eyes");
     public static final Identifier OAKIE_STAFF_GLOWING = register("oakie", "oakie_staff_glowing");

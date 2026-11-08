@@ -10,9 +10,13 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
+import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import org.joml.Quaternionf;
 import org.jspecify.annotations.NonNull;
 
@@ -22,7 +26,7 @@ import org.jspecify.annotations.NonNull;
  */
 public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyEntity, TargetDummyRenderState, TargetDummyModel> {
 
-//    private static final RandomPulse pulse = RandomPulse.builder(100).origin(0).bound(100).probability(50).build();
+    private static final RandomPulse pulse = RandomPulse.builder(100).origin(0).bound(100).probability(50).build();
 
     public TargetDummyEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new TargetDummyModel(context.bakeLayer(MtsEntityModelLayers.TARGET_DUMMY)), 0.6F);
@@ -61,16 +65,26 @@ public class TargetDummyEntityRenderer extends LivingEntityRenderer<TargetDummyE
 //                        .add(1, 0).build(),
 //                ParticleSpawnMode.TRIANGLE_VERTEX, false);
 //
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.ACACIANIA_SWIFTNESS_PARTICLE, state.entityUUID, "spawn_point_particle_1", new Timer(40), state, 1, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.BIRCHIA_JUMPING_BOOST_PARTICLE, state.entityUUID, "spawn_point_particle_2", new Timer(40), state, 2, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.CHERRINIA_ENTICEMENT_PARTICLE, state.entityUUID, "spawn_point_particle_3", new Timer(40), state, 3, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.DENSE_OAKIE_STRENGTH_PARTICLE, state.entityUUID, "spawn_point_particle_4", new Timer(40), state, 4, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.JUNMI_HYDRATION_PARTICLE, state.entityUUID, "spawn_point_particle_5", new Timer(40), state, 5, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.MANGROLINO_SWIMMER_BOOST_PARTICLE, state.entityUUID, "spawn_point_particle_6", new Timer(40), state, 6, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_point_particle_7", new Timer(40), state, 7, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.LIGHT_OAKIE_INVISIBILITY_PARTICLE, state.entityUUID, "spawn_point_particle_8", new Timer(40), state, 8, 10, 0, false);
-//        MtsParticleSpawner.spawnPointAt(mc, pulse, MtsParticleTypes.SPRUCIA_ATTACK_SPEED_PARTICLE, state.entityUUID, "spawn_point_particle_9", new Timer(40), state, 9, 10, 0, false);
-//
+         // debug
+        if (false) {
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.ACACIANIA_SWIFTNESS_PARTICLE, state.entityUUID, "spawn_point_particle_1", new Timer(40), state, 1, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.BIRCHIA_JUMPING_BOOST_PARTICLE, state.entityUUID, "spawn_point_particle_2", new Timer(40), state, 2, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.CHERRINIA_ENTICEMENT_PARTICLE, state.entityUUID, "spawn_point_particle_3", new Timer(40), state, 3, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.DENSE_OAKIE_STRENGTH_PARTICLE, state.entityUUID, "spawn_point_particle_4", new Timer(40), state, 4, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.JUNMI_HYDRATION_PARTICLE, state.entityUUID, "spawn_point_particle_5", new Timer(40), state, 5, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.MANGROLINO_SWIMMER_BOOST_PARTICLE, state.entityUUID, "spawn_point_particle_6", new Timer(40), state, 6, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_point_particle_7", new Timer(40), state, 7, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.LIGHT_OAKIE_INVISIBILITY_PARTICLE, state.entityUUID, "spawn_point_particle_8", new Timer(40), state, 8, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.SPRUCIA_ATTACK_SPEED_PARTICLE, state.entityUUID, "spawn_point_particle_9", new Timer(40), state, 9, 10, 0, false);
+
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.RED_CLOUD_PARTICLE, state.entityUUID, "red_cloud_particle", new Timer(40), state, 10, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.ORANGE_CLOUD_PARTICLE, state.entityUUID, "orange_cloud_particle", new Timer(40), state, 11, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.YELLOW_CLOUD_PARTICLE, state.entityUUID, "yellow_cloud_particle", new Timer(40), state, 12, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.GREEN_CLOUD_PARTICLE, state.entityUUID, "green_cloud_particle", new Timer(40), state, 13, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.BLUE_CLOUD_PARTICLE, state.entityUUID, "blue_cloud_particle", new Timer(40), state, 14, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.INDIGO_CLOUD_PARTICLE, state.entityUUID, "indigo_cloud_particle", new Timer(40), state, 15, 10, 0, false);
+            MtsParticleSpawner.point(mc, pulse, MtsParticleTypes.VIOLET_CLOUD_PARTICLE, state.entityUUID, "violet_cloud_particle", new Timer(40), state, 16, 10, 0, false);
+        }
 //        MtsParticleSpawner.fillCircle(mc, pulse, MtsParticleTypes.OAKIE_REGENERATION_PARTICLE, state.entityUUID, "spawn_filling_circle_1", new Timer(40), state, 0, 5, 2, ParticleSpawnMode.FILL_CIRCLE_SIXTEEN_DIR, false);
 
         // If the entity was hurt by the player.

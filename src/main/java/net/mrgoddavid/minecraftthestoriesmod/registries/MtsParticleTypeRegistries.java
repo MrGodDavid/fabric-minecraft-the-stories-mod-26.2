@@ -20,7 +20,13 @@ public final class MtsParticleTypeRegistries {
         MtsLogger.info("Particle Types");
 
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.ENRICHER_WASTE_PARTICLE, BubbleParticle.Provider::new);
-        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.RED_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(255, 0, 0));
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.RED_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(0xFF243DFF).glow());
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.ORANGE_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(0xE35F07FF));
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.YELLOW_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(0xFFD505FF));
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.GREEN_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(0x008A55FF));
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.BLUE_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(0x00B0D4FF));
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.INDIGO_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(0x0007D6FF));
+        ParticleProviderRegistry.getInstance().register(MtsParticleTypes.VIOLET_CLOUD_PARTICLE, sprite -> new ColoredPlayerCloudParticle.Provider(sprite).color(0xA215D1FF));
 
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.ACACIANIA_SWIFTNESS_PARTICLE, AcacianiaSwiftnessParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(MtsParticleTypes.BIRCHIA_JUMPING_BOOST_PARTICLE, BirchiaJumpingBoostParticle.Provider::new);

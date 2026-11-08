@@ -6,14 +6,16 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimator;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityModel;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
 @SuppressWarnings({"FieldCanBeLocal", "unused"})
-public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
-    private final ModelPart root;
+public class OakieEntityModel extends AbstractWoodlinEntityModel<OakieEntityRenderState> {
+
     private final ModelPart body;
     private final ModelPart left_arm;
     private final ModelPart right_arm;
@@ -23,31 +25,46 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
     private final ModelPart right_leg;
     private final ModelPart left_leg;
 
-    private final KeyframeAnimation idelAnimation;
-    private final KeyframeAnimation walkAnimation;
-    private final KeyframeAnimation healAnimation;
-    private final KeyframeAnimation enchantingAnimation;
-    private final KeyframeAnimation disenchantingAnimation;
-    private final KeyframeAnimation tameAnimation;
-
     public OakieEntityModel(ModelPart root) {
         super(root);
-        this.root = root.getChild("root");
-        this.body = this.root.getChild("body");
+        this.body = super.root.getChild("body");
         this.left_arm = this.body.getChild("left_arm");
         this.right_arm = this.body.getChild("right_arm");
         this.staff = this.right_arm.getChild("staff");
         this.left_antler = this.body.getChild("left_antler");
         this.right_antler = this.body.getChild("right_antler");
-        this.right_leg = this.root.getChild("right_leg");
-        this.left_leg = this.root.getChild("left_leg");
+        this.right_leg = super.root.getChild("right_leg");
+        this.left_leg = super.root.getChild("left_leg");
+    }
 
-        this.idelAnimation = OakieEntityAnimations.IDLE.bake(this.root);
-        this.walkAnimation = OakieEntityAnimations.WALK.bake(this.root);
-        this.healAnimation = OakieEntityAnimations.HEAL.bake(this.root);
-        this.enchantingAnimation = OakieEntityAnimations.ENCHANTING.bake(this.root);
-        this.disenchantingAnimation = OakieEntityAnimations.DISENCHANTING.bake(this.root);
-        this.tameAnimation = OakieEntityAnimations.TAME.bake(this.root);
+    @Override
+    protected @NonNull KeyframeAnimation bakeIdleAnimation() {
+        return OakieEntityAnimations.IDLE.bake(this.root);
+    }
+
+    @Override
+    protected @NonNull KeyframeAnimation bakeWalkAnimation() {
+        return OakieEntityAnimations.WALK.bake(this.root);
+    }
+
+    @Override
+    protected @NonNull KeyframeAnimation bakeAbilityUseAnimation() {
+        return OakieEntityAnimations.HEAL.bake(this.root);
+    }
+
+    @Override
+    protected @NonNull KeyframeAnimation bakeEnchantingAnimation() {
+        return OakieEntityAnimations.ENCHANTING.bake(this.root);
+    }
+
+    @Override
+    protected @NonNull KeyframeAnimation bakeDisenchantingAnimation() {
+        return OakieEntityAnimations.DISENCHANTING.bake(this.root);
+    }
+
+    @Override
+    protected @NonNull KeyframeAnimation bakeTameAnimation() {
+        return OakieEntityAnimations.TAME.bake(this.root);
     }
 
     public static LayerDefinition getTexturedModelData() {
@@ -68,33 +85,5 @@ public class OakieEntityModel extends EntityModel<OakieEntityRenderState> {
         root.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(26, 16).addBox(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.5F, -2.0F, 0.0F));
         root.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(26, 19).addBox(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(1.5F, -2.0F, 0.0F));
         return LayerDefinition.create(meshdefinition, 64, 64);
-    }
-
-    @Override
-    public void setupAnim(OakieEntityRenderState state) {
-        super.setupAnim(state);
-        this.root.getAllParts().forEach(ModelPart::resetPose);
-        MtsDaffiAnimator.applyMobHeadRotation(this, state.yRot, state.xRot);
-
-        if (state.tameAnimationState.isStarted()) {
-            this.tameAnimation.apply(state.tameAnimationState, state.ageInTicks);
-            return;
-        }
-        if (state.enchantingAnimationState.isStarted()) {
-            this.enchantingAnimation.apply(state.enchantingAnimationState, state.ageInTicks);
-            return;
-        }
-        if (state.disenchantingAnimationState.isStarted()) {
-            this.disenchantingAnimation.apply(state.disenchantingAnimationState, state.ageInTicks);
-            return;
-        }
-        if (state.abilityUseAnimationState.isStarted()) {
-            this.healAnimation.apply(state.abilityUseAnimationState, state.ageInTicks);
-            return;
-        }
-        if (state.walkAnimationSpeed > 0.0F) {
-            this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 5.0F, 10.0F);
-        }
-        this.idelAnimation.apply(state.idleAnimationState, state.ageInTicks);
     }
 }

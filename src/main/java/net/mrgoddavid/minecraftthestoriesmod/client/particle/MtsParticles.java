@@ -19,7 +19,14 @@ public final class MtsParticles {
         MtsLogger.info("MTS Particles");
 
         registerParticle("enricher_waste_particle", MtsParticleTypes.ENRICHER_WASTE_PARTICLE);
-        registerParticle("colored_cloud_particle", MtsParticleTypes.RED_CLOUD_PARTICLE);
+
+        registerParticle("red_cloud_particle", MtsParticleTypes.RED_CLOUD_PARTICLE);
+        registerParticle("orange_cloud_particle", MtsParticleTypes.ORANGE_CLOUD_PARTICLE);
+        registerParticle("yellow_cloud_particle", MtsParticleTypes.YELLOW_CLOUD_PARTICLE);
+        registerParticle("green_cloud_particle", MtsParticleTypes.GREEN_CLOUD_PARTICLE);
+        registerParticle("blue_cloud_particle", MtsParticleTypes.BLUE_CLOUD_PARTICLE);
+        registerParticle("indigo_cloud_particle", MtsParticleTypes.INDIGO_CLOUD_PARTICLE);
+        registerParticle("violet_cloud_particle", MtsParticleTypes.VIOLET_CLOUD_PARTICLE);
 
         registerParticle("acaciania_swiftness_particle", MtsParticleTypes.ACACIANIA_SWIFTNESS_PARTICLE);
         registerParticle("birchia_jumping_boost_particle", MtsParticleTypes.BIRCHIA_JUMPING_BOOST_PARTICLE);
@@ -36,7 +43,7 @@ public final class MtsParticles {
         Registry.register(BuiltInRegistries.PARTICLE_TYPE, Constants.modId(name), particle);
     }
 
-    private MtsParticles() throws IllegalAccessException {
+    private MtsParticles() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

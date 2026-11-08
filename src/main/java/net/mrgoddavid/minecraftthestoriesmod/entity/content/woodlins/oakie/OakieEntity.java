@@ -1,11 +1,10 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,13 +16,14 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
@@ -32,10 +32,11 @@ import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoo
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.WoodlinContext;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 /**
@@ -73,7 +74,6 @@ import java.util.function.Predicate;
 public class OakieEntity extends AbstractWoodlinEntity {
 
     public static final int HEALING_RADIUS = 5;
-    public static final int HEALING_RADIUS_SQUARED = HEALING_RADIUS * HEALING_RADIUS;
     public static final float MIN_NOTICE_NEEDS_HEALING_DISTANCE = 6.0F;
     public static final float MAX_NOTICE_NEEDS_HEALING_DISTANCE = 18.0F;
     public final AnimationState healAnimationState = new AnimationState();
@@ -81,9 +81,22 @@ public class OakieEntity extends AbstractWoodlinEntity {
     private final Timer fireblocksHurtCoolDown = new Timer(40);
     private final Timer torchesHurtCoolDown = new Timer(40);
     private final Timer lavaHurtCoolDown = new Timer(40);
+    private final Set<UUID> leechedEntities = new HashSet<>();
 
-    public OakieEntity(EntityType<? extends OakieEntity> type, Level level) {
+    public OakieEntity(EntityType<OakieEntity> type, Level level) {
         super(type, level);
+    }
+
+    public static AttributeSupplier.Builder createMtsEntityAttributes() {
+        return Animal.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 5)
+                .add(Attributes.MOVEMENT_SPEED, 0.2)
+                .add(Attributes.FOLLOW_RANGE, 32);
+    }
+
+    @Override
+    protected MtsElementSets.Trio<Item, Item, Item> registerWoodlinInteractableItems() {
+        return new MtsElementSets.Trio<>(Items.OAK_SAPLING, Items.OAK_LEAVES, Items.STICK);
     }
 
     @Override
@@ -94,6 +107,26 @@ public class OakieEntity extends AbstractWoodlinEntity {
         this.goalSelector.addGoal(3, new OakieEntity.OakieHealOwnerGoal(MIN_NOTICE_NEEDS_HEALING_DISTANCE, MAX_NOTICE_NEEDS_HEALING_DISTANCE));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new OakieEntity.OakieGrowCropsGoal());
+    }
+
+    @Override
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.store("leeched_marked_enemies", Codec.list(Codec.STRING), this.leechedEntities.stream().map(UUID::toString).toList());
+    }
+
+    @Override
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        this.leechedEntities.clear();
+        List<String> savedUUIDs = input.read("leeched_marked_enemies", Codec.list(Codec.STRING)).orElse(List.of());
+        for (String uuid : savedUUIDs) {
+            try {
+                this.leechedEntities.add(UUID.fromString(uuid));
+            } catch (IllegalArgumentException _) {
+            }
+        }
+        this.setDefending(!this.leechedEntities.isEmpty());
     }
 
     @Override
@@ -129,21 +162,35 @@ public class OakieEntity extends AbstractWoodlinEntity {
         return blockState.is(Blocks.FIRE) || blockState.is(Blocks.SOUL_FIRE);
     }
 
-    public static AttributeSupplier.Builder createLivingEntityAttributes() {
-        return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 5)
-                .add(Attributes.MOVEMENT_SPEED, 0.2)
-                .add(Attributes.FOLLOW_RANGE, 32);
-    }
-
     @Override
     protected void additionalEntityClientSideTick() {
         this.updateHealingAnimation();
     }
 
     @Override
-    protected void addAdditionalEntityServerSideTick() {
-        this.burnByFireSourceBlocks((ServerLevel) this.level());
+    protected void addAdditionalEntityServerSideTick(ServerLevel level) {
+        this.burnByFireSourceBlocks(level);
+        this.checkIfDefending(level);
+    }
+
+    private void checkIfDefending(ServerLevel level) {
+        Iterator<UUID> iterator = this.leechedEntities.iterator();
+        while (iterator.hasNext()) {
+            UUID uuid = iterator.next();
+            Entity entity = level.getEntity(uuid);
+            if (entity != null) {
+                if (!entity.isAlive()) {
+                    iterator.remove();
+                } else {
+                    Optional.ofNullable(entity.asLivingEntity()).ifPresent(livingEntity -> {
+                        if (!livingEntity.hasEffect(MtsEffects.LEECH_OF_OAKIE)) {
+                            iterator.remove();
+                        }
+                    });
+                }
+            }
+        }
+        this.setDefending(!this.leechedEntities.isEmpty());
     }
 
     @Override
@@ -205,11 +252,9 @@ public class OakieEntity extends AbstractWoodlinEntity {
         if (entity instanceof OakieEntity oakie) {
             oakie.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 100, 2, false, true, true));
 
-        } else if (entity instanceof Monster monster) {
-            monster.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
-
         } else if (entity instanceof Enemy) {
             entity.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
+            this.leechedEntities.add(entity.getUUID());
         }
     }
 
@@ -222,48 +267,6 @@ public class OakieEntity extends AbstractWoodlinEntity {
         } else {
             player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0, false, true, true));
         }
-    }
-
-    @Override // todo will abstract this method.
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        boolean isTameItemCorrect = itemStack.is(Items.OAK_SAPLING);
-
-        if (!this.level().isClientSide()) {
-            if (!isBaby()) {
-                // taming
-                if (!isTame() && isTameItemCorrect) {
-                    itemStack.consume(1, player);
-                    this.tryToTame(player);
-                    return InteractionResult.SUCCESS;
-                }
-
-                // performing actions once it is tamed by player.
-                if (isTame() && isOwnedBy(player)) {
-                    // healing
-                    if (itemStack.is(Items.OAK_LEAVES) && this.getHealth() < this.getMaxHealth()) {
-                        this.feed(player, hand, itemStack, 2.0F, 2.0F);
-                        this.spawnHealingParticles();
-                        return InteractionResult.SUCCESS;
-                    }
-
-                    // enchant & disenchant
-                    if (itemStack.is(Items.STICK)) {
-                        boolean shouldEnchant = !this.isEnchanting();
-                        this.setOrderedToSit(shouldEnchant);
-                        this.setGlowingTag(shouldEnchant);
-                        return InteractionResult.SUCCESS;
-                    }
-
-                    InteractionResult result = super.mobInteract(player, hand);
-                    if (result.consumesAction()) {
-                        return result;
-                    }
-                }
-            }
-        }
-
-        return isOwnedBy(player) || isTame() || isTameItemCorrect ? InteractionResult.CONSUME : InteractionResult.PASS;
     }
 
     /**

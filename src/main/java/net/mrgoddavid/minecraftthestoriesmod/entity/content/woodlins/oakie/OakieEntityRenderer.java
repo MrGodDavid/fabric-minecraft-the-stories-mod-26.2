@@ -22,7 +22,7 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
     private static final int OAKIE_ENCHANTING_STAFF_GLOWING_COLOR = MathUtils.argbToColor(255, 3, 2, 8);
 
     public OakieEntityRenderer(EntityRendererProvider.Context context) {
-        super(context, new OakieEntityModel(context.bakeLayer(MtsEntityModelLayers.OAKIE)), 0.6F);
+        super(context, new OakieEntityModel(context.bakeLayer(MtsEntityModelLayers.OAKIE)), 0.2f);
         this.addLayer(new OakieEyesLayer(this));
         this.addLayer(new OakieStaffGlowingLayer(this));
     }
@@ -77,7 +77,7 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
         Minecraft mc = Minecraft.getInstance();
         MtsParticleSpawner.circle(mc,
                 RANDOM_PULSE,
-                MtsParticleTypes.RED_CLOUD_PARTICLE,
+                renderState.isDefending ? MtsParticleTypes.RED_CLOUD_PARTICLE : MtsParticleTypes.GREEN_CLOUD_PARTICLE,
                 renderState.entityUUID,
                 "oakie_particle_circle",
                 new Timer(60),

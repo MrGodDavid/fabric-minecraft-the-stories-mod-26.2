@@ -8,13 +8,19 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
+import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
@@ -27,22 +33,32 @@ import java.util.List;
 public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected static final EntityDataAccessor<Boolean> DATA_USING_ABILITY = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
+    protected static final EntityDataAccessor<Boolean> DATA_DEFENDING = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN);
     protected final byte STAND_EVENT = 99;
+    private final WoodlinContext woodlinContext;
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState enchantingAnimationState = new AnimationState();
     public final AnimationState disenchantingAnimationState = new AnimationState();
     public final AnimationState tameAnimationState = new AnimationState();
-    private final WoodlinContext woodlinContext;
+    private final MtsElementSets.Trio<Item, Item, Item> woodlinInteractableItems;
 
     protected AbstractWoodlinEntity(EntityType<? extends TamableAnimal> type, Level level) {
         super(type, level);
         this.woodlinContext = this.registerWoodlinContexts();
+        this.woodlinInteractableItems = this.registerWoodlinInteractableItems();
     }
+
+    /**
+     * First one is item for taming woodlines; the second is used for healing; the third one is used for
+     * enchanting/disenchanting.
+     */
+    protected abstract MtsElementSets.Trio<Item, Item, Item> registerWoodlinInteractableItems();
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder entityData) {
         super.defineSynchedData(entityData);
         entityData.define(DATA_USING_ABILITY, false);
+        entityData.define(DATA_DEFENDING, false);
     }
 
     @Override
@@ -75,7 +91,6 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
      * TamableAnimalPanicGoal               1
      * SitWhenOrderedToGoal                 3
      * FollowOwnerGoal                      4
-     * WaterAvoidingRandomStrollGoal        5
      * LookAtPlayerGoal                     7
      * RandomLookAroundGoal                 7
      * }
@@ -93,6 +108,48 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel level, AgeableMob partner) {
         return null;
+    }
+
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        boolean isTameItemCorrect = itemStack.is(this.woodlinInteractableItems.first());
+
+        if (!this.level().isClientSide()) {
+            if (!isBaby()) {
+                // taming
+                if (!isTame() && isTameItemCorrect) {
+                    itemStack.consume(1, player);
+                    this.tryToTame(player);
+                    return InteractionResult.SUCCESS;
+                }
+
+                // performing actions once it is tamed by player.
+                if (isTame() && isOwnedBy(player)) {
+                    // healing
+                    if (itemStack.is(this.woodlinInteractableItems.second()) && this.getHealth() < this.getMaxHealth()) {
+                        this.feed(player, hand, itemStack, 2.0F, 2.0F);
+                        this.spawnHealingParticles();
+                        return InteractionResult.SUCCESS;
+                    }
+
+                    // enchant & disenchant
+                    if (itemStack.is(this.woodlinInteractableItems.third())) {
+                        boolean shouldEnchant = !this.isEnchanting();
+                        this.setOrderedToSit(shouldEnchant);
+                        this.setGlowingTag(shouldEnchant);
+                        return InteractionResult.SUCCESS;
+                    }
+
+                    InteractionResult result = super.mobInteract(player, hand);
+                    if (result.consumesAction()) {
+                        return result;
+                    }
+                }
+            }
+        }
+
+        return isOwnedBy(player) || isTame() || isTameItemCorrect ? InteractionResult.CONSUME : InteractionResult.PASS;
     }
 
     @Override
@@ -152,7 +209,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
             this.grantsPlayersInEnchantingRegionEffects(level);
             this.grantsEntitiesInEnchantingRegionEffects(level);
 
-            this.addAdditionalEntityServerSideTick();
+            this.addAdditionalEntityServerSideTick(level);
         }
     }
 
@@ -207,7 +264,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected abstract void additionalEntityClientSideTick();
 
-    protected abstract void addAdditionalEntityServerSideTick();
+    protected abstract void addAdditionalEntityServerSideTick(ServerLevel level);
 
     protected final boolean isUsingAbility() {
         return this.isTame() && this.entityData.get(DATA_USING_ABILITY);
@@ -215,6 +272,14 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected final void setUsingAbility(boolean ability) {
         this.entityData.set(DATA_USING_ABILITY, ability);
+    }
+
+    protected final boolean isDefending() {
+        return this.entityData.get(DATA_DEFENDING);
+    }
+
+    protected final void setDefending(boolean defending) {
+        this.entityData.set(DATA_DEFENDING, defending);
     }
 
     protected final void spawnHealingParticles() {

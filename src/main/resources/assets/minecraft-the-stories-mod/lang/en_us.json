@@ -248,8 +248,17 @@
 
   "entity.minecraft-the-stories-mod.brown_bear": "Brown Bear",
   "entity.minecraft-the-stories-mod.target_dummy": "Target Dummy",
+
+  "entity.minecraft-the-stories-mod.acaciania": "Acaciania",
+  "entity.minecraft-the-stories-mod.birchia": "Birchia",
+  "entity.minecraft-the-stories-mod.cherrinia": "Cherrinia",
+  "entity.minecraft-the-stories-mod.dense_oakie": "Dense Oakie",
+  "entity.minecraft-the-stories-mod.junmi": "Junmi",
+  "entity.minecraft-the-stories-mod.light_oakie": "Light Oakie",
+  "entity.minecraft-the-stories-mod.mangrolino": "Mangrolino",
   "entity.minecraft-the-stories-mod.oakie": "Oakie",
   "entity.minecraft-the-stories-mod.oakie_healing_ball": "Oakie Healing Ball",
+  "entity.minecraft-the-stories-mod.sprucia": "Sprucia",
 
   "tooltip.minecraft-the-stories.enricher_waste_bucket.shift_down": "A bucket of dangerous waste from the Enricher. This waste is perhaps the most toxic thing on this land. You don't want to take a bath with it nor drink it.",
   "tooltip.minecraft-the-stories.blue_fuel_bucket.shift_down": "A bucket of organic fuel, which is used for powering strange machines. Do not underestimate the power of nature.",

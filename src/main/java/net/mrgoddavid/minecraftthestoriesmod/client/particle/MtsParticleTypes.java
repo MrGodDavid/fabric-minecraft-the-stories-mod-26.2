@@ -14,6 +14,12 @@ public final class MtsParticleTypes {
 
     public static final SimpleParticleType ENRICHER_WASTE_PARTICLE = FabricParticleTypes.simple();
     public static final SimpleParticleType RED_CLOUD_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType ORANGE_CLOUD_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType YELLOW_CLOUD_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType GREEN_CLOUD_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType BLUE_CLOUD_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType INDIGO_CLOUD_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType VIOLET_CLOUD_PARTICLE = FabricParticleTypes.simple();
     
     public static final SimpleParticleType ACACIANIA_SWIFTNESS_PARTICLE = FabricParticleTypes.simple();
     public static final SimpleParticleType BIRCHIA_JUMPING_BOOST_PARTICLE = FabricParticleTypes.simple();

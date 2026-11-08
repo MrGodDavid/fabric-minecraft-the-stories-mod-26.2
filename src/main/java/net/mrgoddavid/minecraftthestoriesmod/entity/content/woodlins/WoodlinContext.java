@@ -18,6 +18,13 @@ public final class WoodlinContext {
     public static final byte TAMED_ANIMAL_FOLLOW_OWNER_STOP_DISTANCE = 4;
     public static final byte ENTITY_RANDOMLY_LOOK_DISTANCE = 5;
 
+    public static final WoodlinContext.Builder SIMPLE_WOODLIN_CONTEXT_BUILDER = WoodlinContext.builder()
+            .tamedAnimalPanicSpeedModifier(1.25D)
+            .tamedAnimalFollowOwnerSpeedModifier(1.025D)
+            .tamedAnimalFollowOwnerStartDistance(24.0F)
+            .tamedAnimalFollowOwnerStopDistance(2.0F)
+            .entityRandomlyLookDistance(4.0F);
+
     private final Map<Byte, Number> contextByteKeyNumberValueMap;
 
     private WoodlinContext(Builder builder) {

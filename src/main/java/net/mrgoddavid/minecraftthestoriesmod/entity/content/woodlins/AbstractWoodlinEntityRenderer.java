@@ -37,6 +37,7 @@ public abstract class AbstractWoodlinEntityRenderer<T extends AbstractWoodlinEnt
         state.enchanting = entity.isEnchanting();
         state.entityUUID = entity.getUUID();
         state.eyeColor = this.selectEyeColor(entity);
+        state.isDefending = entity.isDefending();
     }
 
     @Override

@@ -2,11 +2,10 @@ package net.mrgoddavid.minecraftthestoriesmod.utils.mod.client;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.level.block.state.BlockState;
-import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
+import net.minecraft.world.phys.AABB;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.Nullable;
@@ -24,11 +23,15 @@ import java.util.stream.Collectors;
 public final class EntityUtils {
 
     public static <T extends LivingEntity, S extends LivingEntity> Optional<T> getNearestLivingEntity(ServerLevel serverLevel, S self, Class<T> entityClass, float radius) {
-        return getNearestLivingEntity(serverLevel, self, entityClass, candidate -> true, radius);
+        return getNearestLivingEntity(serverLevel, self, entityClass, _ -> true, radius);
+    }
+
+    public static <T extends LivingEntity> boolean containsEnemiesInRegion(ServerLevel serverLevel, LivingEntity center, Class<T> targetClass, float radius) {
+        return !getEntitiesInCircularRegion(serverLevel, center, targetClass, entity -> entity instanceof Enemy, radius).isEmpty();
     }
 
     public static List<BlockPos> getBlockPosInCircle(LivingEntity livingEntity, int radius) {
-        final double radiusSq =  radius * radius;
+        final double radiusSq = radius * radius;
         BlockPos center = livingEntity.blockPosition();
         BlockPos minCorner = center.offset(-radius, 0, -radius);
         BlockPos maxCorner = center.offset(radius, 0, radius);
@@ -49,7 +52,7 @@ public final class EntityUtils {
      * @param serverLevel        the level of the world must be a server level since we are doing this on the server
      *                           side.
      * @param self               the centered living entity. The center of the searching area.
-     * @param searchedClass        the class of entity will be searched.
+     * @param searchedClass      the class of entity will be searched.
      * @param selectionPredicate rules for filtering the valid target living entities.
      * @param radius             search radius/distance.
      * @param <S>                type of the living entity in the center of the search circle.
@@ -60,6 +63,16 @@ public final class EntityUtils {
         return serverLevel.getEntitiesOfClass(searchedClass, self.getBoundingBox().inflate(radius), selectionPredicate)
                 .stream()
                 .min(Comparator.comparingDouble(entity -> entity.distanceToSqr(self)));
+    }
+
+    public static <T extends LivingEntity> List<T> getEntitiesInCircularRegion(ServerLevel serverLevel, LivingEntity center, Class<T> targetClass, float radius) {
+        return getEntitiesInCircularRegion(serverLevel, center, targetClass, _ -> true, radius);
+    }
+
+    public static <T extends LivingEntity> List<T> getEntitiesInCircularRegion(ServerLevel serverLevel, LivingEntity center, Class<T> targetClass, Predicate<T> entitySelector, float radius) {
+        float radiusSq = radius * radius;
+        AABB searchBox = center.getBoundingBox().inflate(radius);
+        return serverLevel.getEntitiesOfClass(targetClass, searchBox, entity -> (center.distanceToSqr(entity) <= radiusSq) && entitySelector.test(entity));
     }
 
     public static @Nullable BlockPos getNearestBlockPos(LivingEntity entity, Predicate<BlockState> blockStatePredicate, int searchRadius) {

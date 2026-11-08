@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyEntity;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.acaciania.AcacianiaEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieHealingBallEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
@@ -25,6 +26,8 @@ public final class MtsEntityTypes {
             EntityType.Builder.<BrownBearEntity>of(BrownBearEntity::new, MobCategory.CREATURE).sized(1.0f, 1.0f).eyeHeight(1.1875f));
     public static final EntityType<TargetDummyEntity> TARGET_DUMMY = register("target_dummy",
             EntityType.Builder.<TargetDummyEntity>of(TargetDummyEntity::new, MobCategory.MISC).sized(0.8f, 1.8f).eyeHeight(1.6f));
+    public static final EntityType<AcacianiaEntity> ACACIANIA = register("acaciania",
+            EntityType.Builder.<AcacianiaEntity>of(AcacianiaEntity::new, MobCategory.CREATURE).sized(0.375f, 0.625f).eyeHeight(0.3125f));
     public static final EntityType<OakieEntity> OAKIE = register("oakie",
             EntityType.Builder.<OakieEntity>of(OakieEntity::new, MobCategory.MISC).sized(0.375f, 0.625f).eyeHeight(0.3125f));
     public static final EntityType<OakieHealingBallEntity> OAKIE_HEALING_BALL = register("oakie_healing_ball",
@@ -43,13 +46,12 @@ public final class MtsEntityTypes {
     public static void registerAttributes() {
         MtsLogger.info("Entity Attributes");
 
-        MtsLogger.info("Brown Bear: " + BROWN_BEAR);
-        MtsLogger.info("Brown Bear Attributes: " +
-                BrownBearEntity.createLivingEntityAttributes());
-        FabricDefaultAttributeRegistry.register(BROWN_BEAR, BrownBearEntity.createLivingEntityAttributes());
+        FabricDefaultAttributeRegistry.register(BROWN_BEAR, BrownBearEntity.createMtsEntityAttributes());
         FabricDefaultAttributeRegistry.register(TARGET_DUMMY, TargetDummyEntity.createLivingAttributes());
-        FabricDefaultAttributeRegistry.register(OAKIE, OakieEntity.createLivingEntityAttributes());
-        FabricDefaultAttributeRegistry.register(OAKIE_HEALING_BALL, OakieHealingBallEntity.createLivingEntityAttributes());
+
+        FabricDefaultAttributeRegistry.register(ACACIANIA, AcacianiaEntity.createMtsEntityAttributes());
+        FabricDefaultAttributeRegistry.register(OAKIE, OakieEntity.createMtsEntityAttributes());
+        FabricDefaultAttributeRegistry.register(OAKIE_HEALING_BALL, OakieHealingBallEntity.createMtsEntityAttributes());
     }
 
     private MtsEntityTypes() {

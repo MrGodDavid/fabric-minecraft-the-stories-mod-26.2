@@ -6,6 +6,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -19,11 +20,13 @@ import org.jspecify.annotations.NonNull;
 public class ColoredPlayerCloudParticle extends SingleQuadParticle {
 
     private final SpriteSet sprites;
+    private final boolean glow;
 
-    private ColoredPlayerCloudParticle(ClientLevel level, double x, double y, double z, double xa, double ya, double za, SpriteSet sprites, int colorRGBA) {
+    private ColoredPlayerCloudParticle(ClientLevel level, double x, double y, double z, double xa, double ya, double za, SpriteSet sprites, int colorRGBA, boolean glow) {
         super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
         this.friction = 0.96F;
         this.sprites = sprites;
+        this.glow = glow;
         this.xd *= 0.1F;
         this.yd *= 0.1F;
         this.zd *= 0.1F;
@@ -41,6 +44,11 @@ public class ColoredPlayerCloudParticle extends SingleQuadParticle {
         this.lifetime = (int) Math.max(baseLifetime * 2.5F, 1.0F);
         this.hasPhysics = false;
         this.setSpriteFromAge(sprites);
+    }
+
+    @Override
+    protected int getLightCoords(float a) {
+        return this.glow ? 0xF000F0 : super.getLightCoords(a);
     }
 
     @Override
@@ -81,10 +89,12 @@ public class ColoredPlayerCloudParticle extends SingleQuadParticle {
 
         private final SpriteSet sprites;
         private int colorRGBA;
+        private boolean glow;
 
         public Provider(final SpriteSet sprites) {
             this.sprites = sprites;
             this.colorRGBA = 0xFFFFFFFF;
+            this.glow = false;
         }
 
         /**
@@ -110,6 +120,16 @@ public class ColoredPlayerCloudParticle extends SingleQuadParticle {
             return this;
         }
 
+        public Provider color(int colorRGBA) {
+            this.colorRGBA = colorRGBA;
+            return this;
+        }
+
+        public Provider glow() {
+            this.glow = true;
+            return this;
+        }
+
         @Override
         public Particle createParticle(
                 final SimpleParticleType options,
@@ -122,7 +142,7 @@ public class ColoredPlayerCloudParticle extends SingleQuadParticle {
                 final double zAux,
                 final @NonNull RandomSource random
         ) {
-            return new ColoredPlayerCloudParticle(level, x, y, z, xAux, yAux, zAux, this.sprites, this.colorRGBA);
+            return new ColoredPlayerCloudParticle(level, x, y, z, xAux, yAux, zAux, this.sprites, this.colorRGBA, this.glow);
         }
     }
 }

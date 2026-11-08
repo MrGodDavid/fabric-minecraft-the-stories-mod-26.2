@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.registries;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyEntityRenderer;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.acaciania.AcacianiaEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieHealingBallEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
@@ -20,6 +21,8 @@ public final class MtsEntityRenderers {
 
         EntityRenderers.register(MtsEntityTypes.BROWN_BEAR, BrownBearEntityRenderer::new);
         EntityRenderers.register(MtsEntityTypes.TARGET_DUMMY, TargetDummyEntityRenderer::new);
+
+        EntityRenderers.register(MtsEntityTypes.ACACIANIA, AcacianiaEntityRenderer::new);
         EntityRenderers.register(MtsEntityTypes.OAKIE, OakieEntityRenderer::new);
         EntityRenderers.register(MtsEntityTypes.OAKIE_HEALING_BALL, OakieHealingBallEntityRenderer::new);
     }

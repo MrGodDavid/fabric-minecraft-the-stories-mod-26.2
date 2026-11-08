@@ -2,10 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.client.particle.content;
 
 import com.mrgoddavid.ocl.function.interpolation.EasingFunctions;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleProvider;
-import net.minecraft.client.particle.SingleQuadParticle;
-import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.RandomSource;
 import org.jspecify.annotations.Nullable;
@@ -32,6 +29,7 @@ public abstract class AbstractWoodlinParticle extends SingleQuadParticle {
         this.quadSize *= 1.875F;
         int baseLifetime = (int) (8.0 / (this.random.nextFloat() * 0.8 + 0.3));
         this.lifetime = (int) Math.max(baseLifetime * 2.5F, 1.0F);
+        this.alpha = 0.0F;
         this.hasPhysics = false;
         this.setSpriteFromAge(sprites);
     }
@@ -41,9 +39,15 @@ public abstract class AbstractWoodlinParticle extends SingleQuadParticle {
         super.tick();
         if (!this.removed) {
             this.yd = (this.yd + 0.003) * 0.96;
-            this.alpha = 1f - (float) -EasingFunctions.EASE_IN_OUT_SINE.value((double) this.age / this.lifetime);
+            double progress = (double) this.age / this.lifetime;
+            this.alpha = (float) EasingFunctions.EASE_IN_SINE.value(progress);
             this.setSpriteFromAge(this.sprites);
         }
+    }
+
+    @Override
+    protected int getLightCoords(float a) {
+        return 0xF000F0;
     }
 
     @Override
