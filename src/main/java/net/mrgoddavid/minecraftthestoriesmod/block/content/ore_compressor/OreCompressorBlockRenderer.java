@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.Nullable;
 
@@ -21,14 +22,13 @@ import org.jspecify.annotations.Nullable;
  */
 public class OreCompressorBlockRenderer implements BlockEntityRenderer<OreCompressorBlockEntity, OreCompressorBlockRenderState> {
 
-    public static final ModelLayerLocation MODEL_LAYER = new ModelLayerLocation(Constants.modId("ore_compressor"), "main");
     public static final Identifier TEXTURE =Constants.modId("textures/block/ore_compressor_3d_texture.png");
 
-    private OreCompressorFreewheelModel model;
+    private final OreCompressorFreewheelModel freewheelModel;
 
     public OreCompressorBlockRenderer(BlockEntityRendererProvider.Context context) {
-        ModelPart root = context.bakeLayer(MODEL_LAYER);
-        model = new OreCompressorFreewheelModel(root);
+        ModelPart root = context.bakeLayer(MtsEntityModelLayers.ORE_COMPRESSOR);
+        this.freewheelModel = new OreCompressorFreewheelModel(root);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class OreCompressorBlockRenderer implements BlockEntityRenderer<OreCompre
         poseStack.mulPose(Axis.YP.rotationDegrees(state.angleCorrection));
         poseStack.translate(state.translationCorrection.x(), state.translationCorrection.y(), state.translationCorrection.z());
 
-        submitNodeCollector.submitModel(model, state, poseStack, model.renderType(TEXTURE), state.lightCoords, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF, null, 0x00000000, null);
+        submitNodeCollector.submitModel(freewheelModel, state, poseStack, freewheelModel.renderType(TEXTURE), state.lightCoords, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF, null, 0x00000000, null);
 
         poseStack.popPose();
     }

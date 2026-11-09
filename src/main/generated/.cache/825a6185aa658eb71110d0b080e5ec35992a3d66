@@ -45,6 +45,7 @@ d9745a0751789964238c9000e86aec44fbdc0ceb assets/minecraft-the-stories-mod/blocks
 a82c34b1ff8b34ab3d2a982792b2f61c57f3bcf8 assets/minecraft-the-stories-mod/blockstates/strong_ruby_block.json
 ee4f4187f8cb4bcc5eed33aabaa409211e4b3765 assets/minecraft-the-stories-mod/blockstates/strong_topaz_block.json
 36144a1f252bc829a495642157eae0ec3399159c assets/minecraft-the-stories-mod/blockstates/super_crafter_default.json
+33c6bb9ffd2bb9be0261fb9849174a0f994de346 assets/minecraft-the-stories-mod/blockstates/woodlin_pot_default.json
 69d2acf348a1876a6dc355043068fcb136ce6bf1 assets/minecraft-the-stories-mod/items/acacia_axe.json
 5cb7cc0fbaba9fdd7342bebb60c7ef92d614f853 assets/minecraft-the-stories-mod/items/acacia_bow.json
 8236d7ae3d038059ebfa0aee1bfdbb70089dffc9 assets/minecraft-the-stories-mod/items/acacia_cudgel.json
@@ -259,6 +260,7 @@ e41aeb4031d13a2b1714554ad9468f9193ef25d1 assets/minecraft-the-stories-mod/items/
 c53e5219bebeb830e010944c0940442d68122e25 assets/minecraft-the-stories-mod/items/strong_topaz_spear.json
 7f7024a0d9134e936fb6e9697fcdd79b565d51a1 assets/minecraft-the-stories-mod/items/strong_topaz_sword.json
 0d1d00729aca7eef6d19631eb0ee8670beb33c3b assets/minecraft-the-stories-mod/items/super_crafter_default.json
+bcadda70ce5752559e357f8b909607647b080cb8 assets/minecraft-the-stories-mod/items/woodlin_pot_default.json
 2b05c530acb2acf6bfd70e67ef4ae9fedf40d25f assets/minecraft-the-stories-mod/items/zen_staff_iron_head_stage_three.json
 b4bdc9df84d3e0308a5bdb6b2be545d47f6f8ef8 assets/minecraft-the-stories-mod/items/zen_staff_iron_head_stage_two.json
 91a8daa5db37b38217d711f0746e31e3e6ac0916 assets/minecraft-the-stories-mod/models/block/blueberry_bush_stage0.json

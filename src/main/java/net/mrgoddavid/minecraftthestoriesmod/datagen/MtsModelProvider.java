@@ -27,6 +27,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPotBlock;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
@@ -103,6 +104,7 @@ public class MtsModelProvider extends FabricModelProvider {
         this.generateFacingModels(blockModelGenerators, ENRICHER, EnricherBlock.STATE, EnricherBlock.FACING, (type -> Constants.modId(type.path())));
         this.generateFacingModels(blockModelGenerators, ORE_COMPRESSOR, OreCompressorBlock.STATE, OreCompressorBlock.FACING, (type -> Constants.modId(type.path())));
         this.generateFacingModels(blockModelGenerators, SQUEEZER, SqueezerBlock.STATE, SqueezerBlock.FACING, (type -> Constants.modId(type.path())));
+        this.generateFacingModels(blockModelGenerators, WOODLIN_POT, WoodlinPotBlock.STATE, WoodlinPotBlock.FACING, (type -> Constants.modId(type.path())));
         blockModelGenerators.createNonTemplateModelBlock(ENDER_EXALTER);
 
         blockModelGenerators.createCropBlock(STRAWBERRY_CROP, StrawberryCropBlock.AGE, 0, 1, 2, 3, 4, 5);

@@ -30,7 +30,20 @@ public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<Acaci
 
     @Override
     protected void spawnEffectBorderParticles(AcacianiaEntityRenderState state) {
-
+        Minecraft mc = Minecraft.getInstance();
+        MtsParticleSpawner.circle(
+                mc,
+                RANDOM_PULSE,
+                state.isAlerting ? MtsParticleTypes.RED_CLOUD_PARTICLE : MtsParticleTypes.BLUE_CLOUD_PARTICLE,
+                state.entityUUID,
+                "acaciania_border_particles",
+                new Timer(40),
+                state,
+                0.0,
+                AcacianiaEntity.SPEED_BOOST_RADIUS,
+                ParticleSpawnMode.CIRCLE_EIGHT_DIR,
+                true
+        );
     }
 
     @Override
@@ -41,11 +54,11 @@ public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<Acaci
                 RANDOM_PULSE,
                 MtsParticleTypes.ACACIANIA_SWIFTNESS_PARTICLE,
                 state.entityUUID,
-                "oakie_regeneration_particle",
+                "acaciania_swiftness_particle",
                 new Timer(40),
                 state,
                 0.0,
-                AcacianiaEntity.HEALING_RADIUS,
+                AcacianiaEntity.SPEED_BOOST_RADIUS,
                 2,
                 ParticleSpawnMode.FILL_CIRCLE_EIGHT_DIR,
                 true

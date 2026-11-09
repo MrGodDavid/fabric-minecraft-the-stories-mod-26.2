@@ -17,10 +17,13 @@ public final class MtsItemAnimations {
                     .rotateXBackward(0.0f, 45.0f, 0, 4, null)
             )
             .addKeyFrame(MtsDaffiAnimator.keyFrame()
-                    .moveLeft(0.0f, 0.6f, 4, 12, null)
-                    .moveDown(0.0f, 0.5f, 4, 12, null)
+                    .moveLeft(0.0f, 0.4f, 4, 12, null)
+                    .moveDown(0.0f, 0.2f, 4, 12, null)
+                    .moveForward(0.0f, 1.0f, 4, 12, null)
                     .rotateXForward(0.0f, 90.0f, 4, 12, null)
-                    .rotateHorizontallyZLeft(0.0f, 1.0f, 4, 12, null)
+                    .rotateHorizontallyZLeft(0.0f, 30.0f, 4, 12, null)
+                    .expandLeft(1.0F, 2.0F, 4, 12, null)
+                    .expandLongitudinally(1.0F, 2.0F, 4, 12, null)
             );
 
     private MtsItemAnimations() {

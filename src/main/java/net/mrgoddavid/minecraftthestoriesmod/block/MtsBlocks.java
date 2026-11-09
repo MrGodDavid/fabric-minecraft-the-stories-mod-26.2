@@ -27,6 +27,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPotBlock;
 import net.mrgoddavid.minecraftthestoriesmod.fluid.MtsFluids;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
@@ -77,6 +78,7 @@ public class MtsBlocks {
     public static final Block ENDER_EXALTER = registerBlock("ender_exalter", properties -> new EnderExalterBlock(properties.strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final Block ORE_COMPRESSOR = registerBlock("ore_compressor_default", properties -> new OreCompressorBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final Block SQUEEZER = registerBlock("squeezer_default", properties -> new SqueezerBlock(properties.strength(3.0f, 2.0f).requiresCorrectToolForDrops().ignitedByLava().sound(SoundType.WOOD)));
+    public static final Block WOODLIN_POT = registerBlock("woodlin_pot_default", properties -> new WoodlinPotBlock(properties.strength(1.0F, 1.0F).requiresCorrectToolForDrops().sound(SoundType.DECORATED_POT)));
 
     public static final Block ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
     public static final Block BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));

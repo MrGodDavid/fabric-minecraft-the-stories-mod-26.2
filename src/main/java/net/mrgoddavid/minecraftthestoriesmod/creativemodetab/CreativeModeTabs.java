@@ -263,6 +263,7 @@ public class CreativeModeTabs {
                         output.accept(ENDER_EXALTER);
                         output.accept(ORE_COMPRESSOR);
                         output.accept(SQUEEZER);
+                        output.accept(WOODLIN_POT);
                     })
                     .build()
     );

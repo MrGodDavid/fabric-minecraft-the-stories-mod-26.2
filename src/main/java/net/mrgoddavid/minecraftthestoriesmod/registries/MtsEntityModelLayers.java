@@ -19,6 +19,9 @@ import org.jspecify.annotations.NonNull;
  */
 public final class MtsEntityModelLayers {
 
+    public static final ModelLayerLocation ORE_COMPRESSOR = createMain("ore_compressor");
+    public static final ModelLayerLocation WOODLIN_POT = createMain("woodlinpot");
+
     public static final ModelLayerLocation BROWN_BEAR = createMain("brown_bear");
     public static final ModelLayerLocation TARGET_DUMMY = createMain("target_dummy");
     public static final ModelLayerLocation ACACIANIA = createMain("acaciania");

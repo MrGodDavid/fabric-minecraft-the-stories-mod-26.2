@@ -1,19 +1,12 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
-import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
-import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
-import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
-import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 
 /**
  * @author Mr. GodDavid
@@ -37,7 +30,7 @@ public abstract class AbstractWoodlinEntityRenderer<T extends AbstractWoodlinEnt
         state.enchanting = entity.isEnchanting();
         state.entityUUID = entity.getUUID();
         state.eyeColor = this.selectEyeColor(entity);
-        state.isDefending = entity.isDefending();
+        state.isAlerting = entity.isDefending();
     }
 
     @Override

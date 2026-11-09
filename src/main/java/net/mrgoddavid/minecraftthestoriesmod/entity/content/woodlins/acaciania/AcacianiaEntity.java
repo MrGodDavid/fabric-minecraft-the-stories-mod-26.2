@@ -3,6 +3,8 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.acaciania;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -24,7 +27,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
  */
 public class AcacianiaEntity extends AbstractWoodlinEntity {
 
-    public static final int HEALING_RADIUS = 5;
+    public static final int SPEED_BOOST_RADIUS = 5;
     public final AnimationState hydrateAnimationState = new AnimationState();
 
     public AcacianiaEntity(EntityType<AcacianiaEntity> type, Level level) {
@@ -34,8 +37,8 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
     public static AttributeSupplier.Builder createMtsEntityAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 5)
-                .add(Attributes.MOVEMENT_SPEED, 0.2)
-                .add(Attributes.FOLLOW_RANGE, 32);
+                .add(Attributes.MOVEMENT_SPEED, 0.4)
+                .add(Attributes.FOLLOW_RANGE, 24);
     }
 
     @Override
@@ -64,7 +67,7 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
     @Override
     protected WoodlinContext registerWoodlinContexts() {
         return WoodlinContext.builder()
-                .woodlinAbilityUsageRadius(HEALING_RADIUS)
+                .woodlinAbilityUsageRadius(SPEED_BOOST_RADIUS)
                 .tamedAnimalPanicSpeedModifier(1.25D)
                 .tamedAnimalFollowOwnerSpeedModifier(1.025D)
                 .tamedAnimalFollowOwnerStartDistance(24.0F)
@@ -84,12 +87,21 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
 
     @Override
     protected void grantsEffectsToLivingEntitiesInEnchantingRegion(LivingEntity entity) {
-
+        if (entity instanceof Enemy) {
+            boolean isEnchanting = this.isEnchanting();
+            entity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, (isEnchanting ? 150 : 100), (isEnchanting ? 2 : 1), false, true, true));
+            this.cursedEntities.add(entity.getUUID());
+        }
     }
 
     @Override
     protected void grantsEffectToPlayersInEnchantingRegion(ServerPlayer player) {
+        if (this.isOwnedBy(player) && this.isEnchanting()) {
+            player.addEffect(new MobEffectInstance(MobEffects.SPEED, 600, 1, false, true, true));
 
+        } else {
+            player.addEffect(new MobEffectInstance(MobEffects.SPEED, 600, 0, false, true, true));
+        }
     }
 
     @Override
@@ -107,6 +119,5 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
 
     @Override
     protected void addAdditionalEntityServerSideTick(ServerLevel level) {
-
     }
 }

@@ -187,5 +187,11 @@
 				4. Copy and paste the model and animation class. Stay organized!
 				5. Fix any error messages that pops out in your code editing workspace.
 				6. You're done! :D
+				
+		@BLOCK_MODELS
+				1. Open Blockbench and select [Java Block/Item]. 
+				2. Choose the format Version as [1.21.11 - 26.2].
+				3. Choose the UV option as [Box UV]
+				4. Make sure your model faces in the [+Z] direction. This is important!
 #DEADLINE
 		IDK.

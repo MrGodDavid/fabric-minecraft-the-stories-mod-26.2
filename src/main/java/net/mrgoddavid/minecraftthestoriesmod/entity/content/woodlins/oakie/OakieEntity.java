@@ -1,6 +1,5 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
-import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.level.ServerLevel;
@@ -15,15 +14,12 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
@@ -81,7 +77,6 @@ public class OakieEntity extends AbstractWoodlinEntity {
     private final Timer fireblocksHurtCoolDown = new Timer(40);
     private final Timer torchesHurtCoolDown = new Timer(40);
     private final Timer lavaHurtCoolDown = new Timer(40);
-    private final Set<UUID> leechedEntities = new HashSet<>();
 
     public OakieEntity(EntityType<OakieEntity> type, Level level) {
         super(type, level);
@@ -107,26 +102,6 @@ public class OakieEntity extends AbstractWoodlinEntity {
         this.goalSelector.addGoal(3, new OakieEntity.OakieHealOwnerGoal(MIN_NOTICE_NEEDS_HEALING_DISTANCE, MAX_NOTICE_NEEDS_HEALING_DISTANCE));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new OakieEntity.OakieGrowCropsGoal());
-    }
-
-    @Override
-    protected void addAdditionalSaveData(ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.store("leeched_marked_enemies", Codec.list(Codec.STRING), this.leechedEntities.stream().map(UUID::toString).toList());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.leechedEntities.clear();
-        List<String> savedUUIDs = input.read("leeched_marked_enemies", Codec.list(Codec.STRING)).orElse(List.of());
-        for (String uuid : savedUUIDs) {
-            try {
-                this.leechedEntities.add(UUID.fromString(uuid));
-            } catch (IllegalArgumentException _) {
-            }
-        }
-        this.setDefending(!this.leechedEntities.isEmpty());
     }
 
     @Override
@@ -170,27 +145,6 @@ public class OakieEntity extends AbstractWoodlinEntity {
     @Override
     protected void addAdditionalEntityServerSideTick(ServerLevel level) {
         this.burnByFireSourceBlocks(level);
-        this.checkIfDefending(level);
-    }
-
-    private void checkIfDefending(ServerLevel level) {
-        Iterator<UUID> iterator = this.leechedEntities.iterator();
-        while (iterator.hasNext()) {
-            UUID uuid = iterator.next();
-            Entity entity = level.getEntity(uuid);
-            if (entity != null) {
-                if (!entity.isAlive()) {
-                    iterator.remove();
-                } else {
-                    Optional.ofNullable(entity.asLivingEntity()).ifPresent(livingEntity -> {
-                        if (!livingEntity.hasEffect(MtsEffects.LEECH_OF_OAKIE)) {
-                            iterator.remove();
-                        }
-                    });
-                }
-            }
-        }
-        this.setDefending(!this.leechedEntities.isEmpty());
     }
 
     @Override
@@ -253,8 +207,9 @@ public class OakieEntity extends AbstractWoodlinEntity {
             oakie.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 100, 2, false, true, true));
 
         } else if (entity instanceof Enemy) {
-            entity.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 100, 0, false, true, true));
-            this.leechedEntities.add(entity.getUUID());
+            boolean isEnchanting = this.isEnchanting();
+            entity.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, (isEnchanting ? 150 : 100), (isEnchanting ? 2 : 1), false, true, true));
+            this.cursedEntities.add(entity.getUUID());
         }
     }
 

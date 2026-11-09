@@ -77,7 +77,7 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
         Minecraft mc = Minecraft.getInstance();
         MtsParticleSpawner.circle(mc,
                 RANDOM_PULSE,
-                renderState.isDefending ? MtsParticleTypes.RED_CLOUD_PARTICLE : MtsParticleTypes.GREEN_CLOUD_PARTICLE,
+                renderState.isAlerting ? MtsParticleTypes.RED_CLOUD_PARTICLE : MtsParticleTypes.GREEN_CLOUD_PARTICLE,
                 renderState.entityUUID,
                 "oakie_particle_circle",
                 new Timer(60),

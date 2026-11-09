@@ -1,6 +1,7 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins;
 
 import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -15,15 +16,16 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
-import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 import org.jspecify.annotations.Nullable;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Mr. GodDavid
@@ -35,12 +37,13 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
     protected static final EntityDataAccessor<Boolean> DATA_USING_ABILITY = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
     protected static final EntityDataAccessor<Boolean> DATA_DEFENDING = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN);
     protected final byte STAND_EVENT = 99;
+    private final MtsElementSets.Trio<Item, Item, Item> woodlinInteractableItems;
     private final WoodlinContext woodlinContext;
+    protected final Set<UUID> cursedEntities = new HashSet<>();
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState enchantingAnimationState = new AnimationState();
     public final AnimationState disenchantingAnimationState = new AnimationState();
     public final AnimationState tameAnimationState = new AnimationState();
-    private final MtsElementSets.Trio<Item, Item, Item> woodlinInteractableItems;
 
     protected AbstractWoodlinEntity(EntityType<? extends TamableAnimal> type, Level level) {
         super(type, level);
@@ -59,6 +62,26 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
         super.defineSynchedData(entityData);
         entityData.define(DATA_USING_ABILITY, false);
         entityData.define(DATA_DEFENDING, false);
+    }
+
+    @Override
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.store("enemies_are_cursed", Codec.list(Codec.STRING), this.cursedEntities.stream().map(UUID::toString).toList());
+    }
+
+    @Override
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        this.cursedEntities.clear();
+        List<String> savedUUIDs = input.read("enemies_are_cursed", Codec.list(Codec.STRING)).orElse(List.of());
+        for (String uuid : savedUUIDs) {
+            try {
+                this.cursedEntities.add(UUID.fromString(uuid));
+            } catch (IllegalArgumentException _) {
+            }
+        }
+        this.setAlerting(!this.cursedEntities.isEmpty());
     }
 
     @Override
@@ -208,9 +231,35 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
             ServerLevel level = (ServerLevel) this.level();
             this.grantsPlayersInEnchantingRegionEffects(level);
             this.grantsEntitiesInEnchantingRegionEffects(level);
+            this.checkIfAlerting(level);
 
             this.addAdditionalEntityServerSideTick(level);
         }
+    }
+
+    private void checkIfAlerting(ServerLevel level) {
+        Iterator<UUID> iterator = this.cursedEntities.iterator();
+        while (iterator.hasNext()) {
+            UUID uuid = iterator.next();
+            Entity entity = level.getEntity(uuid);
+            if (entity != null) {
+                if (!entity.isAlive()) {
+                    iterator.remove();
+                } else {
+                    Optional.ofNullable(entity.asLivingEntity()).ifPresent(livingEntity -> {
+                        if (this.livingEntityNotCursedByWoodlins(livingEntity)) {
+                            iterator.remove();
+                        }
+                    });
+                }
+            }
+        }
+        this.setAlerting(!this.cursedEntities.isEmpty());
+    }
+
+    // todo add special effects for other woodlins.
+    private boolean livingEntityNotCursedByWoodlins(LivingEntity livingEntity) {
+        return !livingEntity.hasEffect(MtsEffects.LEECH_OF_OAKIE);
     }
 
     protected final void tryToTame(Player player) {
@@ -278,7 +327,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
         return this.entityData.get(DATA_DEFENDING);
     }
 
-    protected final void setDefending(boolean defending) {
+    protected final void setAlerting(boolean defending) {
         this.entityData.set(DATA_DEFENDING, defending);
     }
 

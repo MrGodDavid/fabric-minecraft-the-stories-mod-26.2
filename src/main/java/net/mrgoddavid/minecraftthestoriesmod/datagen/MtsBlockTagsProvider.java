@@ -65,7 +65,8 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
                 .add(MtsBlocks.getResourceKey(ENRICHER))
                 .add(MtsBlocks.getResourceKey(ENDER_EXALTER))
-                .add(MtsBlocks.getResourceKey(ORE_COMPRESSOR));
+                .add(MtsBlocks.getResourceKey(ORE_COMPRESSOR))
+                .add(MtsBlocks.getResourceKey(WOODLIN_POT));
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD))

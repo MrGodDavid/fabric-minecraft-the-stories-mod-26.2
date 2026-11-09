@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,type=default": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_default",
+      "y": 90
+    },
+    "facing=east,type=placeholder": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_placeholder",
+      "y": 90
+    },
+    "facing=north,type=default": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_default"
+    },
+    "facing=north,type=placeholder": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_placeholder"
+    },
+    "facing=south,type=default": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_default",
+      "y": 180
+    },
+    "facing=south,type=placeholder": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_placeholder",
+      "y": 180
+    },
+    "facing=west,type=default": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_default",
+      "y": 270
+    },
+    "facing=west,type=placeholder": {
+      "model": "minecraft-the-stories-mod:block/woodlin_pot_placeholder",
+      "y": 270
+    }
+  }
+}

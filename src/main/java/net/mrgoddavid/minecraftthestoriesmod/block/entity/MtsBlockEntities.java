@@ -11,6 +11,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBloc
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.super_crafter.SuperCrafterBlockEntity;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPotBlockEntity;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -31,6 +32,7 @@ public class MtsBlockEntities {
     public static final BlockEntityType<EnderExalterBlockEntity> ENDER_EXALTER_BE = register("ender_exalter_be", EnderExalterBlockEntity::new, ENDER_EXALTER);
     public static final BlockEntityType<OreCompressorBlockEntity> ORE_COMPRESSOR_BE = register("ore_compressor_be", OreCompressorBlockEntity::new, ORE_COMPRESSOR);
     public static final BlockEntityType<SqueezerBlockEntity> SQUEEZER_BE = register("squeezer_be",  SqueezerBlockEntity::new, SQUEEZER);
+    public static final BlockEntityType<WoodlinPotBlockEntity> WOODLIN_POT_BE = register("woodlin_block_be", WoodlinPotBlockEntity::new, WOODLIN_POT);
 
     public static void register() {
         MtsLogger.info("Block Entities");

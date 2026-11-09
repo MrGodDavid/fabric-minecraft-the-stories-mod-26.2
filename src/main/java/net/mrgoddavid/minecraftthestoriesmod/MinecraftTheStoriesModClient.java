@@ -3,7 +3,6 @@ package net.mrgoddavid.minecraftthestoriesmod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.renderer.BiomeColors;
@@ -18,13 +17,12 @@ import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPotBlockRenderer;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPotBranchModel;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
+import net.mrgoddavid.minecraftthestoriesmod.registries.*;
 import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuScreens;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsClientTickEventRegistries;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsFluidRenderingRegistries;
 
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsParticleTypeRegistries;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsServerTickEventRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
 
@@ -39,8 +37,10 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
     public void onInitializeClient() {
 
         MtsTestWorld.changeDevTitleScreen();
-        ModelLayerRegistry.registerModelLayer(OreCompressorBlockRenderer.MODEL_LAYER, OreCompressorFreewheelModel::getTexturedModelData);
+        ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.ORE_COMPRESSOR, OreCompressorFreewheelModel::getTexturedModelData);
+        ModelLayerRegistry.registerModelLayer(MtsEntityModelLayers.WOODLIN_POT, WoodlinPotBranchModel::createTexturedModelData);
         BlockEntityRenderers.register(MtsBlockEntities.ORE_COMPRESSOR_BE, OreCompressorBlockRenderer::new);
+        BlockEntityRenderers.register(MtsBlockEntities.WOODLIN_POT_BE, WoodlinPotBlockRenderer::new);
         BlockEntityRenderers.register(MtsBlockEntities.ENDER_EXALTER_BE, EnderExalterBlockRenderer::new);
         MtsMenuScreens.registerBlockScreens();
         MtsMenuScreens.registerItemScreens();

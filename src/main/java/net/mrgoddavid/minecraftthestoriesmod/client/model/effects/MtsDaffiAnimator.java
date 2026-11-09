@@ -197,6 +197,18 @@ public final class MtsDaffiAnimator {
         poseStack.scale(1.0f, 1.0f, scaleZ);
     }
 
+    public static void expandInScale(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
+//        expandUp(poseStack, attackTick,  arm, startScale, endScale, startFrame, endFrame);
+        expandLeft(poseStack, attackTick, arm, startScale, endScale, startFrame, endFrame);
+        expandLongitudinally(poseStack, attackTick, arm, startScale, endScale, startFrame, endFrame);
+    }
+
+    public static void shrinkInScale(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
+//        shrinkDown(poseStack, attackTick,  arm, startScale, endScale, startFrame, endFrame);
+        shrinkRight(poseStack, attackTick, arm, startScale, endScale, startFrame, endFrame);
+        shrinkLongitudinally(poseStack, attackTick, arm, startScale, endScale, startFrame, endFrame);
+    }
+
     private static void validateParamsOrThrow(float startFrame, float endFrame) {
         if (startFrame < 0.0F || startFrame > 1.0F) {
             ErrorMessageBuilder.infoAndThrow(MtsDaffiAnimator.class, ThrowReason.ENTITY_ANIMATION_UTILS_INVALID_START_FRAME, startFrame);
@@ -415,6 +427,26 @@ public final class MtsDaffiAnimator {
             this.frameChannels.add(((poseStack, attackTick, arm) -> {
                 float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.shrinkLongitudinally(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+            }));
+            return this;
+        }
+
+        public KeyFrameBuilder expandInScale(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.expandInScale(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
+            }));
+            return this;
+        }
+
+        public KeyFrameBuilder shrinkInScale(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = normalizeFrames(startFrame);
+            float normalizedEndFrame = normalizeFrames(endFrame);
+            this.frameChannels.add(((poseStack, attackTick, arm) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.shrinkInScale(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
             }));
             return this;
         }
