@@ -11,6 +11,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
@@ -176,6 +178,14 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
     }
 
     @Override
+    public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
+        if (source.is(DamageTypes.SWEET_BERRY_BUSH)) {
+            return false;
+        }
+        return super.hurtServer(level, source, damage);
+    }
+
+    @Override
     public void setOrderedToSit(boolean orderedToSit) {
         super.setOrderedToSit(orderedToSit);
         this.setInSittingPose(orderedToSit);
@@ -325,6 +335,10 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected final boolean isDefending() {
         return this.entityData.get(DATA_DEFENDING);
+    }
+
+    public boolean isWarning() {
+        return this.isDefending() && !this.isTame();
     }
 
     protected final void setAlerting(boolean defending) {

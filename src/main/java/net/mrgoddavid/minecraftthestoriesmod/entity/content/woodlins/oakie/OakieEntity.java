@@ -66,7 +66,7 @@ import java.util.function.Predicate;
  * @author Mr. GodDavid
  * @since 10/16/2026
  */
-@SuppressWarnings({"NullableProblems", "resource"})
+@SuppressWarnings({"NullableProblems", "resource", "SpellCheckingInspection"})
 public class OakieEntity extends AbstractWoodlinEntity {
 
     public static final int HEALING_RADIUS = 5;
@@ -194,22 +194,16 @@ public class OakieEntity extends AbstractWoodlinEntity {
     }
 
     @Override
-    public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
-        if (source.is(DamageTypes.SWEET_BERRY_BUSH)) {
-            return false;
-        }
-        return super.hurtServer(level, source, damage);
-    }
-
-    @Override
     protected void grantsEffectsToLivingEntitiesInEnchantingRegion(LivingEntity entity) {
         if (entity instanceof OakieEntity oakie) {
             oakie.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 100, 2, false, true, true));
 
         } else if (entity instanceof Enemy) {
-            boolean isEnchanting = this.isEnchanting();
-            entity.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, (isEnchanting ? 150 : 100), (isEnchanting ? 2 : 1), false, true, true));
-            this.cursedEntities.add(entity.getUUID());
+            if (this.getOwner() != null) {
+                boolean isEnchanting = this.isEnchanting();
+                entity.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, (isEnchanting ? 150 : 100), (isEnchanting ? 2 : 1), false, true, true));
+                this.cursedEntities.add(entity.getUUID());
+            }
         }
     }
 

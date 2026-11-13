@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.networking.manager;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 
 /**
@@ -43,7 +44,6 @@ public class ThirstManager {
         } else if (player.isJumping()) {
             exhaustAmount = 0.015f;
         }
-
         this.addExhaustion(exhaustAmount);
         return this.hydrationPoint != oldThirst;
     }
@@ -58,6 +58,11 @@ public class ThirstManager {
             this.exhaustion = Mth.clamp(this.exhaustion + exhaustion, 0.0F, MAX_EXHAUSTION);
         }
         return this.hydrationPoint != oldThirst;
+    }
+
+    public void restoreHydration() {
+        this.hydrationPoint = MAX_HYDRATION;
+        this.exhaustion = 0.0F;
     }
 
     public boolean addExhaustion(float amount) {

@@ -19,5 +19,6 @@ public class AbstractWoodlinEntityRenderState extends LivingEntityRenderState {
     public boolean enchanting = false;
     public UUID entityUUID;
     public int eyeColor;
-    public boolean isAlerting;
+    public boolean isAlerting; // tame + isDefending.
+    public boolean isWarning; // tame + !isDefending.
 }

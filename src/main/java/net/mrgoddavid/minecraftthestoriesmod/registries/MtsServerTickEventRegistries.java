@@ -92,7 +92,7 @@ public final class MtsServerTickEventRegistries {
         if (ONE_SECOND_20_TICKS_PERIODIC_PULSE.fire(tick -> tick >= ONE_SECOND_20_TICKS_PERIODIC_PULSE.getMaxTick())) {
             ONE_SECOND_20_TICKS_PERIODIC_PULSE.reset();
             if (hasFullAmethystArmor(player)) {
-                player.addEffect(new MobEffectInstance(MtsEffects.PUBLIC_ENEMY, 40, 0, true, false, true));
+                player.addEffect(new MobEffectInstance(MtsEffects.PUBLIC_ENEMY, 40, 0, true, true, true));
             }
         }
     }

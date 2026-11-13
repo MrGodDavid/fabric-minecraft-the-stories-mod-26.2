@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.acaciania;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
@@ -16,7 +17,9 @@ import org.jspecify.annotations.NonNull;
  * @author Mr. GodDavid
  * @since 11/7/2026
  */
-public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<AcacianiaEntity, AcacianiaEntityRenderState, AcacianiaEntityModel> {
+@SuppressWarnings({"SpellCheckingInspection"})
+public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<AcacianiaEntity, AcacianiaEntityRenderState, AcacianiaEntityModel>
+{
 
     public AcacianiaEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new AcacianiaEntityModel(context.bakeLayer(MtsEntityModelLayers.ACACIANIA)), 0.2f);
@@ -34,7 +37,7 @@ public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<Acaci
         MtsParticleSpawner.circle(
                 mc,
                 RANDOM_PULSE,
-                state.isAlerting ? MtsParticleTypes.RED_CLOUD_PARTICLE : MtsParticleTypes.BLUE_CLOUD_PARTICLE,
+                this.getAcacianiaBorderParticleTypes(state),
                 state.entityUUID,
                 "acaciania_border_particles",
                 new Timer(40),
@@ -44,6 +47,18 @@ public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<Acaci
                 ParticleSpawnMode.CIRCLE_EIGHT_DIR,
                 true
         );
+    }
+
+    private @NonNull SimpleParticleType getAcacianiaBorderParticleTypes(AcacianiaEntityRenderState renderState) {
+        if (renderState.isAlerting) {
+            return MtsParticleTypes.RED_CLOUD_PARTICLE;
+
+        } else if (renderState.isWarning) {
+            return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+
+        } else {
+            return MtsParticleTypes.BLUE_CLOUD_PARTICLE;
+        }
     }
 
     @Override

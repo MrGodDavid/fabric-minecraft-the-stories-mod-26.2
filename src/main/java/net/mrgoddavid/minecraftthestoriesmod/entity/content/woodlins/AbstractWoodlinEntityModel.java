@@ -3,9 +3,13 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins;
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimator;
-import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntityAnimations;
 import org.jspecify.annotations.NonNull;
+
+import java.util.function.Function;
 
 /**
  * @author Mr. GodDavid
@@ -23,15 +27,19 @@ public abstract class AbstractWoodlinEntityModel<T extends AbstractWoodlinEntity
     private final KeyframeAnimation tameAnimation;
 
     protected AbstractWoodlinEntityModel(ModelPart root) {
-        super(root);
-        this.root = root.getChild("root");
+        this(root, RenderTypes::entityCutout);
+    }
 
+    protected AbstractWoodlinEntityModel(ModelPart root, Function<Identifier, RenderType> renderType) {
+        super(root, renderType);
+        this.root = root.getChild("root");
         this.idleAnimation = this.bakeIdleAnimation();
         this.walkAnimation = this.bakeWalkAnimation();
         this.abilityUseAnimation = this.bakeAbilityUseAnimation();
         this.enchantingAnimation = this.bakeEnchantingAnimation();
         this.disenchantingAnimation = this.bakeDisenchantingAnimation();
         this.tameAnimation = this.bakeTameAnimation();
+
     }
 
     protected abstract @NonNull KeyframeAnimation bakeIdleAnimation();

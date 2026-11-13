@@ -40,7 +40,7 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
  * @author Mr. GodDavid
  * @since 8/12/2026
  */
-@SuppressWarnings({"deprecation", "NullableProblems", "OptionalGetWithoutIsPresent"})
+@SuppressWarnings({"deprecation", "NullableProblems", "OptionalGetWithoutIsPresent", "SpellCheckingInspection"})
 public final class MtsItems {
 
     // Custom mod items go here.
@@ -318,8 +318,16 @@ public final class MtsItems {
     // #                                                SPAWN EGGS                                                     #
     // #################################################################################################################
     public static final Item BROWN_BEAR_SPAWN_EGG = registerItem("brown_bear_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.BROWN_BEAR)));
+    public static final Item ACACIANIA_SPAWN_EGG = registerItem("acaciania_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.ACACIANIA).rarity(Rarity.EPIC)));
+    public static final Item BIRCHIA_SPAWN_EGG = registerItem("birchia_spawn_egg", properties -> new SpawnEggItem(properties.rarity(Rarity.EPIC)));
+    public static final Item CHERRINIA_SPAWN_EGG = registerItem("cherrinia_spawn_egg", Item::new);
+    public static final Item DARK_OAKIE_SPAWN_EGG = registerItem("dark_oakie_spawn_egg", Item::new);
+    public static final Item JUNMI_SPAWN_EGG = registerItem("juni_spawn_egg", Item::new);
+    public static final Item MANGROLINO_SPAWN_EGG = registerItem("mangrolino_spawn_egg", Item::new);
     public static final Item OAKIE_SPAWN_EGG = registerItem("oakie_spawn_egg", properties ->  new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE).rarity(Rarity.EPIC)));
     public static final Item OAKIE_HEALING_BALL_SPAWN_EGG = registerItem("oakie_healing_ball_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE_HEALING_BALL).rarity(Rarity.EPIC)));
+    public static final Item LIGHT_OAKIE_SPAWN_EGG = registerItem("light_oakie_spawn_egg", Item::new);
+    public static final Item SPRUCIA_SPAWN_EGG = registerItem("spruce_spawn_egg", Item::new);
 
     /**
      * Gets the resource key of the mod item.
@@ -603,6 +611,7 @@ public final class MtsItems {
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(fabricCreativeModeTabOutput -> {
             fabricCreativeModeTabOutput.accept(BROWN_BEAR_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(ACACIANIA_SPAWN_EGG);
             fabricCreativeModeTabOutput.accept(OAKIE_SPAWN_EGG);
             fabricCreativeModeTabOutput.accept(OAKIE_HEALING_BALL_SPAWN_EGG);
         });

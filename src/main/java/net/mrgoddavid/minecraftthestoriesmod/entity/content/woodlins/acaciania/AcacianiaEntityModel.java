@@ -4,6 +4,7 @@ import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityModel;
 import org.jspecify.annotations.NonNull;
 
@@ -26,7 +27,7 @@ public class AcacianiaEntityModel extends AbstractWoodlinEntityModel<AcacianiaEn
     private final ModelPart right_leg;
 
     public AcacianiaEntityModel(ModelPart root) {
-        super(root);
+        super(root, RenderTypes::entityTranslucent);
         this.body = this.root.getChild("body");
         this.left_arm = this.body.getChild("left_arm");
         this.potion_left = this.left_arm.getChild("potion_left");

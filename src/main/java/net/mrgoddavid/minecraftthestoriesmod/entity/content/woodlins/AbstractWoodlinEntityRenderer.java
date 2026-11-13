@@ -12,6 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
  * @author Mr. GodDavid
  * @since 11/5/2026
  */
+@SuppressWarnings({"SpellCheckingInspection", "NullableProblems"})
 public abstract class AbstractWoodlinEntityRenderer<T extends AbstractWoodlinEntity, S extends AbstractWoodlinEntityRenderState, M extends EntityModel<S>> extends MobRenderer<T, S, M> {
 
     protected static final RandomPulse RANDOM_PULSE = RandomPulse.builder(100).origin(0).probability(50).build();
@@ -31,6 +32,7 @@ public abstract class AbstractWoodlinEntityRenderer<T extends AbstractWoodlinEnt
         state.entityUUID = entity.getUUID();
         state.eyeColor = this.selectEyeColor(entity);
         state.isAlerting = entity.isDefending();
+        state.isWarning = entity.isWarning();
     }
 
     @Override

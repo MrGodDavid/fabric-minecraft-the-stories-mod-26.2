@@ -318,6 +318,7 @@ public class MtsModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(STORY_BOOK, flatItemTemplate);
 
         itemModelGenerators.generateFlatItem(BROWN_BEAR_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(ACACIANIA_SPAWN_EGG, flatItemTemplate);
         itemModelGenerators.generateFlatItem(OAKIE_SPAWN_EGG, flatItemTemplate);
         itemModelGenerators.generateFlatItem(OAKIE_HEALING_BALL_SPAWN_EGG, flatItemTemplate);
     }

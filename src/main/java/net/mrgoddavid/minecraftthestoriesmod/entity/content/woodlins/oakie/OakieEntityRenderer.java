@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
 import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
@@ -11,6 +12,7 @@ import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
@@ -77,7 +79,7 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
         Minecraft mc = Minecraft.getInstance();
         MtsParticleSpawner.circle(mc,
                 RANDOM_PULSE,
-                renderState.isAlerting ? MtsParticleTypes.RED_CLOUD_PARTICLE : MtsParticleTypes.GREEN_CLOUD_PARTICLE,
+                this.getOakieBorderParticleTypes(renderState),
                 renderState.entityUUID,
                 "oakie_particle_circle",
                 new Timer(60),
@@ -87,5 +89,17 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
                 ParticleSpawnMode.CIRCLE_SIXTEEN_DIR,
                 true
         );
+    }
+
+    private @NonNull SimpleParticleType getOakieBorderParticleTypes(OakieEntityRenderState renderState) {
+        if (renderState.isAlerting) {
+            return MtsParticleTypes.RED_CLOUD_PARTICLE;
+
+        } else if (renderState.isWarning) {
+            return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+
+        } else {
+            return MtsParticleTypes.GREEN_CLOUD_PARTICLE;
+        }
     }
 }
