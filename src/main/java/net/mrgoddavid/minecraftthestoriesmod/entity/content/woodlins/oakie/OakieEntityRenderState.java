@@ -1,9 +1,11 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
+import com.geckolib.constant.dataticket.DataTicket;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityRenderState;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**

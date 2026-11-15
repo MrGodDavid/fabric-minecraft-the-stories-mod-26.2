@@ -1,9 +1,11 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins;
 
+import com.geckolib.constant.dataticket.DataTicket;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 import net.mrgoddavid.minecraftthestoriesmod.entity.AbstractMtsEntityRenderState;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -22,4 +24,9 @@ public abstract class AbstractWoodlinEntityRenderState extends AbstractMtsEntity
     public int eyeColor;
     public boolean isAlerting; // tame + isDefending.
     public boolean isWarning; // tame + !isDefending.
+
+    @Override
+    public Map<DataTicket<?>, Object> getDataMap() {
+        return Map.of();
+    }
 }
