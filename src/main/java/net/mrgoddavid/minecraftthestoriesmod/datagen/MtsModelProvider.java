@@ -319,8 +319,15 @@ public class MtsModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(BROWN_BEAR_SPAWN_EGG, flatItemTemplate);
         itemModelGenerators.generateFlatItem(ACACIANIA_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(BIRCHIA_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(CHERRINIA_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(DENSE_OAKIE_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(JUNMI_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(MANGROLINO_SPAWN_EGG, flatItemTemplate);
         itemModelGenerators.generateFlatItem(OAKIE_SPAWN_EGG, flatItemTemplate);
         itemModelGenerators.generateFlatItem(OAKIE_HEALING_BALL_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(LIGHT_OAKIE_SPAWN_EGG, flatItemTemplate);
+        itemModelGenerators.generateFlatItem(SPRUCIA_SPAWN_EGG, flatItemTemplate);
     }
 
     public void generateMtsBow(final ItemModelGenerators itemModelGenerators, final Item mtsBowItem) {

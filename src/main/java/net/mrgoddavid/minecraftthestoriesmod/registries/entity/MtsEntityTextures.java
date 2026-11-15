@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.registries;
+package net.mrgoddavid.minecraftthestoriesmod.registries.entity;
 
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
@@ -12,16 +12,24 @@ import org.jspecify.annotations.NonNull;
  * @author Mr. GodDavid
  * @since 9/8/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 public final class MtsEntityTextures {
 
     public static final Identifier BROWN_BEAR = register("brown_bear");
     public static final Identifier TARGET_DUMMY = register("target_dummy");
 
     public static final Identifier ACACIANIA = register("acaciania");
+    public static final Identifier BIRCHIA = register("birchia");
+    public static final Identifier CHERRINIA = register("cherrinia");
+    public static final Identifier DENSE_OAKIE = register("dense_oakie");
+    public static final Identifier JUNMI =  register("junmi");
+    public static final Identifier MANGROLINO = register("mangrolino");
     public static final Identifier OAKIE = register("oakie");
     public static final Identifier OAKIE_EYES = register("oakie", "oakie_eyes");
     public static final Identifier OAKIE_STAFF_GLOWING = register("oakie", "oakie_staff_glowing");
     public static final Identifier OAKIE_HEALING_BALL = register("oakie", "oakie_healing_ball");
+    public static final Identifier LIGHT_OAKIE = register("light_oakie");
+    public static final Identifier SPRUCIA = register("sprucia");
 
     private static Identifier register(@NonNull final String name) {
         return Constants.modId(Directory.builder().textures().entity().build() + name + "/" + name + ".png");

@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.resources.Identifier;
 import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimator;
+import net.mrgoddavid.minecraftthestoriesmod.entity.AbstractMtsEntityModel;
 import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
@@ -15,36 +16,25 @@ import java.util.function.Function;
  * @author Mr. GodDavid
  * @since 11/6/2026
  */
-public abstract class AbstractWoodlinEntityModel<T extends AbstractWoodlinEntityRenderState> extends EntityModel<T> {
+@SuppressWarnings("SpellCheckingInspection")
+public abstract class AbstractWoodlinEntityModel<T extends AbstractWoodlinEntityRenderState> extends AbstractMtsEntityModel<T> {
 
-    protected final ModelPart root;
-
-    private final KeyframeAnimation idleAnimation;
-    private final KeyframeAnimation walkAnimation;
     private final KeyframeAnimation abilityUseAnimation;
     private final KeyframeAnimation enchantingAnimation;
     private final KeyframeAnimation disenchantingAnimation;
     private final KeyframeAnimation tameAnimation;
 
     protected AbstractWoodlinEntityModel(ModelPart root) {
-        this(root, RenderTypes::entityCutout);
+        this(root,  RenderTypes::entityTranslucent);
     }
 
     protected AbstractWoodlinEntityModel(ModelPart root, Function<Identifier, RenderType> renderType) {
         super(root, renderType);
-        this.root = root.getChild("root");
-        this.idleAnimation = this.bakeIdleAnimation();
-        this.walkAnimation = this.bakeWalkAnimation();
         this.abilityUseAnimation = this.bakeAbilityUseAnimation();
         this.enchantingAnimation = this.bakeEnchantingAnimation();
         this.disenchantingAnimation = this.bakeDisenchantingAnimation();
         this.tameAnimation = this.bakeTameAnimation();
-
     }
-
-    protected abstract @NonNull KeyframeAnimation bakeIdleAnimation();
-
-    protected abstract @NonNull KeyframeAnimation bakeWalkAnimation();
 
     protected abstract @NonNull KeyframeAnimation bakeAbilityUseAnimation();
 
@@ -57,8 +47,6 @@ public abstract class AbstractWoodlinEntityModel<T extends AbstractWoodlinEntity
     @Override
     public void setupAnim(T state) {
         super.setupAnim(state);
-        this.root.getAllParts().forEach(ModelPart::resetPose);
-        MtsDaffiAnimator.applyMobHeadRotation(this, state.yRot, state.xRot);
 
         if (state.tameAnimationState.isStarted()) {
             this.tameAnimation.apply(state.tameAnimationState, state.ageInTicks);
@@ -76,9 +64,7 @@ public abstract class AbstractWoodlinEntityModel<T extends AbstractWoodlinEntity
             this.abilityUseAnimation.apply(state.abilityUseAnimationState, state.ageInTicks);
             return;
         }
-        if (state.walkAnimationSpeed > 0.0F) {
-            this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 5.0F, 10.0F);
-        }
-        this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
+
+        this.applyWalkAndIdleAnimations(state);
     }
 }

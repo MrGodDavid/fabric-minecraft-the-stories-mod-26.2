@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.registries;
 
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTextures;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;

@@ -23,6 +23,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.registries.*;
 import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuScreens;
 
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
 

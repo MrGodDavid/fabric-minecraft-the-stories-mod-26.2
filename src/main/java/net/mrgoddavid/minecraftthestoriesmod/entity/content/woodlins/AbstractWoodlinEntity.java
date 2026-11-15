@@ -23,6 +23,7 @@ import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import org.jspecify.annotations.Nullable;
@@ -33,7 +34,7 @@ import java.util.*;
  * @author Mr. GodDavid
  * @since 11/2/2026
  */
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected static final EntityDataAccessor<Boolean> DATA_USING_ABILITY = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
@@ -138,7 +139,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        boolean isTameItemCorrect = itemStack.is(this.woodlinInteractableItems.first());
+        boolean isTameItemCorrect = itemStack.is(Optional.ofNullable(this.woodlinInteractableItems.first()).orElse(MtsItems.PUBLIC_ENEMY_EFFECT_ICON));
 
         if (!this.level().isClientSide()) {
             if (!isBaby()) {
@@ -152,14 +153,15 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
                 // performing actions once it is tamed by player.
                 if (isTame() && isOwnedBy(player)) {
                     // healing
-                    if (itemStack.is(this.woodlinInteractableItems.second()) && this.getHealth() < this.getMaxHealth()) {
+                    if (itemStack.is(Optional.ofNullable(this.woodlinInteractableItems.second()).orElse(MtsItems.PUBLIC_ENEMY_EFFECT_ICON))
+                            && this.getHealth() < this.getMaxHealth()) {
                         this.feed(player, hand, itemStack, 2.0F, 2.0F);
                         this.spawnHealingParticles();
                         return InteractionResult.SUCCESS;
                     }
 
                     // enchant & disenchant
-                    if (itemStack.is(this.woodlinInteractableItems.third())) {
+                    if (itemStack.is(Optional.ofNullable(this.woodlinInteractableItems.third()).orElse(MtsItems.PUBLIC_ENEMY_EFFECT_ICON))) {
                         boolean shouldEnchant = !this.isEnchanting();
                         this.setOrderedToSit(shouldEnchant);
                         this.setGlowingTag(shouldEnchant);
@@ -323,6 +325,14 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected abstract void additionalEntityClientSideTick();
 
+    protected final void updateAbilityUsageAnimationHelper(AnimationState abilityUsageAnimation) {
+        if (this.isUsingAbility()) {
+            abilityUsageAnimation.startIfStopped(tickCount);
+        } else {
+            abilityUsageAnimation.stop();
+        }
+    }
+
     protected abstract void addAdditionalEntityServerSideTick(ServerLevel level);
 
     protected final boolean isUsingAbility() {
@@ -373,6 +383,10 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
         double dz = entity.getZ() - this.getZ();
         double distanceSquared = dx * dx + dz * dz;
         return distanceSquared <= this.woodlinContext.getDoubleOrThrow(WoodlinContext.WOODLIN_ABILITY_USE_RADIUS_SQ);
+    }
+
+    protected final WoodlinInteractableItemsBuilder woodlinInteractableItemsBuilder() {
+        return new WoodlinInteractableItemsBuilder();
     }
 
     /**
@@ -447,15 +461,32 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
         }
     }
 
-    // ================================================[DETRACTED METHODS]================================================
+    /**
+     * @author Mr. GodDavid
+     * @since 11/15/2026
+     */
+    protected static class WoodlinInteractableItemsBuilder {
+        private @Nullable Item tame;
+        private @Nullable Item healing;
+        private @Nullable Item enchantmentToggler;
 
-    @Deprecated
-    protected final boolean isHealing() {
-        return this.isTame() && this.entityData.get(DATA_USING_ABILITY);
-    }
+        public WoodlinInteractableItemsBuilder tame(Item tame) {
+            this.tame = tame;
+            return this;
+        }
 
-    @Deprecated
-    protected final void setHealing(boolean ability) {
-        this.entityData.set(DATA_USING_ABILITY, ability);
+        public WoodlinInteractableItemsBuilder healing(Item healing) {
+            this.healing = healing;
+            return this;
+        }
+
+        public WoodlinInteractableItemsBuilder enchantmentToggler(Item enchantmentToggler) {
+            this.enchantmentToggler = enchantmentToggler;
+            return this;
+        }
+
+        public MtsElementSets.Trio<Item, Item, Item> build() {
+            return new MtsElementSets.Trio<>(tame, healing, enchantmentToggler);
+        }
     }
 }

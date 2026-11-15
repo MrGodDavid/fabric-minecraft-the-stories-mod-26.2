@@ -44,5 +44,7 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
         registryBuilder.add(Registries.CONFIGURED_FEATURE, MtsWorldGenBootstrapper::bootstrapConfiguredFeatures);
         registryBuilder.add(Registries.PLACED_FEATURE, MtsWorldGenBootstrapper::bootstrapPlacedFeatures);
         registryBuilder.add(Registries.DAMAGE_TYPE, MtsDamageTypes::bootstrap);
+
+        // put bootstrap methods of structure, structure_set, and template_pool_sets here.
     }
 }

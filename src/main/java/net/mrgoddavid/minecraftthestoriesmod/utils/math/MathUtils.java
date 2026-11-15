@@ -32,8 +32,15 @@ public final class MathUtils {
 
     public static int hexToColor(String hex) {
         Color color = Color.decode(hex);
-        System.out.println("Color: " + color + "r: " + color.getRed() + " g: " + color.getGreen() + " b: " + color.getBlue());
         return argbToColor(255, color.getRed(), color.getGreen(), color.getBlue());
+    }
+
+    public static int rgbaToArgb(int rgba) {
+        int r = (rgba >> 24) & 0xFF;
+        int g = (rgba >> 16) & 0xFF;
+        int b = (rgba >> 8) & 0xFF;
+        int a = rgba & 0xFF;
+        return argbToColor(a, r, g, b);
     }
 
     public static int argbToColor(int a, int r, int g, int b) {

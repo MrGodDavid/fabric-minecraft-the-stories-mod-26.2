@@ -4,8 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -14,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -26,11 +25,12 @@ import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.WoodlinContext;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -91,7 +91,11 @@ public class OakieEntity extends AbstractWoodlinEntity {
 
     @Override
     protected MtsElementSets.Trio<Item, Item, Item> registerWoodlinInteractableItems() {
-        return new MtsElementSets.Trio<>(Items.OAK_SAPLING, Items.OAK_LEAVES, Items.STICK);
+        return super.woodlinInteractableItemsBuilder()
+                .tame(Items.OAK_SAPLING)
+                .healing(Items.OAK_LEAVES)
+                .enchantmentToggler(Items.STICK)
+                .build();
     }
 
     @Override
@@ -99,6 +103,7 @@ public class OakieEntity extends AbstractWoodlinEntity {
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidFireBlockGoal(this, this::isFireblocks));
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidCampFiresGoal(this, this::isCampfires));
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidLavaGoal(this, this::isLava));
+        this.goalSelector.addGoal(3, new OakieEntity.OakieCurseAttackerGoal());
         this.goalSelector.addGoal(3, new OakieEntity.OakieHealOwnerGoal(MIN_NOTICE_NEEDS_HEALING_DISTANCE, MAX_NOTICE_NEEDS_HEALING_DISTANCE));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new OakieEntity.OakieGrowCropsGoal());
@@ -248,6 +253,78 @@ public class OakieEntity extends AbstractWoodlinEntity {
 
         public OakieAvoidLavaGoal(PathfinderMob mob, Predicate<BlockState> blockSelector) {
             super(mob, blockSelector, 24, 1.075, 1.75, 12);
+        }
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 11/13/2026
+     */
+    private class OakieCurseAttackerGoal extends Goal {
+
+        private final Timer coolDownTimer = new Timer(60);
+
+        private @Nullable LivingEntity attacker;
+
+        @Override
+        public void start() {
+            OakieEntity.this.setAlerting(true);
+            this.applyCurse();
+            this.coolDownTimer.reset();
+        }
+
+        @Override
+        public void stop() {
+            OakieEntity.this.setAlerting(false);
+            this.attacker = null;
+            this.coolDownTimer.reset();
+        }
+
+        @Override
+        public void tick() {
+            if (this.coolDownTimer.pass(() -> true)) {
+                this.applyCurse();
+                this.coolDownTimer.reset();
+            }
+        }
+
+        private void applyCurse() {
+            if (this.attacker == null) return;
+            int amplifier = (this.attacker instanceof Player) ? 1 : 0;
+            this.attacker.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 300, amplifier, false, true, true));
+        }
+
+        @Override
+        public boolean canUse() {
+            LivingEntity lastAttacker = OakieEntity.this.getLastHurtByMob();
+            if (lastAttacker == null) return false;
+            if (this.isOwnedByPlayers() || !this.isValidAttacker(lastAttacker) || !this.attackerHasEnoughHealth(lastAttacker)) {
+                return false;
+            }
+            this.attacker = lastAttacker;
+            return true;
+        }
+
+        private boolean attackerHasEnoughHealth(LivingEntity attacker) {
+            return attacker.getHealth() >= attacker.getMaxHealth() * 0.3F;
+        }
+
+        private boolean isValidAttacker(LivingEntity attacker) {
+            if (attacker == null || !attacker.isAlive()) return false;
+            if (attacker.level() != OakieEntity.this.level()) return false;
+            if (attacker instanceof Player arrogentPlayer) {
+                return !arrogentPlayer.isSpectator() && !arrogentPlayer.isCreative();
+            }
+            return true;
+        }
+
+        private boolean isOwnedByPlayers() {
+            return OakieEntity.this.getOwner() != null;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return !this.isOwnedByPlayers() && this.isValidAttacker(this.attacker) && this.attackerHasEnoughHealth(this.attacker);
         }
     }
 

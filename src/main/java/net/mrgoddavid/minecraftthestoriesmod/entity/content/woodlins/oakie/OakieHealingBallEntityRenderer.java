@@ -3,8 +3,8 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTextures;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityModelLayers;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTextures;
 
 /**
  * @author Mr. GodDavid

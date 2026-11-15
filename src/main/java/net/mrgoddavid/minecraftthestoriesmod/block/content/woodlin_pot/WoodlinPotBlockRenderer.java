@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 

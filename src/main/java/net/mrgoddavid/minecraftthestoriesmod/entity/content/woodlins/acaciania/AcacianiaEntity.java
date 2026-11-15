@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -16,11 +17,16 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.WoodlinContext;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
+
+import java.util.function.Predicate;
 
 /**
  * <p>Acaciania is the spirit of the Wild Acacia. Born as the representative of the endless wildness, Acaciania
@@ -72,7 +78,12 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
      */
     @Override
     protected void registerBehavioralGoals() {
+        this.goalSelector.addGoal(2, new AcacianiaAvoidSoulBlocksGoal(this, this::selectSoulBlocks));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+    }
+
+    private boolean selectSoulBlocks(BlockState blockState) {
+        return blockState.is(Blocks.SOUL_SAND) || blockState.is(Blocks.SOUL_SOIL);
     }
 
     @Override
@@ -91,7 +102,7 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
     protected void handleAbilityUsageAnimation(EntityDataAccessor<?> accessor) {
         if (DATA_USING_ABILITY.equals(accessor)) {
             if (this.level().isClientSide()) {
-                this.updateHydrateAnimationState();
+                super.updateAbilityUsageAnimationHelper(this.hydrateAnimationState);
             }
         }
     }
@@ -121,20 +132,21 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
 
     @Override
     protected void additionalEntityClientSideTick() {
-        this.updateHydrateAnimationState();
-    }
-
-    private void updateHydrateAnimationState() {
-        if (this.isUsingAbility()) {
-            this.hydrateAnimationState.startIfStopped(tickCount);
-        } else {
-            this.hydrateAnimationState.stop();
-        }
+        super.updateAbilityUsageAnimationHelper(this.hydrateAnimationState);
     }
 
     @Override
     protected void addAdditionalEntityServerSideTick(ServerLevel level) {
     }
 
+    /**
+     * @author Mr. GodDavid
+     * @since 11/13/2026
+     */
+    private static class AcacianiaAvoidSoulBlocksGoal extends AvoidBlockGoal {
 
+        public AcacianiaAvoidSoulBlocksGoal(PathfinderMob mob, Predicate<BlockState> blockSelector) {
+            super(mob, blockSelector, 15, 1.02, 1.525, 12);
+        }
+    }
 }

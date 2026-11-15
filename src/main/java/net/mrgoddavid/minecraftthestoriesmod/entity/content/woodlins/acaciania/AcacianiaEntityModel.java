@@ -9,10 +9,11 @@ import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoo
 import org.jspecify.annotations.NonNull;
 
 /**
- * @author Mr. GodDavid
+ * @author Mr. GodDavid fixed this file.
+ * @author Blockbench 5.2.2 generated this file.
  * @since 11/6/2026
  */
-@SuppressWarnings({"FieldCanBeLocal", "unused"})
+@SuppressWarnings({"FieldCanBeLocal", "unused", "SpellCheckingInspection"})
 public class AcacianiaEntityModel extends AbstractWoodlinEntityModel<AcacianiaEntityRenderState> {
 
     private final ModelPart body;
@@ -27,7 +28,7 @@ public class AcacianiaEntityModel extends AbstractWoodlinEntityModel<AcacianiaEn
     private final ModelPart right_leg;
 
     public AcacianiaEntityModel(ModelPart root) {
-        super(root, RenderTypes::entityTranslucent);
+        super(root);
         this.body = this.root.getChild("body");
         this.left_arm = this.body.getChild("left_arm");
         this.potion_left = this.left_arm.getChild("potion_left");

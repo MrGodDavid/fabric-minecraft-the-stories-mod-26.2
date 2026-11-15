@@ -11,9 +11,10 @@ import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
+ * @author Blockbench
  * @since 10/16/2026
  */
-@SuppressWarnings({"FieldCanBeLocal", "unused"})
+@SuppressWarnings({"FieldCanBeLocal", "unused", "SpellCheckingInspection"})
 public class OakieEntityModel extends AbstractWoodlinEntityModel<OakieEntityRenderState> {
 
     private final ModelPart body;

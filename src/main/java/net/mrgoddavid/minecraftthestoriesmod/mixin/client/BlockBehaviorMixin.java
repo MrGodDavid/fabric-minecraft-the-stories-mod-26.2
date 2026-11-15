@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.HayBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.target_dummy.TargetDummyEntity;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

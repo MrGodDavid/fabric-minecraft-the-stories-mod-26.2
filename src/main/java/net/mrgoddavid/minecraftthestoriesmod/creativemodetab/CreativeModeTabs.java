@@ -204,8 +204,15 @@ public class CreativeModeTabs {
 
                         output.accept(BROWN_BEAR_SPAWN_EGG);
                         output.accept(ACACIANIA_SPAWN_EGG);
+                        output.accept(BIRCHIA_SPAWN_EGG);
+                        output.accept(CHERRINIA_SPAWN_EGG);
+                        output.accept(DENSE_OAKIE_SPAWN_EGG);
+                        output.accept(JUNMI_SPAWN_EGG);
+                        output.accept(MANGROLINO_SPAWN_EGG);
                         output.accept(OAKIE_SPAWN_EGG);
                         output.accept(OAKIE_HEALING_BALL_SPAWN_EGG);
+                        output.accept(LIGHT_OAKIE_SPAWN_EGG);
+                        output.accept(SPRUCIA_SPAWN_EGG);
                     })
                     .build()
     );

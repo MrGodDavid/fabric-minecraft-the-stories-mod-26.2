@@ -6,13 +6,11 @@ import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
 /**
- * Made with Blockbench 5.2.2
- * Exported for Minecraft version 1.19 or later with Mojang mappings
- *
- * @author Blockbench.
- * @author Mr. GodDavid
+ * @author Mr. GodDavid fixed this file.
+ * @author Blockbench 5.2.2 generated this file.
  * @since 11/6/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class AcacianiaEntityAnimations {
 
     public static final AnimationDefinition WALK = AnimationDefinition.Builder.withLength(1.0F).looping()

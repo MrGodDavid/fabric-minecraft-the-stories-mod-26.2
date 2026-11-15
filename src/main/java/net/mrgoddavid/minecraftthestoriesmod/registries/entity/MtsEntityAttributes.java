@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.registries;
+package net.mrgoddavid.minecraftthestoriesmod.registries.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.world.entity.EntityType;

@@ -21,7 +21,7 @@ import net.mrgoddavid.minecraftthestoriesmod.item.content.HydratableItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.AnimationTestItem;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.StoryBookItem;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityTypes;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -319,15 +319,15 @@ public final class MtsItems {
     // #################################################################################################################
     public static final Item BROWN_BEAR_SPAWN_EGG = registerItem("brown_bear_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.BROWN_BEAR)));
     public static final Item ACACIANIA_SPAWN_EGG = registerItem("acaciania_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.ACACIANIA).rarity(Rarity.EPIC)));
-    public static final Item BIRCHIA_SPAWN_EGG = registerItem("birchia_spawn_egg", properties -> new SpawnEggItem(properties.rarity(Rarity.EPIC)));
-    public static final Item CHERRINIA_SPAWN_EGG = registerItem("cherrinia_spawn_egg", Item::new);
-    public static final Item DARK_OAKIE_SPAWN_EGG = registerItem("dark_oakie_spawn_egg", Item::new);
-    public static final Item JUNMI_SPAWN_EGG = registerItem("juni_spawn_egg", Item::new);
-    public static final Item MANGROLINO_SPAWN_EGG = registerItem("mangrolino_spawn_egg", Item::new);
+    public static final Item BIRCHIA_SPAWN_EGG = registerItem("birchia_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.BIRCHIA).rarity(Rarity.EPIC)));
+    public static final Item CHERRINIA_SPAWN_EGG = registerItem("cherrinia_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.CHERRINIA).rarity(Rarity.EPIC)));
+    public static final Item DENSE_OAKIE_SPAWN_EGG = registerItem("dense_oakie_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.DENSE_OAKIE).rarity(Rarity.EPIC)));
+    public static final Item JUNMI_SPAWN_EGG = registerItem("junmi_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.JUNMI).rarity(Rarity.EPIC)));
+    public static final Item MANGROLINO_SPAWN_EGG = registerItem("mangrolino_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.MANGROLINO).rarity(Rarity.EPIC)));
     public static final Item OAKIE_SPAWN_EGG = registerItem("oakie_spawn_egg", properties ->  new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE).rarity(Rarity.EPIC)));
     public static final Item OAKIE_HEALING_BALL_SPAWN_EGG = registerItem("oakie_healing_ball_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.OAKIE_HEALING_BALL).rarity(Rarity.EPIC)));
-    public static final Item LIGHT_OAKIE_SPAWN_EGG = registerItem("light_oakie_spawn_egg", Item::new);
-    public static final Item SPRUCIA_SPAWN_EGG = registerItem("spruce_spawn_egg", Item::new);
+    public static final Item LIGHT_OAKIE_SPAWN_EGG = registerItem("light_oakie_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.LIGHT_OAKIE).rarity(Rarity.EPIC)));
+    public static final Item SPRUCIA_SPAWN_EGG = registerItem("sprucia_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(MtsEntityTypes.SPRUCIA).rarity(Rarity.EPIC)));
 
     /**
      * Gets the resource key of the mod item.
@@ -612,8 +612,15 @@ public final class MtsItems {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(fabricCreativeModeTabOutput -> {
             fabricCreativeModeTabOutput.accept(BROWN_BEAR_SPAWN_EGG);
             fabricCreativeModeTabOutput.accept(ACACIANIA_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(BIRCHIA_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(CHERRINIA_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(DENSE_OAKIE_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(JUNMI_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(MANGROLINO_SPAWN_EGG);
             fabricCreativeModeTabOutput.accept(OAKIE_SPAWN_EGG);
             fabricCreativeModeTabOutput.accept(OAKIE_HEALING_BALL_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(LIGHT_OAKIE_SPAWN_EGG);
+            fabricCreativeModeTabOutput.accept(SPRUCIA_SPAWN_EGG);
         });
     }
 

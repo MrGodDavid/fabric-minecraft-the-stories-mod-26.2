@@ -1,14 +1,14 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 import org.jspecify.annotations.Nullable;
 
-import java.util.Comparator;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -40,16 +40,21 @@ public class FollowSpecificMobGoal<T extends LivingEntity> extends Goal {
         this.stopDistance = stopDistance;
         this.followMobPredicate = followMobPredicate;
         this.navigation = this.mob.getNavigation();
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE,  Goal.Flag.LOOK));
+        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
     }
 
     @Override
     public boolean canUse() {
-        List<T> mobs = this.mob.level().getEntitiesOfClass(
-                this.followClass, this.mob.getBoundingBox().inflate(this.followRange),
-                target -> this.followMobPredicate.test(target) && target.isAlive() && !target.isInvisible() && target != this.mob);
-        this.followMob = mobs.stream().min(Comparator.comparingDouble(this.mob::distanceToSqr)).orElse(null);
+        if (!this.mob.level().isClientSide()) {
+            ServerLevel mobServerLevel = (ServerLevel) this.mob.level();
+            EntityUtils.getNearestLivingEntity(mobServerLevel, this.mob, this.followClass, this::targetPredicate, this.followRange)
+                    .ifPresent(result -> this.followMob = result);
+        }
         return this.followMob != null;
+    }
+
+    private boolean targetPredicate(T target) {
+        return this.followMobPredicate.test(target) && target.isAlive() && !target.isInvisible() && target != this.mob;
     }
 
     @Override

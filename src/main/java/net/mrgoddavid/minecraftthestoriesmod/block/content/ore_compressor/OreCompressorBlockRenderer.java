@@ -2,7 +2,6 @@ package net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -12,7 +11,7 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
-import net.mrgoddavid.minecraftthestoriesmod.registries.MtsEntityModelLayers;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.Nullable;
 

@@ -5,8 +5,11 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 
 import java.util.List;
 
@@ -32,9 +35,11 @@ public class LeechOfOakieEffect extends MobEffect {
         List<LivingEntity> enemies = serverLevel.getEntitiesOfClass(LivingEntity.class, spreadRegion);
         for (LivingEntity enemy : enemies) {
             if (enemy instanceof Mob mob) {
-                // 5% change to spread across all surrounding enemies.
-                if (serverLevel.getRandom().nextInt(20) == 0) {
-                    mob.hurtServer(serverLevel, MtsDamageTypes.create(serverLevel, MtsDamageTypes.LEECH_OF_OAKIE), 0.25f * (amplification + 1));
+                if (!(mob instanceof AbstractWoodlinEntity)) {
+                    // 5% change to spread across all surrounding enemies.
+                    if (serverLevel.getRandom().nextInt(20) == 0) {
+                        mob.hurtServer(serverLevel, MtsDamageTypes.create(serverLevel, MtsDamageTypes.LEECH_OF_OAKIE), 0.25f * (amplification + 1));
+                    }
                 }
             }
         }

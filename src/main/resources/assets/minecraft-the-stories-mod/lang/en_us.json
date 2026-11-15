@@ -24,8 +24,16 @@
   "item.minecraft-the-stories-mod.public_enemy": "Public Enemy Icon",
 
   "item.minecraft-the-stories-mod.brown_bear_spawn_egg": "Brown Bear Spawn Egg",
+  "item.minecraft-the-stories-mod.acaciania_spawn_egg": "Acaciania Spawn Egg",
+  "item.minecraft-the-stories-mod.birchia_spawn_egg": "Birchia Spawn Egg",
+  "item.minecraft-the-stories-mod.cherrinia_spawn_egg": "Cherrinia Spawn Egg",
+  "item.minecraft-the-stories-mod.dense_oakie_spawn_egg": "Dense Oakie Spawn Egg",
+  "item.minecraft-the-stories-mod.junmi_spawn_egg": "Junmi Spawn Egg",
+  "item.minecraft-the-stories-mod.mangrolino_spawn_egg": "Mangrolino Spawn Egg",
   "item.minecraft-the-stories-mod.oakie_spawn_egg": "Oakie Spawn Egg",
   "item.minecraft-the-stories-mod.oakie_healing_ball_spawn_egg": "Oakie's Healing Ball Spawn Egg",
+  "item.minecraft-the-stories-mod.light_oakie_spawn_egg": "Light Oakie Spawn Egg",
+  "item.minecraft-the-stories-mod.sprucia_spawn_egg": "Sprucia Spawn Egg",
 
   "item.minecraft-the-stories-mod.strong_amethyst_axe": "Strong Amethyst Axe",
   "item.minecraft-the-stories-mod.strong_amethyst_hoe": "Strong Amethyst Hoe",
@@ -277,7 +285,7 @@
   "effect.minecraft-the-stories-mod.leech_of_oakie": "Leech Of Oakie",
   "effect.minecraft-the-stories-mod.leech_of_oakie.description": "How could you do such things to the cute Oakies? HOW COULD YOU?",
   "effect.minecraft-the-stories-mod.energetic": "Energetic",
-  "effect.minecraft-the-stories-mod.energetic.description": "You are so energetic that you wouldn't consume food saturation and thirst exhaustion anymore!",
+  "effect.minecraft-the-stories-mod.energetic.description": "You are so energetic that you wouldn't consume food saturation and thirst exhaustion anymore! It also speeds up the pace of digesting all negative effects!",
 
   "advancements.minecraft-the-stories-mod.root.title": "Minecraft: The Stories",
   "advancements.minecraft-the-stories-mod.root.description": "How fast can you get a wooden pickaxe now?",

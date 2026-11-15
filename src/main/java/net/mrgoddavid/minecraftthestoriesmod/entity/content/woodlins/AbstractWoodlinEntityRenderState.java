@@ -2,6 +2,7 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins;
 
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
+import net.mrgoddavid.minecraftthestoriesmod.entity.AbstractMtsEntityRenderState;
 
 import java.util.UUID;
 
@@ -9,9 +10,9 @@ import java.util.UUID;
  * @author Mr. GodDavid
  * @since 11/5/2026
  */
-public class AbstractWoodlinEntityRenderState extends LivingEntityRenderState {
+@SuppressWarnings("SpellCheckingInspection")
+public abstract class AbstractWoodlinEntityRenderState extends AbstractMtsEntityRenderState {
 
-    public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState enchantingAnimationState = new AnimationState();
     public final AnimationState disenchantingAnimationState = new AnimationState();
     public final AnimationState tameAnimationState = new AnimationState();

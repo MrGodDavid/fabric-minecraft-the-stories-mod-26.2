@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft-the-stories-mod:item/light_oakie_spawn_egg"
+  }
+}
