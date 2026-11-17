@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/wooden_cuties",
+  "criteria": {
+    "greeting_tamed_mangrolino": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:mangrolino"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_mangrolino.description"
+    },
+    "icon": {
+      "id": "minecraft:mangrove_propagule"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_mangrolino.title"
+    }
+  },
+  "requirements": [
+    [
+      "greeting_tamed_mangrolino"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

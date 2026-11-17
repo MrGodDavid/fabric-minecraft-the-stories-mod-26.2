@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/wooden_cuties",
+  "criteria": {
+    "greeting_tamed_birchia": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:birchia"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_birchia.description"
+    },
+    "icon": {
+      "id": "minecraft:birch_sapling"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_birchia.title"
+    }
+  },
+  "requirements": [
+    [
+      "greeting_tamed_birchia"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

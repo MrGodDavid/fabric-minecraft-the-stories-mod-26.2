@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityReference;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
@@ -41,7 +42,7 @@ public class TameWoodlinsTrigger extends SimpleCriterionTrigger<TameWoodlinsTrig
         ).apply(instance, TriggerInstance::new));
 
         public boolean matches(ServerPlayer player, LivingEntity woodlins) {
-            if (!(woodlins instanceof TamableAnimal woodlin)) return false;
+            if (!(woodlins instanceof AbstractWoodlinEntity woodlin)) return false;
             EntityReference<LivingEntity> ownerRef = woodlin.getOwnerReference();
             if (ownerRef == null) return false;
             return ownerRef.matches(player);

@@ -34,6 +34,11 @@ import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstEvents;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.MtsWorldGen;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.structure.MtsStructureKeys;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.structure.MtsStructureSetKeys;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.structure.MtsTemplatePoolKeys;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.MtsFoliagePlacerTypes;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.MtsTrunkPlacerTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,6 +80,12 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsParticles.register();
         MtsFluids.register();
         MtsEntityFluidInteractions.register();
+        MtsWorldGen.register();
+        MtsTrunkPlacerTypes.register();
+        MtsFoliagePlacerTypes.register();
+        MtsStructureKeys.register();
+        MtsStructureSetKeys.register();
+        MtsTemplatePoolKeys.register();
 
         CreativeModeTabs.register();
         MtsItemModelTemplates.register();
@@ -84,7 +95,6 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsBlocks.register();
         MtsBlockEntities.register();
         MtsAdvancementTriggers.register();
-        MtsWorldGen.register();
         MtsSounds.register();
         MtsDamageTypes.register();
         MtsEffects.register();

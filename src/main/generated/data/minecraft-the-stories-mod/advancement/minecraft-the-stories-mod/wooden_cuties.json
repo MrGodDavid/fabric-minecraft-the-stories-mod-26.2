@@ -1,0 +1,157 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/time_for_lumberjacking",
+  "criteria": {
+    "wooden_cuties_tamed_acaciania": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:acaciania"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_birchia": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:birchia"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_cherrinia": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:cherrinia"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_dense_oakie": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:dense_oakie"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_junmi": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:junmi"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_light_oakie": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:light_oakie"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_mangrolino": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:mangrolino"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_oakie": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:oakie"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    },
+    "wooden_cuties_tamed_sprucia": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:sprucia"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.wooden_cuties.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:oakie_healing_ball_spawn_egg"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.wooden_cuties.title"
+    }
+  },
+  "requirements": [
+    [
+      "wooden_cuties_tamed_acaciania",
+      "wooden_cuties_tamed_birchia",
+      "wooden_cuties_tamed_cherrinia",
+      "wooden_cuties_tamed_dense_oakie",
+      "wooden_cuties_tamed_junmi",
+      "wooden_cuties_tamed_mangrolino",
+      "wooden_cuties_tamed_oakie",
+      "wooden_cuties_tamed_light_oakie",
+      "wooden_cuties_tamed_sprucia"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

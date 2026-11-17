@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 public final class MtsTreeGrowers {
 
-    public static final TreeGrower LEMON_TREE = registerNoMegaTreeNoFlowersNearBy("balsa", MtsWorldGen.LEMON_TREE);
+    public static final TreeGrower LEMON_TREE = registerNoMegaTreeNoFlowersNearBy("lemon_tree", MtsWorldGen.LEMON_TREE);
 
     private static TreeGrower registerNoMegaTreeNoFlowersNearBy(String name, ResourceKey<ConfiguredFeature<?, ?>> feature) {
         return new TreeGrower(concatPathString(name), Optional.empty(), Optional.of(feature), Optional.empty());

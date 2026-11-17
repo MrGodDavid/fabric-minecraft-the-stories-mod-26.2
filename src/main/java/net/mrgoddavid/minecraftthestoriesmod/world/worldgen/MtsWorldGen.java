@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -19,7 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  * @author Mr. GodDavid
  * @since 8/18/2026
  */
-public class MtsWorldGen {
+public final class MtsWorldGen {
 
     // ==================================================================================================================
     //                                                CONFIGURED FEATURES
@@ -77,10 +78,11 @@ public class MtsWorldGen {
 
         BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.STRONG_AMETHYST_END_ORE_PLACED);
 
-
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.PLAINS, Biomes.FOREST, Biomes.FLOWER_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, LEMON_TREE_PLACED);
     }
 
-    private MtsWorldGen() throws IllegalAccessException {
+    private MtsWorldGen() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

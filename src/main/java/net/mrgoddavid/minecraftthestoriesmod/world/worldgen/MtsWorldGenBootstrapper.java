@@ -15,15 +15,15 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.ancient_oak_tree.SimpleLeaveBallFoliagePlacer;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.ancient_oak_tree.AncientOakTreeTrunkPlacer;
 
 import java.util.List;
 
@@ -81,15 +81,16 @@ public final class MtsWorldGenBootstrapper {
         context.register(MtsWorldGen.LEMON_TREE, new ConfiguredFeature<>(
                 Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LOG),
-                new BendingTrunkPlacer(3, 3, 4, 2, ConstantInt.of(5)),
+//                new BendingTrunkPlacer(3, 3, 4, 2, ConstantInt.of(5)),
+                new AncientOakTreeTrunkPlacer(30, 3, 4),
 
                 BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LEAVES),
-                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
+//                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
+                new SimpleLeaveBallFoliagePlacer(ConstantInt.of(1), ConstantInt.of(1), 6),
                 new TwoLayersFeatureSize(1, 0, 2),
 
                 BlockStateProvider.simple(Blocks.DIRT)
         ).build()));
-
     }
 
     public static void bootstrapPlacedFeatures(BootstrapContext<PlacedFeature> context) {
@@ -176,7 +177,7 @@ public final class MtsWorldGenBootstrapper {
         ));
     }
 
-    private MtsWorldGenBootstrapper() throws IllegalAccessException {
+    private MtsWorldGenBootstrapper() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 }

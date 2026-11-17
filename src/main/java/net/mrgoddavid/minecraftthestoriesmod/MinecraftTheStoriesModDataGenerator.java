@@ -8,6 +8,9 @@ import net.mrgoddavid.minecraftthestoriesmod.datagen.*;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.MtsWorldGenBootstrapper;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsWorldGenProvider;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.structure.MtsStructureSets;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.structure.MtsStructures;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.structure.MtsTemplatePools;
 
 /**
  * Generates all JSON files for mod that can be used in vanilla Minecraft.
@@ -35,6 +38,7 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
         pack.addProvider(MtsBlockLootTableProvider::new);
         pack.addProvider(MtsAdvancementsProvider::new);
         pack.addProvider(MtsWorldGenProvider::new);
+        pack.addProvider(MtsBiomeTagKeysProvider::new);
         pack.addProvider(MtsSoundsProvider::new);
     }
 
@@ -44,6 +48,9 @@ public class MinecraftTheStoriesModDataGenerator implements DataGeneratorEntrypo
         registryBuilder.add(Registries.CONFIGURED_FEATURE, MtsWorldGenBootstrapper::bootstrapConfiguredFeatures);
         registryBuilder.add(Registries.PLACED_FEATURE, MtsWorldGenBootstrapper::bootstrapPlacedFeatures);
         registryBuilder.add(Registries.DAMAGE_TYPE, MtsDamageTypes::bootstrap);
+        registryBuilder.add(Registries.STRUCTURE, MtsStructures::bootstrap);
+        registryBuilder.add(Registries.STRUCTURE_SET, MtsStructureSets::boostrap);
+        registryBuilder.add(Registries.TEMPLATE_POOL, MtsTemplatePools::bootstrap);
 
         // put bootstrap methods of structure, structure_set, and template_pool_sets here.
     }

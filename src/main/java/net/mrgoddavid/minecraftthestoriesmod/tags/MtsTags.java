@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
@@ -16,6 +17,25 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
  */
 public final class MtsTags {
 
+    /**
+     * @author Mr. GodDavid
+     * @since 11/17/2026
+     */
+    public static class Biomes {
+
+        public static final TagKey<Biome> HAS_ABANDONED_HAY_WAGON = createBiomeKey("has_abandoned_hay_wagon");
+
+        private static TagKey<Biome> createBiomeKey(String name) {
+            return TagKey.create(Registries.BIOME, Constants.modId(name));
+        }
+    }
+
+    /**
+     * Entity tags for MTS mod.
+     *
+     * @author Mr. GodDavid
+     * @since unknown date in September (if I remember correctly) in 2026.
+     */
     public static class Entities {
 
         public static final TagKey<Item> AGRO_BROWN_BEAR_ITEMS = createEntityItemTag("agro_brown_bear_items");

@@ -216,6 +216,11 @@ public final class Directory {
             return this;
         }
 
+        public Builder structure() {
+            this.directory = this.directory.concat(FILES.STRUCTURE.getName());
+            return this;
+        }
+
         public Directory build() {
             return new Directory(this);
         }
@@ -261,7 +266,8 @@ public final class Directory {
         SOUNDS,
         OAKIE,
         ACACIANIA,
-        SKELETON_KING;
+        SKELETON_KING,
+        STRUCTURE;
 
         String getName() {
             return ((this == MINECRAFT_THE_STORIES_MOD) ? "minecraft-the-stories-mod" : this.name().toLowerCase()).concat("/");

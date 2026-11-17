@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 137421,
+    "separation": 8,
+    "spacing": 32
+  },
+  "structures": [
+    {
+      "structure": "minecraft-the-stories-mod:abandoned_hay_wagon",
+      "weight": 1
+    }
+  ]
+}

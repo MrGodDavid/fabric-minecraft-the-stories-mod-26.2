@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/wooden_cuties",
+  "criteria": {
+    "greeting_tamed_junmi": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:junmi"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_junmi.description"
+    },
+    "icon": {
+      "id": "minecraft:jungle_sapling"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_junmi.title"
+    }
+  },
+  "requirements": [
+    [
+      "greeting_tamed_junmi"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

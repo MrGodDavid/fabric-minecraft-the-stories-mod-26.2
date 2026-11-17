@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/wooden_cuties",
+  "criteria": {
+    "greeting_tamed_oakie": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft-the-stories-mod:oakie"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:tame_animal"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_oakie.description"
+    },
+    "icon": {
+      "id": "minecraft:oak_sapling"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.hi_oakie.title"
+    }
+  },
+  "requirements": [
+    [
+      "greeting_tamed_oakie"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

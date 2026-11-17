@@ -6,8 +6,10 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.advancements.predicates.MinMaxBounds;
+import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.advancements.triggers.Criterion;
 import net.minecraft.advancements.triggers.InventoryChangeTrigger;
+import net.minecraft.advancements.triggers.TameAnimalTrigger;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
@@ -16,6 +18,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -25,8 +28,12 @@ import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.*;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTypes;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,15 +50,21 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
 
     public MtsAdvancementsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, List.of(new MtsOverworldAdvancements()));
-        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Advancements for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Custom Advancements");
     }
 
+    /**
+     * @author Mr. GodDavid
+     * @since 8/25/2026
+     */
+    @SuppressWarnings("SpellCheckingInspection")
     public static class MtsOverworldAdvancements implements AdvancementSubProvider {
 
         @Override
-        public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> output) {
-            var items = registries.lookupOrThrow(Registries.ITEM);
-            var blocks = registries.lookupOrThrow(Registries.BLOCK);
+        public void generate(HolderLookup.Provider registries, @NonNull Consumer<AdvancementHolder> output) {
+            HolderGetter<Item> items = registries.lookupOrThrow(Registries.ITEM);
+            HolderGetter<Block> blocks = registries.lookupOrThrow(Registries.BLOCK);
+            HolderGetter<EntityType<?>> entities = registries.lookupOrThrow(Registries.ENTITY_TYPE);
 
             AdvancementHolder root = Advancement.Builder.advancement()
                     .display(
@@ -686,6 +699,185 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     .addCriterion("bath_in_enricher_waste_while_being_enchanted_by_an_oakie", hasBathedInEnricherWasteWhileBeingEnchantedByOakies())
                     .save(output, generateSaveName("i_am_a_genius"));
 
+            // tame any woodlins.
+            AdvancementHolder woodenCuties = Advancement.Builder.advancement()
+                    .parent(timeForLumberjacking)
+                    .display(
+                            MtsItems.OAKIE_HEALING_BALL_SPAWN_EGG,
+                            Component.translatable("advancements.minecraft-the-stories-mod.wooden_cuties.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.wooden_cuties.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.OR)
+                    .addCriterion("wooden_cuties_tamed_acaciania", hasTamedWoodlin(entities, MtsEntityTypes.ACACIANIA))
+                    .addCriterion("wooden_cuties_tamed_birchia", hasTamedWoodlin(entities, MtsEntityTypes.BIRCHIA))
+                    .addCriterion("wooden_cuties_tamed_cherrinia", hasTamedWoodlin(entities, MtsEntityTypes.CHERRINIA))
+                    .addCriterion("wooden_cuties_tamed_dense_oakie", hasTamedWoodlin(entities, MtsEntityTypes.DENSE_OAKIE))
+                    .addCriterion("wooden_cuties_tamed_junmi", hasTamedWoodlin(entities, MtsEntityTypes.JUNMI))
+                    .addCriterion("wooden_cuties_tamed_mangrolino", hasTamedWoodlin(entities, MtsEntityTypes.MANGROLINO))
+                    .addCriterion("wooden_cuties_tamed_oakie", hasTamedWoodlin(entities, MtsEntityTypes.OAKIE))
+                    .addCriterion("wooden_cuties_tamed_light_oakie", hasTamedWoodlin(entities, MtsEntityTypes.LIGHT_OAKIE))
+                    .addCriterion("wooden_cuties_tamed_sprucia", hasTamedWoodlin(entities, MtsEntityTypes.SPRUCIA))
+                    .save(output, generateSaveName("wooden_cuties"));
+
+            // tame all woodlins.
+            AdvancementHolder wutangua = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            MtsItems.OAKIE_HEALING_BALL_SPAWN_EGG,
+                            Component.translatable("advancements.minecraft-the-stories-mod.wutangua.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.wutangua.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .requirements(AdvancementRequirements.Strategy.AND)
+                    .addCriterion("wutangua_tamed_acaciania", hasTamedWoodlin(entities, MtsEntityTypes.ACACIANIA))
+                    .addCriterion("wutangua_tamed_birchia", hasTamedWoodlin(entities, MtsEntityTypes.BIRCHIA))
+                    .addCriterion("wutangua_tamed_cherrinia", hasTamedWoodlin(entities, MtsEntityTypes.CHERRINIA))
+                    .addCriterion("wutangua_tamed_dense_oakie", hasTamedWoodlin(entities, MtsEntityTypes.DENSE_OAKIE))
+                    .addCriterion("wutangua_tamed_junmi", hasTamedWoodlin(entities, MtsEntityTypes.JUNMI))
+                    .addCriterion("wutangua_tamed_mangrolino", hasTamedWoodlin(entities, MtsEntityTypes.MANGROLINO))
+                    .addCriterion("wutangua_tamed_oakie", hasTamedWoodlin(entities, MtsEntityTypes.OAKIE))
+                    .addCriterion("wutangua_tamed_light_oakie", hasTamedWoodlin(entities, MtsEntityTypes.LIGHT_OAKIE))
+                    .addCriterion("wutangua_tamed_sprucia", hasTamedWoodlin(entities, MtsEntityTypes.SPRUCIA))
+                    .save(output, generateSaveName("wutangua"));
+
+            // tame an acaciania
+            AdvancementHolder hiAcaciania = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.ACACIA_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_acaciania.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_acaciania.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_acaciania", hasTamedWoodlin(entities, MtsEntityTypes.ACACIANIA))
+                    .save(output, generateSaveName("hi_acaciania"));
+
+            // tame a birchia
+            AdvancementHolder hiBirchia = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.BIRCH_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_birchia.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_birchia.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_birchia", hasTamedWoodlin(entities, MtsEntityTypes.BIRCHIA))
+                    .save(output, generateSaveName("hi_birchia"));
+
+            // tame a cherrinia
+            AdvancementHolder hiCherrinia = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.CHERRY_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_cherrinia.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_cherrinia.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_cherrinia", hasTamedWoodlin(entities, MtsEntityTypes.CHERRINIA))
+                    .save(output, generateSaveName("hi_cherrinia"));
+
+            // tame a dense oakie
+            AdvancementHolder hiDenseOakie = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.DARK_OAK_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_dense_oakie.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_dense_oakie.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_dense_oakie", hasTamedWoodlin(entities, MtsEntityTypes.DENSE_OAKIE))
+                    .save(output, generateSaveName("hi_dense_oakie"));
+
+            // tame a junmi
+            AdvancementHolder hiJunmi = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.JUNGLE_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_junmi.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_junmi.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_junmi", hasTamedWoodlin(entities, MtsEntityTypes.JUNMI))
+                    .save(output, generateSaveName("hi_junmi"));
+
+            // tame a mangrolino
+            AdvancementHolder hiMangrolino = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.MANGROVE_PROPAGULE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_mangrolino.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_mangrolino.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_mangrolino", hasTamedWoodlin(entities, MtsEntityTypes.MANGROLINO))
+                    .save(output, generateSaveName("hi_mangrolino"));
+
+            // tame an oakie
+            AdvancementHolder hiOakie = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.OAK_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_oakie.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_oakie.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_oakie", hasTamedWoodlin(entities, MtsEntityTypes.OAKIE))
+                    .save(output, generateSaveName("hi_oakie"));
+
+            // tame a light oakie
+            AdvancementHolder hiLightOakie = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.PALE_OAK_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_light_oakie.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_light_oakie.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_light_oakie", hasTamedWoodlin(entities, MtsEntityTypes.LIGHT_OAKIE))
+                    .save(output, generateSaveName("hi_light_oakie"));
+
+            // tame a sprucia
+            AdvancementHolder hiSprucia = Advancement.Builder.advancement()
+                    .parent(woodenCuties)
+                    .display(
+                            Items.SPRUCE_SAPLING,
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_sprucia.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.hi_sprucia.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("greeting_tamed_sprucia", hasTamedWoodlin(entities, MtsEntityTypes.SPRUCIA))
+                    .save(output, generateSaveName("hi_sprucia"));
+        }
+
+        private Criterion<?> hasTamedAnimal(HolderGetter<EntityType<?>> entities, EntityType<?> animal) {
+            return TameAnimalTrigger.TriggerInstance.tamedAnimal(EntityPredicate.Builder.entity().of(entities, animal));
+        }
+
+        private <T extends AbstractWoodlinEntity> Criterion<?> hasTamedWoodlin(HolderGetter<EntityType<?>> entities, EntityType<T> woodlin) {
+            return this.hasTamedAnimal(entities, woodlin);
         }
 
         private Criterion<?> hasBathedInEnricherWasteWhileBeingEnchantedByOakies() {
