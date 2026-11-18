@@ -263,6 +263,7 @@ public class OakieEntity extends AbstractWoodlinEntity {
     private class OakieCurseAttackerGoal extends Goal {
 
         private final Timer coolDownTimer = new Timer(60);
+        private final Timer persistedTimer = new Timer(1200);
 
         private @Nullable LivingEntity attacker;
 
@@ -271,6 +272,7 @@ public class OakieEntity extends AbstractWoodlinEntity {
             OakieEntity.this.setAlerting(true);
             this.applyCurse();
             this.coolDownTimer.reset();
+            this.persistedTimer.reset();
         }
 
         @Override
@@ -278,14 +280,29 @@ public class OakieEntity extends AbstractWoodlinEntity {
             OakieEntity.this.setAlerting(false);
             this.attacker = null;
             this.coolDownTimer.reset();
+            this.persistedTimer.reset();
         }
 
         @Override
         public void tick() {
+            if (this.persistedTimer.pass(this::persistingCursing)) {
+                if (this.attacker != null) {
+                    this.attacker.removeEffect(MtsEffects.LEECH_OF_OAKIE);
+                }
+                this.attacker = null;
+                this.persistedTimer.reset();
+                return;
+            }
+
             if (this.coolDownTimer.pass(() -> true)) {
                 this.applyCurse();
                 this.coolDownTimer.reset();
             }
+        }
+
+        private boolean persistingCursing() {
+            return this.isValidAttacker(this.attacker)
+                    && this.attacker.hasEffect(MtsEffects.LEECH_OF_OAKIE) && this.attackerHasEnoughHealth(this.attacker);
         }
 
         private void applyCurse() {

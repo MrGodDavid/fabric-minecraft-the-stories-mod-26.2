@@ -25,6 +25,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.AbstractHasMobEffectTrigger;
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.AbstractWearFullArmorTrigger;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.*;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
@@ -870,6 +872,25 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     )
                     .addCriterion("greeting_tamed_sprucia", hasTamedWoodlin(entities, MtsEntityTypes.SPRUCIA))
                     .save(output, generateSaveName("hi_sprucia"));
+
+            // attack an oakie and get Leech of Oakie mob effect.
+            AdvancementHolder youAreTheDancingQueen = Advancement.Builder.advancement()
+                    .parent(hiOakie)
+                    .display(
+                            Items.PLAYER_HEAD,
+                            Component.translatable("advancements.minecraft-the-stories-mod.you_are_the_dancing_queen.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.you_are_the_dancing_queen.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("attacked_oakies", attackedSpecificMob())
+                    .save(output, generateSaveName("you_are_the_dancing_queen"));
+        }
+
+        private Criterion<?> attackedSpecificMob() {
+            return MtsAdvancementTriggers.ATTACKED_SPECIFIC_MOB_TRIGGER.createCriterion(
+                    new AttackedSpecificMobTrigger.TriggerInstance(Optional.empty()));
         }
 
         private Criterion<?> hasTamedAnimal(HolderGetter<EntityType<?>> entities, EntityType<?> animal) {

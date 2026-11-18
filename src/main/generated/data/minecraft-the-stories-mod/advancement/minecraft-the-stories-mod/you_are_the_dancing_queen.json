@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/hi_oakie",
+  "criteria": {
+    "attacked_oakies": {
+      "trigger": "minecraft-the-stories-mod:attacked_specific_mob"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.you_are_the_dancing_queen.description"
+    },
+    "icon": {
+      "id": "minecraft:player_head"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.you_are_the_dancing_queen.title"
+    }
+  },
+  "requirements": [
+    [
+      "attacked_oakies"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

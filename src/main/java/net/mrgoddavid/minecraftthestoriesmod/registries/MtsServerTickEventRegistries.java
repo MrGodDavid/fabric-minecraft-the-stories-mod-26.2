@@ -11,6 +11,7 @@ import net.minecraft.world.item.Items;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -30,6 +31,7 @@ import java.util.Optional;
  * @author Mr. GodDavid
  * @since 10/9/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 public final class MtsServerTickEventRegistries {
 
     private static final PeriodicPulse ONE_SECOND_20_TICKS_PERIODIC_PULSE = PeriodicPulse.builder().maxTick(20).build();
@@ -85,6 +87,7 @@ public final class MtsServerTickEventRegistries {
 //                MtsAdvancementTriggers.WEAR_FULL_TOPAZ_ARMOR_TRIGGER.trigger(player);
         MtsAdvancementTriggers.HAS_PUBLIC_ENEMY_EFFECT_TRIGGER.trigger(player);
         MtsAdvancementTriggers.HIT_ENEMY_WITH_CUDGEL_TRIGGER.trigger(player);
+        MtsAdvancementTriggers.ATTACKED_SPECIFIC_MOB_TRIGGER.trigger(player, AbstractWoodlinEntity.class);
 
     }
 

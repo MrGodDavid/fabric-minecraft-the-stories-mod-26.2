@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content;
 
+import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.AbstractHasMobEffectTrigger;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 
 /**

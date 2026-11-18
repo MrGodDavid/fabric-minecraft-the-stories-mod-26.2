@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content;
+package net.mrgoddavid.minecraftthestoriesmod.advancement_trigger;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
