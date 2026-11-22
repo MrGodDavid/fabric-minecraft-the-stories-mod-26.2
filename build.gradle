@@ -21,6 +21,7 @@ repositories {
 
 	maven {url "https://maven.shedaniel.me"}
 	maven { name = "JitPack"; url = "https://jitpack.io" }
+	maven { url = 'https://maven.minecraftforge.net/' }
 }
 
 fabricApi {
@@ -43,6 +44,8 @@ dependencies {
 	implementation "me.shedaniel:RoughlyEnoughItems-fabric:26.2.820"
 
 	include(implementation("com.github.MrGodDavid:CalculusV2:v1.2.4.1"))
+
+	implementation 'com.github.glitchfiend:TerraBlender-fabric:26.2-26.2.0.0.2'
 
 	include api("dev.architectury:architectury-fabric:21.0.4")
 	compileOnly("me.shedaniel.cloth:basic-math:0.6.1")

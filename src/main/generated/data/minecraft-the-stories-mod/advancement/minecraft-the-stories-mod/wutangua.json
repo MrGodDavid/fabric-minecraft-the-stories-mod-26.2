@@ -133,6 +133,7 @@
     "description": {
       "translate": "advancements.minecraft-the-stories-mod.wutangua.description"
     },
+    "frame": "challenge",
     "icon": {
       "id": "minecraft-the-stories-mod:oakie_healing_ball_spawn_egg"
     },

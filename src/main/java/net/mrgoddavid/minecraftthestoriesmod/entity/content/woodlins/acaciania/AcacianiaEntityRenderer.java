@@ -32,12 +32,27 @@ public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<Acaci
     }
 
     @Override
+    protected SimpleParticleType getWoodlinNormalParticleType() {
+        return MtsParticleTypes.BLUE_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinWarningParticleType() {
+        return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinAttackingParticleType() {
+        return MtsParticleTypes.RED_CLOUD_PARTICLE;
+    }
+
+    @Override
     protected void spawnEffectBorderParticles(AcacianiaEntityRenderState state) {
         Minecraft mc = Minecraft.getInstance();
         MtsParticleSpawner.circle(
                 mc,
                 RANDOM_PULSE,
-                this.getAcacianiaBorderParticleTypes(state),
+                super.getWoodlinBorderParticleTypes(state),
                 state.entityUUID,
                 "acaciania_border_particles",
                 new Timer(40),
@@ -47,18 +62,6 @@ public class AcacianiaEntityRenderer extends AbstractWoodlinEntityRenderer<Acaci
                 ParticleSpawnMode.CIRCLE_EIGHT_DIR,
                 true
         );
-    }
-
-    private @NonNull SimpleParticleType getAcacianiaBorderParticleTypes(AcacianiaEntityRenderState renderState) {
-        if (renderState.isAlerting) {
-            return MtsParticleTypes.RED_CLOUD_PARTICLE;
-
-        } else if (renderState.isWarning) {
-            return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
-
-        } else {
-            return MtsParticleTypes.BLUE_CLOUD_PARTICLE;
-        }
     }
 
     @Override

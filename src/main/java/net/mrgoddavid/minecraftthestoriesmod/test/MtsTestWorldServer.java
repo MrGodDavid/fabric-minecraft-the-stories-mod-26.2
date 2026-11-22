@@ -19,7 +19,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  */
 public class MtsTestWorldServer {
 
-    private MtsTestWorldServer() throws IllegalAccessException {
+    private MtsTestWorldServer() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

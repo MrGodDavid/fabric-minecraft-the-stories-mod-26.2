@@ -33,6 +33,14 @@
 				@MOB_EFFECT LEECH_OF_OAKIE: The oakies would use its magic of oaklin to leech enemies' health. They transform the health to their master as thank their owner's protection. This is a one-to-one trade, nice! :) The enemy who enters the enchanting region has a chance to spread this effect to other entities excluding the player and the oakies.
 			
 		@ENTITIES
+				@ENTITY PLAYER:
+					The protagonist: the adventurer.
+					The NPC player: NPC player entity in the world.
+					Players can suffocate in the End dimension.
+					Players can be overheated in the Nether dimension.
+					Getting to The End becomes way harder than before because the requirement is beyond needing 9 Ender Eyes. One of the eyes is the Nature Eye.
+					End NPC player would not suffocate in the end since their body had adopted the crucial the End environment by eating special ender plants and fruits in their daily meals.
+
 				@ENTITY BROWN_BEAR: Giant Brown Bear that live in forests. They would not attack players unless players hold honey blocks or honey bottles. They are NEUTRAL_MOBS. They can be tamed with salmons. Player can use saddle
 					to ride brown bears. Brown bears would attack bees, pigs, sheep, cows, and chicken, foxes, and wolfs. (@WIP)
 				@ENTITY DEER: Deer has male and female variant. Male can only breed with female. Deer is ridable and tamable animal.
@@ -69,36 +77,40 @@
 						✅ Animate all animations.
 						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
-						Implement Energetic Effect
+						✅ Implement Energetic Effect; When Acaciania is in enchanting, it grants player Energetic effect.
+						✅ Implement behavior of Acaciania that it's afraid of soul blocks.
+						Acaciania grants swiftness effect to all non-hostile living entities whose health is below 50% of its max health. 40% -> <= 50% grants Swiftness I; 30% -> <= 40% grants Swiftness II; 20% -> <= 30% grants Swiftness III; 10% -> <= 20% grants Swiftness IV; <= 10% grants Swiftness V. (This behavior excludes the Player no matter Acaciania is tamed by player or not.
+						When Acaciania spots hostile living entities with living entities that is in critical condition, it grants hostile living entities slowness effect, depending on the current health of the hostile living entities. The higher the health the hostile living entities have, the higher the amplifier the slowness effect is. However, the hostile living entities will target Acaciania. Acaciania attempts to flee.
+						Acaciania can survive int the Nether but not in the End.
 				
 				@ENTITY BIRCHIA
 						✅ Design model.
 						✅ Animate all animations.
-						Export the animation and model files from Blockbench to mod project files.
+						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
 				
 				@ENTITY CHERRINIA
 						✅ Design model.
 						✅ Animate all animations.
-						Export the animation and model files from Blockbench to mod project files.
+						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
 				
 				@ENTITY DENSE_OAKIE
 						✅ Design model.
 						✅ Animate all animations.
-						Export the animation and model files from Blockbench to mod project files.
+						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
 				
 				@ENTITY JUNMI
 						✅ Design model.
 						✅ Animate all animations.
-						Export the animation and model files from Blockbench to mod project files.
+						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
 				
 				@ENTITY MANGROLINO
 						✅ Design model.
 						✅ Animate all animations.
-						Export the animation and model files from Blockbench to mod project files.
+						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
 				
 				@ENTITY OAKIE
@@ -113,15 +125,19 @@
 				@ENTITY LIGHT_OAKIE
 						✅ Design model.
 						✅ Animate all animations.
-						Export the animation and model files from Blockbench to mod project files.
+						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
 				
 				@ENTITY SPRUCIA
 						✅ Design model.
 						✅ Animate all animations.
-						Export the animation and model files from Blockbench to mod project files.
+						✅ Export the animation and model files from Blockbench to mod project files.
 						Extract all possible glowing effect textures.
+						Cannot survive in the Nether but can survive in the End.
+		
+		@UPDATE PLAYER_UPDATE:
 				
+								
 		@UPDATE ADDITIONAL_WOODEN_TOOLS (@WIP)
 				✅ Add additional wood type for Axes, ✅ Bows, ✅ Pickaxes, ✅ Hoes, ✅ Shovels, ✅ Swords, ✅ Spears, and ✅ Cudgels. Additional wood types are Acacia, Birch, Cherry, Dark Oak, Jungle, Mangrove, Pale Oak, and Spruce.
 				Polish attack speed, attack damage for each type of wood of all types of tools.

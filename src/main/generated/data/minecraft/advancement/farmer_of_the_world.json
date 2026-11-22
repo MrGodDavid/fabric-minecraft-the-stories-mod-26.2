@@ -1,0 +1,40 @@
+{
+  "parent": "minecraft-the-stories-mod:minecraft-the-stories-mod/root",
+  "criteria": {
+    "fotw_used_wooden_hoe": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {}
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "minecraft:wooden_hoe"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.algricultural_revolution.description"
+    },
+    "icon": {
+      "id": "minecraft:wooden_hoe"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.algricultural_revolution.title"
+    }
+  },
+  "requirements": [
+    [
+      "fotw_used_wooden_hoe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

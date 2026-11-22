@@ -1,7 +1,9 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.cherrinia;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.Identifier;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.birchia.BirchiaEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.birchia.BirchiaEntityModel;
@@ -19,6 +21,21 @@ public class CherriniaEntityRenderer extends AbstractWoodlinEntityRenderer<Cherr
 
     public CherriniaEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new CherriniaEntityModel(context.bakeLayer(MtsEntityModelLayers.CHERRINIA)), 0.2f);
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinNormalParticleType() {
+        return MtsParticleTypes.VIOLET_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinWarningParticleType() {
+        return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinAttackingParticleType() {
+        return MtsParticleTypes.RED_CLOUD_PARTICLE;
     }
 
     @Override

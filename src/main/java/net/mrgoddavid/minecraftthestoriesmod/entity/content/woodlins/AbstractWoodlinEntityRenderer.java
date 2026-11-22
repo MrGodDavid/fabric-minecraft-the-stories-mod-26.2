@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.RandomPulse;
 
 /**
@@ -31,7 +32,7 @@ public abstract class AbstractWoodlinEntityRenderer<T extends AbstractWoodlinEnt
         state.enchanting = entity.isEnchanting();
         state.entityUUID = entity.getUUID();
         state.eyeColor = this.selectEyeColor(entity);
-        state.isAlerting = entity.isDefending();
+        state.isAttacking = entity.isDefending();
         state.isWarning = entity.isWarning();
     }
 
@@ -45,6 +46,24 @@ public abstract class AbstractWoodlinEntityRenderer<T extends AbstractWoodlinEnt
             this.spawnTamedWoodlinAbilityUseParticles(state);
         }
     }
+
+    protected final SimpleParticleType getWoodlinBorderParticleTypes(S woodlinRenderState) {
+        if (woodlinRenderState.isAttacking) {
+            return this.getWoodlinAttackingParticleType();
+
+        } else if (woodlinRenderState.isWarning) {
+            return this.getWoodlinWarningParticleType();
+
+        } else {
+            return this.getWoodlinNormalParticleType();
+        }
+    }
+
+    protected abstract SimpleParticleType getWoodlinNormalParticleType();
+
+    protected abstract SimpleParticleType getWoodlinWarningParticleType() ;
+
+    protected abstract SimpleParticleType getWoodlinAttackingParticleType();
 
     protected abstract void spawnEffectBorderParticles(S state);
 

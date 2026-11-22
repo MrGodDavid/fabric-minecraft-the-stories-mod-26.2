@@ -52,5 +52,24 @@ public enum ParticleSpawnMode {
     /**
      * Fill the circular region with sixteen-dir circle offset coordinate offsets.
      */
-    FILL_CIRCLE_SIXTEEN_DIR;
+    FILL_CIRCLE_SIXTEEN_DIR,
+    /**
+     * Fill the triangular region with normal triangle offset. (The user needs to define the coordinate offsets around
+     * the center of the living entity.
+     */
+    FILL_TRIANGLE_VERTEX,
+    /**
+     * Fill the particle in a normal triangle continuously. (The user needs to define the coordinate offset around the
+     * living entity.)
+     */
+    FILL_TRIANGLE_VERTEX_CONTINUOUS,
+    /**
+     * Fill the region that is formed in an equilibrium triangle shape.
+     */
+    FILL_EQUILIBRIUM_TRIANGLE_VERTEX,
+    /**
+     * Fill the region that is formed in an equilibrium triangle shape. The number of particles on each side is defined
+     * by the user.
+     */
+    FILL_EQUILIBRIUM_TRIANGLE_CONTINUOUS;
 }

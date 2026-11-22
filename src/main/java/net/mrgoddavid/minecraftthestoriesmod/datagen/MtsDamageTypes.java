@@ -14,6 +14,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
  * @author Mr. GodDavid
  * @since 9/28/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class MtsDamageTypes {
 
     public static final ResourceKey<DamageType> CUDGEL_BONK = create("cudgel_bonk");

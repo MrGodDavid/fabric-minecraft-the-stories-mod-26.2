@@ -1,10 +1,17 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.birchia;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.Identifier;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleSpawner;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.ParticleSpawnMode;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityRenderer;
+import net.mrgoddavid.minecraftthestoriesmod.registries.MtsParticleTypeRegistries;
 import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTextures;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -19,13 +26,62 @@ public class BirchiaEntityRenderer extends AbstractWoodlinEntityRenderer<Birchia
     }
 
     @Override
-    protected void spawnEffectBorderParticles(BirchiaEntityRenderState state) {
+    public void extractRenderState(BirchiaEntity entity, BirchiaEntityRenderState state, float partialTicks) {
+        super.extractRenderState(entity, state, partialTicks);
+        state.abilityUseAnimationState.copyFrom(entity.jumpBoostAnimationState);
+    }
 
+    @Override
+    protected SimpleParticleType getWoodlinNormalParticleType() {
+        return MtsParticleTypes.GREEN_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinWarningParticleType() {
+        return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinAttackingParticleType() {
+        return MtsParticleTypes.RED_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected void spawnEffectBorderParticles(BirchiaEntityRenderState state) {
+        Minecraft mc = Minecraft.getInstance();
+        MtsParticleSpawner.equilibriumTriangle(
+                mc,
+                RANDOM_PULSE,
+                super.getWoodlinBorderParticleTypes(state),
+                state.entityUUID,
+                "birchia_border_particles",
+                new Timer(40),
+                state,
+                0.0,
+                BirchiaEntity.JUMP_BOOSE_RADIUS,
+                2,
+                ParticleSpawnMode.EQUILIBRIUM_TRIANGLE_CONTINUOUS,
+                false
+        );
     }
 
     @Override
     protected void spawnTamedWoodlinAbilityUseParticles(BirchiaEntityRenderState state) {
-
+        Minecraft mc = Minecraft.getInstance();
+        MtsParticleSpawner.fillEquilibriumTriangle(
+                mc,
+                RANDOM_PULSE,
+                MtsParticleTypes.BIRCHIA_JUMPING_BOOST_PARTICLE,
+                state.entityUUID,
+                "birchia_jumping_boost_effect_particle",
+                new Timer(40),
+                state,
+                0.0,
+                BirchiaEntity.JUMP_BOOSE_RADIUS,
+                2,
+                ParticleSpawnMode.FILL_EQUILIBRIUM_TRIANGLE_CONTINUOUS,
+                false
+        );
     }
 
     @Override

@@ -17,7 +17,7 @@ import java.util.function.Predicate;
  */
 public class MtsTestWorldGenerator {
 
-    private MtsTestWorldGenerator() throws IllegalAccessException {
+    private MtsTestWorldGenerator() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

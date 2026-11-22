@@ -24,7 +24,7 @@ public class MtsTestWorld {
 
     public static final String WORLD_ID = "mts_test";
 
-    private MtsTestWorld() throws IllegalAccessException {
+    private MtsTestWorld() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

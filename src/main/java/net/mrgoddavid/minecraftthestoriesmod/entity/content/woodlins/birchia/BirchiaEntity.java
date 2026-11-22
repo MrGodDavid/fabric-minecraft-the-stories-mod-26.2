@@ -25,7 +25,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 @SuppressWarnings("SpellCheckingInspection")
 public class BirchiaEntity extends AbstractWoodlinEntity {
 
-    public static final double JUMP_BOOSE_RADIUS = 5.0D;
+    public static final double JUMP_BOOSE_RADIUS = 15.0D;
     public final AnimationState jumpBoostAnimationState = new AnimationState();
 
     public BirchiaEntity(EntityType<BirchiaEntity> type, Level level) {

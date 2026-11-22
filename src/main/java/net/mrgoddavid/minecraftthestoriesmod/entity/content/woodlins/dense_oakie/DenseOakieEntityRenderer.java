@@ -1,7 +1,9 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.dense_oakie;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.Identifier;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.cherrinia.CherriniaEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.cherrinia.CherriniaEntityModel;
@@ -19,6 +21,21 @@ public class DenseOakieEntityRenderer extends AbstractWoodlinEntityRenderer<Dens
 
     public DenseOakieEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new DenseOakieEntityModel(context.bakeLayer(MtsEntityModelLayers.DENSE_OAKIE)), 0.2f);
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinNormalParticleType() {
+        return MtsParticleTypes.GREEN_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinWarningParticleType() {
+        return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinAttackingParticleType() {
+        return MtsParticleTypes.RED_CLOUD_PARTICLE;
     }
 
     @Override

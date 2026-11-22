@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.WoodlinContext;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -79,6 +81,8 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
     @Override
     protected void registerBehavioralGoals() {
         this.goalSelector.addGoal(2, new AcacianiaAvoidSoulBlocksGoal(this, this::selectSoulBlocks));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, BrownBearEntity.class, 12.0F, 1.001D, 1.25D));
+        this.goalSelector.addGoal(3, new AcacianiaEntity.AcacianiaCurseAttackerGoal());
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
 
@@ -137,6 +141,18 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
 
     @Override
     protected void addAdditionalEntityServerSideTick(ServerLevel level) {
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 11/22/2026
+     */
+    private class AcacianiaCurseAttackerGoal extends AbstractWoodlinEntity.WoodlinCurseAttackerGoal {
+
+        @Override
+        protected boolean customPunishmentCriteria(LivingEntity attacker) {
+            return true;
+        }
     }
 
     /**

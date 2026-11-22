@@ -16,6 +16,7 @@ import org.jspecify.annotations.NonNull;
  * @author Mr. GodDavid
  * @since 9/7/2026
  */
+@SuppressWarnings({"SpellCheckingInspection"})
 public final class Constants {
 
     public static void initialize() {
@@ -168,6 +169,7 @@ public final class Constants {
         public static final int AGE_NEW_BORN = 0;
         public static final int LINE_LENGTH = 40;
         public static final int MAX_FOOD_POINTS = 20;
+        public static final double EPISOLON_SQ = com.mrgoddavid.utils.Constants.EPSILON * com.mrgoddavid.utils.Constants.EPSILON;
 
         /**
          * A placeholder for int values. Value: {@link Integer#MAX_VALUE}.

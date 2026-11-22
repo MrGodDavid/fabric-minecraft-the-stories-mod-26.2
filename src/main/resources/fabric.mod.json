@@ -30,6 +30,9 @@
 		],
 		"rei_common": [
 			"net.mrgoddavid.minecraftthestoriesmod.combat.MtsREICommon"
+		],
+		"terrablender": [
+			"net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod"
 		]
 	},
 	"mixins": [

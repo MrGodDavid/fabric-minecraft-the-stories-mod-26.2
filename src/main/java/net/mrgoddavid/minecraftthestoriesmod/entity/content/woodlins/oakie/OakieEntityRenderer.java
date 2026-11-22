@@ -46,7 +46,24 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
         state.staffGlowingColor = this.selectStaffGlowingColor(entity);
     }
 
-    /** Y = (R x 0.299) + (G x 0.587) + (B x 0.114) */
+    @Override
+    protected SimpleParticleType getWoodlinNormalParticleType() {
+        return MtsParticleTypes.GREEN_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinWarningParticleType() {
+        return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinAttackingParticleType() {
+        return MtsParticleTypes.RED_CLOUD_PARTICLE;
+    }
+
+    /**
+     * Y = (R x 0.299) + (G x 0.587) + (B x 0.114)
+     */
     private int selectStaffGlowingColor(OakieEntity oakie) {
         return oakie.isEnchanting() ? OAKIE_ENCHANTING_STAFF_GLOWING_COLOR : 0;
     }
@@ -79,7 +96,7 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
         Minecraft mc = Minecraft.getInstance();
         MtsParticleSpawner.circle(mc,
                 RANDOM_PULSE,
-                this.getOakieBorderParticleTypes(renderState),
+                super.getWoodlinBorderParticleTypes(renderState),
                 renderState.entityUUID,
                 "oakie_particle_circle",
                 new Timer(60),
@@ -89,17 +106,5 @@ public class OakieEntityRenderer extends AbstractWoodlinEntityRenderer<OakieEnti
                 ParticleSpawnMode.CIRCLE_SIXTEEN_DIR,
                 true
         );
-    }
-
-    private @NonNull SimpleParticleType getOakieBorderParticleTypes(OakieEntityRenderState renderState) {
-        if (renderState.isAlerting) {
-            return MtsParticleTypes.RED_CLOUD_PARTICLE;
-
-        } else if (renderState.isWarning) {
-            return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
-
-        } else {
-            return MtsParticleTypes.GREEN_CLOUD_PARTICLE;
-        }
     }
 }

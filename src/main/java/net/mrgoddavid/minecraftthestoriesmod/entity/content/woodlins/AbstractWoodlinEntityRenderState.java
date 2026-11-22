@@ -1,7 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins;
 
 import com.geckolib.constant.dataticket.DataTicket;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 import net.mrgoddavid.minecraftthestoriesmod.entity.AbstractMtsEntityRenderState;
 
@@ -22,7 +21,7 @@ public abstract class AbstractWoodlinEntityRenderState extends AbstractMtsEntity
     public boolean enchanting = false;
     public UUID entityUUID;
     public int eyeColor;
-    public boolean isAlerting; // tame + isDefending.
+    public boolean isAttacking; // tame + isDefending.
     public boolean isWarning; // tame + !isDefending.
 
     @Override

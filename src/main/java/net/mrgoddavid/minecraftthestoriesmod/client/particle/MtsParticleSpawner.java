@@ -35,6 +35,21 @@ public final class MtsParticleSpawner {
         return PARTICLE_OPTIONS_TIMER_MAP.computeIfAbsent(key, ignored -> initialTimer);
     }
 
+    /**
+     * Spawn a particle at a point (x, y, z) in local space that is relative to the living entity.
+     *
+     * @param mc           an instance of Minecraft class.
+     * @param pulse        random pulse.
+     * @param particleType type of the particle.
+     * @param entityUUID   entity's unique UUID.
+     * @param effectId     a custom string id of this effect.
+     * @param timer        custom timer.
+     * @param renderState  entity's render state.
+     * @param localX       x coordinate in the space that is relative to the living entity (spawner).
+     * @param localY       y coordinate in the space that is relative to the living entity (spawner).
+     * @param localZ       z coordinate in the space that is relative to the living entity (spawner).
+     * @param randomness   a boolean flag that gives a bit randomness to the particles.
+     */
     public static void point(
             final Minecraft mc,
             final RandomPulse pulse,
@@ -69,6 +84,70 @@ public final class MtsParticleSpawner {
         }
     }
 
+    public static void fillEquilibriumTriangle(
+            final Minecraft mc,
+            final RandomPulse pulse,
+            final ParticleOptions particleType,
+            final UUID entityUUID,
+            final String effectID,
+            final Timer timer,
+            final LivingEntityRenderState renderState,
+            final double yOffset,
+            final double size,
+            final int density,
+            final ParticleSpawnMode mode,
+            final boolean randomness
+    ) {
+        Timer effectTimer = getOrCreateTimer(entityUUID, effectID, timer);
+        double step = size / (density + 1.0D);
+        float halfBoundingBoxWidth = renderState.boundingBoxWidth / 2f;
+        float minimumDistance = halfBoundingBoxWidth * halfBoundingBoxWidth * 1.5f;
+
+        if (effectTimer.pass(() -> true)) {
+            switch (mode) {
+                case FILL_EQUILIBRIUM_TRIANGLE_VERTEX ->
+                        doFillPatternedEquilibriumTriangle(mc, pulse, particleType, renderState, yOffset, size, randomness, minimumDistance, step);
+                case FILL_EQUILIBRIUM_TRIANGLE_CONTINUOUS ->
+                        doFillPatternedEquilibriumContinuousTriangle(mc, pulse, particleType, renderState, yOffset, size, density, randomness, minimumDistance, step);
+                default ->
+                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
+            }
+        }
+    }
+
+    private static void doFillPatternedEquilibriumContinuousTriangle(
+            final Minecraft mc,
+            final RandomPulse pulse,
+            final ParticleOptions particleType,
+            final LivingEntityRenderState renderState,
+            final double yOffset,
+            final double size,
+            final int density,
+            final boolean randomness,
+            final float minimumDistance,
+            final double step
+    ) {
+        for (double distance = minimumDistance; distance < size; distance += step) {
+            doSpawnParticleInContinuousEquilibriumTriangle(mc, pulse, particleType, renderState, yOffset, distance, density, randomness);
+        }
+    }
+
+    private static void doFillPatternedEquilibriumTriangle(
+            final Minecraft mc,
+            final RandomPulse pulse,
+            final ParticleOptions particleType,
+            final LivingEntityRenderState renderState,
+            final double yOffset,
+            final double size,
+            final boolean randomness,
+            final float minimumDistance,
+            final double step
+    ) {
+        for (double distance = minimumDistance; distance < size; distance += step) {
+            doSpawnParticleInEquilibriumTriangle(mc, pulse, particleType, renderState, yOffset, distance, randomness);
+        }
+    }
+
     public static void fillCircle(
             final Minecraft mc,
             final RandomPulse pulse,
@@ -94,9 +173,8 @@ public final class MtsParticleSpawner {
                         doFillPatternedEightDirCircle(mc, pulse, particleType, renderState, yOffset, radius, randomness, minimumDistance, step);
                 case FILL_CIRCLE_SIXTEEN_DIR ->
                         doFillPatternedSixteenDirCircle(mc, pulse, particleType, renderState, yOffset, radius, randomness, minimumDistance, step);
-                default -> {
-                    ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
-                }
+                default ->
+                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
             }
             effectTimer.reset();
         }
@@ -231,9 +309,8 @@ public final class MtsParticleSpawner {
                         doSpawnParticleInEquilibriumTriangle(mc, randomPulse, particleType, renderState, yOffset, size, randomness);
                 case EQUILIBRIUM_TRIANGLE_CONTINUOUS ->
                         doSpawnParticleInContinuousEquilibriumTriangle(mc, randomPulse, particleType, renderState, yOffset, size, times, randomness);
-                default -> {
-                    ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
-                }
+                default ->
+                        ErrorMessageBuilder.infoAndThrowAtLivingEntity(renderState, ThrowReason.SWITCH_CASE_OUT_OF_SCOPE);
             }
             effectTimer.reset();
         }
@@ -501,6 +578,7 @@ public final class MtsParticleSpawner {
         double step = size * 2 / ((double) (countOfPointPerSide + 1));
 
         for (int side = 0; side < 4; side++) {
+//            if (pulse.isLock()) continue;
             // include the corner. (corner is the starting point of each side.)
             double xOffset = squareCornerOffset[side].first() * size;
             double zOffset = squareCornerOffset[side].second() * size;

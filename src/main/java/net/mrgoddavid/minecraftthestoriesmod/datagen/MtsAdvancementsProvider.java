@@ -4,12 +4,9 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
+import net.minecraft.advancements.predicates.*;
 import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.advancements.triggers.InventoryChangeTrigger;
-import net.minecraft.advancements.triggers.TameAnimalTrigger;
+import net.minecraft.advancements.triggers.*;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
@@ -24,12 +21,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.AbstractHasMobEffectTrigger;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.AbstractWearFullArmorTrigger;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.*;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTypes;
@@ -732,7 +731,7 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                             Component.translatable("advancements.minecraft-the-stories-mod.wutangua.title"),
                             Component.translatable("advancements.minecraft-the-stories-mod.wutangua.description"),
                             Constants.defaultId("gui/advancement/backgrounds/advanture"),
-                            AdvancementType.TASK,
+                            AdvancementType.CHALLENGE,
                             true, true, false
                     )
                     .requirements(AdvancementRequirements.Strategy.AND)
@@ -886,6 +885,48 @@ public class MtsAdvancementsProvider extends AdvancementProvider {
                     )
                     .addCriterion("attacked_oakies", attackedSpecificMob())
                     .save(output, generateSaveName("you_are_the_dancing_queen"));
+
+            // plant any crops in this world.
+            AdvancementHolder farmerOfTheWorld = Advancement.Builder.advancement()
+                    .parent(root)
+                    .display(
+                            Items.WOODEN_HOE,
+                            Component.translatable("advancements.minecraft-the-stories-mod.algricultural_revolution.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.algricultural_revolution.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("fotw_used_wooden_hoe", usedSpecificItem(items, Items.WOODEN_HOE))
+                    .save(output, "farmer_of_the_world");
+
+            // harvest blueberry from matured blueberry bush
+            AdvancementHolder blueberry = Advancement.Builder.advancement()
+                    .parent(farmerOfTheWorld)
+                    .display(
+                            MtsItems.BLUEBERRY,
+                            Component.translatable("advancements.minecraft-the-stories-mod.blueberry.title"),
+                            Component.translatable("advancements.minecraft-the-stories-mod.blueberry.description"),
+                            Constants.defaultId("gui/advancement/backgrounds/advanture"),
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("harvest_blueberry_from_matured_blueberry_bush", hasHarvestedABlueberry())
+                    .save(output, "blueberry");
+
+        }
+
+        private Criterion<?> hasHarvestedABlueberry() {
+            return CriteriaTriggers.ANY_BLOCK_USE.createCriterion(new AnyBlockInteractionTrigger.TriggerInstance(
+                    Optional.empty(), Optional.of(
+                    ContextAwarePredicate.create(LootItemBlockStatePropertyCondition.hasBlockStateProperties(MtsBlocks.BLUEBERRY_BUSH)
+                            .setProperties(StatePropertiesPredicate.Builder.properties()
+                                    .hasProperty(BlueberryBushBlock.AGE, BlueberryBushBlock.MAX_AGE)).build()))));
+        }
+
+        private Criterion<?> usedSpecificItem(HolderGetter<Item> items, ItemLike targetUsedItem) {
+            return ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
+                    LocationPredicate.Builder.location(), ItemPredicate.Builder.item().of(items, targetUsedItem));
         }
 
         private Criterion<?> attackedSpecificMob() {

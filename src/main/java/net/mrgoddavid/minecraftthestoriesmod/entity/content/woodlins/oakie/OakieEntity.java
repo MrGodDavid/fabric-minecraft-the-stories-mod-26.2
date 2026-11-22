@@ -219,7 +219,9 @@ public class OakieEntity extends AbstractWoodlinEntity {
             player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, true, true));
 
         } else {
-            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0, false, true, true));
+            if (!player.hasEffect(MtsEffects.LEECH_OF_OAKIE)) {
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0, false, true, true));
+            }
         }
     }
 
@@ -260,88 +262,11 @@ public class OakieEntity extends AbstractWoodlinEntity {
      * @author Mr. GodDavid
      * @since 11/13/2026
      */
-    private class OakieCurseAttackerGoal extends Goal {
-
-        private final Timer coolDownTimer = new Timer(60);
-        private final Timer persistedTimer = new Timer(1200);
-
-        private @Nullable LivingEntity attacker;
+    private class OakieCurseAttackerGoal extends AbstractWoodlinEntity.WoodlinCurseAttackerGoal {
 
         @Override
-        public void start() {
-            OakieEntity.this.setAlerting(true);
-            this.applyCurse();
-            this.coolDownTimer.reset();
-            this.persistedTimer.reset();
-        }
-
-        @Override
-        public void stop() {
-            OakieEntity.this.setAlerting(false);
-            this.attacker = null;
-            this.coolDownTimer.reset();
-            this.persistedTimer.reset();
-        }
-
-        @Override
-        public void tick() {
-            if (this.persistedTimer.pass(this::persistingCursing)) {
-                if (this.attacker != null) {
-                    this.attacker.removeEffect(MtsEffects.LEECH_OF_OAKIE);
-                }
-                this.attacker = null;
-                this.persistedTimer.reset();
-                return;
-            }
-
-            if (this.coolDownTimer.pass(() -> true)) {
-                this.applyCurse();
-                this.coolDownTimer.reset();
-            }
-        }
-
-        private boolean persistingCursing() {
-            return this.isValidAttacker(this.attacker)
-                    && this.attacker.hasEffect(MtsEffects.LEECH_OF_OAKIE) && this.attackerHasEnoughHealth(this.attacker);
-        }
-
-        private void applyCurse() {
-            if (this.attacker == null) return;
-            int amplifier = (this.attacker instanceof Player) ? 1 : 0;
-            this.attacker.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 300, amplifier, false, true, true));
-        }
-
-        @Override
-        public boolean canUse() {
-            LivingEntity lastAttacker = OakieEntity.this.getLastHurtByMob();
-            if (lastAttacker == null) return false;
-            if (this.isOwnedByPlayers() || !this.isValidAttacker(lastAttacker) || !this.attackerHasEnoughHealth(lastAttacker)) {
-                return false;
-            }
-            this.attacker = lastAttacker;
-            return true;
-        }
-
-        private boolean attackerHasEnoughHealth(LivingEntity attacker) {
+        protected boolean customPunishmentCriteria(LivingEntity attacker) {
             return attacker.getHealth() >= attacker.getMaxHealth() * 0.3F;
-        }
-
-        private boolean isValidAttacker(LivingEntity attacker) {
-            if (attacker == null || !attacker.isAlive()) return false;
-            if (attacker.level() != OakieEntity.this.level()) return false;
-            if (attacker instanceof Player arrogentPlayer) {
-                return !arrogentPlayer.isSpectator() && !arrogentPlayer.isCreative();
-            }
-            return true;
-        }
-
-        private boolean isOwnedByPlayers() {
-            return OakieEntity.this.getOwner() != null;
-        }
-
-        @Override
-        public boolean canContinueToUse() {
-            return !this.isOwnedByPlayers() && this.isValidAttacker(this.attacker) && this.attackerHasEnoughHealth(this.attacker);
         }
     }
 

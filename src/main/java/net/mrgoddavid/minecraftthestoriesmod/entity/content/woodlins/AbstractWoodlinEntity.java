@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
@@ -34,7 +36,7 @@ import java.util.*;
  * @author Mr. GodDavid
  * @since 11/2/2026
  */
-@SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
+@SuppressWarnings({"NullableProblems", "SpellCheckingInspection", "resource"})
 public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected static final EntityDataAccessor<Boolean> DATA_USING_ABILITY = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
@@ -387,6 +389,101 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected final WoodlinInteractableItemsBuilder woodlinInteractableItemsBuilder() {
         return new WoodlinInteractableItemsBuilder();
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 11/13/2026 original code is from {@link OakieEntity oakie} class.
+     * @since 11/22/2026 day of the abstraction this code.
+     */
+    public abstract class WoodlinCurseAttackerGoal extends Goal {
+
+        private final Timer coolDownTimer = new Timer(60);
+        private final Timer persistedTimer = new Timer(300);
+
+        private @Nullable LivingEntity attacker;
+        private int processAttackTimeStamp = Integer.MIN_VALUE;
+
+        @Override
+        public void start() {
+            AbstractWoodlinEntity.this.setAlerting(true);
+            this.coolDownTimer.reset();
+            this.persistedTimer.reset();
+            this.applyCurse();
+        }
+
+        @Override
+        public void stop() {
+            AbstractWoodlinEntity.this.setAlerting(false);
+            this.attacker = null;
+            this.coolDownTimer.reset();
+            this.persistedTimer.reset();
+        }
+
+        @Override
+        public void tick() {
+            if (this.persistedTimer.pass(this::persistingCursing)) {
+                if (this.attacker != null) {
+                    this.attacker.removeEffect(MtsEffects.LEECH_OF_OAKIE);
+                }
+                return;
+            }
+
+            if (this.coolDownTimer.pass(() -> true)) {
+                this.applyCurse();
+                this.coolDownTimer.reset();
+            }
+        }
+
+        private boolean persistingCursing() {
+            return !this.isOwnedByPlayers()
+                    && this.isValidAttacker(this.attacker)
+                    && this.customPunishmentCriteria(this.attacker)
+                    && this.attacker.hasEffect(MtsEffects.LEECH_OF_OAKIE);
+        }
+
+        protected abstract boolean customPunishmentCriteria(LivingEntity attacker);
+
+        private void applyCurse() {
+            if (this.attacker == null) return;
+            if (!this.isValidAttacker(this.attacker) || !this.customPunishmentCriteria(this.attacker)) return;
+
+            int amplifier = (this.attacker instanceof Player) ? 1 : 0;
+            this.attacker.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 300, amplifier, false, true, true));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (this.isOwnedByPlayers()) return false;
+            LivingEntity lastAttacker = AbstractWoodlinEntity.this.getLastHurtByMob();
+            if (lastAttacker == null) return false;
+
+            int timeStamp = AbstractWoodlinEntity.this.getLastHurtMobTimestamp();
+            if (timeStamp == this.processAttackTimeStamp) return false;
+            if (!this.customPunishmentCriteria(lastAttacker)) return false;
+
+            this.attacker = lastAttacker;
+            this.processAttackTimeStamp = timeStamp;
+            return true;
+        }
+
+        private boolean isValidAttacker(@Nullable LivingEntity attacker) {
+            if (attacker == null || !attacker.isAlive()) return false;
+            if (attacker.level() != AbstractWoodlinEntity.this.level()) return false;
+            if (attacker instanceof Player arrogentPlayer) {
+                return !arrogentPlayer.isSpectator() && !arrogentPlayer.isCreative();
+            }
+            return true;
+        }
+
+        private boolean isOwnedByPlayers() {
+            return AbstractWoodlinEntity.this.getOwner() != null;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return this.persistingCursing();
+        }
     }
 
     /**

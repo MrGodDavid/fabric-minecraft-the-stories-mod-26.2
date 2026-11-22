@@ -24,7 +24,7 @@ public class MtsTestWorldContext {
     private static ServerLevel overworld;
     private static BlockPos origin;
 
-    private MtsTestWorldContext() throws IllegalAccessException {
+    private MtsTestWorldContext() {
         ErrorMessageBuilder.infoAndThrow(this.getClass(), ThrowReason.INSTANTIATE_UTIL_CLASS);
     }
 

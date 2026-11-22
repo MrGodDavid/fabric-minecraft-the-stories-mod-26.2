@@ -1,7 +1,9 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.mangrolino;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.Identifier;
+import net.mrgoddavid.minecraftthestoriesmod.client.particle.MtsParticleTypes;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntityRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.light_oakie.LightOakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.light_oakie.LightOakieEntityModel;
@@ -19,6 +21,21 @@ public class MangrolinoEntityRenderer extends AbstractWoodlinEntityRenderer<Mang
 
     public MangrolinoEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new MangrolinoEntityModel(context.bakeLayer(MtsEntityModelLayers.MANGROLINO)), 0.2f);
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinNormalParticleType() {
+        return MtsParticleTypes.YELLOW_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinWarningParticleType() {
+        return MtsParticleTypes.ORANGE_CLOUD_PARTICLE;
+    }
+
+    @Override
+    protected SimpleParticleType getWoodlinAttackingParticleType() {
+        return MtsParticleTypes.RED_CLOUD_PARTICLE;
     }
 
     @Override

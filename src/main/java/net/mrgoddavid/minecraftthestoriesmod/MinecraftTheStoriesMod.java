@@ -41,6 +41,7 @@ import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.MtsFoliagePlace
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.MtsTrunkPlacerTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import terrablender.api.TerraBlenderApi;
 
 /**
  * This is the main class of this mod development. I am pretty excited because today is the first mo-dev. :)
@@ -51,7 +52,7 @@ import org.slf4j.LoggerFactory;
  * @author Mr. GodDavid
  * @since 8/11/2026
  */
-public class MinecraftTheStoriesMod implements ModInitializer {
+public class MinecraftTheStoriesMod implements ModInitializer, TerraBlenderApi {
 
     // Do NOT touch this!
     public static final String MOD_ID = "minecraft-the-stories-mod";
@@ -111,5 +112,10 @@ public class MinecraftTheStoriesMod implements ModInitializer {
         MtsEntityTypes.register();
 
         MtsLogger.tailer();
+    }
+
+    @Override
+    public void onTerraBlenderInitialized() {
+
     }
 }

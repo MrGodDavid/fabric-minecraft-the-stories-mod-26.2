@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:farmer_of_the_world",
+  "criteria": {
+    "harvest_blueberry_from_matured_blueberry_bush": {
+      "conditions": {
+        "location": [
+          {
+            "block": "minecraft-the-stories-mod:blueberry_bush",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "age": "3"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:any_block_use"
+    }
+  },
+  "display": {
+    "background": "minecraft:gui/advancement/backgrounds/advanture",
+    "description": {
+      "translate": "advancements.minecraft-the-stories-mod.blueberry.description"
+    },
+    "icon": {
+      "id": "minecraft-the-stories-mod:blueberry"
+    },
+    "title": {
+      "translate": "advancements.minecraft-the-stories-mod.blueberry.title"
+    }
+  },
+  "requirements": [
+    [
+      "harvest_blueberry_from_matured_blueberry_bush"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

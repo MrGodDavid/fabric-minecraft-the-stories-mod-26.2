@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.math;
 
+import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 
@@ -29,6 +30,10 @@ public final class MathUtils {
 //        Vector3f v = new Vector3f(aHat).mul(c).add(new Vector3f(bHat).mul(d)).normalize();
 //        return new Vec3(v);
 //    }
+
+    public static double magnitudeSqOf(Vec3 v) {
+        return v.x() * v.x() + v.y() * v.y() + v.z() * v.z();
+    }
 
     public static int hexToColor(String hex) {
         Color color = Color.decode(hex);
