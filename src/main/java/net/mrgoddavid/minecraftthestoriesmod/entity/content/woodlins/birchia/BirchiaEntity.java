@@ -79,6 +79,9 @@ public class BirchiaEntity extends AbstractWoodlinEntity {
                 .tamedAnimalFollowOwnerStartDistance(24.0F)
                 .tamedAnimalFollowOwnerStopDistance(2.0F)
                 .entityRandomlyLookDistance(4.0F)
+                .woodlinForbiddenBiomeFleeSafeDistance(32.0F)
+                .woodlinForbiddenBiomeFleeingWalkSpeedModifier(1.25D)
+                .woodlinForbiddenBiomeFleeingSprintSpeedModifier(2.5D)
                 .build();
     }
 

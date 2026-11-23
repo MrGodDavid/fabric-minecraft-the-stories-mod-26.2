@@ -1,8 +1,11 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.acaciania;
 
+import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AnimationState;
@@ -18,16 +21,21 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBiomeGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.WoodlinContext;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
+import org.jspecify.annotations.NonNull;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -46,6 +54,7 @@ import java.util.function.Predicate;
 @SuppressWarnings("SpellCheckingInspection")
 public class AcacianiaEntity extends AbstractWoodlinEntity {
 
+    private static final List<ResourceKey<Biome>> ACACIANIA_FORBIDDEN_BIOMES = List.of(Biomes.JUNGLE, Biomes.BAMBOO_JUNGLE, Biomes.SPARSE_JUNGLE);
     public static final int SPEED_BOOST_RADIUS = 5;
     public final AnimationState hydrateAnimationState = new AnimationState();
 
@@ -80,8 +89,14 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
      */
     @Override
     protected void registerBehavioralGoals() {
+        WoodlinContext woodlinContext = registerWoodlinContexts();
         this.goalSelector.addGoal(2, new AcacianiaAvoidSoulBlocksGoal(this, this::selectSoulBlocks));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, BrownBearEntity.class, 12.0F, 1.001D, 1.25D));
+        this.goalSelector.addGoal(2, new AvoidBiomeGoal(this, ACACIANIA_FORBIDDEN_BIOMES,
+                woodlinContext.getFloatOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_SAFE_DISTANCE),
+                woodlinContext.getDoubleOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_WALK_SPEED_MODIFIER),
+                woodlinContext.getDoubleOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_SPRINT_SPEED_MODIFIER)
+        ));
         this.goalSelector.addGoal(3, new AcacianiaEntity.AcacianiaCurseAttackerGoal());
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
@@ -99,6 +114,9 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
                 .tamedAnimalFollowOwnerStartDistance(24.0F)
                 .tamedAnimalFollowOwnerStopDistance(2.0F)
                 .entityRandomlyLookDistance(4.0F)
+                .woodlinForbiddenBiomeFleeSafeDistance(32.0F)
+                .woodlinForbiddenBiomeFleeingWalkSpeedModifier(1.25D)
+                .woodlinForbiddenBiomeFleeingSprintSpeedModifier(2.5D)
                 .build();
     }
 
@@ -152,6 +170,11 @@ public class AcacianiaEntity extends AbstractWoodlinEntity {
         @Override
         protected boolean customPunishmentCriteria(LivingEntity attacker) {
             return true;
+        }
+
+        @Override
+        protected @NonNull Holder<MobEffect> getTypeOfPunishmentEffect() {
+            return MtsEffects.PLODDING_OF_ACACIANIA;
         }
     }
 

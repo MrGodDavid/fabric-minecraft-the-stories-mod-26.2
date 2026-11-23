@@ -19,7 +19,6 @@ public class MtsBiomes {
     public static final ResourceKey<Biome> DENSE_OAKLIN = registerBiomeRK("dense_oakilin");
 
     public static void bootstrap(BootstrapContext<Biome> context) {
-
     }
 
     public static void register(BootstrapContext<Biome> context, ResourceKey<Biome> key, Biome biome) {

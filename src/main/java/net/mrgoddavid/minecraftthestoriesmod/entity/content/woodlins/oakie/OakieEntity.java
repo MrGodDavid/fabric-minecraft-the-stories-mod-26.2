@@ -1,9 +1,12 @@
 package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -12,16 +15,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBiomeGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBlockGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.WoodlinContext;
@@ -30,7 +35,7 @@ import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
-import org.jspecify.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -72,6 +77,10 @@ public class OakieEntity extends AbstractWoodlinEntity {
     public static final int HEALING_RADIUS = 5;
     public static final float MIN_NOTICE_NEEDS_HEALING_DISTANCE = 6.0F;
     public static final float MAX_NOTICE_NEEDS_HEALING_DISTANCE = 18.0F;
+    private static final List<ResourceKey<Biome>> OAKIE_FORBIDDEN_BIOMES = List.of(
+            Biomes.SNOWY_BEACH, Biomes.SNOWY_PLAINS, Biomes.SNOWY_SLOPES, Biomes.SNOWY_TAIGA,
+            Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU, Biomes.WINDSWEPT_SAVANNA
+    );
     public final AnimationState healAnimationState = new AnimationState();
     private final Timer campFireHurtCoolDown = new Timer(40);
     private final Timer fireblocksHurtCoolDown = new Timer(40);
@@ -100,9 +109,15 @@ public class OakieEntity extends AbstractWoodlinEntity {
 
     @Override
     protected void registerBehavioralGoals() {
+        WoodlinContext woodlinContext = registerWoodlinContexts();
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidFireBlockGoal(this, this::isFireblocks));
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidCampFiresGoal(this, this::isCampfires));
         this.goalSelector.addGoal(2, new OakieEntity.OakieAvoidLavaGoal(this, this::isLava));
+        this.goalSelector.addGoal(2, new AvoidBiomeGoal(this, OAKIE_FORBIDDEN_BIOMES,
+                woodlinContext.getFloatOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_SAFE_DISTANCE),
+                woodlinContext.getDoubleOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_WALK_SPEED_MODIFIER),
+                woodlinContext.getDoubleOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_SPRINT_SPEED_MODIFIER)
+        ));
         this.goalSelector.addGoal(3, new OakieEntity.OakieCurseAttackerGoal());
         this.goalSelector.addGoal(3, new OakieEntity.OakieHealOwnerGoal(MIN_NOTICE_NEEDS_HEALING_DISTANCE, MAX_NOTICE_NEEDS_HEALING_DISTANCE));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -118,6 +133,9 @@ public class OakieEntity extends AbstractWoodlinEntity {
                 .tamedAnimalFollowOwnerStartDistance(24.0F)
                 .tamedAnimalFollowOwnerStopDistance(2.0F)
                 .entityRandomlyLookDistance(4.0F)
+                .woodlinForbiddenBiomeFleeSafeDistance(32.0F)
+                .woodlinForbiddenBiomeFleeingWalkSpeedModifier(1.25D)
+                .woodlinForbiddenBiomeFleeingSprintSpeedModifier(2.5D)
                 .build();
     }
 
@@ -267,6 +285,11 @@ public class OakieEntity extends AbstractWoodlinEntity {
         @Override
         protected boolean customPunishmentCriteria(LivingEntity attacker) {
             return attacker.getHealth() >= attacker.getMaxHealth() * 0.3F;
+        }
+
+        @Override
+        protected @NonNull Holder<MobEffect> getTypeOfPunishmentEffect() {
+            return MtsEffects.LEECH_OF_OAKIE;
         }
     }
 

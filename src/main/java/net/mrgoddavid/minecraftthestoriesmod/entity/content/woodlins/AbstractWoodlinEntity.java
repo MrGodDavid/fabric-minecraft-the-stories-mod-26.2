@@ -2,10 +2,12 @@ package net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
@@ -13,6 +15,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
@@ -20,14 +23,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBiomeGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import java.util.*;
@@ -41,6 +48,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected static final EntityDataAccessor<Boolean> DATA_USING_ABILITY = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
     protected static final EntityDataAccessor<Boolean> DATA_DEFENDING = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final List<ResourceKey<Biome>> BASE_WOODLIN_FORBIDDEN_BIOMES = List.of(Biomes.DESERT, Biomes.BADLANDS, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS);
     protected final byte STAND_EVENT = 99;
     private final MtsElementSets.Trio<Item, Item, Item> woodlinInteractableItems;
     private final WoodlinContext woodlinContext;
@@ -97,6 +105,11 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
         this.goalSelector.addGoal(1, new TamableAnimalPanicGoal(
                 woodlinContext.getDoubleOrThrow(WoodlinContext.TAMED_ANIMAL_PANIC_SPEED_MODIFIER), DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES)
         );
+        this.goalSelector.addGoal(2, new AvoidBiomeGoal(this, BASE_WOODLIN_FORBIDDEN_BIOMES,
+                woodlinContext.getFloatOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_SAFE_DISTANCE),
+                woodlinContext.getDoubleOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_WALK_SPEED_MODIFIER),
+                woodlinContext.getDoubleOrThrow(WoodlinContext.WOODLIN_FLEEING_FORBIDDEN_BIOME_SPRINT_SPEED_MODIFIER)
+        ));
         this.goalSelector.addGoal(3, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(4, new FollowOwnerGoal(this,
                 woodlinContext.getDoubleOrThrow(WoodlinContext.TAMED_ANIMAL_FOLLOW_OWNER_SPEED_MODIFIER),
@@ -424,7 +437,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
         public void tick() {
             if (this.persistedTimer.pass(this::persistingCursing)) {
                 if (this.attacker != null) {
-                    this.attacker.removeEffect(MtsEffects.LEECH_OF_OAKIE);
+                    this.attacker.removeEffect(this.getTypeOfPunishmentEffect());
                 }
                 return;
             }
@@ -439,7 +452,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
             return !this.isOwnedByPlayers()
                     && this.isValidAttacker(this.attacker)
                     && this.customPunishmentCriteria(this.attacker)
-                    && this.attacker.hasEffect(MtsEffects.LEECH_OF_OAKIE);
+                    && this.attacker.hasEffect(this.getTypeOfPunishmentEffect());
         }
 
         protected abstract boolean customPunishmentCriteria(LivingEntity attacker);
@@ -449,12 +462,19 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
             if (!this.isValidAttacker(this.attacker) || !this.customPunishmentCriteria(this.attacker)) return;
 
             int amplifier = (this.attacker instanceof Player) ? 1 : 0;
-            this.attacker.addEffect(new MobEffectInstance(MtsEffects.LEECH_OF_OAKIE, 300, amplifier, false, true, true));
+            this.attacker.addEffect(this.getEffectOfPunishment(amplifier));
         }
+
+        private @NonNull MobEffectInstance getEffectOfPunishment(int amplifier) {
+            return new MobEffectInstance(this.getTypeOfPunishmentEffect(), 300, amplifier, false, true, true);
+        }
+
+        protected @NonNull
+        abstract Holder<MobEffect> getTypeOfPunishmentEffect();
 
         @Override
         public boolean canUse() {
-            if (this.isOwnedByPlayers()) return false;
+            if (this.isOwnedByPlayers() || !this.isValidAttacker(this.attacker)) return false;
             LivingEntity lastAttacker = AbstractWoodlinEntity.this.getLastHurtByMob();
             if (lastAttacker == null) return false;
 

@@ -1,9 +1,12 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.mod.client;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
@@ -20,7 +23,20 @@ import java.util.stream.Collectors;
  * @author Mr. GodDavid
  * @since 10/21/2026
  */
+@SuppressWarnings("resource")
 public final class EntityUtils {
+
+    public static boolean inForbiddenBiome(LivingEntity entity, ResourceKey<Biome> forbiddenBiome, BlockPos pos) {
+        return entity.level().getBiome(pos).is(forbiddenBiome);
+    }
+
+    public static boolean inAnyOfForbiddenBiomes(LivingEntity entity, List<ResourceKey<Biome>> forbiddenBiomes, BlockPos pos) {
+        boolean isInAnyOfForbiddenBiomes = false;
+        for (ResourceKey<Biome> forbiddenBiome : forbiddenBiomes) {
+            isInAnyOfForbiddenBiomes |= inForbiddenBiome(entity, forbiddenBiome, pos);
+        }
+        return isInAnyOfForbiddenBiomes;
+    }
 
     public static <T extends LivingEntity, S extends LivingEntity> Optional<T> getNearestLivingEntity(ServerLevel serverLevel, S self, Class<T> entityClass, float radius) {
         return getNearestLivingEntity(serverLevel, self, entityClass, _ -> true, radius);
