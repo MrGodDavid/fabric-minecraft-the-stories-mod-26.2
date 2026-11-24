@@ -3,9 +3,11 @@
   "package": "net.mrgoddavid.minecraftthestoriesmod.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "EntityMixin",
     "LivingEntityMixin",
     "MobMixin",
     "PlayerMixin",
+    "ServerPlayerMixin",
     "client.BlockBehaviorMixin"
   ],
   "client": [

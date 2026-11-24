@@ -4,7 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.component.MtsDataComponentTypes;
-import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
+import net.mrgoddavid.minecraftthestoriesmod.event.content.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworking;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;

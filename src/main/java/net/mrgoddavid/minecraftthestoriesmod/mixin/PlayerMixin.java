@@ -5,10 +5,11 @@
     import net.minecraft.world.entity.player.Player;
     import net.minecraft.world.level.storage.ValueInput;
     import net.minecraft.world.level.storage.ValueOutput;
+    import net.mrgoddavid.minecraftthestoriesmod.event.content.PlayerFluidEvents;
     import net.mrgoddavid.minecraftthestoriesmod.item.content.CudgelItem;
     import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.progress.StoryBookProgress;
     import net.mrgoddavid.minecraftthestoriesmod.item.content.story_block.progress.StoryBookProgressHolder;
-    import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
+    import net.mrgoddavid.minecraftthestoriesmod.event.content.thirst.ThirstHolder;
     import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
     import net.mrgoddavid.minecraftthestoriesmod.sound.MtsSounds;
     import org.spongepowered.asm.mixin.Mixin;
@@ -29,6 +30,21 @@
         private final ThirstManager mts$thirstManager = new ThirstManager();
         @Unique
         private final StoryBookProgress mts$getStoryBookProgress = new StoryBookProgress();
+        @Unique
+        private boolean wasInFluid = false;
+
+        @Inject(method = "tick", at = @At("TAIL"))
+        private void mts$checkFluidState(CallbackInfo ci) {
+            Player  player = (Player) (Object) this;
+            boolean isInFluid = player.isInLiquid();
+
+            if (isInFluid && !this.wasInFluid) {
+                PlayerFluidEvents.ENTER_FLUID.invoker().onFluidStateChange(player);
+            } else if (!isInFluid && this.wasInFluid) {
+                PlayerFluidEvents.LEAVE_FLUID.invoker().onFluidStateChange(player);
+            }
+            this.wasInFluid = isInFluid;
+        }
 
         // ====================================================================================================
         //                                      CUSTOM WEAPON HIT SOUNDS

@@ -30,7 +30,7 @@ import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityRenderer
 import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTypes;
 import net.mrgoddavid.minecraftthestoriesmod.sound.MtsSounds;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorldServer;
-import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstEvents;
+import net.mrgoddavid.minecraftthestoriesmod.event.content.thirst.ThirstEvents;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.vanilla.VanillaPaths;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.MtsWorldGen;

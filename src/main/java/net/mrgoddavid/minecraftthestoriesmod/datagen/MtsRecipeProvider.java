@@ -6,7 +6,6 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
@@ -20,6 +19,7 @@ import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.OreCompresso
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SqueezerRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.recipe.content.SuperCrafterRecipeBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -36,11 +36,12 @@ import static net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks.*;
  * @author Mr. GodDavid
  * @since 8/15/2026
  */
+@SuppressWarnings({"NullableProblems", "SameParameterValue"})
 public class MtsRecipeProvider extends FabricRecipeProvider {
 
     public MtsRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
-        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Item/Block Recipe for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Custom Recipes");
     }
 
     /**
@@ -68,11 +69,6 @@ public class MtsRecipeProvider extends FabricRecipeProvider {
                 @Override
                 public void includeRootAdvancement() {
                     output.includeRootAdvancement();
-                }
-
-                @Override
-                public Identifier getRecipeIdentifier(Identifier recipeId) {
-                    return recipeId;
                 }
             };
 

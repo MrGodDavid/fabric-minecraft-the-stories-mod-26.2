@@ -69,4 +69,12 @@ public class Timer {
 
         boolean pass();
     }
+
+    @Override
+    public String toString() {
+        return "Timer{" +
+                "currentTick=" + currentTick +
+                ", maxTick=" + maxTick +
+                '}';
+    }
 }

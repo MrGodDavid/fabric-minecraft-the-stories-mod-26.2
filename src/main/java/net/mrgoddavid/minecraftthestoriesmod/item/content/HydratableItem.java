@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.component.MtsDataComponentTypes;
-import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
+import net.mrgoddavid.minecraftthestoriesmod.event.content.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.world.food.DietaryWaterProperties;

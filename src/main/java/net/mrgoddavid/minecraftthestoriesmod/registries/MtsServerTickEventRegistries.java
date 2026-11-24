@@ -1,19 +1,25 @@
 package net.mrgoddavid.minecraftthestoriesmod.registries;
 
+import dev.architectury.event.events.common.PlayerEvent;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
-import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
+import net.mrgoddavid.minecraftthestoriesmod.event.content.PlayerFluidEvents;
+import net.mrgoddavid.minecraftthestoriesmod.event.content.StructureEnterCallback;
+import net.mrgoddavid.minecraftthestoriesmod.event.content.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworking;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
@@ -22,10 +28,6 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Mr. GodDavid
@@ -64,6 +66,37 @@ public final class MtsServerTickEventRegistries {
                 grantsPublicEnemyEffectIfWearingFullAmethystArmor(player);
             }
         });
+
+        // todo
+        ServerEntityEvents.EQUIPMENT_CHANGE.register((entity, equipmentSlot, previousStack, currentStack) -> {
+            if (entity instanceof ServerPlayer player && equipmentSlot.isArmor()) {
+                MtsAdvancementTriggers.WEAR_FULL_AMETHYST_ARMOR_TRIGGER.trigger(player);
+            }
+        });
+
+        ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamageTaken, damageTaken, blocked) -> {
+            if (blocked || damageTaken <= 0.0F) return;
+
+            if (source.getEntity() instanceof ServerPlayer player) {
+                MtsAdvancementTriggers.HIT_ENEMY_WITH_CUDGEL_TRIGGER.trigger(player, entity);
+
+                if (entity instanceof AbstractWoodlinEntity woodlinVictim) {
+                    MtsAdvancementTriggers.ATTACKED_SPECIFIC_MOB_TRIGGER.trigger(player, woodlinVictim, AbstractWoodlinEntity.class);
+                }
+            }
+        });
+
+        PlayerEvent.PLAYER_QUIT.register((player) -> {
+            if (player instanceof ServerPlayer serverPlayer) {
+                MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_TRIGGER.removePlayer(serverPlayer);
+            }
+        });
+
+        StructureEnterCallback.EVENT.register((player, structure) -> {
+            if (structure.is(BuiltinStructures.VILLAGE_PLAINS)) {
+                MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.trigger(player);
+            }
+        });
     }
 
     private static void registerPlayerThirstEvents(ServerPlayer player) {
@@ -80,15 +113,8 @@ public final class MtsServerTickEventRegistries {
     }
 
     private static void checkPlayerAdvancementTriggers(ServerPlayer player) {
-        MtsAdvancementTriggers.ENTER_VILLAGE_WITH_FULL_EMERALD_ARMOR_TRIGGER.trigger(player);
         MtsAdvancementTriggers.BATHING_IN_ENRICHER_WASTE_TRIGGER.trigger(player);
-        MtsAdvancementTriggers.WEAR_FULL_AMETHYST_ARMOR_TRIGGER.trigger(player);
-//                MtsAdvancementTriggers.WEAR_FULL_RUBY_ARMOR_TRIGGER.trigger(player);
-//                MtsAdvancementTriggers.WEAR_FULL_TOPAZ_ARMOR_TRIGGER.trigger(player);
         MtsAdvancementTriggers.HAS_PUBLIC_ENEMY_EFFECT_TRIGGER.trigger(player);
-        MtsAdvancementTriggers.HIT_ENEMY_WITH_CUDGEL_TRIGGER.trigger(player);
-        MtsAdvancementTriggers.ATTACKED_SPECIFIC_MOB_TRIGGER.trigger(player, AbstractWoodlinEntity.class);
-
     }
 
     private static void grantsPublicEnemyEffectIfWearingFullAmethystArmor(ServerPlayer player) {

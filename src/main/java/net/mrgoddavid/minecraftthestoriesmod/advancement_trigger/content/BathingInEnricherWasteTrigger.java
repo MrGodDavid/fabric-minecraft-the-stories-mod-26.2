@@ -9,7 +9,10 @@ import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import org.jspecify.annotations.NonNull;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @author Mr. GodDavid
@@ -17,7 +20,8 @@ import java.util.Optional;
  */
 public class BathingInEnricherWasteTrigger extends SimpleCriterionTrigger<BathingInEnricherWasteTrigger.TriggerInstance> {
 
-    private static final Timer BATHING_TIME = new Timer(1200);
+    private static final int REQUIRED_BATHING_DURATION = 1200;
+    private final Map<UUID, Timer> bathingTimers = new HashMap<>();
 
     @Override
     public @NonNull Codec<TriggerInstance> codec() {
@@ -25,21 +29,31 @@ public class BathingInEnricherWasteTrigger extends SimpleCriterionTrigger<Bathin
     }
 
     public void trigger(ServerPlayer player) {
-        this.trigger(player, instance -> instance.matches(player));
+        UUID uuid = player.getUUID();
+        Timer timer = bathingTimers.computeIfAbsent(uuid, ignored -> new Timer(REQUIRED_BATHING_DURATION));
+        if (timer.pass(() -> TriggerInstance.matches(player))) {
+            this.trigger(player, instance -> true);
+            timer.reset();
+        }
+    }
+
+    public void removePlayer(ServerPlayer player) {
+        this.bathingTimers.remove(player.getUUID());
     }
 
     /**
      * @author Mr. GodDavid
      * @since 10/10/2026
      */
-    public record TriggerInstance(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
+    public record TriggerInstance(
+            Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
 
         public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 ContextAwarePredicate.CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player)
         ).apply(instance, BathingInEnricherWasteTrigger.TriggerInstance::new));
 
-        public boolean matches(ServerPlayer player) {
-            return BATHING_TIME.pass(() -> player.isInFluid(MtsTags.Fluids.ENRICHER_WASTE));
+        public static boolean matches(ServerPlayer player) {
+            return player.isInFluid(MtsTags.Fluids.ENRICHER_WASTE);
         }
 
         @Override

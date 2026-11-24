@@ -15,8 +15,8 @@ import java.util.Optional;
  */
 public class AttackedSpecificMobTrigger extends SimpleCriterionTrigger<AttackedSpecificMobTrigger.TriggerInstance> {
 
-    public <T extends LivingEntity> void trigger(ServerPlayer player, Class<T> hurtMobClass) {
-        this.trigger(player, instance -> instance.matches(player, hurtMobClass));
+    public <T extends LivingEntity> void trigger(ServerPlayer player, T lastHurtMob, Class<T> hurtMobClass) {
+        this.trigger(player, instance -> instance.matches(lastHurtMob, hurtMobClass));
     }
 
     @Override
@@ -37,9 +37,7 @@ public class AttackedSpecificMobTrigger extends SimpleCriterionTrigger<AttackedS
                 .apply(instance, AttackedSpecificMobTrigger.TriggerInstance::new)
         );
 
-        public <T extends LivingEntity> boolean matches(ServerPlayer player, Class<T> hurtMobClass) {
-            LivingEntity lastHurtMob = player.getLastHurtMob();
-            if (lastHurtMob == null) return false;
+        public <T extends LivingEntity> boolean matches(T lastHurtMob, Class<T> hurtMobClass) {
             return hurtMobClass.isInstance(lastHurtMob);
         }
 

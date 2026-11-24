@@ -11,7 +11,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinAbilityEntity;
-import net.mrgoddavid.minecraftthestoriesmod.event.thirst.ThirstHolder;
+import net.mrgoddavid.minecraftthestoriesmod.event.content.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.client.EntityUtils;
 

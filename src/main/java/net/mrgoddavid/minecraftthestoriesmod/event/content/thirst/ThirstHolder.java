@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.event.thirst;
+package net.mrgoddavid.minecraftthestoriesmod.event.content.thirst;
 
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 

@@ -1,7 +1,6 @@
-package net.mrgoddavid.minecraftthestoriesmod.event.thirst;
+package net.mrgoddavid.minecraftthestoriesmod.event.content.thirst;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.MinecraftServer;

@@ -25,8 +25,8 @@ public class HitEnemyWithCudgelTrigger extends SimpleCriterionTrigger<HitEnemyWi
         return TriggerInstance.CODEC;
     }
 
-    public void trigger(ServerPlayer player) {
-        this.trigger(player, instance -> instance.matches(player));
+    public void trigger(ServerPlayer player, LivingEntity target) {
+        this.trigger(player, instance -> instance.matches(player, target));
     }
 
     /**
@@ -44,12 +44,11 @@ public class HitEnemyWithCudgelTrigger extends SimpleCriterionTrigger<HitEnemyWi
                 ContextAwarePredicate.CODEC.optionalFieldOf("enemy").forGetter(TriggerInstance::enemy)
         ).apply(instance, TriggerInstance::new));
 
-        public boolean matches(ServerPlayer player) {
-            LivingEntity lastHurtMob = player.getLastHurtMob();
+        public boolean matches(ServerPlayer player, LivingEntity target) {
             ItemStack mainHandItem = player.getMainHandItem();
             ItemStack offHandItem = player.getOffhandItem();
             boolean isWeaponCorrect = mainHandItem.is(MtsTags.Items.MTS_CUDGELS) || offHandItem.is(MtsTags.Items.MTS_CUDGELS);
-            boolean isLastHurtMobAnEnemy = lastHurtMob instanceof Enemy;
+            boolean isLastHurtMobAnEnemy = target instanceof Enemy;
             return isWeaponCorrect && isLastHurtMobAnEnemy;
         }
 
