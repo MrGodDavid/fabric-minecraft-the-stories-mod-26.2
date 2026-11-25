@@ -10,6 +10,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.ancient_oak_tree.AncientOakTreeTrunkPlacer;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.lemon_tree.LemonTreeTrunkPlacer;
 
 /**
  * @author Mr. GodDavid
@@ -18,6 +19,7 @@ import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.ancient
 public final class MtsTrunkPlacerTypes {
 
     public static final TrunkPlacerType<AncientOakTreeTrunkPlacer> ANCIENT_OAK_TREE = register("ancient_oak_tree", AncientOakTreeTrunkPlacer.CODEC);
+    public static final TrunkPlacerType<LemonTreeTrunkPlacer> LEMON_TREE = register("lemon_tree", LemonTreeTrunkPlacer.CODEC);
 
     private static <P extends TrunkPlacer> TrunkPlacerType<P> register(String name, MapCodec<P> codec) {
         return Registry.register(BuiltInRegistries.TRUNK_PLACER_TYPE, Constants.modId(name),

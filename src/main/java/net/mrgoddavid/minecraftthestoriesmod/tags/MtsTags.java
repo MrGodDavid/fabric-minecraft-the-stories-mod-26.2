@@ -95,6 +95,7 @@ public final class MtsTags {
 
         public static final TagKey<Block> COMPRESSED_LOGS = createTag("compressed_logs");
         public static final TagKey<Block> LEMON_TREE_LOGS = createTag("lemon_tree_logs");
+        public static final TagKey<Block> ANCIENT_OAK_LOGS = createTag("ancient_oak_logs");
 
         public static final TagKey<Block> NEEDS_STRONG_AMETHYST_TOOL = createTag("needs_strong_amethyst_tool");
         public static final TagKey<Block> NEEDS_EMERALD_TOOL = createTag("needs_emerald_tool");
@@ -139,6 +140,8 @@ public final class MtsTags {
 
         public static final TagKey<Item> COMPRESSED_WOOD_LOGS = createTag("compressed_logs");
         public static final TagKey<Item> LEMON_TREE_LOGS = createTag("lemon_tree_logs");
+        public static final TagKey<Item> ANCIENT_OAK_LOGS = createTag("ancient_oak_logs");
+
         public static final TagKey<Item> MTS_COMMON_MELEE_WEAPONS = createTag("mts_common_melee_weapons");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_AXES = createTag("mts_common_weapon_axes");
         public static final TagKey<Item> MTS_COMMON_WEAPONS_SWORDS = createTag("mts_common_weapon_swords");

@@ -21,6 +21,9 @@ public final class MtsStrippableBlocks {
 
         StrippableBlockRegistry.register(LEMON_TREE_WOOD, STRIPPED_LEMON_TREE_WOOD);
         StrippableBlockRegistry.register(LEMON_TREE_LOG, STRIPPED_LEMON_TREE_LOG);
+
+        StrippableBlockRegistry.register(ANCIENT_OAK_WOOD, STRIPPED_ANCIENT_OAK_WOOD);
+        StrippableBlockRegistry.register(ANCIENT_OAK_LOG, STRIPPED_ANCIENT_OAK_LOG);
     }
 
     private MtsStrippableBlocks() {

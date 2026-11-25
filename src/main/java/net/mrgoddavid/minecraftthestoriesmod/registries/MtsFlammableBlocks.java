@@ -30,6 +30,13 @@ public final class MtsFlammableBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_LEMON_TREE_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(LEMON_TREE_PLANKS, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(LEMON_TREE_LEAVES, 40, 60);
+
+        FlammableBlockRegistry.getDefaultInstance().add(ANCIENT_OAK_WOOD, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ANCIENT_OAK_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ANCIENT_OAK_WOOD, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ANCIENT_OAK_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ANCIENT_OAK_PLANKS, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ANCIENT_OAK_LEAVES, 40, 60);
     }
 
     private MtsFlammableBlocks() {

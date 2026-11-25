@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -24,6 +25,8 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.ancient_oak_tree.SimpleLeaveBallFoliagePlacer;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.ancient_oak_tree.AncientOakTreeTrunkPlacer;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.lemon_tree.LemonTreeFoliagePlacer;
+import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.content.lemon_tree.LemonTreeTrunkPlacer;
 
 import java.util.List;
 
@@ -78,15 +81,27 @@ public final class MtsWorldGenBootstrapper {
         // ===============================================================================================================
         //                                                    TREE GEN
         // ===============================================================================================================
-        context.register(MtsWorldGen.LEMON_TREE, new ConfiguredFeature<>(
+        context.register(MtsWorldGen.ANCIENT_OAK_TREE, new ConfiguredFeature<>(
                 Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LOG),
+                BlockStateProvider.simple(MtsBlocks.ANCIENT_OAK_LOG),
 //                new BendingTrunkPlacer(3, 3, 4, 2, ConstantInt.of(5)),
                 new AncientOakTreeTrunkPlacer(30, 3, 4),
 
-                BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LEAVES),
+                BlockStateProvider.simple(MtsBlocks.ANCIENT_OAK_LEAVES),
 //                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
                 new SimpleLeaveBallFoliagePlacer(ConstantInt.of(1), ConstantInt.of(1), 6),
+                new TwoLayersFeatureSize(1, 0, 2),
+
+                BlockStateProvider.simple(Blocks.DIRT)
+        ).build()));
+
+        context.register(MtsWorldGen.LEMON_TREE, new ConfiguredFeature<>(
+                Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LOG),
+                new LemonTreeTrunkPlacer(3, 1, 2),
+
+                BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LEAVES),
+                new LemonTreeFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 5),
                 new TwoLayersFeatureSize(1, 0, 2),
 
                 BlockStateProvider.simple(Blocks.DIRT)
@@ -170,7 +185,12 @@ public final class MtsWorldGenBootstrapper {
         // ===============================================================================================================
         //                                                    TREE GEN
         // ===============================================================================================================
-        // 1 / change must equal to an integer!
+        // (1 / change) must equal to an integer!
+        context.register(MtsWorldGen.ANCIENT_OAK_TREE_PLACED, new PlacedFeature(
+                configuredFeatures.getOrThrow(MtsWorldGen.ANCIENT_OAK_TREE),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2), MtsBlocks.ANCIENT_OAK_SAPLING)
+        ));
+
         context.register(MtsWorldGen.LEMON_TREE_PLACED, new PlacedFeature(
                 configuredFeatures.getOrThrow(MtsWorldGen.LEMON_TREE),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2), MtsBlocks.LEMON_TREE_SAPLING)

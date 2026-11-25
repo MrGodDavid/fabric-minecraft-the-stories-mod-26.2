@@ -262,6 +262,16 @@ public class CreativeModeTabs {
                         output.accept(LEMON_TREE_LEAVES);
                         output.accept(LEMON_TREE_SAPLING);
 
+                        output.accept(ANCIENT_OAK_WOOD);
+                        output.accept(ANCIENT_OAK_LOG);
+                        output.accept(STRIPPED_ANCIENT_OAK_WOOD);
+                        output.accept(STRIPPED_ANCIENT_OAK_LOG);
+                        output.accept(ANCIENT_OAK_PLANKS);
+                        output.accept(ANCIENT_OAK_LEAVES);
+                        output.accept(ANCIENT_OAK_SAPLING);
+                        output.accept(ANCIENT_OAK_FENCE);
+                        output.accept(ANCIENT_OAK_FENCE_GATE);
+
                         output.accept(STRONG_AMETHYST_FENCE);
                         output.accept(STRONG_AMETHYST_FENCE_GATE);
                         output.accept(STRONG_AMETHYST_WALL);

@@ -1,4 +1,5 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Tags for minecraft:block
+baba18506073b516ca2ad7551a4b67875d42452c data/minecraft-the-stories-mod/tags/block/ancient_oak_logs.json
 1782ca36b74fad70f28e7737a24a4155920cec13 data/minecraft-the-stories-mod/tags/block/compressed_logs.json
 ae2e9db2e509e2d5d2ea1d01b5efc5901e8973a3 data/minecraft-the-stories-mod/tags/block/incorrect_for_emerald_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft-the-stories-mod/tags/block/incorrect_for_strong_amethyst_tool.json
@@ -19,18 +20,18 @@ aa4950dd7a467a36d6d176a45413ebcf8e898e06 data/minecraft-the-stories-mod/tags/blo
 d35a78e2e9b10b0382a6046f53dc819f1d198287 data/minecraft-the-stories-mod/tags/block/needs_strong_topaz_tool.json
 676b1d3850e3a6312b374ef15abd9c3ffc45d19e data/minecraft-the-stories-mod/tags/block/oakie_growable.json
 4cec57c2b5b92487b5bd93cef901f4a5e016ace9 data/minecraft/tags/block/crops.json
-e191f826b5fccd329d6514842b01f5cc4a361d13 data/minecraft/tags/block/fence_gates.json
+f1812b1188076aebfb792e9aa5efd04db4a0a42b data/minecraft/tags/block/fence_gates.json
 da361f7bc314490f4cdc122516b9032f7fd7f04c data/minecraft/tags/block/fences.json
-56e9a6df9f6c6d1a6ab4b54d66449aae5b005c87 data/minecraft/tags/block/flower_pots.json
+fb9236bc4cacf952bb6adaf31a50d022d175ec68 data/minecraft/tags/block/flower_pots.json
 df22ddd0ddade59911cce16a53b346b8d9b262b8 data/minecraft/tags/block/incorrect_for_diamond_tool.json
 a97015d81d6ac2bf16feb917cbc13e094541a6d3 data/minecraft/tags/block/incorrect_for_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/incorrect_for_netherite_tool.json
-e78b605a606d540e7a61e85d264e2a382841d0b3 data/minecraft/tags/block/leaves.json
-ea9731f6b4af977ab774c43f004e5ca593173010 data/minecraft/tags/block/logs.json
-b5de640425f54399900f1817057d4e7432f0c24d data/minecraft/tags/block/mineable/axe.json
+36052109f2cd3bfc2ec7bbc37e88fa17482d1057 data/minecraft/tags/block/leaves.json
+14dc3215c73a3e47c59c94de7c34d512528d1263 data/minecraft/tags/block/logs.json
+a4429d09f7d2592f146bc7c0cae92ad41a9444ed data/minecraft/tags/block/mineable/axe.json
 62fbfe0d11bf8503ad13d1a2fa72f9b7bd04c7ee data/minecraft/tags/block/mineable/pickaxe.json
 4928ab4b5cec33b5ba1d42b51cfb41152421f883 data/minecraft/tags/block/needs_diamond_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/needs_iron_tool.json
-acf21a9e6ea0055ef444450dd91e54a3dcd354f5 data/minecraft/tags/block/planks.json
+4e30198f0b5afb2e8ddee422a38dbb27b22698b6 data/minecraft/tags/block/planks.json
 c02564d2471bf8137399a5c22230a9bf8d04fcf1 data/minecraft/tags/block/walls.json
-0749bdcd9e0fbaf3327d35192fab7932b1c3eb4b data/minecraft/tags/block/wooden_fences.json
+d9cfe56515462bde575954aaba4d8b6fae7401ed data/minecraft/tags/block/wooden_fences.json

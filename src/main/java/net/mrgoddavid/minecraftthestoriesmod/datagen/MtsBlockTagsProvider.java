@@ -7,7 +7,6 @@ import net.minecraft.references.BlockIds;
 import net.minecraft.references.BlockItemIds;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.tags.MtsTags;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
@@ -81,22 +80,107 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(MtsBlocks.getResourceKey(STRIPPED_LEMON_TREE_LOG))
                 .add(MtsBlocks.getResourceKey(LEMON_TREE_PLANKS))
 
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_WOOD))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_LOG))
+                .add(MtsBlocks.getResourceKey(STRIPPED_ANCIENT_OAK_WOOD))
+                .add(MtsBlocks.getResourceKey(STRIPPED_ANCIENT_OAK_LOG))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_PLANKS))
+
                 .add(MtsBlocks.getResourceKey(SUPER_CRAFTER_BLOCK))
                 .add(MtsBlocks.getResourceKey(SQUEEZER));
 
         tag(BlockTags.WOODEN_FENCES)
-                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_FENCE));
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_FENCE))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_FENCE));
         tag(BlockTags.FENCES)
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_FENCE));
 
         tag(BlockTags.FENCE_GATES)
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_FENCE_GATE))
-                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_FENCE_GATE));
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_FENCE_GATE))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_FENCE_GATE));
 
         tag(BlockTags.WALLS)
                 .add(MtsBlocks.getResourceKey(STRONG_AMETHYST_WALL))
                 .add(MtsBlocks.getResourceKey(RAW_STRONG_AMETHYST_WALL));
 
+        this.pleaseLeaveThisMethodAlone();
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_DIAMOND_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL);
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_EMERALD_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL);
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_IRON_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_GOLD_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_DIAMOND_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_EMERALD_TOOL)
+                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_IRON_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(MtsTags.Blocks.NEEDS_STRONG_GOLD_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        // #################################################################################################################
+        // #                                          MTS CUSTOM CROP TAG                                                  #
+        // #################################################################################################################
+        tag(BlockTags.CROPS)
+                .add(MtsBlocks.getResourceKey(STRAWBERRY_CROP));
+
+        // #################################################################################################################
+        // #                                          MTS CUSTOM TREE TYPE                                                 #
+        // #################################################################################################################
+        tag(MtsTags.Blocks.COMPRESSED_LOGS)
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD))
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_LOG))
+                .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD))
+                .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG))
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_PLANKS));
+        tag(MtsTags.Blocks.LEMON_TREE_LOGS)
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_WOOD))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LOG))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_WOOD))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LOG));
+        tag(MtsTags.Blocks.ANCIENT_OAK_LOGS)
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_WOOD))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_LOG))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_WOOD))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_LOG));
+        tag(BlockTags.LOGS)
+                .addTag(MtsTags.Blocks.COMPRESSED_LOGS)
+                .addTag(MtsTags.Blocks.LEMON_TREE_LOGS)
+                .addTag(MtsTags.Blocks.ANCIENT_OAK_LOGS);
+        tag(BlockTags.PLANKS)
+                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_PLANKS))
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_PLANKS))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_PLANKS));
+        tag(BlockTags.LEAVES)
+                .add(MtsBlocks.getResourceKey(LEMON_TREE_LEAVES))
+                .add(MtsBlocks.getResourceKey(ANCIENT_OAK_LEAVES));
+        tag(BlockTags.FLOWER_POTS)
+                .add(MtsBlocks.getResourceKey(POTTED_LEMON_TREE_SAPLING))
+                .add(MtsBlocks.getResourceKey(POTTED_ANCIENT_OAK_SAPLING));
+
+        tag(MtsTags.Entities.OAKIE_GROWABLE)
+                .add(BlockItemIds.SWEET_BERRY_CROP.block())
+                .add(BlockItemIds.GLOW_BERRY_CROP.block())
+                .add(BlockIds.CAVE_VINES_PLANT)
+                .addTag(BlockTags.CROPS);
+    }
+
+    /**
+     * Basically changes the vanilla mining level stuffs.
+     */
+    private void pleaseLeaveThisMethodAlone() {
         // ######################################### NO TOUCHING ZONE START ##############################################
 
         /* ========================================================================================================
@@ -178,66 +262,5 @@ public class MtsBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_AMETHYST_TOOL);
 
         // ######################################### NO TOUCHING ZONE END ################################################
-
-        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_DIAMOND_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL);
-
-        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_EMERALD_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL);
-
-        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_IRON_TOOL)
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
-
-        tag(MtsTags.Blocks.INCORRECT_FOR_STRONG_GOLD_TOOL)
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
-
-        tag(MtsTags.Blocks.NEEDS_STRONG_DIAMOND_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_STRONG_RUBY_TOOL);
-
-        tag(MtsTags.Blocks.NEEDS_STRONG_EMERALD_TOOL)
-                .addTag(MtsTags.Blocks.NEEDS_STRONG_TOPAZ_TOOL);
-
-        tag(MtsTags.Blocks.NEEDS_STRONG_IRON_TOOL)
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
-
-        tag(MtsTags.Blocks.NEEDS_STRONG_GOLD_TOOL)
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
-
-        // #################################################################################################################
-        // #                                          MTS CUSTOM CROP TAG                                                  #
-        // #################################################################################################################
-        tag(BlockTags.CROPS)
-                .add(MtsBlocks.getResourceKey(STRAWBERRY_CROP));
-
-        // #################################################################################################################
-        // #                                          MTS CUSTOM TREE TYPE                                                 #
-        // #################################################################################################################
-        tag(MtsTags.Blocks.COMPRESSED_LOGS)
-                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD))
-                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_LOG))
-                .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD))
-                .add(MtsBlocks.getResourceKey(STRIPPED_COMPRESSED_WOOD_LOG))
-                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_PLANKS));
-        tag(MtsTags.Blocks.LEMON_TREE_LOGS)
-                .add(MtsBlocks.getResourceKey(LEMON_TREE_WOOD))
-                .add(MtsBlocks.getResourceKey(LEMON_TREE_LOG))
-                .add(MtsBlocks.getResourceKey(LEMON_TREE_WOOD))
-                .add(MtsBlocks.getResourceKey(LEMON_TREE_LOG));
-        tag(BlockTags.LOGS)
-                .addTag(MtsTags.Blocks.COMPRESSED_LOGS)
-                .addTag(MtsTags.Blocks.LEMON_TREE_LOGS);
-        tag(BlockTags.PLANKS)
-                .add(MtsBlocks.getResourceKey(COMPRESSED_WOOD_PLANKS))
-                .add(MtsBlocks.getResourceKey(LEMON_TREE_PLANKS));
-        tag(BlockTags.LEAVES)
-                .add(MtsBlocks.getResourceKey(LEMON_TREE_LEAVES));
-        tag(BlockTags.FLOWER_POTS)
-                .add(MtsBlocks.getResourceKey(POTTED_LEMON_TREE_SAPLING));
-
-        tag(MtsTags.Entities.OAKIE_GROWABLE)
-                .add(BlockItemIds.SWEET_BERRY_CROP.block())
-                .add(BlockItemIds.GLOW_BERRY_CROP.block())
-                .add(BlockIds.CAVE_VINES_PLANT)
-                .addTag(BlockTags.CROPS);
     }
 }

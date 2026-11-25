@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "minecraft-the-stories-mod:block/ancient_oak_leaves"
+  }
+}

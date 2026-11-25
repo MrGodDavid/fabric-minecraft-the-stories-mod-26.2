@@ -11,6 +11,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.MtsFoliagePlacerTypes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author Mr. GodDavid
@@ -30,16 +31,16 @@ public class SimpleLeaveBallFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected FoliagePlacerType<?> type() {
+    protected @NonNull FoliagePlacerType<?> type() {
         return MtsFoliagePlacerTypes.ANCIENT_OAK_TREE;
     }
 
     @Override
     protected void createFoliage(
-            WorldGenLevel level,
-            FoliageSetter foliageSetter,
-            RandomSource random,
-            TreeConfiguration config,
+            @NonNull WorldGenLevel level,
+            @NonNull FoliageSetter foliageSetter,
+            @NonNull RandomSource random,
+            @NonNull TreeConfiguration config,
             int treeHeight,
             FoliageAttachment foliageAttachment,
             int foliageHeight,
@@ -49,6 +50,7 @@ public class SimpleLeaveBallFoliagePlacer extends FoliagePlacer {
         BlockPos center = foliageAttachment.pos().above(offset);
         boolean doubleTrunk = foliageAttachment.doubleTrunk();
 
+        // leafRadius = 1;
         this.placeLeavesRow(level, foliageSetter, random, config, center, leafRadius, -3, doubleTrunk);
         this.placeLeavesRow(level, foliageSetter, random, config, center, leafRadius + 1, -2, doubleTrunk);
         this.placeLeavesRow(level, foliageSetter, random, config, center, leafRadius + 2, -1, doubleTrunk);
@@ -59,12 +61,12 @@ public class SimpleLeaveBallFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    public int foliageHeight(RandomSource random, int treeHeight, TreeConfiguration config) {
+    public int foliageHeight(@NonNull RandomSource random, int treeHeight, @NonNull TreeConfiguration config) {
         return this.height;
     }
 
     @Override
-    protected boolean shouldSkipLocation(RandomSource random, int dx, int y, int dz, int currentRadius, boolean doubleTrunk) {
+    protected boolean shouldSkipLocation(@NonNull RandomSource random, int dx, int y, int dz, int currentRadius, boolean doubleTrunk) {
       return dx == currentRadius && dz == currentRadius;
     }
 }

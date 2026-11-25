@@ -51,6 +51,7 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
 
         MtsServerTickEventRegistries.register();
         MtsClientTickEventRegistries.register();
+        MtsBlockColorRegistries.register();
 
 //        ParticleProviderRegistry.register(MtsParticleTypes.COLORFUL_CLOUD_PARTICLE, sprites -> new ColorfulPlayerCloudParticle.Provider(sprites).color(100, 100, 100, 255));
 
@@ -70,18 +71,5 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
                     serverPlayer, state, tool
             );
         });
-
-        BlockColorRegistry.register(List.of(new BlockTintSource() {
-
-            @Override
-            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
-                return BiomeColors.getAverageFoliageColor(level, pos);
-            }
-
-            @Override
-            public int color(BlockState state) {
-                return 0x819604;
-            }
-        }), MtsBlocks.LEMON_TREE_LEAVES);
     }
 }

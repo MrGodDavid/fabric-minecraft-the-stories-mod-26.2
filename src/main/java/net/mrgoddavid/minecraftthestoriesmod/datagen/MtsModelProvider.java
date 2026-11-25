@@ -82,6 +82,7 @@ public class MtsModelProvider extends FabricModelProvider {
         // #################################################################################################################
         // #                                        CUSTOM WOOD AND TOOLS                                                  #
         // #################################################################################################################
+        // COMPRESSED WOOD
         blockModelGenerators.createAxisAlignedPillarBlock(COMPRESSED_WOOD, TexturedModel.CUBE);
         blockModelGenerators.createAxisAlignedPillarBlock(STRIPPED_COMPRESSED_WOOD, TexturedModel.CUBE);
         blockModelGenerators.woodProvider(COMPRESSED_WOOD_LOG).log(COMPRESSED_WOOD_LOG);
@@ -89,6 +90,7 @@ public class MtsModelProvider extends FabricModelProvider {
         blockModelGenerators.family(COMPRESSED_WOOD_PLANKS)
                 .fence(COMPRESSED_WOOD_FENCE)
                 .fenceGate(COMPRESSED_WOOD_FENCE_GATE);
+        // LEMON TREE
         blockModelGenerators.createAxisAlignedPillarBlock(LEMON_TREE_WOOD, TexturedModel.CUBE);
         blockModelGenerators.createAxisAlignedPillarBlock(STRIPPED_LEMON_TREE_WOOD, TexturedModel.CUBE);
         blockModelGenerators.woodProvider(LEMON_TREE_LOG).log(LEMON_TREE_LOG);
@@ -96,6 +98,16 @@ public class MtsModelProvider extends FabricModelProvider {
         blockModelGenerators.family(LEMON_TREE_PLANKS);
         blockModelGenerators.createTintedLeaves(LEMON_TREE_LEAVES, TexturedModel.LEAVES, 0x819604);
         blockModelGenerators.createPlantWithDefaultItem(LEMON_TREE_SAPLING, POTTED_LEMON_TREE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        // ANCIENT OAK
+        blockModelGenerators.createAxisAlignedPillarBlock(ANCIENT_OAK_WOOD, TexturedModel.CUBE);
+        blockModelGenerators.createAxisAlignedPillarBlock(STRIPPED_ANCIENT_OAK_WOOD, TexturedModel.CUBE);
+        blockModelGenerators.woodProvider(ANCIENT_OAK_LOG).log(ANCIENT_OAK_LOG);
+        blockModelGenerators.woodProvider(STRIPPED_ANCIENT_OAK_LOG).log(STRIPPED_ANCIENT_OAK_LOG);
+        blockModelGenerators.family(ANCIENT_OAK_PLANKS)
+                .fence(ANCIENT_OAK_FENCE)
+                .fenceGate(ANCIENT_OAK_FENCE_GATE);
+        blockModelGenerators.createTintedLeaves(ANCIENT_OAK_LEAVES, TexturedModel.LEAVES, 0x2D6464);
+        blockModelGenerators.createPlantWithDefaultItem(ANCIENT_OAK_SAPLING, POTTED_ANCIENT_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         // #################################################################################################################
         // #                                        CUSTOM BLOCK MODELS                                                    #

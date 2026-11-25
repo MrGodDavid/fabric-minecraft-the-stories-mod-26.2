@@ -20,6 +20,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  * @author Mr. GodDavid
  * @since 8/18/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 public final class MtsWorldGen {
 
     // ==================================================================================================================
@@ -36,6 +37,7 @@ public final class MtsWorldGen {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> STRONG_AMETHYST_END_ORE = configuredFeatureRK("amethyst_amethyst_ore");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_OAK_TREE = configuredFeatureRK("ancient_oak_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON_TREE = configuredFeatureRK("lemon_tree");
 
     // ==================================================================================================================
@@ -52,6 +54,7 @@ public final class MtsWorldGen {
 
     public static final ResourceKey<PlacedFeature> STRONG_AMETHYST_END_ORE_PLACED = placedFeatureRK("amethyst_end_ore_placed");
 
+    public static final ResourceKey<PlacedFeature> ANCIENT_OAK_TREE_PLACED = placedFeatureRK("ancient_oak_tree");
     public static final ResourceKey<PlacedFeature> LEMON_TREE_PLACED = placedFeatureRK("lemon_tree");
 
     private static ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureRK(String name) {
@@ -79,6 +82,9 @@ public final class MtsWorldGen {
         BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Decoration.UNDERGROUND_ORES, MtsWorldGen.STRONG_AMETHYST_END_ORE_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.PLAINS, Biomes.FOREST, Biomes.FLOWER_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ANCIENT_OAK_TREE_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.PLAINS, Biomes.FLOWER_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION, LEMON_TREE_PLACED);
     }
 

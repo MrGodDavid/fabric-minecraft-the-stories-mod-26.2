@@ -1,9 +1,10 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Tags for minecraft:item
 62a4aef5f1d9cf2aeb076560922aa027593aad3b data/minecraft-the-stories-mod/tags/item/agro_brown_bear_items.json
+4bc5ba5002a937dcc3e87510fce699f579ca7657 data/minecraft-the-stories-mod/tags/item/ancient_oak_logs.json
 e346296a57ced0d8072db57e33af19b06ac2a1d5 data/minecraft-the-stories-mod/tags/item/breed_brown_bear_items.json
 1782ca36b74fad70f28e7737a24a4155920cec13 data/minecraft-the-stories-mod/tags/item/compressed_logs.json
-2b857a6b74a26608aa494061386dd47ce3e68afe data/minecraft-the-stories-mod/tags/item/durable_weapons.json
-adf11bbcefee1d2b16243a32211996665ce4d451 data/minecraft-the-stories-mod/tags/item/lemon_tree_logs.json
+5e53111313da0bbae7e8f0ccd0b0858990ce0dba data/minecraft-the-stories-mod/tags/item/durable_weapons.json
+1e40023a780495a413ac758c89f532f879e2c0a5 data/minecraft-the-stories-mod/tags/item/lemon_tree_logs.json
 dbb64b271c23898b1fba31040520b08472ff11c4 data/minecraft-the-stories-mod/tags/item/mts_common_melee_weapons.json
 09d412f30c0a87334e74ccc411b1e231fcd1cdad data/minecraft-the-stories-mod/tags/item/mts_common_weapon_axes.json
 3f813e747d39b2cec1cfee47743b5b52df87cc16 data/minecraft-the-stories-mod/tags/item/mts_common_weapon_bows.json
@@ -34,7 +35,7 @@ e78b605a606d540e7a61e85d264e2a382841d0b3 data/minecraft/tags/item/leaves.json
 ea9731f6b4af977ab774c43f004e5ca593173010 data/minecraft/tags/item/logs_that_burn.json
 7e1767d262902d10da59e77436e0505b599c3da5 data/minecraft/tags/item/pickaxes.json
 acf21a9e6ea0055ef444450dd91e54a3dcd354f5 data/minecraft/tags/item/planks.json
-74dd32f32e7e150413867b37a16154ba523d02d2 data/minecraft/tags/item/saplings.json
+c047c1cdfb4caf4d37eaadc6b6a05e8718bf6f38 data/minecraft/tags/item/saplings.json
 848856d264670f38bf7fad91f76b76db8f1d78dd data/minecraft/tags/item/shovels.json
 5cc429771febc4614e752945696ce75a8aa570d5 data/minecraft/tags/item/spears.json
 43919afbcdabcb3c6ab6d01c6dd3c8fb4eb9398e data/minecraft/tags/item/swords.json

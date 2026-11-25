@@ -15,6 +15,7 @@ import java.util.Optional;
  */
 public final class MtsTreeGrowers {
 
+    public static final TreeGrower ANCIENT_OAK_TREE = registerNoMegaTreeNoFlowersNearBy("ancient_oak_tree", MtsWorldGen.ANCIENT_OAK_TREE);
     public static final TreeGrower LEMON_TREE = registerNoMegaTreeNoFlowersNearBy("lemon_tree", MtsWorldGen.LEMON_TREE);
 
     private static TreeGrower registerNoMegaTreeNoFlowersNearBy(String name, ResourceKey<ConfiguredFeature<?, ?>> feature) {

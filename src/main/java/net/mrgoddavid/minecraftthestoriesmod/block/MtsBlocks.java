@@ -44,73 +44,368 @@ import java.util.function.Function;
  * @author Mr. GodDavid
  * @since 8/13/2026
  */
+@SuppressWarnings({"SpellCheckingInspection", "NullableProblems"})
 public class MtsBlocks {
 
-    public static final Block DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties), BlockBehaviour.Properties.of().strength(6f, 6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
-    public static final Block DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(4, 6), properties), BlockBehaviour.Properties.of().strength(6f, 7f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
-    public static final Block DEEPSLATE_TOPAZ_ORE = registerBlock("deepslate_topaz_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 5), properties), BlockBehaviour.Properties.of().strength(6f, 7f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
-    public static final Block STONE_AMETHYST_ORE = registerBlock("stone_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties), BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE));
-    public static final Block STONE_RUBY_ORE = registerBlock("stone_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(4, 6), properties), BlockBehaviour.Properties.of().strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
-    public static final Block STONE_TOPAZ_ORE = registerBlock("stone_topaz_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 5), properties), BlockBehaviour.Properties.of().strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
-    public static final Block RAW_STRONG_AMETHYST_BLOCK = registerBlock("raw_strong_amethyst_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
-    public static final Block RAW_STRONG_DIAMOND_BLOCK = registerBlock("raw_strong_diamond_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block RAW_STRONG_EMERALD_BLOCK = registerBlock("raw_strong_emerald_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block RAW_STRONG_RUBY_BLOCK = registerBlock("raw_strong_ruby_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block RAW_STRONG_TOPAZ_BLOCK = registerBlock("raw_strong_topaz_block", properties -> new Block(properties.strength(5f, 5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block STRONG_AMETHYST_BLOCK = registerBlock("strong_amethyst_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
-    public static final Block STRONG_DIAMOND_BLOCK = registerBlock("strong_diamond_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block STRONG_EMERALD_BLOCK = registerBlock("strong_emerald_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block STRONG_RUBY_BLOCK = registerBlock("strong_ruby_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block STRONG_TOPAZ_BLOCK = registerBlock("strong_topaz_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block STRONG_IRON_BLOCK = registerBlock("strong_iron_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.IRON)));
-    public static final Block STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.strength(7.5f, 9.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+    public static final Block DEEPSLATE_AMETHYST_ORE = registerBlock("deepslate_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(6f, 6f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.DEEPSLATE));
 
-    public static final Block NETHER_STRONG_RUBY_ORE = registerBlock("nether_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 6), properties), BlockBehaviour.Properties.of().strength(3.2F, 3.2F).requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE));
-    public static final Block END_STRONG_AMETHYST_ORE = registerBlock("end_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(6, 9), properties), BlockBehaviour.Properties.of().strength(3.5F, 10.0F).requiresCorrectToolForDrops().sound(SoundType.STONE));
+    public static final Block DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(4, 6), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(6f, 7f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.DEEPSLATE));
 
-    public static final Block STRONG_AMETHYST_FENCE = registerBlock("strong_amethyst_fence", properties -> new FenceBlock(properties.strength(6.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block STRONG_AMETHYST_FENCE_GATE = registerBlock("strong_amethyst_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(6.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block STRONG_AMETHYST_WALL = registerBlock("strong_amethyst_wall", properties -> new WallBlock(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    public static final Block RAW_STRONG_AMETHYST_WALL = registerBlock("raw_strong_amethyst_wall", properties -> new WallBlock(properties.strength(7.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final Block DEEPSLATE_TOPAZ_ORE = registerBlock("deepslate_topaz_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 5), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(6f, 7f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.DEEPSLATE));
 
-    public static final Block SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
-    public static final Block ENRICHER = registerBlock("enricher_default", properties -> new EnricherBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE).lightLevel(state -> state.getValue(EnricherBlock.LIT) ? 15 : 0)));
-    public static final Block ENDER_EXALTER = registerBlock("ender_exalter", properties -> new EnderExalterBlock(properties.strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-    public static final Block ORE_COMPRESSOR = registerBlock("ore_compressor_default", properties -> new OreCompressorBlock(properties.strength(6.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-    public static final Block SQUEEZER = registerBlock("squeezer_default", properties -> new SqueezerBlock(properties.strength(3.0f, 2.0f).requiresCorrectToolForDrops().ignitedByLava().sound(SoundType.WOOD)));
-    public static final Block WOODLIN_POT = registerBlock("woodlin_pot_default", properties -> new WoodlinPotBlock(properties.strength(1.0F, 1.0F).requiresCorrectToolForDrops().sound(SoundType.DECORATED_POT)));
+    public static final Block STONE_AMETHYST_ORE = registerBlock("stone_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(5, 7), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(4f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE));
 
-    public static final Block ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
-    public static final Block BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties.replaceable().noCollision().noOcclusion().liquid()));
+    public static final Block STONE_RUBY_ORE = registerBlock("stone_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(4, 6), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(3.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE));
+
+    public static final Block STONE_TOPAZ_ORE = registerBlock("stone_topaz_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 5), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(3.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE));
+
+    public static final Block RAW_STRONG_AMETHYST_BLOCK = registerBlock("raw_strong_amethyst_block", properties -> new Block(properties
+            .strength(5f, 5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.AMETHYST)));
+
+    public static final Block RAW_STRONG_DIAMOND_BLOCK = registerBlock("raw_strong_diamond_block", properties -> new Block(properties
+            .strength(5f, 5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block RAW_STRONG_EMERALD_BLOCK = registerBlock("raw_strong_emerald_block", properties -> new Block(properties
+            .strength(5f, 5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block RAW_STRONG_RUBY_BLOCK = registerBlock("raw_strong_ruby_block", properties -> new Block(properties.
+            strength(5f, 5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block RAW_STRONG_TOPAZ_BLOCK = registerBlock("raw_strong_topaz_block", properties -> new Block(properties.
+            strength(5f, 5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block STRONG_AMETHYST_BLOCK = registerBlock("strong_amethyst_block", properties -> new Block(properties.
+            strength(7.5f, 9.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.AMETHYST)));
+
+    public static final Block STRONG_DIAMOND_BLOCK = registerBlock("strong_diamond_block", properties -> new Block(properties.
+            strength(7.5f, 9.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block STRONG_EMERALD_BLOCK = registerBlock("strong_emerald_block", properties -> new Block(properties.
+            strength(7.5f, 9.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block STRONG_RUBY_BLOCK = registerBlock("strong_ruby_block", properties -> new Block(properties.
+            strength(7.5f, 9.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block STRONG_TOPAZ_BLOCK = registerBlock("strong_topaz_block", properties -> new Block(properties.
+            strength(7.5f, 9.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block STRONG_IRON_BLOCK = registerBlock("strong_iron_block", properties -> new Block(properties.
+            strength(7.5f, 9.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.IRON)));
+
+    public static final Block STRONG_GOLD_BLOCK = registerBlock("strong_gold_block", properties -> new Block(properties.
+            strength(7.5f, 9.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block NETHER_STRONG_RUBY_ORE = registerBlock("nether_ruby_ore", properties -> new DropExperienceBlock(UniformInt.of(3, 6), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(3.2F, 3.2F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.NETHER_GOLD_ORE));
+
+    public static final Block END_STRONG_AMETHYST_ORE = registerBlock("end_amethyst_ore", properties -> new DropExperienceBlock(UniformInt.of(6, 9), properties),
+            BlockBehaviour.Properties.of()
+                    .strength(3.5F, 10.0F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE));
+
+    public static final Block STRONG_AMETHYST_FENCE = registerBlock("strong_amethyst_fence", properties -> new FenceBlock(properties
+            .strength(6.5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block STRONG_AMETHYST_FENCE_GATE = registerBlock("strong_amethyst_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties
+            .strength(6.5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block STRONG_AMETHYST_WALL = registerBlock("strong_amethyst_wall", properties -> new WallBlock(properties
+            .strength(7.5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)));
+
+    public static final Block RAW_STRONG_AMETHYST_WALL = registerBlock("raw_strong_amethyst_wall", properties -> new WallBlock(properties
+            .strength(7.5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.STONE)));
+
+    public static final Block SUPER_CRAFTER_BLOCK = registerBlock("super_crafter_default", properties -> new SuperCrafterBlock(properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)));
+
+    public static final Block ENRICHER = registerBlock("enricher_default", properties -> new EnricherBlock(properties
+            .strength(6.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.STONE)
+            .lightLevel(state -> state.getValue(EnricherBlock.LIT) ? 15 : 0)));
+
+    public static final Block ENDER_EXALTER = registerBlock("ender_exalter", properties -> new EnderExalterBlock(properties
+            .strength(4.5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.STONE)));
+
+    public static final Block ORE_COMPRESSOR = registerBlock("ore_compressor_default", properties -> new OreCompressorBlock(properties
+            .strength(6.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.STONE)));
+
+    public static final Block SQUEEZER = registerBlock("squeezer_default", properties -> new SqueezerBlock(properties
+            .strength(3.0f, 2.0f)
+            .requiresCorrectToolForDrops()
+            .ignitedByLava()
+            .sound(SoundType.WOOD)));
+
+    public static final Block WOODLIN_POT = registerBlock("woodlin_pot_default", properties -> new WoodlinPotBlock(properties
+            .strength(1.0F, 1.0F)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.DECORATED_POT)));
+
+    // #################################################################################################################
+    // #                                              MTS CUSTOM FLUID                                                 #
+    // #################################################################################################################
+    public static final Block ENRICHER_WASTE_FLUID = registerBlock("enricher_waste_fluid", properties -> new LiquidBlock(MtsFluids.ENRICHER_WASTE_STILL, properties
+            .replaceable()
+            .noCollision()
+            .noOcclusion()
+            .liquid()));
+
+    public static final Block BLUE_FUEL_FLUID = registerBlock("blue_fuel_fluid", properties -> new LiquidBlock(MtsFluids.BLUE_FUEL_STILL, properties
+            .replaceable()
+            .noCollision()
+            .noOcclusion()
+            .liquid()));
 
     // #################################################################################################################
     // #                                              MTS CUSTOM CROP                                                  #
     // #################################################################################################################
-    public static final Block STRAWBERRY_CROP = registerBlockWithoutBlockItem("strawberry_crop", properties -> new StrawberryCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
-    public static final Block BLUEBERRY_BUSH = registerBlockWithoutBlockItem("blueberry_bush", properties -> new BlueberryBushBlock(properties.randomTicks().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY)));
+    public static final Block STRAWBERRY_CROP = registerBlockWithoutBlockItem("strawberry_crop", properties -> new StrawberryCropBlock(properties
+            .noCollision()
+            .randomTicks()
+            .instabreak()
+            .sound(SoundType.CROP)
+            .pushReaction(PushReaction.DESTROY)));
+
+    public static final Block BLUEBERRY_BUSH = registerBlockWithoutBlockItem("blueberry_bush", properties -> new BlueberryBushBlock(properties
+            .randomTicks()
+            .noCollision()
+            .sound(SoundType.SWEET_BERRY_BUSH)
+            .pushReaction(PushReaction.DESTROY)));
 
     // #################################################################################################################
-    // #                                            MTS CUSTOM NATURE                                                  #
+    // #                                        MTS CUSTOM NATURAL BLOCKS                                              #
     // #################################################################################################################
-    public static final Block COMPRESSED_WOOD = registerBlock("compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_LOG = registerBlock("compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_PLANKS = registerBlock("compressed_wood_planks", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block STRIPPED_COMPRESSED_WOOD = registerBlock("stripped_compressed_wood", properties -> new RotatedPillarBlock(properties.strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block STRIPPED_COMPRESSED_WOOD_LOG = registerBlock("stripped_compressed_wood_log", properties -> new RotatedPillarBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_FENCE = registerBlock("compressed_wood_fence", properties -> new FenceBlock(properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block COMPRESSED_WOOD_FENCE_GATE = registerBlock("compressed_wood_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties.strength(3.0f).requiresCorrectToolForDrops().sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block LEMON_TREE_LOG = registerBlock("lemon_tree_log", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block LEMON_TREE_WOOD = registerBlock("lemon_tree_wood", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block STRIPPED_LEMON_TREE_LOG = registerBlock("stripped_lemon_tree_log", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block STRIPPED_LEMON_TREE_WOOD = registerBlock("stripped_lemon_tree_wood", properties -> new RotatedPillarBlock(properties.strength(2.0F).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).ignitedByLava()));
-    public static final Block LEMON_TREE_LEAVES = registerBlock("lemon_tree_leaves", properties -> new TintedParticleLeavesBlock(0.01F,
-            properties.mapColor(MapColor.PLANT).strength(0.2F).randomTicks().sound(SoundType.WET_GRASS)
-                    .noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY)
-                    .isSuffocating(Blocks::never).isRedstoneConductor(Blocks::never).isViewBlocking(Blocks::never))
+    public static final Block COMPRESSED_WOOD = registerBlock("compressed_wood", properties -> new RotatedPillarBlock(properties
+            .strength(3.5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block COMPRESSED_WOOD_LOG = registerBlock("compressed_wood_log", properties -> new RotatedPillarBlock(properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block COMPRESSED_WOOD_PLANKS = registerBlock("compressed_wood_planks", properties -> new RotatedPillarBlock(properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block STRIPPED_COMPRESSED_WOOD = registerBlock("stripped_compressed_wood", properties -> new RotatedPillarBlock(properties
+            .strength(3.5f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block STRIPPED_COMPRESSED_WOOD_LOG = registerBlock("stripped_compressed_wood_log", properties -> new RotatedPillarBlock(properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block COMPRESSED_WOOD_FENCE = registerBlock("compressed_wood_fence", properties -> new FenceBlock(properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block COMPRESSED_WOOD_FENCE_GATE = registerBlock("compressed_wood_fence_gate", properties -> new FenceGateBlock(WoodType.ACACIA, properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block LEMON_TREE_LOG = registerBlock("lemon_tree_log", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .instrument(NoteBlockInstrument.BASS)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block LEMON_TREE_WOOD = registerBlock("lemon_tree_wood", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .instrument(NoteBlockInstrument.BASS)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block STRIPPED_LEMON_TREE_LOG = registerBlock("stripped_lemon_tree_log", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .instrument(NoteBlockInstrument.BASS)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block STRIPPED_LEMON_TREE_WOOD = registerBlock("stripped_lemon_tree_wood", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .instrument(NoteBlockInstrument.BASS)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block LEMON_TREE_LEAVES = registerBlock("lemon_tree_leaves", properties -> new TintedParticleLeavesBlock(0.01F, properties
+            .mapColor(MapColor.PLANT)
+            .strength(0.2F)
+            .randomTicks()
+            .sound(SoundType.WET_GRASS)
+            .noOcclusion()
+            .ignitedByLava()
+            .pushReaction(PushReaction.DESTROY)
+            .isSuffocating(Blocks::never)
+            .isRedstoneConductor(Blocks::never)
+            .isViewBlocking(Blocks::never))
     );
-    public static final Block LEMON_TREE_PLANKS = registerBlock("lemon_tree_planks", properties -> new RotatedPillarBlock(properties.strength(2.0F).sound(SoundType.WOOD).ignitedByLava().mapColor(MapColor.COLOR_YELLOW)));
-    public static final Block LEMON_TREE_SAPLING = registerBlock("lemon_tree_sapling", properties -> new SaplingBlock(MtsTreeGrowers.LEMON_TREE, properties.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
-    public static final Block POTTED_LEMON_TREE_SAPLING = registerBlock("potted_lemon-tree_sapling", properties -> new FlowerPotBlock(LEMON_TREE_SAPLING, properties.instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
+
+    public static final Block LEMON_TREE_PLANKS = registerBlock("lemon_tree_planks", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()
+            .mapColor(MapColor.COLOR_YELLOW)));
+
+    public static final Block LEMON_TREE_SAPLING = registerBlock("lemon_tree_sapling", properties -> new SaplingBlock(MtsTreeGrowers.LEMON_TREE, properties
+            .mapColor(MapColor.PLANT)
+            .noCollision()
+            .randomTicks()
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .pushReaction(PushReaction.DESTROY)));
+
+    public static final Block POTTED_LEMON_TREE_SAPLING = registerBlock("potted_lemon-tree_sapling", properties -> new FlowerPotBlock(LEMON_TREE_SAPLING, properties
+            .instabreak()
+            .noCollision()
+            .pushReaction(PushReaction.DESTROY)));
+
+    public static final Block ANCIENT_OAK_WOOD = registerBlock("ancient_oak_wood", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .sound(SoundType.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .ignitedByLava()
+            .mapColor(MapColor.COLOR_YELLOW)));
+
+    public static final Block ANCIENT_OAK_LOG = registerBlock("ancient_oak_log", properties -> new RotatedPillarBlock(properties
+            .sound(SoundType.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .ignitedByLava()
+            .mapColor(MapColor.COLOR_YELLOW)));
+
+    public static final Block STRIPPED_ANCIENT_OAK_WOOD = registerBlock("stripped_ancient_oak_wood", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()
+            .instrument(NoteBlockInstrument.BASS)));
+
+    public static final Block STRIPPED_ANCIENT_OAK_LOG = registerBlock("stripped_ancient_oak_log", properties -> new RotatedPillarBlock(properties
+            .strength(2.0F)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()
+            .instrument(NoteBlockInstrument.BASS)));
+
+    public static final Block ANCIENT_OAK_LEAVES = registerBlock("ancient_oak_leaves", properties -> new TintedParticleLeavesBlock(0.01F, properties
+            .mapColor(MapColor.PLANT)
+            .strength(0.2F)
+            .randomTicks()
+            .sound(SoundType.GRASS)
+            .noOcclusion()
+            .ignitedByLava()
+            .pushReaction(PushReaction.DESTROY)
+            .isSuffocating(Blocks::never)
+            .isRedstoneConductor(Blocks::never)
+            .isViewBlocking(Blocks::never)));
+
+    public static final Block ANCIENT_OAK_SAPLING = registerBlock("ancient_oak_sapling", properties -> new SaplingBlock(MtsTreeGrowers.ANCIENT_OAK_TREE, properties
+            .mapColor(MapColor.PLANT)
+            .noCollision()
+            .randomTicks()
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .pushReaction(PushReaction.DESTROY)));
+
+    public static final Block POTTED_ANCIENT_OAK_SAPLING = registerBlock("potted_ancient_oak_sapling", properties -> new FlowerPotBlock(ANCIENT_OAK_SAPLING, properties
+            .instabreak()
+            .noCollision()
+            .pushReaction(PushReaction.DESTROY)));
+
+    public static final Block ANCIENT_OAK_PLANKS = registerBlock("ancient_oak_planks", properties -> new RotatedPillarBlock(properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block ANCIENT_OAK_FENCE = registerBlock("ancient_oak_fence", properties -> new FenceBlock(properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
+
+    public static final Block ANCIENT_OAK_FENCE_GATE = registerBlock("ancient_oak_fence_gate", properties -> new FenceGateBlock(WoodType.OAK, properties
+            .strength(3.0f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()));
 
     /**
      * Gets the resource key of the mod block.

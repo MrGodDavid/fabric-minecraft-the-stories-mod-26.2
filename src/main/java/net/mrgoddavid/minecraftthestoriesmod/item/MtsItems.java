@@ -572,6 +572,15 @@ public final class MtsItems {
             fabricCreativeModeTabOutput.accept(LEMON_TREE_PLANKS);
             fabricCreativeModeTabOutput.accept(LEMON_TREE_LEAVES);
 
+            fabricCreativeModeTabOutput.accept(ANCIENT_OAK_WOOD);
+            fabricCreativeModeTabOutput.accept(ANCIENT_OAK_LOG);
+            fabricCreativeModeTabOutput.accept(STRIPPED_ANCIENT_OAK_WOOD);
+            fabricCreativeModeTabOutput.accept(STRIPPED_ANCIENT_OAK_LOG);
+            fabricCreativeModeTabOutput.accept(ANCIENT_OAK_PLANKS);
+            fabricCreativeModeTabOutput.accept(ANCIENT_OAK_LEAVES);
+            fabricCreativeModeTabOutput.accept(ANCIENT_OAK_FENCE);
+            fabricCreativeModeTabOutput.accept(ANCIENT_OAK_FENCE_GATE);
+
             fabricCreativeModeTabOutput.accept(STRONG_IRON_BLOCK);
             fabricCreativeModeTabOutput.accept(STRONG_GOLD_BLOCK);
             fabricCreativeModeTabOutput.accept(STRONG_EMERALD_BLOCK);

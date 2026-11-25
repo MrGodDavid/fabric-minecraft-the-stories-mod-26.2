@@ -189,10 +189,16 @@ public class MtsItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(MtsTags.Items.LEMON_TREE_LOGS)
                 .add(MtsItems.getResourceKey(LEMON_TREE_WOOD.asItem()))
                 .add(MtsItems.getResourceKey(LEMON_TREE_LOG.asItem()))
-                .add(MtsItems.getResourceKey(LEMON_TREE_WOOD.asItem()))
-                .add(MtsItems.getResourceKey(LEMON_TREE_LOG.asItem()));
+                .add(MtsItems.getResourceKey(STRIPPED_LEMON_TREE_LOG.asItem()))
+                .add(MtsItems.getResourceKey(STRIPPED_LEMON_TREE_WOOD.asItem()));
+        tag(MtsTags.Items.ANCIENT_OAK_LOGS)
+                .add(MtsItems.getResourceKey(ANCIENT_OAK_LOG.asItem()))
+                .add(MtsItems.getResourceKey(ANCIENT_OAK_WOOD.asItem()))
+                .add(MtsItems.getResourceKey(STRIPPED_ANCIENT_OAK_WOOD.asItem()))
+                .add(MtsItems.getResourceKey(STRIPPED_ANCIENT_OAK_LOG.asItem()));
         tag(ItemTags.SAPLINGS)
-                .add(MtsItems.getResourceKey(LEMON_TREE_SAPLING.asItem()));
+                .add(MtsItems.getResourceKey(LEMON_TREE_SAPLING.asItem()))
+                .add(MtsItems.getResourceKey(ANCIENT_OAK_SAPLING.asItem()));
 
         this.addToVanillaItemTag$LOGS_THAT_BURN();
         this.addToVanillaItemTag$PLANKS();

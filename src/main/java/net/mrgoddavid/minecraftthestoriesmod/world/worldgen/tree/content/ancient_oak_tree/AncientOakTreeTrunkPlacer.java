@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.mrgoddavid.minecraftthestoriesmod.world.worldgen.tree.MtsTrunkPlacerTypes;
+import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.function.BiConsumer;
  * @author Mr. GodDavid
  * @since 11/15/2026
  */
+@SuppressWarnings({"SpellCheckingInspection", "UnusedReturnValue"})
 public class AncientOakTreeTrunkPlacer extends TrunkPlacer {
 
     public static final MapCodec<AncientOakTreeTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(instance ->
@@ -34,18 +36,18 @@ public class AncientOakTreeTrunkPlacer extends TrunkPlacer {
     }
 
     @Override
-    protected TrunkPlacerType<?> type() {
+    protected @NonNull TrunkPlacerType<?> type() {
         return MtsTrunkPlacerTypes.ANCIENT_OAK_TREE;
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-            WorldGenLevel level,
-            BiConsumer<BlockPos, BlockState> trunkSetter,
-            RandomSource random,
+    public @NonNull List<FoliagePlacer.FoliageAttachment> placeTrunk(
+            @NonNull WorldGenLevel level,
+            @NonNull BiConsumer<BlockPos, BlockState> trunkSetter,
+            @NonNull RandomSource random,
             int treeHeight,
             BlockPos origin,
-            TreeConfiguration config
+            @NonNull TreeConfiguration config
     ) {
         placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), config);
         int maxHeight = treeHeight + random.nextInt(heightRandA, heightRandB + 3) + random.nextInt(heightRandA - 1, heightRandB + 2);
