@@ -14,6 +14,7 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 public final class MtsSounds {
 
     public static final SoundEvent BONK = registerSoundEvent("bonk");
+    public static final SoundEvent END_SUFFOCATION = registerSoundEvent("gasping_of_air");
 
     public static void register() {
         MtsLogger.info("Custom Sounds");

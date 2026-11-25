@@ -67,6 +67,8 @@ public class Timer {
     @FunctionalInterface
     public interface Criterion {
 
+        Criterion ALWAYS_TRUE = () -> true;
+
         boolean pass();
     }
 

@@ -254,6 +254,8 @@
   "death.attack.cudgel_bonk.player": "%1s was bonked to death while escaping from %2s.",
   "death.attack.oakie_burn": "%s turned into a piece of charcoal.",
   "death.attack.oakie_burn.player": "%2s turned %1s into a piece of charcoal.",
+  "death.attack.end_suffocation": "%s forgot his astronomy class in high school.",
+  "death.attack.end_suffocation.player": "%2s forgot to notice %1s to wear oxygen helmet",
 
   "entity.minecraft-the-stories-mod.brown_bear": "Brown Bear",
   "entity.minecraft-the-stories-mod.target_dummy": "Target Dummy",

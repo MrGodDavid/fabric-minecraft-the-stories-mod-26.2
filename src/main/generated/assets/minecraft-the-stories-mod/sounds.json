@@ -4,5 +4,15 @@
       "minecraft-the-stories-mod:bonk"
     ],
     "subtitle": "sound.minecraft-the-stories-mod.bonk"
+  },
+  "gasping_of_air": {
+    "replace": true,
+    "sounds": [
+      "minecraft-the-stories-mod:gasping_of_air1",
+      "minecraft-the-stories-mod:gasping_of_air2",
+      "minecraft-the-stories-mod:gasping_of_air3",
+      "minecraft-the-stories-mod:gasping_of_air4"
+    ],
+    "subtitle": "sound.minecraft-the-stories-mod.gasping_of_air"
   }
 }

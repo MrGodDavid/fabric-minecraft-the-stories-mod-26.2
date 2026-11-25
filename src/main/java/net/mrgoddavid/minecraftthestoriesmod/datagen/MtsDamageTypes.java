@@ -21,6 +21,7 @@ public class MtsDamageTypes {
     public static final ResourceKey<DamageType> LEECH_OF_OAKIE = create("leech_of_oakie");
     public static final ResourceKey<DamageType> OAKIE_BURN = create("oakie_burn");
     public static final ResourceKey<DamageType> THIRST = create("thirst");
+    public static final ResourceKey<DamageType> END_SUFFOCATION = create("end_suffocation");
 
     private static ResourceKey<DamageType> create(String name) {
         return ResourceKey.create(Registries.DAMAGE_TYPE, Constants.modId(name));
@@ -31,6 +32,7 @@ public class MtsDamageTypes {
         context.register(LEECH_OF_OAKIE, new DamageType("leech_of_oakie", 0.1f, DamageEffects.HURT));
         context.register(OAKIE_BURN, new DamageType("oakie_burn", 0.1f, DamageEffects.HURT));
         context.register(THIRST, new DamageType("thirst", 0.1f, DamageEffects.HURT));
+        context.register(END_SUFFOCATION, new DamageType("end_suffocation", 0.1f, DamageEffects.HURT));
     }
 
     public static DamageSource create(Level level, ResourceKey<DamageType> key) {

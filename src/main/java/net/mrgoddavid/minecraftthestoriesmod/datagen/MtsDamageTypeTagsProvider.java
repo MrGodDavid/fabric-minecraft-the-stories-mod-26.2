@@ -22,6 +22,7 @@ public final class MtsDamageTypeTagsProvider extends DamageTypeTagsProvider {
     protected void addTags(HolderLookup.@NonNull Provider registries) {
         this.tag(DamageTypeTags.NO_KNOCKBACK)
                 .add(MtsDamageTypes.THIRST)
-                .add(MtsDamageTypes.OAKIE_BURN);
+                .add(MtsDamageTypes.OAKIE_BURN)
+                .add(MtsDamageTypes.END_SUFFOCATION);
     }
 }

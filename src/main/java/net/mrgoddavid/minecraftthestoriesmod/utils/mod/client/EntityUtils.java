@@ -3,8 +3,10 @@ package net.mrgoddavid.minecraftthestoriesmod.utils.mod.client;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,6 +27,10 @@ import java.util.stream.Collectors;
  */
 @SuppressWarnings("resource")
 public final class EntityUtils {
+
+    public static boolean isPlayerInSurvival(Player player) {
+        return !player.isCreative() && !player.isSpectator();
+    }
 
     public static boolean inForbiddenBiome(LivingEntity entity, ResourceKey<Biome> forbiddenBiome, BlockPos pos) {
         return entity.level().getBiome(pos).is(forbiddenBiome);

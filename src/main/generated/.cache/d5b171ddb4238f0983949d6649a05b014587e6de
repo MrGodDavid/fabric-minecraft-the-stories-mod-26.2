@@ -1,5 +1,6 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Mts Dynamic Data Registry Provider
 0e5dbab80e45cac02a9021b557d5fc3548b444f4 data/minecraft-the-stories-mod/damage_type/cudgel_bonk.json
+183fecb44c6895091e74a73a2953bd86da05edf6 data/minecraft-the-stories-mod/damage_type/end_suffocation.json
 ae80d2c38b578b6a052e021e2dce8e4b3c0927ec data/minecraft-the-stories-mod/damage_type/leech_of_oakie.json
 851137dcae1d707091cafc2ee718c1736743933c data/minecraft-the-stories-mod/damage_type/oakie_burn.json
 35165d0c2d980552614e42ad041a23c1613377bf data/minecraft-the-stories-mod/damage_type/thirst.json
