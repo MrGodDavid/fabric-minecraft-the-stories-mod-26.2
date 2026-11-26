@@ -292,6 +292,9 @@
 
   "sound.minecraft-the-stories-mod.bonk": "Bonk",
 
+  "key.category.minecraftthestoriesmod.gameplay": "MTS Gameplay",
+  "key.minecraft-the-stories-mod.dodge_roll": "Dodge Roll",
+
   "effect.minecraft-the-stories-mod.public_enemy": "Public Enemy",
   "effect.minecraft-the-stories-mod.public_enemy.description": "You are too strong, so everyone hates you, including all the passive mobs...",
   "effect.minecraft-the-stories-mod.leech_of_oakie": "Leech Of Oakie",

@@ -10,13 +10,13 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
  */
 public final class MtsItemAnimations {
 
-    public static final MtsDaffiAnimator.AnimationBuilder CUDGEL_ANIMATION = MtsDaffiAnimator.animator()
-            .addKeyFrame(MtsDaffiAnimator.keyFrame()
+    public static final MtsDaffiAnimator.HeldItemAnimationBuilder CUDGEL_ANIMATION = MtsDaffiAnimator.heldItemAnimator()
+            .addKeyFrame(MtsDaffiAnimator.FPInHandAnimKeyFrame()
                     .moveRight(0.0f, 0.2f, 0, 4, null)
                     .moveUp(0.0f, 2.0f, 0, 4, null)
                     .rotateXBackward(0.0f, 45.0f, 0, 4, null)
             )
-            .addKeyFrame(MtsDaffiAnimator.keyFrame()
+            .addKeyFrame(MtsDaffiAnimator.FPInHandAnimKeyFrame()
                     .moveLeft(0.0f, 0.4f, 4, 12, null)
                     .moveDown(0.0f, 0.2f, 4, 12, null)
                     .moveForward(0.0f, 1.0f, 4, 12, null)

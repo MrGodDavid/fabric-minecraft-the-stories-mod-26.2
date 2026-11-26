@@ -98,7 +98,7 @@ public final class MtsWorldGenBootstrapper {
         context.register(MtsWorldGen.LEMON_TREE, new ConfiguredFeature<>(
                 Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LOG),
-                new LemonTreeTrunkPlacer(3, 1, 2),
+                new LemonTreeTrunkPlacer(4, 1, 2),
 
                 BlockStateProvider.simple(MtsBlocks.LEMON_TREE_LEAVES),
                 new LemonTreeFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 5),

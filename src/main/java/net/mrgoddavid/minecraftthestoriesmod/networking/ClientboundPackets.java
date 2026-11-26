@@ -2,7 +2,10 @@ package net.mrgoddavid.minecraftthestoriesmod.networking;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.world.entity.Entity;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.DodgeRollAnimationManager;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.TargetDummyDamageManager;
+import net.mrgoddavid.minecraftthestoriesmod.networking.payload.c2s.DodgeRollPayloadC2S;
+import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.DodgeRollAnimationPayloadS2C;
 import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.TargetDummyDamageNumberS2C;
 import net.mrgoddavid.minecraftthestoriesmod.networking.payload.s2c.ThirstPayloadS2C;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstClientManager;
@@ -25,6 +28,13 @@ public class ClientboundPackets {
             Entity entity = context.client().level.getEntity(payload.entityId());
             if (entity == null) return;
             TargetDummyDamageManager.addDamage(entity, payload.damage());
+        });
+    }
+
+    public static void handleDodgeRollAnimationPayload(DodgeRollAnimationPayloadS2C payload, ClientPlayNetworking.Context context) {
+        context.client().execute(() -> {
+            if (context.client().level == null) return;
+            DodgeRollAnimationManager.startRoll(payload.entityId(), payload.duration());
         });
     }
 

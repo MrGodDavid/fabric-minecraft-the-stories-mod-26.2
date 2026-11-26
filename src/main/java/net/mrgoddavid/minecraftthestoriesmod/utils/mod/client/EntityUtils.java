@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.mod.client;
 
+import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -11,8 +12,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.mrgoddavid.minecraftthestoriesmod.utils.list.ListsOperator;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Comparator;
@@ -28,8 +31,28 @@ import java.util.stream.Collectors;
 @SuppressWarnings("resource")
 public final class EntityUtils {
 
+    private static final List<ResourceKey<Biome>> HARSH_BIOMES = ListsOperator.addition(Constants.BIOMES.DESERT_BIOMES, Constants.BIOMES.BADLAND_BIOMES);
+
+    public static boolean isInHarshEnvironment(ServerLevel level, BlockPos pos) {
+        boolean notInOverworld = level.dimension() != Level.OVERWORLD;
+        boolean inHarshEnvironment = inAnyOfForbiddenBiomes(level, HARSH_BIOMES, pos);
+        return notInOverworld && inHarshEnvironment;
+    }
+
+    public static boolean inAnyOfForbiddenBiomes(ServerLevel level, List<ResourceKey<Biome>> forbiddenBiomes, BlockPos pos) {
+        boolean isInAnyOfForbiddenBiomes = false;
+        for (ResourceKey<Biome> forbiddenBiome : forbiddenBiomes) {
+            isInAnyOfForbiddenBiomes |= inForbiddenBiome(level, forbiddenBiome, pos);
+        }
+        return isInAnyOfForbiddenBiomes;
+    }
+
     public static boolean isPlayerInSurvival(Player player) {
         return !player.isCreative() && !player.isSpectator();
+    }
+
+    public static boolean inForbiddenBiome(ServerLevel level, ResourceKey<Biome> forbiddenBiome, BlockPos pos) {
+        return level.getBiome(pos).is(forbiddenBiome);
     }
 
     public static boolean inForbiddenBiome(LivingEntity entity, ResourceKey<Biome> forbiddenBiome, BlockPos pos) {

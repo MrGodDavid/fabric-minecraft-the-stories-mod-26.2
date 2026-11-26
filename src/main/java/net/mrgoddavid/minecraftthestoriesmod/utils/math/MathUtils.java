@@ -1,5 +1,6 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.math;
 
+import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
@@ -56,6 +57,11 @@ public final class MathUtils {
         float progress = x - originalMin;
         float targetDifference = targetMax - targetMin;
         float originalDifference = originalMax - originalMin;
-        return targetMin + (progress * targetDifference) / originalDifference;
+        float calculated = (targetMin + (progress * targetDifference) / originalDifference);
+        return Mth.clamp(calculated, targetMin, targetMax);
+    }
+
+    public static float degreeToRadians(double degrees) {
+        return (float) (degrees * Math.PI / 180.0F);
     }
 }

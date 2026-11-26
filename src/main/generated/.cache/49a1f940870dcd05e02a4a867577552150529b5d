@@ -1,2 +1,5 @@
 // 26.2	-999999999-01-01T00:00:00	Minecraft The Stories Mod/Tags for minecraft:damage_type
+56a3086796ca5d242e718f8e8a435676caa4d241 data/minecraft/tags/damage_type/bypasses_armor.json
+56a3086796ca5d242e718f8e8a435676caa4d241 data/minecraft/tags/damage_type/bypasses_enchantments.json
+56a3086796ca5d242e718f8e8a435676caa4d241 data/minecraft/tags/damage_type/bypasses_shield.json
 9dbb1b266ea3e92aaf28622ed11df64d6bd0361a data/minecraft/tags/damage_type/no_knockback.json

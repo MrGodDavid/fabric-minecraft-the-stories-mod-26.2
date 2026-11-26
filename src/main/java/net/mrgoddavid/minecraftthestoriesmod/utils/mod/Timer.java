@@ -56,8 +56,16 @@ public class Timer {
         return hasReachedMaxTick();
     }
 
-    private boolean hasReachedMaxTick() {
+    public boolean hasReachedMaxTick() {
         return this.currentTick >= this.maxTick;
+    }
+
+    public int currentTick() {
+        return this.currentTick;
+    }
+
+    public int maxTick() {
+        return this.maxTick;
     }
 
     /**

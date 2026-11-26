@@ -54,55 +54,55 @@ public class MtsBlockLootTableProvider extends FabricBlockLootSubProvider {
 
         HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
-        dropSelf(RAW_STRONG_EMERALD_BLOCK);
-        dropSelf(RAW_STRONG_DIAMOND_BLOCK);
-        dropSelf(RAW_STRONG_TOPAZ_BLOCK);
-        dropSelf(RAW_STRONG_RUBY_BLOCK);
-        dropSelf(RAW_STRONG_AMETHYST_BLOCK);
-        dropSelf(STRONG_GOLD_BLOCK);
-        dropSelf(STRONG_IRON_BLOCK);
-        dropSelf(STRONG_EMERALD_BLOCK);
-        dropSelf(STRONG_DIAMOND_BLOCK);
-        dropSelf(STRONG_TOPAZ_BLOCK);
-        dropSelf(STRONG_RUBY_BLOCK);
-        dropSelf(STRONG_AMETHYST_BLOCK);
+        this.dropSelf(RAW_STRONG_EMERALD_BLOCK);
+        this.dropSelf(RAW_STRONG_DIAMOND_BLOCK);
+        this.dropSelf(RAW_STRONG_TOPAZ_BLOCK);
+        this.dropSelf(RAW_STRONG_RUBY_BLOCK);
+        this.dropSelf(RAW_STRONG_AMETHYST_BLOCK);
+        this.dropSelf(STRONG_GOLD_BLOCK);
+        this.dropSelf(STRONG_IRON_BLOCK);
+        this.dropSelf(STRONG_EMERALD_BLOCK);
+        this.dropSelf(STRONG_DIAMOND_BLOCK);
+        this.dropSelf(STRONG_TOPAZ_BLOCK);
+        this.dropSelf(STRONG_RUBY_BLOCK);
+        this.dropSelf(STRONG_AMETHYST_BLOCK);
 
-        dropSelf(COMPRESSED_WOOD_LOG);
-        dropSelf(COMPRESSED_WOOD_FENCE);
-        dropSelf(COMPRESSED_WOOD_FENCE_GATE);
-        dropSelf(COMPRESSED_WOOD);
-        dropSelf(COMPRESSED_WOOD_PLANKS);
-        dropSelf(STRIPPED_COMPRESSED_WOOD_LOG);
-        dropSelf(STRIPPED_COMPRESSED_WOOD);
-        dropSelf(LEMON_TREE_WOOD);
-        dropSelf(LEMON_TREE_LOG);
-        dropSelf(STRIPPED_LEMON_TREE_WOOD);
-        dropSelf(STRIPPED_LEMON_TREE_LOG);
-        dropSelf(LEMON_TREE_PLANKS);
-        add(LEMON_TREE_LEAVES, block -> createLeavesDrops(block, LEMON_TREE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
-        dropSelf(LEMON_TREE_SAPLING);
-        add(POTTED_LEMON_TREE_SAPLING, block -> createPotFlowerItemTable(POTTED_LEMON_TREE_SAPLING));
+        this.dropSelf(COMPRESSED_WOOD_LOG);
+        this.dropSelf(COMPRESSED_WOOD_FENCE);
+        this.dropSelf(COMPRESSED_WOOD_FENCE_GATE);
+        this.dropSelf(COMPRESSED_WOOD);
+        this.dropSelf(COMPRESSED_WOOD_PLANKS);
+        this.dropSelf(STRIPPED_COMPRESSED_WOOD_LOG);
+        this.dropSelf(STRIPPED_COMPRESSED_WOOD);
+        this.dropSelf(LEMON_TREE_WOOD);
+        this.dropSelf(LEMON_TREE_LOG);
+        this.dropSelf(STRIPPED_LEMON_TREE_WOOD);
+        this.dropSelf(STRIPPED_LEMON_TREE_LOG);
+        this.dropSelf(LEMON_TREE_PLANKS);
+        this.add(LEMON_TREE_LEAVES, block -> createLeavesDrops(block, LEMON_TREE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(LEMON_TREE_SAPLING);
+        this.add(POTTED_LEMON_TREE_SAPLING, block -> createPotFlowerItemTable(POTTED_LEMON_TREE_SAPLING));
 
-        dropSelf(STRONG_AMETHYST_FENCE);
-        dropSelf(STRONG_AMETHYST_FENCE_GATE);
-        dropSelf(STRONG_AMETHYST_WALL);
+        this.dropSelf(STRONG_AMETHYST_FENCE);
+        this.dropSelf(STRONG_AMETHYST_FENCE_GATE);
+        this.dropSelf(STRONG_AMETHYST_WALL);
 
-        dropWhenSilkTouch(SUPER_CRAFTER_BLOCK);
-        dropSelf(ENRICHER);
-        dropSelf(ENDER_EXALTER);
-        dropSelf(ORE_COMPRESSOR);
+        this.dropWhenSilkTouch(SUPER_CRAFTER_BLOCK);
+        this.dropSelf(ENRICHER);
+        this.dropSelf(ENDER_EXALTER);
+        this.dropSelf(ORE_COMPRESSOR);
 
         // ores - custom mod blocks ONLY.
-        add(STONE_AMETHYST_ORE, createMultipleOreDrops(STONE_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 2.0f));
-        add(DEEPSLATE_AMETHYST_ORE, createMultipleOreDrops(DEEPSLATE_TOPAZ_ORE, RAW_STRONG_AMETHYST, 1.0f, 3.0f));
-        add(STONE_RUBY_ORE, createMultipleOreDrops(STONE_RUBY_ORE, RAW_STRONG_RUBY, 1.0f, 2.0f));
-        add(DEEPSLATE_RUBY_ORE, createMultipleOreDrops(DEEPSLATE_RUBY_ORE, RAW_STRONG_RUBY, 1.0f, 3.0f));
-        add(STONE_TOPAZ_ORE, createMultipleOreDrops(STONE_TOPAZ_ORE, RAW_STRONG_TOPAZ, 1.0f, 2.0f));
-        add(DEEPSLATE_TOPAZ_ORE, createMultipleOreDrops(DEEPSLATE_AMETHYST_ORE, RAW_STRONG_TOPAZ, 1.0f, 3.0f));
+        this.add(STONE_AMETHYST_ORE, createMultipleOreDrops(STONE_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 2.0f));
+        this.add(DEEPSLATE_AMETHYST_ORE, createMultipleOreDrops(DEEPSLATE_TOPAZ_ORE, RAW_STRONG_AMETHYST, 1.0f, 3.0f));
+        this.add(STONE_RUBY_ORE, createMultipleOreDrops(STONE_RUBY_ORE, RAW_STRONG_RUBY, 1.0f, 2.0f));
+        this.add(DEEPSLATE_RUBY_ORE, createMultipleOreDrops(DEEPSLATE_RUBY_ORE, RAW_STRONG_RUBY, 1.0f, 3.0f));
+        this.add(STONE_TOPAZ_ORE, createMultipleOreDrops(STONE_TOPAZ_ORE, RAW_STRONG_TOPAZ, 1.0f, 2.0f));
+        this.add(DEEPSLATE_TOPAZ_ORE, createMultipleOreDrops(DEEPSLATE_AMETHYST_ORE, RAW_STRONG_TOPAZ, 1.0f, 3.0f));
 
-        add(NETHER_STRONG_RUBY_ORE, createMultipleOreDrops(NETHER_STRONG_RUBY_ORE, RAW_STRONG_TOPAZ, 1.0f, 4.0f));
+        this.add(NETHER_STRONG_RUBY_ORE, createMultipleOreDrops(NETHER_STRONG_RUBY_ORE, RAW_STRONG_TOPAZ, 1.0f, 4.0f));
 
-        add(END_STRONG_AMETHYST_ORE, createMultipleOreDrops(END_STRONG_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 4.0f));
+        this.add(END_STRONG_AMETHYST_ORE, createMultipleOreDrops(END_STRONG_AMETHYST_ORE, RAW_STRONG_AMETHYST, 1.0f, 4.0f));
 
         this.createCropDrops(STRAWBERRY_CROP, this.defineStrawberryDropsRules(), enchantments);
         this.createCropDrops(BLUEBERRY_BUSH, this.defineBlueberryBushDropsRules(), enchantments);

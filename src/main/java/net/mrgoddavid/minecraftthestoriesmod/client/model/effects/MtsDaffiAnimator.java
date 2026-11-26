@@ -1,13 +1,15 @@
 package net.mrgoddavid.minecraftthestoriesmod.client.model.effects;
 
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.mrgoddavid.ocl.function.interpolation.EasingFunctions;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.HumanoidArm;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntityModel;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
@@ -15,40 +17,21 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
 import org.apache.logging.log4j.util.TriConsumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.BiConsumer;
 
 /**
- * Daffi animator animates animations of item-use animation in first pov. I'm figuring out how to animate thirst pov
+ * Daffi animator animates animations of item-use animation in first pov. I'm figuring out how to animate third pov
  * animations.
  *
  * @author Mr. GodDavid
- * @since 10/11/2026
+ * @since 10/11/2026 created this file.
+ * @since 11/25/2026 implementing animating third person features.
  */
 public final class MtsDaffiAnimator {
-
-    /**
-     * Must call this method before animating any items with mixin.
-     *
-     * @param player      player.
-     * @param frameInterp delta time between each tick.
-     * @param attack      a value between 0 and 1 when player left click while holding the item.
-     * @param poseStack   stack of poses.
-     * @param invert      1 or -1, depends on main hand or offhand while holding the item.
-     */
-    public static void startAnimation(AbstractClientPlayer player, float frameInterp, float attack, PoseStack poseStack, float invert) {
-        float rise = 0.0f;
-        boolean isSelectedItem = player.getMainHandItem().is(MtsItems.TEST_LONG_STICK);
-        if (isSelectedItem && attack <= 0.0f) {
-            float attackStrength = Mth.clamp(player.getAttackStrengthScale(frameInterp), 0.0F, 1.0F);
-            if (attackStrength <= 0.0f) {
-                rise = 0.01f * (1.0F - attackStrength);
-            }
-        }
-        poseStack.translate(invert * 0.56F, -0.52F + rise, -0.72F);
-    }
 
     public static void applyMobHeadRotation(EntityModel<? extends LivingEntityRenderState> model, float headYaw, float headPitch) {
         headYaw = Mth.clamp(headYaw, -30f, 30f);
@@ -75,6 +58,597 @@ public final class MtsDaffiAnimator {
             return -1.0f;
         }
         return 1.0f;
+    }
+
+    // ==================================================================================================================
+    //                                        THIRD PERSON ITEM IN HAND ANIMATOR
+    // ==================================================================================================================
+    public enum Part {
+        ROOT(null),
+        BODY(ROOT),
+        HEAD(BODY),
+        HAT(HEAD),
+        JACKET(BODY),
+        LEFT_ARM(BODY),
+        RIGHT_ARM(BODY),
+        LEFT_SLEEVE(LEFT_ARM),
+        RIGHT_SLEEVE(RIGHT_ARM),
+        LEFT_LEG(BODY),
+        RIGHT_LEG(BODY),
+        LEFT_PANTS(LEFT_LEG),
+        RIGHT_PANTS(RIGHT_LEG);
+
+        private final Part parent;
+
+        Part(Part parent) {
+            this.parent = parent;
+        }
+
+        public ModelPart get(PlayerModel model) {
+            ModelPart root = model.root();
+            return switch (this) {
+                case ROOT -> root;
+                case BODY -> model.body;
+                case HEAD -> model.head;
+                case HAT -> model.hat;
+                case JACKET -> model.jacket;
+                case LEFT_ARM -> model.leftArm;
+                case RIGHT_ARM -> model.rightArm;
+                case LEFT_LEG -> model.leftLeg;
+                case RIGHT_LEG -> model.rightLeg;
+                case LEFT_SLEEVE -> model.leftSleeve;
+                case RIGHT_SLEEVE -> model.rightSleeve;
+                case LEFT_PANTS -> model.leftPants;
+                case RIGHT_PANTS -> model.rightPants;
+            };
+        }
+
+        public Part parent() {
+            return this.parent;
+        }
+    }
+
+    public static void moveLeft(PlayerModel playerModel, Part part, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float translateX = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.x += translateX;
+    }
+
+    public static void moveRight(PlayerModel playerModel, Part part, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float translateX = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.x -= translateX;
+    }
+
+    public static void moveUp(PlayerModel playerModel, Part part, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float translateY = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.y -= translateY;
+    }
+
+    public static void moveDown(PlayerModel playerModel, Part part, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float translateY = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.y += translateY;
+    }
+
+    public static void moveForward(PlayerModel playerModel, Part part, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float translateZ = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.z -= translateZ;
+    }
+
+    public static void moveBackward(PlayerModel playerModel, Part part, float attackTick, float startPos, float endPos, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float translateZ = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.z += translateZ;
+    }
+
+    public static void rotateXForward(PlayerModel playerModel, Part part, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float rotationX = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.xRot -= MathUtils.degreeToRadians(rotationX);
+    }
+
+    public static void rotateXBackward(PlayerModel playerModel, Part part, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float rotationX = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.xRot += MathUtils.degreeToRadians(rotationX);
+    }
+
+    public static void rotateYLeft(PlayerModel playerModel, Part part, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float rotationY = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.yRot -= MathUtils.degreeToRadians(rotationY);
+    }
+
+    public static void rotateYRight(PlayerModel playerModel, Part part, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float rotationY = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.yRot += MathUtils.degreeToRadians(rotationY);
+    }
+
+    public static void rotateHorizontallyZLeft(PlayerModel playerModel, Part part, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float rotationZ = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.zRot -= MathUtils.degreeToRadians(rotationZ);
+    }
+
+    public static void rotateHorizontallyZRight(PlayerModel playerModel, Part part, float attackTick, float startDegrees, float endDegrees, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float rotationZ = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.zRot += MathUtils.degreeToRadians(rotationZ);
+    }
+
+    public static void expandLeft(PlayerModel playerModel, Part part, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float scaleX = 1.0f + MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.xScale *= scaleX;
+    }
+
+    public static void shrinkRight(PlayerModel playerModel, Part part, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float scaleX = 1.0f - MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.xScale *= scaleX;
+    }
+
+    public static void expandUp(PlayerModel playerModel, Part part, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float scaleY = 1.0f + MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.yScale *= scaleY;
+    }
+
+    public static void shrinkDown(PlayerModel playerModel, Part part, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float scaleY = 1.0f - MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.yScale *= scaleY;
+    }
+
+    public static void expandLongitudinally(PlayerModel playerModel, Part part, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float scaleZ = 1.0f + MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.zScale *= scaleZ;
+    }
+
+    public static void shrinkLongitudinally(PlayerModel playerModel, Part part, float attackTick, float startScale, float endScale, float startFrame, float endFrame) {
+        validateParamsOrThrow(startFrame, endFrame);
+        float scaleZ = 1.0f - MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        ModelPart targetPart = part.get(playerModel);
+        targetPart.zScale *= scaleZ;
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 11/25/2026
+     */
+    public static final class ThirdPersonAnimationKeyFrameBuilder {
+
+        private final List<BiConsumer<PlayerModel, Float>> frameChannels;
+
+        private ThirdPersonAnimationKeyFrameBuilder() {
+            this.frameChannels = new ArrayList<>();
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder moveLeft(Part part, float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.moveLeft(playerPart, part, manipulatedTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder moveRight(Part part, float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.moveRight(playerPart, part, manipulatedTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder moveUp(Part part, float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.moveUp(playerPart, part, manipulatedTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder moveDown(Part part, float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.moveDown(playerPart, part, manipulatedTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder moveForward(Part part, float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.moveForward(playerPart, part, manipulatedTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder moveBackward(Part part, float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.moveBackward(playerPart, part, manipulatedTick, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder rotateXForward(Part part, float startDegree, float endDegree, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.rotateXForward(playerPart, part, manipulatedTick, startDegree, endDegree, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        /**
+         * Use this method when animating player's body rotate forward.
+         *
+         * @param part        part of the player model.
+         * @param startDegree the starting angle of the model part's animation.
+         * @param endDegree   the ending angle of the model part's animation.
+         * @param startFrame  the starting frame of the model part's animation.
+         * @param endFrame    the ending frame of the model part's animation.
+         * @param ease        easing function.
+         * @return the third person animation key frame builder.
+         */
+        public ThirdPersonAnimationKeyFrameBuilder rotateXBackward(Part part, float startDegree, float endDegree, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.rotateXBackward(playerPart, part, manipulatedTick, startDegree, endDegree, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder rotateYLeft(Part part, float startDegree, float endDegree, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.rotateYLeft(playerPart, part, manipulatedTick, startDegree, endDegree, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder rotateYRight(Part part, float startDegree, float endDegree, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.rotateYRight(playerPart, part, manipulatedTick, startDegree, endDegree, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder rotateHorizontallyZLeft(Part part, float startDegree, float endDegree, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.rotateHorizontallyZLeft(playerPart, part, manipulatedTick, startDegree, endDegree, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder rotateHorizontallyZRight(Part part, float startDegree, float endDegree, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.rotateHorizontallyZRight(playerPart, part, manipulatedTick, startDegree, endDegree, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder expandLeft(Part part, float startScale, float endScale, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.expandLeft(playerPart, part, manipulatedTick, startScale, endScale, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder shrinkRight(Part part, float startScale, float endScale, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.shrinkRight(playerPart, part, manipulatedTick, startScale, endScale, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder expandUp(Part part, float startScale, float endScale, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.expandUp(playerPart, part, manipulatedTick, startScale, endScale, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder shrinkDown(Part part, float startScale, float endScale, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.shrinkDown(playerPart, part, manipulatedTick, startScale, endScale, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder expandLongitudinally(Part part, float startScale, float endScale, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.expandLongitudinally(playerPart, part, manipulatedTick, startScale, endScale, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public ThirdPersonAnimationKeyFrameBuilder shrinkLongitudinally(Part part, float startScale, float endScale, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((playerPart, attackTick) -> {
+                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+                MtsDaffiAnimator.shrinkLongitudinally(playerPart, part, manipulatedTick, startScale, endScale, normalizedStartFrame, normalizedEndFrame);
+            });
+            return this;
+        }
+
+        public void accept(PlayerModel playerModel, float attackTick) {
+            this.frameChannels.forEach(frame -> frame.accept(playerModel, attackTick));
+        }
+
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 11/26/2026
+     */
+    public static final class ThirdPersonAnimationBuilder {
+        private final List<ThirdPersonAnimationKeyFrameBuilder> frames;
+
+        private ThirdPersonAnimationBuilder() {
+            this.frames = new ArrayList<>();
+        }
+
+        public ThirdPersonAnimationBuilder addKeyFrame(ThirdPersonAnimationKeyFrameBuilder keyFrameBuilder) {
+            this.frames.add(keyFrameBuilder);
+            return this;
+        }
+
+        public void animate(PlayerModel model, float attackTick) {
+            Map<Part, PartPose> originalPoses = Maps.newEnumMap(Part.class);
+            Map<Part, ModelPart> modelParts = Maps.newEnumMap(Part.class);
+            Objects.requireNonNull(model);
+            for (Part part : Part.values()) {
+                if (part == Part.ROOT || isPartClothing(part)) continue;
+
+                ModelPart modelPart = part.get(model);
+                if (modelPart == null) {
+                    throw new IllegalStateException("Missing ModelPart for virtual hierarchy part: " + part);
+                }
+
+                modelParts.put(part, modelPart);
+                originalPoses.put(part, PartPose.capture(modelPart));
+            }
+
+            for (int frame = this.frames.size() - 1; frame >= 0; frame--) {
+                this.frames.get(frame).accept(model, attackTick);
+            }
+
+            Map<Part, PartPose> animatedPoses = Maps.newEnumMap(Part.class);
+            for (Part part : Part.values()) {
+                if (part == Part.ROOT || isPartClothing(part)) continue;
+
+                animatedPoses.put(part, PartPose.capture(part.get(model)));
+            }
+            applyVirtualHierarchy(modelParts, originalPoses, animatedPoses);
+        }
+    }
+
+    private static boolean isPartClothing(Part part) {
+        return part == Part.LEFT_SLEEVE
+                || part == Part.RIGHT_SLEEVE
+                || part == Part.LEFT_PANTS
+                || part == Part.RIGHT_PANTS;
+    }
+
+    private static void applyVirtualHierarchy(
+            Map<Part, ModelPart> modelParts,
+            Map<Part, PartPose> originalPoses,
+            Map<Part, PartPose> animatedPoses
+    ) {
+        Map<Part, Vector3f> finalPositions = Maps.newEnumMap(Part.class);
+        Map<Part, Quaternionf> accumulatedRotations = Maps.newEnumMap(Part.class);
+        Map<Part, Vector3f> accumulatedScales = Maps.newEnumMap(Part.class);
+
+        for (Part part : Part.values()) {
+            if (isPartClothing(part)) continue;
+            ModelPart modelPart = modelParts.get(part);
+            PartPose original = originalPoses.get(part);
+            PartPose animated = animatedPoses.get(part);
+
+            if (part == Part.ROOT) {
+                finalPositions.put(part, new Vector3f());
+                accumulatedRotations.put(part, new Quaternionf());
+                accumulatedScales.put(part, new Vector3f(1.0F, 1.0F, 1.0F));
+                continue;
+            }
+
+            Part parent = part.parent();
+            Objects.requireNonNull(parent, "Only ROOT may have null parent! Current part: " + part);
+            Vector3f parentFinalPosition;
+            Vector3f parentOriginalPosition;
+            Quaternionf parentAccumulatedRotation;
+            Vector3f parentAccumulatedScale;
+            if (parent == Part.ROOT) {
+                parentFinalPosition = new Vector3f();
+                parentOriginalPosition = new Vector3f();
+                parentAccumulatedRotation = new Quaternionf();
+                parentAccumulatedScale = new Vector3f(1.0F, 1.0F, 1.0F);
+            } else {
+                parentFinalPosition = finalPositions.get(parent);
+                parentOriginalPosition = originalPoses.get(parent).position();
+                parentAccumulatedRotation = accumulatedRotations.get(parent);
+                parentAccumulatedScale = accumulatedScales.get(parent);
+                if (parentFinalPosition == null || parentAccumulatedRotation == null || parentAccumulatedScale == null) {
+                    throw new IllegalStateException("Cannot apply virtual hierarchy for part " + part
+                            + "because virtual parent has not been evaluated: " + parent + " -> " + part);
+                }
+            }
+
+            // v' = T * R * S * v
+            Vector3f localPosition = original.position()
+                    .sub(parentOriginalPosition)
+                    .add(animated.x() - original.x(), animated.y() - original.y(), animated.z() - original.z());
+            localPosition.mul(parentAccumulatedScale);
+            parentAccumulatedRotation.transform(localPosition);
+            Vector3f finalPosition = new Vector3f(parentFinalPosition).add(localPosition);
+
+            Quaternionf ownRotationDelta = animated.rotation()
+                    .mul(original.rotation().invert());
+            Quaternionf finalRotation = new Quaternionf(parentAccumulatedRotation)
+                    .mul(animated.rotation());
+
+            Vector3f animatedScale = animated.scale();
+            Vector3f originalScale = original.scale();
+            Vector3f finalScale = new Vector3f(parentAccumulatedScale)
+                    .mul(animatedScale);
+            Vector3f ownScaleDelta = new Vector3f(
+                    safeScaleRatio(animatedScale.x, originalScale.x),
+                    safeScaleRatio(animatedScale.y, originalScale.y),
+                    safeScaleRatio(animatedScale.z, originalScale.z)
+            );
+            Vector3f accumulatedScale = new Vector3f(parentAccumulatedScale)
+                    .mul(ownScaleDelta);
+            Vector3f euler = finalRotation.getEulerAnglesZYX(new Vector3f());
+
+            modelPart.x = finalPosition.x();
+            modelPart.y = finalPosition.y();
+            modelPart.z = finalPosition.z();
+
+            modelPart.xRot = euler.x();
+            modelPart.yRot = euler.y();
+            modelPart.zRot = euler.z();
+
+            modelPart.xScale = finalScale.x();
+            modelPart.yScale = finalScale.y();
+            modelPart.zScale = finalScale.z();
+
+            finalPositions.put(part, finalPosition);
+            accumulatedRotations.put(part, new Quaternionf(parentAccumulatedRotation).mul(ownRotationDelta));
+            accumulatedScales.put(part, accumulatedScale);
+        }
+    }
+
+    private static float safeScaleRatio(float animatedScale, float originalScale) {
+        if (Mth.abs(animatedScale - originalScale) < 1E-6F) {
+            return 1.0F;
+        }
+        return animatedScale / originalScale;
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 11/26/2026
+     */
+    private record PartPose(float x, float y, float z,
+                            float xRot, float yRot, float zRot,
+                            float xScale, float yScale, float zScale
+    ) {
+
+        private static PartPose capture(ModelPart part) {
+            return new PartPose(part.x, part.y, part.z, part.xRot, part.yRot, part.zRot, part.xScale, part.yScale, part.zScale);
+        }
+
+        private Vector3f position() {
+            return new Vector3f(x, y, z);
+        }
+
+        private Vector3f scale() {
+            return new Vector3f(xScale, yScale, zScale);
+        }
+
+        private Quaternionf rotation() {
+            // modelPart applies in Z, Y, X rotation order
+            return new Quaternionf().rotationZYX(zRot, yRot, xRot);
+        }
+    }
+
+    public static ThirdPersonAnimationBuilder thirdPersonAnimator() {
+        return new ThirdPersonAnimationBuilder();
+    }
+
+    public static ThirdPersonAnimationKeyFrameBuilder thirdPersonAnimationKeyFrame() {
+        return new ThirdPersonAnimationKeyFrameBuilder();
+    }
+
+    // ==================================================================================================================
+    //                                        FIRST PERSON ITEM IN HAND ANIMATOR
+    // ==================================================================================================================
+
+    /**
+     * Must call this method before animating any items with mixin.
+     *
+     * @param player      player.
+     * @param frameInterp delta time between each tick.
+     * @param attack      a value between 0 and 1 when player left click while holding the item.
+     * @param poseStack   stack of poses.
+     * @param invert      1 or -1, depends on main hand or offhand while holding the item.
+     */
+    public static void startAnimation(AbstractClientPlayer player, float frameInterp, float attack, PoseStack poseStack, float invert) {
+        float rise = 0.0f;
+        boolean isSelectedItem = player.getMainHandItem().is(MtsItems.TEST_LONG_STICK);
+        if (isSelectedItem && attack <= 0.0f) {
+            float attackStrength = Mth.clamp(player.getAttackStrengthScale(frameInterp), 0.0F, 1.0F);
+            if (attackStrength <= 0.0f) {
+                rise = 0.01f * (1.0F - attackStrength);
+            }
+        }
+        poseStack.translate(invert * 0.56F, -0.52F + rise, -0.72F);
     }
 
     private static int getMultiplierFromArm(HumanoidArm arm) {
@@ -220,12 +794,31 @@ public final class MtsDaffiAnimator {
         }
     }
 
-    public static AnimationBuilder animator() {
-        return new AnimationBuilder();
+    /**
+     * Using easing function if the easing function parameter is not null. Using linear function if the easing function
+     * parameter is null.
+     *
+     * @param attackTick     animation tick.
+     * @param startFrame     normalized starting frame.
+     * @param endFrame       normalized ending frame.
+     * @param easingFunction type of easing function.
+     * @return the value that is either thrown into an easing function or not changed.
+     */
+    private static float easeOrLinear(float attackTick, float startFrame, float endFrame, EasingFunctions.EasingFunction easingFunction) {
+        float manipulatedTick = Mth.clamp(attackTick, startFrame, endFrame);
+        if (easingFunction == null) {
+            return manipulatedTick;
+        }
+        float progress = MathUtils.linearInterpolation(manipulatedTick, startFrame, endFrame, 0.0F, 1.0F);
+        return (float) easingFunction.value(progress);
     }
 
-    public static KeyFrameBuilder keyFrame() {
-        return new KeyFrameBuilder();
+    public static HeldItemAnimationBuilder heldItemAnimator() {
+        return new HeldItemAnimationBuilder();
+    }
+
+    public static HeldItemKeyframeBuilder FPInHandAnimKeyFrame() {
+        return new HeldItemKeyframeBuilder();
     }
 
     private MtsDaffiAnimator() {
@@ -236,224 +829,211 @@ public final class MtsDaffiAnimator {
      * @author Mr. GodDavid
      * @since 10/26/2026
      */
-    public static final class KeyFrameBuilder {
+    public static final class HeldItemKeyframeBuilder {
         private final List<TriConsumer<PoseStack, Float, HumanoidArm>> frameChannels;
 
-        private KeyFrameBuilder() {
+        private HeldItemKeyframeBuilder() {
             this.frameChannels = new ArrayList<>();
         }
 
-        private float easeOrLinear(float attackTick, float startFrame, float endFrame, EasingFunctions.EasingFunction easingFunction) {
-            float manipulatedTick = Mth.clamp(attackTick, startFrame, endFrame);
-            if (easingFunction == null) {
-                return manipulatedTick;
-            }
-            float progress = MathUtils.linearInterpolation(manipulatedTick, startFrame, endFrame, 0.0F, 1.0F);
-            return (float) easingFunction.value(progress);
-        }
-
-        public KeyFrameBuilder moveLeft(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder moveLeft(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.moveLeft(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder moveRight(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder moveRight(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.moveRight(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder moveUp(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder moveUp(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.moveUp(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder moveDown(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder moveDown(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.moveDown(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder moveForward(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder moveForward(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.moveForward(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder moveBackward(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder moveBackward(float startPos, float endPos, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.moveBackward(poseStack, manipulatedTick, arm, startPos, endPos, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder rotateXBackward(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder rotateXBackward(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.rotateXBackward(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder rotateXForward(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder rotateXForward(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.rotateXForward(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder rotateYRight(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder rotateYRight(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.rotateYRight(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder rotateYLeft(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder rotateYLeft(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.rotateYLeft(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder rotateHorizontallyZRight(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder rotateHorizontallyZRight(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.rotateHorizontallyZRight(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder rotateHorizontallyZLeft(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder rotateHorizontallyZLeft(float startDegrees, float endDegrees, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.rotateHorizontallyZLeft(poseStack, manipulatedTick, arm, startDegrees, endDegrees, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder expandLeft(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder expandLeft(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.expandLeft(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder shrinkRight(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder shrinkRight(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.shrinkRight(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder expandUp(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder expandUp(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.expandUp(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder shrinkDown(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder shrinkDown(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.shrinkDown(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder expandLongitudinally(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder expandLongitudinally(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.expandLongitudinally(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder shrinkLongitudinally(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder shrinkLongitudinally(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.shrinkLongitudinally(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder expandInScale(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder expandInScale(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.expandInScale(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
         }
 
-        public KeyFrameBuilder shrinkInScale(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
-            float normalizedStartFrame = normalizeFrames(startFrame);
-            float normalizedEndFrame = normalizeFrames(endFrame);
-            this.frameChannels.add(((poseStack, attackTick, arm) -> {
-                float manipulatedTick = easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
+        public HeldItemKeyframeBuilder shrinkInScale(float startSize, float endSize, int startFrame, int endFrame, EasingFunctions.EasingFunction ease) {
+            float normalizedStartFrame = MtsDaffiAnimator.normalizeFrames(startFrame);
+            float normalizedEndFrame = MtsDaffiAnimator.normalizeFrames(endFrame);
+            this.frameChannels.add((poseStack, attackTick, arm) -> {
+                float manipulatedTick = MtsDaffiAnimator.easeOrLinear(attackTick, normalizedStartFrame, normalizedEndFrame, ease);
                 MtsDaffiAnimator.shrinkInScale(poseStack, manipulatedTick, arm, startSize, endSize, normalizedStartFrame, normalizedEndFrame);
-            }));
+            });
             return this;
-        }
-
-        private float normalizeFrames(int frame) {
-            return frame / 24.0F;
         }
 
         public void accept(PoseStack poseStack, float attackTick, HumanoidArm arm) {
@@ -461,25 +1041,30 @@ public final class MtsDaffiAnimator {
         }
     }
 
+    private static float normalizeFrames(int frame) {
+        return frame / 24.0F;
+    }
+
+
     /**
      * @author Mr. GodDavid
      * @since 10/24/2026
      */
-    public static final class AnimationBuilder {
-        private final List<KeyFrameBuilder> frames;
+    public static final class HeldItemAnimationBuilder {
+        private final List<HeldItemKeyframeBuilder> frames;
 
-        private AnimationBuilder() {
+        private HeldItemAnimationBuilder() {
             this.frames = new ArrayList<>();
         }
 
-        public AnimationBuilder addKeyFrame(KeyFrameBuilder keyFrameBuilder) {
+        public HeldItemAnimationBuilder addKeyFrame(HeldItemKeyframeBuilder keyFrameBuilder) {
             this.frames.add(keyFrameBuilder);
             return this;
         }
 
         public void animate(PoseStack poseStack, float attackTick, HumanoidArm arm) {
             for (int i = this.frames.size() - 1; i >= 0; i--) {
-                KeyFrameBuilder frame = this.frames.get(i);
+                HeldItemKeyframeBuilder frame = this.frames.get(i);
                 frame.accept(poseStack, attackTick, arm);
             }
         }

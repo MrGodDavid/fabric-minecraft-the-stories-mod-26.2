@@ -31,6 +31,7 @@ import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPo
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsArmorMaterials;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItemModelTemplates;
 import net.mrgoddavid.minecraftthestoriesmod.item.content.MtsBowItem;
+import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import org.jspecify.annotations.NonNull;
 
@@ -49,7 +50,7 @@ public class MtsModelProvider extends FabricModelProvider {
 
     public MtsModelProvider(FabricPackOutput output) {
         super(output);
-        MinecraftTheStoriesMod.LOGGER.info("Providing data of MTS Block/Item Models for: " + MinecraftTheStoriesMod.MOD_ID);
+        MtsLogger.info("Custom Block and Item Models");
     }
 
     @Override

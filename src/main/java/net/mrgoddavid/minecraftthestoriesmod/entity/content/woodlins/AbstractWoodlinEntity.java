@@ -32,7 +32,9 @@ import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
 import net.mrgoddavid.minecraftthestoriesmod.entity.ai.goal.AvoidBiomeGoal;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.oakie.OakieEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
+import net.mrgoddavid.minecraftthestoriesmod.utils.list.ListsOperator;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
+import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Constants;
 import net.mrgoddavid.minecraftthestoriesmod.utils.mod.Timer;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -48,7 +50,7 @@ public abstract class AbstractWoodlinEntity extends TamableAnimal {
 
     protected static final EntityDataAccessor<Boolean> DATA_USING_ABILITY = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN); // communicate between server and client.
     protected static final EntityDataAccessor<Boolean> DATA_DEFENDING = SynchedEntityData.defineId(AbstractWoodlinEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final List<ResourceKey<Biome>> BASE_WOODLIN_FORBIDDEN_BIOMES = List.of(Biomes.DESERT, Biomes.BADLANDS, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS);
+    private static final List<ResourceKey<Biome>> BASE_WOODLIN_FORBIDDEN_BIOMES = ListsOperator.addition(Constants.BIOMES.DESERT_BIOMES, Constants.BIOMES.BADLAND_BIOMES);
     protected final byte STAND_EVENT = 99;
     private final MtsElementSets.Trio<Item, Item, Item> woodlinInteractableItems;
     private final WoodlinContext woodlinContext;

@@ -22,6 +22,7 @@ import net.mrgoddavid.minecraftthestoriesmod.event.content.StructureEnterCallbac
 import net.mrgoddavid.minecraftthestoriesmod.event.content.thirst.ThirstHolder;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.networking.contents.ThirstNetworking;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.DodgeRollManager;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.ThirstManager;
 import net.mrgoddavid.minecraftthestoriesmod.sound.MtsSounds;
 import net.mrgoddavid.minecraftthestoriesmod.utils.app.dave.PeriodicPulse;

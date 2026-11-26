@@ -1,8 +1,12 @@
 package net.mrgoddavid.minecraftthestoriesmod.utils.mod;
 
+import com.google.common.collect.Lists;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
 import net.mrgoddavid.minecraftthestoriesmod.utils.directory.Directory;
@@ -11,6 +15,8 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.MtsLogger;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ThrowReason;
 import org.jspecify.annotations.NonNull;
+
+import java.util.List;
 
 /**
  * @author Mr. GodDavid
@@ -48,6 +54,25 @@ public final class Constants {
      */
     public static Identifier defaultId(@NonNull final String path) {
         return Identifier.withDefaultNamespace(path);
+    }
+
+    public static String keyMappingName(String name) {
+        return "key." + MinecraftTheStoriesMod.MOD_ID + "." + name;
+    }
+
+    /**
+     * @author Mr. GodDavid
+     * @since 11/25/2026
+     */
+    public static final class BIOMES {
+
+        public static final List<ResourceKey<Biome>> DESERT_BIOMES = Lists.newArrayList(
+                Biomes.DESERT
+        );
+
+        public static final List<ResourceKey<Biome>> BADLAND_BIOMES = Lists.newArrayList(
+                Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.ERODED_BADLANDS
+        );
     }
 
     /**

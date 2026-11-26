@@ -10,6 +10,8 @@ import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
 import net.mrgoddavid.minecraftthestoriesmod.component.MtsDataComponentTypes;
 import net.mrgoddavid.minecraftthestoriesmod.datagen.MtsDamageTypes;
 import net.mrgoddavid.minecraftthestoriesmod.effect.MtsEffects;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.DodgeRollAnimationManager;
+import net.mrgoddavid.minecraftthestoriesmod.networking.manager.DodgeRollManager;
 import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuTypes;
 import net.mrgoddavid.minecraftthestoriesmod.creativemodetab.CreativeModeTabs;
 import net.mrgoddavid.minecraftthestoriesmod.registries.*;
@@ -68,6 +70,8 @@ public class MinecraftTheStoriesMod implements ModInitializer, TerraBlenderApi {
 
         MtsPackets.register();
         ThirstEvents.register();
+        DodgeRollManager.register();
+        DodgeRollAnimationManager.register();
         MtsHud.register();
         MtsDataComponentTypes.register();
         MtsModifyVanillaFoodItems.register();
@@ -118,4 +122,6 @@ public class MinecraftTheStoriesMod implements ModInitializer, TerraBlenderApi {
     public void onTerraBlenderInitialized() {
 
     }
+
+
 }

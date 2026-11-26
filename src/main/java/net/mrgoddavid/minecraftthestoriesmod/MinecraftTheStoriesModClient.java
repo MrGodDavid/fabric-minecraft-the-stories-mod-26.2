@@ -1,33 +1,30 @@
 package net.mrgoddavid.minecraftthestoriesmod;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
-import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorFreewheelModel;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPotBlockRenderer;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.woodlin_pot.WoodlinPotBranchModel;
 import net.mrgoddavid.minecraftthestoriesmod.block.entity.MtsBlockEntities;
+import net.mrgoddavid.minecraftthestoriesmod.client.MtsKeyMappings;
+import net.mrgoddavid.minecraftthestoriesmod.networking.payload.c2s.DodgeRollPayloadC2S;
 import net.mrgoddavid.minecraftthestoriesmod.registries.*;
 import net.mrgoddavid.minecraftthestoriesmod.registries.client.MtsMenuScreens;
 
 import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityModelLayers;
 import net.mrgoddavid.minecraftthestoriesmod.test.MtsTestWorld;
 import net.mrgoddavid.minecraftthestoriesmod.gui.tooltip.MtsItemTooltips;
-
-import java.util.List;
 
 public class MinecraftTheStoriesModClient implements ClientModInitializer {
 
@@ -52,6 +49,8 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
         MtsServerTickEventRegistries.register();
         MtsClientTickEventRegistries.register();
         MtsBlockColorRegistries.register();
+        MtsKeyMappings.register();
+        ClientTickEvents.END_CLIENT_TICK.register(MinecraftTheStoriesModClient::onEndTick);
 
 //        ParticleProviderRegistry.register(MtsParticleTypes.COLORFUL_CLOUD_PARTICLE, sprites -> new ColorfulPlayerCloudParticle.Provider(sprites).color(100, 100, 100, 255));
 
@@ -71,5 +70,13 @@ public class MinecraftTheStoriesModClient implements ClientModInitializer {
                     serverPlayer, state, tool
             );
         });
+    }
+
+    private static void onEndTick(Minecraft client) {
+        while (MtsKeyMappings.DODGE_ROLL.consumeClick()) {
+            if (client.player == null || client.level == null) continue;
+            if (client.isPaused()) continue;
+            ClientPlayNetworking.send(new DodgeRollPayloadC2S());
+        }
     }
 }

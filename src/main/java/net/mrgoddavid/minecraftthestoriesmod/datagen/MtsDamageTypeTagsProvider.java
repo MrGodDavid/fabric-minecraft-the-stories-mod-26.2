@@ -24,5 +24,14 @@ public final class MtsDamageTypeTagsProvider extends DamageTypeTagsProvider {
                 .add(MtsDamageTypes.THIRST)
                 .add(MtsDamageTypes.OAKIE_BURN)
                 .add(MtsDamageTypes.END_SUFFOCATION);
+
+        this.tag(DamageTypeTags.BYPASSES_ARMOR)
+                .add(MtsDamageTypes.END_SUFFOCATION);
+
+        this.tag(DamageTypeTags.BYPASSES_SHIELD)
+                .add(MtsDamageTypes.END_SUFFOCATION);
+
+        this.tag(DamageTypeTags.BYPASSES_ENCHANTMENTS)
+                .add(MtsDamageTypes.END_SUFFOCATION);
     }
 }

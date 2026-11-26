@@ -15,7 +15,8 @@
     "client.GuiGraphicsExtractorAccessor",
     "client.GuiGraphicsExtractorMixin",
     "client.HudMixin",
-    "client.ItemInHandRendererMixin"
+    "client.ItemInHandRendererMixin",
+    "client.PlayerModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1
