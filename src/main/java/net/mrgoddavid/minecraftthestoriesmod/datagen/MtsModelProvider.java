@@ -20,9 +20,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops.BlueberryBushBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.squeezer.SqueezerBlock;
@@ -109,6 +108,8 @@ public class MtsModelProvider extends FabricModelProvider {
                 .fenceGate(ANCIENT_OAK_FENCE_GATE);
         blockModelGenerators.createTintedLeaves(ANCIENT_OAK_LEAVES, TexturedModel.LEAVES, 0x2D6464);
         blockModelGenerators.createPlantWithDefaultItem(ANCIENT_OAK_SAPLING, POTTED_ANCIENT_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModelGenerators.createTrivialBlock(DENSE_OAKLIN_GRASS_BLOCK, TexturedModel.CUBE_TOP_BOTTOM);
+        blockModelGenerators.createTrivialCube(DENSE_OAKLIN_DIRT);
 
         // #################################################################################################################
         // #                                        CUSTOM BLOCK MODELS                                                    #

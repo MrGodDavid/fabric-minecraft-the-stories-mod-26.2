@@ -28,7 +28,7 @@ import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.AbstractWearFul
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.content.*;
 import net.mrgoddavid.minecraftthestoriesmod.advancement_trigger.MtsAdvancementTriggers;
 import net.mrgoddavid.minecraftthestoriesmod.block.MtsBlocks;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops.BlueberryBushBlock;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.woodlins.AbstractWoodlinEntity;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.registries.entity.MtsEntityTypes;

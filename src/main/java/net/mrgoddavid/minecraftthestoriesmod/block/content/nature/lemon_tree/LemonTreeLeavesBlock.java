@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.content.lemon_tree;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.nature.lemon_tree;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -20,8 +20,9 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.DenseOaklinGrassBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops.BlueberryBushBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ender_exalter.EnderExalterBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.enricher.EnricherBlock;
 import net.mrgoddavid.minecraftthestoriesmod.block.content.ore_compressor.OreCompressorBlock;
@@ -406,6 +407,17 @@ public class MtsBlocks {
             .requiresCorrectToolForDrops()
             .sound(SoundType.WOOD)
             .ignitedByLava()));
+
+    public static final Block DENSE_OAKLIN_GRASS_BLOCK = registerBlock("dense_oaklin_grass_block", properties -> new DenseOaklinGrassBlock(properties
+            .mapColor(MapColor.GRASS)
+            .strength(0.6F)
+            .randomTicks()
+            .sound(SoundType.GRASS)));
+
+    public static final Block DENSE_OAKLIN_DIRT = registerBlock("dense_oaklin_dirt", properties -> new Block(properties
+            .mapColor(MapColor.DIRT)
+            .strength(0.5F)
+            .sound(SoundType.GRAVEL)));
 
     /**
      * Gets the resource key of the mod block.

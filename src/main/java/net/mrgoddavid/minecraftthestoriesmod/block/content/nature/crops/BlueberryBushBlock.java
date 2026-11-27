@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.content.crops;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;

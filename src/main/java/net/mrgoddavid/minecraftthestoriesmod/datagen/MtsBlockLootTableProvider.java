@@ -21,8 +21,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.mrgoddavid.minecraftthestoriesmod.MinecraftTheStoriesMod;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.BlueberryBushBlock;
-import net.mrgoddavid.minecraftthestoriesmod.block.content.crops.StrawberryCropBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops.BlueberryBushBlock;
+import net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops.StrawberryCropBlock;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsElementSets;
 import net.mrgoddavid.minecraftthestoriesmod.utils.list.MtsNonnullElementSetLists;
 

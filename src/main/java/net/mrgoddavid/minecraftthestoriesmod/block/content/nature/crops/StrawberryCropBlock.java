@@ -1,4 +1,4 @@
-package net.mrgoddavid.minecraftthestoriesmod.block.content.crops;
+package net.mrgoddavid.minecraftthestoriesmod.block.content.nature.crops;
 
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
