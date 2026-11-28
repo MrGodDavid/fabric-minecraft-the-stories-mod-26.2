@@ -419,12 +419,19 @@ public class MtsBlocks {
             .strength(0.5F)
             .sound(SoundType.GRAVEL)));
 
+    public static final Block DENSE_OAKLIN_MYCELIUM = registerBlock("dense_oaklin_mycelium", properties -> new MyceliumBlock(properties
+            .strength(0.6F)
+            .randomTicks()
+            .sound(SoundType.GRASS)
+            .mapColor(MapColor.COLOR_PURPLE)));
+
     /**
      * Gets the resource key of the mod block.
      *
      * @param block mod block.
      * @return the resource key of the mod block.
      */
+
     public static ResourceKey<Block> getResourceKey(Block block) {
         return BuiltInRegistries.BLOCK.getResourceKey(block).get();
     }

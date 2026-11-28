@@ -22,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author Mr. GodDavid
  * @since 9/27/2026
  */
+@SuppressWarnings("SpellCheckingInspection")
 @Mixin(ItemInHandRenderer.class)
 public abstract class ItemInHandRendererMixin {
 
@@ -46,14 +47,14 @@ public abstract class ItemInHandRendererMixin {
         float invert = arm == HumanoidArm.RIGHT ? 1.0F : -1.0F;
 
         if (item instanceof CudgelItem) {
-            animateCudgels(player, attack, itemStack, inverseArmHeight, poseStack, submitNodeCollector, lightCoords, ci, invert, arm);
+            this.animateCudgels(player, attack, itemStack, inverseArmHeight, poseStack, submitNodeCollector, lightCoords, ci, invert, arm);
         }
         // I don't understand why I cannot replace the entire use animation since I have ci.cancel() at the end.
         // any transformation on the poseStack is just add animation layer on top of the existing use animation.
         // After I spent painfully about 24 hours, I solved this issue. It turns out that the first poseStack.translate()
         // cannot contain "inverseArmHeight". hahaha...
         else if (itemStack.is(MtsItems.TEST_LONG_STICK)) {
-            animateAnimationTestItem(player, frameInterp, attack, itemStack, poseStack, submitNodeCollector, lightCoords, ci, invert, arm);
+            this.animateAnimationTestItem(player, frameInterp, attack, itemStack, poseStack, submitNodeCollector, lightCoords, ci, invert, arm);
         }
     }
 

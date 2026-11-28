@@ -272,6 +272,7 @@ public class CreativeModeTabs {
                         output.accept(ANCIENT_OAK_FENCE);
                         output.accept(ANCIENT_OAK_FENCE_GATE);
                         output.accept(DENSE_OAKLIN_GRASS_BLOCK);
+                        output.accept(DENSE_OAKLIN_MYCELIUM);
                         output.accept(DENSE_OAKLIN_DIRT);
 
                         output.accept(STRONG_AMETHYST_FENCE);

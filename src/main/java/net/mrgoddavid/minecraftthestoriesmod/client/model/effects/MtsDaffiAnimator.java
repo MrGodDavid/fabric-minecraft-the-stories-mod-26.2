@@ -8,9 +8,13 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.mrgoddavid.minecraftthestoriesmod.entity.content.brown_bear.BrownBearEntityModel;
 import net.mrgoddavid.minecraftthestoriesmod.item.MtsItems;
 import net.mrgoddavid.minecraftthestoriesmod.utils.log.ErrorMessageBuilder;
@@ -19,9 +23,12 @@ import net.mrgoddavid.minecraftthestoriesmod.utils.math.MathUtils;
 import org.apache.logging.log4j.util.TriConsumer;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
 /**
  * Daffi animator animates animations of item-use animation in first pov. I'm figuring out how to animate third pov
@@ -29,9 +36,18 @@ import java.util.function.BiConsumer;
  *
  * @author Mr. GodDavid
  * @since 10/11/2026 created this file.
- * @since 11/25/2026 implementing animating third person features.
+ * @since 11/25/2026 to 11/25/2026 implemented animatable third-person poses features.
+ * @since 11/27/2026 implemented animatable held-in-hand item features.
  */
 public final class MtsDaffiAnimator {
+
+    public static int invertAnimation(HumanoidArm arm) {
+        return (arm == HumanoidArm.RIGHT) ? 1 : -1;
+    }
+
+    public static <S extends LivingEntityRenderState> float getPartialTicks(S state) {
+        return state.ageInTicks - Mth.floor(state.ageInTicks);
+    }
 
     public static void applyMobHeadRotation(EntityModel<? extends LivingEntityRenderState> model, float headYaw, float headPitch) {
         headYaw = Mth.clamp(headYaw, -30f, 30f);
@@ -440,7 +456,6 @@ public final class MtsDaffiAnimator {
         public void accept(PlayerModel playerModel, float attackTick) {
             this.frameChannels.forEach(frame -> frame.accept(playerModel, attackTick));
         }
-
     }
 
     /**
@@ -449,9 +464,20 @@ public final class MtsDaffiAnimator {
      */
     public static final class ThirdPersonAnimationBuilder {
         private final List<ThirdPersonAnimationKeyFrameBuilder> frames;
+        private HeldItemAnimationBuilder itemAnimation = null;
 
         private ThirdPersonAnimationBuilder() {
             this.frames = new ArrayList<>();
+        }
+
+        public ThirdPersonAnimationBuilder withItem(@NonNull HeldItemAnimationBuilder itemAnimation) {
+            this.itemAnimation = Objects.requireNonNull(itemAnimation);
+            return this;
+        }
+
+        public void animateItem(PoseStack poseStack, float attackTick, HumanoidArm arm) {
+            if (this.itemAnimation == null) return;
+            this.itemAnimation.animate(poseStack, attackTick, arm);
         }
 
         public ThirdPersonAnimationBuilder addKeyFrame(ThirdPersonAnimationKeyFrameBuilder keyFrameBuilder) {
@@ -651,86 +677,88 @@ public final class MtsDaffiAnimator {
         poseStack.translate(invert * 0.56F, -0.52F + rise, -0.72F);
     }
 
-    private static int getMultiplierFromArm(HumanoidArm arm) {
-        return (arm == HumanoidArm.RIGHT) ? 1 : -1;
-    }
-
     // ===================================================[TRANSLATION]===================================================
     public static void moveLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        int mul = getMultiplierFromArm(arm);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
         float translateX = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(-translateX, 0.0f, 0.0f);
     }
 
     public static void moveRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        int mul = getMultiplierFromArm(arm);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
         float translateX = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(translateX, 0.0f, 0.0f);
     }
 
     public static void moveUp(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float translateY = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float translateY = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(0.0f, translateY, 0.0f);
     }
 
     public static void moveDown(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float translateY = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float translateY = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(0.0f, -translateY, 0.0f);
     }
 
     public static void moveForward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float translateZ = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float translateZ = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(0.0f, 0.0f, -translateZ);
     }
 
     public static void moveBackward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startPos, float endPos, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float translateZ = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float translateZ = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startPos, endPos);
         poseStack.translate(0.0f, 0.0f, translateZ);
     }
 
     // ====================================================[ROTATION]=====================================================
     public static void rotateXForward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        int mul = getMultiplierFromArm(arm);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
         float xRot = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.XN.rotationDegrees(xRot));
     }
 
     public static void rotateXBackward(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float xRot = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float xRot = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.XP.rotationDegrees(xRot));
     }
 
     public static void rotateYLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float yRot = MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float yRot = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
     }
 
     public static void rotateYRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        int mul = getMultiplierFromArm(arm);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
         float yRot = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.YN.rotationDegrees(yRot));
     }
 
     public static void rotateHorizontallyZLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        int mul = getMultiplierFromArm(arm);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
         float zRot = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.ZP.rotationDegrees(zRot));
     }
 
     public static void rotateHorizontallyZRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startDegrees, float endDegrees, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        int mul = getMultiplierFromArm(arm);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
         float zRot = mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startDegrees, endDegrees);
         poseStack.mulPose(Axis.ZN.rotationDegrees(zRot));
     }
@@ -738,37 +766,43 @@ public final class MtsDaffiAnimator {
     // ======================================================[SCALE]======================================================
     public static void expandLeft(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float scaleX = 1.0f + MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float scaleX = 1.0f + mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(scaleX, 1.0f, 1.0f);
     }
 
     public static void shrinkRight(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float scaleX = 1.0f - MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float scaleX = 1.0f - mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(scaleX, 1.0f, 1.0f);
     }
 
     public static void expandUp(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float scaleY = 1.0f + MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float scaleY = 1.0f + mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(1.0f, scaleY, 1.0f);
     }
 
     public static void shrinkDown(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float scaleY = 1.0f - MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float scaleY = 1.0f - mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(1.0f, scaleY, 1.0f);
     }
 
     public static void expandLongitudinally(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float scaleZ = 1.0f + MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float scaleZ = 1.0f + mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(1.0f, 1.0f, scaleZ);
     }
 
     public static void shrinkLongitudinally(PoseStack poseStack, float attackTick, HumanoidArm arm, float startScale, float endScale, float startFrame, float endFrame) {
         validateParamsOrThrow(startFrame, endFrame);
-        float scaleZ = 1.0f - MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
+        int mul = MtsDaffiAnimator.invertAnimation(arm);
+        float scaleZ = 1.0f - mul * MathUtils.linearInterpolation(attackTick, startFrame, endFrame, startScale, endScale);
         poseStack.scale(1.0f, 1.0f, scaleZ);
     }
 

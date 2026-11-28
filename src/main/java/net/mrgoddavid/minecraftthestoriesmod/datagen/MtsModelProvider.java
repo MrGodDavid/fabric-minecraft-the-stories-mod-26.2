@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.datagen;
 import com.mojang.math.Quadrant;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
@@ -108,8 +109,11 @@ public class MtsModelProvider extends FabricModelProvider {
                 .fenceGate(ANCIENT_OAK_FENCE_GATE);
         blockModelGenerators.createTintedLeaves(ANCIENT_OAK_LEAVES, TexturedModel.LEAVES, 0x2D6464);
         blockModelGenerators.createPlantWithDefaultItem(ANCIENT_OAK_SAPLING, POTTED_ANCIENT_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
-        blockModelGenerators.createTrivialBlock(DENSE_OAKLIN_GRASS_BLOCK, TexturedModel.CUBE_TOP_BOTTOM);
+        // DENSE OAKLIN GRASS BLOCKS
+//        blockModelGenerators.createTrivialBlock(DENSE_OAKLIN_GRASS_BLOCK_SNOW, );
         blockModelGenerators.createTrivialCube(DENSE_OAKLIN_DIRT);
+//        blockModelGenerators.createTrivialBlock(DENSE_OAKLIN_GRASS_BLOCK, TexturedModel.CUBE_TOP_BOTTOM);
+        this.createSnowyMyceliumVariation(blockModelGenerators, DENSE_OAKLIN_GRASS_BLOCK, DENSE_OAKLIN_MYCELIUM, DENSE_OAKLIN_DIRT);
 
         // #################################################################################################################
         // #                                        CUSTOM BLOCK MODELS                                                    #
@@ -123,6 +127,35 @@ public class MtsModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createCropBlock(STRAWBERRY_CROP, StrawberryCropBlock.AGE, 0, 1, 2, 3, 4, 5);
         blockModelGenerators.createCrossBlock(BLUEBERRY_BUSH, BlockModelGenerators.PlantType.NOT_TINTED, BlueberryBushBlock.AGE, 0, 1, 2, 3);
+    }
+
+    public void createSnowyMyceliumVariation(BlockModelGenerators blockModelGenerators, Block mtsGrassBlock, Block mtsMyceliumBlock, Block bottomTextureMappingBlock) {
+        Material bottomTexture = TextureMapping.getBlockTexture(bottomTextureMappingBlock);
+        // normal grass
+        TextureMapping normalGrassMapping = new TextureMapping()
+                .put(TextureSlot.BOTTOM, bottomTexture)
+                .copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(mtsGrassBlock, "_top"))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(mtsGrassBlock, "_side"));
+        Identifier normalGrassModel = ModelTemplates.CUBE_BOTTOM_TOP.create(mtsGrassBlock, normalGrassMapping, blockModelGenerators.modelOutput);
+        MultiVariant normalMtsGrass = BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(normalGrassModel));
+        // snowy grass
+        TextureMapping snowyMapping = new TextureMapping()
+                .put(TextureSlot.BOTTOM, bottomTexture)
+                .copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(mtsGrassBlock, "_top"))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(mtsGrassBlock, "_snow"));
+        MultiVariant snowyGrass = BlockModelGenerators.plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(mtsGrassBlock, "_snow", snowyMapping, blockModelGenerators.modelOutput));
+        Identifier snowyMtsGrassBlockModel = ModelLocationUtils.getModelLocation(mtsGrassBlock);
+        blockModelGenerators.createGrassLikeBlock(mtsGrassBlock, normalMtsGrass, snowyGrass);
+        blockModelGenerators.registerSimpleTintedItemModel(mtsGrassBlock, snowyMtsGrassBlockModel, new GrassColorSource());
+        // mycelium variant
+        MultiVariant myceliumModel = BlockModelGenerators.createRotatedVariants(
+                BlockModelGenerators.plainModel(
+                        TexturedModel.CUBE_TOP_BOTTOM.get(mtsMyceliumBlock).updateTextures(m -> m.put(TextureSlot.BOTTOM, bottomTexture)).create(mtsMyceliumBlock, blockModelGenerators.modelOutput)
+                )
+        );
+        blockModelGenerators.createGrassLikeBlock(mtsMyceliumBlock, myceliumModel, snowyGrass);
     }
 
     public <T extends Enum<T> & StringRepresentable> void generateFacingModels(

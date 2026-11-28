@@ -3,6 +3,7 @@ package net.mrgoddavid.minecraftthestoriesmod.mixin.client;
 import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.util.Mth;
+import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsDaffiAnimator;
 import net.mrgoddavid.minecraftthestoriesmod.client.model.effects.MtsPlayerAnimations;
 import net.mrgoddavid.minecraftthestoriesmod.networking.manager.DodgeRollAnimationManager;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,9 +23,9 @@ public class PlayerModelMixin {
         PlayerModel playerModel = (PlayerModel) (Object) this;
 
         if (DodgeRollAnimationManager.isRolling(state.id)) {
-            float partialTick = state.ageInTicks - Mth.floor(state.ageInTicks);
+            float partialTick = MtsDaffiAnimator.getPartialTicks(state);
             float animationFrame = DodgeRollAnimationManager.getProgress(state.id, partialTick);
-            MtsPlayerAnimations.TEST_ANIMATION.animate(playerModel, animationFrame);
+            MtsPlayerAnimations.DODGE_ROLL.animate(playerModel, animationFrame);
         }
     }
 }

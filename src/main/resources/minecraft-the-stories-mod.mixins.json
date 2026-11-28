@@ -16,6 +16,7 @@
     "client.GuiGraphicsExtractorMixin",
     "client.HudMixin",
     "client.ItemInHandRendererMixin",
+    "client.PlayerItemInHandLayerMixin",
     "client.PlayerModelMixin"
   ],
   "injectors": {

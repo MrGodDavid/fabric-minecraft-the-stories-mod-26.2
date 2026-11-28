@@ -16,7 +16,8 @@ e77106bafd1b672da53d7c3a80783455704c46b5 assets/minecraft-the-stories-mod/blocks
 7109287668d509420b28d829527ceca71555891d assets/minecraft-the-stories-mod/blockstates/deepslate_ruby_ore.json
 2860c59580da8abcc851c12386184b4049ba45fc assets/minecraft-the-stories-mod/blockstates/deepslate_topaz_ore.json
 5a5dcf78af687823992d99792f3dd2fa7d5aeffa assets/minecraft-the-stories-mod/blockstates/dense_oaklin_dirt.json
-a331a76b8bbc199f2c5ab0fc44b55125b7714002 assets/minecraft-the-stories-mod/blockstates/dense_oaklin_grass_block.json
+045e7d8410c5245be76ac095d57c12c325d2ad01 assets/minecraft-the-stories-mod/blockstates/dense_oaklin_grass_block.json
+ed118e85a4650a026259eb54509b8a5ef32121a3 assets/minecraft-the-stories-mod/blockstates/dense_oaklin_mycelium.json
 c0ffc9fa4a5ffd2446abbeaf19f54451e191b72e assets/minecraft-the-stories-mod/blockstates/end_amethyst_ore.json
 eff5b0da6bd0ebdd61ec4a309e3d1bf60022b020 assets/minecraft-the-stories-mod/blockstates/ender_exalter.json
 1ed0af23fbfcc4340be0c8f9c56cb254d2ab1325 assets/minecraft-the-stories-mod/blockstates/enricher_default.json
@@ -121,7 +122,8 @@ f3e0f9f719cd6e65708bb767d0d698b8f84a7645 assets/minecraft-the-stories-mod/items/
 bad9ce571de92ae01ffad325d176412291671526 assets/minecraft-the-stories-mod/items/deepslate_topaz_ore.json
 fed4688086f42d0160f08a2b5e2db116c13952f2 assets/minecraft-the-stories-mod/items/dense_oakie_spawn_egg.json
 8dcf0ff1e34073290c390f92d60dcdc2daba61a2 assets/minecraft-the-stories-mod/items/dense_oaklin_dirt.json
-42c44b92b4bc607c98fc8d48446f284e5c1cab94 assets/minecraft-the-stories-mod/items/dense_oaklin_grass_block.json
+3e98ea2849d658ee015034f62dcabb2ceb1b4f9b assets/minecraft-the-stories-mod/items/dense_oaklin_grass_block.json
+e64b1f605f7aa1376963e5e6b56355f8e99d5de8 assets/minecraft-the-stories-mod/items/dense_oaklin_mycelium.json
 f4737aba007052e4c0226c4bcc9ddd3d79d4b3b2 assets/minecraft-the-stories-mod/items/diamond_battle_axe.json
 505ddc2621daf4996ade8935c336912a1de5828f assets/minecraft-the-stories-mod/items/emerald_axe.json
 b2a7b61f28dacce580b3463f1d66bfb559bca5b9 assets/minecraft-the-stories-mod/items/emerald_boots.json
@@ -325,7 +327,9 @@ f0b591bd8b0a64c79a002a5080ab11cfe8c127c6 assets/minecraft-the-stories-mod/models
 5cd420a8bb5ce679f696e893b91dead28b4d209a assets/minecraft-the-stories-mod/models/block/deepslate_ruby_ore.json
 8b0a7bbe70638a909a990847ad1393a7e927678b assets/minecraft-the-stories-mod/models/block/deepslate_topaz_ore.json
 8a7fb9281ac9192a0c704965a4da75f6fea26c39 assets/minecraft-the-stories-mod/models/block/dense_oaklin_dirt.json
-0dc20dbead7bd4ea8cb80a0eed72ea524a6d1a14 assets/minecraft-the-stories-mod/models/block/dense_oaklin_grass_block.json
+da2e7f4574554694abfa16eaf12bb89c47fc6cc9 assets/minecraft-the-stories-mod/models/block/dense_oaklin_grass_block.json
+fa2f445011337707bc00c56cd0b30bb721953498 assets/minecraft-the-stories-mod/models/block/dense_oaklin_grass_block_snow.json
+64306586fdef1f90a1f4439ab6d6728c16d5d2ea assets/minecraft-the-stories-mod/models/block/dense_oaklin_mycelium.json
 de701846bc8c1bd541047f9a296b48903beb5e2f assets/minecraft-the-stories-mod/models/block/end_amethyst_ore.json
 52824523086327c465cffc0db1a6ba4c6c94e9c8 assets/minecraft-the-stories-mod/models/block/lemon_tree_leaves.json
 459d3bb9196877dff2bd8d1f81690cd482c0fb53 assets/minecraft-the-stories-mod/models/block/lemon_tree_log.json
